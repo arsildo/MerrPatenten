@@ -15,7 +15,6 @@
         <activity
             android:name=".display.activities.MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
             android:theme="@style/Theme.MerrPatenten">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,6 +25,10 @@
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
+        </activity>
+        <activity
+            android:name=".display.activities.ExamActivity"
+            android:screenOrientation="locked">
         </activity>
     </application>
 
