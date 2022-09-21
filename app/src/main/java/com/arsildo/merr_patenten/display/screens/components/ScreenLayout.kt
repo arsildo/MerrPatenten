@@ -13,15 +13,18 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun ScreenLayout(
+    modifier: Modifier = Modifier,
     verticalArrangement: Arrangement.Vertical = Arrangement.Top,
     horizontalAlignment: Alignment.Horizontal = Alignment.Start,
     content: @Composable () -> Unit,
 ) {
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .background(MaterialTheme.colors.background)
-            .padding(16.dp)
+            .padding(16.dp),
+        horizontalAlignment = horizontalAlignment,
+        verticalArrangement = verticalArrangement
     ) {
         content()
     }
