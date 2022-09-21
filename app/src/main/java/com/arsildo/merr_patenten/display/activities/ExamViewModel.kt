@@ -1,4 +1,4 @@
-package com.arsildo.merr_patenten.display.activities.exam
+package com.arsildo.merr_patenten.display.activities
 
 import android.os.CountDownTimer
 import androidx.compose.runtime.mutableStateOf
