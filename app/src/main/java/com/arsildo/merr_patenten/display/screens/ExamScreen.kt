@@ -7,9 +7,10 @@ import androidx.compose.material.ModalBottomSheetValue
 import androidx.compose.material.Text
 import androidx.compose.material.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.arsildo.merr_patenten.display.activities.ExamViewModel
 import com.arsildo.merr_patenten.display.screens.components.ExamNavigator
 import com.arsildo.merr_patenten.display.screens.components.PagerMap
 import com.arsildo.merr_patenten.display.screens.components.ScreenLayout
@@ -17,35 +18,35 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun ExamScreen(
-    isExamCompleted: MutableState<Boolean>,
-    countDownTimer: MutableState<String>,
-    onExamConcluded: () -> Unit,
-) {
+fun ExamScreen() {
 
+    val viewModel: ExamViewModel = viewModel()
+
+    val scope = rememberCoroutineScope()
     val sheetState = rememberModalBottomSheetState(
         initialValue = ModalBottomSheetValue.Hidden,
         skipHalfExpanded = true
     )
-    val scope = rememberCoroutineScope()
+
     ScreenLayout(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceBetween
     ) {
-
         ExamNavigator(
-            countDownTimer = countDownTimer,
+            countDownTimer = viewModel.countDownTimer,
+            onClick = { scope.launch { sheetState.show() } }
         )
         Button(
-            onClick = { scope.launch { sheetState.show() } }
+            onClick = {}
         ) {
-            Text(text = "End Exam ${isExamCompleted.value}")
+            Text(text = "Click")
         }
-
     }
 
     PagerMap(
+        isExamCompleted = viewModel.isExamCompleted,
         sheetState = sheetState,
+        onPositionClicked = {},
         onHideSheet = {
             scope.launch { sheetState.hide() }
         }
