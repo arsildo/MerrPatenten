@@ -4,16 +4,17 @@ import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
-import com.arsildo.merr_patenten.display.activities.ExamActivity
+import androidx.navigation.NavController
 import com.arsildo.merr_patenten.display.screens.components.ScreenLayout
-import com.arsildo.merr_patenten.logic.extensions.launchActivity
+import com.arsildo.merr_patenten.logic.navigation.Destinations
 
 @Composable
-fun MainScreen() {
+fun MainScreen(
+    navController: NavController,
+) {
     ScreenLayout {
-        val context = LocalContext.current
         Button(
-            onClick = { context.launchActivity<ExamActivity>() }
+            onClick = { navController.navigate(route = Destinations.Exam.route) }
         ) {
             Text(text = "Navigate")
         }
