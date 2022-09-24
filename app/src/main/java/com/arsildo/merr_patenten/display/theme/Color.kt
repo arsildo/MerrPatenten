@@ -2,9 +2,8 @@ package com.arsildo.merr_patenten.display.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple200 = Color(0xFFBB86FC)
-val Purple500 = Color(0xFF6200EE)
-val Purple700 = Color(0xFF3700B3)
-val Teal200 = Color(0xFF03DAC5)
+val KappelGreen = Color(0xFF15b097)
+val OffWhite = Color(0xFFFDFCFE)
+val OffBlack = Color(0xFF10110F)
 val White = Color(0xFFFFFFFF)
 val Black = Color(0xFF000000)
