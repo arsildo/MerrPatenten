@@ -8,29 +8,40 @@ import androidx.compose.runtime.Composable
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 private val DarkColorPalette = darkColors(
-    primary = Purple200,
-    primaryVariant = Purple700,
-    secondary = Teal200,
-    background = White // TODO CHANGE
+    primary = KappelGreen,
+    onPrimary = White,
+
+    surface = White,
+    onSurface = Black,
+
+    background = OffBlack,
+    onBackground = Black,
 )
 
 private val LightColorPalette = lightColors(
-    primary = Purple500,
-    primaryVariant = Purple700,
-    secondary = Teal200,
-    background = White
+    primary = KappelGreen,
+    onPrimary = White,
+
+    surface = White,
+    onSurface = Black,
+
+    background = OffWhite,
+    onBackground = Black,
 )
 
 @Composable
-fun MerrPatentenTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
+fun MerrPatentenTheme(
+    darkTheme: Boolean = isSystemInDarkTheme(),
+    content: @Composable () -> Unit,
+) {
     val systemUiController = rememberSystemUiController()
     val colors = if (darkTheme) {
-        systemUiController.setNavigationBarColor(MaterialTheme.colors.background)
-        systemUiController.setStatusBarColor(MaterialTheme.colors.background)
-        DarkColorPalette
+        systemUiController.setNavigationBarColor(LightColorPalette.background)
+        systemUiController.setStatusBarColor(LightColorPalette.background)
+        LightColorPalette // BLACK THEME todo
     } else {
-        systemUiController.setNavigationBarColor(MaterialTheme.colors.background)
-        systemUiController.setStatusBarColor(MaterialTheme.colors.background)
+        systemUiController.setNavigationBarColor(LightColorPalette.background)
+        systemUiController.setStatusBarColor(LightColorPalette.background)
         LightColorPalette
     }
 

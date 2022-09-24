@@ -33,8 +33,11 @@ class MainActivity : ComponentActivity() {
             composable(route = Destinations.Main.route) {
                 MainScreen(navController)
             }
-            composable(route = Destinations.Exam.route){
+            composable(route = Destinations.Exam.route) {
                 ExamScreen()
+            }
+            composable(route = Destinations.Preferences.route) {
+
             }
         }
 
