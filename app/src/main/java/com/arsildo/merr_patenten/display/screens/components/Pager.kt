@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.arsildo.merr_patenten.logic.database.DatabaseModel
 import com.google.accompanist.pager.ExperimentalPagerApi
@@ -37,6 +38,9 @@ fun PagerItem(model : DatabaseModel) {
             contentDescription = null,
             modifier=Modifier.fillMaxWidth(.5f).height(256.dp)
         )
-        Text(text = model.question)
+        Text(
+            text = model.question,
+            textAlign = TextAlign.Center
+        )
     }
 }

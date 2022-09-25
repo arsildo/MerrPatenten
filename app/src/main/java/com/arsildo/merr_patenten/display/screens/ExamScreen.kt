@@ -6,19 +6,21 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material.Button
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.ModalBottomSheetValue
 import androidx.compose.material.Text
 import androidx.compose.material.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.arsildo.merr_patenten.display.activities.ExamViewModel
+import com.arsildo.merr_patenten.display.screens.components.ConcludeButton
 import com.arsildo.merr_patenten.display.screens.components.ExamNavigator
 import com.arsildo.merr_patenten.display.screens.components.Pager
 import com.arsildo.merr_patenten.display.screens.components.PagerMap
@@ -39,7 +41,7 @@ fun ExamScreen() {
         skipHalfExpanded = true
     )
 
-    val concludeButton = remember { mutableStateOf(false) }
+    var concludeButton by remember { mutableStateOf(false) }
 
     val pagerState = rememberPagerState()
     ScreenLayout(
@@ -49,7 +51,7 @@ fun ExamScreen() {
         ExamNavigator(
             currentPage = pagerState.currentPage,
             countDownTimer = viewModel.countDownTimer.value,
-            onToggleClicked = { concludeButton.value = !concludeButton.value },
+            onToggleClicked = { concludeButton = !concludeButton },
             onMapClicked = { scope.launch { sheetState.show() } }
         )
 
@@ -69,15 +71,14 @@ fun ExamScreen() {
                 ),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(text = "1")
-            if (concludeButton.value) {
-                Button(
+            Text(text = "Navigation Buttons")
+            if (concludeButton) {
+                ConcludeButton(
+                    isExamCompleted = viewModel.isExamCompleted,
                     onClick = {
                         viewModel.isExamCompleted.value = true
                     }
-                ) {
-                    Text(text = "End Exam")
-                }
+                )
             }
         }
     }
