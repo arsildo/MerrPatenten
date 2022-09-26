@@ -35,13 +35,13 @@ fun ExamNavigator(
         Text(
             text = "${currentPage + 1}/40",
             textAlign = TextAlign.Center,
-            color = MaterialTheme.colors.primary,
+            color = MaterialTheme.colors.onBackground,
             modifier = Modifier.weight(.3f)
         )
         TextButton(
             onClick = onMapClicked,
             colors = ButtonDefaults.buttonColors(
-                contentColor = MaterialTheme.colors.primary,
+                contentColor = MaterialTheme.colors.onBackground,
                 backgroundColor = MaterialTheme.colors.background,
             ),
             modifier = Modifier.weight(.3f)
@@ -54,7 +54,7 @@ fun ExamNavigator(
         Text(
             text = countDownTimer,
             textAlign = TextAlign.Center,
-            color = MaterialTheme.colors.primary,
+            color = MaterialTheme.colors.onBackground,
             modifier = Modifier.weight(.3f)
         )
         IconButton(
@@ -64,7 +64,7 @@ fun ExamNavigator(
             Icon(
                 Icons.Rounded.Close,
                 contentDescription = null,
-                tint = MaterialTheme.colors.primary,
+                tint = MaterialTheme.colors.onBackground,
             )
         }
     }

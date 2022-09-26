@@ -74,9 +74,11 @@ fun ExamScreen() {
             Text(text = "Navigation Buttons")
             if (concludeButton) {
                 ConcludeButton(
-                    isExamCompleted = viewModel.isExamCompleted,
+                    isExamCompleted = viewModel.isExamCompleted.value,
                     onClick = {
-                        viewModel.isExamCompleted.value = true
+                        if (viewModel.isExamCompleted.value) {
+                            scope.launch { sheetState.show() }
+                        } else viewModel.isExamCompleted.value = true
                     }
                 )
             }
