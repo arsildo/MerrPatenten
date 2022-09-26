@@ -50,7 +50,6 @@ fun PagerMap(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(text = "${isExamCompleted.value}")
-
                 LazyVerticalGrid(
                     columns = GridCells.Fixed(count = 5),
                     horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -64,7 +63,7 @@ fun PagerMap(
                     }
                 }
                 Row(
-                    Modifier
+                    modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 4.dp, vertical = 4.dp),
                     horizontalArrangement = Arrangement.SpaceBetween,

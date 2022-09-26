@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -36,7 +37,7 @@ fun PagerItem(model : DatabaseModel) {
         Image(
             painterResource(id = model.image),
             contentDescription = null,
-            modifier=Modifier.fillMaxWidth(.5f).height(256.dp)
+            modifier=Modifier.fillMaxWidth(.5f).height(256.dp).padding(bottom = 32.dp)
         )
         Text(
             text = model.question,
