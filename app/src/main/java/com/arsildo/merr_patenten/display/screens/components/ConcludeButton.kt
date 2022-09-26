@@ -11,30 +11,35 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.DoneAll
 import androidx.compose.material.icons.rounded.ExpandLess
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
 fun ConcludeButton(
-    isExamCompleted: MutableState<Boolean>,
+    isExamCompleted: Boolean,
     onClick: () -> Unit,
 ) {
+    var confirm by remember { mutableStateOf(2) }
     Button(
-        onClick = onClick, colors = ButtonDefaults.buttonColors(
-            backgroundColor = if (!isExamCompleted.value) MaterialTheme.colors.error else MaterialTheme.colors.primary,
+        onClick = { if (confirm == 1) onClick() else confirm-- },
+        colors = ButtonDefaults.buttonColors(
+            backgroundColor = if (!isExamCompleted) MaterialTheme.colors.error else MaterialTheme.colors.primary,
             contentColor = MaterialTheme.colors.onPrimary,
         ),
         shape = MaterialTheme.shapes.medium,
-        elevation = ButtonDefaults.elevation(0.dp),
+        elevation = ButtonDefaults.elevation(defaultElevation = 2.dp, pressedElevation = 4.dp),
         modifier = Modifier.fillMaxWidth()
     ) {
         Icon(
-            if (!isExamCompleted.value) Icons.Rounded.DoneAll else Icons.Rounded.ExpandLess,
+            if (!isExamCompleted) Icons.Rounded.DoneAll else Icons.Rounded.ExpandLess,
             contentDescription = null,
             modifier = Modifier.padding(end = 8.dp)
         )
-        Text(text = if (!isExamCompleted.value) "Perfundo Provimin" else "Shiko Gabimet")
+        Text(text = if (!isExamCompleted) "Perfundo Provimin($confirm)" else "Shiko Gabimet")
     }
 
 }
