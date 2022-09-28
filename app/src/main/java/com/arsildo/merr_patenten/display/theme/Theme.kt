@@ -11,6 +11,9 @@ private val DarkColorPalette = darkColors(
     primary = KappelGreen,
     onPrimary = White,
 
+    secondary = PrussianBlue,
+    onSecondary = White,
+
     surface = White,
     onSurface = Black,
 
@@ -21,6 +24,9 @@ private val DarkColorPalette = darkColors(
 private val LightColorPalette = lightColors(
     primary = KappelGreen,
     onPrimary = White,
+
+    secondary = PrussianBlue,
+    onSecondary = White,
 
     surface = White,
     onSurface = Black,
