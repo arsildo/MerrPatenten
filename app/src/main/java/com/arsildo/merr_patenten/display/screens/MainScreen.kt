@@ -9,10 +9,12 @@ import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Card
 import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.DirectionsCar
+import androidx.compose.material.icons.rounded.Settings
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -26,12 +28,17 @@ import com.arsildo.merr_patenten.logic.navigation.Destinations
 fun MainScreen(
     navController: NavController,
 ) {
-    ScreenLayout {
+    ScreenLayout(
+        verticalArrangement = Arrangement.SpaceBetween
+    ) {
         CategoryCard(
             onStartExamClicked = {
                 navController.navigate(route = Destinations.Exam.route)
             }
         )
+        IconButton(onClick = { navController.navigate(Destinations.Preferences.route) }) {
+            Icon(Icons.Rounded.Settings, contentDescription = null)
+        }
     }
 }
 

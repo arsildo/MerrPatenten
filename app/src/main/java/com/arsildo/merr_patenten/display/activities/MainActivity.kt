@@ -10,6 +10,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.arsildo.merr_patenten.display.screens.ExamScreen
 import com.arsildo.merr_patenten.display.screens.MainScreen
+import com.arsildo.merr_patenten.display.screens.PreferencesScreen
 import com.arsildo.merr_patenten.display.theme.MerrPatentenTheme
 import com.arsildo.merr_patenten.logic.navigation.Destinations
 
@@ -37,7 +38,7 @@ class MainActivity : ComponentActivity() {
                 ExamScreen()
             }
             composable(route = Destinations.Preferences.route) {
-
+                PreferencesScreen(navController = navController)
             }
         }
 

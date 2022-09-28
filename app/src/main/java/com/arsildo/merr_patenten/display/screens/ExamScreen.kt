@@ -73,7 +73,7 @@ fun ExamScreen() {
         ) {
             Text(text = "Navigation Buttons")
             if (concludeButton) {
-                ConcludeButton(
+                ConcludeButton( // NEEDLESS RECOMPOSITION CAUSE UNKNOWN todo fix
                     isExamCompleted = viewModel.isExamCompleted.value,
                     onClick = {
                         if (viewModel.isExamCompleted.value) {
@@ -86,7 +86,7 @@ fun ExamScreen() {
     }
 
     PagerMap(
-        isExamCompleted = viewModel.isExamCompleted,
+        isExamCompleted = viewModel.isExamCompleted.value,
         sheetState = sheetState,
         onPositionClicked = {
             scope.launch {
