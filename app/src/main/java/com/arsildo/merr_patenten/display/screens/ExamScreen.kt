@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.ModalBottomSheetValue
-import androidx.compose.material.Text
 import androidx.compose.material.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -24,6 +23,7 @@ import com.arsildo.merr_patenten.display.screens.components.ConcludeButton
 import com.arsildo.merr_patenten.display.screens.components.ExamNavigator
 import com.arsildo.merr_patenten.display.screens.components.Pager
 import com.arsildo.merr_patenten.display.screens.components.PagerMap
+import com.arsildo.merr_patenten.display.screens.components.PagerNavigation
 import com.arsildo.merr_patenten.display.screens.components.ScreenLayout
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.rememberPagerState
@@ -59,21 +59,33 @@ fun ExamScreen() {
             pagerState = pagerState,
             list = viewModel.generatedQuestions
         )
-        Column(
+        Column( // NEEDLESS RECOMPOSITION CAUSE UNKNOWN todo fix
             modifier = Modifier
                 .fillMaxWidth()
                 .animateContentSize(
                     animationSpec = tween(
-                        delayMillis = 128,
-                        durationMillis = 256,
+                        delayMillis = 64,
+                        durationMillis = 128,
                         easing = LinearEasing
                     )
                 ),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(text = "Navigation Buttons")
+            PagerNavigation(
+                onPreviousClicked = {
+                    if (pagerState.currentPage > 0) {
+                        scope.launch { pagerState.animateScrollToPage(pagerState.currentPage - 1) }
+                    }
+                },
+                onNextClicked = {
+                    if (pagerState.currentPage < 39) {
+                        scope.launch { pagerState.animateScrollToPage(pagerState.currentPage + 1) }
+                    }
+                }
+            )
+
             if (concludeButton) {
-                ConcludeButton( // NEEDLESS RECOMPOSITION CAUSE UNKNOWN todo fix
+                ConcludeButton(
                     isExamCompleted = viewModel.isExamCompleted.value,
                     onClick = {
                         viewModel.isExamCompleted.value = true
