@@ -41,7 +41,7 @@ fun ExamNavigator(
         TextButton(
             onClick = onMapClicked,
             colors = ButtonDefaults.buttonColors(
-                contentColor = MaterialTheme.colors.onBackground,
+                contentColor = MaterialTheme.colors.primary,
                 backgroundColor = MaterialTheme.colors.background,
             ),
             modifier = Modifier.weight(.3f)

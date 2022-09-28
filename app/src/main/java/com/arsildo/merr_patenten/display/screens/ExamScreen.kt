@@ -76,9 +76,8 @@ fun ExamScreen() {
                 ConcludeButton( // NEEDLESS RECOMPOSITION CAUSE UNKNOWN todo fix
                     isExamCompleted = viewModel.isExamCompleted.value,
                     onClick = {
-                        if (viewModel.isExamCompleted.value) {
-                            scope.launch { sheetState.show() }
-                        } else viewModel.isExamCompleted.value = true
+                        viewModel.isExamCompleted.value = true
+                        scope.launch { sheetState.show() }
                     }
                 )
             }

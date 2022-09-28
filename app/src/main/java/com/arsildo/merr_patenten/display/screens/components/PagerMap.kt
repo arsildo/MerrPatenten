@@ -20,8 +20,8 @@ import androidx.compose.material.ModalBottomSheetState
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.ExpandMore
+import androidx.compose.material.icons.rounded.HorizontalRule
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
@@ -31,7 +31,7 @@ import androidx.compose.ui.unit.sp
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun PagerMap(
-    isExamCompleted: MutableState<Boolean>,
+    isExamCompleted: Boolean,
     sheetState: ModalBottomSheetState,
     onPositionClicked: (Int) -> Unit,
     onHideSheet: () -> Unit,
@@ -49,11 +49,21 @@ fun PagerMap(
                     .padding(horizontal = 16.dp, vertical = 4.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Text(text = "${isExamCompleted.value}")
+                Icon(
+                    Icons.Rounded.HorizontalRule,
+                    contentDescription = null,
+                    tint = MaterialTheme.colors.onBackground,
+                    modifier = Modifier.padding(bottom = 8.dp)
+                )
+                if (isExamCompleted) {
+                    Row() {
+                        Text(text = "Rezultati")
+                    }
+                }
                 LazyVerticalGrid(
                     columns = GridCells.Fixed(count = 5),
                     horizontalArrangement = Arrangement.spacedBy(8.dp),
-                    verticalArrangement = Arrangement.spacedBy(4.dp)
+                    verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
                     items(40) {
                         MapItem(
@@ -69,7 +79,15 @@ fun PagerMap(
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text(text = "Indicator")
+                    if (!isExamCompleted) {
+                        Text(text = "Indicator")
+                    } else {
+                        Row {
+                            Text(text = "Indicator")
+                            Text(text = "Indicator")
+                        }
+                    }
+
                     IconButton(onClick = onHideSheet) {
                         Icon(
                             Icons.Rounded.ExpandMore,
@@ -93,14 +111,14 @@ fun MapItem(
     Card(
         onClick = onPositionClick,
         backgroundColor = MaterialTheme.colors.surface,
-        contentColor = MaterialTheme.colors.onSurface,
+        contentColor = MaterialTheme.colors.primary,
         border = BorderStroke(1.dp, MaterialTheme.colors.primary),
         shape = MaterialTheme.shapes.medium,
         elevation = 0.dp,
     ) {
         Text(
             text = position,
-            fontSize = 18.sp,
+            fontSize = 22.sp,
             textAlign = TextAlign.Center,
             modifier = Modifier
                 .fillMaxSize()
