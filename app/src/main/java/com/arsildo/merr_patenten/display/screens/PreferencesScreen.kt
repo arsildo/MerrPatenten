@@ -1,5 +1,6 @@
 package com.arsildo.merr_patenten.display.screens
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -19,6 +20,7 @@ import androidx.compose.material.icons.rounded.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -31,13 +33,14 @@ fun PreferencesScreen(navController: NavController) {
     ScreenLayout {
         Row(
             modifier = Modifier.padding(bottom = 16.dp),
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
         ) {
             IconButton(
                 onClick = { navController.navigate(Destinations.Main.route) },
                 modifier = Modifier
                     .padding(end = 16.dp)
                     .size(32.dp)
+                    .padding(2.dp)
             ) {
                 Icon(
                     Icons.Rounded.ArrowBack,
@@ -49,7 +52,7 @@ fun PreferencesScreen(navController: NavController) {
             Text(
                 text = "Preferencat",
                 color = MaterialTheme.colors.secondary,
-                fontSize = 32.sp
+                fontSize = 28.sp
             )
         }
 
@@ -79,7 +82,10 @@ fun SettingItem(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 8.dp),
+            .padding(top = 8.dp)
+            .clip(MaterialTheme.shapes.medium)
+            .background(MaterialTheme.colors.primary.copy(.1f))
+            .padding(horizontal = 16.dp, vertical = 4.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -90,7 +96,7 @@ fun SettingItem(
                 tint = MaterialTheme.colors.secondary,
                 modifier = Modifier
                     .padding(end = 9.dp)
-                    .size(32.dp)
+                    .size(28.dp)
 
             )
             Text(

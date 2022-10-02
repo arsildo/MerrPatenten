@@ -20,7 +20,6 @@ class ExamViewModel : ViewModel() {
 
     init {
         startCountDown()
-
     }
 
     private fun generateQuestions(): MutableList<DatabaseModel> {

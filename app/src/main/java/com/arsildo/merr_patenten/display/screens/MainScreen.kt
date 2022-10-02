@@ -4,6 +4,7 @@ import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -18,10 +19,11 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.DirectionsCar
 import androidx.compose.material.icons.rounded.ExpandMore
+import androidx.compose.material.icons.rounded.Flag
+import androidx.compose.material.icons.rounded.Gite
+import androidx.compose.material.icons.rounded.QueryStats
 import androidx.compose.material.icons.rounded.Settings
-import androidx.compose.material.icons.rounded.SportsScore
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -30,9 +32,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.arsildo.merr_patenten.R
 import com.arsildo.merr_patenten.display.screens.components.ScreenLayout
 import com.arsildo.merr_patenten.logic.navigation.Destinations
 
@@ -48,9 +52,11 @@ fun MainScreen(
                 navController.navigate(route = Destinations.Exam.route)
             }
         )
-        IconButton(onClick = { navController.navigate(Destinations.Preferences.route) }) {
-            Icon(Icons.Rounded.Settings, contentDescription = null)
-        }
+        BottomActions(
+            onGithubLinkClicked = { /*TODO*/ },
+            onStatisticsClicked = { /*TODO*/ },
+            onPreferencesClicked = { navController.navigate(Destinations.Preferences.route) }
+        )
     }
 }
 
@@ -75,7 +81,7 @@ fun CategoryCard(onStartExamClicked: () -> Unit) {
                 ),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(text = "A1, A2, B1, B", fontSize = 32.sp, color = MaterialTheme.colors.primary)
+            Text(text = "A1 A2 B1 B", fontSize = 32.sp, color = MaterialTheme.colors.primary)
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -83,8 +89,8 @@ fun CategoryCard(onStartExamClicked: () -> Unit) {
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceAround
             ) {
-                Icon(
-                    Icons.Rounded.DirectionsCar,
+                Image(
+                    painterResource(id = R.drawable.ic_launcher_background),
                     contentDescription = null,
                     modifier = Modifier.size(128.dp)
                 )
@@ -115,7 +121,7 @@ fun CategoryCard(onStartExamClicked: () -> Unit) {
                     modifier = Modifier.fillMaxWidth(.85f)
                 ) {
                     Icon(
-                        Icons.Rounded.SportsScore,
+                        Icons.Rounded.Flag,
                         contentDescription = null,
                         modifier = Modifier.padding(end = 4.dp)
                     )
@@ -136,6 +142,50 @@ fun CategoryCard(onStartExamClicked: () -> Unit) {
             }
             if (additionalInfo) {
                 Text(text = "additional info")
+            }
+        }
+    }
+}
+
+@Composable
+fun BottomActions(
+    onGithubLinkClicked: () -> Unit,
+    onStatisticsClicked: () -> Unit,
+    onPreferencesClicked: () -> Unit,
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(4.dp),
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        IconButton(onClick = onGithubLinkClicked) {
+            Icon(
+                Icons.Rounded.Gite, // todo Change to Github Logo.
+                contentDescription = null,
+                tint = MaterialTheme.colors.primary,
+                modifier = Modifier.size(32.dp)
+            )
+        }
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            IconButton(onClick = onStatisticsClicked) {
+                Icon(
+                    Icons.Rounded.QueryStats,
+                    contentDescription = null,
+                    tint = MaterialTheme.colors.primary,
+                    modifier = Modifier.size(32.dp)
+                )
+            }
+            IconButton(onClick = onPreferencesClicked) {
+                Icon(
+                    Icons.Rounded.Settings,
+                    contentDescription = null,
+                    tint = MaterialTheme.colors.primary,
+                    modifier = Modifier.size(32.dp)
+                )
             }
         }
     }

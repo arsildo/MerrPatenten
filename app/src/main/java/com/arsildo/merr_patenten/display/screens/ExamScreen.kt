@@ -10,11 +10,9 @@ import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.ModalBottomSheetValue
 import androidx.compose.material.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -41,7 +39,7 @@ fun ExamScreen() {
         skipHalfExpanded = true
     )
 
-    var concludeButton by remember { mutableStateOf(false) }
+    val concludeButton = remember { mutableStateOf(false) }
 
     val pagerState = rememberPagerState()
     ScreenLayout(
@@ -51,7 +49,8 @@ fun ExamScreen() {
         ExamNavigator(
             currentPage = pagerState.currentPage,
             countDownTimer = viewModel.countDownTimer.value,
-            onToggleClicked = { concludeButton = !concludeButton },
+            concludeButton = concludeButton.value,
+            onToggleClicked = { concludeButton.value = !concludeButton.value },
             onMapClicked = { scope.launch { sheetState.show() } }
         )
 
@@ -84,7 +83,7 @@ fun ExamScreen() {
                 }
             )
 
-            if (concludeButton) {
+            if (concludeButton.value) {
                 ConcludeButton(
                     isExamCompleted = viewModel.isExamCompleted.value,
                     onClick = {
