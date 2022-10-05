@@ -21,6 +21,7 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Book
 import androidx.compose.material.icons.rounded.ExpandMore
 import androidx.compose.material.icons.rounded.Flag
 import androidx.compose.material.icons.rounded.QueryStats
@@ -40,6 +41,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.arsildo.merr_patenten.R
 import com.arsildo.merr_patenten.display.screens.components.ScreenLayout
+import com.arsildo.merr_patenten.logic.constants.DPSHTRR_URL
 import com.arsildo.merr_patenten.logic.constants.GITHUB_DEVELOPER_URL
 import com.arsildo.merr_patenten.logic.navigation.Destinations
 
@@ -149,7 +151,24 @@ fun CategoryCard(onStartExamClicked: () -> Unit) {
                 }
             }
             if (additionalInfo) {
-                Text(text = "additional info")
+                val context = LocalContext.current
+                Button(
+                    onClick = {
+                        val dpshtrr = Intent(Intent.ACTION_VIEW)
+                        dpshtrr.data = Uri.parse(DPSHTRR_URL)
+                        context.startActivity(dpshtrr)
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 8.dp)
+                ) {
+                    Icon(
+                        Icons.Rounded.Book,
+                        contentDescription = null,
+                        modifier = Modifier.padding(end = 4.dp)
+                    )
+                    Text(text = "Materiale Udhezuese nga DPSHTRR")
+                }
             }
         }
     }
