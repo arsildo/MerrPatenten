@@ -48,15 +48,24 @@ fun ExamScreen() {
     ) {
         ExamNavigator(
             currentPage = pagerState.currentPage,
-            countDownTimer = viewModel.countDownTimer.value,
+            countDownTimer = "26:32"/*viewModel.countDownTimer.value*/,
             concludeButton = concludeButton.value,
             onToggleClicked = { concludeButton.value = !concludeButton.value },
             onMapClicked = { scope.launch { sheetState.show() } }
         )
 
+
+        val trueCheckedPositions = remember { viewModel.trueCheckedPositions }
+        val falseCheckedPositions = remember { viewModel.falseCheckedPositions }
         Pager(
             pagerState = pagerState,
-            list = viewModel.generatedQuestions
+            isExamCompleted = viewModel.isExamCompleted.value,
+            list = viewModel.generatedQuestions,
+            mistakePositions = viewModel.mistakePositions,
+            trueCheckedPositions = trueCheckedPositions,
+            falseCheckedPositions = falseCheckedPositions,
+            checkFalseAt = { viewModel.checkFalseAtPosition(it) },
+            checkTrueAt = { viewModel.checkTrueAtPosition(it) }
         )
         Column( // NEEDLESS RECOMPOSITION CAUSE UNKNOWN todo fix
             modifier = Modifier
@@ -89,15 +98,18 @@ fun ExamScreen() {
                     onClick = {
                         viewModel.isExamCompleted.value = true
                         scope.launch { sheetState.show() }
+                        if (viewModel.isExamCompleted.value) viewModel.countMistakes()
                     }
                 )
             }
         }
     }
-
     PagerMap(
         isExamCompleted = viewModel.isExamCompleted.value,
+        errors = viewModel.mistakes.value,
         sheetState = sheetState,
+        responseList = viewModel.responseList,
+        mistakePositions = viewModel.mistakePositions,
         onPositionClicked = {
             scope.launch {
                 sheetState.hide()
@@ -107,5 +119,6 @@ fun ExamScreen() {
         onHideSheet = {
             scope.launch { sheetState.hide() }
         }
+
     )
 }

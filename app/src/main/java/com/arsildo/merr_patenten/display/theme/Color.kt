@@ -10,3 +10,5 @@ val White = Color(0xFFFFFFFF)
 val Black = Color(0xFF000000)
 
 val GrayedOot = Color(0xFFD5D5D5)
+val Red = Color(0xFFB40202)
+val Green = Color(0xFF09BB10)
