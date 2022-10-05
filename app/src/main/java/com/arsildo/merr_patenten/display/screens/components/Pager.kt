@@ -88,6 +88,7 @@ fun PagerItem(
         Text(
             text = model.question,
             fontSize = 18.sp,
+            color = MaterialTheme.colors.onBackground,
             textAlign = TextAlign.Center
         )
         Row(
@@ -100,7 +101,7 @@ fun PagerItem(
                 checked = falseChecked,
                 titleColor = if (falseChecked) if (isExamCompleted) Red.copy(.4f) else Red else if (isExamCompleted) Black.copy(
                     .4f
-                ) else Black,
+                ) else MaterialTheme.colors.onBackground,
                 checkedColor = if (falseChecked) Red else Black,
                 enabled = !isExamCompleted,
                 onCheckedChanged = onFalseChecked
@@ -109,7 +110,7 @@ fun PagerItem(
                 title = "Saktë",
                 titleColor = if (trueChecked) if (isExamCompleted) Green.copy(.4f) else Green else if (isExamCompleted) Black.copy(
                     .4f
-                ) else Black,
+                ) else MaterialTheme.colors.onBackground,
                 checked = trueChecked,
                 checkedColor = if (trueChecked) Green else Black,
                 enabled = !isExamCompleted,

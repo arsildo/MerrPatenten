@@ -31,7 +31,7 @@ private val DarkColorPalette = darkColors(
     onSurface = White,
 
     background = OffBlack,
-    onBackground = Black,
+    onBackground = White,
 )
 
 @Composable

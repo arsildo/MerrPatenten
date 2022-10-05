@@ -23,6 +23,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.text.style.TextAlign
+import com.arsildo.merr_patenten.display.theme.Red
 
 @Composable
 fun ExamNavigator(
@@ -70,7 +71,7 @@ fun ExamNavigator(
             Icon(
                 if (concludeButton) Icons.Rounded.Fullscreen else Icons.Rounded.Close,
                 contentDescription = null,
-                tint = if (concludeButton) MaterialTheme.colors.onBackground else MaterialTheme.colors.error,
+                tint = if (concludeButton) MaterialTheme.colors.onBackground else Red,
                 modifier = Modifier.rotate(rotationState)
             )
         }
