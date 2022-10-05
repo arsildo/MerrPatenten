@@ -8,25 +8,25 @@ class DatabaseExtension {
             id = 2861,
             question = "Tabela në figurë shërben për të komanduar qarkullim të alternuar të mjeteve në ngushtime rrugësh, për shkak të punimeve.",
             image = R.drawable.img_281,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2862,
             question = "Tabela në figurë përdoret nga punonjësit që rregullojnë trafikun, për shkak të punimeve që bëhen në rrugë.",
             image = R.drawable.img_281,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2863,
             question = "Paraqitja e tabelës me ngjyrë të kuqe, si në figurë, u tregon drejtueseve të mjeteve që të ndalojnë lëvizjen.",
             image = R.drawable.img_281,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2864,
             question = "Paraqitja e tabelës me ngjyrë jeshile, si në figurë, u tregon drejtueseve të mjeteve që të vazhdojnë lëvizjen.",
             image = R.drawable.img_281,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2865,
@@ -38,19 +38,19 @@ class DatabaseExtension {
             id = 2866,
             question = "Sinjali në figurë paralajmëron devijim të përkohshëm, djathtas.",
             image = R.drawable.img_282,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2867,
             question = "Sinjali në figurë tregon devijimin e përkohshëm të rrugës, për shkak të punimeve në vazhdim.",
             image = R.drawable.img_282,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2868,
             question = "Sinjali në figurë tregon se gjatësia e devijimit të përkohshëm është 2 km.",
             image = R.drawable.img_282,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2869,
@@ -68,7 +68,7 @@ class DatabaseExtension {
             id = 2871,
             question = "Sinjali në figurë ndalon përkohësisht mjetet, me peshë mbi 7 tonë, të vazhdojnë lëvizjen drejt.",
             image = R.drawable.img_283,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2872,
@@ -80,7 +80,7 @@ class DatabaseExtension {
             id = 2873,
             question = "Sinjali në figurë detyron drejtuesit e autotrenave dhe të gjysmërimorkiatorëve të vazhdojnë lëvizjen drejt, për shkak të punimeve në rrugë.",
             image = R.drawable.img_284,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2874,
@@ -92,19 +92,19 @@ class DatabaseExtension {
             id = 2875,
             question = "Sinjali në figurë tregon mbylljen e korsisë së djathtë, për shkak të punimeve në rrugë.",
             image = R.drawable.img_285,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2876,
             question = "Sinjali në figurë tregon zvogëlimin nga 2 në 1 korsi lëvizje.",
             image = R.drawable.img_285,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2877,
             question = "Sinjali në figurë tregon një ngushtim të përkohshëm të karrexhatës.",
             image = R.drawable.img_285,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2878,
@@ -122,19 +122,19 @@ class DatabaseExtension {
             id = 2880,
             question = "Sinjali në figurë u tregon drejtueseve të mjeteve se, në afërsi, karrexhata mbyllet.",
             image = R.drawable.img_287,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2881,
             question = "Sinjali në figurë tregon se mbyllen korsitë e karrexhatës së djathtë për shkak të punimeve ne rrugë.",
             image = R.drawable.img_287,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2882,
             question = "Sinjali në figurë u tregon drejtueseve të mjeteve që të kalojnë nga karrexhata e djathtë në karrexhatën e majtë, për shkak të punimeve në rrugë.",
             image = R.drawable.img_287,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2883,
@@ -152,13 +152,13 @@ class DatabaseExtension {
             id = 2885,
             question = "Sinjali në figurë tregon si duhet të përdoren korsitë për kategoritë e ndryshme të mjeteve.",
             image = R.drawable.img_288,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2886,
             question = "Sinjali në figurë këshillon qarkullimin e kamionëve me peshë të përgjithshme mbi 3.5 tonë, në korsinë e djathtë të karrexhatës.",
             image = R.drawable.img_288,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2887,
@@ -176,7 +176,7 @@ class DatabaseExtension {
             id = 2889,
             question = "Kufizuesit anësorë në figurë tregojnë kufirin anësor të rrugës me një sens lëvizje.",
             image = R.drawable.img_289,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2890,
@@ -188,13 +188,13 @@ class DatabaseExtension {
             id = 2891,
             question = "Kufizuesit në figurë përcaktojnë kufirin anësor të rrugës me dy sense lëvizje për qarkullim.",
             image = R.drawable.img_290,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2892,
             question = "Kufizuesit anësorë në figurë bëjnë të mundur dallimin e vazhdimësisë së rrugës interurbane me një karrexhatë dhe dy sense lëvizje.",
             image = R.drawable.img_290,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2893,
@@ -206,7 +206,7 @@ class DatabaseExtension {
             id = 2894,
             question = "Kufizuesi në figurë gjendet në të dy anët e tuneleve me një sens lëvizje për qarkullim.",
             image = R.drawable.img_291,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2895,
@@ -218,7 +218,7 @@ class DatabaseExtension {
             id = 2896,
             question = "Kufizuesi në figurë tregon vazhdimësinë e rrugës në kushtet e një bore të madhe.",
             image = R.drawable.img_292,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2897,
@@ -230,13 +230,13 @@ class DatabaseExtension {
             id = 2898,
             question = "Sinjali në figurë është kufizues që tregon kthesë të fortë majtas.",
             image = R.drawable.img_293,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2899,
             question = "Shigjetat e kufizuesit në figurë tregojnë se kthesa e fortë është majtas.",
             image = R.drawable.img_293,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2900,
@@ -254,13 +254,13 @@ class DatabaseExtension {
             id = 2902,
             question = "Sinjali në figurë tregon se lejohet kthimi majtas ose djathtas.",
             image = R.drawable.img_294,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2903,
             question = "Sinjali në figurë tregon një kryqëzim në formë “T”-je.",
             image = R.drawable.img_294,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2904,
@@ -278,13 +278,13 @@ class DatabaseExtension {
             id = 2906,
             question = "Sinjali në figurë tregon kufirin e jashtëm të një kthese.",
             image = R.drawable.img_295,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2907,
             question = "Sinjali në figurë orienton drejtuesit e mjeteve për vazhdueshmërinë e kthesës.",
             image = R.drawable.img_295,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2908,
@@ -296,7 +296,7 @@ class DatabaseExtension {
             id = 2909,
             question = "Sinjali në figurë tregon hyrje në rrugë dytësore.",
             image = R.drawable.img_296,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2910,
@@ -314,7 +314,7 @@ class DatabaseExtension {
             id = 2912,
             question = "Sinjali në figurë paralajmëron semafor të përkohshëm për shkak të punimeve në rrugë.",
             image = R.drawable.img_297,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2913,
@@ -326,7 +326,7 @@ class DatabaseExtension {
             id = 2914,
             question = "Sinjali në figurë tregon devijim të përkohshëm, majtas, drejt veriut.",
             image = R.drawable.img_298,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2915,
@@ -338,13 +338,13 @@ class DatabaseExtension {
             id = 2916,
             question = "Sinjali në figurë detyron kalimin nga e djathta e pengesës.",
             image = R.drawable.img_299,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2917,
             question = "Sinjali në figurë tregon se jeni të detyruar të kaloni nga e djathta e pengesës që mund të jetë ishull trafiku, shpëtuese apo trafikndarës.",
             image = R.drawable.img_299,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2918,
@@ -356,13 +356,13 @@ class DatabaseExtension {
             id = 2919,
             question = "Tabela në figurë është sinjal dallues i policit të qarkullimit rrugor.",
             image = R.drawable.img_300,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2920,
             question = "Sinjali në figurë përdoret nga polici i trafikut rrugor për ndalimin e mjeteve ose për të rregulluar trafikun.",
             image = R.drawable.img_300,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2921,
@@ -380,19 +380,19 @@ class DatabaseExtension {
             id = 2923,
             question = "Sinjali në figurë përdoret nga polici i trafikut rrugor për ndalimin e mjeteve ose për të rregulluar trafikun.",
             image = R.drawable.img_302,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2924,
             question = "Paneli në figurë duhet të jetë gjithmonë i dukshëm dhe i vendosur në pamje ballore.",
             image = R.drawable.img_302,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2925,
             question = "Paneli në figurë shërben për të tërhequr vëmendjen e drejtueseve të mjeteve që vijnë pas, të qarkullojnë me kujdes.",
             image = R.drawable.img_302,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2926,
@@ -410,13 +410,13 @@ class DatabaseExtension {
             id = 2928,
             question = "Sinjali në figurë është panel reflektues që tregon mjete që transportojnë lëndë të rrezikshme.",
             image = R.drawable.img_303,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2929,
             question = "Paneli në figurë gjendet para, anash dhe prapa mjeteve që transportojnë lëndë të rrezikshme.",
             image = R.drawable.img_303,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2930,
@@ -434,7 +434,7 @@ class DatabaseExtension {
             id = 2932,
             question = "Sinjali në figurë është panel reflektues, që gjendet prapa kamionëve me peshë të përgjithshme mbi 3.5 tonë.",
             image = R.drawable.img_304,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2933,
@@ -446,13 +446,13 @@ class DatabaseExtension {
             id = 2934,
             question = "Sinjali në figurë është panel fosforeshent, që gjendet prapa rimorkiove (përfshi gjysmërimorkiot) me peshë të përgjithshme mbi 3.5 tonë.",
             image = R.drawable.img_305,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2935,
             question = "Sinjali në figurë tregon qendrën e një zone të banuar.",
             image = R.drawable.img_306,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2936,
@@ -470,19 +470,19 @@ class DatabaseExtension {
             id = 2938,
             question = "Paneli plotësues A në figurë, i vendosur poshtë një sinjali rreziku, tregon distancën 320 metër nga sinjali i rrezikut deri te vendi ku fillon rreziku.",
             image = R.drawable.img_121,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2939,
             question = "Paneli plotësues në figurë tregon distancën ku fillon hyrja në fuqi e sinjalit që shoqëron.",
             image = R.drawable.img_121,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2940,
             question = "Panelet plotësuese në figurë që shoqërojnë një sinjal rreziku tregojnë distancën ndërmjet sinjalit dhe pikës ku fillon rreziku.",
             image = R.drawable.img_121,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2941,
@@ -506,13 +506,13 @@ class DatabaseExtension {
             id = 2944,
             question = "Panelet në figurë tregojnë gjatësinë e një pjese rruge në të cilën zbatohet sinjali që e shoqëron.",
             image = R.drawable.img_122,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2945,
             question = "Peneli plotësues A në figurë, i vendosur poshtë një sinjali rreziku, tregon se gjatësia e pjesës së rrezikshme të rrugës është 380 metër.",
             image = R.drawable.img_122,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2946,
@@ -536,19 +536,19 @@ class DatabaseExtension {
             id = 2949,
             question = "Panelet plotësuese në figurë, të vendosur poshtë sinjalit “NDALIM PUSHIMI”, tregojnë kohëzgjatjen për të cilën është në fuqi sinjali.",
             image = R.drawable.img_123,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2950,
             question = "Paneli plotësues A në figurë, vendosur poshtë sinjalit “NDALIM QARKULLIMI”, tregon se ndalohet qarkullimi gjatë 24 orëve.",
             image = R.drawable.img_123,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2951,
             question = "Paneli plotësues B në figurë, vendosur poshtë sinjalit “RRUGË PËR KËMBËSORË”, tregon se nga ora 7:30 minuta deri në orën 19:00 ndalohet qarkullimi i mjeteve.",
             image = R.drawable.img_123,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2952,
@@ -572,25 +572,25 @@ class DatabaseExtension {
             id = 2955,
             question = "Paneli plotësues në figurë tregon orët e vlefshmërisë, në ditët e festave, të sinjalit që aishoqëron.",
             image = R.drawable.img_124,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2956,
             question = "Paneli plotësues në figurë tregon se sinjali është i vlefshëm vetëm për ditët festive dhe në oraret e treguara.",
             image = R.drawable.img_124,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2957,
             question = "Paneli plotësues në figurë, i vendosur poshtë sinjalit “NDALIM PUSHIMI”, tregon që ndalohet pushimi i mjeteve në ditë festive, nga ora 8:00 deri në orën 20:00.",
             image = R.drawable.img_124,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2958,
             question = "Paneli plotësues në figurë, i vendosur poshtë sinjalit “NDALIM QARKULLIMI”, tregon që ndalohet qarkullimi i mjeteve në ditë festash, nga ora 8:00 deri në orën 20:00.",
             image = R.drawable.img_124,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2959,
@@ -614,13 +614,13 @@ class DatabaseExtension {
             id = 2962,
             question = "Paneli plotësues në figurë, i vendosur poshtë sinjalit “NDALIM QARKULLIMI”, tregon që ndalohet qarkullimi i mjeteve në ditët e punës, nga ora 8:00 deri në orën 20:00.",
             image = R.drawable.img_125,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2963,
             question = "Paneli plotësues në figurë, i vendosur poshtë sinjalit “PARKIM”, tregon që në ditë pune mund të parkojmë mjetin nga ora 8:00 deri në orën 20:00.",
             image = R.drawable.img_125,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2964,
@@ -650,19 +650,19 @@ class DatabaseExtension {
             id = 2968,
             question = "Paneli plotësues në figurë, i vendosur poshtë sinjalit “NDALIM QARKULLIMI”, ndalon qarkullimin e gjysmërimorkiatorëve.",
             image = R.drawable.img_126,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2969,
             question = "Paneli plotësues në figurë, i vendosur poshtë sinjalit “PARKIM”, tregon një zonë për parkimin e gjysmërimorkiove.",
             image = R.drawable.img_126,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2970,
             question = "Paneli plotësues në figurë, i vendosur poshtë “NDALIM PUSHIMI”, tregon që ndalim pushimi është për mjetet e treguara në panel.",
             image = R.drawable.img_126,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2971,
@@ -680,13 +680,13 @@ class DatabaseExtension {
             id = 2973,
             question = "Paneli plotësues në figurë, i vendosur poshtë sinjalit “SENS I NDALUAR”, lejon hyrjen e autobusëve.",
             image = R.drawable.img_127,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2974,
             question = "Paneli plotësues në figurë, i vendosur poshtë sinjalit “NDALIM QARKULLIMI”, lejon qarkullimin vetëm për kategoritë e mjeteve që tregohen në panel.",
             image = R.drawable.img_127,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2975,
@@ -704,31 +704,31 @@ class DatabaseExtension {
             id = 2977,
             question = "Paneli plotësues A në figurë, i vendosur poshtë sinjalit që paralajmëron rrezik ”MATERIALE TË PAQËNDRUESHME MBI RRUGË”, tregon vendin ku fillon rreziku.",
             image = R.drawable.img_128,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2978,
             question = "Paneli plotësues B në figurë, i vendosur poshtë sinjalit “NDALIM PUSHIMI”, tregon vendin ku fillon ndalimi i pushimit të mjeteve.",
             image = R.drawable.img_128,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2979,
             question = "Paneli plotësues B në figurë, i vendosur poshtë sinjalit “PARKING”, tregon fillimin e hapësirës për pushim të mjeteve.",
             image = R.drawable.img_128,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2980,
             question = "Paneli plotësues A në figurë, i vendosur poshtë sinjalit që paralajmëron rrezik “RËNIE GURËSH”, tregon fillimin e rrezikut.",
             image = R.drawable.img_128,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2981,
             question = "Panelet plotësuese në figurë tregojnë fillimin e vlefshmërisë së sinjalit që shoqërojnë.",
             image = R.drawable.img_128,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2982,
@@ -764,19 +764,19 @@ class DatabaseExtension {
             id = 2987,
             question = "Panelet plotësuese në figurë, të vendosur poshtë sinjalit “NDALIM PUSHIMI”, tregojnë se vazhdon ndalim pushimi.",
             image = R.drawable.img_129,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2988,
             question = "Paneli plotësues A në figurë, i vendosur poshtë sinjalit “NDALIM PARAKALIMI”, tregon vazhdimësinë e ndalim parakalimit.",
             image = R.drawable.img_129,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2989,
             question = "Paneli plotësues A në figurë, i vendosur poshtë sinjalit ”NDALIM QËNDRIMI”, tregon që ndalohet qëndrimi para dhe prapa sinjalit.",
             image = R.drawable.img_129,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2990,
@@ -794,25 +794,25 @@ class DatabaseExtension {
             id = 2992,
             question = "Paneli plotësues A në figurë, i vendosur poshtë sinjaleve të punimeve në rrugë, tregon fundin e këtyre punimeve.",
             image = R.drawable.img_130,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2993,
             question = "Paneli plotësues B në figurë, i vendosur poshtë sinjalit të rrezikut “KTHESA TË RREZIKSHME”, tregon fundin e kthesave të rrezikshme.",
             image = R.drawable.img_130,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2994,
             question = "Paneli plotësues A në figurë, i vendosur poshtë sinjalit të rrezikut “RRUGË E DEFORMUAR”, tregon fundin e pjesës rrugore me shtresë jo të rregullt .",
             image = R.drawable.img_130,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2995,
             question = "Paneli plotësues B në figurë, i vendosur poshtë sinjalit të rrezikut “RRUGË E RRËSHQITSHME”, tregon fundin e rrezikut.",
             image = R.drawable.img_130,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2996,
@@ -842,19 +842,19 @@ class DatabaseExtension {
             id = 3000,
             question = "Paneli plotësues në figurë tregon një pjesë rruge ku po vizatohen sinjale horizontale.",
             image = R.drawable.img_131,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3000,
             question = "Paneli plotësues në figurë tregon një pjesë rruge ku po vizatohen sinjale horizontale.",
             image = R.drawable.img_131,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3001,
             question = "Paneli plotësues, si në figurë, tregon se po bëhen punime vijëzimi mbi asfalt.",
             image = R.drawable.img_131,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3002,
@@ -872,13 +872,13 @@ class DatabaseExtension {
             id = 3004,
             question = "Paneli plotësues në figurë tregon se ka ndodhur aksident rrugor.",
             image = R.drawable.img_132,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3005,
             question = "Paneli plotësues në figurë tregon që ka mjete të aksidentuara në rrugë.",
             image = R.drawable.img_132,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3006,
@@ -902,7 +902,7 @@ class DatabaseExtension {
             id = 3009,
             question = "Paneli plotësues në figurë tregon se, në afërsi, ka linja hekurudhore të pambrojtura.",
             image = R.drawable.img_133,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3010,
@@ -914,31 +914,31 @@ class DatabaseExtension {
             id = 3011,
             question = "Paneli plotësues në figurë tregon praninë e makinave pastruese të borës në rrugë.",
             image = R.drawable.img_134,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3012,
             question = "Në prani të panelit plotësues në figurë duhet të zvogëlohet shpejtësia e lëvizjes së mjetit.",
             image = R.drawable.img_134,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3013,
             question = "Paneli plotësues në figurë kërkon të ruhet një largësi, të paktën 20 metra, me makinat që pastrojnë borën.",
             image = R.drawable.img_134,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3014,
             question = "Paneli plotësues në figurë paralajmëron të kihet kujdes nga makinat e pastrimit të borës në rrugë.",
             image = R.drawable.img_134,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3015,
             question = "Paneli plotësues në figurë, i vendosur në rrugët me borë, tregon praninë e mjeteve të pastrimit të borës në rrugë.",
             image = R.drawable.img_134,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3016,
@@ -950,13 +950,13 @@ class DatabaseExtension {
             id = 3017,
             question = "Paneli plotësues në figurë tregon se, në rast shiu, pjesa e rrugës mund të mbulohet me ujë.",
             image = R.drawable.img_135,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3018,
             question = "Paneli plotësues në figurë tregon një vend ku mund të krijohen pellgje uji.",
             image = R.drawable.img_135,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3019,
@@ -974,25 +974,25 @@ class DatabaseExtension {
             id = 3021,
             question = "Paneli plotësues në figurë tregon se mund të gjendemi në trafik me lëvizje të ngadaltë të mjeteve.",
             image = R.drawable.img_136,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3022,
             question = "Në prani të panelit plotësues në figurë duhet të keni kujdes për të shmangur rrezikun e përplasjes me mjetet e ndaluara për shkak të trafikut.",
             image = R.drawable.img_136,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3023,
             question = "Paneli plotësues në figurë, i vendosur në autostradë, këshillon daljen nga autostrada për të shmangur ngadalësimet e mundshme.",
             image = R.drawable.img_136,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3024,
             question = "Paneli plotësues në figurë këshillon të zgjedhim rrugë tjetër, nëse është e mundur, për të shmangur trafikun.",
             image = R.drawable.img_136,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3025,
@@ -1010,13 +1010,13 @@ class DatabaseExtension {
             id = 3027,
             question = "Paneli plotësues në figurë tregon praninë e mundshme të mjeteve për punime në rrugë.",
             image = R.drawable.img_137,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3028,
             question = "Në prani të panelit në figurë duhet të rrisim kujdesin në drejtimin e mjetit.",
             image = R.drawable.img_137,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3029,
@@ -1040,13 +1040,13 @@ class DatabaseExtension {
             id = 3032,
             question = "Në prani të panelit plotësues në figurë duhet të ulim shpejtësinë, sepse rruga mund të jetë e rrëshqitshme.",
             image = R.drawable.img_138,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3033,
             question = "Paneli plotësues në figurë tregon mundësinë e formimit të akullit në sipërfaqen e rrugës, si rezultat i uljes së temperaturave.",
             image = R.drawable.img_138,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3034,
@@ -1064,19 +1064,19 @@ class DatabaseExtension {
             id = 3036,
             question = "Paneli plotësues në figurë tregon një pjesë rruge me sipërfaqe të rrezikshme kur bie shi.",
             image = R.drawable.img_139,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3037,
             question = "Në prani të panelit plotësues në figurë, në rast shiu, distanca me mjetin përpara duhet të jetë me e madhe se zakonisht.",
             image = R.drawable.img_139,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3038,
             question = "Në prani të panelit plotësues në figurë, në raste shiu, duhet të rregulloni shpejtësinë elëvizjes së mjetit, sepse sipërfaqja e rrugës bëhet e rrëshqitshme.",
             image = R.drawable.img_139,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3039,
@@ -1100,19 +1100,19 @@ class DatabaseExtension {
             id = 3042,
             question = "Paneli plotësues në figurë tregon një pjesë të rrugës, në të cilën mund të gjenden kamionë që lëvizin ngadalë.",
             image = R.drawable.img_140,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3043,
             question = "Në prani të panelit plotësues në figurë duhet kujdes, sepse mund të ndeshim kamionë që lëvizin ngadalë në ngjitje.",
             image = R.drawable.img_140,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3044,
             question = "Paneli plotësues në figurë tregon një pjesë të rrugës ku mund të gjenden mjete të rënda në lëvizje të ngadaltë.",
             image = R.drawable.img_140,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3045,
@@ -1136,19 +1136,19 @@ class DatabaseExtension {
             id = 3048,
             question = "Paneli plotësues në figurë tregon një zonë ku mjetet e parkuara në atë vend mund të largohen në mënyrë të detyruar ose mund të bllokohen me pajisje të veçanta nga policia 141",
             image = R.drawable.img_141,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3049,
             question = "Paneli plotësues në figurë tregon një zonë ku pushimi i mjetit përbën një pengesë të madhe për qarkullimin.",
             image = R.drawable.img_141,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3050,
             question = "Paneli plotësues në figurë tregon që mjeti i lënë në atë vend zhvendoset ose bllokohet nga punonjësit e policisë .",
             image = R.drawable.img_141,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3051,
@@ -1172,7 +1172,7 @@ class DatabaseExtension {
             id = 3054,
             question = "Paneli plotësues në figurë tregon korsinë që duhet të ndiqet për një drejtim të caktuar.",
             image = R.drawable.img_142,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3055,
@@ -1184,13 +1184,13 @@ class DatabaseExtension {
             id = 3056,
             question = "Paneli plotësues A në figurë tregon afrimin e një kthese të fortë.",
             image = R.drawable.img_143,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3057,
             question = "Paneli plotësues B në figurë tregon një pjesë rruge me tre kthesa të njëpasnjëshme.",
             image = R.drawable.img_143,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3058,
@@ -1202,13 +1202,13 @@ class DatabaseExtension {
             id = 3059,
             question = "Paneli plotësues në figurë tregon kthesën e parë të një pjesë rruge me disa kthesa të rrezikshme .",
             image = R.drawable.img_144,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3060,
             question = "Paneli plotësues në figurë tregon kthesën e parë të disa kthesave të forta.",
             image = R.drawable.img_144,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3061,
@@ -1232,7 +1232,7 @@ class DatabaseExtension {
             id = 3064,
             question = "Paneli plotësues në figurë, i vendosur poshtë sinjalit “Ndalim Pushimi”, tregon se nga e Hëna në të Premte ( nga ora 21:00 deri në orën 4:00) ndalohet pushimi i mjeteve.",
             image = R.drawable.img_145,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3065,
@@ -1250,13 +1250,13 @@ class DatabaseExtension {
             id = 3067,
             question = "Panelet plotësuese në figurë tregojnë vazhdimin e rrugëve kryesore dhe ndërprerjen e tyre me rrugë dytësore.",
             image = R.drawable.img_146,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3068,
             question = "Panelet plotësuese B në figurë tregojnë se jemi në rrugë kryesore, që në kthesë ndërpritet me 2 rrugë dytësore.",
             image = R.drawable.img_146,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3069,
@@ -1274,13 +1274,13 @@ class DatabaseExtension {
             id = 3071,
             question = "Panelet plotësuese në figurë tregojnë vazhdimin e rrugës dytësore dhe ndërprerjen e saj me rrugë me përparësi.",
             image = R.drawable.img_147,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3072,
             question = "Paneli plotësues A në figurë tregon se jemi në rrugë dytësore, që ndërpritet me rrugë kryesore.",
             image = R.drawable.img_147,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3073,
@@ -1292,31 +1292,31 @@ class DatabaseExtension {
             id = 3074,
             question = "Drejtuesi, kur nis mjetin nga vendi, duhet të sigurohet që rruga është e lirë, duke e kontrolluar edhe me pasqyrat e mjetit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3075,
             question = "Për nisjen e mjetit nga vendi, para se të hyjmë në trafik duhet t’u japim përparësi mjeteve që qarkullojnë në rrugë.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3076,
             question = "Për nisjen e mjetit nga vendi duhet të ç'aktivizojmë frenin e dorës, në momentin që mjeti fillon lëvizjen.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3077,
             question = "Para se të nisim lëvizjen me mjet duhet që të vendosen rripat e sigurimit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3078,
             question = "Para nisjes nga vendi me ciklomotor, motor ose motor me kosh duhet të vendoset kaska mbrojtëse.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3079,
@@ -1340,19 +1340,19 @@ class DatabaseExtension {
             id = 3082,
             question = "Para nisjes me mjet, drejtuesi i mjetit duhet të rregullojë pozicionin e ndenjëses së tij, për ta përshtatur me trupin.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3083,
             question = "Para nisjes me mjet, drejtuesi i mjetit duhet të rregullojë pasqyrat, për një shikim sa më të mirë anash dhe mbrapa.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3084,
             question = "Para nisjes me mjet, drejtuesi i mjetit duhet të sistemojë objektet e mundshme brenda mjetit, për të shmangur zhvendosjen e tyre gjatë lëvizjes.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3085,
@@ -1376,19 +1376,19 @@ class DatabaseExtension {
             id = 3088,
             question = "Kur lëvizet mbrapsht (indietro) duhet t'u jepet përparësi mjeteve që vijnë si nga e djathta ashtu dhe nga e majta.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3089,
             question = "Kur lëvizet mbrapsht (indietro) drejtuesi i mjetit duhet të tregojë kujdes ndaj këmbësorëve që lëvizin prapa mjetit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3090,
             question = "Për të hyrë në qarkullim me marshin e lëvizjes prapa (indietro), drejtuesi i mjetit duhet të sigurohet që rruga është e lirë dhe të manovrojë me kujdes mjetin.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3091,
@@ -1412,19 +1412,19 @@ class DatabaseExtension {
             id = 3094,
             question = "Drejtuesi i mjetit duhet të niset për udhëtim në kushte të mira fizike.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3095,
             question = "Drejtuesi i mjetit duhet të kontrollojë gjendjen e gomave para nisjes për udhëtim.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3096,
             question = "Drejtuesi i mjetit duhet të bëjë ndalesa të ndërmjetme në udhëtimet e gjata.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3097,
@@ -1436,37 +1436,37 @@ class DatabaseExtension {
             id = 3098,
             question = "Para se të zbresim nga mjeti, duhet të sigurohemi nëpërmjet pasqyrave, për të shmangur rreziqet e mundshme.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3099,
             question = "Para se të zbresim nga mjeti, duhet të sigurohemi që e kemi parkuar mjetin në mënyrë korrekte.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3100,
             question = "Para se të zbresim nga mjeti, duhet të sigurohemi që nuk e pengojmë trafikun.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3101,
             question = "Para se të zbresim nga mjeti, duhet të aktivizojmë frenin e dorës.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3102,
             question = "Para se të zbresim nga mjeti, duhet të sigurohemi që e kemi fikur motorin e mjetit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3103,
             question = "Para se të zbresim nga mjeti, duhet të sigurohemi që hapja e dyerve nuk përbën rrezik për përdoruesit e tjerë të rrugës.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3104,
@@ -1484,19 +1484,19 @@ class DatabaseExtension {
             id = 3106,
             question = "Sa herë që e lëmë mjetin pushim në rrugë duhet të aktivizojmë frenin e dorës (qëndrimit).",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3107,
             question = "Drejtuesi që e le mjetin pushim në rrugë, duhet të sigurohet që e ka fikur motorin.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3108,
             question = "Për ta lënë mjetin pushim, duhet të sigurohemi më parë për të gjetur vendin e lejuar.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3109,
@@ -1526,73 +1526,73 @@ class DatabaseExtension {
             id = 3113,
             question = "Qëndrimi i mjetit është një ndërprerje e lëvizjes së mjetit për një kohë të shkurtër, me kusht që drejtuesi i mjetit të jetë i pranishëm dhe i gatshëm për të rifilluar lëvizjen.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3114,
             question = "Qëndrimi i mjetit lejohet, si rregull, përgjatë krahut të djathtë të karrexhatës.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3115,
             question = "Ndalohet qëndrimi i mjetit në autostrada, me përjashtim të rasteve të emergjencës.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3116,
             question = "Ndalohet qëndrimi i mjetit në vendkalimet e këmbësorëve.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3117,
             question = "Ndalohet qëndrimi i mjetit në vazhdimësi të “KALIMEVE NË NIVEL”.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3118,
             question = "Qëndrimi i mjetit nuk duhet të shkaktojë pengesa për qarkullimin.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3119,
             question = "Ndalohet qëndrimi i mjetit përballë sinjaleve rrugore, nëse bëhet pengesë për dukshmërinë e tyre.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3120,
             question = "Ndalohet qëndrimi i mjetit në afërsi dhe në vazhdimësi të kryqëzimeve të rrugëve interurbane.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3121,
             question = "Ndalohet qëndrimi i mjetit mbi linjat e tramvajeve.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3122,
             question = "Ndalohet qëndrimi i mjetit aty ku ka sinjalizime horizontale të përzgjedhjes së korsive.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3123,
             question = "Ndalohet qëndrimi i mjetit mbi vendkalimet e këmbësorëve.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3124,
             question = "Ndalohet qëndrimi i mjetit mbi vendkalimet e biçikletave.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3125,
@@ -1634,25 +1634,25 @@ class DatabaseExtension {
             id = 3131,
             question = "Ndalohet qëndrimi i mjetit, për të hipur e zbritur pasagjerët, në çdo vend ku shkakton pengesa për trafikun.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3132,
             question = "Ndalohet qëndrimi i mjetit për të hipur e zbritur pasagjerët, në rrugët interurbane, në afërsi dhe në vazhdimësi të kryqëzimeve.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3133,
             question = "Ndalohet qëndrimi i mjetit, për të hipur e zbritur pasagjerët, në vazhdimësi të “KALIMEVE NË NIVEL”.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3134,
             question = "Ndalohet qëndrimi i mjetit, për të hipur e zbritur pasagjerët, mbi shinat e tramvajeve.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3135,
@@ -1670,79 +1670,79 @@ class DatabaseExtension {
             id = 3137,
             question = "Ndalohet pushimi i mjetit poshtë këmbëve të urave, harqeve dhe portave rrugore, përveç rasteve kur sinjalizohet ndryshe.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3138,
             question = "Ndalohet pushimi i mjetit në vendet e caktuara për pushimin e mjeteve të invalidëve.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3139,
             question = "Ndalohet pushimi i mjetit në korsitë e rezervuara për mjetet e transportit publik.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3140,
             question = "Ndalohet pushimi i mjetit në zonat e lëvizjes për këmbësorët.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3141,
             question = "Ndalohet pushimi i mjetit mbi shinat e tramvajeve.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3142,
             question = "Ndalohet pushimi i mjetit në pistat e rezervuara për biçiklistët.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3143,
             question = "Ndalohet pushimi i mjetit në vazhdimësi të kryqëzimeve në nivel.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3144,
             question = "Ndalohet pushimi i mjetit në zonat e përcaktuara për pushimin apo qëndrimin e mjeteve 'Taksi'.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3145,
             question = "Ndalohet pushimi i mjetit në korsitë e përzgjedhjes.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3146,
             question = "Ndalohet pushimi i mjetit në vazhdimësi të një kthese, jashtë qendrave të banuara.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3147,
             question = "Ndalohet pushimi i mjetit në kurrize rruge, si në rrugët urbane ashtu dhe interurbane kryesore.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3148,
             question = "Ndalohet pushimi i mjetit në vendin ku janë vendosur kazanët e mbeturinave në rrugë.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3149,
             question = "Ndalohet pushimi i mjetit në afërsi të pikave të karburantit (më afër se 5 metër nga instalimet e destinuara për furnizim).",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3150,
@@ -1766,43 +1766,43 @@ class DatabaseExtension {
             id = 3153,
             question = "Ndalohet pushimi i mjetit në bankinë, përveç rasteve kur lejohet me sinjalizim.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3154,
             question = "Ndalohet pushimi i mjetit në zonat e kryqëzimeve të rregulluara me semafor dhe në afërsi të tyre.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3155,
             question = "Ndalohet pushimi i mjetit në zonat urbane, nga ora 8:00 deri në 20:00, në prani të sinjalit 'Ndalim pushimi'.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3156,
             question = "Ndalohet pushimi i mjetit në afërsi të sinjaleve rrugore, nëse bëhet pengesë për shikueshmërinë e tyre.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3157,
             question = "Ndalohet pushimi i mjetit në zonat e rezervuara për qëndrimin e autobusëve.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3158,
             question = "Ndalohet pushimi i mjetit para hyrjeve të garazheve.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3159,
             question = "Ndalohet pushimi i mjetit në tunele.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3160,
@@ -1838,37 +1838,37 @@ class DatabaseExtension {
             id = 3165,
             question = "Ndalohet pushimi i mjeteve në korsitë e rezervuara për qarkullimin e mjeteve të shërbimit publik.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3166,
             question = "Ndalohet pushimi i mjeteve në pistat e biçikletave.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3167,
             question = "Ndalohet pushimi i mjeteve mbi ishujt e trafikut.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3168,
             question = "Ndalohet pushimi i mjeteve mbi bankinat e rrugëve, përveç rasteve kur lejohet pushimi me sinjalizim.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3169,
             question = "Ndalohet pushimi i automjeteve dhe motorëve me pozicionim të ndryshëm, nga ai që udhëzojnë vijëzimet për parkimin e mjeteve.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3170,
             question = "Ndalohet pushimi i mjeteve në kurrize rrugësh apo në afërsi të tyre, jashtë qendrave të banuara.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3171,
@@ -1892,13 +1892,13 @@ class DatabaseExtension {
             id = 3174,
             question = "Ndalohet pushimi i mjeteve në rresht të dytë, përveç rasteve kur mjetet janë me dy rrota.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3175,
             question = "Ndalohet pushimi i automjeteve në rresht të dytë.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3176,
@@ -1916,13 +1916,13 @@ class DatabaseExtension {
             id = 3178,
             question = "Shiritat verdhë e zi, të vizatuar në bordurën e trotuarit, ndalojnë pushimin e mjeteve.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3179,
             question = "Ndalohet pushimi i mjeteve në zonën e kufizuar me vijë të verdhë të pandërprerë, brenda të cilës është shënuar fjala “BUS” (autobus).",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3180,
@@ -1934,13 +1934,13 @@ class DatabaseExtension {
             id = 3181,
             question = "Vend parkimi i autorizuar për mjetet “TAKSI” kufizohet me vijë të verdhë.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3182,
             question = "Kur dalim nga parkimi i autorizuar duhet t’u japim përparësi mjeteve që janë në qarkullim.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3183,
@@ -1958,43 +1958,43 @@ class DatabaseExtension {
             id = 3185,
             question = "Kur mjeti vendoset në parkim, drejtuesi duhet të sigurohet që mjeti nuk përbën rrezik për qarkullimin.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3186,
             question = "Gjatë pushimit mjeti duhet të jetë me motor të fikur.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3187,
             question = "Kur parkojmë duhet që mjetin ta pozicionojmë sa më afër bordurës së trotuarit, për të mos penguar qarkullimin.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3188,
             question = "Gjatë pushimit mjeti duhet të ketë të aktivizuara frenat e qëndrimit (frenat e dorës).",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3189,
             question = "Gjatë pushimit në vendet e lejuara për parkim, mjeti duhet të vendoset sipas sinjalizimit horizontal të përcaktuar.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3190,
             question = "Kur parkojmë në vendet ku nuk ka trotuar, mjeti duhet të vendoset duke lënë një hapësirë, të paktën 1 (një) metër, për kalimtarët.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3191,
             question = "Kur parkojmë në vendet e pushimit me orar, duhet të aktivizojmë treguesin e orarit (diskun orar aty ku aplikohet).",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3192,
@@ -2024,13 +2024,13 @@ class DatabaseExtension {
             id = 3196,
             question = "Sinjali në figurë tregon një zonë të caktuar për pushimin e mjeteve, pa kufizim kohor.",
             R.drawable.img_86,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3197,
             question = "Sinjali në figurë i shoqëruar me panel plotësues tregon se lejohet pushimi, por sipas kushteve të vendosur në panel.",
             R.drawable.img_86,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3198,
@@ -2042,7 +2042,7 @@ class DatabaseExtension {
             id = 3199,
             question = "Sinjali në figurë tregon një parkim me pagesë, pa kufizime në kohë por me tarifë orare.",
             R.drawable.img_87,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3200,
@@ -2054,13 +2054,13 @@ class DatabaseExtension {
             id = 3201,
             question = "Sinjali në figurë tregon një vend parkimi me pagesë fikse.",
             R.drawable.img_88,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3202,
             question = "Sinjali në figurë tregon një vend parkimi, me orare të përcaktuara dhe pagesë fikse.",
             R.drawable.img_88,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3203,
@@ -2072,19 +2072,19 @@ class DatabaseExtension {
             id = 3204,
             question = "Sinjali në figurë tregon një vendparkim, që gjendet në drejtimin e shigjetës.",
             R.drawable.img_89,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3205,
             question = "Sinjali në figurë tregon se, pas 300 metra në drejtimin e shigjetës, ndodhet një vendparkim.",
             R.drawable.img_89,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3206,
             question = "Sinjali në figurë paralajmëron një parkim, që gjendet pas 300 m.",
             R.drawable.img_89,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3207,
@@ -2108,7 +2108,7 @@ class DatabaseExtension {
             id = 3210,
             question = "Simboli në figurë bëhet i dukshëm, me ngjyrë blu ne kroskot, kur ndizen fenerët e largësisë.",
             R.drawable.img_695,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3211,
@@ -2120,7 +2120,7 @@ class DatabaseExtension {
             id = 3212,
             question = "Simboli në figurë bëhet i dukshëm, me ngjyrë jeshile ne kroskot, kur ndizen fenerët joverbues.",
             R.drawable.img_696,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3213,
@@ -2144,13 +2144,13 @@ class DatabaseExtension {
             id = 3216,
             question = "Shigjeta majtas, e simbolit në figurë, bëhet e dukshme në kroskot me ngjyrë jeshile që pulson, kur ndizet sinjali i drejtimit majtas.",
             R.drawable.img_697,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3217,
             question = "Simboli në figurë bëhet i dukshëm, me ngjyrë jeshile pulsuese ne kroskot, kur ndizen dritat e emergjencës.",
             R.drawable.img_697,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3218,
@@ -2162,7 +2162,7 @@ class DatabaseExtension {
             id = 3219,
             question = "Simboli i paraqitur në figurë me dritë të kuqe ndezur tregon se janë ndezur dritat e emergjencës.",
             R.drawable.img_698,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3220,
@@ -2174,7 +2174,7 @@ class DatabaseExtension {
             id = 3221,
             question = "Simboli në figurë vendoset mbi komandën që aktivizon fshirëset e xhamit të përparmë.",
             R.drawable.img_699,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3222,
@@ -2186,7 +2186,7 @@ class DatabaseExtension {
             id = 3223,
             question = "Simboli i paraqitur në figurë vendoset mbi çelësin që komandon fshirjen dhe larjen e xhamit të përparmë.",
             R.drawable.img_701,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3224,
@@ -2198,7 +2198,7 @@ class DatabaseExtension {
             id = 3225,
             question = "Simboli i paraqitur në figurë vendoset mbi butonin që aktivizon sinjalin zanor të mjetit (boria).",
             R.drawable.img_702,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3226,
@@ -2210,7 +2210,7 @@ class DatabaseExtension {
             id = 3227,
             question = "Kur llamba spiune e simbolit në figurë është e ndezur, tregon që mjeti është me rezervën e karburantit.",
             R.drawable.img_703,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3228,
@@ -2222,7 +2222,7 @@ class DatabaseExtension {
             id = 3229,
             question = "Simboli në figurë bëhet i dukshëm në kroskot, kur temperatura e lëngut ftohës që qarkullon në motor rritet mbi normën e lejuar.",
             R.drawable.img_704,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3230,
@@ -2234,7 +2234,7 @@ class DatabaseExtension {
             id = 3231,
             question = "Simboli në figurë bëhet i dukshëm në kroskot kur dinamoja nuk çon rrymë te bateria.",
             R.drawable.img_705,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3232,
@@ -2246,13 +2246,13 @@ class DatabaseExtension {
             id = 3233,
             question = "Nëse llamba spiune e simbolit të paraqitur në figurë është e fikur gjatë lëvizjes me mjet, presioni i vajit në motor është në vlera normale.",
             R.drawable.img_706,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3234,
             question = "Simboli në figurë bëhet i dukshëm në kroskot kur presioni i vajit lubrifikues në motor është i pamjaftueshëm.",
             R.drawable.img_706,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3235,
@@ -2264,19 +2264,19 @@ class DatabaseExtension {
             id = 3236,
             question = "Simboli në figurë bëhet i dukshëm në kroskot kur nuk është vënë rripi i sigurimit.",
             R.drawable.img_707,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3237,
             question = "Kur drejtuesi i mjetit dhe pasagjeri vendosin rripin e sigurimit, llamba mbi tё cilёn ёshtё vendosur sinjali në figurë fiket.",
             R.drawable.img_707,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3238,
             question = "Simboli në figurë bëhet i dukshëm në kroskot kur pasagjeri nuk ka vendosur rripin e sigurimit.",
             R.drawable.img_707,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3239,
@@ -2288,7 +2288,7 @@ class DatabaseExtension {
             id = 3240,
             question = "Simboli në figurë bëhet i dukshëm në kroskot kur rezistencat termike të xhamit të pasmë janë në punë.",
             R.drawable.img_708,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3241,
@@ -2300,7 +2300,7 @@ class DatabaseExtension {
             id = 3242,
             question = "Simboli në figurë bëhet i dukshëm në kroskot kur ventilimi apo ngrohja e xhamit të përparmë janë në funksion.",
             R.drawable.img_709,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3243,
@@ -2318,7 +2318,7 @@ class DatabaseExtension {
             id = 3245,
             question = "Simboli në figurë bëhet i dukshëm, me dritë jeshile në kroskot, kur janë të ndezura dritat e pozicionit.",
             R.drawable.img_713,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3246,
@@ -2342,7 +2342,7 @@ class DatabaseExtension {
             id = 3249,
             question = "Simboli në figurë tregon vendin e komandimit të dritave të parkimit.",
             R.drawable.img_715,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3250,
@@ -2354,7 +2354,7 @@ class DatabaseExtension {
             id = 3251,
             question = "Simboli në figurë bëhet i dukshëm në kroskot kur ingranohet marshi i lëvizjes prapa.",
             R.drawable.img_716,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3252,
@@ -2366,13 +2366,13 @@ class DatabaseExtension {
             id = 3253,
             question = "Simboli në figurë bëhet i dukshëm në kroskot kur janë të ndezura dritat e pasme për mjegullën.",
             R.drawable.img_717,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3254,
             question = "Simboli në figurë bëhet i dukshëm në kroskot kur janë ndezur fenerët e përparmë mjegullçarës.",
             R.drawable.img_718,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3255,
@@ -2390,7 +2390,7 @@ class DatabaseExtension {
             id = 3257,
             question = "Simboli në figurë tregon vendin e komandimit të çelësit të larësit të fenerëve.",
             R.drawable.img_719,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3258,
@@ -2414,13 +2414,13 @@ class DatabaseExtension {
             id = 3261,
             question = "Kur freni i dorës është i aktivizuar, në kroskot ndizet simboli i paraqitur në figurë.",
             R.drawable.img_720,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3262,
             question = "Simboli në figurë bëhet i dukshëm në kroskot kur aktivizohet freni i dorës.",
             R.drawable.img_720,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3263,
@@ -2438,19 +2438,19 @@ class DatabaseExtension {
             id = 3265,
             question = "Kur ferrotat e frenave konsumohen më shumë se norma e lejuar, ndizet llamba që bën të dukshëm në kroskot simbolin e paraqitur në figurë.",
             R.drawable.img_721,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3266,
             question = "Kur nivelit i lëngut të frenave në sistem bie nën nivelin e lejuar, ndizet llamba që bën të dukshëm në kroskot simbolin e paraqitur në figurë.",
             R.drawable.img_721,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3267,
             question = "Kur në kroskot ndizet llamba që bën të dukshëm simbolin e paraqitur në figurë, duhet të kontrollohet sistemi i frenimit.",
             R.drawable.img_721,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3268,
@@ -2462,13 +2462,13 @@ class DatabaseExtension {
             id = 3269,
             question = "Targa e pasme duhet të jetë e ndriçuar natën për të qenë e dallueshme.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3270,
             question = "Targa e pasme duhet të jetë e ndriçuar sapo të ndizen dritat e pozicionit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3271,
@@ -2498,19 +2498,19 @@ class DatabaseExtension {
             id = 3275,
             question = "Përdorimi i dritave të pozicionit është i detyrueshëm natën, gjatë qëndrimit apo pushimit në karrexhatë, kur mungon ndriçimi publik.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3276,
             question = "Përdorimi i dritave të pozicionit është i detyrueshëm edhe kur mjeti gjendet në korsinë e emergjencës, natën.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3277,
             question = "Dritat e pozicionit janë të ndezura në rastet kur janë në funksionim fenerët e largësisë, fenerët joverbues apo dritat kundër mjegullës.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3278,
@@ -2528,25 +2528,25 @@ class DatabaseExtension {
             id = 3280,
             question = "Fenerët joverbues shërbejnë për të ndriçuar rrugën, pa shkaktuar verbim.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3281,
             question = "Përdorimi i fenerëve joverbues gjatë qarkullimit është i detyrueshëm edhe ditën, kur transportojmë të aksidentuar.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3282,
             question = "Përdorimi i fenerëve joverbues (dritat e shkurtra), gjatë qarkullimit në rrugë interurbane, është i detyrueshëm edhe ditën.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3283,
             question = "Përdorimi i fenerëve joverbues (dritat e shkurtra), gjatë qarkullimit në autostradë, është i detyrueshëm edhe ditën.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3284,
@@ -2570,43 +2570,43 @@ class DatabaseExtension {
             id = 3287,
             question = "Kur lëvizim natën në rrugë interurbane dhe këmbehemi me mjete të tjera duhet të fikim fenerët e largësisë dhe të përdorim fenerët joverbues.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3288,
             question = "Kur ndjekim një mjet tjetër në distancë të afërt në rrugët interurbane, natën, duhet të fikim fenerët e largësisë dhe të përdorim fenerët joverbues.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3289,
             question = "Natën, në rrugët interurbane, kur është i pranishëm rreziku i verbimit të përdoruesve të tjerë të rrugës, duhet të fikim fenerët e largësisë dhe të përdorim fenerët joverbues.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3290,
             question = "Natën, në rrugët interurbane, kur ka rrezik të verbojmë drejtuesit e mjeteve në karrexhatën tjetër, duhet të fikim fenerët e largësisë dhe të përdorim fenerët joverbues.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3291,
             question = "Përdorimi i fenerëve të largësisë është i ndaluar në qendrat e banuara.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3292,
             question = "Përdorimi i fenerëve të largësisë, me ndërprerje në intervale të shkurtra, lejohet për të sinjalizuar një parakalim.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3293,
             question = "Përdorimi i fenerëve të largësisë, me ndërprerje në intervale të shkurtra, lejohet për të sinjalizuar një situatë të mundshme rreziku.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3294,
@@ -2618,43 +2618,43 @@ class DatabaseExtension {
             id = 3295,
             question = "Përdorimi i sinjaleve treguese të drejtimit është i detyrueshëm kur kryejmë manovrën e parakalimit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3296,
             question = "Përdorimi i sinjaleve treguese të drejtimit është i detyrueshëm kur duam të ndryshojmë korsinë e lëvizjes.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3297,
             question = "Përdorimi i sinjaleve treguese të drejtimit është i detyrueshëm kur kryejmë manovrën e ndryshimit të drejtimit të lëvizjes ose kthimit të sensit të lëvizjes.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3298,
             question = "Përdorimi i sinjaleve treguese të drejtimit është i detyrueshëm kur futemi në një karrexhatë nëpërmjet korsisë së shpejtimit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3299,
             question = "Përdorimi i sinjaleve treguese të drejtimit është i detyrueshëm kur kemi ndërmend të ndalojmë mjetin jashtë karrexhatës.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3300,
             question = "Përdorimi i sinjaleve treguese të drejtimit është i detyrueshëm kur dalim nga rruga, për të hyrë në një korsi ngadalësimi.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3301,
             question = "Përdorimi i sinjaleve treguese të drejtimit është i detyrueshëm kur nisemi nga vendi për të hyrë në qarkullim.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3302,
@@ -2684,31 +2684,31 @@ class DatabaseExtension {
             id = 3306,
             question = "Drejtuesit e mjeteve me motor duhet të aktivizojnë sinjalizimin e ndritshëm të rrezikut në rastet e zënies së karrexhatës, për shkaqe emergjence.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3307,
             question = "Drejtuesit e mjeteve me motor duhet të aktivizojnë sinjalizimin e ndritshëm të rrezikut, gjatë kohës që ndalojnë për të vendosur apo rimarrë trekëndëshin e rrezikut.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3308,
             question = "Drejtuesit e mjeteve me motor duhet të aktivizojnë sinjalizimin e ndritshëm të rrezikut, kur janë të detyruar të lëvizin me shpejtësi të ulët, për shkak të defektit në mjet.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3309,
             question = "Drejtuesit e mjeteve me motor duhet të aktivizojnë sinjalizimin e ndritshëm të rrezikut, kur në rrugë verifikohen ngadalësime të papritura për shkak të vargut të mjeteve.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3310,
             question = "Drejtuesit e mjeteve me motor duhet të aktivizojnë sinjalizimin e ndritshëm të rrezikut kur qëndrimi i emergjencës mund të shkaktojë rrezik për përdoruesit e rrugës.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3311,
@@ -2732,25 +2732,25 @@ class DatabaseExtension {
             id = 3314,
             question = "Ndalohet përdorimi i pajisjeve të sinjalizimit zanor (borive) në qendrat e banuara, përveç rasteve të rreziqeve të papritura.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3315,
             question = "Lejohet përdorimi i pajisjeve të sinjalizimit zanor (boritë) në qendrat e banuara, kur transportohen të plagosur ose të sëmurë rëndë.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3316,
             question = "Pajisjet e sinjalizimit zanor (boritë) mund të përdoren jashtë qendrave të banuara, në rastet e parakalimeve.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3317,
             question = "Pajisjet e sinjalizimit zanor (boritë), si rregull, janë të ndaluara të përdoren në qendrat e banuara.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3318,
@@ -2786,25 +2786,25 @@ class DatabaseExtension {
             id = 3323,
             question = "Leja e qarkullimit të mjetit është dokument i domosdoshëm për qarkullim me mjet.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3324,
             question = "Lejedrejtimi, e vlefshme për kategorinë përkatëse të mjetit, është dokument i domosdoshëm për qarkullim me mjet.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3325,
             question = "Certifikata e Kontrollit Teknik të mjetit është dokument i domosdoshëm për qarkullim me mjet.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3326,
             question = "Certifikata e sigurimit të detyruar është dokument i domosdoshëm për qarkullim me mjet.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3327,
@@ -2834,25 +2834,25 @@ class DatabaseExtension {
             id = 3331,
             question = "Traktorët bujqësorë pajisen me leje qarkullimi dhe targa regjistrimi.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3332,
             question = "Një nga kushtet për t’u pajisur me lejedrejtimi është plotësimi i kërkesave fizike e psikike, që vërtetohen me certifikatë mjekësore të lëshuar brenda gjashtë muajve nga dorëzimi.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3333,
             question = "Një nga kushtet për t’u pajisur me lejedrejtimi të kategorisë A1 ose A2 është që personi të ketë mbushur moshën 18 vjeç.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3334,
             question = "Një nga kushtet për t’u pajisur me lejedrejtimi të kategorisë B1 është që personi të ketë mbushur moshën 18 vjeç.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3335,
@@ -2876,25 +2876,25 @@ class DatabaseExtension {
             id = 3338,
             question = "Me lejedrejtimi të kategorisë A1 lejohet të drejtosh motor, me ose pa kosh, me cilindratë deri në 125 cm3.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3339,
             question = "Me lejedrejtimi të kategorisë A lejohet të drejtosh motorë dhe motomjete të tjerë me fuqi më të madhe se 15 kw.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3340,
             question = "Me lejedrejtimi të kategorisë B lejohet të drejtosh automjete me peshe maksimale jo më të madhe se 3500 kg dhe me jo më shumë se 9 ndenjëse, përfshirë edhe atë të drejtuesit të ",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3341,
             question = "Me lejedrejtimi të kategorisë BE lejohet të drejtosh kombinimin e një mjeti të kategorisë B me një rimorkio ose gjysmërimorkio, ku masa maksimale e rimorkios ose gjysmërimorkios nuk i kalon 3 500 kg.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3342,
@@ -2924,19 +2924,19 @@ class DatabaseExtension {
             id = 3346,
             question = "Me lejedrejtimi të kategorisë A lejohet të drejtohen motomjetet që drejtohen me lejedrejtimi të kategorive A1 dhe A2.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3347,
             question = "Me lejedrejtimi të kategorisë A lejohet të drejtohen motorët me kosh.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3348,
             question = "Me lejedrejtimi të kategorisë A lejohet të drejtohen motorët.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3349,
@@ -2954,25 +2954,25 @@ class DatabaseExtension {
             id = 3351,
             question = "Me lejedrejtimi të kategorisë B lejohet të drejtohen autoveturat për përdorim vetjak.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3352,
             question = "Me lejedrejtimi të kategorisë B lejohet të drejtohen autokampet me masë maksimale të autorizuar deri në 3.5 tonë.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3353,
             question = "Me lejedrejtimi të kategorisë B lejohet të drejtohen makinat teknologjike me masë maksimale të autorizuar deri në 3500 kg.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3354,
             question = "Me lejedrejtimi të kategorisë B lejohet të drejtohen edhe motomjete të kategorisë A1, brenda territorit kombëtar, me kusht që mbajtësi i lejedrejtimit të jetë të paktën 21 vjeç.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3355,
@@ -3008,19 +3008,19 @@ class DatabaseExtension {
             id = 3360,
             question = "Lejedrejtimi e kategorisë A1, A2, A, B1, B dhe BE është e vlefshme për 10 vjet, kur u jepet personave me moshë deri në 50 vjeç.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3361,
             question = "Lejedrejtimi e kategorive A1, A2, A, B1, B dhe BE është e vlefshme për 5 vjet, kur u jepet personave me moshë mbi 50 vjeç deri në 70 vjeç.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3362,
             question = "Lejedrejtimi e kategorive A1, A2, A, B1, B dhe BE është e vlefshme për 3 vjet, kur u jepet personave me moshë mbi 70 vjeç.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3363,
@@ -3044,37 +3044,37 @@ class DatabaseExtension {
             id = 3366,
             question = "Lejedrejtimi i kategorive A dhe B rinovohet nga organi që e lëshon atë.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3367,
             question = "Lejedrejtimi i kategorive A dhe B rinovohet, kur zotëruesi i lejes së drejtimit paraqet certifikatë mjekësore të 6 muajve të fundit, e cila vërteton që është i aftë nga ana psiko- ",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3368,
             question = "Lejedrejtimi i kategorive A dhe B rinovohet, çdo 3 vjet, për cilindo që i ka kaluar moshën 70 vjeç.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3369,
             question = "Lejedrejtimi i kategorive A dhe B rinovohet për zotëruesin që plotëson kërkesat fizike e psikike të kërkuara.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3370,
             question = "Lejedrejtimi i kategorive A dhe B rinovohet çdo 10 vjet, për personat nën moshën 50 vjeç.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3371,
             question = "Lejedrejtimi i kategorive A dhe B rinovohet çdo 5 vjet, për personat me moshë mbi 50 deri në 70 vjeç.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3372,
@@ -3110,19 +3110,19 @@ class DatabaseExtension {
             id = 3377,
             question = "Lejeqarkullimi tërhiqet nga organet e kontrollit, kur qarkullon me mjet që i ka skaduar afati i kontrollit teknik.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3378,
             question = "Për çdo mjet, që tejkalon mbi 10 ditë afatin e paraqitjes në qendrat e kontrollit teknik, paguhet një gjobë prej 1000 (njëmijë) lekësh.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3379,
             question = "Lejeqarkullimi tërhiqet nga organet e kontrollit, kur drejtuesi nuk sistemon në mënyrë korrekte ngarkesën e mjetit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3380,
@@ -3152,25 +3152,25 @@ class DatabaseExtension {
             id = 3384,
             question = "Lejedrejtimi tërhiqet gjatë qarkullimit, kur mbajtësi i saj nuk është paraqitur në zyrat përkatëse për të bërë ndryshimin e vendbanimit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3385,
             question = "Lejedrejtimi tërhiqet gjatë qarkullimit, kur drejtuesi nuk sistemon në mënyrë korrekte ngarkesën e mjetit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3386,
             question = "Lejedrejtimi tërhiqet gjatë qarkullimit, kur i ka kaluar afati i vlefshmërisë.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3387,
             question = "Lejedrejtimi tërhiqet gjatë qarkullimit, kur lindin dyshime për mosplotësimin e kërkesave fizike dhe psikike.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3388,
@@ -3194,13 +3194,13 @@ class DatabaseExtension {
             id = 3391,
             question = "Rivlerësimi i lejedrejtimit bëhet kur lindin dyshime për mosplotësimin e kërkesave fizike dhe psikike.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3392,
             question = "Rivlerësimi i lejedrejtimit bëhet kur krijohen dyshime për aftësitë teknike dhe psiko-fizike të drejtuesit të mjetit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3393,
@@ -3224,19 +3224,19 @@ class DatabaseExtension {
             id = 3396,
             question = "Lejedrejtimi pezullohet për shkelje të përsëritur brenda vitit, kur nuk respektohet e drejta e përparësisë.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3397,
             question = "Lejedrejtimi pezullohet për shkelje të përsëritur brenda vitit, kur ai që del nga garazhi, nuk i jep përparësi atyre që kalojnë në rrugë.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3398,
             question = "Lejedrejtimi pezullohet për shkelje të përsëritur brenda vitit, kur nuk iu jep të drejtë përparësie mjeteve që qarkullojnë mbi shina.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3399,
@@ -3254,43 +3254,43 @@ class DatabaseExtension {
             id = 3401,
             question = "Pezullimi i lejedrejtimit bëhet kur drejtuesi i mjetit largohet pa i dhënë ndihmën e tij personit që e ka aksidentuar.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3402,
             question = "Pezullimi i lejedrejtimit bëhet në rast të drejtimit të mjetit nën ndikimin e alkoolit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3403,
             question = "Pezullimi i lejedrejtimit bëhet kur drejton një mjet, për të cilin kërkohet lejedrejtimi e ndryshme nga lejedrejtimi që zotëron.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3404,
             question = "Pezullimi i lejedrejtimit bëhet në rast të drejtimit të mjetit nën ndikimin e drogës.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3405,
             question = "Pezullimi i leje drejtimit bëhet kur kalon, mbi 20km/orë, kufirin maksimal të shpejtësisë së lejuar.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3406,
             question = "Pezullimi i lejedrejtimit bëhet kur qarkullon në korsinë e sensit të kundërt të lëvizjes në kthesë.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3407,
             question = "Pezullimi i leje drejtimit bëhet kur qarkullon në sens të kundërt të lëvizjes, në karrexhata me një sens lëvizjeje.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3408,
@@ -3314,25 +3314,25 @@ class DatabaseExtension {
             id = 3411,
             question = "Anulimi i lejedrejtimit bëhet nga organi që e ka lëshuar atë.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3412,
             question = "Anulimi i lejedrejtimit bëhet kur zotëruesi i është nënshtruar kontrollit të rivlerësimit dhe rezulton i papërshtatshëm për drejtimin e mjetit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3413,
             question = "Anulimi i lejedrejtimit bëhet kur lejedrejtimi është zëvendësuar me një lejedrejtimi të një shteti tjetër.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3414,
             question = "Anulimi i lejedrejtimit bëhet kur zotëruesi humbet përgjithmonë kërkesat e nevojshme psikofizike.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3415,
@@ -3350,7 +3350,7 @@ class DatabaseExtension {
             id = 3417,
             question = "Drejtuesi i mjetit duhet të përdorë syze optike ose aparate të tjera gjatë drejtimit të mjetit, kur përdorimi i tyre është kushtëzuar nga raporti mjekësor, gjatë lëshimit ose rinovimit të ",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3418,
@@ -3368,19 +3368,19 @@ class DatabaseExtension {
             id = 3420,
             question = "Aparatet radiotelefonike lejohen të përdoren gjatë drejtimit të mjetit, kur nuk kërkojnë përdorimin e duarve.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3421,
             question = "Aparatet radiotelefonike lejohen të përdoren gjatë drejtimit të mjetit nga forcat e armatosura, kur janë në shërbim.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3422,
             question = "Aparatet radiotelefonike lejohen të përdoren gjatë drejtimit të mjetit nga forcat e policisë, gjate kryerjes së shërbimit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3423,
@@ -3404,25 +3404,25 @@ class DatabaseExtension {
             id = 3426,
             question = "Drejtuesi i automjetit duhet të paraqesë, sipas kërkesës së punonjësit të policisë, lejen e qarkullimit të mjetit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3427,
             question = "Drejtuesi i automjetit duhet të paraqesë, sipas kërkesës së punonjësit të policisë, lejen e drejtimit të mjetit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3428,
             question = "Drejtuesi i automjetit duhet të paraqesë, sipas kërkesës së punonjësit të policisë, certifikatën e sigurimit të mjetit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3429,
             question = "Drejtuesi i automjetit duhet të paraqesë, sipas kërkesës së punonjësit të policisë, certifikatën e kontrollit teknik.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3430,
@@ -3440,19 +3440,19 @@ class DatabaseExtension {
             id = 3432,
             question = "Punonjësit e policisë rrugore dallohen nga uniforma.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3433,
             question = "Punonjësit e policisë rrugore dallohen nga shenja në uniformë.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3434,
             question = "Punonjësit e policisë rrugore dallohen nga mjeti i policisë rrugore, me të cilin kryejnë shërbim.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3435,
@@ -3470,31 +3470,31 @@ class DatabaseExtension {
             id = 3437,
             question = "Çdo lejedrejtimi, e lëshuar për herë të parë, ka një total prej 20 pikësh në datën e lëshimit të saj.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3438,
             question = "Zotëruesit të lejedrejtimit që ka më pak se 20 pikë dhe për një periudhë prej 2 vjetësh nuk kryen shkelje, për të cilat parashikohet zbritje pikësh, sasia e pikëve i bëhet 20.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3439,
             question = "Kur zotëruesi i lejedrejtimit ka jo më pak se 20 pikë dhe për një periudhë prej 2 vjetësh nuk kryen shkelje, për të cilat parashikohet zbritje pikësh, atij i shtohen 2 pikë në lejen e drejtimit.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3440,
             question = "Drejtuesi i mjetit që humbet të gjitha pikët në lejen e drejtimit duhet t'i nënshtrohet një provimi të kualifikimit teorik.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3441,
             question = "Drejtuesi i mjetit i cili brenda një viti ka kryer 3 shkelje, ku secila prej tyre ka çuar në zbritjen e të paktën 5 pikëve, duhet t'i nënshtrohet një provimi të kualifikimit teorik.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3442,
@@ -3518,19 +3518,19 @@ class DatabaseExtension {
             id = 3445,
             question = "Me përgjegjësi civile, në rast aksidenti rrugor, kuptohet detyrimi për të zhdëmtuar palën e dëmtuar nga aksidenti.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3446,
             question = "Përgjegjësia civile, e lidhur me aksidentet rrugore, është e pavarur nga përgjegjësia penale dhe përgjegjësia administrative.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3447,
             question = "Përgjegjësia civile e lidhur me aksidentet rrugore bazohet në parimin, sipas të cilit çdo dëm duhet të dëmshpërblehet.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3448,
@@ -3554,25 +3554,25 @@ class DatabaseExtension {
             id = 3451,
             question = "Kompania siguruese, që dëmshpërblen dëmet nga një aksident rrugor, shkarkohet nga përgjegjësia duke i paguar të dëmtuarit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3452,
             question = "Kompania siguruese, që dëmshpërblen dëmet nga një aksident rrugor, mund të riparojë automjetin e palës së dëmtuar në serviset e përcaktuara prej saj.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3453,
             question = "Kompania siguruese që dëmshpërblen dëmet nga një aksident rrugor mbështetet në dokumentacionin e bërë nga komisioni i vlerësimit të dëmeve.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3454,
             question = "Kompania siguruese dëmshpërblen dëmet nga një aksident rrugor, duke u bazuar edhe në procesverbalin e hartuar nga policia rrugore.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3455,
@@ -3590,25 +3590,25 @@ class DatabaseExtension {
             id = 3457,
             question = "Sigurimi i detyruar i mjetit detyron kompaninë siguruese të mjetit, drejtuesi i të cilit është fajtor në aksident rrugor, të dëmshpërblejë të tretët që janë dëmtuar.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3458,
             question = "Sigurimi i detyruar i mjetit e shkarkon pronarin ose drejtuesin e mjetit nga përgjegjësia civile, në rast aksidenti rrugor për faj të tij.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3459,
             question = "Sigurimi i detyruar i mjetit mbulon dëmet e shkaktuara në njerëz, kafshë e materiale.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3460,
             question = "Sigurimi i detyruar i mjetit mbulon dëmet e ndodhura edhe jashtë shtetit kur shoqërohet me kartonin jeshil.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3461,
@@ -3632,13 +3632,13 @@ class DatabaseExtension {
             id = 3464,
             question = "Përgjegjësia penale e lidhur me aksidentin rrugore lind atëherë kur shkaktohen dëmtime të rënda te njerëzit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3465,
             question = "Përgjegjësia penale e lidhur me aksidentin rrugor lind në rast vdekje të personave nga pakujdesia gjatë drejtimit të mjetit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3466,
@@ -3656,19 +3656,19 @@ class DatabaseExtension {
             id = 3468,
             question = "Përgjegjësia penale e lidhur me aksidentin rrugor përjashtohet kur ka dëme të pavullnetshme vetëm në sende.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3469,
             question = "Përgjegjësia penale e lidhur me aksidentin rrugor përjashtohet kur fakti nuk konsiderohet një vepër penale.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3470,
             question = "Përgjegjësia penale e lidhur me aksidentin rrugor përjashtohet kur aksidenti rrugor shkaktohet nga forca madhore.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3471,
@@ -3692,13 +3692,13 @@ class DatabaseExtension {
             id = 3474,
             question = "Personi përgjegjës nga ana civile dhe penale në një aksident rrugor mund të marrë si dënim edhe pezullimin e lejes së drejtimit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3475,
             question = "Personit përgjegjës në një aksident rrugor mund t’i bëhet rivlerësim i lejedrejtimit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3476,
@@ -3716,25 +3716,25 @@ class DatabaseExtension {
             id = 3478,
             question = "Për të shmangur zhurmat shqetësuese gjatë qarkullimit duhet të kontrollohet gjendja e shkarkuesit të gazrave të djegies.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3479,
             question = "Për të shmangur zhurmat shqetësuese gjatë qarkullimit duhet të kontrollohet nëse gjatë frenimit prodhohen zhurma nga ferrotat e konsumuara.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3480,
             question = "Për të shmangur zhurmat shqetësuese gjatë qarkullimit duhet të sistemohen ngarkesat në mënyrë të përshtatshme.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3481,
             question = "Për të shmangur zhurmat shqetësuese gjatë qarkullimit duhet të shmangen përshpejtimet me pedalin e gazit, pa shkak dhe në mënyrë të përsëritur.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3482,
@@ -3758,19 +3758,19 @@ class DatabaseExtension {
             id = 3485,
             question = "Zhurma e prodhuar nga mjetet me motor rritet kur tubi i shkarkimit të gazrave është i dëmtuar.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3486,
             question = "Zhurma e prodhuar nga mjetet me motor bëhet më shqetësuese në tunele.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3487,
             question = "Zhurma e prodhuar nga mjetet me motor zvogëlohet duke shmangur frenimet e forta dhe përshpejtimet e papritura.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3488,
@@ -3782,25 +3782,25 @@ class DatabaseExtension {
             id = 3489,
             question = "Për të kufizuar zhurmën që lëshojnë mjetet me motor, është e nevojshme të zëvendësojmë marmitën e prishur, me një tjetër te miratuar.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3490,
             question = "Për të kufizuar zhurmën që lëshojnë mjetet me motor, është e nevojshme të shmangen përshpejtimet me pedalin e gazit të motorit, kur mjeti është i ndaluar.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3491,
             question = "Për të kufizuar zhurmën që lëshojnë mjetet me motor është e nevojshme të kontrollohen frenat, nëse fishkëllejnë gjatë frenimeve.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3492,
             question = "Për të kufizuar zhurmën që lëshojnë mjetet me motor, është e nevojshme të përdoret sistemi i sinjalizimit zanor vetëm kur është e domosdoshme.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3493,
@@ -3812,25 +3812,25 @@ class DatabaseExtension {
             id = 3494,
             question = "Gjendja jo e mirë e karrocerisë dhe e amortizatorëve të mjetet me motor mund të jetë shkak për ndotje akustike.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3495,
             question = "Në mjetet me motor shkak për zhurmat mund të jetë dëmtimi i sistemit të shuarjes së zhurmave.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3496,
             question = "Përdorimi pa kriter i borive të mjeteve me motor është shkak për ndotjen akustike të ambientit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3497,
             question = "Në mjetet me motor shkak për zhurmat mund të jetë përdorimi i borive të pamiratuara nga fabrika prodhuese.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3498,
@@ -3848,19 +3848,19 @@ class DatabaseExtension {
             id = 3500,
             question = "Zhurmat e forta të lëshuara nga automjeti, mund të shkaktohen nga defekte të sistemit të shkarkimit të gazrave.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3501,
             question = "Zhurmat e forta të lëshuara nga automjeti, mund të shkaktohen nga rrëshqitja e rripit të dinamos.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3502,
             question = "Zhurmat e forta, të lëshuara nga automjeti, mund të shkaktohen nga këputja ose çarja e marmitës së tij.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3503,
@@ -3872,25 +3872,25 @@ class DatabaseExtension {
             id = 3504,
             question = "Për të ulur konsumin e karburantit është e dobishme të shmangen ngarkesat mbi mjet, aty ku është e mundur.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3505,
             question = "Për të ulur konsumin e karburantit është mirë të mos praktikohet shtypja e shpeshtë e pedalit të gazit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3506,
             question = "Për të ulur konsumin e karburantit është mirë të shmangen ngarkesat e tepërta në mjet.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3507,
             question = "Për të ulur konsumin e karburantit është mirë të mbahen dritaret e mbyllura.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3508,
@@ -3908,43 +3908,43 @@ class DatabaseExtension {
             id = 3510,
             question = "Mirëfunksionimi i sistemit të ushqimit të mjetit zvogëlon ndotjen e ajrit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3511,
             question = "Mirëfunksionimi i sistemit të djegies së motorit të mjetit, ul nivelin e ndotjes atmosferike.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3512,
             question = "Ndërrimi i filtrit të ajrit zvogëlon ndotjen e mjedisit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3513,
             question = "Për të kufizuar ndotjen e ajrit, drejtuesi i mjetit duhet të shmangë përdorimin e shpeshtë të pedalit të gazit në xhirot maksimale të motorit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3514,
             question = "Ndotja atmosferike e prodhuar nga mjetet me motor mund të shkaktohet nga funksionimi jo i mirë i sistemit të ndezjes.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3515,
             question = "Ndotja atmosferike e prodhuar nga mjetet me motor pakësohet kur zëvendësohet filtri i ajrit me një të ri.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3516,
             question = "Ndotja atmosferike e prodhuar nga mjetet me motor pakësohet duke përdorur marmitë katalitike.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3517,
@@ -3956,19 +3956,19 @@ class DatabaseExtension {
             id = 3518,
             question = "Djegia jo e plotë e karburantit në motorët diezel, rrit nivelin e ndotjes atmosferike.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3519,
             question = "Ndotja atmosferike e prodhuar nga mjetet rritet me bllokimin e filtrit të ajrit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3520,
             question = "Ndotja atmosferike e prodhuar nga mjetet me motor diezel është më e madhe, nëse tymi i shkarkuar paraqet ngjyrë të errët.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3521,
@@ -3980,7 +3980,7 @@ class DatabaseExtension {
             id = 3522,
             question = "Ndotja atmosferike e prodhuar nga mjetet me motor zvogëlohet duke fikur motorin në rast të ndalimit të zgjatur të mjetit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3523,
@@ -3992,19 +3992,19 @@ class DatabaseExtension {
             id = 3524,
             question = "Konsumimi i pjesëve përbërëse të sistemit të drejtimit shkakton dridhje të timonit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3525,
             question = "Ekuilibrimi jo i mirë i rrotave drejtuese shkakton dridhje të timonit të mjetit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3526,
             question = "Deformimi i gomave të rrotave drejtuese shkakton dridhje të timonit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3527,
@@ -4022,19 +4022,19 @@ class DatabaseExtension {
             id = 3529,
             question = "Mirëmbajtja dhe kontrolli periodik i sistemit të drejtimit të mjetit rrit sigurinë në qarkullim.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3530,
             question = "Konvergjenca e rregullt e rrotave drejtuese të mjetit rrit sigurinë në qarkullim.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3531,
             question = "Fryrja e gomave drejtuese, sipas rekomandimeve të dhëna nga fabrika prodhuese, rrit sigurinë në qarkullim.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3532,
@@ -4052,13 +4052,13 @@ class DatabaseExtension {
             id = 3534,
             question = "Kur gomat drejtuese janë të fryra nën normën e rekomanduar, kërkohet një forcë më e madhe për lëvizjen e timonit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3535,
             question = "Kur grupi i timonit pëson defekt, mund të kërkohet një forcë më e madhe për lëvizjen e timonit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3536,
@@ -4070,25 +4070,25 @@ class DatabaseExtension {
             id = 3537,
             question = "Amortizatorët e rënë ose të konsumuar shkaktojnë konsumim jo uniform të pjesëve ballore të gomave.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3538,
             question = "Amortizatorët e rënë ose të konsumuar zvogëlojnë stabilitetin (qëndrueshmërinë) e mjetit gjatë frenimit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3539,
             question = "Gjatë udhëtimit me një mjet, me amortizatorët e rënë ose të konsumuar, komoditeti i drejtuesit dhe pasagjerëve zvogëlohet.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3540,
             question = "Amortizatorët e rënë ose të konsumuar vështirësojnë drejtimin e mjetit, veçanërisht gjatë lëvizjes në kthesa.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3541,
@@ -4112,25 +4112,25 @@ class DatabaseExtension {
             id = 3544,
             question = "Për të siguruar qëndrueshmërinë e mjetit në kthesa, duhet që të mos bëjmë kthime të menjëhershme të timonit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3545,
             question = "Për të siguruar qëndrueshmërinë e mjetit në kthesa të forta, duhet që të lëvizet me shpejtësi të ulët.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3546,
             question = "Përdorimi i gomave, që janë konform parametrave të rekomanduara, rrit qëndrueshmërinë e mjetit në kthesa.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3547,
             question = "Për të siguruar qëndrueshmërinë e mjetit, duhet të ulet shpejtësia para se të futesh në kthesë.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3548,
@@ -4154,25 +4154,25 @@ class DatabaseExtension {
             id = 3551,
             question = "Konvergjenca e rrotave drejtuese ndikon në qëndrueshmërinë e mjetit në lëvizje.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3552,
             question = "Ekuilibrimi i rrotave drejtuese ndikon në qëndrueshmërinë e mjetit në lëvizje.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3553,
             question = "Gjendja teknike e sistemit të drejtimit ndikon në qëndrueshmërinë e mjetit në lëvizje.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3554,
             question = "Presioni i fryrjes së gomave drejtuese, sipas rekomandimeve te fabrikes prodhuese, ndikon në rritjen e qëndrueshmërisë se mjetit në lëvizje.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3555,
@@ -4184,49 +4184,49 @@ class DatabaseExtension {
             id = 3556,
             question = "Dëmtimi i amortizatorëve ndikon në qëndrueshmërinë e mjetit në lëvizje.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3557,
             question = "Dëmtimi i sistemit të amortizimit të mjetit ndikon në qëndrueshmërinë e mjetit në lëvizje.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3558,
             question = "Kontakti jo i mirë i gomave me sipërfaqen e rrugës zvogëlon qëndrueshmërinë e mjetit në lëvizje.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3559,
             question = "Konvergjenca e gabuar e rrotave drejtuese zvogëlon qëndrueshmërinë e mjetit në lëvizje.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3560,
             question = "Ndryshimi i presionit të fryrjes në gomat e të njëjtit aks zvogëlon qëndrueshmërinë e mjetit në lëvizje.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3561,
             question = "Frenimi i pabarabartë i rrotave të të njëjtit aks mund të shkaktojë zhvendosje anësore të mjetit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3562,
             question = "Frenimi i pabarabartë i rrotave mund të shkaktojë konsumim jo uniform të pjesës ballore të gomës.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3563,
             question = "Frenimi i pabarabartë i rrotave mund të prishë qëndrueshmërinë dhe ruajtjen e pozicionit të mjetit në rrugë.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3564,
@@ -4238,19 +4238,19 @@ class DatabaseExtension {
             id = 3565,
             question = "Frenimi i pabarabartë i rrotave mund të shkaktohet edhe nga lagia e ferrotave nga uji.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3566,
             question = "Mosfunksionimi i mirë i frenave mund të shkaktohet nga konsumi i ferrotave më shumë se norma e rekomanduar.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3567,
             question = "Shkak për mosfunksionimin e mirë të frenave mund të jenë frenimet e gjata, të tepërta dhe të shpeshta.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3568,
@@ -4274,7 +4274,7 @@ class DatabaseExtension {
             id = 3571,
             question = "Diferenca e presionit të ajrit në gomat e të njëjtit aks mund të shkaktojë një frenim jo të mirë të mjetit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3572,
@@ -4304,13 +4304,13 @@ class DatabaseExtension {
             id = 3576,
             question = "Për të mbajtur frenat në gjendje të mirë është i nevojshëm të kryhet kontrolli i aftësisë frenuese të mjetit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3577,
             question = "Në sistemin e frenimit duhet të bëhet kontroll i aftësisë së bllokimit të mjetit me frenat e dorës (të parkimit).",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3578,
@@ -4334,7 +4334,7 @@ class DatabaseExtension {
             id = 3581,
             question = "Nëse gjatë frenimeve të njëpasnjëshme mjeti tenton të rrëshqasë në njërin krah, ai duhet të dërgohet për kontroll në servis.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3582,
@@ -4352,31 +4352,31 @@ class DatabaseExtension {
             id = 3584,
             question = "Sistemi kundër bllokimit të rrotave (ABS) vepron në fazën e frenimit, kur gomat janë gati duke u bllokuar.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3585,
             question = "Sistemi kundër bllokimit të rrotave (ABS) siguron një kontroll më të mirë të mjetit gjatë frenimit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3586,
             question = "Sistemi kundër bllokimit të rrotave (ABS) e bën më pak të rrezikshëm frenimin në rrugët me kthesa.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3587,
             question = "Sistemi kundër bllokimit të rrotave (ABS) përmirëson qëndrueshmërinë e mjetit në rrugë gjatë frenimit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3588,
             question = "Sistemi kundër bllokimit të rrotave (ABS) pengon bllokimin e rrotave, që rrëshqasin gjatë frenimit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3589,
@@ -4424,49 +4424,49 @@ class DatabaseExtension {
             id = 3596,
             question = "Drejtuesi i mjetit duhet të kontrollojë vazhdimisht gjendjen teknike të sistemit të frenimit të mjetit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3597,
             question = "Drejtuesi i mjetit duhet të ketë parasysh që hapësira e frenimit rritet, nëse sipërfaqja e rrugës është e lagur.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3598,
             question = "Drejtuesi i mjetit duhet të ketë parasysh se nëse shpejtësia rritet 2 herë, hapësira e frenimit rritet 4 herë.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3599,
             question = "Drejtuesi i mjetit duhet të kontrollojë nivelin e alkoolit të frenave në depozitë.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3600,
             question = "Drejtuesi i mjetit duhet të mbajë në gjendje pune të mirë sistemin e ndriçimit dhe sinjalizimit pamor.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3601,
             question = "Drejtuesi i mjetit, duhet të kontrollojë gjendjen dhe funksionimin e sinjaleve të drejtimit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3602,
             question = "Drejtuesi i mjetit duhet të kontrollojë gjendjen dhe funksionimin e dritave të ndalimit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3603,
             question = "Drejtuesi i mjetit duhet të kontrollojë orientimin (drejtimin) e fenerëve, për të shmangur verbimin e drejtuesve të tjerë të mjeteve..",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3604,
@@ -4496,19 +4496,19 @@ class DatabaseExtension {
             id = 3608,
             question = "Gomat e dëmtuara deri në pjesën e përforcuar me tela duhet të zëvendësohen.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3609,
             question = "Gomat e dëmtuara deri në pjesën e përforcuar me tela mund të shfryhen ose çahen, duke u bërë shkak për aksident.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3610,
             question = "Gomat e dëmtuara deri në pjesën e përforcuar me tela përbëjnë rrezik të madh për qarkullimin.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3611,
@@ -4520,13 +4520,13 @@ class DatabaseExtension {
             id = 3612,
             question = "Fenomeni i rrëshqitjes në kthesa rritet, nëse presioni i fryrjes së gomave të aksit të përparmë ndryshon nga njëra tjetra.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3613,
             question = "Mbajtja e mjetit në rrugë dhe ruajtja e pozicionit bëhet më e vështirë, nëse udhëtojmë me goma të aksit të përparmë me presion fryrje të ndryshëm nga njëra tjetra.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3614,
@@ -4538,25 +4538,25 @@ class DatabaseExtension {
             id = 3615,
             question = "Gomat e mjeteve me pjesën ballore (me badistradë) tepër të konsumuar rritin mundësinë e rrëshqitjes në kthesa.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3616,
             question = "Gomat e mjeteve me pjesën ballore tepër të konsumuar mund të çahen dhe shpohen më lehtë se gomat e reja.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3617,
             question = "Gomat e mjeteve me pjesën ballore (me badistradë) tepër të konsumuar ndikojnë në rritjen e gjatësisë së rrugës frenimit të mjetit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3618,
             question = "Gomat e mjeteve me pjesën ballore tepër të konsumuar rritin mundësinë e aksidenteve rrugore.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3619,
@@ -4598,32 +4598,32 @@ class DatabaseExtension {
             id = 3625,
             question = "Për të rritur sigurinë në qarkullimin e mjeteve, duhet të përdoren goma me përmasat e rekomanduara nga prodhuesi i mjetit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3626,
             question = "Për të garantuar sigurinë në qarkullimin e mjeteve, duhet që presioni i fryrjes së gomave të\n" +
                     "jetë sa ai këshilluar nga fabrika prodhuese.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3627,
             question = "Për të garantuar sigurinë në qarkullimin e mjeteve, duhet që gomat e automjetit të jenë në gjendje të mirë, në të kundërt të zëvendësohen me goma të reja.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3628,
             question = "Kur presioni i fryrjes së gomave është tepër i ulët, në krahasim me atë që rekomandohet, rritet konsumimi anësor i tyre.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3629,
             question = "Për të rritur sigurinë në qarkullimin e mjeteve, duhet të bëhet kontrolli i ekuilibrit të gomave.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3630,
@@ -4635,13 +4635,13 @@ class DatabaseExtension {
             id = 3631,
             question = "Gomat nevojitet të kontrollohen, nëse kanë dëmtime të mundshme në pjesën anësore apo ballore të tyre.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3632,
             question = "Për të siguruar jetëgjatësinë e gomave është e nevojshme që presioni i fryrjes të jetë i njëjtë me atë të këshilluar nga prodhuesi.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3633,
@@ -4653,37 +4653,37 @@ class DatabaseExtension {
             id = 3634,
             question = "Kapja e gomës me rrugën zvogëlohet kur rruga është e lagur.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3635,
             question = "Kapja e gomës me rrugën zvogëlohet nga prania e baltës në rrugë.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3636,
             question = "Kapja e gomës me rrugën zvogëlohet nga prania e gjetheve të pemëve në rrugë.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3637,
             question = "Kapja e gomës me rrugën zvogëlohet nga prania e dëborës dhe e akullit në rrugë.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3638,
             question = "Kapja e gomës me rrugën zvogëlohet nga prania e lubrifikantëve të ndryshëm në karrexhatë.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3639,
             question = "Kapja e gomës me rrugën zvogëlohet nga prania e materialeve inerte (rërë, zhavorr, çakëll, etj.) në asfalt.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3640,
@@ -4707,31 +4707,31 @@ class DatabaseExtension {
             id = 3643,
             question = "Kur gomat e mjetit janë të konsumuara, rritet mundësia për të shkaktuar aksident rrugor.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3644,
             question = "Kur gomat e mjetit janë të konsumuara, zvogëlohet kapja e tyre me rrugën.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3645,
             question = "Kur gomat e mjetit janë të konsumuara, është e nevojshme të rritet distanca e sigurisë.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3646,
             question = "Kur gomat e mjetit janë të konsumuara, rritet gjatësia e gjurmës së frenimit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3647,
             question = "Kur gomat e mjetit janë të konsumuara rritet mundësia e rrëshqitjes në rrugë, që sapo janë lagur nga shiu.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3648,
@@ -4761,25 +4761,25 @@ class DatabaseExtension {
             id = 3652,
             question = "Për të rritur sigurinë në qarkullim, duhet të sigurohet pastrimi dhe funksionimi i pasqyrave të brendshme dhe të jashtme.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3653,
             question = "Për të rritur sigurinë në qarkullim, duhet të sigurohet tejdukshmëria dhe pastërtia edhe e xhamave anësorë të mjetit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3654,
             question = "Për të rritur sigurinë në qarkullim, duhet të kontrollohet gjendja teknike e fshirëseve të xhamave.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3655,
             question = "Për të rritur sigurinë në qarkullim, duhet të furnizojmë me lëng pastrues depozitën e pajisjes për larjen e xhamave.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3656,
@@ -4791,19 +4791,19 @@ class DatabaseExtension {
             id = 3657,
             question = "Shkak i mosfunksionimit të fshirëseve të xhamave mund të jetë djegia e siguresës përkatëse.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3658,
             question = "Shkak i mosfunksionimit të fshirëseve të xhamave mund të jetë dëmtimi i çelësit komandues.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3659,
             question = "Shkak i mosfunksionimit të fshirëseve të xhamave mund të jetë defekti i vetë mekanizmit të komandimit të tyre.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3660,
@@ -4833,13 +4833,13 @@ class DatabaseExtension {
             id = 3664,
             question = "Në sistemin e sinjalizimit pamor dhe ndriçues të mjetit duhet kontrolluar pastërtia dhe qartësia e fenerëve.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3665,
             question = "Në sistemin e sinjalizimit pamor dhe ndriçues të mjetit duhet të kontrollohet funksionimi i të gjithë ndriçuesve dhe sinjalizuesve të sistemit.",
             R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
     )
 }

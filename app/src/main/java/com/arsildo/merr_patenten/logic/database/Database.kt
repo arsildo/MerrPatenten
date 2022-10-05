@@ -8,31 +8,31 @@ class Database {
             id = 1,
             question = "Sinjali në figurë, si rregull, në rrugë interurbane është 150 metër para pjesës ku fillon deformimi i rrugës.",
             image = R.drawable.img_1,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2,
             question = "Sinjali në figurë paralajmëron një pjesë rruge të deformuar.",
             image = R.drawable.img_1,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 3,
             question = "Në prani të sinjalit në figurë duhet të lëvizet me kujdes, sidomos kur rruga është e rrëshqitshme.",
             image = R.drawable.img_1,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 4,
             question = "Sinjali i shoqëruar me panelin plotësues, si në figurë, paralajmëron rrugë të deformuar pas një distance prej 320 metra.",
             image = R.drawable.img_900,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 5,
             question = "Sinjali si në figurë paralajmëron rrugë të deformuar për shkak të punimeve.",
             image = R.drawable.img_901,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 6,
@@ -56,43 +56,43 @@ class Database {
             id = 9,
             question = "Sinjali në figurë është një sinjal vertikal që paralajmëron rrezik.",
             image = R.drawable.img_2,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 10,
             question = "Sinjali në figurë paralajmëron një pjesë rruge me fushëpamje të kufizuar.",
             image = R.drawable.img_2,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 11,
             question = "Sinjali në figurë paralajmëron një pjesë rruge që është në formë kurrizi.",
             image = R.drawable.img_2,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 12,
             question = "Sinjali në figurë paralajmëron një pjesë rruge që është në ngjitje dhe pastaj në zbritje.",
             image = R.drawable.img_2,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 13,
             question = "Në prani të sinjalit në figurë, në një rrugë me një korsi për çdo sens lëvizje, ndalohet parakalimi në pjesën e përpjetë të rrugës.",
             image = R.drawable.img_2,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 14,
             question = "Në prani të sinjalit në figurë ndalohet qëndrimi i mjetit në pjesën ngjitëse dhe zbritëse të rrugës.",
             image = R.drawable.img_2,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 15,
             question = "Në prani të sinjalit në figurë, në një rrugë me një korsi për çdo sens lëvizje, duhet të ulni shpejtësinë dhe të spostoheni në anën e djathtë të karrexhatës.",
             image = R.drawable.img_2,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 16,
@@ -122,31 +122,31 @@ class Database {
             id = 20,
             question = "Sinjali në figurë është një sinjal vertikal, që paralajmëron rrezik.",
             image = R.drawable.img_3,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 21,
             question = "Sinjali në figurë paralajmëron një pjesë rruge në formë të lugët (zbritje dhe ngjitje).",
             image = R.drawable.img_3,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 22,
             question = "Në prani të sinjalit në figurë lejohet parakalimi, por me kujdes dhe sipas rregullave.",
             image = R.drawable.img_3,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 23,
             question = "Sinjali në figurë paralajmëron mundësinë e formimit të pellgjeve të ujit në raste shiu.",
             image = R.drawable.img_3,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 24,
             question = "Në prani të sinjalit në figurë duhet të zvogëlojmë shpejtësinë e lëvizjes për shkak të formës së lugët të rrugës.",
             image = R.drawable.img_3,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 25,
@@ -176,25 +176,25 @@ class Database {
             id = 29,
             question = "Sinjali në figurë paralajmëron një kthesë të rrezikshme, djathtas.",
             image = R.drawable.img_4,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 30,
             question = "Në prani të sinjalit në figurë ndalohet ndryshimi i sensit të lëvizjes së mjetit.",
             image = R.drawable.img_4,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 31,
             question = "Në prani të sinjalit në figurë ndalohet qëndrimi apo pushimi i mjetit.",
             image = R.drawable.img_4,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 32,
             question = "Sinjali në figurë ndalon lëvizjen prapa (indietro).",
             image = R.drawable.img_4,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 33,
@@ -236,43 +236,43 @@ class Database {
             id = 39,
             question = "Sinjali në figurë është një sinjal vertikal që paralajmëron rrezik.",
             image = R.drawable.img_5,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 40,
             question = "Sinjali në figurë, si rregull, në rrugë interurbane është i vendosur 150 metër para kthesës së rrezikshme.",
             image = R.drawable.img_5,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 41,
             question = "Sinjali në figurë paralajmëron një kthesë të rrezikshme, majtas.",
             image = R.drawable.img_5,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 42,
             question = "Në prani të sinjalit në figurë duhet zvogëluar shpejtësia e lëvizjes së mjetit.",
             image = R.drawable.img_5,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 43,
             question = "Në prani të sinjalit në figurë ndalohet ndryshimi i sensit të lëvizjes.",
             image = R.drawable.img_5,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 44,
             question = "Në prani të sinjalit në figurë ndalohet qëndrimi i mjetit në kthesë.",
             image = R.drawable.img_5,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 45,
             question = "Në prani të sinjalit në figurë ndalohet lëvizja prapa (indietro).",
             image = R.drawable.img_5,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 46,
@@ -302,37 +302,37 @@ class Database {
             id = 50,
             question = "Sinjali në figurë paralajmëron kthesa të rrezikshme dhe të njëpasnjëshme, prej të cilave kthesa e parë është djathtas.",
             image = R.drawable.img_6,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 51,
             question = "Sinjali i shoqëruar me panelin plotësues, si në figurë, paralajmëron 3 (tre) kthesa të rrezikshme, prej të cilave e para është djathtas.",
             image = R.drawable.img_902,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 52,
             question = "Në prani të sinjalit në figurë duhet zvogëluar shpejtësia e lëvizjes së mjetit.",
             image = R.drawable.img_6,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 53,
             question = "Në prani të sinjalit në figurë ndalohet ndryshimi i sensit të lëvizjes së mjetit.",
             image = R.drawable.img_6,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 54,
             question = "Në prani të sinjalit në figurë ndalohet qëndrimi apo pushimi i mjetit në kthesa.",
             image = R.drawable.img_6,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 55,
             question = "Në prani të sinjalit, si në figurë, ndalohet lëvizja prapa (indietro).",
             image = R.drawable.img_6,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 56,
@@ -368,31 +368,31 @@ class Database {
             id = 61,
             question = "Sinjali në figurë, si rregull, në rrugë interurbane është 150 metër para fillimit të kthesave.",
             image = R.drawable.img_7,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 62,
             question = "Sinjali në figurë paralajmëron kthesa të rrezikshme dhe të njëpasnjëshme, prej të cilave kthesa e parë është majtas.",
             image = R.drawable.img_7,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 63,
             question = "Sinjali në figurë paralajmëron kthesa me fushëpamje të kufizuar.",
             image = R.drawable.img_7,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 64,
             question = "Në prani të sinjalit në figurë duhet zvogëluar shpejtësia e lëvizjes së mjetit duke e përshtatur atë me fushëpamjen.",
             image = R.drawable.img_7,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 65,
             question = "Në prani të sinjalit në figurë, në rrugë me dy sense lëvizje dhe me një korsi për sens, duhet të tregohet kujdes kur këmbehemi me një mjet tjetër.",
             image = R.drawable.img_7,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 66,
@@ -434,37 +434,37 @@ class Database {
             id = 72,
             question = "Sinjali në figurë është një sinjal vertikal që paralajmëron rrezik.",
             image = R.drawable.img_8,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 73,
             question = "Sinjali në figurë paralajmëron një kalim në nivel të ruajtur me barriera ose me gjysmëbarriera.",
             image = R.drawable.img_8,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 74,
             question = "Sinjali në figurë paralajmëron kalim në nivel pranë të cilit ka drita të kuqe dhe aparate akustikë.",
             image = R.drawable.img_8,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 75,
             question = "Në prani të sinjalit në figurë duhet zvogëluar shpejtësia e lëvizjes së mjetit.",
             image = R.drawable.img_8,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 76,
             question = "Sinjali në figurë paralajmëron ndërprerjen e rrugës me një linjë hekurudhore.",
             image = R.drawable.img_8,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 77,
             question = "Në prani të sinjalit në figurë ndalohet qëndrimi i mjetit në afërsi ose përgjatë kalimit në nivel.",
             image = R.drawable.img_8,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 78,
@@ -494,43 +494,43 @@ class Database {
             id = 82,
             question = "Sinjali në figurë është sinjal vertikal rreziku.",
             image = R.drawable.img_9,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 83,
             question = "Sinjali në figurë paralajmëron një vendkalim hekurudhor, pa pengesa.",
             image = R.drawable.img_9,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 84,
             question = "Në prani të sinjalit në figurë drejtuesit e mjeteve duhet të rrisin kujdesin në drejtimin e mjetit.",
             image = R.drawable.img_9,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 85,
             question = "Sinjali në figurë paralajmëron kalim në nivel të pambrojtur.",
             image = R.drawable.img_9,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 86,
             question = "Në prani të sinjalit në figurë ndalohet qëndrimi i mjetit, si në afërsi ashtu dhe përgjatë kalimit në nivel pa pengesa.",
             image = R.drawable.img_9,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 87,
             question = "Në prani të sinjalit në figurë duhet të sigurohemi si nga e djathta dhe nga e majta, para se të kapërcejmë linjën hekurudhore.",
             image = R.drawable.img_9,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 88,
             question = "Në prani të sinjalit në figurë duhet të tregojmë kujdes për të shmangur përplasjen me trenin.",
             image = R.drawable.img_9,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 89,
@@ -554,13 +554,13 @@ class Database {
             id = 92,
             question = "Sinjali në figurë na detyron të ndalojmë para vijës së ndalimit, kur është duke ardhur një tren.",
             image = R.drawable.img_10,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 93,
             question = "Sinjali në figurë vendoset në rrugë pas sinjalit te rrezikut “KALIM NË NIVEL PA BARRIERA” dhe pranë linjës hekurudhore që ndërpret rrugën.",
             image = R.drawable.img_10,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 94,
@@ -572,25 +572,25 @@ class Database {
             id = 95,
             question = "Sinjali në figurë paralajmëron se po i afrohemi një kalimi në nivel të paruajtur, me dy ose me shumë linja hekurudhore.",
             image = R.drawable.img_11,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 96,
             question = "Në prani të sinjalit në figurë detyrohet ndalimi i mjetit para vijës së ndalimit, nëse ka lëvizje të trenave.",
             image = R.drawable.img_11,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 97,
             question = "Në prani të sinjalit në figurë duhet të tregojmë kujdes, pasi treni mund të vijë nga çdo linjë hekurudhore që ndërpret rrugën.",
             image = R.drawable.img_11,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 98,
             question = "Sinjali në figurë shoqërohet me semafor me dy drita të kuqe.",
             image = R.drawable.img_11,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 99,
@@ -608,31 +608,31 @@ class Database {
             id = 101,
             question = "Panelet distancometrike në figurë gjenden para një kalimi në nivel ose para një ure të lëvizshme.",
             image = R.drawable.img_13,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 102,
             question = "Paneli me 1 vijë të kuqe në figurë, tregon se në largësinë 50 metër ndodhet një kalim në nivel apo urë e lëvizshme.",
             image = R.drawable.img_13,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 103,
             question = "Paneli me 2 vija të kuqe në figurë, tregon se në largësinë 100 metër ndodhet një kalim në nivel apo urë e lëvizshme.",
             image = R.drawable.img_13,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 104,
             question = "Sinjali i shoqëruar me panelin distancometrik, si në figurë, tregon se në largësinë 150 metër ndodhet një kalim në nivel i ruajtur me barriera.",
             image = R.drawable.img_908,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 105,
             question = "Sinjali i shoqëruar me panelin distancometrik, si në figurë, tregon se pas 150 metër ndodhet një kalim në nivel i pambrojtur.",
             image = R.drawable.img_909,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 106,
@@ -668,19 +668,19 @@ class Database {
             id = 111,
             question = "Sinjali në figurë paralajmëron një linjë tramvaji, të parregulluar me semafor.",
             image = R.drawable.img_14,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 112,
             question = "Sinjali në figurë paralajmëron një linjë tramvaji, që ndërpret ose ngushton karrexhatën.",
             image = R.drawable.img_14,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 113,
             question = "Në prani të sinjalit në figurë duhet të tregojmë kujdes që të mos pengojmë kalimin e tramvajit.",
             image = R.drawable.img_14,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 114,
@@ -698,37 +698,37 @@ class Database {
             id = 116,
             question = "Sinjali në figurë është një sinjal vertikal, që paralajmëron rrezik.",
             image = R.drawable.img_15,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 117,
             question = "Sinjali në figurë paralajmëron një vendkalim këmbësorësh të rregulluar me sinjale horizontale.",
             image = R.drawable.img_15,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 118,
             question = "Në prani të sinjalit në figurë duhet të tregoni kujdes për t’i dhënë përparësi këmbësorëve, që kalojnë mbi vijat e bardha.",
             image = R.drawable.img_15,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 119,
             question = "Sinjali në figurë gjendet edhe në rrugë urbane.",
             image = R.drawable.img_15,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 120,
             question = "Në prani të sinjalit në figurë ndalohet qëndrimi i mjetit mbi vijat e bardha, pasi bllokohet kalimi i këmbësorëve.",
             image = R.drawable.img_15,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 121,
             question = "Në prani të sinjalit në figurë ndalohet parakalimi i mjeteve, të cilët po ngadalësojnë shpejtësinë për t'u dhënë përparësi këmbësorëve .",
             image = R.drawable.img_15,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 122,
@@ -758,25 +758,25 @@ class Database {
             id = 126,
             question = "Sinjali në figurë paralajmëron një vendkalim biçikletash të rregulluar me sinjale horizontale.",
             image = R.drawable.img_16,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 127,
             question = "Në prani të sinjalit në figurë duhet të zvogëlohet shpejtësia e lëvizjes së mjetit dhe t’i jepet përparësi biçikilistëve, që po kalojnë karrexhatën.",
             image = R.drawable.img_16,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 128,
             question = "Në prani të sinjalit në figurë duhet të zvogëlojmë shpejtësinë e lëvizjes së mjetit dhe po të jetë e nevojshme, të ndalojmë lëvizjen.",
             image = R.drawable.img_16,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 129,
             question = "Në prani të sinjalit në figurë ndalohet parakalimi i mjeteve, që kanë ndaluar për t’i dhënë përparësi biçikilistëve.",
             image = R.drawable.img_16,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 130,
@@ -806,49 +806,49 @@ class Database {
             id = 134,
             question = "Sinjali në figurë është një sinjal vertikal që paralajmëron rrezik.",
             image = R.drawable.img_17,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 135,
             question = "Sinjali në figurë, si rregull, në rrugë interurbane është 150 metër para pikës ku fillon zbritja e rrezikshme.",
             image = R.drawable.img_17,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 136,
             question = "Sinjali në figurë paralajmëron një zbritje të rrezikshme me pjerrësi 10%.",
             image = R.drawable.img_17,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 137,
             question = "Në prani të sinjalit në figurë duhet të mbahet parasysh që rritet gjatësia e frenimit të mjetit në zbritje, në krahasim me atë në rrugë të drejtë.",
             image = R.drawable.img_17,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 138,
             question = "Sinjali në figurë paralajmëron të jemi të kujdesshëm me shpejtësinë e lëvizjes.",
             image = R.drawable.img_17,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 139,
             question = "Pas sinjalit në figurë duhet të shmanget përdorimi i shpeshtë i frenave, pasi mbinxehen elementët frenues.",
             image = R.drawable.img_17,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 140,
             question = "Në prani të sinjalit në figurë duhet të rritet distanca me mjetet që lëvizin përpara.",
             image = R.drawable.img_17,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 141,
             question = "Në prani të sinjalit në figurë duhet treguar kujdes, sidomos kur rruga është e lagur.",
             image = R.drawable.img_17,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 142,
@@ -872,19 +872,19 @@ class Database {
             id = 145,
             question = "Sinjali në figurë është një sinjal vertikal që paralajmëron rrezik.",
             image = R.drawable.img_18,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 146,
             question = "Sinjali në figurë paralajmëron një ngjitje të rrezikshme me pjerrësi prej 10%.",
             image = R.drawable.img_18,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 147,
             question = "Sinjali në figurë paralajmëron një rrugë me të përpjetë të fortë.",
             image = R.drawable.img_18,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 148,
@@ -908,25 +908,25 @@ class Database {
             id = 151,
             question = "Sinjali në figurë është një sinjal vertikal që paralajmëron rrezik.",
             image = R.drawable.img_19,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 152,
             question = "Sinjali në figurë paralajmëron ngushtim të karrexhatës nga të dy anët.",
             image = R.drawable.img_19,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 153,
             question = "Sinjali në figurë paralajmëron se shkëmbimi i mjeteve në atë vend është i vështirë.",
             image = R.drawable.img_19,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 154,
             question = "Në prani të sinjalit në figurë duhet zvogëluar shpejtësia e lëvizjes së mjetit.",
             image = R.drawable.img_19,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 155,
@@ -950,31 +950,31 @@ class Database {
             id = 158,
             question = "Sinjali në figurë paralajmëron ngushtim të rrugës nga e majta.",
             image = R.drawable.img_20,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 159,
             question = "Sinjali në figurë paralajmëron një pjesë rruge, e cila duhet të përshkohet me kujdes.",
             image = R.drawable.img_20,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 160,
             question = "Sinjali në figurë paralajmëron një ngushtim rruge, nga e majta, me gjatësi prej 380 metra.",
             image = R.drawable.img_903,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 161,
             question = "Në prani të sinjalit në figurë duhet të ulim shpejtësinë e lëvizjes së mjetit dhe, nëse është e nevojshme, të ndalojmë lëvizjen.",
             image = R.drawable.img_20,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 162,
             question = "Sinjali në figurë paralajmëron vështirësi në këmbimin e mjeteve në atë segment rruge.",
             image = R.drawable.img_20,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 163,
@@ -1010,37 +1010,37 @@ class Database {
             id = 168,
             question = "Sinjali në figurë është një sinjal vertikal që paralajmëron rrezik.",
             image = R.drawable.img_21,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 169,
             question = "Sinjali në figurë, si rregull, në rrugë interurbane është 150 metër para zonës ku fillon të ngushtohet rruga.",
             image = R.drawable.img_21,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 170,
             question = "Sinjali në figurë paralajmëron ngushtim të karrexhatës nga e djathta.",
             image = R.drawable.img_21,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 171,
             question = "Sinjali në figurë paralajmëron një pjesë rruge, e cila duhet të përshkohet me kujdes.",
             image = R.drawable.img_21,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 172,
             question = "Në prani të sinjalit në figurë duhet të zvogëlojmë shpejtësinë e lëvizjes së mjetit dhe, nëse është e nevojshme, të ndalojmë lëvizjen.",
             image = R.drawable.img_21,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 173,
             question = "Sinjali në figurë paralajmëron vështirësinë e këmbimit të mjeteve në atë segment rruge.",
             image = R.drawable.img_21,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 174,
@@ -1070,37 +1070,37 @@ class Database {
             id = 178,
             question = "Sinjali në figurë është një sinjal vertikal që paralajmëron rrezik.",
             image = R.drawable.img_22,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 179,
             question = "Sinjali në figurë paralajmëron një urë të lëvizshme.",
             image = R.drawable.img_22,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 180,
             question = "Sinjali i shoqëruar me panelin plotësues, si në figurë, paralajmëron urë të lëvizshme, që është në funksionim 24 orë në ditë.",
             image = R.drawable.img_904,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 181,
             question = "Në prani të sinjalit në figurë duhet të zvogëlohet shpejtësia e lëvizjes së mjetit, për të qenë të gatshëm të ndalojmë, në rast se dritat e kuqe vezulluese të semaforit janë në veprim.",
             image = R.drawable.img_22,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 182,
             question = "Sinjali në figurë kërkon të ngadalësohet shpejtësia, me qëllim që të ndalojmë në kohën e duhur kur ura është duke u ngritur.",
             image = R.drawable.img_22,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 183,
             question = "Sinjali i shoqëruar me panelin plotësues, si në figurë, paralajmëron se pas 150 metrash ndodhet një urë e lëvizshme.",
             image = R.drawable.img_905,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 184,
@@ -1118,31 +1118,31 @@ class Database {
             id = 186,
             question = "Sinjali në figurë është një sinjal vertikal që paralajmëron rrezik.",
             image = R.drawable.img_23,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 187,
             question = "Sinjali në figurë, si rregull, në rrugë interurbane është 150 metër para zonës ku fillon dëmtimi i bankinës.",
             image = R.drawable.img_23,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 188,
             question = "Sinjali në figurë paralajmëron një pjesë rruge me bankinë të dëmtuar, që mund të shembet.",
             image = R.drawable.img_23,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 189,
             question = "Në prani të sinjalit në figurë duhet të zvogëloni shpejtësinë e lëvizjes së mjetit dhe të mos zhvendoseni në bankinë.",
             image = R.drawable.img_23,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 190,
             question = "Sinjali, i shoqëruar me panelin plotësues, tregon se gjatësia e bankinës së dëmtuar është 2.8 km.",
             image = R.drawable.img_906,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 191,
@@ -1172,31 +1172,31 @@ class Database {
             id = 195,
             question = "Sinjali në figurë paralajmëron se rruga bëhet e rrëshqitshme nga shiu apo nga prezenca e akullit.",
             image = R.drawable.img_24,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 196,
             question = "Sinjali në figurë paralajmëron një pjesë rruge, ku fërkimi i gomave me rrugën zvogëlohet në raste shiu apo akulli.",
             image = R.drawable.img_24,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 197,
             question = "Në prani të sinjalit në figurë, nëse ka lagështi apo akull në rrugë, duhet të ulim shpejtësinë dhe të shmangim frenimet e forta.",
             image = R.drawable.img_24,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 198,
             question = "Pas sinjalit në figurë, në kushte të vështira atmosferike, duhet rritur distanca e sigurisë me mjetin para.",
             image = R.drawable.img_24,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 199,
             question = "Sinjali i shoqëruar me panelin plotësues, si në figurë, paralajmëron rrugë të rrëshqitshme, për arsye të prezencës së akullit.",
             image = R.drawable.img_907,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 200,
@@ -1232,25 +1232,25 @@ class Database {
             id = 205,
             question = "Sinjali në figurë paralajmëron rrezik.",
             image = R.drawable.img_25,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 206,
             question = "Sinjali në figurë paralajmëron vende që frekuentohen nga fëmijët, si: shkolla, kopshte, parqe publike etj..",
             image = R.drawable.img_25,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 207,
             question = "Sinjali në figurë paralajmëron se duhet të bëjmë shumë kujdes, për arsye se në rrugë mund të kalojnë fëmijë.",
             image = R.drawable.img_25,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 208,
             question = "Në prani të sinjalit në figurë duhet të ulim shpejtësinë dhe të lëvizim me kujdes edhe nëse fëmijët janë në trotuar.",
             image = R.drawable.img_25,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 209,
@@ -1274,7 +1274,7 @@ class Database {
             id = 212,
             question = "Në prani të sinjalit në figurë duhet të tregojmë kujdes, për shkak të pranisë së mundshme të kafshëve shtëpiake në karrexhatë.",
             image = R.drawable.img_26,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 213,
@@ -1292,19 +1292,19 @@ class Database {
             id = 215,
             question = "Sinjali në figurë është një sinjal vertikal që paralajmëron rrezik.",
             image = R.drawable.img_27,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 216,
             question = "Sinjali në figurë paralajmëron një pjesë të rrugës ku mund të kalojnë papritur kafshë të egra.",
             image = R.drawable.img_27,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 217,
             question = "Në prani të sinjalit në figurë duhet të ulni shpejtësinë e lëvizjes së mjetit dhe të ndaloni, nëse kafshët japin shenja paniku.",
             image = R.drawable.img_27,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 218,
@@ -1322,25 +1322,25 @@ class Database {
             id = 220,
             question = "Sinjali në figurë paralajmëron një rrezik.",
             image = R.drawable.img_28,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 221,
             question = "Sinjali në figurë paralajmëron se karrexhata do të bëhet me dy sense lëvizjeje, nga një sens lëvizjeje që ishte më parë.",
             image = R.drawable.img_28,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 222,
             question = "Sinjali në figurë paralajmëron se mbaron rruga, në të cilën qarkullimi ishte me një sens lëvizje.",
             image = R.drawable.img_28,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 223,
             question = "Sinjali në figurë paralajmëron një pjesë rruge me qarkullim në të dy senset e lëvizjes.",
             image = R.drawable.img_28,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 224,
@@ -1352,13 +1352,13 @@ class Database {
             id = 225,
             question = "Sinjali në figurë, si rregull, në rrugë interurbane është i vendosur 150 metër përpara rrethrrotullimit.",
             image = R.drawable.img_29,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 226,
             question = "Sinjali në figurë paralajmëron një kryqëzim të rregulluar me rrethrrotullim.",
             image = R.drawable.img_29,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 227,
@@ -1376,19 +1376,19 @@ class Database {
             id = 229,
             question = "Sinjali në figurë është një sinjal vertikal që paralajmëron rrezik.",
             image = R.drawable.img_30,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 230,
             question = "Sinjali në figurë paralajmëron se rruga përfundon në një mol ose digë, me rrezikun e rënies në ujë.",
             image = R.drawable.img_30,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 231,
             question = "Në prani të sinjalit në figurë drejtuesit e mjeteve duhet të tregojnë kujdes, sidomos natën, pasi rrezikojnë të bien në ujë.",
             image = R.drawable.img_30,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 232,
@@ -1412,43 +1412,43 @@ class Database {
             id = 235,
             question = "Sinjali në figurë është një sinjal vertikal që paralajmëron rrezik.",
             image = R.drawable.img_31,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 236,
             question = "Sinjali në figurë paralajmëron një pjesë rruge ku mund të ketë materiale të paqëndrueshme, si: çakëll, zhavorr, rërë etj..",
             image = R.drawable.img_31,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 237,
             question = "Në prani të sinjalit në figurë duhet të tregojmë kujdes nëse ka këmbësorë anash rrugës.",
             image = R.drawable.img_31,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 238,
             question = "Në prani të sinjalit në figurë duhet të zvogëloni shpejtësinë e lëvizjes së mjetit, sidomos kur shkëmbeheni me mjete të tjera.",
             image = R.drawable.img_31,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 239,
             question = "Në prani të sinjalit në figurë duhet të mbani distancë më të madhe se zakonisht me mjetet përpara.",
             image = R.drawable.img_31,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 240,
             question = "Në prani të sinjalit në figurë duhet të ulni shpejtësinë, sepse mund të zvogëlohet sipërfaqja e kontaktit të gomave me rrugën.",
             image = R.drawable.img_31,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 241,
             question = "Nëse sinjali, si në figurë, është me fushë të verdhë, atëherë paralajmëron praninë e materialeve të paqëndrueshme në rrugë për shkak të punimeve.",
             image = R.drawable.img_31,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 242,
@@ -1472,25 +1472,25 @@ class Database {
             id = 245,
             question = "Sinjali në figurë paralajmëron një rrezik.",
             image = R.drawable.img_32,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 246,
             question = "Sinjali në figurë paralajmëron rrezikun e rënies së gurëve nga shkëmbinjtë, që ndodhen në anën e majtë të rrugës.",
             image = R.drawable.img_32,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 247,
             question = "Sinjali në figurë paralajmëron një pjesë rruge, në të cilën mund të ketë gurë ose masa dheu të shkëputura nga shkëmbinjtë në të majtë.",
             image = R.drawable.img_32,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 248,
             question = "Në prani të sinjalit në figurë duhet të zvogëlojmë shpejtësinë e lëvizjes së mjetit, për të shmangur përplasjen me gurët e mundshëm në rrugë.",
             image = R.drawable.img_32,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 249,
@@ -1520,25 +1520,25 @@ class Database {
             id = 253,
             question = "Sinjali në figurë është një sinjal vertikal që paralajmëron rrezik.",
             image = R.drawable.img_33,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 254,
             question = "Sinjali në figurë paralajmëron praninë e mundshme të gurëve mbi siperfaqen e karrexhatës.",
             image = R.drawable.img_33,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 255,
             question = "Sinjali në figurë paralajmëron rrezikun e rënies së gurëve nga shkëmbinjtë në anën e djathtë të rrugës.",
             image = R.drawable.img_33,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 256,
             question = "Sinjali në figurë paralajmëron një pjesë rruge, në të cilën mund të ketë gurë ose masa dheu të shkëputur nga shkëmbinjtë në të djathtë.",
             image = R.drawable.img_33,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 257,
@@ -1568,19 +1568,19 @@ class Database {
             id = 261,
             question = "Sinjali në figurë paralajmëron një impiant semaforik, me vendosje vertikale të fenerëve.",
             image = R.drawable.img_34,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 262,
             question = "Në prani të sinjalit në figurë duhet të zvogëlojmë shpejtësinë e lëvizjes së mjetit, për të qenë të gatshëm të ndalojmë kur është ndezur drita e kuqe e semaforit.",
             image = R.drawable.img_34,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 263,
             question = "Sinjali në figurë, kur është me fushë të verdhë, paralajmëron një impiant semaforik të përkohshëm në rrugë.",
             image = R.drawable.img_34,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 264,
@@ -1604,19 +1604,19 @@ class Database {
             id = 267,
             question = "Sinjali në figurë është sinjal vertikal rreziku.",
             image = R.drawable.img_35,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 268,
             question = "Sinjali në figurë paralajmëron një impiant semaforik, me vendosje horizontale të fenerëve.",
             image = R.drawable.img_35,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 269,
             question = "Në prani të sinjalit në figurë duhet të zvogëlojmë shpejtësinë e lëvizjes së mjetit, për të qenë të gatshëm të ndalojmë kur është ndezur drita e kuqe e semaforit.",
             image = R.drawable.img_35,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 270,
@@ -1634,25 +1634,25 @@ class Database {
             id = 272,
             question = "Sinjali në figurë paralajmëron një rrezik.",
             image = R.drawable.img_36,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 273,
             question = "Sinjali në figurë paralajmëron zhurmë ose dritë të fortë, që shkaktohet nga ulja apo ngritja e avionëve.",
             image = R.drawable.img_36,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 274,
             question = "Sinjali në figurë paralajmëron mundësinë e zhurmave ose të verbimit nga drita e fortë, që shkaktohen nga fluturimi i avionëve në lartësi të vogël.",
             image = R.drawable.img_36,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 275,
             question = "Në prani të sinjalit në figurë duhet të bëni kujdes për shkak të shqetësimit që mund të sjellin fluturimet e avionëve në kuota të ulëta.",
             image = R.drawable.img_36,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 276,
@@ -1676,19 +1676,19 @@ class Database {
             id = 279,
             question = "Sinjali në figurë paralajmëron një pjesë rruge, në të cilën krijohen erëra të forta anësore.",
             image = R.drawable.img_37,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 280,
             question = "Sinjali në figurë paralajmëron mundësinë e erërave të forta anësore kur del nga një tunel.",
             image = R.drawable.img_37,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 281,
             question = "Sinjali në figurë paralajmëron rrezikun nga era e fortë, sidomos për mjetet me karroceri të mbyllur me tenda ose rimorkiot.",
             image = R.drawable.img_37,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 282,
@@ -1712,19 +1712,19 @@ class Database {
             id = 285,
             question = "Sinjali në figurë është sinjal vertikal rreziku.",
             image = R.drawable.img_38,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 286,
             question = "Sinjali në figurë paralajmëron një zonë me bar, gjethe ose shkurre, e cila ndodhet anash rrugës dhe rrezikohet nga ndezja e zjarreve.",
             image = R.drawable.img_38,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 287,
             question = "Në prani të sinjalit në figurë nuk duhet të hidhen cigare ose shkrepëse të ndezura.",
             image = R.drawable.img_38,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 288,
@@ -1748,13 +1748,13 @@ class Database {
             id = 291,
             question = "Sinjali në figurë është një sinjal vertikal që paralajmëron rrezik.",
             image = R.drawable.img_39,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 292,
             question = "Sinjali në figurë paralajmëron një rrezik të ndryshëm nga ata që janë parashikuar në sinjalet e tjerë të rrezikut.",
             image = R.drawable.img_39,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 293,
@@ -1766,31 +1766,31 @@ class Database {
             id = 294,
             question = "Sinjali në figurë është sinjal vertikal ndalimi.",
             image = R.drawable.img_54,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 295,
             question = "Sinjali në figurë ndalon qarkullimin e mjeteve në të dy senset.",
             image = R.drawable.img_54,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 296,
             question = "Sinjali në figurë ndalon qarkullimin e të gjithë mjeteve rrugore.",
             image = R.drawable.img_54,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 297,
             question = "Në prani të sinjalit në figurë lejohet qarkullimi i këmbësorëve.",
             image = R.drawable.img_54,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 298,
             question = "Sinjali i shoqëruar me panelin plotësues, si në figurë, tregon se ndalim qarkullimi i mjeteve është në fuqi nga ora 7:30 deri në orën 19:00.",
             image = R.drawable.img_910,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 299,
@@ -1814,31 +1814,31 @@ class Database {
             id = 302,
             question = "Sinjali në figurë ndalon hyrjen për të gjitha mjetet që kanë përballë këtë sinjal.",
             image = R.drawable.img_55,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 303,
             question = "Sinjali në figurë është ndalim kalimi edhe për taksitë.",
             image = R.drawable.img_55,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 304,
             question = "Sinjali në figurë është ndalim kalimi edhe për mjetet pa motor.",
             image = R.drawable.img_55,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 305,
             question = "Sinjali në figurë është i vlefshëm edhe në orët e natës.",
             image = R.drawable.img_55,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 306,
             question = "Sinjali në figurë ndalon kalimin dhe për biçikletat dhe për ciklomotorët.",
             image = R.drawable.img_55,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 307,
@@ -1868,31 +1868,31 @@ class Database {
             id = 311,
             question = "Sinjali në figurë është një sinjal vertikal ndalimi.",
             image = R.drawable.img_56,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 312,
             question = "Në prani të sinjalit në figurë lejohet të parakalohen biçikletat ose mjete të tjera pa motor, me kusht që manovra të bëhet brenda korsisë së lëvizjes.",
             image = R.drawable.img_56,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 313,
             question = "Në prani të sinjalit në figurë lejohet që një autoveturë të parakalojë një motor me dy rrota, me kusht që manovra të bëhet brenda korsisë së lëvizjes.",
             image = R.drawable.img_56,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 314,
             question = "Sinjali në figurë lejon një motor ose ciklomotor të parakalojë një motor ose ciklomotor tjetër.",
             image = R.drawable.img_56,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 315,
             question = "Në prani të sinjalit në figurë ndalohet që një motor ose ciklomotor të parakalojë një autoveturë.",
             image = R.drawable.img_56,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 316,
@@ -1916,25 +1916,25 @@ class Database {
             id = 319,
             question = "Sinjali në figurë është një sinjal vertikal ndalimi.",
             image = R.drawable.img_57,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 320,
             question = "Sinjali në figurë ndalon të ndjekësh mjetin që ke përpara në distancë më të vogël se ajo që tregon sinjali.",
             image = R.drawable.img_57,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 321,
             question = "Sinjali në figurë është i vlefshëm edhe për motomjetet.",
             image = R.drawable.img_57,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 322,
             question = "Sinjali në figurë ndalon mjetin ti afrohet mjetit që ka përpara në distancë më të vogël se 70 metra.",
             image = R.drawable.img_57,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 323,
@@ -1952,25 +1952,25 @@ class Database {
             id = 325,
             question = "Sinjali në figurë ndalon të tejkalohet shpejtësia 80 km/orë.",
             image = R.drawable.img_58,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 326,
             question = "Sinjali në figurë mund të gjendet edhe në autostrada.",
             image = R.drawable.img_58,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 327,
             question = "Vlefshmëria e sinjalit në figurë fillon menjëherë pas tij.",
             image = R.drawable.img_58,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 328,
             question = "Në prani të sinjalit në figurë jemi të detyruar të lëvizim me shpejtësi më të vogël ose të barabartë me 80 km/orë.",
             image = R.drawable.img_58,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 329,
@@ -2000,25 +2000,25 @@ class Database {
             id = 333,
             question = "Sinjali në figurë tregon fillimin e një zone ku është e ndaluar të përdorësh sinjalizimin zanor të mjetit (borinë).",
             image = R.drawable.img_59,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 334,
             question = "Në prani të sinjalit në figurë ndalohet të përdorësh borinë.",
             image = R.drawable.img_59,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 335,
             question = "Në prani të sinjalit në figurë lejohet përdorimi i borive, por vetëm në raste rreziku të papritur.",
             image = R.drawable.img_59,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 336,
             question = "Sinjali në figurë mund të mos respektohet, në rast se po transportojmë të aksidentuar ose të sëmurë rëndë.",
             image = R.drawable.img_59,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 337,
@@ -2036,13 +2036,13 @@ class Database {
             id = 339,
             question = "Sinjali në figurë lejon një kamion me ngarkesë të plotë mbi 3.5 tonë të parakalojë një mjet me motor me dy rrota, brenda korsisë së lëvizjes.",
             image = R.drawable.img_60,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 340,
             question = "Sinjali në figurë lejon një autoveturë të parakalojë një mjet transporti mallrash.",
             image = R.drawable.img_60,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 341,
@@ -2060,13 +2060,13 @@ class Database {
             id = 343,
             question = "Sinjali në figurë lejon qarkullimin e mjeteve me motor.",
             image = R.drawable.img_62,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 344,
             question = "Sinjali në figurë lejon qarkullimin e biçikilistëve.",
             image = R.drawable.img_62,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 345,
@@ -2078,13 +2078,13 @@ class Database {
             id = 346,
             question = "Sinjali në figurë ndalon qarkullimin e biçikletave.",
             image = R.drawable.img_63,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 347,
             question = "Sinjali në figurë lejon qarkullimin e motomjeteve.",
             image = R.drawable.img_63,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 348,
@@ -2102,7 +2102,7 @@ class Database {
             id = 350,
             question = "Sinjali në figurë ndalon qarkullimin e motorëve.",
             image = R.drawable.img_64,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 351,
@@ -2126,31 +2126,31 @@ class Database {
             id = 354,
             question = "Sinjali në figurë ndalon qarkullimin për mjetet me motor, përjashtuar ato me dy rrota.",
             image = R.drawable.img_66,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 355,
             question = "Sinjali në figurë ndalon qarkullimin për të gjitha automjetet dhe motomjetet me tre rrota.",
             image = R.drawable.img_66,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 356,
             question = "Në prani të sinjalit në figurë lejohet qarkullimi i mjeteve me dy rrota.",
             image = R.drawable.img_66,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 357,
             question = "Sinjali në figurë ndalon qarkullimin e motomjeteve me tre rrota.",
             image = R.drawable.img_66,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 358,
             question = "Në prani të sinjalit në figurë lejohet qarkullimi i mjeteve pa motor.",
             image = R.drawable.img_66,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 359,
@@ -2180,13 +2180,13 @@ class Database {
             id = 363,
             question = "Sinjali në figurë ndalon qarkullimin për autobusët.",
             image = R.drawable.img_67,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 364,
             question = "Sinjali në figurë lejon qarkullimin e gjithë mjeteve të tjera, me përjashtim të autobusëve.",
             image = R.drawable.img_67,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 365,
@@ -2198,7 +2198,7 @@ class Database {
             id = 366,
             question = "Sinjali në figurë ndalon qarkullimin e automjeteve për transport malli me peshë me ngarkesë të plotë mbi 3.5 tonë.",
             image = R.drawable.img_68,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 367,
@@ -2216,7 +2216,7 @@ class Database {
             id = 369,
             question = "Sinjali në figurë ndalon qarkullimin e mjeteve me motor qe tërheqin një rimorkio.",
             image = R.drawable.img_70,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 370,
@@ -2228,13 +2228,13 @@ class Database {
             id = 371,
             question = "Sinjali në figurë ndalon qarkullimin e makinave bujqësore.",
             image = R.drawable.img_71,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 372,
             question = "Sinjali në figurë lejon qarkullimin e motomjeteve.",
             image = R.drawable.img_71,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 373,
@@ -2252,7 +2252,7 @@ class Database {
             id = 375,
             question = "Sinjali në figurë ndalon qarkullimin e mjeteve që transportojnë mallra të rrezikshme.",
             image = R.drawable.img_72,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 376,
@@ -2264,7 +2264,7 @@ class Database {
             id = 377,
             question = "Sinjali në figurë ndalon qarkullimin e mjeteve që transportojnë lëndë plasëse ose që ndizen lehtë.",
             image = R.drawable.img_73,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 378,
@@ -2276,25 +2276,25 @@ class Database {
             id = 379,
             question = "Sinjali në figurë ndalon qarkullimin e mjeteve që transportojnë lëndë, të cilat mund të ndotin ujin.",
             image = R.drawable.img_74,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 380,
             question = "Sinjali në figurë urdhëron ndalim qarkullimi për mjete që janë më të gjerë se 2.3 metra.",
             image = R.drawable.img_75,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 381,
             question = "Sinjali në figurë ndalon qarkullimin e të gjitha mjeteve, që kanë gjerësi më të madhe se ajo e treguar në të.",
             image = R.drawable.img_75,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 382,
             question = "Sinjali në figurë tregon gjerësinë maksimale të mjeteve që mund të kalojnë.",
             image = R.drawable.img_75,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 383,
@@ -2306,19 +2306,19 @@ class Database {
             id = 384,
             question = "Sinjali në figurë tregon ndalim qarkullimi për mjete që janë më të larta se 3.5 metra.",
             image = R.drawable.img_76,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 385,
             question = "Sinjali në figurë ndalon qarkullimin e mjeteve që tejkalojnë lartësinë 3.5 metra.",
             image = R.drawable.img_76,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 386,
             question = "Në prani të sinjalit në figurë lejohet qarkullimi i mjeteve me lartësi deri në 3.5 metra.",
             image = R.drawable.img_76,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 387,
@@ -2336,13 +2336,13 @@ class Database {
             id = 389,
             question = "Sinjali në figurë ndalon qarkullimin e mjeteve me gjatësi mbi 10 metra.",
             image = R.drawable.img_77,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 390,
             question = "Sinjali në figurë lejon qarkullimin e mjeteve me gjatësi deri në 10 metra.",
             image = R.drawable.img_77,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 391,
@@ -2360,7 +2360,7 @@ class Database {
             id = 393,
             question = "Sinjali në figurë ndalon qarkullimin e mjeteve me peshë faktike mbi 7 tonë.",
             image = R.drawable.img_78,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 394,
@@ -2372,7 +2372,7 @@ class Database {
             id = 395,
             question = "Sinjali në figurë ndalon kalimin e mjeteve që kanë në aksin më të ngarkuar një masë më të madhe se 6.5 tonë.",
             image = R.drawable.img_79,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 396,
@@ -2384,13 +2384,13 @@ class Database {
             id = 397,
             question = "Sinjali në figurë tregon fundin e ndalimeve të mëparshme.",
             image = R.drawable.img_80,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 398,
             question = "Sinjali në figurë tregon se, pas tij, sinjalet e ndalimit të mëparshme nuk kanë më vlerë.",
             image = R.drawable.img_80,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 399,
@@ -2402,19 +2402,19 @@ class Database {
             id = 400,
             question = "Sinjali në figurë tregon fundin e kufizimit të shpejtësisë prej 50 km/orë, të vendosur më parë.",
             image = R.drawable.img_81,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 401,
             question = "Sinjali në figurë lejon të qarkullohet me shpejtësi më të madhe se 50 km/orë, por jo më shumë se shpejtësia e lejuar për atë rrugë.",
             image = R.drawable.img_81,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 402,
             question = "Sinjali në figurë të lejon të lëvizet edhe me shpejtësi më të vogël se 50 km/orë.",
             image = R.drawable.img_81,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 403,
@@ -2432,13 +2432,13 @@ class Database {
             id = 405,
             question = "Sinjali në figurë tregon fundin e ndalimit të parakalimit që ishte në fuqi më parë.",
             image = R.drawable.img_82,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 406,
             question = "Pas sinjalit në figurë lejohet parakalimi i automjeteve.",
             image = R.drawable.img_82,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 407,
@@ -2462,13 +2462,13 @@ class Database {
             id = 410,
             question = "Sinjali në figurë lejon një kamion me rimorkio të parakalojë një autoveturë.",
             image = R.drawable.img_83,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 411,
             question = "Sinjali në figurë tregon fundin e ndalimit të parakalimit që ishte në fuqi më parë.",
             image = R.drawable.img_83,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 412,
@@ -2486,37 +2486,37 @@ class Database {
             id = 414,
             question = "Sinjali në figurë ndalon pushimin e mjeteve ne krahun e rrugës ku është vendosur.",
             image = R.drawable.img_84,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 415,
             question = "Sinjali në figurë tregon vendin, pas të cilit pushimi i mjetit është i ndaluar.",
             image = R.drawable.img_84,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 416,
             question = "Sinjali në figurë e lejon qëndrimin e mjetit.",
             image = R.drawable.img_84,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 417,
             question = "Sinjali në figurë, i vendosur në rrugë urbane, ndalon pushimin nga ora 8:00 deri në orën 20:00.",
             image = R.drawable.img_84,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 418,
             question = "Sinjali në figurë, i vendosur në rrugë interurbane, ndalon pushimin gjatë 24 orëve.",
             image = R.drawable.img_84,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 419,
             question = "Sinjali në figurë, nëse nuk përsëritet, e humb vlefshmërinë pas kryqëzimit.",
             image = R.drawable.img_84,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 420,
@@ -2546,31 +2546,31 @@ class Database {
             id = 424,
             question = "Sinjali në figurë ndalon qëndrimin e mjeteve.",
             image = R.drawable.img_85,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 425,
             question = "Sinjali në figurë është i vlefshëm për të gjithë mjetet.",
             image = R.drawable.img_85,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 426,
             question = "Sinjali në figurë ndalon pushimin dhe qëndrimin e mjeteve.",
             image = R.drawable.img_85,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 427,
             question = "Sinjali në figurë ndalon qëndrimin e vullnetshëm të mjeteve.",
             image = R.drawable.img_85,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 428,
             question = "Sinjali në figurë ndalon ndërprerjen e lëvizjes së mjetit për të marrë ose për të zbritur pasagjerë.",
             image = R.drawable.img_85,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 429,
@@ -2612,25 +2612,25 @@ class Database {
             id = 435,
             question = "Sinjali në figurë ndalon pushimin e mjeteve në zonën ku është vendosur.",
             image = R.drawable.img_90,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 436,
             question = "Sinjali në figurë tregon një zonë për hyrje-daljen e mjeteve ku është i ndaluar pushimi.",
             image = R.drawable.img_90,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 437,
             question = "Sinjali në figurë lejon qëndrimin, për aq kohë sa nuk sjell pengesa për hyrje-daljen e mjeteve nga zona private.",
             image = R.drawable.img_90,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 438,
             question = "Sinjali në figurë lejon qëndrimin kur nuk sjell pengesa dhe bllokim për qarkullimin.",
             image = R.drawable.img_90,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 439,
@@ -2654,19 +2654,19 @@ class Database {
             id = 442,
             question = "Sinjali në figurë ndalon pushimin e mjeteve që nuk përfshihen në sinjal.",
             image = R.drawable.img_91,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 443,
             question = "Sinjali në figurë lejon pushimin e mjeteve të invalidëve.",
             image = R.drawable.img_91,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 444,
             question = "Sinjali në figurë, ndalon pushimin e mjeteve të tjera, që nuk përfshihen në të.",
             image = R.drawable.img_91,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 445,
@@ -2678,19 +2678,19 @@ class Database {
             id = 446,
             question = "Sinjali në figurë ndalon pushimin e mjeteve nga ora 7:00 deri në orën 9:00 dhe nga ora 17:00 deri në orën 20:00.",
             image = R.drawable.img_92,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 447,
             question = "Sinjali në figurë lejon pushimin i mjeteve nga ora 9:00 deri në orën 17:00 dhe nga ora 20:00 deri në orën 7:00.",
             image = R.drawable.img_92,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 448,
             question = "Sinjali në figurë lejon qëndrimin e mjeteve.",
             image = R.drawable.img_92,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 449,
@@ -2714,19 +2714,19 @@ class Database {
             id = 452,
             question = "Sinjali në figurë tregon një zonë doganore ku jemi të detyruar të ndalojmë.",
             image = R.drawable.img_118,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 453,
             question = "Sinjali në figurë na detyron të ndalojmë në kufi për të kryer kontroll doganor.",
             image = R.drawable.img_118,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 454,
             question = "Në prani të sinjalit në figurë duhet të ngadalësojmë shpejtësinë dhe të ndalojmë te dogana në kufi.",
             image = R.drawable.img_118,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 455,
@@ -2750,19 +2750,19 @@ class Database {
             id = 458,
             question = "Sinjali në figurë tregon praninë e një postblloku rrugor, të vënë nga organet e policisë.",
             image = R.drawable.img_119,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 459,
             question = "Sinjali në figurë tregon detyrimin për të ndaluar.",
             image = R.drawable.img_119,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 460,
             question = "Sinjali në figurë është vendosur në një largësi të përshtatshme nga postblloku i policisë dhe përsëritet deri në pikën ku duhet të ndalojmë.",
             image = R.drawable.img_119,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 461,
@@ -2786,25 +2786,25 @@ class Database {
             id = 464,
             question = "Sinjali në figurë na detyron të ngadalësojmë shpejtësinë dhe te ndalojmë para stacionit në autostradë.",
             image = R.drawable.img_120,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 465,
             question = "Sinjali në figurë të detyron të ndalosh në stacionin e autostradës për të marrë biletën e pagesës së taksës autostradale.",
             image = R.drawable.img_120,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 466,
             question = "Sinjali në figurë paraqet një stacion autostrade ku është i detyruar ndalimi.",
             image = R.drawable.img_120,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 467,
             question = "Sinjali në figurë detyron drejtuesit e mjeteve të ndalojnë për të marrë biletën ose për të paguar taksen e autostradës.",
             image = R.drawable.img_120,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 468,
@@ -2816,25 +2816,25 @@ class Database {
             id = 469,
             question = "Sinjali në figurë ndalon pushimin e mjeteve në oraret që tregohen në tabelë.",
             image = R.drawable.img_148,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 470,
             question = "Sinjali në figurë gjendet në pjesë rruge ku kryhen pastrime.",
             image = R.drawable.img_148,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 471,
             question = "Sinjali në figurë ndalon pushimin e mjeteve gjatë kohës kur kryhet pastrimi i rrugës.",
             image = R.drawable.img_148,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 472,
             question = "Sinjali në figurë tregon se ndalohet pushimi i mjeteve nga ora 21:00 deri në orën 4:00, të ditës së hënë deri të premte, për arsye të pastrimit të rrugës.",
             image = R.drawable.img_148,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 473,
@@ -2852,7 +2852,7 @@ class Database {
             id = 475,
             question = "Sinjali në figurë tregon se mund të qarkullojnë të gjitha kategoritë e mjeteve me motor, përveç atyre të treguara në sinjal.",
             image = R.drawable.img_151,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 476,
@@ -2864,13 +2864,13 @@ class Database {
             id = 477,
             question = "Sinjali në figurë ndalon kthimin nga e majta ose nga e djathta.",
             image = R.drawable.img_93,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 478,
             question = "Sinjali në figurë gjendet në afërsi të një kryqëzimi dhe të detyron të vazhdosh lëvizjen vetëm drejt.",
             image = R.drawable.img_93,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 479,
@@ -2894,19 +2894,19 @@ class Database {
             id = 482,
             question = "Sinjali në figurë është sinjal i drejtimit të detyruar majtas.",
             image = R.drawable.img_94,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 483,
             question = "Sinjali në figurë tregon detyrimin për t’u kthyer vetëm majtas.",
             image = R.drawable.img_94,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 484,
             question = "Sinjali në figurë e ndalon kthimin nga e djathta në kryqëzim.",
             image = R.drawable.img_94,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 485,
@@ -2930,13 +2930,13 @@ class Database {
             id = 488,
             question = "Sinjali në figurë detyron kthimin djathtas në kryqëzim.",
             image = R.drawable.img_95,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 489,
             question = "Sinjali në figurë është sinjal detyrues për drejtimin e lëvizjes.",
             image = R.drawable.img_95,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 490,
@@ -2954,25 +2954,25 @@ class Database {
             id = 492,
             question = "Sinjali në figurë është një sinjal detyrimi.",
             image = R.drawable.img_96,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 493,
             question = "Sinjali në figurë paralajmëron një detyrim për t’u kthyer djathtas.",
             image = R.drawable.img_96,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 494,
             question = "Sinjali në figurë është një sinjal vertikal detyrimi.",
             image = R.drawable.img_96,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 495,
             question = "Sinjali në figurë tregon se, pas 320 metrave, jemi të detyruar të kthehemi djathtas.",
             image = R.drawable.img_911,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 496,
@@ -2996,25 +2996,25 @@ class Database {
             id = 499,
             question = "Sinjali në figurë është një sinjal vertikal detyrimi.",
             image = R.drawable.img_97,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 500,
             question = "Sinjali në figurë paralajmëron kthim të detyruar majtas.",
             image = R.drawable.img_97,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 501,
             question = "Sinjali në figurë paralajmëron se, në kryqëzimin ku po afrohemi, është e ndaluar të kthehesh djathtas.",
             image = R.drawable.img_97,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 502,
             question = "Sinjali në figurë paralajmëron detyrimin për t’u kthyer majtas në kryqëzim.",
             image = R.drawable.img_97,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 503,
@@ -3032,19 +3032,19 @@ class Database {
             id = 505,
             question = "Sinjali në figurë tregon drejtime të lejuara djathtas dhe majtas.",
             image = R.drawable.img_98,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 506,
             question = "Sinjali në figurë të lejon të kthehesh djathtas ose majtas në kryqëzim.",
             image = R.drawable.img_98,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 507,
             question = "Në prani të sinjalit në figurë ndalohet të vazhdosh lëvizjen drejt.",
             image = R.drawable.img_98,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 508,
@@ -3068,25 +3068,25 @@ class Database {
             id = 511,
             question = "Sinjali në figurë është një sinjal vertikal detyrimi.",
             image = R.drawable.img_99,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 512,
             question = "Sinjali në figurë, të detyron të vazhdosh lëvizjen drejt ose të kthehesh djathtas, në kryqëzim.",
             image = R.drawable.img_99,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 513,
             question = "Sinjali në figurë ndalon të kthehesh nga e majta në kryqëzim.",
             image = R.drawable.img_99,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 514,
             question = "Sinjali në figurë tregon drejtimet e lejuara të lëvizjes.",
             image = R.drawable.img_99,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 515,
@@ -3110,25 +3110,25 @@ class Database {
             id = 518,
             question = "Sinjali në figurë është sinjal vertikal detyrimi.",
             image = R.drawable.img_100,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 519,
             question = "Sinjali në figurë lejon të vazhdosh lëvizjen drejt ose të kthehesh majtas.",
             image = R.drawable.img_100,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 520,
             question = "Sinjali në figurë ndalon kthimin djathtas në kryqëzim.",
             image = R.drawable.img_100,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 521,
             question = "Sinjali në figurë të detyron të zgjedhësh një nga drejtimet e lejuara.",
             image = R.drawable.img_100,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 522,
@@ -3146,25 +3146,25 @@ class Database {
             id = 524,
             question = "Sinjali në figurë detyron drejtuesit e mjeteve të kalojnë nga e majta e një shpëtuese trafiku.",
             image = R.drawable.img_101,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 525,
             question = "Sinjali në figurë detyron drejtuesit e mjeteve të kalojnë nga e majta e një trafikndarësi.",
             image = R.drawable.img_101,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 526,
             question = "Sinjali në figurë detyron drejtuesit e mjeteve të kalojnë nga e majta e një kantieri rrugor të mundshëm.",
             image = R.drawable.img_101,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 527,
             question = "Sinjali në figurë tregon se jemi të detyruar të kalojmë nga e majta e një ishulli trafiku.",
             image = R.drawable.img_101,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 528,
@@ -3182,37 +3182,37 @@ class Database {
             id = 530,
             question = "Sinjali në figurë është një sinjal detyrimi.",
             image = R.drawable.img_102,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 531,
             question = "Sinjali në figurë detyron drejtuesit e mjeteve të kalojnë djathtas një pengesë.",
             image = R.drawable.img_102,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 532,
             question = "Sinjali në figurë, i vendosur në prani të një ishulli trafiku, i detyron drejtuesit e mjeteve të kalojnë nga e djathta.",
             image = R.drawable.img_102,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 533,
             question = "Sinjali në figurë, i vendosur në prani të një kantieri rrugor, i detyron drejtuesit e mjeteve të kalojnë nga e djathta.",
             image = R.drawable.img_102,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 534,
             question = "Sinjali në figurë detyron drejtuesit e mjeteve të kalojnë nga e djathta e një trafikndarësi.",
             image = R.drawable.img_102,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 535,
             question = "Sinjali në figurë, i vendosur në prani të një shpëtueseje trafiku, i detyron drejtuesit e mjeteve të kalojnë nga e djathta e shpëtueses.",
             image = R.drawable.img_102,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 536,
@@ -3236,25 +3236,25 @@ class Database {
             id = 539,
             question = "Sinjali në figurë tregon kalime të lejuara djathtas ose majtas një kantieri rrugor.",
             image = R.drawable.img_103,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 540,
             question = "Sinjali në figurë lejon drejtuesin e mjetit të kalojë si nga majta ashtu dhe nga e djathta e një shpëtueseje trafiku.",
             image = R.drawable.img_103,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 541,
             question = "Sinjali në figurë lejon kalimin nga të dyja anët e një pengese të mundshme rrugore.",
             image = R.drawable.img_103,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 542,
             question = "Sinjali në figurë tregon kalime të lejuara djathtas ose majtas një ishulli trafiku të mundshëm.",
             image = R.drawable.img_103,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 543,
@@ -3266,13 +3266,13 @@ class Database {
             id = 544,
             question = "Sinjali në figurë tregon se kryqëzimi ku po futemi është i rregulluar me një rrethqarkullim.",
             image = R.drawable.img_104,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 545,
             question = "Sinjali në figurë detyron drejtuesit e mjeteve të qarkullojnë sipas drejtimit të shigjetave.",
             image = R.drawable.img_104,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 546,
@@ -3290,25 +3290,25 @@ class Database {
             id = 548,
             question = "Sinjali në figurë është një sinjal detyrimi.",
             image = R.drawable.img_105,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 549,
             question = "Sinjali në figurë tregon se në atë rrugë ndalohet të qarkullohet me shpejtësi më të vogël se 30 km/orë.",
             image = R.drawable.img_105,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 550,
             question = "Sinjali në figurë lejon qarkullimin me shpejtësi mbi 30 km/orë, por brenda kufijve maksimale të shpejtësisë që lejohet në atë rrugë.",
             image = R.drawable.img_105,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 551,
             question = "Sinjali në figurë të detyron të qarkullosh me shpejtësi të barabartë ose më të madhe se 30 km/orë.",
             image = R.drawable.img_105,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 552,
@@ -3332,25 +3332,25 @@ class Database {
             id = 555,
             question = "Sinjali në figurë tregon fundin e një detyrimi.",
             image = R.drawable.img_106,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 556,
             question = "Sinjali në figurë tregon fundin e detyrimit të kufirit minimal të shpejtësisë prej 30 km/orë.",
             image = R.drawable.img_106,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 557,
             question = "Pas sinjalit në figurë lejohet qarkullimi me shpejtësi të ndryshme, por jo më të madhe se ajo e lejuara për atë kategori rruge.",
             image = R.drawable.img_106,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 558,
             question = "Pas sinjalit në figurë lejohet qarkullimi edhe me shpejtësi më të vogël se 30 km/orë.",
             image = R.drawable.img_106,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 559,
@@ -3374,19 +3374,19 @@ class Database {
             id = 562,
             question = "Sinjali në figurë detyron drejtuesit e mjeteve të qarkullojnë me zinxhirë ose me goma për borë.",
             image = R.drawable.img_107,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 563,
             question = "Sinjali në figurë ndalon qarkullimin e mjeteve që nuk kanë vendosur goma bore ose zinxhirë për borë.",
             image = R.drawable.img_107,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 564,
             question = "Sinjali në figurë lejon qarkullimin e mjeteve me zinxhirë në gomat aktive.",
             image = R.drawable.img_107,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 565,
@@ -3410,7 +3410,7 @@ class Database {
             id = 568,
             question = "Sinjali në figurë tregon drejtim të detyruar djathtas për mjetet që transportojnë mallra të rrezikshme.",
             image = R.drawable.img_149,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 569,
@@ -3422,7 +3422,7 @@ class Database {
             id = 570,
             question = "Sinjali në figurë paralajmëron drejtim të detyruar për kategorinë e mjeteve të treguara në sinjal.",
             image = R.drawable.img_150,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 571,
@@ -3440,19 +3440,19 @@ class Database {
             id = 573,
             question = "Sinjali në figurë na detyron tu japim përparësis në kryqëzim, mjeteve që vijnë nga e majta dhe nga e djathta.",
             image = R.drawable.img_40,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 574,
             question = "Sinjali në figurë gjendet në rrugë dytësore, e cila ndërpritet me një rrugë tjetër me përparësi.",
             image = R.drawable.img_40,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 575,
             question = "Në prani të sinjalit në figurë, duhet të zvogëlojmë shpejtësinë e lëvizjes së mjetit dhe po të jetë nevoja, të ndalojmë para kryqëzimit.",
             image = R.drawable.img_40,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 576,
@@ -3470,19 +3470,19 @@ class Database {
             id = 578,
             question = "Sinjali në figurë të detyron të ndalosh para vijës tërthore të ndalimit dhe të japësh përparësi.",
             image = R.drawable.img_41,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 579,
             question = "Sinjali në figurë detyron kufizimin e shpejtësisë dhe ndalimin para vijës së ndalimit.",
             image = R.drawable.img_41,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 580,
             question = "Sinjali në figurë, si rregull, është i vendosur në kryqëzime me rrezikshmëri të lartë ose me fushëpamje të pamjaftueshme.",
             image = R.drawable.img_41,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 581,
@@ -3512,31 +3512,31 @@ class Database {
             id = 585,
             question = "Sinjali në figurë paralajmëron praninë e një sinjali pasardhës “JEP PERPARESI”.",
             image = R.drawable.img_42,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 586,
             question = "Sinjali në figurë paralajmëron drejtuesit e mjeteve për të dhënë përparësi nga e majta dhe nga e djathta, pas një distance 320 metër.",
             image = R.drawable.img_42,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 587,
             question = "Sinjali në figurë paralajmëron që po afrohemi në një kryqëzim ku duhet të japim përparësi.",
             image = R.drawable.img_42,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 588,
             question = "Pas sinjali në figurë duhet ta ulim shpejtësinë dhe nëse është e nevojshme të ndalojmë dhe të japim përparësi.",
             image = R.drawable.img_42,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 589,
             question = "Sinjali në figurë tregon se po lëvizim në një rrugë që pas 320 metër duhet të japim përparësi.",
             image = R.drawable.img_42,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 590,
@@ -3560,25 +3560,25 @@ class Database {
             id = 593,
             question = "Sinjali në figurë paralajmëron praninë e një sinjali pasardhës “NDAL DHE JEP PËRPARËSI”.",
             image = R.drawable.img_43,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 594,
             question = "Sinjali në figurë paralajmëron se do ndeshim sinjalin “STOP” në kryqëzim.",
             image = R.drawable.img_43,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 595,
             question = "Sinjali në figurë paralajmëron se në kryqëzim jemi të detyruar të ndalojmë dhe të japim përparësi.",
             image = R.drawable.img_43,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 596,
             question = "Sinjali në figurë tregon se duhet të ndalojmë pas distancës 320 metër dhe të japim përparësi majtas e djathtas.",
             image = R.drawable.img_43,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 597,
@@ -3608,19 +3608,19 @@ class Database {
             id = 601,
             question = "Sinjali në figurë paralajmëron një kryqëzim, në të cilin është në fuqi rregulli i dhënies së përparësisë nga e djathta.",
             image = R.drawable.img_44,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 602,
             question = "Sinjali në figurë na urdhëron të lëvizim me shpejtësi të kufizuar dhe t’u japim të drejtë kalimi mjeteve që vijnë nga krahu i djathtë.",
             image = R.drawable.img_44,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 603,
             question = "Në prani të sinjalit në figurë duhet të sigurohemi që mjetet, që vijnë nga e majta, janë të gatshëm të na japin të drejtën e kalimit.",
             image = R.drawable.img_44,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 604,
@@ -3632,19 +3632,19 @@ class Database {
             id = 605,
             question = "Sinjali në figurë të detyron tu japësh përparësi mjeteve, që vijnë nga kahu i kundërt.",
             image = R.drawable.img_45,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 606,
             question = "Në prani të sinjalit në figurë duhet të kufizojmë shpejtësinë.",
             image = R.drawable.img_45,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 607,
             question = "Sinjali në figurë tregon një pjesë rruge të ngushtë, që lejon kalimin vetëm për një rresht mjetesh.",
             image = R.drawable.img_45,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 608,
@@ -3662,19 +3662,19 @@ class Database {
             id = 610,
             question = "Sinjali në figurë tregon fundin e rrugës me të drejtë përparësie.",
             image = R.drawable.img_46,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 611,
             question = "Pas sinjalit në figurë duhet të jemi më të kujdesshëm, sepse e drejta e përparësisë ka mbaruar.",
             image = R.drawable.img_46,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 612,
             question = "Sinjali në figurë tregon se duhet të ulim shpejtësinë pasi nuk e kemi më të drejten e perparësisë.",
             image = R.drawable.img_46,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 613,
@@ -3698,19 +3698,19 @@ class Database {
             id = 616,
             question = "Sinjali në figurë paralajmëron një kryqëzim, ku mjeti në rrugën kryesore ka përparësi ndaj mjeteve që vijnë nga rrugët dytësore.",
             image = R.drawable.img_47,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 617,
             question = "Sinjali në figurë paralajmëron një kryqëzim të rrugës kryesore me një rrugë dytësore.",
             image = R.drawable.img_47,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 618,
             question = "Pas sinjalit në figurë duhet të ulim shpejtësinë dhe të sigurohemi se, mjetet që vijnë majtas ose djathtas, po na japin përparësinë.",
             image = R.drawable.img_47,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 619,
@@ -3734,19 +3734,19 @@ class Database {
             id = 622,
             question = "Sinjali në figurë paralajmëron kryqëzim të një rrugë kryesore me një rrugë dytësore, nga e djathta.",
             image = R.drawable.img_48,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 623,
             question = "Në prani të sinjalit në figurë duhet të kufizojmë shpejtësinë dhe të tregojmë kujdes gjatë lëvizjes.",
             image = R.drawable.img_48,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 624,
             question = "Sinjali në figurë tregon një kryqëzim, në të cilin kemi përparësi ndaj mjeteve që vijnë nga e djathta.",
             image = R.drawable.img_48,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 625,
@@ -3770,19 +3770,19 @@ class Database {
             id = 628,
             question = "Sinjali në figurë paralajmëron një kryqëzim te rrugës kryesore me një rruge dytësore nga e majta.",
             image = R.drawable.img_49,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 629,
             question = "Pas të sinjalit në figurë duhet të kufizojmë shpejtësinë dhe të tregojmë kujdes gjatë lëvizjes.",
             image = R.drawable.img_49,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 630,
             question = "Sinjali në figurë tregon një kryqëzim, në të cilin kemi përparësi ndaj mjeteve që vijnë nga e majta.",
             image = R.drawable.img_49,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 631,
@@ -3812,25 +3812,25 @@ class Database {
             id = 635,
             question = "Sinjali në figurë paralajmëron hyrje nga e djathta.",
             image = R.drawable.img_50,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 636,
             question = "Sinjali në figurë gjendet edhe në autostrada.",
             image = R.drawable.img_50,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 637,
             question = "Në prani të sinjalit në figurë, duhet të tregojmë kujdes e të shmangim rrezikun e përplasjes me mjetet që kërkojnë të futen në rrugën kryesore.",
             image = R.drawable.img_50,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 638,
             question = "Sinjali në figurë tregon se kemi përparësi ndaj mjeteve që vijnë nga e djathta.",
             image = R.drawable.img_50,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 639,
@@ -3854,13 +3854,13 @@ class Database {
             id = 642,
             question = "Sinjali në figurë paralajmëron një hyrje nga e majta.",
             image = R.drawable.img_51,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 643,
             question = "Sinjali në figurë tregon që kemi përparësi ndaj mjeteve që vijnë nga e majta.",
             image = R.drawable.img_51,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 644,
@@ -3884,13 +3884,13 @@ class Database {
             id = 647,
             question = "Sinjali në figurë tregon një pjesë rruge që gëzon të drejtën e përparësisë.",
             image = R.drawable.img_52,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 648,
             question = "Në prani të sinjalit në figurë duhet të sigurohemi se mjetet, që vijnë nga rrugët anësore, na kanë dhënë përparësi.",
             image = R.drawable.img_52,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 649,
@@ -3908,19 +3908,19 @@ class Database {
             id = 651,
             question = "Sinjali në figurë tregon se kemi përparësi kalimi ndaj mjeteve që vijnë në sens të kundërt.",
             image = R.drawable.img_53,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 652,
             question = "Në prani të sinjalit në figurë duhet të sigurohemi se mjetet, që vijnë nga sensi i kundërt, na kenë dhënë përparësi.",
             image = R.drawable.img_53,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 653,
             question = "Në prani të sinjalit në figurë duhet të jemi të kujdesshëm edhe pse kemi përparësi kalimi.",
             image = R.drawable.img_53,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 654,
@@ -3944,7 +3944,7 @@ class Database {
             id = 657,
             question = "Vija gjatësore e mesit të karrexhatës, kur është e ndërprerë, lejon parakalimin edhe duke kaluar përkohësisht në korsinë e sensit të kundërt.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 658,
@@ -3956,7 +3956,7 @@ class Database {
             id = 659,
             question = "Vijat e bardha gjatësore të ndërprera, të vendosura në anë të karrexhatës, e lejojnë daljen e mjetit nga karrexhata.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 660,
@@ -3968,19 +3968,19 @@ class Database {
             id = 661,
             question = "Vijat e bardha gjatësore të ndërprera në anë të karrexhatës gjenden në zona që ndajnë karrexhatën nga një vendqëndrim (xhep ndalimi) për mjetet.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 662,
             question = "Vijat e bardha gjatësore të ndërprera, të cilat gjenden në anë të karrexhatës, përcaktojnë kufijtë e rrugës kryesore në zonat ku ndërpriten me rrugët dytësore.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 663,
             question = "Vijat e bardha gjatësore të ndërprera, në anë të karrexhatës, gjenden në zona që ndajnë karrexhatën nga korsitë e shpejtimit dhe të ngadalësimit.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 664,
@@ -3998,13 +3998,13 @@ class Database {
             id = 666,
             question = "Vija e bardhë e pandërprerë, që kufizon korsinë e emergjencës me karrexhatën, mund të kapërcehet vetëm në raste të emergjencës.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 667,
             question = "Vija e bardhë e vazhduar, që kufizon korsinë e emergjencës me karrexhatën, përcakton kufirin e karrexhatës.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 668,
@@ -4022,19 +4022,19 @@ class Database {
             id = 670,
             question = "Shënimi ' BUS ', me ngjyrë të verdhë mbi asfaltin e rrugës, tregon një zonë të rezervuar për qëndrimin e autobusëve të shërbimin publik.",
             image = R.drawable.img_546,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 671,
             question = "Shkrimi  ' TAXI ', me ngjyrë të verdhë mbi asfaltin e rrugës, tregon një zonë të rezervuar për parkimin e mjeteve ' taksi '.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 672,
             question = "Germat P dhe L, të vizatuara mbi sipërfaqen e karrexhatës së bashku me kryqin e Shën Andreas, tregojnë se po i afrohemi një kalimi në nivel.",
             image = R.drawable.img_531,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 673,
@@ -4046,7 +4046,7 @@ class Database {
             id = 674,
             question = "Shiritat e pjerrët bardh e zi, të vendosur në sipërfaqe vertikale, si në figurë, tregojnë pengesë brenda karrexhatës.",
             image = R.drawable.img_912,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 675,
@@ -4064,7 +4064,7 @@ class Database {
             id = 677,
             question = "Shiritat e pjerrët bardh e zi, të vendosur në sipërfaqe vertikale( si në figurë), tregojnë pengesë pranë karrexhatës.",
             image = R.drawable.img_915,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 678,
@@ -4076,13 +4076,13 @@ class Database {
             id = 679,
             question = "Vija e bardhë e pandërprerë e mesit të karrexhatës, si në figurë, e ndan karrexhatën në dy korsi lëvizje.",
             image = R.drawable.img_501,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 680,
             question = "Vija e bardhë e pandërprerë e mesit të karrexhatës, si në figurë, ndalohet të tejkalohet nga mjetet.",
             image = R.drawable.img_501,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 681,
@@ -4100,25 +4100,25 @@ class Database {
             id = 683,
             question = "Vija e bardhë gjatësore e ndërprerë, si në figurë, e ndan karrexhatën në dy korsi lëvizje.",
             image = R.drawable.img_502,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 684,
             question = "Vija e bardhë gjatësore e ndërprerë, si në figurë, mund të kapërcehet.",
             image = R.drawable.img_502,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 685,
             question = "Vija e bardhë gjatësore e ndërprerë, si në figurë, ndan senset e lëvizjes në karrexhatën me dy sense lëvizje.",
             image = R.drawable.img_502,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 686,
             question = "Vija e bardhë gjatësore e ndërprerë, si në figurë, lejohet të kapërcehet gjatë parakalimit.",
             image = R.drawable.img_502,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 687,
@@ -4142,19 +4142,19 @@ class Database {
             id = 690,
             question = "Sinjalistika e paraqitur në figurë tregon një kryqëzim të një rruge me përparësi, me një rrugë tjetër pa përparësi.",
             image = R.drawable.img_506,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 691,
             question = "Sinjalistika në figurë tregon një kryqëzim ku mjetet, që qarkullojnë në karrexhatën me 4 korsi, kanë përparësi ndaj mjeteve që vijnë nga e djathta dhe nga e majta.",
             image = R.drawable.img_506,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 692,
             question = "Sinjalistika në figurë tregon se mjetet, që hyjnë në kryqëzim nga karrexhata me dy korsi, janë të detyruar të ndalojnë para kryqëzimit për të dhënë përparësi.",
             image = R.drawable.img_506,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 693,
@@ -4178,19 +4178,19 @@ class Database {
             id = 696,
             question = "Sinjalistika në figurë tregon një karrexhatë me katër korsi dhe me një sens lëvizje.",
             image = R.drawable.img_507,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 697,
             question = "Sinjalistika në figurë lejon parakalimin në kthesë dhe në kurriz rrugor.",
             image = R.drawable.img_507,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 698,
             question = "Sinjalistika në figurë ndalon ndryshimin e sensit të lëvizjes.",
             image = R.drawable.img_507,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 699,
@@ -4208,19 +4208,19 @@ class Database {
             id = 701,
             question = "Sinjalistika në figurë tregon një karrexhatë me dy korsi, me dy sense lëvizje.",
             image = R.drawable.img_508,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 702,
             question = "Sipas sinjalistikës në figurë, parakalimi u lejohet vetëm mjeteve që e kanë vijën e ndërprerë në krahun e majtë.",
             image = R.drawable.img_508,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 703,
             question = "Sipas sinjalistikës në figurë ndalohet parakalimi për mjetet që e kanë vijën e pandërprerë në krahun e majtë.",
             image = R.drawable.img_508,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 704,
@@ -4238,19 +4238,19 @@ class Database {
             id = 706,
             question = "Sinjalistika në figurë tregon një karrexhatë me dy korsi, me dy sense lëvizje.",
             image = R.drawable.img_509,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 707,
             question = "Sinjalistika në figurë ndalon parakalimin për të gjithë automjetet, duke shkelur vijat.",
             image = R.drawable.img_509,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 708,
             question = "Sipas sinjalistikës horizontale në figurë ndalohet qarkullimi mbi dy vijat e pandërprera.",
             image = R.drawable.img_509,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 709,
@@ -4274,19 +4274,19 @@ class Database {
             id = 712,
             question = "Sinjalistika në figurë ndalon ndryshimin e sensit të lëvizjes.",
             image = R.drawable.img_510,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 713,
             question = "Sinjalistika në figurë lejon parakalimin edhe në kthesë.",
             image = R.drawable.img_510,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 714,
             question = "Sinjalistika në figurë paraqet një rrugë urbane me korsi te rezervuar për autobusin e linjës.",
             image = R.drawable.img_510,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 715,
@@ -4316,25 +4316,25 @@ class Database {
             id = 719,
             question = "Sinjalistika në figurë tregon një rrugë me dy sense lëvizje, me nga tre korsi për çdo sens.",
             image = R.drawable.img_511,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 720,
             question = "Sinjalistika në figurë tregon rrugë urbane, të pajisur me korsi të rezervuara për biçikletat.",
             image = R.drawable.img_511,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 721,
             question = "Sinjalistika në figurë ndalon ndryshimin e sensit të lëvizjes.",
             image = R.drawable.img_511,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 722,
             question = "Sipas sinjalistikës në figurë lejohet parakalimi edhe në kthesë.",
             image = R.drawable.img_511,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 723,
@@ -4358,19 +4358,19 @@ class Database {
             id = 726,
             question = "Sinjalistika në figurë tregon një karrexhatë me dy korsi dhe me dy sense lëvizje.",
             image = R.drawable.img_512,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 727,
             question = "Sinjalistika në figurë tregon se në kthesë ka një degëzim ku është e lejuar hyrja e mjeteve.",
             image = R.drawable.img_512,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 728,
             question = "Sinjalistika në figurë ndalon pushimin e mjeteve në karrexhatë.",
             image = R.drawable.img_512,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 729,
@@ -4388,19 +4388,19 @@ class Database {
             id = 731,
             question = "Sinjalistika në figurë tregon një karrexhatë me dy korsi.",
             image = R.drawable.img_513,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 732,
             question = "Sinjalistika në figurë tregon një zonë ku është i lejuar qëndrimi i mjeteve.",
             image = R.drawable.img_513,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 733,
             question = "Sinjalistika në figurë lejon qëndrimin e mjetit në raste emergjence.",
             image = R.drawable.img_513,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 734,
@@ -4418,19 +4418,19 @@ class Database {
             id = 736,
             question = "Sinjalistika në figurë tregon se jemi para një kryqëzimi, ku është i detyruar ndalimi i mjetit para vijës së ndalimit.",
             image = R.drawable.img_514,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 737,
             question = "Sinjalistika në figurë tregon se jemi duke lëvizur në një karrexhatë me një sens.",
             image = R.drawable.img_514,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 738,
             question = "Sinjalistika në figurë tregon se jemi në një rrugë pa të drejtë përparësie.",
             image = R.drawable.img_514,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 739,
@@ -4454,19 +4454,19 @@ class Database {
             id = 742,
             question = "Sinjalistika në figurë tregon se jemi para një kryqëzimi, ku është i detyruar ndalimi i mjetit para vijës së ndalimit.",
             image = R.drawable.img_515,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 743,
             question = "Sinjalistika në figurë tregon se jemi duke lëvizur në një karrexhatë me dy korsi me dy sense lëvizje.",
             image = R.drawable.img_515,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 744,
             question = "Sinjalistika në figurë tregon se jemi në një rrugë ku duhet të ndalojmë dhe të japim përparësi.",
             image = R.drawable.img_515,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 745,
@@ -4496,25 +4496,25 @@ class Database {
             id = 749,
             question = "Sinjalistika në figurë tregon se jemi para një kryqëzimi ku duhet t'i japim përparësi mjeteve që vijnë nga e majta dhe nga e djathta.",
             image = R.drawable.img_516,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 750,
             question = "Sinjalistika në figurë tregon karrexhatë me dy sense me një korsi për sens.",
             image = R.drawable.img_516,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 751,
             question = "Sinjalistika në figurë tregon se jemi në një rrugë pa të drejtë përparësie.",
             image = R.drawable.img_516,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 752,
             question = "Sinjalistika në figurë lejon të kalojmë kryqëzimin pa ndaluar mjetin, por duke respektuar rregullat e përparësisë.",
             image = R.drawable.img_516,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 753,
@@ -4532,19 +4532,19 @@ class Database {
             id = 755,
             question = "Sinjalistika në figurë tregon një vendkalim për këmbësorë.",
             image = R.drawable.img_517,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 756,
             question = "Sinjalistika në figurë gjendët në rrugë urbane dhe interurbane.",
             image = R.drawable.img_517,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 757,
             question = "Sipas sinjalistikës në figurë, drejtuesit e mjeteve duhet të ulin shpejtësinë dhe t’i japin përparësi këmbësorëve që janë duke kaluar mbi vijat e bardha.",
             image = R.drawable.img_517,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 758,
@@ -4574,13 +4574,13 @@ class Database {
             id = 762,
             question = "Sinjalistika në figurë tregon vendkalim këmbësorësh.",
             image = R.drawable.img_518,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 763,
             question = "Sinjalistika në figurë tregon një vendkalim, në të cilin këmbësorët kanë përparësi ndaj mjeteve.",
             image = R.drawable.img_518,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 764,
@@ -4598,7 +4598,7 @@ class Database {
             id = 766,
             question = "Shkrimi “STOP” mbi rrugë, si në figurë, bashkëshoqëron sinjalin vertikal “NDAL DHE JEP PËRPARËSI”.",
             image = R.drawable.img_519,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 767,
@@ -4616,19 +4616,19 @@ class Database {
             id = 769,
             question = "Sinjalistika në figurë tregon vendkalim për biçikleta.",
             image = R.drawable.img_520,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 770,
             question = "Sinjalistika në figurë tregon vendkalim, në të cilin çiklistët që janë duke kaluar midis vijave kanë përparësi ndaj mjeteve.",
             image = R.drawable.img_520,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 771,
             question = "Vijat paralele të bardha të ndërprera, si në figurë, kufizojnë një vendkalim biçikletash.",
             image = R.drawable.img_520,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 772,
@@ -4652,13 +4652,13 @@ class Database {
             id = 775,
             question = "Sinjalistika në figurë tregon vendkalim biçikletash.",
             image = R.drawable.img_521,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 776,
             question = "Në prani të sinjalistikës në figurë, biçiklistët që kanë zënë karrexhatën kanë përparësi ndaj mjeteve.",
             image = R.drawable.img_521,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 777,
@@ -4682,19 +4682,19 @@ class Database {
             id = 780,
             question = "Sinjalistika horizontale në figurë tregon se po i afrohemi një kalimi në nivel.",
             image = R.drawable.img_531,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 781,
             question = "Sinjalistika në figurë u tregon drejtuesve të mjeteve se po i afrohen një kalimi në nivel.",
             image = R.drawable.img_531,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 782,
             question = "Sinjalistika në figurë ndalon parakalimin e mjeteve.",
             image = R.drawable.img_531,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 783,
@@ -4706,25 +4706,25 @@ class Database {
             id = 784,
             question = "Sinjalistika horizontale e paraqitur në figurë paraqet një ishull trafiku.",
             image = R.drawable.img_532,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 785,
             question = "Sinjalistika në figurë tregon një ishull trafiku të vizatuar në sipërfaqen e rrugës.",
             image = R.drawable.img_532,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 786,
             question = "Sinjalistika në figurë shërben për të orientuar rrymat e trafikut të mjeteve.",
             image = R.drawable.img_532,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 787,
             question = "Sinjalistika në figurë paraqet një zonë mbi të cilën ndalohet qarkullimi i mjeteve.",
             image = R.drawable.img_532,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 788,
@@ -4748,13 +4748,13 @@ class Database {
             id = 791,
             question = "Sinjalistika në figurë paraqet një ishull trafiku.",
             image = R.drawable.img_533,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 792,
             question = "Sinjalistika në figurë tregon një ishull trafiku të ngritur mbi sipërfaqen e rrugës.",
             image = R.drawable.img_533,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 793,
@@ -4778,13 +4778,13 @@ class Database {
             id = 796,
             question = "Në prani të sinjalistikës në figurë, duhet të zvogëlojmë shpejtësinë e lëvizjes së mjetit.",
             image = R.drawable.img_534,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 797,
             question = "Sinjalistika e paraqitur në figurë gjendet e vizatuar në sipërfaqen e karrexhatës.",
             image = R.drawable.img_534,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 798,
@@ -4802,25 +4802,25 @@ class Database {
             id = 800,
             question = "Sinjalistika e paraqitur në figurë tregon se duhet të zvogëlojmë shpejtësinë e lëvizjes.",
             image = R.drawable.img_535,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 801,
             question = "Sinjalistika në figurë tregon një kurriz artificial të vendosur në karrexhatë, me qëllim ngadalësimin e shpejtësisë së mjeteve.",
             image = R.drawable.img_535,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 802,
             question = "Sinjalistika në figurë është e vendosur mbi sipërfaqen e karrexhatës.",
             image = R.drawable.img_535,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 803,
             question = "Vijat e zeza dhe të verdha fosforeshente, si në figurë, identifikojnë një kurriz artificial të vendosur mbi sipërfaqen e karrexhatës.",
             image = R.drawable.img_535,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 804,
@@ -4850,13 +4850,13 @@ class Database {
             id = 808,
             question = "Sinjalistika në figurë tregon një korsi shpejtimi, që lejon hyrjen e mjeteve në karrexhatën me një sens lëvizje dhe me dy korsi.",
             image = R.drawable.img_537,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 809,
             question = "Sipas sinjalistikës në figurë ndalohet ndryshimi i sensit të lëvizjes.",
             image = R.drawable.img_537,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 810,
@@ -4874,13 +4874,13 @@ class Database {
             id = 812,
             question = "Sinjalistika si në figurë ndalon ndryshimin e sensit të lëvizjes në pjesët ngjitëse dhe zbritëse të kurrizit.",
             image = R.drawable.img_538,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 813,
             question = "Sinjalistika në figurë lejon parakalimin në pjesën zbritëse të kurrizit.",
             image = R.drawable.img_538,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 814,
@@ -4904,7 +4904,7 @@ class Database {
             id = 817,
             question = "Sipas sinjalistikës në figurë, ndalohet ndryshimi i sensit të lëvizjes.",
             image = R.drawable.img_539,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 818,
@@ -4922,13 +4922,13 @@ class Database {
             id = 820,
             question = "Sipas sinjalistikës në figurë karrexhata është me dy sense lëvizje.",
             image = R.drawable.img_540,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 821,
             question = "Sinjalistika në figurë tregon një karrexhatë me tre korsi, me dy sense lëvizje për qarkullim.",
             image = R.drawable.img_540,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 822,
@@ -4952,13 +4952,13 @@ class Database {
             id = 825,
             question = "Në prani të sinjalistikës në figurë ndalohet ndryshimi i sensit të lëvizjes.",
             image = R.drawable.img_541,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 826,
             question = "Sipas sinjalistikës në figurë ndalohet të lëvizet mbi vijat e pandërprera.",
             image = R.drawable.img_541,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 827,
@@ -4976,13 +4976,13 @@ class Database {
             id = 829,
             question = "Vijat drejtuese, në kryqëzimin si në figurë, orientojnë drejtuesit e mjeteve për rastet e kthimit majtas.",
             image = R.drawable.img_543,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 830,
             question = "Vijat drejtuese në figurë duhen lënë në të majtë të mjetit, kur kthehesh majtas.",
             image = R.drawable.img_543,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 831,
@@ -5000,19 +5000,19 @@ class Database {
             id = 833,
             question = "Në kryqëzimin e paraqitur në figurë, për t'u kthyer majtas duhet zënë korsia e majtë.",
             image = R.drawable.img_544,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 834,
             question = "Sipas sinjalistikës në figurë ndalohet ndryshimi i sensit të lëvizjes.",
             image = R.drawable.img_544,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 835,
             question = "Në kryqëzimin e paraqitur në figurë, për të vazhduar lëvizjen drejt , shërbejnë dy korsi.",
             image = R.drawable.img_544,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 836,
@@ -5024,25 +5024,25 @@ class Database {
             id = 837,
             question = "Sinjalistika në figurë tregon karrexhatë me dy sense lëvizje, me vendkalim për këmbësorë dhe me vende për parkimin e mjeteve.",
             image = R.drawable.img_545,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 838,
             question = "Sinjalistika e paraqitur në figurë tregon se në këtë karrexhatë, në pjesën e vijës zigzage të verdhë, është i ndaluar pushimi i mjeteve.",
             image = R.drawable.img_545,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 839,
             question = "Sipas sinjalistikës në figurë ndalohet parakalimi i mjeteve përpara vendkalimit të këmbësorëve.",
             image = R.drawable.img_545,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 840,
             question = "Sipas sinjalistikës në figurë lejohet parakalimi pas vendkalimit të këmbësorëve.",
             image = R.drawable.img_545,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 841,
@@ -5054,25 +5054,25 @@ class Database {
             id = 842,
             question = "Në sinjalistikën në figurë tregohet zona për qëndrimin e autobusëve të shërbimit publik.",
             image = R.drawable.img_546,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 843,
             question = "Zigzaget e verdha, të sinjalistikës në figurë, tregojnë zonën për hyrjen e autobusit në vendqëndrim dhe daljen e tij nga vendqëndrimi.",
             image = R.drawable.img_546,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 844,
             question = "Sipas sinjalistikës në figurë lejohet që autoveturat të kalojnë në zonën e kufizuar me të verdhë.",
             image = R.drawable.img_546,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 845,
             question = "Në sinjalistikën në figurë ndalohet pushimi edhe në pjesët me vija të verdha zigzag.",
             image = R.drawable.img_546,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 846,
@@ -5096,31 +5096,31 @@ class Database {
             id = 849,
             question = "Sinjalistika në figurë paraqet ndërprerjen e një rruge pa përparësi me rrugën që ka përparësi.",
             image = R.drawable.img_547,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 850,
             question = "Sinjalistika në figurë tregon një karrexhatë me dy sense, me tre korsi për sens, me shigjeta drejtuese.",
             image = R.drawable.img_547,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 851,
             question = "Sipas sinjalistikës në figurë, për t'u kthyer majtas duhet të pozicionohemi në korsinë e majtë.",
             image = R.drawable.img_547,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 852,
             question = "Sipas sinjalistikës në figurë ndalohet ndryshimi i sensit të lëvizjes.",
             image = R.drawable.img_547,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 853,
             question = "Sipas sinjalistikës në figurë, për të vazhduar lëvizjen drejt duhet të pozicionohemi në korsinë e mesit ose në atë të djathtë.",
             image = R.drawable.img_547,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 854,
@@ -5144,7 +5144,7 @@ class Database {
             id = 857,
             question = "Sipas sinjalistikës në figurë, mjeteve që ndodhen në rrugën me përparësi u ndalohet kthimi majtas në kryqëzimin e parë.",
             image = R.drawable.img_548,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 858,
@@ -5162,25 +5162,25 @@ class Database {
             id = 860,
             question = "Sipas sinjalistikës në figurë lejohet pushimi i mjeteve pa pagesë.",
             image = R.drawable.img_549,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 861,
             question = "Sipas sinjalistikës në figurë ndalohet ndryshimi i sensit të lëvizjes.",
             image = R.drawable.img_549,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 862,
             question = "Sipas sinjalistikës në figurë ndalohet parakalimi i mjeteve.",
             image = R.drawable.img_549,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 863,
             question = "Sinjalistika në figurë tregon një rrugë urbane me dy korsi dhe me vendparkimi për mjetet.",
             image = R.drawable.img_549,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 864,
@@ -5204,19 +5204,19 @@ class Database {
             id = 867,
             question = "Sipas sinjalistikës në figurë mund të kryhet manovra e parakalimit edhe në kthesë.",
             image = R.drawable.img_550,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 868,
             question = "Sipas sinjalistikës në figurë qarkullimi kryhet në dy senset e lëvizjes.",
             image = R.drawable.img_550,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 869,
             question = "Sipas sinjalistikës të paraqitur në figurë, është i ndaluar ndryshimi i sensit të lëvizjes.",
             image = R.drawable.img_550,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 870,
@@ -5240,19 +5240,19 @@ class Database {
             id = 873,
             question = "Sinjalistika horizontale e paraqitur në figurë tregon një karrexhatë me katër korsi dhe me një sens lëvizje.",
             image = R.drawable.img_551,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 874,
             question = "Sipas sinjalistikës në figurë ndalohet ndryshimi i sensit të lëvizjes.",
             image = R.drawable.img_551,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 875,
             question = "Sipas sinjalistikës në figurë lejohet parakalimi i mjeteve edhe në kthesë.",
             image = R.drawable.img_551,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 876,
@@ -5276,25 +5276,25 @@ class Database {
             id = 879,
             question = "Sinjalistika horizontale e paraqitur në figurë tregon një karrexhatë me gjashtë korsi dhe me dy sense lëvizje.",
             image = R.drawable.img_552,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 880,
             question = "Sipas sinjalistikës në figurë ndalohet ndryshimi i sensit të lëvizjes.",
             image = R.drawable.img_552,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 881,
             question = "Sipas sinjalistikës në figurë ndalohet qëndrimi dhe pushimi i mjeteve në karrexhatë.",
             image = R.drawable.img_552,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 882,
             question = "Sinjalistika horizontale e paraqitur në figurë lejon parakalimin e automjeteve edhe në kthesë.",
             image = R.drawable.img_552,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 883,
@@ -5318,7 +5318,7 @@ class Database {
             id = 886,
             question = "Sipas sinjalistikës në figurë ndalohet ndryshimi i sensit të lëvizjes.",
             image = R.drawable.img_553,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 887,
@@ -5342,13 +5342,13 @@ class Database {
             id = 890,
             question = "Sinjalistika në figurë tregon një karrexhatë me tre korsi.",
             image = R.drawable.img_554,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 891,
             question = "Sinjalistika horizontale e paraqitur në figurë lejon parakalimin e automjeteve.",
             image = R.drawable.img_554,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 892,
@@ -5366,13 +5366,13 @@ class Database {
             id = 894,
             question = "Sinjalistika horizontale, e paraqitur në figurë, ndalon kryerjen e manovrës së ndryshimit të sensit të lëvizjes.",
             image = R.drawable.img_555,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 895,
             question = "Sinjalistika horizontale, e paraqitur në figurë, lejon parakalimin e automjeteve vetëm në pjesën me dy korsi.",
             image = R.drawable.img_555,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 896,
@@ -5396,19 +5396,19 @@ class Database {
             id = 899,
             question = "Sinjalistika në figurë tregon një karrexhatë me katër korsi me dy sense lëvizje.",
             image = R.drawable.img_556,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 900,
             question = "Rruga e paraqitur në figurë ndalon kryerjen e manovrës së ndryshimit të sensit të lëvizjes.",
             image = R.drawable.img_556,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 901,
             question = "Sinjalistika e paraqitur në figurë tregon se në mes të karrexhatës ndodhet një ishull trafiku.",
             image = R.drawable.img_556,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 902,
@@ -5426,19 +5426,19 @@ class Database {
             id = 904,
             question = "Rruga e paraqitur në figurë është autostradë.",
             image = R.drawable.img_557,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 905,
             question = "Rruga e paraqitur në figurë ndalon ndryshimin e sensit të lëvizjes.",
             image = R.drawable.img_557,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 906,
             question = "Në rrugën e paraqitur në figurë lejohet parakalimi i automjeteve edhe në kthesë.",
             image = R.drawable.img_557,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 907,
@@ -5456,25 +5456,25 @@ class Database {
             id = 909,
             question = "Rruga e paraqitur në figurë është e përbërë nga dy karrexhata me një sens lëvizje secila.",
             image = R.drawable.img_558,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 910,
             question = "Rruga e paraqitur në figurë mund të jetë një rrugë interurbane kryesore.",
             image = R.drawable.img_558,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 911,
             question = "Në rrugën e paraqitur në figurë ndalohet ndryshimi i sensit të lëvizjes.",
             image = R.drawable.img_558,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 912,
             question = "Në rrugën e paraqitur në figurë lejohet parakalimi i mjeteve edhe në kthesa.",
             image = R.drawable.img_558,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 913,
@@ -5492,31 +5492,31 @@ class Database {
             id = 915,
             question = "Rruga e paraqitur në figurë është e përbërë nga dy karrexhata, secila me nga një sens lëvizje dhe tre korsi.",
             image = R.drawable.img_559,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 916,
             question = "Rruga e paraqitur në figurë mund të jete rrugë interurbane kryesore.",
             image = R.drawable.img_559,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 917,
             question = "Në rrugën e paraqitur në figurë ndalohet ndryshimi i sensit të lëvizjes.",
             image = R.drawable.img_559,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 918,
             question = "Rruga e paraqitur në figurë mund të jetë rrugë urbane kryesore.",
             image = R.drawable.img_559,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 919,
             question = "Në rrugën e paraqitur në figurë lejohet parakalimi i automjeteve edhe në kthesa.",
             image = R.drawable.img_559,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 920,
@@ -5540,19 +5540,19 @@ class Database {
             id = 923,
             question = "Rruga e paraqitur në figurë është e përbërë nga tre karrexhata.",
             image = R.drawable.img_560,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 924,
             question = "Në rrugën e paraqitur në figurë lejohet parakalimi edhe në kthesa.",
             image = R.drawable.img_560,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 925,
             question = "Rruga e paraqitur në figurë është e formuar nga 7 (shtatë) korsi.",
             image = R.drawable.img_560,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 926,
@@ -5576,19 +5576,19 @@ class Database {
             id = 929,
             question = "Sinjalistika horizontale e paraqitur në figurë tregon një karrexhatë me 8 (tetë) korsi me dy sense lëvizje.",
             image = R.drawable.img_561,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 930,
             question = "Sinjalistika horizontale e paraqitur në figurë ndalon kryerjen e manovrës së ndryshimit të sensit të lëvizjes.",
             image = R.drawable.img_561,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 931,
             question = "Sinjalistika horizontale e paraqitur në figurë lejon parakalimin e automjeteve edhe në kthesa.",
             image = R.drawable.img_561,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 932,
@@ -5606,25 +5606,25 @@ class Database {
             id = 934,
             question = "Rruga e paraqitur në figurë është e përbërë nga tri karrexhata.",
             image = R.drawable.img_562,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 935,
             question = "Rruga e paraqitur në figurë është e formuar nga 8 (tetë) korsi.",
             image = R.drawable.img_562,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 936,
             question = "Rruga e paraqitur në figurë ka karrexhatat anësore, që si rregull janë me një sens lëvizje.",
             image = R.drawable.img_562,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 937,
             question = "Në rrugën e paraqitur në figurë lejohet parakalimi edhe në kthesa.",
             image = R.drawable.img_562,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 938,
@@ -5648,25 +5648,25 @@ class Database {
             id = 941,
             question = "Vija e bardhë tërthore e vazhduar, si në figurë, tregon vendin, para të cilit drejtuesit e mjeteve ndalojnë për të dhënë përparësi.",
             image = R.drawable.img_563,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 942,
             question = "Vija e bardhë tërthore e vazhduar, si në figurë, mund të ndeshet në një kryqëzim të rregulluar me semafor.",
             image = R.drawable.img_563,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 943,
             question = "Vija e bardhë tërthore e vazhduar, si në figurë, mund të plotësohet me shkrimin “STOP” mbi sipërfaqen e rrugës.",
             image = R.drawable.img_563,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 944,
             question = "Vija e bardhë tërthore e vazhduar, si në figurë, na detyron të tregojmë kujdes të veçantë, për shkak se jemi para një kryqëzimi.",
             image = R.drawable.img_563,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 945,
@@ -5690,25 +5690,25 @@ class Database {
             id = 948,
             question = "Sipas sinjalistikës në figurë, mjeteve në korsitë A, B dhe C ju ndalohet lëvizja drejt në kryqëzim.",
             image = R.drawable.img_564,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 949,
             question = "Në sinjalistikën si në figurë tregohet një degë kryqëzimi me një sens lëvizje.",
             image = R.drawable.img_564,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 950,
             question = "Sipas sinjalistikës në figurë, korsia A lejon vetëm të kthehesh majtas.",
             image = R.drawable.img_564,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 951,
             question = "Sipas sinjalistikës në figurë është e lejuar të ndryshosh korsi në pjesën e rrugës ku vijat e korsisë janë të ndërprera.",
             image = R.drawable.img_564,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 952,
@@ -5732,25 +5732,25 @@ class Database {
             id = 955,
             question = "Sipas sinjalistikës në figurë, korsia A lejon vetëm kthimin nga e majta.",
             image = R.drawable.img_565,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 956,
             question = "Sipas sinjalistikës në figurë, korsia B lejon të vazhdosh drejt ose të kthehesh nga e majta.",
             image = R.drawable.img_565,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 957,
             question = "Sipas sinjalistikës në figurë, korsia C lejon të vazhdosh drejt ose të kthehesh djathtas.",
             image = R.drawable.img_565,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 958,
             question = "Sipas sinjalistikës në figurë jemi në një rrugë me dy sense lëvizje për qarkullim.",
             image = R.drawable.img_565,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 959,
@@ -5786,13 +5786,13 @@ class Database {
             id = 964,
             question = "Bordura e trotuarit me shirita me ngjyrë të verdhë e të zezë, si në figurë, tregon ndalim qëndrimi për mjetet.",
             image = R.drawable.img_670,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 965,
             question = "Bordura e trotuarit me shirita me ngjyrë të verdhë e të zezë, si në figurë, ndalon pushimin e mjeteve përgjatë segmentit rrugor të shënuar.",
             image = R.drawable.img_670,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 966,
@@ -5816,25 +5816,25 @@ class Database {
             id = 969,
             question = "Sinjali në figurë tregon një semafor normal për mjete.",
             image = R.drawable.img_154,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 970,
             question = "Semafori në figurë me dritë të kuqe të ndezur detyron ndalimin e mjetit.",
             image = R.drawable.img_154,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 971,
             question = "Semafori në figurë me dritë jeshile të ndezur lejon hyrjen në kryqëzim.",
             image = R.drawable.img_154,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 972,
             question = "Semafori në figurë me dritë të verdhë të ndezur lejon kalimin e kryqëzimit nga mjetet që kanë hyrë në kryqëzim, në momentin e ndezjes së dritës së verdhë.",
             image = R.drawable.img_154,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 973,
@@ -5852,13 +5852,13 @@ class Database {
             id = 975,
             question = "Drita e kuqe e ndezur e semaforit në figurë ndalon hyrjen e mjeteve në kryqëzim.",
             image = R.drawable.img_154,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 976,
             question = "Drita e kuqe e ndezur e semaforit në figurë detyron drejtuesit e mjeteve të ndalojnë pa e zënë kryqëzimin.",
             image = R.drawable.img_154,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 977,
@@ -5882,19 +5882,19 @@ class Database {
             id = 980,
             question = "Kur në semafor është e ndezur drita jeshile, drejtuesi i mjetit mund te kthehet djathtas, por duke ju dhënë përparësi kalimi këmbësorëve që kapërcejnë karrexhatën.",
             image = R.drawable.img_154,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 981,
             question = "Kur në semafor ndizet drita jeshile, drejtuesi i mjetit mund të vazhdojë lëvizjen drejt.",
             image = R.drawable.img_154,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 982,
             question = "Kur në semafor ndizet drita jeshile duhet të kalojmë kryqëzimin duke treguar kujdes.",
             image = R.drawable.img_154,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 983,
@@ -5906,25 +5906,25 @@ class Database {
             id = 984,
             question = "Kur semafori në figurë ka të ndezur dritën jeshile lejohet kalimi i mjeteve.",
             image = R.drawable.img_154,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 985,
             question = "Kur semafori në figurë ka të ndezur dritën e verdhë dhe drejtuesi i mjetit ka hyrë në kryqëzim, duhet të vazhdojë lëvizjen për të liruar kryqëzimin.",
             image = R.drawable.img_154,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 986,
             question = "Kur semafori në figurë ka të ndezur dritën e verdhë, që pulson, lejohet hyrja në kryqëzim, por duke treguar kujdes dhe duke ulur shpejtësinë.",
             image = R.drawable.img_154,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 987,
             question = "Kur semafori në figurë është jashtë funksionit lejon kalimin e mjeteve, por duke treguar kujdes.",
             image = R.drawable.img_154,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 988,
@@ -5936,13 +5936,13 @@ class Database {
             id = 989,
             question = "Ndezja e dritës së verdhë fikse të semaforit tregon se drejtuesi i mjetit duhet të ndalojë para kryqëzimit.",
             image = R.drawable.img_154,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 990,
             question = "Drita e verdhë fikse e semaforit është e ndezur kur drita jeshile dhe drita e kuqe janë të fikura.",
             image = R.drawable.img_154,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 991,
@@ -5960,19 +5960,19 @@ class Database {
             id = 993,
             question = "Kur drita e verdhë e semaforit pulson (fiket e ndizet), drita jeshile dhe drita e kuqe e semaforit janë të fikura.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 994,
             question = "Në rast se drita e verdhë e semaforit pulson (fiket e ndizet), tregon se duhet të kemi kujdes dhe të ulim shpejtësinë e lëvizjes.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 995,
             question = "Në rast se drita e verdhë e semaforit pulson (fiket e ndizet), mund të vazhdojmë lëvizjen por me kujdes të veçantë.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 996,
@@ -5984,19 +5984,19 @@ class Database {
             id = 997,
             question = "Sinjalet e ndritshme, si në figurë, janë semaforë të korsive, që rregullojnë qarkullimin e mjeteve në karrexhata me disa korsi.",
             image = R.drawable.img_155,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 998,
             question = "Në semaforët e korsive, shigjeta e kuqe e ndezur detyron ndalimin e mjeteve që lëvizin sipas drejtimit të saj.",
             image = R.drawable.img_155,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 999,
             question = "Në semaforët e korsive, shigjeta jeshile e ndezur lejon vazhdimin e lëvizjes sipas drejtimit të shigjetës.",
             image = R.drawable.img_155,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1000,
@@ -8265,13 +8265,13 @@ class Database {
             id = 1377,
             question = "Në një rrugë me një korsi për çdo sens lëvizjeje, mund të përdorim korsinë e krahut të majtë për parakalime kur është e mundur dhe na lejon sinjalistika rrugore.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1378,
             question = "Në një rrugë me shina tramvaji, mjetet mund të qarkullojnë sipër shinave (nëse nuk sinjalizohet ndryshe) por pa penguar lëvizjen e tramvajit.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1379,
@@ -8283,31 +8283,31 @@ class Database {
             id = 1380,
             question = "Mjetet me motor, në karrexhatën me një korsi për çdo sens, duhet të qarkullojnë sa më në afërsi të kufirit të djathtë të saj.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1381,
             question = "Mjetet me motor, në një rrugë me dy karrexhata duhet të qarkullojnë në karrexhatën e krahut të djathtë.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1382,
             question = "Mjetet me motor duhet të qarkullojnë në karrexhatën e djathtë ose të mesit kur rruga është e ndarë me tri karrexhata të veçanta.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1383,
             question = "Mjetet me motor duhet të qarkullojnë në korsinë e krahut të djathtë kur karrexhata ka një korsi për çdo sens lëvizje.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1384,
             question = "Mjetet me motor mund të qarkullojnë në rreshta paralele në afërsi të kryqëzimeve të rregulluar me semafor ose punonjës trafiku.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1385,
@@ -8319,31 +8319,31 @@ class Database {
             id = 1386,
             question = "Mjetet pa motor duhet të lëvizin sa më afër kufirit të djathtë të karrexhatës.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1387,
             question = "Kafshët e shoqëruara duhet të lëvizin sa më afër kufirit të djathtë të karrexhatës.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1388,
             question = "Mjetet që këmbehen me njëri tjetrin, në një rrugë me një korsi për çdo sens lëvizjeje, duhet të lëvizin sa më afër kufirit të djathtë të karrexhatës.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1389,
             question = "Mjetet që përshkojnë një kthesë në një rrugë me një korsi për çdo sens lëvizjeje, duhet të lëvizin sa më afër kufirit të djathtë të karrexhatës.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1390,
             question = "Mjetet që përshkojnë një kurriz rruge në një rrugë me një korsi për çdo sens lëvizjeje, duhet të lëvizin sa më afër kufirit të djathtë të karrexhatës.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1391,
@@ -8367,31 +8367,31 @@ class Database {
             id = 1394,
             question = "Për t'u futur në një rrugë nga e djathta është e ndaluar të pozicionohemi në krahun e majtë të karrexhatës.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1395,
             question = "Ndalohet qëndrimi i mjetit mbi shinat hekurudhore.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1396,
             question = "Kur duam të ndryshojmë drejtimin e lëvizjes së mjetit duhet sinjalizuar para se të fillojmë manovrën.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1397,
             question = "Në rrugë ndalohet të bëhen gara shpejtësie me mjet.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1398,
             question = "Në rrugë është e ndaluar të qarkullosh, pa pasur arsye, me një shpejtësi jashtëzakonisht të ulët.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1399,
@@ -8409,7 +8409,7 @@ class Database {
             id = 1401,
             question = "Gjatë drejtimit të mjetit, ndalohet të ndryshohet korsia e lëvizjes në mënyrë të papritur.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1402,
@@ -8433,25 +8433,25 @@ class Database {
             id = 1405,
             question = "Lejohet lëvizja në rreshta paralele, kur punonjësi i trafikut e autorizon këtë lëvizje.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1406,
             question = "Lejohet lëvizja në rreshta paralele, kur afrohemi në një kryqëzim të pajisur me semaforë.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1407,
             question = "Lejohet lëvizja në rreshta paralele në hapësirën e kryqëzimit, kur ndizet sinjali jeshil i semaforit.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1408,
             question = "Në karrexhatat me dy korsi për çdo sens lëvizje lejohet lëvizja në rreshta paralele, në kushtet e trafikut të dendur.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1409,
@@ -8469,43 +8469,43 @@ class Database {
             id = 1411,
             question = "Kur futemi në rrjedhën e trafikut të një rruge me dy sense, është e detyrueshme të japim përparësi nga e majta dhe nga e djathta.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1412,
             question = "Kur kryejmë manovrën e kthimit të sensit të lëvizjes, është e detyrueshme të japim përparësi nga e majta dhe nga e djathta.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1413,
             question = "Kur kryejmë manovrën e lëvizjes prapa, për të hyrë në një karrexhatë me dy sense, është e detyrueshme të japim përparësi nga e majta dhe nga e djathta.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1414,
             question = "Kur duam të futemi nga një rrugicë private në rrugën kryesore me dy sense, është e detyrueshme të japim përparësi nga e majta dhe nga e djathta.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1415,
             question = "Kur dalim nga garazhi apo vendpushimi i mjetit dhe duam të hyjmë në rrjedhën e trafikut dhe karrexhata është me dy sense, është e detyrueshme të japim përparësi nga e majta dhe nga e djathta.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1416,
             question = "Në prani të sinjalit 'STOP' është e detyrueshme të japësh përparësi nga e majta dhe nga e djathta.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1417,
             question = "Në prani të sinjalit “Jep përparësi” është e detyrueshme të japësh përparësi nga e majta dhe nga e djathta.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1418,
@@ -8541,19 +8541,19 @@ class Database {
             id = 1423,
             question = "Kur i afrohemi një kryqëzimi duhet të pozicionohemi në korsinë e duhur për drejtimin që kemi zgjedhur.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1424,
             question = "Kur i afrohemi një kryqëzimi, duhet të vendosemi në një rresht mbas mjeteve të tjera edhe kur drejtojmë një mjet me dy rrota.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1425,
             question = "Kur i afrohemi një kryqëzimi, duhet të mos futemi në kryqëzim, nëse nuk jemi të sigurt që mund ta lirojmë zonën e kryqëzimit në kohën e duhur.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1426,
@@ -8583,19 +8583,19 @@ class Database {
             id = 1430,
             question = "Në afërsi apo në vazhdimësi të kryqëzimeve është e ndaluar të bësh lëvizje zigzag dhe të ndryshosh në mënyrë të papritur korsinë.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1431,
             question = "Në afërsi apo në vazhdimësi të kryqëzimeve është e ndaluar të ndryshosh në mënyrë të papritur drejtimin e lëvizjes.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1432,
             question = "Në afërsi apo në vazhdimësi të kryqëzimeve të rrugëve interurbane ndalohet qëndrimi i mjeteve.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1433,
@@ -8619,31 +8619,31 @@ class Database {
             id = 1436,
             question = "Kur duam të ndryshojmë drejtimin e lëvizjes duhet të ndezim në kohë sinjalin e drejtimit.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1437,
             question = "Për t’u kthyer nga e djathta, si rregull, duhet të zhvendosemi pranë kufirit të djathtë të karrexhatës, duke lënë qendrën e kryqëzimit në të majtë.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1438,
             question = "Për t’u kthyer nga e majta, në një karrexhatë me dy sense, duhet të vendosemi afër mesit (aksit) të karrexhatës dhe si rregull duhet të lëmë qendrën e kryqëzimit në të djathtë.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1439,
             question = "Për t'u kthyer nga e majta, në rrugë me një sens lëvizjeje, duhet të vendosemi pranë kufirit të majtë të karrexhatës dhe si rregull duhet të lëmë qendrën e kryqëzimit në të djathtë.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1440,
             question = "Kur bëhet ndryshimi i drejtimit, sinjalet e drejtimit duhet të jenë të aktivizuara gjatë gjithë kryerjes së manovrës.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1441,
@@ -8667,37 +8667,37 @@ class Database {
             id = 1444,
             question = "Për t’u kthyer djathtas duhet të pozicionoheni sa më afër kufirit të djathtë të karrexhatës.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1445,
             question = "Para se të fillojmë kryerjen e manovrës për kthim djathtas duhet të lajmërojmë për kryerjen e manovrës.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1446,
             question = "Për t’u kthyer djathtas duhet të pozicionoheni në korsitë që lejojnë kthimin djathtas.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1447,
             question = "Para se të fillojmë kryerjen e manovrës për kthim djathtas duhet të ndezim sinjalin e djathtë të drejtimit.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1448,
             question = "Gjatë kthimit djathtas duhet të ulim shpejtësinë dhe t’u japim përparësi këmbësorëve që kalojnë karrexhatën ku duam të hymë, nëse semafori është me dritë jeshile.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1449,
             question = "Kthimi nga e djathta kryhet pa krijuar rrezik apo pengesë për përdoruesit e tjerë të rrugës.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1450,
@@ -8727,25 +8727,25 @@ class Database {
             id = 1454,
             question = "Për t’u kthyer majtas në kryqëzim, në një karrexhatë me dy sense lëvizjeje, jemi të detyruar t’i afrohemi sa më afër aksit të karrexhatës.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1455,
             question = "Për t’u kthyer nga e majta, në një karrexhatë me dy sense lëvizjeje, jemi të detyruar të kthehemi në afërsi të qendrës së kryqëzimit duke e lenë atë djathtas.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1456,
             question = "Kur lëvizim në një karrexhatë me dy sense lëvizjeje, kthimi nga e majta bëhet (si rregull) duke lënë qendrën e kryqëzimit në të djathtën tonë.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1457,
             question = "Për t’u kthyer nga e majta, në kryqëzimet që rregullohen me rrethrrotullim të detyruar, duhet ta lemë qendrën e kryqëzimit në të majtën tonë.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1458,
@@ -8769,19 +8769,19 @@ class Database {
             id = 1461,
             question = "Kur lëvizim në një karrexhatë me një sens lëvizjeje dhe duam të kthehemi majtas, duhet t’i afrohemi sa më shumë kufirit të majtë të karrexhatës.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1462,
             question = "Kur lëvizim në një karrexhatë me një sens lëvizjeje, kthimi nga e majta kryhet si rregull duke lënë qendrën e kryqëzimit në të djathtën tonë.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1463,
             question = "Kur lëvizim në një karrexhatë me një sens lëvizjeje dhe duam të kthehemi majtas, duhet të sinjalizojmë në kohë për kryerjen e manovrës.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1464,
@@ -8793,31 +8793,31 @@ class Database {
             id = 1465,
             question = "Kur kemi ndërmend të ndryshojmë korsi, duhet të sigurohemi paraprakisht nëse korsia ku do të futemi, është e lirë përpara dhe prapa nesh në një hapësirë të mjaftueshme.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1466,
             question = "Kur duam të ndryshojmë korsi, duhet të sigurohemi që mjetet para dhe prapa nuk kanë sinjalizuar për fillimin e së njëjtës manovër.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1467,
             question = "Kur kemi ndërmend të ndryshojmë korsi, duhet të sinjalizojmë kryerjen e manovrës paraprakisht duke përdorur sinjalet e drejtimit.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1468,
             question = "Kur kemi ndërmend të ndryshojmë korsi, duhet të mos krijojmë rrezik apo pengesa për ata që po lëvizin në korsinë ku duam të futemi.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1469,
             question = "Kur kemi ndërmend të ndryshojmë korsi, duhet të sigurohemi që vija e ndarjes së korsive të jetë e ndërprerë.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1470,
@@ -8847,19 +8847,19 @@ class Database {
             id = 1474,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti N kalon i pari.",
             image = R.drawable.img_603,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1475,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti A kalon i fundit kryqëzimin.",
             image = R.drawable.img_603,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1476,
             question = "Në kryqëzimin e paraqitur në figurë, mjetet kalojnë sipas radhës: N, D, A.",
             image = R.drawable.img_603,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1477,
@@ -8883,19 +8883,19 @@ class Database {
             id = 1480,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti R kalon i pari kryqëzimin.",
             image = R.drawable.img_604,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1481,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti A ka krahun e djathtë të zënë.",
             image = R.drawable.img_604,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1482,
             question = "Në kryqëzimin e paraqitur në figurë, radha e kalimit të mjeteve është: R, D, A.",
             image = R.drawable.img_604,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1483,
@@ -8919,25 +8919,25 @@ class Database {
             id = 1486,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti E kalon i fundit.",
             image = R.drawable.img_605,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1487,
             question = "Në kryqëzimin e paraqitur në figurë, radha e kalimit të mjeteve është: T, R, E.",
             image = R.drawable.img_605,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1488,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti T kalon i pari sepse ka përparësi si mjet që lëviz mbi shina.",
             image = R.drawable.img_605,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1489,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti E i jep përparësi mjetit R.",
             image = R.drawable.img_605,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1490,
@@ -8967,19 +8967,19 @@ class Database {
             id = 1494,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti E kalon i pari kryqëzimin.",
             image = R.drawable.img_606,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1495,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti C duhet të kalojë kryqëzimin pas mjetit E.",
             image = R.drawable.img_606,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1496,
             question = "Në kryqëzimin e paraqitur në figurë, radha e kalimit të mjeteve është: E, C, M.",
             image = R.drawable.img_606,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1497,
@@ -9009,19 +9009,19 @@ class Database {
             id = 1501,
             question = "Në kryqëzimin e paraqitur në figurë tramvaji T kalon i pari kryqëzimin.",
             image = R.drawable.img_607,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1502,
             question = "Në kryqëzimin e paraqitur në figurë, radha e kalimit të mjeteve është: T, P, M.",
             image = R.drawable.img_607,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1503,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti M kalon i fundit kryqëzimin.",
             image = R.drawable.img_607,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1504,
@@ -9039,19 +9039,19 @@ class Database {
             id = 1506,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti H kalon i dyti.",
             image = R.drawable.img_608,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1507,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti C kalon i fundit.",
             image = R.drawable.img_608,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1508,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti B kalon i pari.",
             image = R.drawable.img_608,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1509,
@@ -9075,13 +9075,13 @@ class Database {
             id = 1512,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti N kalon i pari.",
             image = R.drawable.img_612,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1513,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti N kalon i pari pastaj mjetet B dhe C kalojnë njëkohësisht.",
             image = R.drawable.img_612,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1514,
@@ -9099,19 +9099,19 @@ class Database {
             id = 1516,
             question = "Në kryqëzimin e paraqitur në figurë tramvaji T kalon i pari.",
             image = R.drawable.img_613,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1517,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti A duhet të presë kalimin e mjetit O.",
             image = R.drawable.img_613,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1518,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti O duhet të presë kalimin e tramvaji T.",
             image = R.drawable.img_613,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1519,
@@ -9135,19 +9135,19 @@ class Database {
             id = 1522,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti T kalon i fundit.",
             image = R.drawable.img_614,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1523,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti R kalon i pari.",
             image = R.drawable.img_614,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1524,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti A duhet të presë të kalojë mjeti R.",
             image = R.drawable.img_614,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1525,
@@ -9165,19 +9165,19 @@ class Database {
             id = 1527,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti R kalon i pari.",
             image = R.drawable.img_615,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1528,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti C kalon i fundit.",
             image = R.drawable.img_615,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1529,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti A kalon pas mjetit R.",
             image = R.drawable.img_615,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1530,
@@ -9201,7 +9201,7 @@ class Database {
             id = 1533,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti B kalon i pari kryqëzimin.",
             image = R.drawable.img_616,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1534,
@@ -9213,13 +9213,13 @@ class Database {
             id = 1535,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti N përfundon manovrën e kthimit majtas pas kalimit të mjeteve R e A.",
             image = R.drawable.img_617,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1536,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti N pasi vendoset në qendër të kryqëzimit, duhet të presë kalimin e mjeteve R dhe A.",
             image = R.drawable.img_617,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1537,
@@ -9237,13 +9237,13 @@ class Database {
             id = 1539,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti L kalon i pari.",
             image = R.drawable.img_618,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1540,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti H kalon i fundit.",
             image = R.drawable.img_618,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1541,
@@ -9267,19 +9267,19 @@ class Database {
             id = 1544,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti A, kur nuk ka ndezur sinjalet e urgjencës, duhet ti japë përparësi mjetit M.",
             image = R.drawable.img_619,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1545,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti A kalon i pari kur ka në funksion sinjalet e urgjencës.",
             image = R.drawable.img_619,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1546,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti M kalon i fundit kur mjeti A ka ndezur sinjalet e urgjencës.",
             image = R.drawable.img_619,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1547,
@@ -9297,7 +9297,7 @@ class Database {
             id = 1549,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti B duhet të presë të kalojë mjeti P.",
             image = R.drawable.img_620,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1550,
@@ -9309,7 +9309,7 @@ class Database {
             id = 1551,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti C ka krahun e djathtë të zënë.",
             image = R.drawable.img_620,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1552,
@@ -9327,19 +9327,19 @@ class Database {
             id = 1554,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti L kalon i pari.",
             image = R.drawable.img_621,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1555,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti C i jep përparësi mjetit L.",
             image = R.drawable.img_621,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1556,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti B kalon i fundit.",
             image = R.drawable.img_621,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1557,
@@ -9357,19 +9357,19 @@ class Database {
             id = 1559,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti E kalon i pari.",
             image = R.drawable.img_622,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1560,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti L i jep përparësi mjetit E.",
             image = R.drawable.img_622,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1561,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti B kalon i fundit.",
             image = R.drawable.img_622,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1562,
@@ -9387,25 +9387,25 @@ class Database {
             id = 1564,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti C për të lëvizur drejt duhet të ishte pozicionuar në korsinë e mesit.",
             image = R.drawable.img_623,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1565,
             question = "Në kryqëzimin e paraqitur në figurë, mjetet A dhe R kalojnë njëkohësisht.",
             image = R.drawable.img_623,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1566,
             question = "Në kryqëzimin e paraqitur në figurë, radha e kalimit të mjeteve është A dhe R njëkohësisht, pastaj mjeti C.",
             image = R.drawable.img_623,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1567,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti C kalon i fundit.",
             image = R.drawable.img_623,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1568,
@@ -9441,13 +9441,13 @@ class Database {
             id = 1573,
             question = "Sipas figurës, mjeti S ka zgjedhur korsi të gabuar.",
             image = R.drawable.img_624,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1574,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti S i jep përparësi mjetit C.",
             image = R.drawable.img_624,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1575,
@@ -9459,19 +9459,19 @@ class Database {
             id = 1576,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti P mund të lëvizë drejt ose të kthehet djathtas.",
             image = R.drawable.img_625,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1577,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti A është i detyruar të lëvizë vetëm drejt.",
             image = R.drawable.img_625,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1578,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti D mund të lëvizë drejt, ose të kthehet majtas.",
             image = R.drawable.img_625,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1579,
@@ -9495,19 +9495,19 @@ class Database {
             id = 1582,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti C ka bërë zgjedhje të gabuar të korsisë.",
             image = R.drawable.img_626,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1583,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti A kalon i fundit.",
             image = R.drawable.img_626,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1584,
             question = "Në kryqëzimin e paraqitur në figurë, radha e kalimit të mjeteve është: E dhe C njëkohësisht pastaj mjeti A.",
             image = R.drawable.img_626,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1585,
@@ -9531,13 +9531,13 @@ class Database {
             id = 1588,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti N, është i pozicionuar në korsi të gabuar.",
             image = R.drawable.img_627,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1589,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti C është pozicionuar ne korsi të gabuar.",
             image = R.drawable.img_627,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1590,
@@ -9555,19 +9555,19 @@ class Database {
             id = 1592,
             question = "Në kryqëzimin e paraqitur në figurë, të tre mjetet, për drejtimet që kanë zgjedhur, janë pozicionuar në korsitë e duhura.",
             image = R.drawable.img_628,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1593,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti D kalon i fundit.",
             image = R.drawable.img_628,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1594,
             question = "Në kryqëzimin e paraqitur në figurë, radha e kalimit të mjeteve është: N dhe C njëkohësit, pastaj D.",
             image = R.drawable.img_628,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1595,
@@ -9591,13 +9591,13 @@ class Database {
             id = 1598,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti A ka të drejtë të lëvizë drejt ose të kthehet djathtas.",
             image = R.drawable.img_629,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1599,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti A i jep përparësi mjetit H.",
             image = R.drawable.img_629,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1600,
@@ -9615,19 +9615,19 @@ class Database {
             id = 1602,
             question = "Në kryqëzimin e paraqitur në figurë duhet zbatuar rregulli i dhënies së përparësisë nga e djathta.",
             image = R.drawable.img_630,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1603,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti S kalon i pari dhe mbas tij kalojnë mjetet D dhe E.",
             image = R.drawable.img_630,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1604,
             question = "Në kryqëzimin e paraqitur në figurë, radha e kalimit të mjeteve është: S, D, E.",
             image = R.drawable.img_630,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1605,
@@ -9645,13 +9645,13 @@ class Database {
             id = 1607,
             question = "Në kryqëzimin e paraqitur në figurë, radha e kalimit të mjeteve është: R, D, F.",
             image = R.drawable.img_631,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1608,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti F, kalon i fundit.",
             image = R.drawable.img_631,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1609,
@@ -9669,19 +9669,19 @@ class Database {
             id = 1611,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti N kalon i fundit.",
             image = R.drawable.img_632,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1612,
             question = "Në kryqëzimin e paraqitur në figurë, radha e kalimit të mjeteve është: D, P, B, N.",
             image = R.drawable.img_632,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1613,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti N kalon pas mjetit B.",
             image = R.drawable.img_632,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1614,
@@ -9705,19 +9705,19 @@ class Database {
             id = 1617,
             question = "Në kryqëzimin e paraqitur në figurë, radha e kalimit të mjeteve është: N, A, R.",
             image = R.drawable.img_633,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1618,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti A duhet t`i jap përparësi mjetit N.",
             image = R.drawable.img_633,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1619,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti R duhet t`i jap përparësi mjetit A.",
             image = R.drawable.img_633,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1620,
@@ -9741,19 +9741,19 @@ class Database {
             id = 1623,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti A kalon i pari kryqëzimin.",
             image = R.drawable.img_634,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1624,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti L, duhet të kaloje i fundit kryqëzimin.",
             image = R.drawable.img_634,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1625,
             question = "Në kryqëzimin e paraqitur në figurë, radha e kalimit të mjeteve është: A, C, L.",
             image = R.drawable.img_634,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1626,
@@ -9777,19 +9777,19 @@ class Database {
             id = 1629,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti P kalon i pari ndërsa mjetet E dhe S kalojnë njëkohësisht.",
             image = R.drawable.img_635,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1630,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti P kalon i pari.",
             image = R.drawable.img_635,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1631,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti P lëviz në rrugë me përparësi.",
             image = R.drawable.img_635,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1632,
@@ -9813,19 +9813,19 @@ class Database {
             id = 1635,
             question = "Në kryqëzimin e paraqitur në figurë tramvaji T kalon i pari kryqëzimin.",
             image = R.drawable.img_636,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1636,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti A kalon pas tramvajit T.",
             image = R.drawable.img_636,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1637,
             question = "Në kryqëzimin e paraqitur në figurë, radha e kalimit të mjeteve është: T, A, S.",
             image = R.drawable.img_636,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1638,
@@ -9849,19 +9849,19 @@ class Database {
             id = 1641,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti L kalon i pari.",
             image = R.drawable.img_637,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1642,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti D është i fundit që kalon kryqëzimin.",
             image = R.drawable.img_637,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1643,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti L e ka krahun e djathtë të lirë.",
             image = R.drawable.img_637,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1644,
@@ -9885,19 +9885,19 @@ class Database {
             id = 1647,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti B lëviz i pari deri në qendër të kryqëzimit dhe ndalon.",
             image = R.drawable.img_638,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1648,
             question = "Në kryqëzimin e paraqitur në figurë, mjetet D dhe N kalojnë njëkohësisht pasi ka kaluar mjeti R.",
             image = R.drawable.img_638,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1649,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti B duhet të ndalojë në qendër të kryqëzimit.",
             image = R.drawable.img_638,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1650,
@@ -9921,19 +9921,19 @@ class Database {
             id = 1653,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti A duhet t’i japë përparësi mjeteve T dhe B.",
             image = R.drawable.img_639,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1654,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti A ka përparësi ndaj mjetit C.",
             image = R.drawable.img_639,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1655,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti C kalon i fundit.",
             image = R.drawable.img_639,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1656,
@@ -9957,19 +9957,19 @@ class Database {
             id = 1659,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti R kalon pa i dhënë përparësi asnjë mjeti tjetër.",
             image = R.drawable.img_640,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1660,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti B kalon i fundit.",
             image = R.drawable.img_640,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1661,
             question = "Në kryqëzimin e paraqitur në figurë, mjetet duhet të kalojnë sipas radhës: R, D, B.",
             image = R.drawable.img_640,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1662,
@@ -9999,31 +9999,31 @@ class Database {
             id = 1666,
             question = "Në kryqëzimin e paraqitur në figurë, i jepet të drejtë njërit nga mjetet, pastaj të tjerët zbatojnë rregullin e dhënies përparësisë nga e djathta.",
             image = R.drawable.img_641,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1667,
             question = "Në kryqëzimin e paraqitur në figurë, tramvaji ka përparësi ndaj mjeteve të tjera.",
             image = R.drawable.img_642,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1668,
             question = "Në kryqëzimin e paraqitur në figurë, pas kalimit të kryqëzimit nga trami T, mjeti A zhvendoset në qendër të kryqëzimit për të lejuar kalimin e mjeteve O dhe M.",
             image = R.drawable.img_642,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1669,
             question = "Në kryqëzimin e paraqitur në figurë, tramvaji kalon i pari kryqëzimin.",
             image = R.drawable.img_642,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1670,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti M duhet të presë kalimin e mjetit O.",
             image = R.drawable.img_642,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1671,
@@ -10053,25 +10053,25 @@ class Database {
             id = 1675,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti H kalon i pari.",
             image = R.drawable.img_643,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1676,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti D duhet t’i japë përparësi mjetit H.",
             image = R.drawable.img_643,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1677,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti L duhet t’i japë përparësi mjetit B.",
             image = R.drawable.img_643,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1678,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti H, kalon para mjetit D.",
             image = R.drawable.img_643,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1679,
@@ -10101,25 +10101,25 @@ class Database {
             id = 1683,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti P kalon i pari kryqëzimin.",
             image = R.drawable.img_644,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1684,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti D duhet t’i japë përparësi mjetit P.",
             image = R.drawable.img_644,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1685,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti B duhet të presë që të kenë kaluar mjetet P dhe D.",
             image = R.drawable.img_644,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1686,
             question = "Në kryqëzimin e paraqitur në figurë, mjetet duhet të kalojnë sipas radhës: P, D, B, L.",
             image = R.drawable.img_644,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1687,
@@ -10149,19 +10149,19 @@ class Database {
             id = 1691,
             question = "Në kryqëzimin e paraqitur në figurë, kur mjeti A nuk është në shërbim urgjence, radha e lëvizjes është F dhe H njëkohësisht, pastaj A dhe në fund mjeti N.",
             image = R.drawable.img_645,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1692,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti N kalon i fundit.",
             image = R.drawable.img_645,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1693,
             question = "Në kryqëzimin e paraqitur në figurë, nëse mjeti A është në shërbim urgjence kalon i pari kryqëzimin.",
             image = R.drawable.img_645,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1694,
@@ -10191,31 +10191,31 @@ class Database {
             id = 1698,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti C kalon para mjetit A.",
             image = R.drawable.img_646,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1699,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti D kalon para mjetit C.",
             image = R.drawable.img_646,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1700,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti D kalon i pari.",
             image = R.drawable.img_646,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1701,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti H është i fundit që kalon.",
             image = R.drawable.img_646,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1702,
             question = "Në kryqëzimin e paraqitur në figurë, radha e kalimit është: D, C, A, H.",
             image = R.drawable.img_646,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1703,
@@ -10251,19 +10251,19 @@ class Database {
             id = 1708,
             question = "Në kryqëzimin e paraqitur në figurë, mjetet L dhe H kalojnë njëkohësisht të parët.",
             image = R.drawable.img_647,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1709,
             question = "Në kryqëzimin e paraqitur në figurë, radha e kalimit të mjeteve është: L me H kalojnë njëkohësisht, pastaj B dhe në fund O.",
             image = R.drawable.img_647,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1710,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti B kalon pas mjeteve H e L.",
             image = R.drawable.img_647,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1711,
@@ -10287,25 +10287,25 @@ class Database {
             id = 1714,
             question = "Në kryqëzimin e paraqitur në figurë, tramvaji T kalon i pari.",
             image = R.drawable.img_648,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1715,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti B duhet të kalojë i fundit.",
             image = R.drawable.img_648,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1716,
             question = "Në kryqëzimin e paraqitur në figurë, mjetet duhet të kalojnë sipas radhës: T, G, P, B.",
             image = R.drawable.img_648,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1717,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti G duhet të presë kalimin e mjetit T.",
             image = R.drawable.img_648,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1718,
@@ -10323,13 +10323,13 @@ class Database {
             id = 1720,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti P e ka përshkruar kryqëzimin gabim.",
             image = R.drawable.img_649,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1721,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti O e ka përshkruar kryqëzimin ne rregull.",
             image = R.drawable.img_649,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1722,
@@ -10347,25 +10347,25 @@ class Database {
             id = 1724,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti L kalon i pari kryqëzimin.",
             image = R.drawable.img_650,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1725,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti E duhet t’i japë përparësi mjetit L.",
             image = R.drawable.img_650,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1726,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti R duhet të presë kalimin e mjeteve E dhe N.",
             image = R.drawable.img_650,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1727,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti E ka përparësi ndaj trolejbusit R.",
             image = R.drawable.img_650,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1728,
@@ -10401,25 +10401,25 @@ class Database {
             id = 1733,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti D kalon i pari.",
             image = R.drawable.img_651,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1734,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti A kalon i fundit.",
             image = R.drawable.img_651,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1735,
             question = "Në kryqëzimin e paraqitur në figurë, mjetet E dhe S lëvizin në të njëjtën kohë.",
             image = R.drawable.img_651,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1736,
             question = "Në kryqëzimin e paraqitur në figurë, mjetet E dhe S lëvizin pas mjetit D.",
             image = R.drawable.img_651,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1737,
@@ -10449,19 +10449,19 @@ class Database {
             id = 1741,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti F duhet të presë kalimin e mjetit A.",
             image = R.drawable.img_652,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1742,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti L duhet të presë kalimin e mjeteve H, A dhe F.",
             image = R.drawable.img_652,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1743,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti A duhet të presë kalimin e mjetit H.",
             image = R.drawable.img_652,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1744,
@@ -10485,19 +10485,19 @@ class Database {
             id = 1747,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti G është futur në kryqëzim dhe kalon i pari.",
             image = R.drawable.img_653,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1748,
             question = "Në kryqëzimin e paraqitur në figurë, radha e kalimit të mjeteve është: G, B, D, N.",
             image = R.drawable.img_653,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1749,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti N kalon i fundit.",
             image = R.drawable.img_653,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1750,
@@ -10527,25 +10527,25 @@ class Database {
             id = 1754,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti A duhet të presë kalimin e mjeteve C dhe R.",
             image = R.drawable.img_654,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1755,
             question = "Në kryqëzimin e paraqitur në figurë, mjetet kalojnë në sipas radhës: C, R, A, H.",
             image = R.drawable.img_654,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1756,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti H duhet të presë kalimin e mjeteve C, R, A.",
             image = R.drawable.img_654,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1757,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti C kalon i pari.",
             image = R.drawable.img_654,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1758,
@@ -10575,25 +10575,25 @@ class Database {
             id = 1762,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti S kalon para mjetit R.",
             image = R.drawable.img_655,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1763,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti S kalon para të gjitha mjeteve të tjera.",
             image = R.drawable.img_655,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1764,
             question = "Në kryqëzimin e paraqitur në figurë, mjetet kalojnë sipas radhës: S, A, E, R.",
             image = R.drawable.img_655,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1765,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti R kalon i fundit.",
             image = R.drawable.img_655,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1766,
@@ -10629,19 +10629,19 @@ class Database {
             id = 1771,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti M i jep përparësi mjetit C.",
             image = R.drawable.img_656,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1772,
             question = "Në kryqëzimin e paraqitur në figurë, radha e kalimit të mjeteve është: C, M.",
             image = R.drawable.img_656,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1773,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti C vazhdon lëvizjen duke u siguruar që mjeti M ka ndaluar për ti dhënë përparësi.",
             image = R.drawable.img_656,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1774,
@@ -10671,19 +10671,19 @@ class Database {
             id = 1778,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti A kalon kryqëzimin pas mjetit R.",
             image = R.drawable.img_657,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1779,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti C duhet t’i japë përparësi mjetit A.",
             image = R.drawable.img_657,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1780,
             question = "Në kryqëzimin e paraqitur në figurë, mjetet kalojnë kryqëzimin sipas radhës: R, A, C.",
             image = R.drawable.img_657,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1781,
@@ -10707,19 +10707,19 @@ class Database {
             id = 1784,
             question = "Në kryqëzimin e paraqitur në figurë, mjetet C dhe L kalojnë njëkohësisht, pastaj kalon mjeti B.",
             image = R.drawable.img_658,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1785,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti B e kalon kryqëzimin i fundit.",
             image = R.drawable.img_658,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1786,
             question = "Në kryqëzimin e paraqitur në figurë, mjetet C dhe L nuk e pengojnë njëri tjetrin.",
             image = R.drawable.img_658,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1787,
@@ -10743,19 +10743,19 @@ class Database {
             id = 1790,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti C kalon pas mjetit A.",
             image = R.drawable.img_659,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1791,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti R kalon para mjetit A.",
             image = R.drawable.img_659,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1792,
             question = "Në kryqëzimin e paraqitur në figurë, mjetet kalojnë sipas radhës: R, A, C.",
             image = R.drawable.img_659,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1793,
@@ -10779,25 +10779,25 @@ class Database {
             id = 1796,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti D kalon i dyti.",
             image = R.drawable.img_660,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1797,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti H kalon i pari pasi ka krahun e djathtë të lirë.",
             image = R.drawable.img_660,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1798,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti H kalon i pari.",
             image = R.drawable.img_660,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1799,
             question = "Në kryqëzimin e paraqitur në figurë, mjetet e përshkojnë atë sipas kësaj radhe: H, D, B.",
             image = R.drawable.img_660,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1800,
@@ -10827,25 +10827,25 @@ class Database {
             id = 1804,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti E kalon i pari.",
             image = R.drawable.img_661,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1805,
             question = "Mjeti C kalon pas mjetit E.",
             image = R.drawable.img_661,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1806,
             question = "Mjeti L kalon pas mjeteve E dhe C.",
             image = R.drawable.img_661,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1807,
             question = "Në kryqëzimin e paraqitur në figurë, mjetet kalojnë sipas radhës: E, C, L.",
             image = R.drawable.img_661,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1808,
@@ -10869,25 +10869,25 @@ class Database {
             id = 1811,
             question = "Në kryqëzimin e paraqitur në figurë, mjetet E dhe B kalojnë pas mjetit A.",
             image = R.drawable.img_662,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1812,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti A kalon i pari.",
             image = R.drawable.img_662,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1813,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti E kalon para mjetit B.",
             image = R.drawable.img_662,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1814,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti B kalon i fundit.",
             image = R.drawable.img_662,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1815,
@@ -10917,19 +10917,19 @@ class Database {
             id = 1819,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti T kalon i fundit.",
             image = R.drawable.img_663,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1820,
             question = "Në kryqëzimin e paraqitur në figurë, radha e kalimit të mjeteve është: R, B, D, T.",
             image = R.drawable.img_663,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1821,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti B kalon i dyti.",
             image = R.drawable.img_663,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1822,
@@ -10953,19 +10953,19 @@ class Database {
             id = 1825,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti B kalon i dyti.",
             image = R.drawable.img_664,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1826,
             question = "Në kryqëzimin e paraqitur në figurë, radha e kalimit të mjeteve është: S, B, L, D.",
             image = R.drawable.img_664,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1827,
             question = "Në kryqëzimin e paraqitur në figurë, duhet të zbatohet rregulli i dhënies së përparësisë nga e djathta.",
             image = R.drawable.img_664,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1828,
@@ -10989,19 +10989,19 @@ class Database {
             id = 1831,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti V ka të drejtën e përparësisë ndaj mjetit H.",
             image = R.drawable.img_665,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1832,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti E kalon pas mjetit A.",
             image = R.drawable.img_665,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1833,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti A kalon i pari.",
             image = R.drawable.img_665,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1834,
@@ -11025,19 +11025,19 @@ class Database {
             id = 1837,
             question = "Në kryqëzimin e paraqitur në figurë, mjetet A dhe N kalojnë njëkohësisht.",
             image = R.drawable.img_666,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1838,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti C kalon pas mjeteve A dhe N.",
             image = R.drawable.img_666,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1839,
             question = "Në kryqëzimin e paraqitur në figurë, mjetet N dhe A kalojnë njëkohësisht dhe pastaj kalon mjeti C.",
             image = R.drawable.img_666,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1840,
@@ -11055,19 +11055,19 @@ class Database {
             id = 1842,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti A kalon para mjetit P.",
             image = R.drawable.img_667,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1843,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti P kalon pas mjeteve C dhe A.",
             image = R.drawable.img_667,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1844,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti C kalon para mjetit A.",
             image = R.drawable.img_667,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1845,
@@ -11091,19 +11091,19 @@ class Database {
             id = 1848,
             question = "Në kryqëzimin e paraqitur në figurë, mjetet kalojnë sipas radhës: S, N, C.",
             image = R.drawable.img_668,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1849,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti S e kalon kryqëzimin i pari.",
             image = R.drawable.img_668,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1850,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti C e kalon kryqëzimin i fundit.",
             image = R.drawable.img_668,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1851,
@@ -11127,25 +11127,25 @@ class Database {
             id = 1854,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti C kalon i pari.",
             image = R.drawable.img_669,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1855,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti A kalon pas mjetit C.",
             image = R.drawable.img_669,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1856,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti A kalon para mjetit L.",
             image = R.drawable.img_669,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1857,
             question = "Në kryqëzimin e paraqitur në figurë, mjeti L kalon para mjetit R.",
             image = R.drawable.img_669,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1858,
@@ -11169,19 +11169,19 @@ class Database {
             id = 1863,
             question = "Ndalohet parakalimi në të përpjetat e kurrizeve të rrugës, në rrugët me një korsi për çdo sens lëvizje.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1864,
             question = "Ndalohet të parakaloni kur mjeti juaj po parakalohet nga një mjet tjetër.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1865,
             question = "Ndalohet parakalimi i mjeteve që kanë ndaluar për t’i dhënë përparësi këmbësorëve.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1866,
@@ -11229,37 +11229,37 @@ class Database {
             id = 1873,
             question = "Ndalohet parakalimi kur mjeti që kemi përpara ka sinjalizuar për fillimin e kësaj manovre.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1874,
             question = "Ndalohet parakalimi i një mjeti që ka hyrë në parakalim dhe ka zënë korsinë e sensit të kundërt.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1875,
             question = "Ndalohet parakalimi në rrugët me një korsi për çdo sens lëvizje, kur fushëpamja është e pamjaftueshme.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1876,
             question = "Ndalohet parakalimi në korsitë e shpejtimit.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1877,
             question = "Ndalohet parakalimi në korsitë e ngadalësimit.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1878,
             question = "Ndalohet parakalimi i një mjeti të ndaluar, përpara një “KALIMI NË NIVEL” pa barriera, në pritje të kalimit të trenit.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1879,
@@ -11301,7 +11301,7 @@ class Database {
             id = 1885,
             question = "Ndalohet parakalimi i mjeteve që kanë ndaluar për t’i dhënë përparësi këmbësorëve.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1886,
@@ -11319,19 +11319,19 @@ class Database {
             id = 1888,
             question = "Ndalohet parakalimi kur sinjalizimi rrugor e ndalon këtë manovër.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1889,
             question = "Ndalohet parakalimi kur, për të kryer manovrën, duhet të kapërcejmë vijën e pandërprerë gjatësore të rrugës.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1890,
             question = "Ndalohet parakalimi kur mjeti që lëviz prapa nesh ka filluar manovrën e parakalimit.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1891,
@@ -11355,25 +11355,25 @@ class Database {
             id = 1894,
             question = "Ndalohet parakalimi kur, për të kryer manovrën, duhet të kapërcejmë vijën gjatësore të bardhë të pandërprerë të mesit të rrugës.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1895,
             question = "Ndalohet parakalimi në afërsi ose në vazhdimësi të “KALIMEVE NË NIVEL” pa barriera ( të papajisura me semafor ).",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1896,
             question = "Ndalohet të parakalohet një mjet që ka ndaluar për t’i dhënë përparësi një mjeti tjetër.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1897,
             question = "Ndalohet parakalimi në korsitë e shpejtimit dhe të ngadalësimit.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1898,
@@ -11397,25 +11397,25 @@ class Database {
             id = 1901,
             question = "Lejohet parakalimi në afërsi të një kryqëzimi, kur ai është i rregulluar me semaforë.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1902,
             question = "Lejohet parakalimi në afërsi të kryqëzimit, kur ai është i rregulluar me punonjës trafiku.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1903,
             question = "Lejohet parakalimi në afërsi të një kryqëzimi, në rrugë me përparësi me dy korsi për çdo sens lëvizje, kur korsitë janë të rregulluar me sinjalistikën horizontale përkatëse.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1904,
             question = "Lejohet parakalimi nga krahu i djathtë, në kryqëzime ose në afërsi të tyre, i një mjeti që ka të ndezur sinjalin e krahut të majtë për t'u kthyer majtas dhe e ka filluar këtë manovër.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1905,
@@ -11433,25 +11433,25 @@ class Database {
             id = 1907,
             question = "Lejohet parakalimi në vazhdimësi të një kurrizi, në një rruge urbane me dy korsi për çdo sens lëvizje.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1908,
             question = "Lejohet parakalimi në vazhdimësi të një kurrizi rruge, në rrugët me karrexhata të pavarura.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1909,
             question = "Lejohet parakalimi në pjesën zbritëse të kurrizit rrugor, kur e lejon sinjalistika.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1910,
             question = "Lejohet parakalimi në pjesën zbritëse të një kurrizi rrugor, kur rruga ka dy korsi për çdo sens lëvizje.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1911,
@@ -11469,19 +11469,19 @@ class Database {
             id = 1913,
             question = "Lejohet parakalimi nga e djathta, kur mjeti që kemi përpara ka sinjalizuar se ka ndërmend të kthehet nga krahu i majtë.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1914,
             question = "Lejohet parakalimi i një tramvaji në lëvizje nga e djathta, kur ka hapësirë të mjaftueshme nga e djathta e karrexhatës.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1915,
             question = "Lejohet parakalimi nga e djathta në një karrexhatë me një sens lëvizje, kur mjeti përpara ka sinjalizuar se po ndalon në të majtë të rrugës.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1916,
@@ -11505,37 +11505,37 @@ class Database {
             id = 1919,
             question = "Para se të parakalojmë duhet të sigurohemi që fushëpamja të jetë e mjaftueshme.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1920,
             question = "Për të parakaluar duhet të sigurohemi se kemi distancë të mjaftueshme për të kryer manovrën.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1921,
             question = "Para se të fillojmë manovrën e parakalimit duhet të ndezim sinjalin e krahut të majtë për të treguar fillimin e kësaj manovre.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1922,
             question = "Për të kryer manovrën e parakalimit mund të përdorim borinë, nëse lejohet, për të njoftuar drejtuesin e mjetit që kemi përpara.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1923,
             question = "Në kryerjen e manovrës së parakalimit duhet të kemi parasysh se sinjalizimi rrugor e lejon këtë manovër.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1924,
             question = "Parakalimi, si rregull, bëhet nga krahu i majtë.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1925,
@@ -11559,25 +11559,25 @@ class Database {
             id = 1928,
             question = "Gjatë parakalimit të mjetit duhet të mbajmë distancë anësore të pranueshme për të ruajtur sigurinë.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1929,
             question = "Manovra e parakalimit duhet të fillojë nga një distancë jo më e vogël se largësia e sigurisë.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1930,
             question = "Në përfundim të manovrës së parakalimit duhet kaluar në të djathtë të rrugës, pa penguar apo krijuar rrezik për mjetin që parakalohet.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1931,
             question = "Para se të parakalojmë, në rrugët interurbane/ lejohet përdorimi i fenerëve verbues (dritat e gjata) apo boritë për të njoftuar drejtuesit e mjeteve që duam të parakalojmë.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1932,
@@ -11601,25 +11601,25 @@ class Database {
             id = 1935,
             question = "Distanca (gjatësia) e nevojshme për manovrën e parakalimit rritet, nëse mjeti që po parakalohet e rrit shpejtësinë.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1936,
             question = "Distanca e nevojshme për manovrën e parakalimit rritet, kur mjeti që parakalohet është i gjatë.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1937,
             question = "Distanca e nevojshme për manovrën e parakalimit rritet, kur mjeti që bën parakalimin është i gjatë.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1938,
             question = "Distanca e nevojshme për manovrën e parakalimit varet nga shpejtësitë e të dy mjeteve që marrin pjesë në manovër.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1939,
@@ -11643,19 +11643,19 @@ class Database {
             id = 1942,
             question = "Para se të fillojë parakalimin, drejtuesi i mjetit duhet të ndezë në kohë sinjalin përkatës, për t’i treguar drejtuesit të mjetit që ka mbrapa se ka ndërmend të kryejë parakalim.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1943,
             question = "Para se të fillojë parakalimin, drejtuesi i mjetit duhet të sigurohet se mjeti që ka mbrapa nuk e ka filluar këtë manovër.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1944,
             question = "Para se të fillojë parakalimin, në rrugë me një korsi për çdo sens, drejtuesi i mjetit duhet të ketë parasysh distancën dhe shpejtësinë e mjeteve që vijnë nga sensi i kundërt.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1945,
@@ -11691,25 +11691,25 @@ class Database {
             id = 1950,
             question = "Shkak për rrezik gjatë manovrës së parakalimit mund të jenë mjetet e tjera, para ose pas nesh, të cilat po kryejnë të njëjtën manovër.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1951,
             question = "Shkak për rrezik gjatë manovrës së parakalimit mund të jetë prezenca e mjetit që vjen përballë në korsinë e sensit të kundërt.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1952,
             question = "Shkak për rrezik gjatë manovrës së parakalimit, në rrugët me një korsi për çdo sens lëvizjeje, mund të jetë karrexhata e ngushtë.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1953,
             question = "Shkak për rrezik, gjatë manovrës së parakalimit, mund të jetë kalimi shumë afër mjetit që parakalohet duke mundësuar goditje anësore.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1954,
@@ -11733,19 +11733,19 @@ class Database {
             id = 1957,
             question = "Për të kryer manovrën e parakalimit duhet të sigurohemi që kemi fushëpamje të mjaftueshme për ta kryer atë pa rrezik.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1958,
             question = "Për të kryer manovrën e parakalimit duhet të sigurohemi që mjeti prapa nuk e ka filluar këtë manovër.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1959,
             question = "Për të kryer manovrën e parakalimit duhet të sigurohemi që sinjalizimi rrugor e lejon atë.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1960,
@@ -11763,19 +11763,19 @@ class Database {
             id = 1962,
             question = "Drejtuesi i mjetit që parakalohet duhet t’ia lehtësojë manovrën mjetit që parakalon.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1963,
             question = "Drejtuesi i mjetit që po parakalohet ka detyrim që të mos e shtojë shpejtësinë në momentin e parakalimit.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1964,
             question = "Drejtuesi i mjetit që parakalohet, në rrugë me një korsi për çdo sens, duhet të spostojë mjetin sa më afër kufirit të djathtë të karrexhatës.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1965,
@@ -11793,19 +11793,19 @@ class Database {
             id = 1967,
             question = "Kur parakalojmë një varg mjetesh, distanca e parakalimit zmadhohet në krahasim me parakalimin e një mjeti të vetëm.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1968,
             question = "Distanca e parakalimit zvogëlohet, nëse mjeti që po parakalojmë e ul shpejtësinë.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1969,
             question = "Distanca e parakalimit është e vogël, nëse parakalojmë një mjet me gjatësi të vogël.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1970,
@@ -11835,25 +11835,25 @@ class Database {
             id = 1974,
             question = "Kur gjendemi para një pengese, që nuk lejon këmbimin me mjetet përballë, duhet të ndalojmë për t’u dhënë atyre përparësi.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1975,
             question = "Kur këmbimi i mjeteve në rrugët malore është i vështirë, si rregull, mjeti që lëviz në zbritje duhet të ndalojë për t'i lënë rrugë të lirë mjetit në ngjitje.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1976,
             question = "Kur këmbimi i mjeteve në rrugët malore është i vështirë dhe mjeti që lëviz në ngjitje ndodhet pranë një shesh ndalimi, duhet të ndalojë për t'i lënë rrugë të lirë mjetit në zbritje.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1977,
             question = "Kur këmbimi i mjeteve është i vështirë dhe manovra e lëvizjes prapa bëhet e domosdoshme, komplekset e mjeteve kanë përparësi ndaj mjeteve të tjera.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1978,
@@ -11877,19 +11877,19 @@ class Database {
             id = 1981,
             question = "Në autostrada lejohet të qarkullojnë autoveturat që tërheqin rimorkio kur kompleksi në tërësi (autoveturë + rimorkio) nuk e kalon masën 3.5 tonë.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1982,
             question = "Në autostrada lejohet të qarkullojnë gjysëmrimorkiatorët.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1983,
             question = "Në autostrada lejohet të qarkullojnë motorët me cilindratë mbi 150 cm³.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1984,
@@ -11907,19 +11907,19 @@ class Database {
             id = 1986,
             question = "Ndalohet qarkullimi në autostrada i mjeteve me ngarkesa të hapura, të pasistemuara mirë dhe që mund të derdhen.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1987,
             question = "Ndalohet qarkullimi në autostrada i automjeteve që gjendja funksionale, pajisjet dhe gomat e të cilave përbëjnë rrezik për qarkullimin.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1988,
             question = "Ndalohet qarkullimi i motorëve me cilindratë më të vogël se 150 cm³ në autostrada.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1989,
@@ -11937,61 +11937,61 @@ class Database {
             id = 1991,
             question = "Në autostrada ndalohet të bëhen gara shpejtësie.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1992,
             question = "Në autostrada ndalohet qëndrimi i mjetit në korsinë e emergjencës më shumë se tre orë.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1993,
             question = "Në autostrada ndalohet tërheqja e automjeteve.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1994,
             question = "Në autostrada qëndrimi i mjetit është i ndaluar, përveç vendeve të parashikuara për këtë qëllim.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1995,
             question = "Në autostrada ndalohet përdorimi i korsisë së emergjencës si korsi lëvizjeje nga automjetet.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1996,
             question = "Në autostrada ndalohet kthimi i sensit të lëvizjes.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1997,
             question = "Për të dalë nga autostrada duhet të kaloni në korsinë e djathtë për t’u futur në korsinë e ngadalësimit.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1998,
             question = "Qëndrimi në korsinë e emergjencës në autostrada lejohet në rastet kur mjeti ka defekt, që e bën të pamundur vazhdimin e lëvizjes.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 1999,
             question = "Në autostrada ndalohet përdorimi i dritave të gjata kur ndriçimi i rrugës është i mjaftueshëm.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2000,
             question = "Hyrja në autostradë nga korsia e shpejtimit bëhet duke u dhënë përparësi mjeteve që janë në qarkullim.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2001,
@@ -12057,25 +12057,25 @@ class Database {
             id = 2011,
             question = "Ngarkesa e vendosur në mjet duhet të sistemohet në mënyrë të tillë që të mos zvogëlojë fushëpamjen e drejtuesit të mjetit.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2012,
             question = "Ngarkesa e vendosur në mjet duhet sistemuar në mënyrë të tillë që të mos pengojë lirshmërinë e drejtuesit në drejtimin e mjetit.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2013,
             question = "Ngarkesa e vendosur në mjet duhet sistemuar në mënyrë të tillë që të shmanget rënia e saj.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2014,
             question = "Ngarkesa e vendosur në mjet mund të dalë nga prapa jo më shumë se 30 % e gjatësisë së mjetit.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2015,
@@ -12099,25 +12099,25 @@ class Database {
             id = 2018,
             question = "Zhvendosja e ngarkesës përpara zvogëlon stabilitetin e mjetit në lëvizje.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2019,
             question = "Zhvendosja e ngarkesës përpara sjell një ngarkesë më të madhe mbi pjesët e sistemit të drejtimit të mjetit.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2020,
             question = "Zhvendosja e ngarkesës përpara sjell konsumim më të madh të gomave të përparme të mjetit.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2021,
             question = "Zhvendosja e ngarkesës përpara sjell një ngarkesë më të madhe mbi gomat e përparme.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2022,
@@ -12147,19 +12147,19 @@ class Database {
             id = 2026,
             question = "Numri i personave të transportueshëm në çdo automjet, tregohet në lejen e qarkullimit të tij.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2027,
             question = "Numri i personave të transportueshëm në një autoveturë nuk mund të jetë më i madh se 9 vetë, duke përfshirë dhe drejtuesin e saj.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2028,
             question = "Numri i personave të transportueshëm në një automjet, shënohet ne lejen e qarkullimit dhe në të gjitha rastet përfshin edhe drejtuesin e tij.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2029,
@@ -12189,13 +12189,13 @@ class Database {
             id = 2033,
             question = "Nëse nga rënia aksidentale e ngarkesës është shkaktuar bllokimi i karrexhatës, drejtuesi i mjetit duhet të zhvendosë ngarkesën e rënë dhe të lirojë sa më shpejt karrexhatën.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2034,
             question = "Në rast bllokimi të karrexhatës, për shkak të rënies së ngarkesës nga mjeti, drejtuesi i mjetit duhet të vendosë trekëndëshin e rrezikut mbi 50 metra prapa mjetit, në rrugë interurbane dytësore edhe kur ngarkesa duket.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2035,
@@ -12213,43 +12213,43 @@ class Database {
             id = 2037,
             question = "Trekëndëshi i lëvizshëm i rrezikut i vendosur në një rrugë interurbane mund të sinjalizojë një mjet të ndalur në karrexhatë për shkak të një defekti.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2038,
             question = "Trekëndëshi i lëvizshëm i rrezikut bën pjesë në pajisjet e detyrueshme të automjetit.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2039,
             question = "Trekëndëshi i lëvizshëm i rrezikut, i vendosur në rrugë interurbane, mund të sinjalizojë rënien e një ngarkese, e cila është e padukshme në një distancë 100 metra.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2040,
             question = "Trekëndëshi i lëvizshëm i rrezikut vendoset në rrugë interurbane dytësore, të paktën 50 metër prapa mjetit të bllokuar.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2041,
             question = "Trekëndëshi i lëvizshëm i rrezikut duhet të jetë i vendosur në rrugë në mënyrë të tillë, që të jetë i dukshëm të paktën në distancën 100 metra nga mjetet që vijnë pas tij.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2042,
             question = "Trekëndëshi i lëvizshëm i rrezikut vendoset jashtë qendrave të banuara.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2043,
             question = "Trekëndëshi i lëvizshëm i rrezikut vendoset në karrexhatë, të paktën 1 metër larg nga kufiri i djathtë anësor i saj.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2044,
@@ -12297,25 +12297,25 @@ class Database {
             id = 2051,
             question = "Tërheqja e një mjeti me defekt duhet të bëhet me lidhje të fortë.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2052,
             question = "Tërheqja e një mjeti me defekt mund të bëhet me litar të fortë.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2053,
             question = "Tërheqja e një mjeti me defekt mund të bëhet me kavo çeliku të fortë.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2054,
             question = "Tërheqja e një mjeti në avari (me defekt) mund të bëhet me zinxhirë çeliku të fortë.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2055,
@@ -12327,19 +12327,19 @@ class Database {
             id = 2056,
             question = "Mjeti në avari (me defekt) që tërhiqet duhet të ketë ndezur sinjalizimin e ndritshëm të rrezikut, kur ai funksionon.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2057,
             question = "Mjeti në avari (me defekt) që tërhiqet, në rast se sinjalizimi i ndritshëm i rrezikut nuk funksionon, duhet të ketë prapa panelin për ngarkesat e varura ose sinjalin e lëvizshëm të rrezikut.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2058,
             question = "Mjeti që tërheq një mjet në avari (me defekt) duhet të mbajë ndezur sinjalizimin e ndritshëm të rrezikut.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2059,
@@ -12357,37 +12357,37 @@ class Database {
             id = 2061,
             question = "Ciklomotorët, motomjetet dhe automjetet duhet të jenë të pajisur me sistem drejtimi.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2062,
             question = "Ciklomotorët, motomjetet dhe automjetet duhet të jenë të pajisur me sistem frenimi.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2063,
             question = "Ciklomotorët, motomjetet dhe automjetet duhet të jenë të pajisur me sistemin e sinjaleve pamore dhe ndriçuese.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2064,
             question = "Ciklomotorët, motomjetet dhe automjetet duhet të jenë të pajisur me sistemin zhurmëmbytës dhe të shkarkimit, në qoftë se kanë motor me djegie të brendshme.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2065,
             question = "Ciklomotorët, motomjetet dhe automjetet duhet të jenë të pajisur me sistemin e sinjalizimit zanor.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2066,
             question = "Ciklomotorët, motomjetet dhe automjetet duhet të jenë të pajisur me sistemin e shikimit prapa.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2067,
@@ -12399,25 +12399,25 @@ class Database {
             id = 2068,
             question = "Kontrolli teknik është detyrim ligjor për të gjitha llojet e mjeteve rrugore me motor.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2069,
             question = "Kontrolli teknik kryhet një herë në vit për automjetet e përdorimit vetjak.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2070,
             question = "Kontrolli teknik verifikon nëse mjetet garantojnë sigurinë në qarkullim dhe ndotjen e mjedisit brenda kufijve të caktuar ligjor.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2071,
             question = "Kontrolli teknik i mjetit rrugor quhet i përfunduar me lëshimin e certifikatës përkatëse.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2072,
@@ -12447,25 +12447,25 @@ class Database {
             id = 2076,
             question = "Rripat e sigurimit kufizojnë dëmtimet e drejtuesit të mjetit dhe të pasagjerëve në rast aksidenti.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2077,
             question = "Rripat e sigurimit, kur ekzistojnë, duhet të vendosen si nga drejtuesi i mjetit ashtu dhe nga pasagjerët.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2078,
             question = "Rripat e sigurimit duhet të kontrollohen për efektshmërinë e tyre.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2079,
             question = "Rripat e sigurimit duhet të jenë në gjendje të mirë teknike.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2080,
@@ -12495,25 +12495,25 @@ class Database {
             id = 2084,
             question = "Përjashtohen nga detyrimi për të vënë rripat e sigurimit gratë shtatzëna, të pajisura me certifikatë mjekësore të kushteve të veçanta të rrezikut, të konfirmuar nga gjinekologu.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2085,
             question = "Përjashtohen nga detyrimi për të vënë rripat e sigurimit persona me sëmundje të veçanta, që janë të pajisur me certifikatë të lëshuar nga komisioni mjekësor përkatës.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2086,
             question = "Përjashtohen nga detyrimi për të vënë rripat e sigurimit personat me gjatësi trupore më të madhe se 190 cm, të vërtetuar me dokument njohje.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2087,
             question = "Përjashtohen nga detyrimi për të vënë rripat e sigurimit personat me gjatësi trupore më të vogël se 135 cm, të vërtetuar me dokument njohje.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2088,
@@ -12555,31 +12555,31 @@ class Database {
             id = 2094,
             question = "Jastëku i ajrit (airbag) fryhet automatikisht në rast goditje të fortë të mjetit.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2095,
             question = "Jastëku i ajrit (airbag) aktivizohet në rastin e një aksidenti rrugor me përplasje të fortë.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2096,
             question = "Jastëku i ajrit (airbag) mund të jetë i rrezikshëm, nëse nuk vihet rripi i sigurimit.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2097,
             question = "Në rastin e një aksidenti rrugor me përplasje të fortë, jastëku i ajrit (airbag) siguron mbrojtje më të madhe nga goditjet.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2098,
             question = "Jastëku i ajrit (airbag) mund të jetë i tipit ballor (i vendosur në timon dhe kroskot) dhe anësor ( i vendosur në dyert anësore të automjetit).",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2099,
@@ -12615,25 +12615,25 @@ class Database {
             id = 2104,
             question = "Sistemet mbrojtëse për fëmijët janë të prodhuara për fëmijë nën moshën 12 vjeç dhe me lartësi trupore më të vogël se 135 cm.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2105,
             question = "Sistemet mbrojtëse për fëmijët duhet të jenë prodhime origjinale të fabrikave të licencuara dhe funksionale.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2106,
             question = "Sistemet mbrojtëse për fëmijët prodhohen sipas karakteristikave të peshës dhe gjatësisë të fëmijëve.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2107,
             question = "Sistemet mbrojtëse për fëmijët janë të detyrueshme për t’u përdorur nëse në autoveturë transportohen fëmijë.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2108,
@@ -12657,25 +12657,25 @@ class Database {
             id = 2111,
             question = "Kaska mbrojtëse parandalon dhe zvogëlon dëmtimet e kokës së drejtuesit të mjetit në rast aksidenti.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2112,
             question = "Kaska mbrojtëse është e detyrueshme të përdoret nga drejtuesi i motorit dhe pasagjeri.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2113,
             question = "Kaska mbrojtëse na mbron pjesërisht nga goditjet e forta në kokë në rast aksidenti.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2114,
             question = "Kaska mbrojtëse duhet të përdoret vetëm nëse është në gjendje të mirë teknike dhe e fiksuar mirë.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2115,
@@ -12699,19 +12699,19 @@ class Database {
             id = 2118,
             question = "Përdorimi i kaskës mbrojtëse është i detyrueshëm për drejtuesin e ciklomotorit.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2119,
             question = "Përdorimi i kaskës mbrojtëse është i detyrueshëm për pasagjerët e motorëve me kosh.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2120,
             question = "Përdorimi i kaskës mbrojtëse është i detyrueshëm për drejtuesin e motorit me kosh.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2121,
@@ -12741,25 +12741,25 @@ class Database {
             id = 2125,
             question = "Në rast se nga një aksident rrugor ka të plagosur, drejtuesi i mjetit duhet të njoftojë shërbimet e Policisë Rrugore për të vëzhguar rrethanat e ngjarjes.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2126,
             question = "Në rast aksidenti rrugor, drejtuesi i mjetit duhet të veprojë duke ruajtur gjendjen e vendit të aksidentit si dhe gjurmët e tij, por gjithmonë duke garantuar sigurinë e qarkullimit.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2127,
             question = "Në rast aksidenti rrugor me dëme vetëm në materiale, drejtuesi i mjetit duhet të shmangë pengimin e qarkullimit, aty ku është e mundur.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2128,
             question = "Drejtuesi i mjetit të përfshirë në një aksident rrugorë duhet t'u japë emrin, adresën si dhe informacione të tjera të nevojshme njerëzve të dëmtuar.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2129,
@@ -12771,19 +12771,19 @@ class Database {
             id = 2130,
             question = "Kur karrexhata zihet si rezultat i një aksidenti rrugor, që ka vetëm dëme materiale, duhet të vendoset trekëndëshi i lëvizshëm i rrezikut, sipas përcaktimeve të Kodit Rrugor.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2131,
             question = "Pas një aksidenti rrugor, që ka vetëm dëme materiale, mjeti duhet të zhvendoset sa më shpejt jashtë karrexhatës, kur ky veprim është i mundur.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2132,
             question = "Pas një aksidenti rrugor që ka vetëm dëme materiale, duhet të njoftohen organet përkatëse, në pamundësi të zhvendosjes së mjetit dhe t'i presim në vendin e ngjarjes.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2133,
@@ -12801,31 +12801,31 @@ class Database {
             id = 2135,
             question = "Në rast aksidenti, sinjalizimi i rrezikut për mjetet që vijnë bëhet edhe me sinjale me duar nëse mjetet nuk e kanë trekëndëshin e rrezikut.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2136,
             question = "Në rast se pas nje aksidenti ka materiale të rrëshqitshme mbi karrexhatë, u duhet sinjalizuar rreziku mjeteve që vijnë.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2137,
             question = "Në rast aksidenti, kur karrexhata bllokohet, u duhet sinjalizuar rreziku mjeteve që vijnë, veçanërisht kur aksidenti ka ndodhur në kthesë.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2138,
             question = "Në rast aksidenti, u duhet sinjalizuar rreziku mjeteve që vijnë për të mbrojtur një të plagosur, që nuk mund të lëvizet nga rruga.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2139,
             question = "Në rast se pas një aksidenti mbeten në karrexhatë pjesë të mjeteve të aksidentuar, që pengojnë qarkullimin, atëherë duhet të sinjalizohen për rrezikun mjetet që po i afrohen.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2140,
@@ -12849,19 +12849,19 @@ class Database {
             id = 2143,
             question = "Dhënia e ndihmës për një të aksidentuar në rrugë është detyrim ligjor dhe moral.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2144,
             question = "Dhënia e ndihmës për një të aksidentuar në rrugë është detyrim i Kodit Penal, i cili dënonmosdhënien e ndihmës.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2145,
             question = "Dhënia e ndihmës për një të aksidentuar në rrugë është e detyrueshme, për të kufizuar pasojat negative të aksidentit.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2146,
@@ -12885,19 +12885,19 @@ class Database {
             id = 2149,
             question = "Në rast aksidenti, ai që jep ndihmën duhet të vlerësojë situatën, me qëllim që të mbrojë të dëmtuarin nga rreziqe të tjera.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2150,
             question = "Në rast aksidenti, ai që jep ndihmën duhet të ndihmojë të dëmtuarin pa ndërmarrë iniciativa që i takojnë organeve kompetente mjekësore.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2151,
             question = "Në rast aksidenti, ai që jep ndihmën duhet të sigurojë dhe sinjalizojë sa më mirë zonën e aksidentit.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2152,
@@ -12909,25 +12909,25 @@ class Database {
             id = 2153,
             question = "Qëllimi i ndihmës së parë është të marrësh masa të thjeshta dhe të shpejta për mbijetesën e të dëmtuarit deri në dhënien e ndihmës mjekësore.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2154,
             question = "Qëllimi i ndihmës së parë është të ndihmojmë të dëmtuarin, sa më mirë të jetë e mundur, në pritje të ndihmës mjekësore.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2155,
             question = "Një nga qëllimet e ndihmës së parë është të shmanget mundësia që i dëmtuari të lëndohet përsëri.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2156,
             question = "Gjatë dhënies së ndihmës së parë duhet të shmanget çdo ndërhyrje e gabuar.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2157,
@@ -12945,25 +12945,25 @@ class Database {
             id = 2159,
             question = "Nëse i dëmtuari në një aksidenti rrugor ka një plagë me gjak, duhet të mos lëvizen trupat e huaj të mundshëm të pranishëm në të.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2160,
             question = "Nëse i dëmtuari në një aksident rrugor ka një plagë me gjak, duhet të bllokohet rrjedhja e gjakut me garzë sterile ose me copë të pastër.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2161,
             question = "Nëse i dëmtuari në një aksident rrugor ka një plagë me gjak, ai duhet të mbahet në pozicion ulur ose shtrirë.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2162,
             question = "Nëse i dëmtuari në një aksident rrugor ka plagë me hemorragji të jashtme, duhet të bllokohet plaga me një garzë të pastër dhe të lajmërohet (kërkohet) menjëherë ndihma e shpejtë.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2163,
@@ -12975,25 +12975,25 @@ class Database {
             id = 2164,
             question = "Nëse i dëmtuari ka një trup të huaj në një sy, duhet të mbulohet syri me garzë të pastër dhe me kujdes, pa e nxjerrë trupin e huaj.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2165,
             question = "Nëse i dëmtuari ka një trup të huaj në një sy, duhet të ndalohet që i dëmtuari të prekë syrin e plagosur, për të shmangur dëmtime më të rënda.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2166,
             question = "Nëse i dëmtuari ka një trup të huaj në një sy, duhet të mbulohet syri me garzë të pastër dhe të ndalohet të preket deri në ndërhyrjen e një specialisti.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2167,
             question = "Nëse i dëmtuari ka një trup të huaj në një sy, duhet që trupi i huaj të hiqet vetëm nga një mjek specialist.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2168,
@@ -13011,7 +13011,7 @@ class Database {
             id = 2170,
             question = "Shenjë që tregon fillimin e gjendjes së shokut është lëkura e ftohtë me ngjyrë shumë të zbehtë.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2171,
@@ -13023,7 +13023,7 @@ class Database {
             id = 2172,
             question = "Kur i dëmtuari paraqet gjendje shoku duhet të shtrihet me gjymtyrët e poshtme të ngritura nga trupi.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2173,
@@ -13035,19 +13035,19 @@ class Database {
             id = 2174,
             question = "Kur i dëmtuari në një aksident rrugor është pa ndjenja, duhet të vendoset në pozicionin anësor të sigurisë.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2175,
             question = "Nëse i dëmtuari në një aksident rrugor është pa ndjenja dhe nuk merr frymë, duhet t’i lirohet goja edhe hunda nga pengesa të mundshme.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2176,
             question = "Kur i dëmtuari në një aksident rrugor është pa ndjenja, duhet të kujdesemi për gjendjen e tij deri në mbërritjen e ambulancës.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2177,
@@ -13059,13 +13059,13 @@ class Database {
             id = 2178,
             question = "Në rast se i dëmtuari nga aksidenti rrugor ka një dëmtim në kafazin e kraharorit, duhet të vendoset në pozicion gjysmë ulur për t'i lehtësuar frymëmarrjen.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2179,
             question = "Në rast se i dëmtuari, i vetëdijshëm, ka një traumë në kafazin e kraharorit duhet të ruhet me kujdes deri në mbërritjen e ndihmës parë.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2180,
@@ -13089,19 +13089,19 @@ class Database {
             id = 2183,
             question = "Kur i dëmtuari në një aksident rrugor ka një ose më shumë fraktura në gjymtyrë, duhet të mos lëvizet gjymtyra e thyer para se të bëhet e palëvizshme.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2184,
             question = "Nëse i dëmtuari nga aksidenti rrugor ka një ose më shumë fraktura në gjymtyrë, gjymtyra e thyer duhet të bëhet e palëvizshme me mjete të rastit deri në mbërritjen e ndihmës parë.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2185,
             question = "Nëse i dëmtuari nga aksidenti rrugor ka një ose më shumë fraktura në gjymtyrë, duhet të merren masat që të bëhen të palëvizshme gjymtyrët e dëmtuara.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2186,
@@ -13119,25 +13119,25 @@ class Database {
             id = 2188,
             question = "Kur një i dëmtuar nga aksidenti rrugor ka djegie, duhet të shuhen flakët me batanije ose materiale të tjera të ngjashme.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2189,
             question = "Kur një i dëmtuar nga aksidenti rrugor ka djegie, nuk duhet të hiqen mbetjet e mundshme të veshjeve të ngjitura në pjesët e djegura.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2190,
             question = "Në rastin e aksidentit rrugor me pasojë zjarr dhe i dëmtuari ka djegie me skuqje të lëkurës, duhet të bëhet kompresa me ujë të ftohtë ose me akull.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2191,
             question = "Kur një i dëmtuar nga aksidenti rrugor ka djegie që përfshijnë trupin, plagët duhet të mbulohen me material të mundshëm steril (të pastër).",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2192,
@@ -13161,19 +13161,19 @@ class Database {
             id = 2195,
             question = "Drejtuesi i mjetit, i cili shfaq shenja lodhje, duhet të pushojë në vendpushimin më të afërt.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2196,
             question = "Drejtuesi i mjetit, i cili shfaq shenja lodhje, duhet të ulë shpejtësinë dhe të mbajë krahun e djathtë për të gjetur një vend pushimi.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2197,
             question = "Drejtuesi i mjetit, i cili shfaq shenja lodhje, mund të përdorë për pushim korsinë e emergjencës, por jo me shumë se 3 orë.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2198,
@@ -13209,49 +13209,49 @@ class Database {
             id = 2203,
             question = "Përdorimi i alkoolit nga drejtuesi i mjetit mund të çojë në eufori, pakujdesi dhe e bën më pak të sigurt drejtimin e mjetit.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2204,
             question = "Përdorimi i alkoolit nga drejtuesi i mjetit i bën më të ngadalta reflekset e tij në drejtimin e mjetit.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2205,
             question = "Përdorimi i alkoolit nga drejtuesi i mjetit mund të shkaktojë gjendjen e gjumit dhe mundësinë e aksidenteve.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2206,
             question = "Përdorimi i alkoolit nga drejtuesi i mjetit zvogëlon aftësitë e përqendrimit në drejtimin e mjetit.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2207,
             question = "Përdorimi i alkoolit nga drejtuesi i mjetit ul përqendrimin në drejtimin e mjetit.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2208,
             question = "Përdorimi i alkoolit nga drejtuesi i mjetit përbën rrezik të madh për qarkullimin.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2209,
             question = "Përdorimi i alkoolit nga drejtuesi i mjetit përbën një shkelje të rëndë të Kodit Rrugor.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2210,
             question = "Përdorimi i alkoolit nga drejtuesi i mjetit mund të verifikohet me testin e alkoolit.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2211,
@@ -13311,7 +13311,7 @@ class Database {
             id = 2220,
             question = "Ndalohet të drejtojmë mjete kur vuajmë nga sëmundje që e pengojnë drejtimin e tij.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2221,
@@ -13329,19 +13329,19 @@ class Database {
             id = 2223,
             question = "Ai që ka përdorur rregullisht lëndë narkotike dhe zotëron lejedrejtimi, mund të drejtojë mjete vetëm nëse vërteton zyrtarisht se nuk është më përdorues i lëndëve narkotike.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2224,
             question = "Ai që ka përdorur rregullisht lëndë narkotike dhe zotëron lejedrejtimi, mund të drejtojë mjete nëse komisioni mjekësor vërteton se nuk është me përdorues i lëndëve narkotike.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2225,
             question = "Ai që ka përdorur rregullisht lëndë narkotike dhe rezulton akoma përdorues i tyre, nuk mund të drejtojë asnjë lloj mjeti rrugor.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2226,
@@ -13371,19 +13371,19 @@ class Database {
             id = 2230,
             question = "Abuzimi me alkoolin i shkakton drejtuesit të mjetit shpërqendrim dhe moskuptim të rrezikut.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2231,
             question = "Përdorimi i substancave narkotike i shkakton drejtuesit të mjetit shpërqendrim dhe moskuptim të rrezikut.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2232,
             question = "Përdorimi i barnave qetësues mund t'i shkaktojë drejtuesit të mjetit shpërqendrim dhe moskuptim të rrezikut.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2233,
@@ -13395,25 +13395,25 @@ class Database {
             id = 2234,
             question = "Përdorimi i barnave qetësues nga drejtuesi i mjetit mund t'i shkaktojë atij ulje të vëmendjes.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2235,
             question = "Përdorimi i barnave qetësuese nga drejtuesi i mjetit mund t'i shkaktojë atij përgjumje gjatë përdorimit të mjetit.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2236,
             question = "Përdorimi i barnave qetësuese nga drejtuesi i mjetit mund t'i shkaktojë atij ulje të reflekseve.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2237,
             question = "Përdorimi i barnave qetësuese nga drejtuesi i mjetit mund t'i shkaktojë atij zgjatje të kohës së reagimit gjatë përdorimit të mjetit.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2238,
@@ -13431,13 +13431,13 @@ class Database {
             id = 2240,
             question = "Përdorimi i substancave narkotike nga drejtuesit e mjeteve ul aftësitë reaguese gjatë drejtimit.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2241,
             question = "Përdorimi i substancave narkotike nga drejtuesit e mjeteve ndikon në drejtimin e mjetit sepse mund t'i shkaktojë atyre përgjumje.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2242,
@@ -13467,31 +13467,31 @@ class Database {
             id = 2246,
             question = "Rruga është zona publike e përcaktuar për qarkullimin e njerëzve, mjeteve e kafshëve.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2247,
             question = "Rrugët mund të jenë me një, me dy ose me më shumë karrexhata.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2248,
             question = "Korsitë e biçikletave janë pjesë e rrugës.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2249,
             question = "Rruga mund të jetë me një sens lëvizjeje për qarkullimin e mjeteve.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2250,
             question = "Rruga mund të jetë me dy sense lëvizjeje për qarkullimin e mjeteve.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2251,
@@ -13509,49 +13509,49 @@ class Database {
             id = 2253,
             question = "Autostrada ka karrexhata të pavarura ose të ndara me trafikndarës të pakapërcyeshëm.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2254,
             question = "Çdo karrexhatë e autostradës ka të paktën dy korsi për lëvizjen e mjeteve.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2255,
             question = "Autostrada është e pajisur me korsi emergjence.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2256,
             question = "Autostradat janë pa kryqëzime në nivel.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2257,
             question = "Autostrada ka rrethim dhe sisteme asistence për përdoruesit e mjeteve.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2258,
             question = "Autostrada është e rezervuar për qarkullimin e disa kategori mjetesh me motor.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2259,
             question = "Autostrada është e dallueshme me sinjale të veçanta të fillimit dhe të mbarimit.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2260,
             question = "Autostrada është e pajisur me korsi ngadalësimi dhe shpejtimi.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2261,
@@ -13593,49 +13593,49 @@ class Database {
             id = 2267,
             question = "Rrugët interurbane kryesore janë me karrexhata të pavarura ose të ndara me trafikndarës të pakapërcyeshëm.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2268,
             question = "Rrugët interurbane kryesore janë të pajisura me zona të përshtatshme për pushim.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2269,
             question = "Rrugët interurbane kryesore janë pa kryqëzime në nivel.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2270,
             question = "Rrugët interurbane kryesore janë të dallueshme nga sinjalet e fillimit dhe mbarimit.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2271,
             question = "Rrugët interurbane kryesore janë të rezervuara vetëm për qarkullimin e disa kategorive të mjeteve me motor.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2272,
             question = "Karrexhata e rrugës interurbane kryesore ka të paktën dy korsi për lëvizjen e mjeteve.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2273,
             question = "Rrugët interurbane kryesore janë të pajisura me korsi ngadalësimi dhe shpejtimi.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2274,
             question = "Në rrugë interurbane kryesore ka kryqëzime në disnivel.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2275,
@@ -13671,19 +13671,19 @@ class Database {
             id = 2280,
             question = "Rrugët interurbane dytësore janë rrugë me një karrexhatë me të paktën një korsi lëvizje për çdo sens.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2281,
             question = "Rrugët interurbane dytësore janë me kryqëzime në nivel.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2282,
             question = "Në rrugë interurbane dytësore lejohet të qarkullojnë ciklomotorë.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2283,
@@ -13713,31 +13713,31 @@ class Database {
             id = 2287,
             question = "Rrugët urbane kryesore janë rrugë me karrexhata të pavarura ose të ndara me trafikndarëse.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2288,
             question = "Rrugët urbane kryesore kanë të paktën dy korsi për sens lëvizje dhe mundësisht një korsi për mjetet e transportit publik.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2289,
             question = "Rrugët urbane kryesore janë rrugë me korsi të mundshme për mjetet e transportit publik.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2290,
             question = "Rrugët urbane kryesore janë rrugë të pajisura me semaforë në kryqëzimet në nivel.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2291,
             question = "Lejohet qarkullimi i ciklomotorëve në rrugë urbane kryesore.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2292,
@@ -13749,7 +13749,7 @@ class Database {
             id = 2293,
             question = "Në rrugë urbane dytësore lejohet të lëvizet me mjet me shpejtësi deri në 40 km/orë.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2294,
@@ -13779,25 +13779,25 @@ class Database {
             id = 2298,
             question = "Bankina është pjesa e rrugës ndërmjet kufirit të karrexhatës dhe elementit gjatësor më të afërt.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2299,
             question = "Bankina është pjesë e rrugës, ku si rregull ndalohet qarkullimi i mjeteve.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2300,
             question = "Bankina mund të shërbejë për lëvizjen e këmbësorëve kur mungon trotuari.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2301,
             question = "Bankina është pjesë e rrugës jashtë karrexhatës.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2302,
@@ -13821,25 +13821,25 @@ class Database {
             id = 2305,
             question = "Ishulli i trafikut shërben për ndarjen dhe orientimin e rrymave të trafikut të mjeteve, në drejtime të ndryshme.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2306,
             question = "Ishulli i trafikut mund të jetë i vijëzuar në sipërfaqen e rrugës ose i ngritur nga sipërfaqja e rrugës.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2307,
             question = "Ishulli i trafikut kufizohet nga vija të harkuara që orientojnë rrymat e trafikut.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2308,
             question = "Ishulli i trafikut mund të jetë i ngritur nga sipërfaqja e rrugës.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2309,
@@ -13869,43 +13869,43 @@ class Database {
             id = 2313,
             question = "Karrexhata është pjesë e rrugës e destinuar për lëvizjen e mjeteve.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2314,
             question = "Karrexhata është e përbëre nga një ose më shumë korsi lëvizjeje.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2315,
             question = "Karrexhata përgjithësisht është e shtruar dhe e kufizuar nga vija anësore.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2316,
             question = "Karrexhata mund të jetë me një sens lëvizjeje për qarkullimin e mjeteve.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2317,
             question = "Karrexhata mund të jetë me dy sense lëvizjeje për qarkullimin e mjeteve.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2318,
             question = "Karrexhata mund të jetë e përbërë nga disa korsi për lëvizjen e mjeteve.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2319,
             question = "Vendkalimi i këmbësorëve dhe vendkalimi i biçikletave janë pjesë përbërëse të karrexhatës.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2320,
@@ -13923,7 +13923,7 @@ class Database {
             id = 2322,
             question = "Korsia është pjesë gjatësore e rrugës me gjerësi të përshtatshme për kalimin e një rreshti të vetëm mjetesh.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2323,
@@ -13935,13 +13935,13 @@ class Database {
             id = 2324,
             question = "Korsia e biçikletave është pjesë gjatësore e rrugës e rezervuar për qarkullimin e biçikletave.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2325,
             question = "Në korsinë e biçikletave ndalohet qarkullimi i të gjitha mjeteve të tjera.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2326,
@@ -13959,13 +13959,13 @@ class Database {
             id = 2328,
             question = "Në korsinë e emergjencës lejohet lëvizja e mjeteve të ndihmës së shpejtë.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2329,
             question = "Në korsinë e emergjencës lejohet ndalimi i mjeteve në raste emergjence (për defekt mjeti, për raste të sëmundjes së drejtuesit të mjetit, etj.).",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2330,
@@ -13989,13 +13989,13 @@ class Database {
             id = 2333,
             question = "Korsia e lëvizjes shërben për lëvizjen e mjeteve.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2334,
             question = "Korsia e lëvizjes, normalisht, është e kufizuar me vija horizontale brenda të cilave lëvizin mjetet.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2335,
@@ -14013,13 +14013,13 @@ class Database {
             id = 2337,
             question = "Korsia e shpejtimit është korsi e veçantë e rrugës që lejon dhe lehtëson hyrjen e mjeteve në karrexhatë.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2338,
             question = "Korsia e shpejtimit mundëson hyrjen e mjeteve në karrexhatë.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2339,
@@ -14037,13 +14037,13 @@ class Database {
             id = 2341,
             question = "Korsia e ngadalësimit është korsi e veçantë e rrugës që lejon daljen e mjeteve nga autostrada.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2342,
             question = "Korsia e ngadalësimit shërben për daljen nga një rrugë me përparësi.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2343,
@@ -14061,13 +14061,13 @@ class Database {
             id = 2345,
             question = "Kryqëzimi në nivel është zona e përbashkët për disa rrugë që lejon zhvendosjen e rrymave të trafikut nga njëra rrugë te tjetra.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2346,
             question = "Kryqëzimi në nivel është ndërprerja e dy ose më shumë rrugëve në të njëjtin plan.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2347,
@@ -14079,13 +14079,13 @@ class Database {
             id = 2348,
             question = "Kryqëzimi në disnivel mundëson lidhjen e rrugëve të vendosura në nivele të ndryshme.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2349,
             question = "Kryqëzimet në disnivel gjenden kryesisht në autostrada dhe rrugë interurbane kryesore.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2350,
@@ -14103,13 +14103,13 @@ class Database {
             id = 2352,
             question = "Shpëtuesja është pjesë e rrugës, e ngritur ose e kufizuar, e destinuar për mbrojtjen dhe qëndrimin e këmbësoreve që kapërcejnë rrugën.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2353,
             question = "Shpëtuesja gjendet kryesisht në vendkalimet e këmbësorëve ose stacionet e autobusëve.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2354,
@@ -14133,13 +14133,13 @@ class Database {
             id = 2357,
             question = "Vendkalimi i këmbësorëve është pjesë e karrexhatës me një brez vijash të bardha, për kalimin e këmbësorëve nga njëra anë në anën tjetër të rrugës.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2358,
             question = "Vendkalimi i këmbësorëve është pjesë e karrexhatës, në të cilën mjetet duhet t'i japin përparësi këmbësorëve që po e përshkojnë atë.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2359,
@@ -14157,31 +14157,31 @@ class Database {
             id = 2361,
             question = "Zona me trafik të kufizuar është një zonë, në të cilën hyrja e mjeteve mund të jetë e lejuar vetëm në orë të caktuara.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2362,
             question = "Zona me trafik të kufizuar është një zonë, në të cilën qarkullimi mund të jetë i rezervuar për kategori të caktuara mjetesh.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2363,
             question = "Zona me trafik të kufizuar është një zonë në të cilën qarkullimi mund të lejohet vetëm për mjete të autorizuara.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2364,
             question = "Zona me trafik të kufizuar përcaktohet me sinjale në fillim dhe në fund të saj.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2365,
             question = "Zona me trafik të kufizuar është një zonë në të cilën qarkullimi mund të kufizohet me orare të përcaktuara.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2366,
@@ -14199,7 +14199,7 @@ class Database {
             id = 2368,
             question = "Zona e përzgjedhjes është pjesë e karrexhatës, ku lejohet ndryshimi i korsisë për të mundësuar pozicionimin e mjetit para kryqëzimit.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2369,
@@ -14211,7 +14211,7 @@ class Database {
             id = 2370,
             question = "Zona rigrupimit është para vijës së ndalimit, e ndarë në korsi të kufizuara nga vija gjatësore të vazhduara.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2371,
@@ -14223,31 +14223,31 @@ class Database {
             id = 2372,
             question = "Në zonën urbane këmbësore, si rregull, ndalohet qarkullimi i mjeteve me motor.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2373,
             question = "Në zonën urbane këmbësore lejohet qarkullimi i këmbësorëve.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2374,
             question = "Në zonën urbane këmbësore mund të qarkullojnë biçikletat, nëse kjo lejohet nga sinjalizimi rrugor.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2375,
             question = "Në zonën urbane këmbësore mund të qarkullojnë mjete të personave me aftësi të kufizuara, që kanë përmasa dhe shpejtësi të krahasueshme me biçikletat.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2376,
             question = "Në zonën urbane këmbësore mund të qarkullojnë edhe mjete të shërbimit të urgjencës.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2377,
@@ -14277,19 +14277,19 @@ class Database {
             id = 2381,
             question = "Motorët me dy rrota bëjnë pjesë në grupin e motomjeteve.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2382,
             question = "Motorët me kosh bëjnë pjesë në grupin e motomjeteve.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2383,
             question = "Motokarrot, që janë mjete me motor me tre rrota të destinuar për transport malli, bëjnë pjesë në grupin e motomjeteve.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2384,
@@ -14307,25 +14307,25 @@ class Database {
             id = 2386,
             question = "Autoveturat bëjnë pjesë në grupin e automjeteve.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2387,
             question = "Automjetet për transport të veçantë bëjnë pjesë në grupin e automjeteve.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2388,
             question = "Automjetet për transport të përzier bëjnë pjesë në grupin e automjeteve.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2389,
             question = "Autokampet bëjnë pjesë në grupin e automjeteve.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2390,
@@ -14337,19 +14337,19 @@ class Database {
             id = 2391,
             question = "Para vendkalimit të këmbësorëve, po të jetë e nevojshme, drejtuesi i mjetit duhet të zvogëlojë shpejtësinë e lëvizjes së mjetit deri në ndalim.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2392,
             question = "Në prani të vendkalimit të këmbësorëve, drejtuesi i mjetit duhet të presë derisa këmbësorët të kalojnë plotësisht karrexhatën.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2393,
             question = "Në prani të vendkalimit të këmbësorëve, drejtuesi i mjetit duhet të bëjë shumë kujdes kur në to qarkullojnë fëmijë.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2394,
@@ -14379,25 +14379,25 @@ class Database {
             id = 2398,
             question = "Drejtuesi i mjetit duhet të ulë shpejtësinë e lëvizjes kur në rrugë lëvizin fëmijë.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2399,
             question = "Drejtuesi i mjetit duhet të ndalojë pas mjetit që ka ndaluar, për t’ju dhënë përparësi këmbësorëve.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2400,
             question = "Drejtuesi i mjetit duhet të ulë shpejtësinë dhe të ndalojë kur në rrugë ka njerëz që shfaqin shenja hutimi.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2401,
             question = "Drejtuesi i mjetit duhet të ndalojë edhe kur është ndezur semafori jeshil, nëse një këmbësor tenton të kapërcejë rrugën.",
             image = R.drawable.img_noimage,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2402,
@@ -14421,13 +14421,13 @@ class Database {
             id = 2405,
             question = "Sinjali në figurë tregon një zonë ose rrugë të rezervuar vetëm për këmbësorë.",
             image = R.drawable.img_108,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2406,
             question = "Sinjali në figurë ndalon qarkullimin për të gjitha mjetet.",
             image = R.drawable.img_108,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2407,
@@ -14445,13 +14445,13 @@ class Database {
             id = 2409,
             question = "Sinjali në figurë tregon fundin e një zone ose të një rruge të rezervuar për këmbësore.",
             image = R.drawable.img_109,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2410,
             question = "Pas sinjalit në figurë mund të lejohet qarkullimi i mjeteve.",
             image = R.drawable.img_109,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2411,
@@ -14469,19 +14469,19 @@ class Database {
             id = 2413,
             question = "Sinjali në figurë ndalon qarkullimin e autoveturave dhe motorëve.",
             image = R.drawable.img_110,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2414,
             question = "Sinjali në figurë tregon rrugë, korsi ose itinerar të rezervuar vetëm për biçikleta.",
             image = R.drawable.img_110,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2415,
             question = "Sinjali në figurë tregon fundin e një rruge ose korsie të rezervuar për qarkullimin vetëm të biçikletave.",
             image = R.drawable.img_111,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2416,
@@ -14493,19 +14493,19 @@ class Database {
             id = 2417,
             question = "Sinjali në figurë tregon një pistë biçikletash ngjitur me trotuarin.",
             image = R.drawable.img_112,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2418,
             question = "Sinjali në figurë tregon një rrugë për biçikleta ngjitur me një rrugë për këmbësorë.",
             image = R.drawable.img_112,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2419,
             question = "Sinjali në figurë ndalon qarkullimin e mjeteve me motor.",
             image = R.drawable.img_112,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2420,
@@ -14523,13 +14523,13 @@ class Database {
             id = 2422,
             question = "Sinjali në figurë tregon një rrugë të përbashkët për këmbësorë dhe biçikleta.",
             image = R.drawable.img_113,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2423,
             question = "Sinjali në figurë ndalon qarkullimin e mjeteve me motor.",
             image = R.drawable.img_113,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2424,
@@ -14541,7 +14541,7 @@ class Database {
             id = 2425,
             question = "Sinjali në figurë tregon fundin e pistës për biçikletat paralel me rrugën e këmbësorëve.",
             image = R.drawable.img_114,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2426,
@@ -14553,19 +14553,19 @@ class Database {
             id = 2427,
             question = "Sinjali në figurë tregon fundin e rrugës apo zonës të përcaktuar për këmbësorë dhe biçikleta.",
             image = R.drawable.img_115,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2428,
             question = "Pas sinjalit në figurë lejohet të qarkullojnë biçikleta dhe këmbësorë.",
             image = R.drawable.img_115,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2429,
             question = "Sinjali në figurë ndalon qarkullimin e mjeteve.",
             image = R.drawable.img_116,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2430,
@@ -14583,13 +14583,13 @@ class Database {
             id = 2432,
             question = "Sinjali në figurë tregon fundin e një rruge të rezervuar për kuajt që mbajnë ngarkesa ose që mbajnë kalorës.",
             image = R.drawable.img_117,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2433,
             question = "Sinjali në figurë tregon se mbaron kalimi i rezervuar për kuajt.",
             image = R.drawable.img_117,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2434,
@@ -14607,37 +14607,37 @@ class Database {
             id = 2436,
             question = "Sinjali në figurë paralajmëron kryqëzim në një zonë të banuar.",
             image = R.drawable.img_166,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2437,
             question = "Sinjali në figurë tregon vendet, në të cilat mund të shkohet nga ky kryqëzim.",
             image = R.drawable.img_166,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2438,
             question = "Sinjali në figurë na tregon se për të shkuar në qendër të qytetit duhet të kthehemi djathtas.",
             image = R.drawable.img_166,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2439,
             question = "Sinjali në figurë na tregon se për të shkuar tek stacioni i trenit duhet të kthehemi djathtas.",
             image = R.drawable.img_166,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2440,
             question = "Sinjali në figurë tregon se për të dalë nga zona e banuar duhet të vazhdojmë lëvizjen drejt.",
             image = R.drawable.img_166,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2441,
             question = "Sinjali në figurë tregon se për të shkuar në Kavajë duhet të vazhdojmë lëvizjen drejt.",
             image = R.drawable.img_166,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2442,
@@ -14649,37 +14649,37 @@ class Database {
             id = 2443,
             question = "Sinjali në figurë tregon dy kryqëzime të njëpasnjëshme.",
             image = R.drawable.img_167,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2444,
             question = "Sinjali në figurë tregon se në kryqëzimin e parë ndalohet kthimi majtas.",
             image = R.drawable.img_167,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2445,
             question = "Sinjali në figurë tregon se për të shkuar në spital duhet të kthehemi majtas në kryqëzimin edytë.",
             image = R.drawable.img_167,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2446,
             question = "Sinjali në figurë tregon se për të shkuar në Gjirokastër, duhet të kthehemi djathtas në kryqëzimin e parë.",
             image = R.drawable.img_167,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2447,
             question = "Sinjali në figurë tregon se, për të shkuar në Sarandë, duhet të ktheheni djathtas në kryqëzimin e dytë.",
             image = R.drawable.img_167,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2448,
             question = "Sinjali në figurë tregon se për të shkuar në Kakavijë, duhet të ktheheni majtas në kryqëzimin e dytë.",
             image = R.drawable.img_167,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2449,
@@ -14703,19 +14703,19 @@ class Database {
             id = 2452,
             question = "Sinjali në figurë paralajmëron kryqëzim urban të rregulluar me rrethqarkullim.",
             image = R.drawable.img_168,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2453,
             question = "Sinjali në figurë tregon se për të shkuar në Elbasan duhet të kthehemi djathtas në degëzimin e parë.",
             image = R.drawable.img_168,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2454,
             question = "Sinjali në figurë tregon se për të shkuar në Tiranë duhet të kthehemi djathtas në degëzimin e dytë.",
             image = R.drawable.img_168,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2455,
@@ -14733,25 +14733,25 @@ class Database {
             id = 2457,
             question = "Sinjali në figurë i lejon autoveturat të vazhdojnë lëvizjen drejt për në Prrenjas.",
             image = R.drawable.img_169,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2458,
             question = "Sinjali në figurë paralajmëron se për të hyrë në autostradë duhet të kthehemi majtas në kryqëzim.",
             image = R.drawable.img_169,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2459,
             question = "Sinjali në figurë ndalon qarkullimin e mjeteve për transportin e mallrave, me ngarkesë të plotë mbi 3.5 tonë, në qendër të qytetit të Pogradecit.",
             image = R.drawable.img_169,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2460,
             question = "Sinjali në figurë i lejon autobusët që të vazhdojnë drejt, për në qendrën e Pogradecit.",
             image = R.drawable.img_169,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2461,
@@ -14769,25 +14769,25 @@ class Database {
             id = 2463,
             question = "Sinjali në figurë paralajmëron kryqëzim në rrugë interurbane.",
             image = R.drawable.img_170,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2464,
             question = "Sinjali në figurë tregon se, në rast se kthehemi djathtas, futemi në një rrugë që ka kalim në nivel të pambrojtur.",
             image = R.drawable.img_170,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2465,
             question = "Sinjali në figurë tregon se për të shkuar në qendrën turistike të Vorës duhet të kthehemi majtas.",
             image = R.drawable.img_170,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2466,
             question = "Sinjali në figurë paralajmëron se për të shkuar në Rinas duhet të marrim drejtimin djathtas.",
             image = R.drawable.img_170,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2467,
@@ -14799,13 +14799,13 @@ class Database {
             id = 2468,
             question = "Sinjali në figurë i tregon drejtuesit të mjetit se duhet të pozicionohet në korsinë e majtë, për të shkuar në Shëngjin.",
             image = R.drawable.img_171,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2469,
             question = "Sinjali në figurë i tregon drejtuesit të mjetit se duhet të pozicionohet në korsinë e djathtë, për të shkuar në Shkodër .",
             image = R.drawable.img_171,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2470,
@@ -14829,19 +14829,19 @@ class Database {
             id = 2473,
             question = "Sinjali në figurë orienton të pozicionohesh në korsinë e duhur sipas destinacionit të dëshiruar.",
             image = R.drawable.img_172,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2474,
             question = "Sinjali në figurë u tregon drejtueseve të mjeteve, që duan të shkojnë në Elbasan, të pozicionohen në korsinë e majtë.",
             image = R.drawable.img_172,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2475,
             question = "Sinjali në figurë i tregon drejtuesit të mjetit, që po lëviz drejt qendrës së qytetit, të pozicionohet në korsinë e djathtë.",
             image = R.drawable.img_172,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2476,
@@ -14859,7 +14859,7 @@ class Database {
             id = 2478,
             question = "Sinjali në figurë paralajmëron se për të shkuar në Durrës, duhet të vazhdojmë lëvizjen drejt.",
             image = R.drawable.img_173,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2479,
@@ -14871,13 +14871,13 @@ class Database {
             id = 2480,
             question = "Sinjali në figurë paralajmëron një degëzim nga e djathta për të shkuar në qendër të qytetit.",
             image = R.drawable.img_174,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2481,
             question = "Sinjali në figurë paralajmëron se për të shkuar në Tiranë, duhet vazhduar lëvizja drejt.",
             image = R.drawable.img_174,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2482,
@@ -14895,13 +14895,13 @@ class Database {
             id = 2484,
             question = "Sinjali në figurë tregon se duke lëvizur sipas drejtimit të shigjetës, rruga të çon në Rinas.",
             image = R.drawable.img_175,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2485,
             question = "Sinjali në figurë tregon se duke lëvizur sipas drejtimit të shigjetës, ndodhet rruga shtetërore interurbane që të çon në Durrës.",
             image = R.drawable.img_175,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2486,
@@ -14913,7 +14913,7 @@ class Database {
             id = 2487,
             question = "Sinjali në figurë tregon se për të shkuar në qendër të qytetit të Fierit, duhet vazhduar lëvizja drejt.",
             image = R.drawable.img_176,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2488,
@@ -14925,25 +14925,25 @@ class Database {
             id = 2489,
             question = "Sinjali në figurë tregon korsinë e autostradës, që duhet zgjedhurpër të shkuar në destinacionet e shënuara.",
             image = R.drawable.img_177,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2490,
             question = "Sinjali në figurë tregon se për të shkuar në Rrogozhinë, duhet të marrim autostradën A9.",
             image = R.drawable.img_177,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2491,
             question = "Sinjali në figurë tregon se për të shkuar në Kavajë, duhet të marrim autostradën A8.",
             image = R.drawable.img_177,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2492,
             question = "Sinjali në figurë tregon se vendmbërritje është edhe Rinasi.",
             image = R.drawable.img_177,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2493,
@@ -14955,7 +14955,7 @@ class Database {
             id = 2494,
             question = "Sinjali në figurë tregon se rruga interurbane të çon në destinacionet e shënuara në të.",
             image = R.drawable.img_178,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2495,
@@ -14967,7 +14967,7 @@ class Database {
             id = 2496,
             question = "Sinjali në figurë, i vendosur në autostradë, tregon korsinë që duhet zgjedhur për të dalë në zonë urbane.",
             image = R.drawable.img_179,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2497,
@@ -14979,13 +14979,13 @@ class Database {
             id = 2498,
             question = "Sinjali në figurë tregon korsi autostrade, me kufi të shpejtësisë minimale, për të shkuar në destinacionet e shënuar në të.",
             image = R.drawable.img_180,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2499,
             question = "Sinjali në figurë tregon se në atë korsi mund të lëvizet me shpejtësi nga 90 km/orë deri në 110 km/orë.",
             image = R.drawable.img_180,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2500,
@@ -15003,7 +15003,7 @@ class Database {
             id = 2502,
             question = "Sinjali në figurë tregon drejtimin, i cili duhet ndjekur, për të mbërritur në qendër të qytetit të Vorës.",
             image = R.drawable.img_181,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2503,
@@ -15021,25 +15021,25 @@ class Database {
             id = 2505,
             question = "Sinjali në figurë tregon se pas 500 m është një dalje e rrugës interurbane, nëpërmjet së cilës shkohet në destinacionet e shënuar në të.",
             image = R.drawable.img_182,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2506,
             question = "Sinjali në figurë tregon se dalja për Lushnje është pas distancës 500 metra.",
             image = R.drawable.img_182,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2507,
             question = "Sinjali në figurë tregon qendrat e banimit, në të cilat shkohet duke përdorur këtë dalje.",
             image = R.drawable.img_182,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2508,
             question = "Sinjali në figurë tregon dalje, pas distancës 500 metra, për të shkuar në zonat turistike që janë shënuara në sinjal.",
             image = R.drawable.img_182,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2509,
@@ -15069,19 +15069,19 @@ class Database {
             id = 2513,
             question = "Sinjali në figurë tregon fundin e zonës urbane dhe fillimin e rrugës interurbane.",
             image = R.drawable.img_183,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2514,
             question = "Sinjali në figurë, në sfondin blu, tregon qendrat e banuara të arritshme në këtë drejtim dhe distancat përkatëse në kilometër.",
             image = R.drawable.img_183,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2515,
             question = "Pas sinjalit në figurë mund të filloni të përdorni sinjalizimin zanor (boritë).",
             image = R.drawable.img_183,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2516,
@@ -15111,13 +15111,13 @@ class Database {
             id = 2520,
             question = "Sinjali në figurë është sinjal autostradal që tregon distancat në kilometër për të arritur në qendrat e ardhshme te banuara te shënuara.",
             image = R.drawable.img_184,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2521,
             question = "Sinjali në figurë tregon distancat në kilometër për të arritur në qendrat e ardhshme te banuara te shënuara.",
             image = R.drawable.img_184,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2522,
@@ -15135,25 +15135,25 @@ class Database {
             id = 2524,
             question = "Sinjali në figurë tregon zona këmbësore apo turistike, sipas drejtimit që tregohet nëpërmjet shigjetave.",
             image = R.drawable.img_185,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2525,
             question = "Sinjali në figurën B tregon se, për të shkuar në portin turistik, duhet lëvizur drejt.",
             image = R.drawable.img_185,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2526,
             question = "Sinjali në figurën C tregon se për të shkuar në zonën arkeologjike, duhet të marrim drejtimin majtas.",
             image = R.drawable.img_185,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2527,
             question = "Sinjali në figurën D tregon se për të shkuar në det me pisha, duhet të marrim drejtimin djathtas.",
             image = R.drawable.img_185,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2528,
@@ -15171,13 +15171,13 @@ class Database {
             id = 2530,
             question = "Pas sinjalit në figurë ndalohet qarkullimi i mjeteve, përveç atyre të shënuar në panelin plotësues.",
             image = R.drawable.img_186,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2531,
             question = "Sinjali në figurë tregon një zonë për këmbësorë, ku lejohet të qarkullojnë mjetet e shënuar në panelin plotësues.",
             image = R.drawable.img_186,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2532,
@@ -15195,13 +15195,13 @@ class Database {
             id = 2534,
             question = "Sinjali në figurë tregon zonë me trafik të kufizuar.",
             image = R.drawable.img_187,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2535,
             question = "Pas sinjalit në figurë ndalohet qarkullimi i mjeteve, përveç atyre të shënuar në panelin tregues.",
             image = R.drawable.img_187,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2536,
@@ -15219,7 +15219,7 @@ class Database {
             id = 2538,
             question = "Sinjali në figurë informon se rruga për të arritur në qendrën e banuar, të shënuar në sinjal, është e lirë (e kalueshme).",
             image = R.drawable.img_188,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2539,
@@ -15231,13 +15231,13 @@ class Database {
             id = 2540,
             question = "Sinjali në figurë detyron vendosjen e zinxhirëve në goma ose përdorimin e gomave për borë.",
             image = R.drawable.img_189,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2541,
             question = "Sinjali në figurë tregon se për të shkuar në Kukës, jemi të detyruar të vendosim zinxhirë ose goma bore.",
             image = R.drawable.img_189,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2542,
@@ -15255,7 +15255,7 @@ class Database {
             id = 2544,
             question = "Sinjali në figurë këshillon drejtuesit e mjeteve të vendosin zinxhirë në goma ose të përdorin goma për borë.",
             image = R.drawable.img_190,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2545,
@@ -15267,7 +15267,7 @@ class Database {
             id = 2546,
             question = "Sinjali në figurë informon se rruga është e pakalueshme për të shkuar në vendin e shënuar.",
             image = R.drawable.img_191,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2547,
@@ -15285,13 +15285,13 @@ class Database {
             id = 2549,
             question = "Sinjali në figurë informon se rruga është pjesërisht e kalueshme, duke vendosur zinxhirë në goma ose me përdorimin e gomave për borë.",
             image = R.drawable.img_192,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2550,
             question = "Sinjali në figurë u tregon drejtueseve të mjeteve se rruga për në Kukës është e mbyllur, por me vendosje të zinxhirëve në goma arrihet në Fushë Arrëz.",
             image = R.drawable.img_192,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2551,
@@ -15309,7 +15309,7 @@ class Database {
             id = 2553,
             question = "Sinjali në figurë këshillon përdorimin e zinxhirëve ose gomave të borës deri në Fushë-Arrёz.",
             image = R.drawable.img_193,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2554,
@@ -15321,19 +15321,19 @@ class Database {
             id = 2555,
             question = "Sinjali në figurë tregon fillimin e një rruge interurbane kryesore.",
             image = R.drawable.img_194,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2556,
             question = "Sinjali në figurë tregon hyrjen në një rrugë me karrexhata të ndara.",
             image = R.drawable.img_194,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2557,
             question = "Sinjali në figurë tregon një rrugë me karrexhata të ndara.",
             image = R.drawable.img_194,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2558,
@@ -15351,7 +15351,7 @@ class Database {
             id = 2560,
             question = "Sinjali në figurë tregon fundin e autostradës.",
             image = R.drawable.img_195,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2561,
@@ -15369,25 +15369,25 @@ class Database {
             id = 2563,
             question = "Sinjali në figurë tregon se shpejtësia maksimale e lejuar në rrugë urbane, në Shqipëri është 40 km/orë.",
             image = R.drawable.img_197,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2564,
             question = "Sinjali në figurë tregon se shpejtësia maksimale e lejuar në rrugë interurbane dytësore, në Shqipëri është 80 km/orë.",
             image = R.drawable.img_197,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2565,
             question = "Sinjali në figurë tregon se shpejtësia maksimale e lejuar në rrugët interurbane kryesore, në Shqipëri është 90 km/orë.",
             image = R.drawable.img_197,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2566,
             question = "Sinjali në figurë tregon se shpejtësia maksimale e lejuar në autostrada, në Shqipëri është 110 km/orë.",
             image = R.drawable.img_197,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2567,
@@ -15399,13 +15399,13 @@ class Database {
             id = 2568,
             question = "Sinjali në figurë tregon drejtime në rrugë interurbane për të arritur në vendet e shënuara.",
             image = R.drawable.img_198,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2569,
             question = "Sinjali në figurë tregon drejtimin, distancën dhe numrin e rrugës shtetërore për të arritur në destinacionin e shënuar.",
             image = R.drawable.img_198,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2570,
@@ -15417,13 +15417,13 @@ class Database {
             id = 2571,
             question = "Sinjali në figurë tregon numrin e një rruge ndërkombëtare Evropiane.",
             image = R.drawable.img_199,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2572,
             question = "Sinjali në figurë tregon numrin e Autostradës Ndërkombëtare Evropiane.",
             image = R.drawable.img_199,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2573,
@@ -15435,13 +15435,13 @@ class Database {
             id = 2574,
             question = "Sinjali në figurë është një sinjal i identifikimit te autostradës.",
             image = R.drawable.img_200,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2575,
             question = "Sinjali në figurë tregon numrin e autostradës, në të cilën ndodheni ose do të futeni.",
             image = R.drawable.img_200,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2576,
@@ -15453,13 +15453,13 @@ class Database {
             id = 2577,
             question = "Sinjali në figurë tregon numrin e rrugës shtetërore.",
             image = R.drawable.img_201,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2578,
             question = "Sinjali në figurë tregon se ndodhemi apo do të futemi në rrugën shtetërore Nr.",
             image = R.drawable.img_201,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2579,
@@ -15477,7 +15477,7 @@ class Database {
             id = 2581,
             question = "1 Sinjali në figurë mund te kufizojë një zonë të punimeve në rrugë, për një kohë të shkurtër.",
             image = R.drawable.img_278,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2582,
@@ -15489,13 +15489,13 @@ class Database {
             id = 2583,
             question = "Sinjali në figurë tregon distancën 24 kilometra nga fillimi i rrugës , të cilën po përshkojmë.",
             image = R.drawable.img_204,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2584,
             question = "Sinjali në figurë tregon se jemi në kilometrin 24 të rrugës ku po lëvizim, distancë kjo e matur nga fillimi i rrugës.",
             image = R.drawable.img_204,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2585,
@@ -15513,19 +15513,19 @@ class Database {
             id = 2587,
             question = "Sinjali në figurë tregon se distanca nga fillimi i rrugës është 24 kilometra e 800 metra.",
             image = R.drawable.img_205,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2588,
             question = "Sinjali në figurë tregon distancën prej 16 kilometra, të përshkuar nga fillimi i autostradës dhe distancën prej 7 kilometra për të arritur në vendin e treguar.",
             image = R.drawable.img_206,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2589,
             question = "Sinjali në figurë, nga e majta tregon distancën e përshkuar dhe nga e djathta distancën për të arritur në vendin e treguar.",
             image = R.drawable.img_206,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2590,
@@ -15549,19 +15549,19 @@ class Database {
             id = 2593,
             question = "Sinjali në figurë tregon fillimin e një qendre urbane.",
             image = R.drawable.img_207,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2594,
             question = "Shpejtësia maksimale, që lejohet pas sinjalit në figurë, është 40 km/orë.",
             image = R.drawable.img_207,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2595,
             question = "Pas sinjalit në figurë ndalohet përdorimi i sinjalit akustik (borisë).",
             image = R.drawable.img_207,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2596,
@@ -15585,13 +15585,13 @@ class Database {
             id = 2599,
             question = "Sinjali në figurë u tregon drejtueseve të mjeteve se janë duke hyrë në territorin e Elbasanit.",
             image = R.drawable.img_208,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2600,
             question = "Sinjali në figurë u tregon drejtueseve të mjeteve se janë duke dalë nga territori i Tiranës.",
             image = R.drawable.img_208,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2601,
@@ -15609,13 +15609,13 @@ class Database {
             id = 2603,
             question = "Sinjali në figurë u tregon drejtueseve të mjeteve se janë duke hyrë në territorin e komunës së Ndroqit.",
             image = R.drawable.img_209,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2604,
             question = "Sinjali në figurë u tregon drejtueseve te mjeteve se janë duke dalë nga territori i komunës së Pezës.",
             image = R.drawable.img_209,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2605,
@@ -15633,7 +15633,7 @@ class Database {
             id = 2607,
             question = "Sinjali në figurë tregon drejtimin për të shkuar në ambulancë.",
             image = R.drawable.img_210,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2608,
@@ -15651,7 +15651,7 @@ class Database {
             id = 2610,
             question = "Sinjali në figurë tregon drejtimin për të hyrë në stacionin e trenit.",
             image = R.drawable.img_211,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2611,
@@ -15663,7 +15663,7 @@ class Database {
             id = 2612,
             question = "Sinjali në figurë tregon drejtimin për te vendndodhja e policisë së qarkullimit rrugor.",
             image = R.drawable.img_212,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2613,
@@ -15675,13 +15675,13 @@ class Database {
             id = 2614,
             question = "Sinjali në figurë tregon se majtas ndodhet një spital.",
             image = R.drawable.img_214,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2615,
             question = "Sinjali në figurë tregon drejtimin për të shkuar në një spital.",
             image = R.drawable.img_214,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2616,
@@ -15705,7 +15705,7 @@ class Database {
             id = 2619,
             question = "Sinjali në figurë tregon drejtimin për në stacionin e policisë bashkiake.",
             image = R.drawable.img_215,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2620,
@@ -15717,13 +15717,13 @@ class Database {
             id = 2621,
             question = "Sinjali në figurë tregon emrin e lumit në afërsi të një ure.",
             image = R.drawable.img_216,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2622,
             question = "Sinjali në figurë tregon që jemi afër një lumi.",
             image = R.drawable.img_216,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2623,
@@ -15741,7 +15741,7 @@ class Database {
             id = 2625,
             question = "Sinjali në figurë tregon praninë e një zyre, e cila ndodhet në distancë 150 metër, ku mund të kërkoni informacion mbi hotelet e zonës turistike.",
             image = R.drawable.img_217,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2626,
@@ -15753,13 +15753,13 @@ class Database {
             id = 2627,
             question = "Sinjali në figurë tregon një vendkalim këmbësorësh të parregulluar me semafor.",
             image = R.drawable.img_218,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2628,
             question = "Në prani të sinjalit në figurë duhet të ulet shpejtësia e lëvizjes së mjetit dhe, po të jetë nevoja, të ndalohet.",
             image = R.drawable.img_218,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2629,
@@ -15777,13 +15777,13 @@ class Database {
             id = 2631,
             question = "Sinjali në figurë, i vendosur buzë trotuarit, tregon vendqëndrimin e një autobusi shkolle.",
             image = R.drawable.img_219,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2632,
             question = "Sinjali në figurë, i vendosur në pjesën e jashtme të një autobusi, tregon se autobusi përdoret për transportin e nxënësve të shkollave.",
             image = R.drawable.img_219,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2633,
@@ -15801,13 +15801,13 @@ class Database {
             id = 2635,
             question = "Sinjali në figurë tregon vendin për të kërkuar asistencë teknike ose ndihmë mjekësorë në autostradë.",
             image = R.drawable.img_220,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2636,
             question = "Sinjali në figurë tregon se në afërsi gjendet një pajisje për thirrjen e ndihmës në rrugë.",
             image = R.drawable.img_220,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2637,
@@ -15825,7 +15825,7 @@ class Database {
             id = 2639,
             question = "Sinjali në figurë tregon një nënkalim për këmbësorë.",
             image = R.drawable.img_221,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2640,
@@ -15837,7 +15837,7 @@ class Database {
             id = 2641,
             question = "Sinjali në figurë tregon një mbikalim për këmbësorë.",
             image = R.drawable.img_222,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2642,
@@ -15855,13 +15855,13 @@ class Database {
             id = 2644,
             question = "Në prani të sinjalit në figurë lejohet qarkullimi i mjeteve, por rruga në fund është e mbyllur.",
             image = R.drawable.img_224,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2645,
             question = "Sinjali në figurë tregon një rrugë në të cilën lejohet qarkullimi i mjeteve, por që është pa dalje.",
             image = R.drawable.img_224,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2646,
@@ -15879,13 +15879,13 @@ class Database {
             id = 2648,
             question = "Sinjali në figurë tregon se djathtas është një degëzim pa dalje.",
             image = R.drawable.img_225,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2649,
             question = "Në prani të sinjalit në figurë lejohet kthimi djathtas në kryqëzim.",
             image = R.drawable.img_225,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2650,
@@ -15903,7 +15903,7 @@ class Database {
             id = 2652,
             question = "Sinjali në figurë tregon shpejtësinë e lëvizjes së mjeteve, që këshillohet të mos tejkalohet në kushte normale të motit dhe të trafikut.",
             image = R.drawable.img_226,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2653,
@@ -15921,7 +15921,7 @@ class Database {
             id = 2655,
             question = "Sinjali në figurë tregon fundin e shpejtësisë së këshilluar.",
             image = R.drawable.img_227,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2656,
@@ -15933,19 +15933,19 @@ class Database {
             id = 2657,
             question = "Sinjali në figurë tregon fillimin e një rruge të rezervuar për qarkullimin e mjeteve me motor.",
             image = R.drawable.img_228,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2658,
             question = "Në prani të sinjalit në figurë lejohet qarkullimi i motomjeteve.",
             image = R.drawable.img_228,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2659,
             question = "Në prani të sinjalit në figurë lejohet qarkullimi i autotrenave.",
             image = R.drawable.img_228,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2660,
@@ -15969,13 +15969,13 @@ class Database {
             id = 2663,
             question = "Sinjali në figurë tregon fundin e vlefshmërisë së një rruge të rezervuar për mjetet me motor.",
             image = R.drawable.img_229,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2664,
             question = "Sinjali në figurë tregon se rruga, pas këtij sinjali, lejon lëvizjen edhe të mjeteve pa motor.",
             image = R.drawable.img_229,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2665,
@@ -15993,19 +15993,19 @@ class Database {
             id = 2667,
             question = "Sinjali në figurë tregon fillimin e një tuneli në autostradë.",
             image = R.drawable.img_230,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2668,
             question = "Në prani të sinjalit në figurë, gjatë lëvizjes në tunel, drejtuesit e mjeteve duhet të zbatojnë rregullat e qarkullimit në tunele (ndalohet qëndrimi, përdorimi i fenerëve verbues, etj.).",
             image = R.drawable.img_230,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2669,
             question = "Sinjali në figurë paralajmëron drejtuesit e mjeteve se duhet të përdorin fenerët joverbues brenda në tunel.",
             image = R.drawable.img_230,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2670,
@@ -16023,7 +16023,7 @@ class Database {
             id = 2672,
             question = "Sinjali në figurë tregon fillimin e një ure ose të një mbikalimi në autostradë.",
             image = R.drawable.img_231,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2673,
@@ -16041,13 +16041,13 @@ class Database {
             id = 2675,
             question = "Sinjali në figurë tregon se futemi në një zonë urbane ose në një zone me park lojërash.",
             image = R.drawable.img_232,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2676,
             question = "Në prani të sinjalit në figurë, mjetet duhet të lëvizin me shpejtësi jo më të madhe se 40 km/orë.",
             image = R.drawable.img_232,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2677,
@@ -16065,7 +16065,7 @@ class Database {
             id = 2679,
             question = "Sinjali në figurë tregon se jemi në dalje të një zone me park lojërash apo të banuar.",
             image = R.drawable.img_233,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2680,
@@ -16077,13 +16077,13 @@ class Database {
             id = 2681,
             question = "Sinjali në figurë tregon fundin e zonës për këmbësorë.",
             image = R.drawable.img_234,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2682,
             question = "Pas sinjalit në figurë lejohet qarkullimi i këmbësorëve.",
             image = R.drawable.img_234,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2683,
@@ -16101,7 +16101,7 @@ class Database {
             id = 2685,
             question = "Sinjali në figurë tregon fundin e zonës me trafik të kufizuar.",
             image = R.drawable.img_235,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2686,
@@ -16113,13 +16113,13 @@ class Database {
             id = 2687,
             question = "Sinjali në figurë tregon një vendkalim biçikletash.",
             image = R.drawable.img_236,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2688,
             question = "Në prani të sinjalit në figurë, drejtuesit e mjeteve duhet të tregojnë kujdes sepse mund të ketë çiklistë duke kaluar karrexhatën.",
             image = R.drawable.img_236,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2689,
@@ -16143,13 +16143,13 @@ class Database {
             id = 2692,
             question = "Sinjali në figurë u tregon drejtueseve të mjeteve rrugën që duhet të ndjekin, për rastet kur duan të kthehen majtas.",
             image = R.drawable.img_237,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2693,
             question = "Sinjali në figurë u tregon drejtueseve të mjeteve, që duan të kthehen majtas në kryqëzim, se duhet fillimisht të kthehen djathtas dhe më pas sipas itinerarit të treguar.",
             image = R.drawable.img_237,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2694,
@@ -16161,13 +16161,13 @@ class Database {
             id = 2695,
             question = "Sinjali në figurë tregon itinerarin e mundshëm për t'u kthyer nga e majta.",
             image = R.drawable.img_238,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2696,
             question = "Sinjali në figurë tregon se kthimi direkt majtas në kryqëzimin e parë është i ndaluar.",
             image = R.drawable.img_238,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2697,
@@ -16185,19 +16185,19 @@ class Database {
             id = 2699,
             question = "Sinjali në figurë mund të tregojë praninë e një mbikalimi për ndryshimin e sensit të lëvizjes.",
             image = R.drawable.img_239,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2700,
             question = "Sinjali në figurë mund të tregojë një nënkalim që lejon ndryshimin e sensit të lëvizjes.",
             image = R.drawable.img_239,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2701,
             question = "Sinjali në figurë tregon praninë e një mbikalimi ose nënkalimi për ndryshimin e sensit të lëvizjes, në rrugë me karrexhata të ndara.",
             image = R.drawable.img_239,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2702,
@@ -16221,7 +16221,7 @@ class Database {
             id = 2705,
             question = "Sinjali në figurë tregon vendqëndrim për mjetet në anë të karrexhatës të rrugës interurbane.",
             image = R.drawable.img_240,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2706,
@@ -16239,13 +16239,13 @@ class Database {
             id = 2708,
             question = "Sinjali në figurë tregon një vendqëndrim (xhep) në autostradë, ku mund të kërkojmë ndihmë teknike ose mjekësore.",
             image = R.drawable.img_241,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2709,
             question = "Sinjali në figurë tregon se në afërsi gjendet një shesh (xhep) në autostradë, ku lejohet të qëndrojmë.",
             image = R.drawable.img_241,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2710,
@@ -16257,13 +16257,13 @@ class Database {
             id = 2711,
             question = "Sinjali në figurë tregon si të përdoren korsitë e karrexhatës.",
             image = R.drawable.img_242,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2712,
             question = "Sinjali në figurë tregon se në korsinë e majtë ndalohet qarkullimi për mjetet e transportit të mallrave me peshë të përgjithshme mbi 3.5 tonë.",
             image = R.drawable.img_242,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2713,
@@ -16281,13 +16281,13 @@ class Database {
             id = 2715,
             question = "Sinjali në figurë tregon karrexhatë autostrade dhe shpejtësitë minimale të detyrueshme në korsitë e veçanta të saj.",
             image = R.drawable.img_243,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2716,
             question = "Në prani të sinjalit në figurë, një mjet që lëviz me shpejtësi 80 km/orë lejohet të qarkullojë në korsinë e mesit.",
             image = R.drawable.img_243,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2717,
@@ -16323,19 +16323,19 @@ class Database {
             id = 2722,
             question = "Sinjali në figurë tregon se korsia e majtë është e rezervuar për autobusët e transportit publik.",
             image = R.drawable.img_244,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2723,
             question = "Sinjali në figurë u tregon drejtueseve të mjeteve se korsia e krahut të djathtë është për trafik normal.",
             image = R.drawable.img_244,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2724,
             question = "Sinjali në figurë u tregon drejtueseve të mjeteve edhe sensin e lëvizjes.",
             image = R.drawable.img_244,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2725,
@@ -16359,19 +16359,19 @@ class Database {
             id = 2728,
             question = "Sinjali në figurë tregon mënyrën si përdoren korsitë përbërëse të karrexhatës.",
             image = R.drawable.img_245,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2729,
             question = "Sinjali në figurë tregon se korsitë e majta janë për qarkullim normal dhe korsia e djathtë është e rezervuar për autobusë.",
             image = R.drawable.img_245,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2730,
             question = "Sinjali në figurë paraqet një karrexhatë me një sens lëvizjeje për qarkullim.",
             image = R.drawable.img_245,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2731,
@@ -16395,13 +16395,13 @@ class Database {
             id = 2734,
             question = "Sinjali në figurë u tregon drejtueseve të mjeteve se mbyllet korsia e djathtë.",
             image = R.drawable.img_246,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2735,
             question = "Pas sinjalit në figurë, drejtuesit e mjeteve duhet të ulin shpejtësinë për shkak të zvogëlimit të numrit të korsive.",
             image = R.drawable.img_246,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2736,
@@ -16419,7 +16419,7 @@ class Database {
             id = 2738,
             question = "Sinjali në figurë tregon ndryshimin e numrit të korsive të përdorshme në njërin sens lëvizje.",
             image = R.drawable.img_247,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2739,
@@ -16455,13 +16455,13 @@ class Database {
             id = 2744,
             question = "Sinjali në figurë tregon zvogëlim të numrit të korsive, nga 3(tre) në 2(dy), në karrexhatën e autostradës.",
             image = R.drawable.img_248,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2745,
             question = "Në prani të sinjalit në figurë mund të kemi ngadalësim të lëvizjes së mjeteve për shkak të ngushtimit të karrexhatës së autostradës.",
             image = R.drawable.img_248,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2746,
@@ -16479,7 +16479,7 @@ class Database {
             id = 2748,
             question = "Sinjali në figurë tregon rritje të numrit të korsive, nga 2(dy) në 3(tre), në karrexhatën e autostradës.",
             image = R.drawable.img_249,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2749,
@@ -16491,13 +16491,13 @@ class Database {
             id = 2750,
             question = "Sinjali në figurë tregon se mjetet, që paraqiten në të, këshillohen të lëvizin sipas drejtimit të treguar.",
             image = R.drawable.img_250,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2751,
             question = "Sinjali në figurë paralajmëron se këshillohet kthimi djathtas për autotrenat dhe gjysmërimorkiatorët.",
             image = R.drawable.img_250,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2752,
@@ -16515,19 +16515,19 @@ class Database {
             id = 2754,
             question = "Sinjali në figurë tregon drejtim të këshilluar djathtas, përkohësisht, për kamionët me peshë të përgjithshme mbi 3.5 tonë.",
             image = R.drawable.img_251,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2755,
             question = "Sinjali në figurë tregon që në afërsi është një ofiçinë për riparimin e mjeteve.",
             image = R.drawable.img_252,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2756,
             question = "Sinjali në figurë tregon praninë e asistencës (ndihmës) teknike pranë rrugës interurbane.",
             image = R.drawable.img_252,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2757,
@@ -16545,13 +16545,13 @@ class Database {
             id = 2759,
             question = "Sinjali në figurë tregon praninë e një telefoni publik, që mund të përdoret nga drejtuesit e mjeteve.",
             image = R.drawable.img_253,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2760,
             question = "Sinjali në figurë tregon që jemi në afërsi të një vendi nga ku mund të telefonojmë.",
             image = R.drawable.img_253,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2761,
@@ -16575,13 +16575,13 @@ class Database {
             id = 2764,
             question = "Sinjali në figurë tregon që, në afërsi, është një pikë furnizimi me karburant.",
             image = R.drawable.img_254,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2765,
             question = "Sinjali në figurë informon drejtuesit e mjeteve, që qarkullojnë në rrugë interurbane, për praninë e një pike furnizimi me karburant.",
             image = R.drawable.img_254,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2766,
@@ -16599,13 +16599,13 @@ class Database {
             id = 2768,
             question = "Sinjali në figurë tregon një pikë furnizimi me benzinë, naftë dhe benzinë pa plumb.",
             image = R.drawable.img_255,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2769,
             question = "Sinjali në figurë tregon që është e mundur të furnizohesh edhe me benzinë pa plumb.",
             image = R.drawable.img_255,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2770,
@@ -16617,7 +16617,7 @@ class Database {
             id = 2771,
             question = "Sinjali në figurë tregon vendqëndrim në rrugë urbane për autobusët e shërbimit publik interurban (ndërqytetës).",
             image = R.drawable.img_256,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2772,
@@ -16635,7 +16635,7 @@ class Database {
             id = 2774,
             question = "Sinjali në figurë tregon vendqëndrim në rrugë urbane për tramvajet e transportit publik interurban.",
             image = R.drawable.img_257,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2775,
@@ -16647,13 +16647,13 @@ class Database {
             id = 2776,
             question = "Sinjali në figurë tregon se në afërsi gjendet një pikë turistike.",
             image = R.drawable.img_258,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2777,
             question = "Sinjali në figurë tregon vend turistik për të rinj (kamp rinie).",
             image = R.drawable.img_258,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2778,
@@ -16665,13 +16665,13 @@ class Database {
             id = 2779,
             question = "Sinjali në figurë u tregon drejtueseve të mjeteve se në afërsi ndodhet një zonë për piknik.",
             image = R.drawable.img_259,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2780,
             question = "Sinjali në figurë tregon një hapësirë të pajisur me stola dhe tavolina, për piknik.",
             image = R.drawable.img_259,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2781,
@@ -16689,13 +16689,13 @@ class Database {
             id = 2783,
             question = "Sinjali në figurë tregon afërsinë e një zone për pushimin e mjeteve kamping.",
             image = R.drawable.img_260,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2784,
             question = "Sinjali në figurë tregon zonë kampingu me tenda dhe vend qëndrimi për autokampet.",
             image = R.drawable.img_260,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2785,
@@ -16719,7 +16719,7 @@ class Database {
             id = 2788,
             question = "Sinjali në figurë tregon frekuencën e valëve të radios, ku merret informacion për qarkullimin rrugor, në autostradën që ndodheni.",
             image = R.drawable.img_261,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2789,
@@ -16731,7 +16731,7 @@ class Database {
             id = 2790,
             question = "Sinjali në figurë u tregon drejtuesve të mjeteve se, në afërsi, ndodhet një hotel.",
             image = R.drawable.img_262,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2791,
@@ -16749,7 +16749,7 @@ class Database {
             id = 2793,
             question = "Sinjali në figurë u tregon drejtueseve të mjeteve, që qarkullojnë në rrugë interurbane, se në afërsi ndodhet një bar (kafe).",
             image = R.drawable.img_263,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2794,
@@ -16773,7 +16773,7 @@ class Database {
             id = 2797,
             question = "Sinjali në figurë u tregon drejtueseve të mjeteve, që qarkullojnë në rrugë interurbane, se në afërsi ndodhet një restorant.",
             image = R.drawable.img_264,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2798,
@@ -16803,7 +16803,7 @@ class Database {
             id = 2802,
             question = "Sinjali në figurë tregon një vend, që mund të parkosh mjetin për të marrë autobusin e linjës të treguar me numër.",
             image = R.drawable.img_265,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2803,
@@ -16815,7 +16815,7 @@ class Database {
             id = 2804,
             question = "Sinjali në figurë tregon një vend që mund të parkosh mjetin për të marrë tramvajin e linjës sipas numrit të shënuar.",
             image = R.drawable.img_266,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2805,
@@ -16827,13 +16827,13 @@ class Database {
             id = 2806,
             question = "Sinjali në figurë tregon vendparkim mjeti për të marrë metronë e linjës së shënuar poshtë, në anën e djathtë të sinjalit.",
             image = R.drawable.img_267,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2807,
             question = "Në anën e djathtë të sinjalit në figurë, në pjesën e poshtme, tregohet numri i linjës së transportit publik me metro.",
             image = R.drawable.img_267,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2808,
@@ -16851,7 +16851,7 @@ class Database {
             id = 2810,
             question = "Sinjali në figurë tregon vendparkim për mjetet në zona turistike, për të mundësuar lëvizjen e njerëzve në këmbë.",
             image = R.drawable.img_268,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2811,
@@ -16863,7 +16863,7 @@ class Database {
             id = 2812,
             question = "Sinjali në figurë tregon stacion treni, ku lejohet hyrja e mjeteve që transportohen me tren.",
             image = R.drawable.img_269,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2813,
@@ -16881,7 +16881,7 @@ class Database {
             id = 2815,
             question = "Sinjali në figurë tregon stacion hekurudhor, që ofron shërbime për transport mjetesh dhe mundësi fjetje në tren.",
             image = R.drawable.img_270,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2816,
@@ -16893,7 +16893,7 @@ class Database {
             id = 2817,
             question = "Sinjali në figurë tregon për drejtuesit e mjeteve se në afërsi ndodhet një port, që ofron shërbime për transport mjetesh.",
             image = R.drawable.img_271,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2818,
@@ -16911,13 +16911,13 @@ class Database {
             id = 2820,
             question = "Sinjali në figurë tregon një vend pushimi për taksi.",
             image = R.drawable.img_272,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2821,
             question = "Sinjali në figurë tregon një zonë të përcaktuar për parkimin e mjeteve të shërbimit “TAKSI”.",
             image = R.drawable.img_272,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2822,
@@ -16935,7 +16935,7 @@ class Database {
             id = 2824,
             question = "Sinjali në figurë tregon një zonë të pajisur me impiante për shkarkimin e ujërave të zeza dhe të bardha nga autokampe.",
             image = R.drawable.img_273,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2825,
@@ -16959,7 +16959,7 @@ class Database {
             id = 2828,
             question = "Sinjali në figurë tregon adresën dhe numrin e telefonit të Policisë Rrugore, për rast nevoje.",
             image = R.drawable.img_274,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2829,
@@ -16971,13 +16971,13 @@ class Database {
             id = 2830,
             question = "Sinjali në figurë tregon kufirin e një shteti, që bën pjesë në Bashkimin Evropian.",
             image = R.drawable.img_163,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2831,
             question = "Sinjali në figurë tregon kufirin e shtetit Italian, që bën pjesë në Bashkimin Evropian.",
             image = R.drawable.img_163,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2832,
@@ -16995,13 +16995,13 @@ class Database {
             id = 2834,
             question = "Sinjali në figurë tregon se, pas 1 kilometri, ndodhet kufiri i një shteti që bën pjesë në Bashkimin Evropian.",
             image = R.drawable.img_164,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2835,
             question = "Sinjali në figurë gjendet pranë kufirit me një vend të Bashkimit Evropian.",
             image = R.drawable.img_164,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2836,
@@ -17019,19 +17019,19 @@ class Database {
             id = 2838,
             question = "Sinjali në figurë paralajmëron pjesë rruge, ku po bëhen punime.",
             image = R.drawable.img_275,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2839,
             question = "Sinjali në figurë paralajmëron praninë e një kantieri rrugor.",
             image = R.drawable.img_275,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2840,
             question = "Sinjali në figurë tregon mundësinë e pranisë së makinerive apo punëtorëve që punojnë në rrugë.",
             image = R.drawable.img_275,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2841,
@@ -17055,13 +17055,13 @@ class Database {
             id = 2844,
             question = "Sinjali (barriera) në figurë tregon fillimin e një zone ku bëhen punime rrugore.",
             image = R.drawable.img_276,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2845,
             question = "Sinjali (barriera) në figurë tregon një kufizim të zonës së punimeve rrugore.",
             image = R.drawable.img_276,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2846,
@@ -17085,7 +17085,7 @@ class Database {
             id = 2849,
             question = "Sinjali në figurë tregon një kufizues anësor të punimeve në rrugë.",
             image = R.drawable.img_277,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2850,
@@ -17097,19 +17097,19 @@ class Database {
             id = 2851,
             question = "Sinjali në figurë mund te kufizojë një zonë të punimeve në rrugë, për një kohë të shkurtër.",
             image = R.drawable.img_278,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2852,
             question = "Sinjali në figurë mund të kufizojë një zonë ku ka ndodhur një aksident.",
             image = R.drawable.img_278,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2853,
             question = "Sinjali në figurë mund të bëjë ndarjen e përkohshme të senseve të kundërta të qarkullimit.",
             image = R.drawable.img_278,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2854,
@@ -17121,7 +17121,7 @@ class Database {
             id = 2855,
             question = "Sinjali në figurë tregon kalim të detyruar nga e djathta e mjetit punues në rrugë, mbi të cilin është i vendosur ky sinjal.",
             image = R.drawable.img_279,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2856,
@@ -17133,13 +17133,13 @@ class Database {
             id = 2857,
             question = "Sinjali në figurë tregon se, pas 500 metrave, bëhen punime në rrugë.",
             image = R.drawable.img_280,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2858,
             question = "Sinjali në figurë tregon korsitë e karrexhatës që mund të përdoren për shkak të punimeve rrugore.",
             image = R.drawable.img_280,
-            answer = "Sakte"
+            answer = "Saktë"
         ),
         DatabaseModel(
             id = 2859,
