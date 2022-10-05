@@ -1,5 +1,7 @@
 package com.arsildo.merr_patenten.display.screens
 
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.animateFloatAsState
@@ -21,7 +23,6 @@ import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.ExpandMore
 import androidx.compose.material.icons.rounded.Flag
-import androidx.compose.material.icons.rounded.Gite
 import androidx.compose.material.icons.rounded.QueryStats
 import androidx.compose.material.icons.rounded.Settings
 import androidx.compose.runtime.Composable
@@ -32,12 +33,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.arsildo.merr_patenten.R
 import com.arsildo.merr_patenten.display.screens.components.ScreenLayout
+import com.arsildo.merr_patenten.logic.constants.GITHUB_DEVELOPER_URL
 import com.arsildo.merr_patenten.logic.navigation.Destinations
 
 @Composable
@@ -52,8 +55,13 @@ fun MainScreen(
                 navController.navigate(route = Destinations.Exam.route)
             }
         )
+        val context = LocalContext.current
         BottomActions(
-            onGithubLinkClicked = { /*TODO*/ },
+            onGithubLinkClicked = {
+                val githubLink = Intent(Intent.ACTION_VIEW)
+                githubLink.data = Uri.parse(GITHUB_DEVELOPER_URL)
+                context.startActivity(githubLink)
+            },
             onStatisticsClicked = { /*TODO*/ },
             onPreferencesClicked = { navController.navigate(Destinations.Preferences.route) }
         )
@@ -90,7 +98,7 @@ fun CategoryCard(onStartExamClicked: () -> Unit) {
                 horizontalArrangement = Arrangement.SpaceAround
             ) {
                 Image(
-                    painterResource(id = R.drawable.ic_launcher_background),
+                    painterResource(id = R.drawable.img_noimage),
                     contentDescription = null,
                     modifier = Modifier.size(128.dp)
                 )
@@ -161,7 +169,7 @@ fun BottomActions(
     ) {
         IconButton(onClick = onGithubLinkClicked) {
             Icon(
-                Icons.Rounded.Gite, // todo Change to Github Logo.
+                painterResource(id = R.drawable.github),
                 contentDescription = null,
                 tint = MaterialTheme.colors.primary,
                 modifier = Modifier.size(32.dp)

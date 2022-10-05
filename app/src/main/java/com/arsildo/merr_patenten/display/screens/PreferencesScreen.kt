@@ -18,18 +18,28 @@ import androidx.compose.material.icons.outlined.DarkMode
 import androidx.compose.material.icons.outlined.QueryStats
 import androidx.compose.material.icons.rounded.ArrowBack
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.arsildo.merr_patenten.display.screens.components.ScreenLayout
+import com.arsildo.merr_patenten.logic.cache.UserPreferences
 import com.arsildo.merr_patenten.logic.navigation.Destinations
+import kotlinx.coroutines.launch
 
 @Composable
 fun PreferencesScreen(navController: NavController) {
+
+    val dataStore = UserPreferences(LocalContext.current)
+    val themePreference = dataStore.getThemePreference.collectAsState(initial = "light_mode").value
+    val scope = rememberCoroutineScope()
+
     ScreenLayout {
         Row(
             modifier = Modifier.padding(bottom = 16.dp),
@@ -45,13 +55,13 @@ fun PreferencesScreen(navController: NavController) {
                 Icon(
                     Icons.Rounded.ArrowBack,
                     contentDescription = null,
-                    tint = MaterialTheme.colors.secondary,
+                    tint = MaterialTheme.colors.primary,
                     modifier = Modifier.fillMaxSize()
                 )
             }
             Text(
                 text = "Preferencat",
-                color = MaterialTheme.colors.secondary,
+                color = MaterialTheme.colors.primary,
                 fontSize = 28.sp
             )
         }
@@ -59,8 +69,14 @@ fun PreferencesScreen(navController: NavController) {
         SettingItem(
             title = "Night Mode",
             icon = Icons.Outlined.DarkMode,
-            checked = true,
-            onCheckedChange = { }
+            checked = themePreference == "dark_mode",
+            onCheckedChange = {
+                if (themePreference == "light_mode") {
+                    scope.launch {
+                        dataStore.setThemePreference("dark_mode")
+                    }
+                } else scope.launch { dataStore.setThemePreference("light_mode") }
+            }
         )
         SettingItem(
             title = "Kujto rezultatet",
@@ -93,7 +109,7 @@ fun SettingItem(
             Icon(
                 icon,
                 contentDescription = null,
-                tint = MaterialTheme.colors.secondary,
+                tint = MaterialTheme.colors.primary,
                 modifier = Modifier
                     .padding(end = 9.dp)
                     .size(28.dp)
@@ -101,7 +117,7 @@ fun SettingItem(
             )
             Text(
                 text = title,
-                color = MaterialTheme.colors.secondary,
+                color = MaterialTheme.colors.primary,
                 fontSize = 18.sp
             )
         }
@@ -109,10 +125,10 @@ fun SettingItem(
             checked = checked,
             onCheckedChange = { onCheckedChange(it) },
             colors = SwitchDefaults.colors(
-                checkedThumbColor = MaterialTheme.colors.secondary,
-                checkedTrackColor = MaterialTheme.colors.secondary,
-                uncheckedThumbColor = MaterialTheme.colors.secondary,
-                uncheckedTrackColor = MaterialTheme.colors.secondary // todo adjust
+                checkedThumbColor = MaterialTheme.colors.primary,
+                checkedTrackColor = MaterialTheme.colors.primary,
+                uncheckedThumbColor = MaterialTheme.colors.primary,
+                uncheckedTrackColor = MaterialTheme.colors.primary // todo adjust
             )
         )
     }

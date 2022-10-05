@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -12,13 +14,16 @@ import com.arsildo.merr_patenten.display.screens.ExamScreen
 import com.arsildo.merr_patenten.display.screens.MainScreen
 import com.arsildo.merr_patenten.display.screens.PreferencesScreen
 import com.arsildo.merr_patenten.display.theme.MerrPatentenTheme
+import com.arsildo.merr_patenten.logic.cache.UserPreferences
 import com.arsildo.merr_patenten.logic.navigation.Destinations
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MerrPatentenTheme() {
+            val dataStore = UserPreferences(LocalContext.current)
+            val theme = dataStore.getThemePreference.collectAsState(initial = "light_mode").value
+            MerrPatentenTheme(themePreference = theme) {
                 val navController = rememberNavController()
                 NavigationGraph(navController = navController)
             }
