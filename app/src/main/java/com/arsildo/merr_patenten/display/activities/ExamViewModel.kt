@@ -1,5 +1,6 @@
 package com.arsildo.merr_patenten.display.activities
 
+import android.os.CountDownTimer
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
@@ -14,7 +15,7 @@ import java.util.concurrent.TimeUnit
 class ExamViewModel : ViewModel() {
 
     val isExamCompleted = mutableStateOf(false)
-    /* val countDownTimer = mutableStateOf("40:00")*/
+    val countDownTimer = mutableStateOf("40:00")
 
     val generatedQuestions: List<DatabaseModel> = generateQuestions()
 
@@ -27,7 +28,7 @@ class ExamViewModel : ViewModel() {
     var mistakes = mutableStateOf(0)
 
     init {
-        /* startCountDown()*/
+        startCountDown()
         fillExamWithDefaults()
     }
 
@@ -77,20 +78,20 @@ class ExamViewModel : ViewModel() {
         }
     }
 
-    /* private fun startCountDown() {
-         object : CountDownTimer(144000, 1000) {
-             override fun onTick(millisUntilFinished: Long) {
-                 countDownTimer.value = formatCountDownTimer(millisUntilFinished)
-                 if (isExamCompleted.value) cancel()
-             }
+    private fun startCountDown() {
+        object : CountDownTimer(144000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                countDownTimer.value = formatCountDownTimer(millisUntilFinished)
+                if (isExamCompleted.value) cancel()
+            }
 
-             override fun onFinish() {
-                 isExamCompleted.value = true
-                 cancel()
-             }
+            override fun onFinish() {
+                isExamCompleted.value = true
+                cancel()
+            }
 
-         }.start()
-     }*/
+        }.start()
+    }
 
     private fun formatCountDownTimer(millisUntilFinished: Long): String {
         return String.format(

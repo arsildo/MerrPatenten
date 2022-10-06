@@ -4,8 +4,9 @@ import androidx.compose.ui.graphics.Color
 
 val KappelGreen = Color(0xFF15b097)
 val PrussianBlue = Color(0xFF014575)
+val DarkSpringGreen = Color(0xFF1E8F50)
 val OffWhite = Color(0xFFFDFCFE)
-val OffBlack = Color(0xFF10110F)
+val OffBlack = Color(0xFF141413)
 val White = Color(0xFFFFFFFF)
 val Black = Color(0xFF000000)
 

@@ -21,10 +21,10 @@ private val LightColorPalette = lightColors(
 )
 
 private val DarkColorPalette = darkColors(
-    primary = KappelGreen,
+    primary = DarkSpringGreen,
     onPrimary = White,
 
-    secondary = KappelGreen,
+    secondary = DarkSpringGreen,
     onSecondary = White,
 
     surface = Black,

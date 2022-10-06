@@ -25,7 +25,6 @@ import com.arsildo.merr_patenten.display.screens.components.Pager
 import com.arsildo.merr_patenten.display.screens.components.PagerMap
 import com.arsildo.merr_patenten.display.screens.components.PagerNavigation
 import com.arsildo.merr_patenten.display.screens.components.ScreenLayout
-import com.arsildo.merr_patenten.logic.navigation.Destinations
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.rememberPagerState
 import kotlinx.coroutines.launch
@@ -51,7 +50,7 @@ fun ExamScreen(navController: NavHostController) {
     ) {
         ExamNavigator(
             currentPage = pagerState.currentPage,
-            countDownTimer = "26:32"/*viewModel.countDownTimer.value*/,
+            countDownTimer = viewModel.countDownTimer.value,
             concludeButton = concludeButton.value,
             onToggleClicked = { concludeButton.value = !concludeButton.value },
             onMapClicked = { scope.launch { sheetState.show() } }
@@ -127,7 +126,7 @@ fun ExamScreen(navController: NavHostController) {
     BackHandler {
         if (!viewModel.isExamCompleted.value && !sheetState.isVisible)
             concludeButton.value = !concludeButton.value
-        else navController.popBackStack()
+        else if (!sheetState.isVisible) navController.popBackStack()
         if (sheetState.isVisible) scope.launch {
             concludeButton.value = false
             sheetState.hide()

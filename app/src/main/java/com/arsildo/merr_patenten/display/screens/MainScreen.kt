@@ -99,18 +99,19 @@ fun CategoryCard(onStartExamClicked: () -> Unit) {
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceAround
             ) {
-                Image(
-                    painterResource(id = R.drawable.img_noimage),
+                Icon(
+                    painterResource(id = R.drawable.ico_category),
                     contentDescription = null,
+                    tint = MaterialTheme.colors.primary,
                     modifier = Modifier.size(128.dp)
                 )
                 Column(
                     horizontalAlignment = Alignment.Start
                 ) {
-                    Text(text = "Versioni 2022")
-                    Text(text = "40 Pyetje")
-                    Text(text = "40 Minuta")
-                    Text(text = "4 Gabime te lejuara")
+                    Text(text = "Versioni 2022", color = MaterialTheme.colors.primary)
+                    Text(text = "40 Pyetje", color = MaterialTheme.colors.primary)
+                    Text(text = "40 Minuta", color = MaterialTheme.colors.primary)
+                    Text(text = "4 Gabime te lejuara", color = MaterialTheme.colors.primary)
                 }
             }
             var additionalInfo by remember { mutableStateOf(false) }
@@ -119,10 +120,6 @@ fun CategoryCard(onStartExamClicked: () -> Unit) {
             ) {
                 Button(
                     onClick = onStartExamClicked,
-                    colors = ButtonDefaults.buttonColors(
-                        contentColor = MaterialTheme.colors.onPrimary,
-                        backgroundColor = MaterialTheme.colors.primary,
-                    ),
                     shape = MaterialTheme.shapes.medium,
                     elevation = ButtonDefaults.elevation(
                         defaultElevation = 0.dp,

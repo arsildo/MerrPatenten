@@ -84,11 +84,11 @@ fun PagerMap(
                     items(40) {
                         MapItem(
                             position = "${it + 1}",
-                            positionColor = if (!isExamCompleted) if (responseList[it].isEmpty()) MaterialTheme.colors.background else KappelGreen
+                            positionColor = if (!isExamCompleted) if (responseList[it].isEmpty()) MaterialTheme.colors.background else MaterialTheme.colors.primary
                             else if (mistakePositions[it] == 1) Red else Green,
                             positionTextColor = if (!isExamCompleted) if (responseList[it].isEmpty()) MaterialTheme.colors.onBackground else MaterialTheme.colors.onPrimary
                             else White,
-                            borderColor = if (!isExamCompleted) if (responseList[it].isEmpty()) GrayedOot else KappelGreen
+                            borderColor = if (!isExamCompleted) if (responseList[it].isEmpty()) GrayedOot else MaterialTheme.colors.primary
                             else if (mistakePositions[it] == 1) Red else Green,
                             onPositionClick = { onPositionClicked(it) }
                         )
@@ -102,7 +102,7 @@ fun PagerMap(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     if (!isExamCompleted) {
-                        Indicator(title = "Plotesuar", color = KappelGreen)
+                        Indicator(title = "Plotesuar", color = MaterialTheme.colors.primary)
                     } else {
                         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                             Indicator(title = "Gabim", color = Red)
