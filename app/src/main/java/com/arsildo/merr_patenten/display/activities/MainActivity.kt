@@ -40,7 +40,7 @@ class MainActivity : ComponentActivity() {
                 MainScreen(navController)
             }
             composable(route = Destinations.Exam.route) {
-                ExamScreen()
+                ExamScreen(navController)
             }
             composable(route = Destinations.Preferences.route) {
                 PreferencesScreen(navController = navController)

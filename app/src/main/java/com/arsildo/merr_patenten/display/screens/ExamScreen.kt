@@ -1,5 +1,6 @@
 package com.arsildo.merr_patenten.display.screens
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.tween
@@ -16,6 +17,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavHostController
 import com.arsildo.merr_patenten.display.activities.ExamViewModel
 import com.arsildo.merr_patenten.display.screens.components.ConcludeButton
 import com.arsildo.merr_patenten.display.screens.components.ExamNavigator
@@ -23,13 +25,14 @@ import com.arsildo.merr_patenten.display.screens.components.Pager
 import com.arsildo.merr_patenten.display.screens.components.PagerMap
 import com.arsildo.merr_patenten.display.screens.components.PagerNavigation
 import com.arsildo.merr_patenten.display.screens.components.ScreenLayout
+import com.arsildo.merr_patenten.logic.navigation.Destinations
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.rememberPagerState
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterialApi::class, ExperimentalPagerApi::class)
 @Composable
-fun ExamScreen() {
+fun ExamScreen(navController: NavHostController) {
 
     val viewModel: ExamViewModel = viewModel()
     val scope = rememberCoroutineScope()
@@ -121,4 +124,13 @@ fun ExamScreen() {
         }
 
     )
+    BackHandler {
+        if (!viewModel.isExamCompleted.value && !sheetState.isVisible)
+            concludeButton.value = !concludeButton.value
+        else navController.popBackStack()
+        if (sheetState.isVisible) scope.launch {
+            concludeButton.value = false
+            sheetState.hide()
+        }
+    }
 }

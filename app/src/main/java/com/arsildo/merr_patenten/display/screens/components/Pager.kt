@@ -27,7 +27,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.arsildo.merr_patenten.display.theme.Black
 import com.arsildo.merr_patenten.display.theme.Green
 import com.arsildo.merr_patenten.display.theme.Red
 import com.arsildo.merr_patenten.logic.database.DatabaseModel
@@ -99,20 +98,20 @@ fun PagerItem(
             PagerCheckbox(
                 title = "Gabim",
                 checked = falseChecked,
-                titleColor = if (falseChecked) if (isExamCompleted) Red.copy(.4f) else Red else if (isExamCompleted) Black.copy(
+                titleColor = if (falseChecked) if (isExamCompleted) Red.copy(.4f) else Red else if (isExamCompleted) MaterialTheme.colors.onBackground.copy(
                     .4f
                 ) else MaterialTheme.colors.onBackground,
-                checkedColor = if (falseChecked) Red else Black,
+                checkedColor = if (falseChecked) Red else MaterialTheme.colors.onBackground,
                 enabled = !isExamCompleted,
                 onCheckedChanged = onFalseChecked
             )
             PagerCheckbox(
                 title = "Saktë",
-                titleColor = if (trueChecked) if (isExamCompleted) Green.copy(.4f) else Green else if (isExamCompleted) Black.copy(
+                titleColor = if (trueChecked) if (isExamCompleted) Green.copy(.4f) else Green else if (isExamCompleted) MaterialTheme.colors.onBackground.copy(
                     .4f
                 ) else MaterialTheme.colors.onBackground,
                 checked = trueChecked,
-                checkedColor = if (trueChecked) Green else Black,
+                checkedColor = if (trueChecked) Green else MaterialTheme.colors.onBackground,
                 enabled = !isExamCompleted,
                 onCheckedChanged = onTrueChecked
             )

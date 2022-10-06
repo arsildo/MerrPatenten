@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Card
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Icon
@@ -21,11 +22,14 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.ModalBottomSheetLayout
 import androidx.compose.material.ModalBottomSheetState
 import androidx.compose.material.Text
+import androidx.compose.material.TextButton
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Check
 import androidx.compose.material.icons.rounded.Clear
+import androidx.compose.material.icons.rounded.Close
 import androidx.compose.material.icons.rounded.ExpandMore
 import androidx.compose.material.icons.rounded.HorizontalRule
+import androidx.compose.material.icons.rounded.RestartAlt
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -70,9 +74,8 @@ fun PagerMap(
                     tint = MaterialTheme.colors.onBackground,
                     modifier = Modifier.padding(bottom = 8.dp)
                 )
-                if (isExamCompleted) {
-                    ConclusionTab(errors = errors)
-                }
+                if (isExamCompleted) ConclusionTab(errors = errors)
+
                 LazyVerticalGrid(
                     columns = GridCells.Fixed(count = 5),
                     horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -163,23 +166,27 @@ fun ConclusionTab(
         Row(
             modifier = Modifier
                 .clip(shape = MaterialTheme.shapes.small)
-                .background(if (errors > 4) Red else Green)
+                .background(if (errors > 4) Red.copy(.15f) else Green.copy(.15f))
                 .padding(horizontal = 8.dp, vertical = 4.dp),
             horizontalArrangement = Arrangement.spacedBy(4.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
                 text = "$errors Gabime",
-                color = White,
+                color = if (errors > 4) Red else Green,
                 fontSize = 22.sp
             )
             Icon(
                 if (errors > 4) Icons.Rounded.Clear else Icons.Rounded.Check,
                 contentDescription = null,
-                tint = White,
+                tint = if (errors > 4) Red else Green,
             )
         }
-        Text(text = "26:32", fontSize = 22.sp)
+        Text(
+            text = if (errors > 4) "Ju Humbet!" else "Ju Fituat!",
+            fontSize = 22.sp,
+            color = if (errors > 4) Red else Green
+        )
     }
 }
 
