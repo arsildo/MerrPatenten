@@ -32,7 +32,7 @@ class ExamViewModel : ViewModel() {
         fillExamWithDefaults()
     }
 
-    fun countMistakes(): Int {
+    fun countErrors(): Int {
         mistakes.value = 0
         for (index in 0..39) {
             if (responseList[index] != generatedQuestions[index].answer) {
@@ -79,14 +79,18 @@ class ExamViewModel : ViewModel() {
     }
 
     private fun startCountDown() {
-        object : CountDownTimer(144000, 1000) {
+        object : CountDownTimer(/*2401000*/60000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 countDownTimer.value = formatCountDownTimer(millisUntilFinished)
-                if (isExamCompleted.value) cancel()
+                if (isExamCompleted.value) {
+                    countErrors()
+                    cancel()
+                }
             }
 
             override fun onFinish() {
                 isExamCompleted.value = true
+                countErrors()
                 cancel()
             }
 

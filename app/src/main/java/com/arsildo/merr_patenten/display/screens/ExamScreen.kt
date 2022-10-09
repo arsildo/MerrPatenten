@@ -50,7 +50,7 @@ fun ExamScreen(navController: NavHostController) {
     ) {
         ExamNavigator(
             currentPage = pagerState.currentPage,
-            countDownTimer = viewModel.countDownTimer.value,
+            countDownTimer = remember(viewModel) { { viewModel.countDownTimer.value } },
             concludeButton = concludeButton.value,
             onToggleClicked = { concludeButton.value = !concludeButton.value },
             onMapClicked = { scope.launch { sheetState.show() } }
@@ -100,7 +100,7 @@ fun ExamScreen(navController: NavHostController) {
                     onClick = {
                         viewModel.isExamCompleted.value = true
                         scope.launch { sheetState.show() }
-                        if (viewModel.isExamCompleted.value) viewModel.countMistakes()
+                        if (viewModel.isExamCompleted.value) viewModel.countErrors()
                     }
                 )
             }
@@ -118,9 +118,7 @@ fun ExamScreen(navController: NavHostController) {
                 pagerState.animateScrollToPage(it)
             }
         },
-        onHideSheet = {
-            scope.launch { sheetState.hide() }
-        }
+        onHideSheet = { scope.launch { sheetState.hide() } }
 
     )
     BackHandler {

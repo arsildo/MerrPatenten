@@ -28,7 +28,7 @@ import com.arsildo.merr_patenten.display.theme.Red
 @Composable
 fun ExamNavigator(
     currentPage: Int,
-    countDownTimer: String,
+    countDownTimer: () -> String,
     concludeButton: Boolean,
     onToggleClicked: () -> Unit,
     onMapClicked: () -> Unit,
@@ -57,12 +57,7 @@ fun ExamNavigator(
             Icon(Icons.Rounded.Looks3, contentDescription = null)
             Icon(Icons.Rounded.Looks4, contentDescription = null)
         }
-        Text(
-            text = countDownTimer,
-            textAlign = TextAlign.Center,
-            color = MaterialTheme.colors.onBackground,
-            modifier = Modifier.weight(.3f)
-        )
+        TimerText(Modifier.weight(.3f), countDownTimer)
         IconButton(
             onClick = onToggleClicked,
             modifier = Modifier.weight(.1f)
@@ -76,4 +71,14 @@ fun ExamNavigator(
             )
         }
     }
+}
+
+@Composable
+private fun TimerText(modifier: Modifier = Modifier, countDownTimer: () -> String) {
+    Text(
+        text = countDownTimer(),
+        textAlign = TextAlign.Center,
+        color = MaterialTheme.colors.onBackground,
+        modifier = modifier
+    )
 }
