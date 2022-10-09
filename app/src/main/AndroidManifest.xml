@@ -14,8 +14,10 @@
         tools:targetApi="31">
         <activity
             android:name=".display.activities.MainActivity"
+            android:screenOrientation="sensorPortrait"
             android:exported="true"
-            android:theme="@style/Theme.MerrPatenten">
+            android:theme="@style/Theme.MerrPatenten"
+            tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
