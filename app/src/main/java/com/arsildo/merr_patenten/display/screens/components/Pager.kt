@@ -63,7 +63,7 @@ fun Pager(
 }
 
 @Composable
-fun PagerItem(
+private fun PagerItem(
     model: DatabaseModel,
     isExamCompleted: Boolean,
     mistakePosition: Int,
@@ -124,7 +124,7 @@ fun PagerItem(
 }
 
 @Composable
-fun PagerCheckbox(
+private fun PagerCheckbox(
     title: String,
     titleColor: Color,
     checked: Boolean,
@@ -158,7 +158,7 @@ fun PagerCheckbox(
 }
 
 @Composable
-fun Indicator(correct: Boolean) {
+private fun Indicator(correct: Boolean) {
     Row(
         modifier = Modifier
             .clip(MaterialTheme.shapes.medium)

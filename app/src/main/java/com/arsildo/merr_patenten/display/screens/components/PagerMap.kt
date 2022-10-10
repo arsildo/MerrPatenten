@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Card
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Icon
@@ -22,14 +21,9 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.ModalBottomSheetLayout
 import androidx.compose.material.ModalBottomSheetState
 import androidx.compose.material.Text
-import androidx.compose.material.TextButton
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Check
-import androidx.compose.material.icons.rounded.Clear
-import androidx.compose.material.icons.rounded.Close
 import androidx.compose.material.icons.rounded.ExpandMore
 import androidx.compose.material.icons.rounded.HorizontalRule
-import androidx.compose.material.icons.rounded.RestartAlt
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -40,7 +34,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.arsildo.merr_patenten.display.theme.GrayedOot
 import com.arsildo.merr_patenten.display.theme.Green
-import com.arsildo.merr_patenten.display.theme.KappelGreen
 import com.arsildo.merr_patenten.display.theme.Red
 import com.arsildo.merr_patenten.display.theme.White
 
@@ -127,7 +120,7 @@ fun PagerMap(
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun MapItem(
+private fun MapItem(
     position: String,
     positionColor: Color,
     positionTextColor: Color,
@@ -139,7 +132,7 @@ fun MapItem(
         backgroundColor = positionColor,
         contentColor = positionTextColor,
         border = BorderStroke(1.dp, borderColor),
-        shape = MaterialTheme.shapes.medium,
+        shape = MaterialTheme.shapes.small,
         elevation = 0.dp,
     ) {
         Text(
@@ -154,39 +147,24 @@ fun MapItem(
 }
 
 @Composable
-fun ConclusionTab(
-    errors: Int,
-) {
+private fun ConclusionTab(errors: Int) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(bottom = 8.dp),
+            .padding(vertical = 8.dp),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        Row(
-            modifier = Modifier
-                .clip(shape = MaterialTheme.shapes.small)
-                .background(if (errors > 4) Red.copy(.15f) else Green.copy(.15f))
-                .padding(horizontal = 8.dp, vertical = 4.dp),
-            horizontalArrangement = Arrangement.spacedBy(4.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Text(
-                text = "$errors Gabime",
-                color = if (errors > 4) Red else Green,
-                fontSize = 22.sp
-            )
-            Icon(
-                if (errors > 4) Icons.Rounded.Clear else Icons.Rounded.Check,
-                contentDescription = null,
-                tint = if (errors > 4) Red else Green,
-            )
-        }
+        Text(
+            text = "$errors Gabime",
+            color = if (errors > 4) Red else Green,
+            fontSize = 25.sp
+        )
         Text(
             text = if (errors > 4) "Ju Humbet!" else "Ju Fituat!",
-            fontSize = 22.sp,
+            fontSize = 25.sp,
             color = if (errors > 4) Red else Green
         )
+
     }
 }
 

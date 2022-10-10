@@ -2,7 +2,6 @@ package com.arsildo.merr_patenten.display.theme
 
 import androidx.compose.ui.graphics.Color
 
-val KappelGreen = Color(0xFF15b097)
 val PrussianBlue = Color(0xFF014575)
 val DarkSpringGreen = Color(0xFF1E8F50)
 val OffWhite = Color(0xFFFDFCFE)

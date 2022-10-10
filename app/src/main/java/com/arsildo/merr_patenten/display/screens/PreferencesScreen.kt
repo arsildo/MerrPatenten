@@ -1,6 +1,5 @@
 package com.arsildo.merr_patenten.display.screens
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -22,7 +21,6 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
@@ -38,6 +36,7 @@ fun PreferencesScreen(navController: NavController) {
 
     val dataStore = UserPreferences(LocalContext.current)
     val themePreference = dataStore.getThemePreference.collectAsState(initial = "light_mode").value
+    val examStatsPreference = dataStore.getExamStats.collectAsState(initial = true).value
     val scope = rememberCoroutineScope()
 
     ScreenLayout {
@@ -67,6 +66,17 @@ fun PreferencesScreen(navController: NavController) {
         }
 
         SettingItem(
+            title = "Mbaj mend rezultatet",
+            icon = Icons.Outlined.QueryStats,
+            checked = examStatsPreference,
+            onCheckedChange = {
+                if (examStatsPreference)
+                    scope.launch { dataStore.setExamStatsPreference(false) }
+                else scope.launch { dataStore.setExamStatsPreference(true) }
+            }
+        )
+
+        SettingItem(
             title = "Night Mode",
             icon = Icons.Outlined.DarkMode,
             checked = themePreference == "dark_mode",
@@ -77,12 +87,6 @@ fun PreferencesScreen(navController: NavController) {
                     }
                 } else scope.launch { dataStore.setThemePreference("light_mode") }
             }
-        )
-        SettingItem(
-            title = "Kujto rezultatet",
-            icon = Icons.Outlined.QueryStats,
-            checked = false,
-            onCheckedChange = { }
         )
 
     }
@@ -98,10 +102,7 @@ fun SettingItem(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 8.dp)
-            .clip(MaterialTheme.shapes.medium)
-            .background(MaterialTheme.colors.primary.copy(.1f))
-            .padding(horizontal = 16.dp, vertical = 4.dp),
+            .padding(4.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -128,7 +129,7 @@ fun SettingItem(
                 checkedThumbColor = MaterialTheme.colors.primary,
                 checkedTrackColor = MaterialTheme.colors.primary,
                 uncheckedThumbColor = MaterialTheme.colors.primary,
-                uncheckedTrackColor = MaterialTheme.colors.primary // todo adjust
+                uncheckedTrackColor = MaterialTheme.colors.primary
             )
         )
     }

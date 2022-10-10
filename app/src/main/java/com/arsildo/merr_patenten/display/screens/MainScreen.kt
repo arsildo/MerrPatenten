@@ -6,7 +6,6 @@ import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -71,7 +70,7 @@ fun MainScreen(
 }
 
 @Composable
-fun CategoryCard(onStartExamClicked: () -> Unit) {
+private fun CategoryCard(onStartExamClicked: () -> Unit) {
     Card(
         contentColor = MaterialTheme.colors.onSurface,
         backgroundColor = MaterialTheme.colors.surface,
