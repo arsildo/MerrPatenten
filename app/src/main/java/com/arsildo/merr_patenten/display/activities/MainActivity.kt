@@ -16,6 +16,7 @@ import androidx.navigation.compose.rememberNavController
 import com.arsildo.merr_patenten.display.screens.ExamScreen
 import com.arsildo.merr_patenten.display.screens.MainScreen
 import com.arsildo.merr_patenten.display.screens.PreferencesScreen
+import com.arsildo.merr_patenten.display.screens.StatisticsScreen
 import com.arsildo.merr_patenten.display.theme.MerrPatentenTheme
 import com.arsildo.merr_patenten.logic.cache.UserPreferences
 import com.arsildo.merr_patenten.logic.navigation.Destinations
@@ -47,6 +48,9 @@ class MainActivity : ComponentActivity() {
             }
             composable(route = Destinations.Exam.route) {
                 ExamScreen(navController)
+            }
+            composable(route = Destinations.Statistics.route) {
+                StatisticsScreen(navController)
             }
             composable(route = Destinations.Preferences.route) {
                 PreferencesScreen(navController)

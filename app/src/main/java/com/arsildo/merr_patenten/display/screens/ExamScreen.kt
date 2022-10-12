@@ -11,11 +11,14 @@ import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.ModalBottomSheetValue
 import androidx.compose.material.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.arsildo.merr_patenten.display.activities.ExamViewModel
@@ -25,6 +28,8 @@ import com.arsildo.merr_patenten.display.screens.components.Pager
 import com.arsildo.merr_patenten.display.screens.components.PagerMap
 import com.arsildo.merr_patenten.display.screens.components.PagerNavigation
 import com.arsildo.merr_patenten.display.screens.components.ScreenLayout
+import com.arsildo.merr_patenten.logic.cache.ExamResult
+import com.arsildo.merr_patenten.logic.cache.UserPreferences
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.rememberPagerState
 import kotlinx.coroutines.launch
@@ -56,7 +61,6 @@ fun ExamScreen(navController: NavHostController) {
             onMapClicked = { scope.launch { sheetState.show() } }
         )
 
-
         val trueCheckedPositions = remember { viewModel.trueCheckedPositions }
         val falseCheckedPositions = remember { viewModel.falseCheckedPositions }
         Pager(
@@ -69,7 +73,7 @@ fun ExamScreen(navController: NavHostController) {
             checkFalseAt = { viewModel.checkFalseAtPosition(it) },
             checkTrueAt = { viewModel.checkTrueAtPosition(it) }
         )
-        Column( // NEEDLESS RECOMPOSITION CAUSE UNKNOWN todo fix
+        Column(
             modifier = Modifier
                 .fillMaxWidth()
                 .animateContentSize(
@@ -93,22 +97,58 @@ fun ExamScreen(navController: NavHostController) {
                     }
                 }
             )
-
+            val dataStore = UserPreferences(LocalContext.current)
+            val previousExamResults =
+                dataStore.getExamResults.collectAsState(initial = listOf())
+            val ifCacheResults =
+                dataStore.getExamStatsPreference.collectAsState(initial = true).value
             if (concludeButton.value) {
                 ConcludeButton(
                     isExamCompleted = viewModel.isExamCompleted.value,
                     onClick = {
-                        viewModel.isExamCompleted.value = true
-                        scope.launch { sheetState.show() }
-                        if (viewModel.isExamCompleted.value) viewModel.countErrors()
+                        if (!viewModel.isExamCompleted.value) {
+                            viewModel.isExamCompleted.value = true
+                            viewModel.countErrors()
+                            scope.launch { sheetState.show() }
+                            if (ifCacheResults) {
+                                scope.launch {
+                                    dataStore.saveExamResults(
+                                        previousExamResults.value.plus(
+                                            ExamResult(
+                                                viewModel.errors.value,
+                                                viewModel.countDownTimer.value
+                                            )
+                                        ).takeLast(10)
+                                    )
+                                }
+                            }
+                        } else scope.launch { sheetState.show() }
+
                     }
                 )
+            }
+            LaunchedEffect(viewModel.isExamCompleted.value) {
+                viewModel.startCountDown {
+                    if (!sheetState.isVisible) scope.launch { sheetState.show() }
+                    if (ifCacheResults) {
+                        scope.launch {
+                            dataStore.saveExamResults(
+                                previousExamResults.value.plus(
+                                    ExamResult(
+                                        viewModel.errors.value,
+                                        viewModel.countDownTimer.value
+                                    )
+                                ).takeLast(10)
+                            )
+                        }
+                    }
+                }
             }
         }
     }
     PagerMap(
         isExamCompleted = viewModel.isExamCompleted.value,
-        errors = viewModel.mistakes.value,
+        errors = viewModel.errors.value,
         sheetState = sheetState,
         responseList = viewModel.responseList,
         mistakePositions = viewModel.mistakePositions,

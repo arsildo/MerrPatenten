@@ -51,11 +51,7 @@ fun MainScreen(
     ScreenLayout(
         verticalArrangement = Arrangement.SpaceBetween
     ) {
-        CategoryCard(
-            onStartExamClicked = {
-                navController.navigate(route = Destinations.Exam.route)
-            }
-        )
+        CategoryCard(onStartExamClicked = { navController.navigate(route = Destinations.Exam.route) })
         val context = LocalContext.current
         BottomActions(
             onGithubLinkClicked = {
@@ -63,7 +59,7 @@ fun MainScreen(
                 githubLink.data = Uri.parse(GITHUB_DEVELOPER_URL)
                 context.startActivity(githubLink)
             },
-            onStatisticsClicked = { /*TODO*/ },
+            onStatisticsClicked = { navController.navigate(Destinations.Statistics.route) },
             onPreferencesClicked = { navController.navigate(Destinations.Preferences.route) }
         )
     }

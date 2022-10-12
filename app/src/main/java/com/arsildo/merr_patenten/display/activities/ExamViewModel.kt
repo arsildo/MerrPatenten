@@ -25,22 +25,21 @@ class ExamViewModel : ViewModel() {
     val responseList = mutableStateListOf<String>()
     val mistakePositions = mutableStateListOf<Int>()
 
-    var mistakes = mutableStateOf(0)
+    var errors = mutableStateOf(0)
 
     init {
-        startCountDown()
         fillExamWithDefaults()
     }
 
     fun countErrors(): Int {
-        mistakes.value = 0
+        errors.value = 0
         for (index in 0..39) {
             if (responseList[index] != generatedQuestions[index].answer) {
-                mistakes.value++
+                errors.value++
                 mistakePositions.add(index, 1)
             } else mistakePositions.add(index, 0)
         }
-        return mistakes.value
+        return errors.value
     }
 
     fun checkTrueAtPosition(position: Int) {
@@ -78,7 +77,7 @@ class ExamViewModel : ViewModel() {
         }
     }
 
-    private fun startCountDown() {
+    fun startCountDown(onCountDownEnded: () -> Unit) {
         object : CountDownTimer(/*2401000*/60000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 countDownTimer.value = formatCountDownTimer(millisUntilFinished)
@@ -91,6 +90,7 @@ class ExamViewModel : ViewModel() {
             override fun onFinish() {
                 isExamCompleted.value = true
                 countErrors()
+                onCountDownEnded()
                 cancel()
             }
 
@@ -105,5 +105,4 @@ class ExamViewModel : ViewModel() {
             TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) % 60
         )
     }
-
 }

@@ -36,7 +36,7 @@ fun PreferencesScreen(navController: NavController) {
 
     val dataStore = UserPreferences(LocalContext.current)
     val themePreference = dataStore.getThemePreference.collectAsState(initial = "light_mode").value
-    val examStatsPreference = dataStore.getExamStats.collectAsState(initial = true).value
+    val examStatsPreference = dataStore.getExamStatsPreference.collectAsState(initial = true).value
     val scope = rememberCoroutineScope()
 
     ScreenLayout {
