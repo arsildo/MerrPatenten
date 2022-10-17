@@ -51,6 +51,7 @@ fun PagerMap(
     ModalBottomSheetLayout(
         sheetState = sheetState,
         sheetBackgroundColor = MaterialTheme.colors.background,
+        sheetContentColor = MaterialTheme.colors.onBackground,
         scrimColor = MaterialTheme.colors.background.copy(.9f),
         sheetElevation = 8.dp,
         sheetShape = RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp),
