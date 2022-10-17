@@ -1,10 +1,14 @@
 package com.arsildo.merr_patenten.display.screens
 
+import android.widget.Toast
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -13,6 +17,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Divider
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
@@ -25,18 +30,20 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.PointMode
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.arsildo.merr_patenten.display.screens.components.ScreenLayout
+import com.arsildo.merr_patenten.display.theme.Green
 import com.arsildo.merr_patenten.display.theme.Red
 import com.arsildo.merr_patenten.logic.cache.ExamResult
 import com.arsildo.merr_patenten.logic.cache.UserPreferences
@@ -44,9 +51,8 @@ import com.arsildo.merr_patenten.logic.navigation.Destinations
 import kotlinx.coroutines.launch
 import java.math.RoundingMode
 import java.text.DecimalFormat
-import kotlin.math.PI
-import kotlin.math.cos
 
+@OptIn(ExperimentalMaterialApi::class, ExperimentalFoundationApi::class)
 @Composable
 fun StatisticsScreen(navController: NavController) {
 
@@ -62,7 +68,7 @@ fun StatisticsScreen(navController: NavController) {
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            Row() {
+            Row {
                 IconButton(
                     onClick = { navController.navigate(Destinations.Main.route) },
                     modifier = Modifier
@@ -84,23 +90,31 @@ fun StatisticsScreen(navController: NavController) {
                 )
             }
             val scope = rememberCoroutineScope()
+            val context = LocalContext.current
             if (previousExamResults.isNotEmpty())
-                IconButton(
-                    onClick = { scope.launch { dataStore.saveExamResults(listOf()) } },
+                Icon(
+                    Icons.Rounded.AutoDelete,
+                    contentDescription = null,
+                    tint = MaterialTheme.colors.primary,
                     modifier = Modifier
-                        .padding(end = 16.dp)
                         .size(32.dp)
-                        .padding(2.dp)
-                ) {
-                    Icon(
-                        Icons.Rounded.AutoDelete,
-                        contentDescription = null,
-                        tint = MaterialTheme.colors.primary,
-                        modifier = Modifier.fillMaxSize()
-                    )
-                }
+                        .combinedClickable(
+                            onClick = {
+                                Toast
+                                    .makeText(
+                                        context,
+                                        "Mbani shtypur per te fshire rezultatet e meparshme.",
+                                        Toast.LENGTH_LONG
+                                    )
+                                    .show()
+                            },
+                            onLongClick = { scope.launch { dataStore.saveExamResults(listOf()) } },
+                        )
+                )
 
         }
+
+
         if (!ifCacheStatistics) {
             Text(
                 text = "Ju keni zgjedhur te mos ruani te dhenat.",
@@ -111,97 +125,141 @@ fun StatisticsScreen(navController: NavController) {
                 text = "Nuk ka te dhena.",
                 color = MaterialTheme.colors.primary
             )
-            else LazyColumn(userScrollEnabled = true) {
-                items(previousExamResults.size) {
-                    ExamResultItem(
-                        errors = previousExamResults[it].errors,
-                        time = previousExamResults[it].time
-                    )
+            else {
+
+                ExamResultsGraph(results = previousExamResults)
+                AverageMistakes(previousExamResults)
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 8.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Text(text = "xG", color = MaterialTheme.colors.primary)
+                    Text(text = "Koha", color = MaterialTheme.colors.primary)
+                }
+                Divider(color = MaterialTheme.colors.primary)
+                LazyColumn {
+                    items(previousExamResults.size) {
+                        ExamResultItem(
+                            errors = previousExamResults[it].errors,
+                            time = previousExamResults[it].time
+                        )
+                    }
                 }
             }
-            if (previousExamResults.isNotEmpty()) {
-                Text(text = "1") // todo move up
-            }
-            AverageMistakes(previousExamResults)
-            ExamResultsGraph()
         }
-
     }
+
 }
 
 @Composable
 private fun ExamResultItem(errors: Int, time: String) {
-    Row {
-        Text(text = "G $errors ", color = MaterialTheme.colors.primary)
-        Text(text = "K $time", color = MaterialTheme.colors.primary)
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 8.dp)
+            .clip(MaterialTheme.shapes.small)
+            .background(color = if (errors > 4) Red else Green)
+            .padding(vertical = 4.dp, horizontal = 8.dp),
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        Text(text = "$errors", color = MaterialTheme.colors.onPrimary)
+        Text(text = time, color = MaterialTheme.colors.onPrimary)
     }
 }
 
 
 @Composable
-private fun ExamResultsGraph() {
-    Row {
-        Column(
-            modifier = Modifier
-                .height(252.dp)
-                .padding(end = 4.dp),
-            verticalArrangement = Arrangement.SpaceBetween
+private fun ExamResultsGraph(results: List<ExamResult>) {
+    if (results.isNotEmpty())
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.Center
         ) {
-            GraphTextDivider(text = "40")
-            GraphTextDivider(text = "30")
-            GraphTextDivider(text = "20")
-            GraphTextDivider(text = "10")
-            GraphTextDivider(text = "0")
-        }
-        Divider(
-            modifier = Modifier
-                .height(252.dp)
-                .width(2.dp),
-            color = MaterialTheme.colors.primary
-        )
-        val primaryColor = MaterialTheme.colors.primary
-        Column(modifier = Modifier.fillMaxWidth()) {
-            Canvas(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(250.dp)
-                    .background(MaterialTheme.colors.primary.copy(.1f))
+            Row(
+                modifier = Modifier.height(320.dp),
             ) {
-                val height = size.height
-                val width = size.width
-                val points = mutableListOf<Offset>()
-
-                for (x in 0..size.width.toInt()) {
-                    val y =
-                        (cos(x * (2f * PI / width)) * (height / 3f) + (height / 2)).toFloat()
-
-                    points.add(Offset(x.toFloat(), y))
+                val primaryColor = MaterialTheme.colors.primary
+                Column(
+                    modifier = Modifier.height(300.dp),
+                    verticalArrangement = Arrangement.SpaceBetween
+                ) {
+                    GraphTextDivider(text = "40 ")
+                    GraphTextDivider(text = "30")
+                    GraphTextDivider(text = "20")
+                    GraphTextDivider(text = "10")
+                    GraphTextDivider(text = "0")
                 }
-                drawPoints(
-                    points = points,
-                    strokeWidth = 6f,
-                    pointMode = PointMode.Points,
+                Divider(
+                    modifier = Modifier
+                        .width(2.dp)
+                        .fillMaxHeight((.9f + .044f)),
                     color = primaryColor
                 )
-            }
-            Divider(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(2.dp),
-                color = MaterialTheme.colors.primary
-            )
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                GraphTextDivider(text = "00:00")
-                GraphTextDivider(text = "10:00")
-                GraphTextDivider(text = "20:00")
-                GraphTextDivider(text = "30:00")
-                GraphTextDivider(text = "40:00")
+                Column {
+                    Canvas(
+                        modifier = Modifier
+                            .size(300.dp)
+                            .clipToBounds()
+                            .background(MaterialTheme.colors.primary.copy(.2f))
+                    ) {
+
+                        drawRect(
+                            color = Green.copy(.3f),
+                            size = Size(size.width, -size.height / 10),
+                            topLeft = Offset(0f, size.height)
+                        )
+
+
+                        val xCoordinates = mutableListOf<Int>()
+                        val yCoordinates = mutableListOf<Int>()
+
+                        for (i in results.indices) {
+                            val minutes =
+                                "${results[i].time[0]}" + "${results[i].time[1]}"
+                            yCoordinates.add(i, results[i].errors)
+                            xCoordinates.add(i, minutes.toInt())
+                        }
+
+                        val points = mutableListOf<Offset>()
+                        for (i in 0 until xCoordinates.size) {
+                            points.add(Offset(xCoordinates[i].toFloat(), yCoordinates[i].toFloat()))
+                        }
+
+                        for (i in points.indices) {
+                            val xAxis = size.width / 40 * xCoordinates[i]
+                            val yAxis = size.height - (size.height / 40 * yCoordinates[i])
+                            drawCircle(
+                                center = Offset(x = xAxis, y = yAxis),
+                                color = if (results[i].errors > 4) Red else Green,
+                                radius = 16f
+                            )
+                        }
+
+                    }
+                    Divider(
+                        modifier = Modifier
+                            .height(2.dp)
+                            .width(300.dp),
+                        color = primaryColor
+                    )
+                    Row(
+                        modifier = Modifier.width(300.dp),
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        GraphTextDivider(text = "0'")
+                        GraphTextDivider(text = "10'")
+                        GraphTextDivider(text = "20'")
+                        GraphTextDivider(text = "30'")
+                        GraphTextDivider(text = "40'")
+                    }
+                }
+
+
             }
         }
-    }
+
 }
 
 @Composable
@@ -211,21 +269,26 @@ private fun GraphTextDivider(text: String) {
 
 @Composable
 private fun AverageMistakes(previousExamResults: List<ExamResult>) {
-    Text(
-        buildAnnotatedString {
-            append("Mesatarisht ")
-            withStyle(
-                style = SpanStyle(
-                    fontWeight = FontWeight.Medium,
-                    color = Red
-                )
-            ) { append("${calculateAverage(previousExamResults)}") }
-            append(" gabime ne ${previousExamResults.size} provimet e fundit.")
-        },
-        color = MaterialTheme.colors.primary,
-        textAlign = TextAlign.Center,
-        modifier = Modifier.padding(vertical = 8.dp)
-    )
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 8.dp),
+        horizontalArrangement = Arrangement.Center
+    ) {
+        Text(
+            buildAnnotatedString {
+                append("Mesatarisht ")
+                withStyle(
+                    style = SpanStyle(
+                        fontWeight = FontWeight.Medium,
+                        color = Red
+                    )
+                ) { append("${calculateAverage(previousExamResults)}") }
+                append(" gabime ne ${previousExamResults.size} provimet e fundit.")
+            },
+            color = MaterialTheme.colors.primary,
+        )
+    }
 }
 
 
