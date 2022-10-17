@@ -78,7 +78,7 @@ class ExamViewModel : ViewModel() {
     }
 
     fun startCountDown(onCountDownEnded: () -> Unit) {
-        object : CountDownTimer(/*2401000*/60000, 1000) {
+        object : CountDownTimer(2401000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 countDownTimer.value = formatCountDownTimer(millisUntilFinished)
                 if (isExamCompleted.value) {
