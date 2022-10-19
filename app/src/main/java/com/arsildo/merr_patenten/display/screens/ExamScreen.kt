@@ -30,6 +30,7 @@ import com.arsildo.merr_patenten.display.screens.components.PagerNavigation
 import com.arsildo.merr_patenten.display.screens.components.ScreenLayout
 import com.arsildo.merr_patenten.logic.cache.ExamResult
 import com.arsildo.merr_patenten.logic.cache.UserPreferences
+import com.arsildo.merr_patenten.logic.navigation.Destinations
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.rememberPagerState
 import kotlinx.coroutines.launch
@@ -124,6 +125,12 @@ fun ExamScreen(navController: NavHostController) {
                             }
                         } else scope.launch { sheetState.show() }
 
+                    },
+                    onCloseDestination = { navController.popBackStack() },
+                    onRestartDestination = {
+                        navController.navigate(Destinations.Exam.route) {
+                            popUpTo(Destinations.Exam.route) { inclusive = true }
+                        }
                     }
                 )
             }
