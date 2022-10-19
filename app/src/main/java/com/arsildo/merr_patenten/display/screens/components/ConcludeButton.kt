@@ -1,6 +1,5 @@
 package com.arsildo.merr_patenten.display.screens.components
 
-import android.app.Activity
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -14,7 +13,6 @@ import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.DisabledByDefault
 import androidx.compose.material.icons.rounded.DoneAll
-import androidx.compose.material.icons.rounded.ExitToApp
 import androidx.compose.material.icons.rounded.Map
 import androidx.compose.material.icons.rounded.RestartAlt
 import androidx.compose.runtime.Composable
@@ -23,10 +21,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import com.arsildo.merr_patenten.display.theme.Green
 import com.arsildo.merr_patenten.display.theme.Red
 
 @Composable

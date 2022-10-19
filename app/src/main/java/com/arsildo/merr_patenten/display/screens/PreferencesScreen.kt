@@ -29,6 +29,7 @@ import androidx.navigation.NavController
 import com.arsildo.merr_patenten.display.screens.components.ScreenLayout
 import com.arsildo.merr_patenten.logic.cache.UserPreferences
 import com.arsildo.merr_patenten.logic.navigation.Destinations
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @Composable
@@ -82,9 +83,7 @@ fun PreferencesScreen(navController: NavController) {
             checked = themePreference == "dark_mode",
             onCheckedChange = {
                 if (themePreference == "light_mode") {
-                    scope.launch {
-                        dataStore.setThemePreference("dark_mode")
-                    }
+                    scope.launch { dataStore.setThemePreference("dark_mode") }
                 } else scope.launch { dataStore.setThemePreference("light_mode") }
             }
         )
