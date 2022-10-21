@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -18,11 +17,9 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Divider
 import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.ArrowBack
 import androidx.compose.material.icons.rounded.AutoDelete
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -41,6 +38,7 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.arsildo.merr_patenten.display.screens.components.BackNavigatorBar
 import com.arsildo.merr_patenten.display.screens.components.ScreenLayout
 import com.arsildo.merr_patenten.display.theme.Green
 import com.arsildo.merr_patenten.display.theme.Red
@@ -51,6 +49,14 @@ import kotlinx.coroutines.launch
 import java.math.RoundingMode
 import java.text.DecimalFormat
 
+
+sealed class StatisticState {
+    object Disabled : StatisticState()
+    object Empty : StatisticState()
+    object Statistics : StatisticState()
+}
+
+
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun StatisticsScreen(navController: NavController) {
@@ -58,38 +64,20 @@ fun StatisticsScreen(navController: NavController) {
     val dataStore = UserPreferences(LocalContext.current)
     val ifCacheStatistics = dataStore.getExamStatsPreference.collectAsState(initial = true).value
     val previousExamResults = dataStore.getExamResults.collectAsState(initial = listOf()).value
+    val viewState =
+        if (ifCacheStatistics)
+            if (previousExamResults.isEmpty()) StatisticState.Empty else StatisticState.Statistics
+        else StatisticState.Disabled
+
+    val scope = rememberCoroutineScope()
+    val context = LocalContext.current
 
     ScreenLayout {
-        Row(
-            modifier = Modifier
-                .padding(bottom = 16.dp)
-                .fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween
+
+        BackNavigatorBar(
+            title = "Statistika",
+            onNavigateBackDestination = { navController.navigate(Destinations.Main.route) }
         ) {
-            Row {
-                IconButton(
-                    onClick = { navController.navigate(Destinations.Main.route) },
-                    modifier = Modifier
-                        .padding(end = 16.dp)
-                        .size(32.dp)
-                        .padding(2.dp)
-                ) {
-                    Icon(
-                        Icons.Rounded.ArrowBack,
-                        contentDescription = null,
-                        tint = MaterialTheme.colors.primary,
-                        modifier = Modifier.fillMaxSize()
-                    )
-                }
-                Text(
-                    text = "Statistika",
-                    color = MaterialTheme.colors.primary,
-                    fontSize = 28.sp
-                )
-            }
-            val scope = rememberCoroutineScope()
-            val context = LocalContext.current
             if (previousExamResults.isNotEmpty())
                 Icon(
                     Icons.Rounded.AutoDelete,
@@ -99,57 +87,69 @@ fun StatisticsScreen(navController: NavController) {
                         .size(32.dp)
                         .combinedClickable(
                             onClick = {
-                                Toast
-                                    .makeText(
-                                        context,
-                                        "Mbani shtypur per te fshire rezultatet e meparshme.",
-                                        Toast.LENGTH_LONG
-                                    )
-                                    .show()
+                                val message = "Mbani shtypur per te fshire rezultatet e meparshme."
+                                Toast.makeText(context, message, Toast.LENGTH_LONG).show()
                             },
                             onLongClick = { scope.launch { dataStore.saveExamResults(listOf()) } },
                         )
                 )
-
         }
 
-
-        if (!ifCacheStatistics) {
-            Text(
-                text = "Ju keni zgjedhur te mos ruani te dhenat.",
-                color = MaterialTheme.colors.onBackground
-            )
-        } else {
-            if (previousExamResults.isEmpty()) Text(
-                text = "Nuk ka te dhena.",
-                color = MaterialTheme.colors.primary
-            )
-            else {
-
+        when (viewState) {
+            is StatisticState.Statistics -> {
                 ExamResultsGraph(results = previousExamResults)
                 AverageMistakes(previousExamResults)
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 8.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween
+                PreviousResultsList(previousExamResults = previousExamResults)
+
+            }
+
+            is StatisticState.Disabled -> {
+                Text(
+                    text = "Ju keni zgjedhur te mos ruani te dhenat.",
+                    color = MaterialTheme.colors.primary,
+                )
+
+            }
+
+            is StatisticState.Empty -> {
+                Column(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalAlignment = Alignment.Start
                 ) {
-                    Text(text = "xG", color = MaterialTheme.colors.primary)
-                    Text(text = "Koha", color = MaterialTheme.colors.primary)
+                    Text(
+                        text = "Nuk ka te dhena.",
+                        color = MaterialTheme.colors.primary,
+                    )
                 }
-                Divider(color = MaterialTheme.colors.primary)
-                LazyColumn {
-                    items(previousExamResults.size) {
-                        ExamResultItem(
-                            errors = previousExamResults[it].errors,
-                            time = previousExamResults[it].time
-                        )
-                    }
-                }
+
             }
         }
     }
 
+
+}
+
+
+@Composable
+fun PreviousResultsList(previousExamResults: List<ExamResult>) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 8.dp),
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        Text(text = "xG", color = MaterialTheme.colors.primary)
+        Text(text = "Koha", color = MaterialTheme.colors.primary)
+    }
+    Divider(color = MaterialTheme.colors.primary)
+    LazyColumn {
+        items(previousExamResults.size) {
+            ExamResultItem(
+                errors = previousExamResults[it].errors,
+                time = previousExamResults[it].time
+            )
+        }
+    }
 }
 
 @Composable
