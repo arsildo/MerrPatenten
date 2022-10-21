@@ -76,24 +76,25 @@ fun StatisticsScreen(navController: NavController) {
 
         BackNavigatorBar(
             title = "Statistika",
-            onNavigateBackDestination = { navController.navigate(Destinations.Main.route) }
-        ) {
-            if (previousExamResults.isNotEmpty())
-                Icon(
-                    Icons.Rounded.AutoDelete,
-                    contentDescription = null,
-                    tint = MaterialTheme.colors.primary,
-                    modifier = Modifier
-                        .size(32.dp)
-                        .combinedClickable(
-                            onClick = {
-                                val message = "Mbani shtypur per te fshire rezultatet e meparshme."
-                                Toast.makeText(context, message, Toast.LENGTH_LONG).show()
-                            },
-                            onLongClick = { scope.launch { dataStore.saveExamResults(listOf()) } },
-                        )
-                )
-        }
+            onNavigateBackDestination = { navController.navigate(Destinations.Main.route) },
+            trailingIcon = {
+                if (previousExamResults.isNotEmpty())
+                    Icon(
+                        Icons.Rounded.AutoDelete,
+                        contentDescription = null,
+                        tint = MaterialTheme.colors.primary,
+                        modifier = Modifier
+                            .size(32.dp)
+                            .combinedClickable(
+                                onClick = {
+                                    val message = "Mbani shtypur per te fshire rezultatet e meparshme."
+                                    Toast.makeText(context, message, Toast.LENGTH_LONG).show()
+                                },
+                                onLongClick = { scope.launch { dataStore.saveExamResults(listOf()) } },
+                            )
+                    )
+            }
+        )
 
         when (viewState) {
             is StatisticState.Statistics -> {

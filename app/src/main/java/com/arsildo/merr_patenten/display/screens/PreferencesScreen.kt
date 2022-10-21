@@ -40,7 +40,8 @@ fun PreferencesScreen(navController: NavController) {
     ScreenLayout {
         BackNavigatorBar(
             title = "Preferencat",
-            onNavigateBackDestination = { navController.navigate(Destinations.Main.route) }
+            onNavigateBackDestination = { navController.navigate(Destinations.Main.route) },
+            trailingIcon = {}
         )
 
         SettingItem(

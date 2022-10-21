@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.sp
 fun BackNavigatorBar(
     title:String,
     onNavigateBackDestination: () -> Unit,
-    trailingIcon: @Composable (() -> Unit)? = null
+    trailingIcon: @Composable () -> Unit,
 ) {
     Row(
         modifier = Modifier
@@ -52,7 +52,7 @@ fun BackNavigatorBar(
                 fontSize = 28.sp
             )
 
-            if (trailingIcon != null) { trailingIcon() }
         }
+        trailingIcon()
     }
 }
