@@ -35,9 +35,7 @@ class MainActivity : ComponentActivity() {
     }
 
     @Composable
-    fun NavigationGraph(
-        navController: NavHostController,
-    ) {
+    fun NavigationGraph(navController: NavHostController) {
         NavHost(
             navController = navController,
             startDestination = Destinations.Main.route,
