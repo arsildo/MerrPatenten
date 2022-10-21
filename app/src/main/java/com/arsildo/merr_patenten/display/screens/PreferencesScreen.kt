@@ -2,12 +2,10 @@ package com.arsildo.merr_patenten.display.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Switch
 import androidx.compose.material.SwitchDefaults
@@ -15,7 +13,6 @@ import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.DarkMode
 import androidx.compose.material.icons.outlined.QueryStats
-import androidx.compose.material.icons.rounded.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.rememberCoroutineScope
@@ -26,10 +23,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.arsildo.merr_patenten.display.screens.components.BackNavigatorBar
 import com.arsildo.merr_patenten.display.screens.components.ScreenLayout
 import com.arsildo.merr_patenten.logic.cache.UserPreferences
 import com.arsildo.merr_patenten.logic.navigation.Destinations
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @Composable
@@ -41,30 +38,10 @@ fun PreferencesScreen(navController: NavController) {
     val scope = rememberCoroutineScope()
 
     ScreenLayout {
-        Row(
-            modifier = Modifier.padding(bottom = 16.dp),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            IconButton(
-                onClick = { navController.navigate(Destinations.Main.route) },
-                modifier = Modifier
-                    .padding(end = 16.dp)
-                    .size(32.dp)
-                    .padding(2.dp)
-            ) {
-                Icon(
-                    Icons.Rounded.ArrowBack,
-                    contentDescription = null,
-                    tint = MaterialTheme.colors.primary,
-                    modifier = Modifier.fillMaxSize()
-                )
-            }
-            Text(
-                text = "Preferencat",
-                color = MaterialTheme.colors.primary,
-                fontSize = 28.sp
-            )
-        }
+        BackNavigatorBar(
+            title = "Preferencat",
+            onNavigateBackDestination = { navController.navigate(Destinations.Main.route) }
+        )
 
         SettingItem(
             title = "Mbaj mend rezultatet",
