@@ -31,7 +31,7 @@ fun BackNavigatorBar(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        Row {
+        Row(verticalAlignment = Alignment.CenterVertically) {
             IconButton(
                 onClick = onNavigateBackDestination,
                 modifier = Modifier

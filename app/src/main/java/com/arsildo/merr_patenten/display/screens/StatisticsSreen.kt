@@ -20,7 +20,7 @@ import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.AutoDelete
+import androidx.compose.material.icons.outlined.DeleteSweep
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.rememberCoroutineScope
@@ -80,15 +80,18 @@ fun StatisticsScreen(navController: NavController) {
             trailingIcon = {
                 if (previousExamResults.isNotEmpty())
                     Icon(
-                        Icons.Rounded.AutoDelete,
+                        Icons.Outlined.DeleteSweep,
                         contentDescription = null,
-                        tint = MaterialTheme.colors.primary,
+                        tint = Red,
                         modifier = Modifier
                             .size(32.dp)
                             .combinedClickable(
                                 onClick = {
-                                    val message = "Mbani shtypur per te fshire rezultatet e meparshme."
-                                    Toast.makeText(context, message, Toast.LENGTH_LONG).show()
+                                    val message =
+                                        "Mbani shtypur per te fshire rezultatet e meparshme."
+                                    Toast
+                                        .makeText(context, message, Toast.LENGTH_LONG)
+                                        .show()
                                 },
                                 onLongClick = { scope.launch { dataStore.saveExamResults(listOf()) } },
                             )
