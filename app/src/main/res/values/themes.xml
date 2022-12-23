@@ -4,6 +4,5 @@
     <style name="Theme.MerrPatenten" parent="android:Theme.Material.Light.NoActionBar">
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
-        <item name="android:windowLightStatusBar">true</item>
     </style>
 </resources>
