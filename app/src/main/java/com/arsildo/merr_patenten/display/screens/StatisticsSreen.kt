@@ -4,7 +4,7 @@ import android.widget.Toast
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
-import androidx.compose.foundation.combinedClickable
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -15,12 +15,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Divider
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.DeleteSweep
+import androidx.compose.material.icons.outlined.Delete
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.rememberCoroutineScope
@@ -30,6 +31,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -73,29 +75,36 @@ fun StatisticsScreen(navController: NavController) {
     val context = LocalContext.current
 
     ScreenLayout {
-
         BackNavigatorBar(
             title = "Statistika",
             onNavigateBackDestination = { navController.navigate(Destinations.Main.route) },
             trailingIcon = {
                 if (previousExamResults.isNotEmpty())
                     Icon(
-                        Icons.Outlined.DeleteSweep,
+                        imageVector = Icons.Outlined.Delete,
                         contentDescription = null,
-                        tint = Red,
+                        tint = MaterialTheme.colors.onError,
                         modifier = Modifier
-                            .size(32.dp)
-                            .combinedClickable(
-                                onClick = {
-                                    val message =
-                                        "Mbani shtypur per te fshire rezultatet e meparshme."
-                                    Toast
-                                        .makeText(context, message, Toast.LENGTH_LONG)
-                                        .show()
-                                },
-                                onLongClick = { scope.launch { dataStore.saveExamResults(listOf()) } },
-                            )
+                            .pointerInput(Unit) {
+                                detectTapGestures(
+                                    onTap = {
+                                        Toast
+                                            .makeText(
+                                                context,
+                                                "Mbani shtypur per te fshire rezultatet e meparshme.",
+                                                Toast.LENGTH_LONG
+                                            )
+                                            .show()
+                                    },
+                                    onLongPress = { scope.launch { dataStore.saveExamResults(listOf()) } },
+                                )
+                            }
+                            .clip(CircleShape)
+                            .background(MaterialTheme.colors.error)
+                            .padding(8.dp)
+
                     )
+
             }
         )
 
