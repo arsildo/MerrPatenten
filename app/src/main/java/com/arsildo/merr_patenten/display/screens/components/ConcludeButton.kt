@@ -32,7 +32,10 @@ fun ConcludeButton(
     onRestartDestination: () -> Unit,
 ) {
     var confirm by remember { mutableStateOf(2) }
-    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
 
         Button(
             onClick = {
@@ -52,9 +55,7 @@ fun ConcludeButton(
                 contentDescription = null,
                 modifier = Modifier.padding(end = 8.dp)
             )
-            Text(
-                text = if (!isExamCompleted) "Perfundo Provimin ($confirm)" else "Gabimet",
-            )
+            Text(text = if (!isExamCompleted) "Perfundo Provimin ($confirm)" else "Gabimet")
         }
 
         if (isExamCompleted) {

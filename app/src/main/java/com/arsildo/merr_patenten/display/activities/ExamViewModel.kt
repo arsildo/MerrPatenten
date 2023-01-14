@@ -1,12 +1,18 @@
 package com.arsildo.merr_patenten.display.activities
 
+import android.content.Context
 import android.os.CountDownTimer
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.arsildo.merr_patenten.logic.cache.ExamResult
+import com.arsildo.merr_patenten.logic.cache.UserPreferences
 import com.arsildo.merr_patenten.logic.database.Database
 import com.arsildo.merr_patenten.logic.database.DatabaseExtension
 import com.arsildo.merr_patenten.logic.database.DatabaseModel
+import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
 import java.util.Locale
 import java.util.Random
 import java.util.concurrent.TimeUnit
@@ -43,11 +49,13 @@ class ExamViewModel : ViewModel() {
     }
 
     fun checkTrueAtPosition(position: Int) {
-        trueCheckedPositions[position] = !trueCheckedPositions[position]
-        if (trueCheckedPositions[position]) {
-            falseCheckedPositions[position] = false
-            responseList.set(index = position, "Saktë")
-        } else responseList.set(index = position, "")
+        if (!isExamCompleted.value) {
+            trueCheckedPositions[position] = !trueCheckedPositions[position]
+            if (trueCheckedPositions[position]) {
+                falseCheckedPositions[position] = false
+                responseList.set(index = position, "Saktë")
+            } else responseList.set(index = position, "")
+        }
     }
 
     fun checkFalseAtPosition(position: Int) {
@@ -105,4 +113,20 @@ class ExamViewModel : ViewModel() {
             TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) % 60
         )
     }
+
+
+    fun saveExamResult(rememberResultsEnabled: Boolean, context: Context) {
+        val dataStore = UserPreferences(context)
+        if (rememberResultsEnabled) {
+            viewModelScope.launch {
+                val previousExamResults = dataStore.getExamResults.stateIn(this).value
+                dataStore.saveExamResults(
+                    previousExamResults
+                        .plus(ExamResult(errors.value, countDownTimer.value))
+                        .takeLast(10)
+                )
+            }
+        }
+    }
+
 }
