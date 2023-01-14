@@ -107,8 +107,8 @@ fun ExamScreen(navController: NavHostController) {
             )
 
 
-            val rememberResultsEnabled by UserPreferences(context).getExamStatsPreference
-                .collectAsState(initial = true)
+            val rememberResultsEnabled by UserPreferences(context)
+                .getExamStatsPreference.collectAsState(true)
             if (concludeButton) {
                 ConcludeButton(
                     isExamCompleted = isExamCompleted,

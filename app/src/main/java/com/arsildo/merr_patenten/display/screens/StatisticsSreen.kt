@@ -2,7 +2,6 @@ package com.arsildo.merr_patenten.display.screens
 
 import android.widget.Toast
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Arrangement
@@ -58,16 +57,14 @@ sealed class StatisticState {
     object Statistics : StatisticState()
 }
 
-
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun StatisticsScreen(navController: NavController) {
 
     val dataStore = UserPreferences(LocalContext.current)
-    val ifCacheStatistics = dataStore.getExamStatsPreference.collectAsState(initial = true).value
+    val rememberStatisticsEnabled = dataStore.getExamStatsPreference.collectAsState(initial = true).value
     val previousExamResults = dataStore.getExamResults.collectAsState(initial = listOf()).value
     val viewState =
-        if (ifCacheStatistics)
+        if (rememberStatisticsEnabled)
             if (previousExamResults.isEmpty()) StatisticState.Empty else StatisticState.Statistics
         else StatisticState.Disabled
 
@@ -109,20 +106,17 @@ fun StatisticsScreen(navController: NavController) {
         )
 
         when (viewState) {
+
             is StatisticState.Statistics -> {
                 ExamResultsGraph(results = previousExamResults)
                 AverageMistakes(previousExamResults)
                 PreviousResultsList(previousExamResults = previousExamResults)
-
             }
 
-            is StatisticState.Disabled -> {
-                Text(
-                    text = "Ju keni zgjedhur te mos ruani te dhenat.",
-                    color = MaterialTheme.colors.primary,
-                )
-
-            }
+            is StatisticState.Disabled -> Text(
+                text = "Ju keni zgjedhur te mos ruani te dhenat.",
+                color = MaterialTheme.colors.primary,
+            )
 
             is StatisticState.Empty -> {
                 Column(
@@ -144,7 +138,7 @@ fun StatisticsScreen(navController: NavController) {
 
 
 @Composable
-fun PreviousResultsList(previousExamResults: List<ExamResult>) {
+private fun PreviousResultsList(previousExamResults: List<ExamResult>) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -166,7 +160,7 @@ fun PreviousResultsList(previousExamResults: List<ExamResult>) {
 }
 
 @Composable
-private fun ExamResultItem(errors: Int, time: String) {
+private fun ExamResultItem(errors: Int, time: String?) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -177,7 +171,7 @@ private fun ExamResultItem(errors: Int, time: String) {
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Text(text = "$errors", color = MaterialTheme.colors.onPrimary)
-        Text(text = time, color = MaterialTheme.colors.onPrimary)
+        if (time != null) Text(text = time, color = MaterialTheme.colors.onPrimary)
     }
 }
 
@@ -228,8 +222,7 @@ private fun ExamResultsGraph(results: List<ExamResult>) {
                         val yCoordinates = mutableListOf<Int>()
 
                         for (i in results.indices) {
-                            val minutes =
-                                "${results[i].time[0]}" + "${results[i].time[1]}"
+                            val minutes = "${results[i].time[0]}" + "${results[i].time[1]}"
                             yCoordinates.add(i, results[i].errors)
                             xCoordinates.add(i, minutes.toInt())
                         }
