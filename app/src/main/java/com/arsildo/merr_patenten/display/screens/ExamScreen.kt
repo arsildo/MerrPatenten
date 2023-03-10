@@ -2,9 +2,11 @@ package com.arsildo.merr_patenten.display.screens
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.animateContentSize
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.ModalBottomSheetValue
 import androidx.compose.material.rememberModalBottomSheetState
@@ -30,11 +32,9 @@ import com.arsildo.merr_patenten.display.screens.components.PagerNavigation
 import com.arsildo.merr_patenten.display.screens.components.ScreenLayout
 import com.arsildo.merr_patenten.logic.cache.UserPreferences
 import com.arsildo.merr_patenten.logic.navigation.Destinations
-import com.google.accompanist.pager.ExperimentalPagerApi
-import com.google.accompanist.pager.rememberPagerState
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalMaterialApi::class, ExperimentalPagerApi::class)
+@OptIn(ExperimentalMaterialApi::class, ExperimentalFoundationApi::class)
 @Composable
 fun ExamScreen(navController: NavHostController) {
     val viewModel: ExamViewModel = viewModel()
@@ -92,12 +92,12 @@ fun ExamScreen(navController: NavHostController) {
         ) {
 
             fun animateToNextPage() = coroutineScope.launch {
-                if (pagerState.currentPage < 39)
+                if (pagerState.canScrollForward)
                     pagerState.animateScrollToPage(pagerState.currentPage + 1)
             }
 
             fun animateToPreviousPage() = coroutineScope.launch {
-                if (pagerState.currentPage > 0)
+                if (pagerState.canScrollBackward)
                     pagerState.animateScrollToPage(pagerState.currentPage - 1)
             }
 

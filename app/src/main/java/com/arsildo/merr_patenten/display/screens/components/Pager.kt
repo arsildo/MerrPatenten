@@ -1,5 +1,6 @@
 package com.arsildo.merr_patenten.display.screens.components
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -10,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.pager.PagerState
 import androidx.compose.material.Checkbox
 import androidx.compose.material.CheckboxDefaults
 import androidx.compose.material.Icon
@@ -30,11 +32,9 @@ import androidx.compose.ui.unit.sp
 import com.arsildo.merr_patenten.display.theme.Green
 import com.arsildo.merr_patenten.display.theme.Red
 import com.arsildo.merr_patenten.logic.database.DatabaseModel
-import com.google.accompanist.pager.ExperimentalPagerApi
-import com.google.accompanist.pager.HorizontalPager
-import com.google.accompanist.pager.PagerState
 
-@OptIn(ExperimentalPagerApi::class)
+
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun Pager(
     pagerState: PagerState,
@@ -46,8 +46,8 @@ fun Pager(
     checkFalseAt: (Int) -> Unit,
     checkTrueAt: (Int) -> Unit,
 ) {
-    HorizontalPager(
-        count = 40,
+    androidx.compose.foundation.pager.HorizontalPager(
+        pageCount = 40,
         state = pagerState,
     ) { page ->
         PagerItem(
@@ -98,9 +98,10 @@ private fun PagerItem(
             PagerCheckbox(
                 title = "Gabim",
                 checked = falseChecked,
-                titleColor = if (falseChecked) if (isExamCompleted) Red.copy(.4f) else Red else if (isExamCompleted) MaterialTheme.colors.onBackground.copy(
-                    .4f
-                ) else MaterialTheme.colors.onBackground,
+                titleColor = if (falseChecked)
+                    if (isExamCompleted) Red.copy(.4f)
+                    else Red else if (isExamCompleted) MaterialTheme.colors.onBackground.copy(.4f)
+                else MaterialTheme.colors.onBackground,
                 checkedColor = if (falseChecked) Red else MaterialTheme.colors.onBackground,
                 enabled = !isExamCompleted,
                 onCheckedChanged = onFalseChecked
