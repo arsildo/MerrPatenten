@@ -103,3 +103,4 @@ lint/tmp/
 # Android Profiling
 *.hprof
 
+!/gradle/libs.versions.toml

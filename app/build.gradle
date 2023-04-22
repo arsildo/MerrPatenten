@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    alias libs.plugins.hilt
+    alias libs.plugins.kapt
 }
 
 android {
@@ -15,34 +17,35 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary true
-        }
+        vectorDrawables { useSupportLibrary true }
         signingConfig signingConfigs.debug
     }
 
     buildTypes {
-        release {
-            minifyEnabled true
+
+        debug {
+            minifyEnabled false
+            shrinkResources false
+            debuggable true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+
+        release {
+            minifyEnabled true
+            shrinkResources true
+            debuggable false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
-    buildFeatures {
-        compose true
-    }
+    kotlinOptions { jvmTarget = '1.8' }
+    buildFeatures { compose true }
     composeOptions { kotlinCompilerExtensionVersion libs.versions.composeCompiler.get() }
-    packagingOptions {
-        resources {
-            excludes += '/META-INF/{AL2.0,LGPL2.1}'
-        }
-    }
+    packagingOptions { resources { excludes += '/META-INF/{AL2.0,LGPL2.1}' } }
 }
 
 dependencies {
@@ -53,20 +56,26 @@ dependencies {
     implementation libs.androidx.activity.compose
     implementation libs.androidx.compose.ui.tooling.preview
 
-    implementation libs.androidx.compose.material.iconsExtended
     implementation libs.androidx.compose.material.core
+    implementation libs.androidx.compose.material.iconsExtended
     implementation libs.androidx.compose.material3
     implementation libs.androidx.compose.material3.windowSizeClass
 
+    implementation libs.hilt.android.core
+    kapt libs.hilt.compiler
+
     implementation libs.androidx.navigation.compose
+    implementation libs.androidx.hilt.navigation.compose
+
     implementation libs.androidx.dataStore.preferences
     implementation libs.accompanist.systemuicontroller
 
     implementation libs.gson
     implementation libs.androidx.core.splashscreen
 
+    implementation libs.timber
+
     androidTestImplementation platform(libs.androidx.compose.bom)
-    testImplementation libs.junit
     androidTestImplementation libs.androidx.test.ext.junit
     androidTestImplementation libs.androidx.test.expresso.core
     androidTestImplementation libs.androidx.compose.ui.test.junit4
