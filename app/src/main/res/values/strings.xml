@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">MerrPatenten</string>
+    <string name="endExam">Perfundo provimin</string>
+    <string name="trueCheckBox">Saktë</string>
+    <string name="falseCheckBox">Gabim</string>
 </resources>

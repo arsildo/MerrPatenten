@@ -1,5 +1,9 @@
 package com.arsildo.merr_patenten.landing
 
+import android.app.Activity
+import android.content.Context
+import android.widget.Toast
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -18,15 +22,23 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import com.arsildo.merr_patenten.Destinations
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LandingScreen(
-    navController: NavController
+    navController: NavController,
+    viewModel: LandingViewModel = hiltViewModel()
 ) {
     Scaffold(
         topBar = {
@@ -72,9 +84,39 @@ fun LandingScreen(
                 .padding(contentPadding),
             contentAlignment = Alignment.Center
         ) {
-            Button(onClick = { /*TODO*/ }) {
+            Button(onClick = { navController.navigate(Destinations.EXAM_ROUTE) }) {
                 Text(text = "Start")
             }
         }
     }
+
+    val context = LocalContext.current
+    val onBackPressedTwiceEnabled by viewModel.confirmAppExit.collectAsStateWithLifecycle(
+        initialValue = true
+    )
+    var timeWhenPressed by remember { mutableStateOf(0L) }
+    BackHandler {
+        if (onBackPressedTwiceEnabled) onBackPressedTwice(
+            timeWhenPressed = timeWhenPressed,
+            context = context
+        ) { timeWhenPressed = System.currentTimeMillis() }
+        else endApplication(context = context)
+    }
+}
+
+
+private fun onBackPressedTwice(
+    timeWhenPressed: Long,
+    context: Context,
+    updateTimeWhenPressed: () -> Unit
+) {
+    val activityContext = context as Activity
+    if (timeWhenPressed + 2000 > System.currentTimeMillis()) activityContext.finish()
+    else Toast.makeText(context, "Swipe back once more to leave the app.", Toast.LENGTH_LONG).show()
+    updateTimeWhenPressed()
+}
+
+private fun endApplication(context: Context) {
+    val activityContext = context as Activity
+    activityContext.finish()
 }

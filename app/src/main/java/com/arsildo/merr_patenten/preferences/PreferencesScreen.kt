@@ -30,12 +30,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.navigation.NavHostController
+import androidx.navigation.NavController
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PreferencesScreen(
-    navController: NavHostController,
+    navController: NavController,
     viewModel: PreferencesViewModel = hiltViewModel(),
 ) {
 
@@ -133,7 +133,6 @@ fun PreferenceCard(
         verticalAlignment = Alignment.CenterVertically
     ) {
         Column(
-            verticalArrangement = Arrangement.spacedBy(2.dp),
             modifier = Modifier.fillMaxWidth(.8f)
         ) {
             Text(

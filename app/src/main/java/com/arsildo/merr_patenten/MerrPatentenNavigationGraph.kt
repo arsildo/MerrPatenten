@@ -9,6 +9,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.arsildo.merr_patenten.exam.ExamScreen
 import com.arsildo.merr_patenten.landing.LandingScreen
 import com.arsildo.merr_patenten.preferences.PreferencesScreen
 
@@ -25,8 +26,7 @@ fun NavigationGraph(navController: NavHostController = rememberNavController()) 
             LandingScreen(navController = navController)
         }
         composable(route = Destinations.EXAM_ROUTE) {
-            /*ExamScreen(navController)*/
-            Text(text = "Test")
+            ExamScreen(navController)
         }
         composable(route = Destinations.STATISTICS_ROUTE) {
             /*StatisticsScreen(navController)*/

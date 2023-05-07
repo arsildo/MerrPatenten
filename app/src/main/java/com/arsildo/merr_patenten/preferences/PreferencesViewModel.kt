@@ -2,7 +2,7 @@ package com.arsildo.merr_patenten.preferences
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.arsildo.merr_patenten.data.PreferencesRepository
+import com.arsildo.merr_patenten.data.local.PreferencesRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow

@@ -1,14 +1,14 @@
-package com.arsildo.merr_patenten.data
+package com.arsildo.merr_patenten.data.local
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
-import com.arsildo.merr_patenten.data.PreferencesRepository.PreferencesKeys.AUTOMATIC_COLOR_SCHEME
-import com.arsildo.merr_patenten.data.PreferencesRepository.PreferencesKeys.COLOR_SCHEME
-import com.arsildo.merr_patenten.data.PreferencesRepository.PreferencesKeys.CONFIRM_APP_EXIT
-import com.arsildo.merr_patenten.data.PreferencesRepository.PreferencesKeys.DYNAMIC_COLOR_SCHEME
-import com.arsildo.merr_patenten.data.PreferencesRepository.PreferencesKeys.SAVE_STATS
+import com.arsildo.merr_patenten.data.local.PreferencesRepository.PreferencesKeys.AUTOMATIC_COLOR_SCHEME
+import com.arsildo.merr_patenten.data.local.PreferencesRepository.PreferencesKeys.COLOR_SCHEME
+import com.arsildo.merr_patenten.data.local.PreferencesRepository.PreferencesKeys.CONFIRM_APP_EXIT
+import com.arsildo.merr_patenten.data.local.PreferencesRepository.PreferencesKeys.DYNAMIC_COLOR_SCHEME
+import com.arsildo.merr_patenten.data.local.PreferencesRepository.PreferencesKeys.SAVE_STATS
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
