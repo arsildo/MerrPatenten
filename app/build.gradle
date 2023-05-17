@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace 'com.arsildo.merr_patenten'
+    namespace 'com.arsildo.merrpatenten'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.arsildo.merr_patenten"
+        applicationId "com.arsildo.merrpatenten"
         minSdk 24
         targetSdk 33
         versionCode 1
@@ -78,6 +78,7 @@ dependencies {
 
 
     implementation libs.coil.kt.compose
+    implementation libs.lottie.compose
     implementation libs.gson
     implementation libs.androidx.core.splashscreen
 
