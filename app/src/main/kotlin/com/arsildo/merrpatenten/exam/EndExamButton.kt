@@ -20,6 +20,7 @@ fun EndExamButton(
     containerColor: Color,
     onClick: () -> Unit,
 ) {
+
     ExtendedFloatingActionButton(
         text = { Text(text = stringResource(id = title)) },
         icon = {
@@ -32,5 +33,4 @@ fun EndExamButton(
         onClick = onClick,
         modifier = modifier,
     )
-
 }

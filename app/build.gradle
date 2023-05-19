@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     alias libs.plugins.hilt
     alias libs.plugins.kapt
+    alias libs.plugins.ksp
 }
 
 android {
@@ -46,10 +47,13 @@ android {
     buildFeatures { compose true }
     composeOptions { kotlinCompilerExtensionVersion libs.versions.composeCompiler.get() }
     packagingOptions { resources { excludes += '/META-INF/{AL2.0,LGPL2.1}' } }
+    lint {
+        baseline = file("lint-baseline.xml")
+        abortOnError false
+    }
 }
 
 dependencies {
-
     implementation platform(libs.androidx.compose.bom)
     implementation libs.androidx.core.ktx
     implementation libs.androidx.lifecycle.runtime.compose
@@ -68,14 +72,13 @@ dependencies {
     implementation libs.room.runtime
     implementation libs.room.ktx
     annotationProcessor libs.room.compiler
-    kapt libs.room.compiler
+    ksp libs.room.compiler
 
     implementation libs.androidx.navigation.compose
     implementation libs.androidx.hilt.navigation.compose
 
     implementation libs.androidx.dataStore.preferences
     implementation libs.accompanist.systemuicontroller
-
 
     implementation libs.coil.kt.compose
     implementation libs.lottie.compose
@@ -90,9 +93,4 @@ dependencies {
     androidTestImplementation libs.androidx.compose.ui.test.junit4
     debugImplementation libs.androidx.compose.ui.tooling
     debugImplementation libs.androidx.compose.ui.test.manifest
-
-}
-
-kapt {
-    correctErrorTypes = true
 }

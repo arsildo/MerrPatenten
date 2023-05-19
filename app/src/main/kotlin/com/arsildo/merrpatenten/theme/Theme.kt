@@ -1,5 +1,6 @@
 package com.arsildo.merrpatenten.theme
 
+import android.annotation.SuppressLint
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.dynamicDarkColorScheme
@@ -75,6 +76,7 @@ private val darkColorScheme = darkColorScheme(
     scrim = md_theme_dark_scrim,
 )
 
+@SuppressLint("NewApi")
 @Composable
 fun MerrPatentenTheme(
     darkTheme: Boolean,

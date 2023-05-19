@@ -1,8 +1,4 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import io.gitlab.arturbosch.detekt.Detekt
-
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-
 buildscript {
     dependencies {
         classpath libs.gradle.plugin
@@ -16,6 +12,7 @@ plugins {
     alias libs.plugins.android.application apply false
     alias libs.plugins.android.library apply false
     alias libs.plugins.kotlin.android apply false
+    alias libs.plugins.ksp apply false
     alias libs.plugins.kapt apply false
     alias libs.plugins.hilt apply false
 
@@ -29,8 +26,8 @@ detekt {
     ignoredBuildTypes = ["release"]
 }
 
-// Groovy DSL
-tasks.withType(Detekt).configureEach {
+
+tasks.withType(io.gitlab.arturbosch.detekt.Detekt).configureEach {
     reports {
         xml.required.set(true)
         html.required.set(true)
@@ -41,7 +38,7 @@ tasks.withType(Detekt).configureEach {
 }
 
 subprojects {
-    tasks.withType(KotlinCompile).tap {
+    tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).tap {
         configureEach {
             kotlinOptions.jvmTarget = "1.8"
         }

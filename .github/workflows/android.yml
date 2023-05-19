@@ -1,0 +1,14 @@
+name: Android Build
+
+on:
+  push:
+    branches: [ material3 ]
+    pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout
+        uses : actions/checkout@v1
