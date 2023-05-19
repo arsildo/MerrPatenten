@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">MerrPatenten</string>
+    <string name="startExam">Fillo Provimin</string>
+    <string name="endExam">Perfundo provimin</string>
+    <string name="restartExam">Fillo provim të ri</string>
+    <string name="trueCheckBox">Saktë</string>
+    <string name="falseCheckBox">Gabim</string>
+    <string name="completedQuestion">Plotësuar</string>
+    <string name="passed">Urime, ju fituat!</string>
+    <string name="failed">Provoni përseri  :(</string>
 </resources>
