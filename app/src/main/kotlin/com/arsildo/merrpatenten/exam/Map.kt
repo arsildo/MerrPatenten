@@ -103,19 +103,19 @@ fun Map(
         ) {
 
             if (!isCompleted) Indicator(
-                title = stringResource(id = R.string.completedQuestion),
+                title = stringResource(id = R.string.completed_question),
                 containerColor = MaterialTheme.colorScheme.secondary,
                 contentColor = MaterialTheme.colorScheme.onSecondary,
             )
             else {
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     Indicator(
-                        title = stringResource(id = R.string.falseCheckBox),
+                        title = stringResource(id = R.string.false_checkbox),
                         containerColor = Red.copy(.15f),
                         contentColor = Red,
                     )
                     Indicator(
-                        title = stringResource(id = R.string.trueCheckBox),
+                        title = stringResource(id = R.string.true_checkbox),
                         containerColor = Green.copy(.15f),
                         contentColor = Green,
                     )

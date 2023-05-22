@@ -119,14 +119,14 @@ private fun Question(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 QuestionCheckBox(
-                    title = R.string.falseCheckBox,
+                    title = R.string.false_checkbox,
                     checked = falseChecked,
                     enabled = !isCompleted,
                     onCheckedChange = onFalseCheckedChange,
                     checkedColor = Red
                 )
                 QuestionCheckBox(
-                    title = R.string.trueCheckBox,
+                    title = R.string.true_checkbox,
                     checked = trueChecked,
                     enabled = !isCompleted,
                     onCheckedChange = onTrueCheckedChange,
@@ -201,8 +201,8 @@ private fun QuestionImage(
 @Composable
 private fun Indicator(
     correctAnswer: Boolean,
-    @StringRes inCorrect: Int = R.string.falseCheckBox,
-    @StringRes correct: Int = R.string.trueCheckBox
+    @StringRes inCorrect: Int = R.string.false_checkbox,
+    @StringRes correct: Int = R.string.true_checkbox
 ) {
     val correctColor = Green
     val inCorrectColor = Red

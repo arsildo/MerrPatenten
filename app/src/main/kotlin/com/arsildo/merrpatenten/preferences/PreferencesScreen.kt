@@ -38,9 +38,7 @@ fun PreferencesScreen(
     navController: NavController,
     viewModel: PreferencesViewModel = hiltViewModel(),
 ) {
-
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-
     AnimateColorSchemeTransition {
         Scaffold(
             topBar = {
@@ -70,33 +68,29 @@ fun PreferencesScreen(
                     .padding(contentPadding)
                     .padding(horizontal = 16.dp)
             ) {
-
                 Column(
                     verticalArrangement = Arrangement.spacedBy(32.dp),
                     modifier = Modifier.padding(vertical = 32.dp)
                 ) {
-
                     PreferenceCard(
                         title = "Remember your exam results",
-                        subtitle = "Save exam results and use that information to generate statistics based on your recent performances. (10 last exams)",
+                        subtitle = "Save exam results and use that information to " +
+                                "generate statistics based on your recent performances. (10 last exams)",
                         checked = uiState.saveStats,
                         onCheckedChange = viewModel::setSaveStats
                     )
-
                     PreferenceCard(
                         title = "Confirm app exit",
                         subtitle = "Swipe back twice to leave the app.",
                         checked = uiState.confirmAppExit,
                         onCheckedChange = viewModel::setConfirmAppExit
                     )
-
                     PreferenceCard(
                         title = "Follow System",
                         subtitle = "Get your color scheme for your system settings.",
                         checked = uiState.followSystemColors,
                         onCheckedChange = viewModel::setFollowSystem
                     )
-
                     PreferenceCard(
                         title = "Dark Mode",
                         subtitle = "Color scheme used by this application",
@@ -104,16 +98,14 @@ fun PreferencesScreen(
                         enabled = !uiState.followSystemColors,
                         onCheckedChange = viewModel::setColorScheme
                     )
-
                     PreferenceCard(
                         title = "Material You",
-                        subtitle = "Dynamic colors generated from your wallpaper. Only supported in Android 12 and later.",
+                        subtitle = "Dynamic colors generated from your wallpaper." +
+                                " Only supported in Android 12 and later.",
                         checked = uiState.dynamicColorScheme,
                         onCheckedChange = viewModel::setDynamicColorScheme
                     )
-
                 }
-
             }
         }
     }

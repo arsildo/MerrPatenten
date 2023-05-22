@@ -11,6 +11,7 @@ import androidx.navigation.compose.rememberNavController
 import com.arsildo.merrpatenten.exam.ExamScreen
 import com.arsildo.merrpatenten.landing.LandingScreen
 import com.arsildo.merrpatenten.preferences.PreferencesScreen
+import com.arsildo.merrpatenten.statistics.StatisticsScreen
 
 @Composable
 fun NavigationGraph(navController: NavHostController = rememberNavController()) {
@@ -28,7 +29,7 @@ fun NavigationGraph(navController: NavHostController = rememberNavController()) 
             ExamScreen(navController)
         }
         composable(route = Destinations.STATISTICS_ROUTE) {
-            /*StatisticsScreen(navController)*/
+            StatisticsScreen(navController = navController)
         }
         composable(route = Destinations.PREFERENCES_ROUTE) {
             /* PreferencesScreen(navController)*/

@@ -121,7 +121,7 @@ fun ExamScreen(
                                 }
                             )
                             if (endExamVisible) EndExamButton(
-                                title = if (uiState.isCompleted) R.string.restartExam else R.string.endExam,
+                                title = if (uiState.isCompleted) R.string.restart_exam else R.string.end_exam,
                                 icon = if (uiState.isCompleted) Icons.Rounded.RestartAlt else Icons.Rounded.DoneAll,
                                 containerColor = if (uiState.isCompleted) MaterialTheme.colorScheme.secondary else Red,
                                 onClick = {
