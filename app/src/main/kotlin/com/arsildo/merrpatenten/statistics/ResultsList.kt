@@ -2,8 +2,12 @@ package com.arsildo.merrpatenten.statistics
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -30,6 +34,9 @@ fun ResultList(
 ) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
+        contentPadding = PaddingValues(
+            bottom = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
+        ),
         horizontalArrangement = Arrangement.spacedBy(16.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp),
         modifier = Modifier.fillMaxWidth()
@@ -47,7 +54,7 @@ private fun Result(
     val errors = results.errors
     Card(
         colors = CardDefaults.elevatedCardColors(
-            contentColor = MaterialTheme.colorScheme.onBackground,
+            contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
             containerColor = if (errors > ERRORS_ALLOWED) Red.copy(.4f) else Green.copy(.4f)
         ),
         modifier = Modifier.fillMaxWidth(),

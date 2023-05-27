@@ -1,11 +1,11 @@
 package com.arsildo.merrpatenten.exam
 
-import androidx.activity.compose.BackHandler
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -13,11 +13,16 @@ import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.DoneAll
+import androidx.compose.material.icons.rounded.ExitToApp
 import androidx.compose.material.icons.rounded.RestartAlt
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExtendedFloatingActionButton
+import androidx.compose.material3.FloatingActionButtonDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.rememberModalBottomSheetState
@@ -120,24 +125,41 @@ fun ExamScreen(
                                     }
                                 }
                             )
-                            if (endExamVisible) EndExamButton(
-                                title = if (uiState.isCompleted) R.string.restart_exam else R.string.end_exam,
-                                icon = if (uiState.isCompleted) Icons.Rounded.RestartAlt else Icons.Rounded.DoneAll,
-                                containerColor = if (uiState.isCompleted) MaterialTheme.colorScheme.secondary else Red,
-                                onClick = {
-                                    if (uiState.isCompleted) {
-                                        navController.navigate(Destinations.EXAM_ROUTE) {
-                                            popUpTo(Destinations.EXAM_ROUTE) {
-                                                inclusive = true
+                            if (endExamVisible) Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = if (uiState.isCompleted) Arrangement.SpaceBetween else Arrangement.End
+                            ) {
+                                if (uiState.isCompleted) ExtendedFloatingActionButton(
+                                    text = { Text(text = "Leave") },
+                                    icon = {
+                                        Icon(
+                                            imageVector = Icons.Rounded.ExitToApp,
+                                            contentDescription = null
+                                        )
+                                    },
+                                    onClick = { navController.navigate(Destinations.LANDING_ROUTE) },
+                                    modifier = Modifier.fillMaxWidth(.5f),
+                                    elevation = FloatingActionButtonDefaults.loweredElevation(),
+                                    shape = MaterialTheme.shapes.extraLarge
+                                )
+                                EndExamButton(
+                                    title = if (uiState.isCompleted) R.string.restart_exam else R.string.end_exam,
+                                    icon = if (uiState.isCompleted) Icons.Rounded.RestartAlt else Icons.Rounded.DoneAll,
+                                    containerColor = if (uiState.isCompleted) MaterialTheme.colorScheme.secondary else Red,
+                                    onClick = {
+                                        if (uiState.isCompleted) {
+                                            navController.navigate(Destinations.EXAM_ROUTE) {
+                                                popUpTo(Destinations.EXAM_ROUTE) {
+                                                    inclusive = true
+                                                }
                                             }
+                                        } else {
+                                            viewModel.concludeExam()
+                                            questionMapVisible = false
                                         }
-                                    } else {
-                                        viewModel.concludeExam()
-                                        questionMapVisible = false
                                     }
-                                },
-                                modifier = Modifier.align(Alignment.End)
-                            )
+                                )
+                            }
 
                         }
                     }
@@ -163,8 +185,8 @@ fun ExamScreen(
 
     }
 
-    BackHandler {
+    /*BackHandler {
         endExamVisible = !endExamVisible
-    }
+    }*/
 
 }

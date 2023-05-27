@@ -3,6 +3,7 @@ package com.arsildo.merrpatenten.statistics
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -51,14 +52,15 @@ fun StatisticsScreen(
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.tertiary,
-                    navigationIconContentColor = MaterialTheme.colorScheme.onTertiary,
-                    actionIconContentColor = MaterialTheme.colorScheme.onTertiary,
-                    titleContentColor = MaterialTheme.colorScheme.onTertiary,
+                    containerColor = MaterialTheme.colorScheme.background,
+                    navigationIconContentColor = MaterialTheme.colorScheme.primary,
+                    actionIconContentColor = MaterialTheme.colorScheme.primary,
+                    titleContentColor = MaterialTheme.colorScheme.primary,
                 ),
             )
         },
-        contentColor = MaterialTheme.colorScheme.secondary
+        contentColor = MaterialTheme.colorScheme.secondary,
+        contentWindowInsets = WindowInsets(top = 0, bottom = 0)
     ) { contentPadding ->
         Box(
             modifier = Modifier
@@ -102,16 +104,28 @@ fun StatisticsScreen(
                     errors = 8,
                     time = "12:11"
                 ),
+                Results(
+                    errors = 8,
+                    time = "12:11"
+                ),
+                Results(
+                    errors = 8,
+                    time = "12:11"
+                ),
+                Results(
+                    errors = 8,
+                    time = "12:11"
+                ),
             )
-            if (results.isNotEmpty()) ResultStoringDisabled(enabled = false)
+            if (results.isEmpty()) ResultStoringDisabled(enabled = false)
             else Column(
                 modifier = Modifier
                     .padding(horizontal = 16.dp)
                     .padding(top = 16.dp),
-                verticalArrangement = Arrangement.spacedBy(16.dp)
+                verticalArrangement = Arrangement.spacedBy(32.dp)
             ) {
-                AverageMistakes(previousExamResults = results)
                 PerformanceGraph(results = results)
+                AverageMistakes(previousExamResults = results)
                 ResultList(results = results)
             }
         }

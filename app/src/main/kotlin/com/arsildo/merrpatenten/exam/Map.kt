@@ -1,11 +1,14 @@
 package com.arsildo.merrpatenten.exam
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -52,7 +55,8 @@ fun Map(
         onDismissRequest = onDismissRequest,
         sheetState = sheetState,
         contentColor = MaterialTheme.colorScheme.primary,
-        tonalElevation = 0.dp
+        tonalElevation = 0.dp,
+        windowInsets = WindowInsets(top = 0, bottom = 0)
     ) {
         if (isCompleted) Card(
             modifier = Modifier
@@ -98,7 +102,8 @@ fun Map(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 16.dp),
+                .padding(horizontal = 16.dp)
+                .navigationBarsPadding(),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
 
@@ -152,15 +157,15 @@ private fun Question(
             contentColor = contentColor
         ),
         onClick = onClick,
-        shape = MaterialTheme.shapes.extraLarge
+        shape = MaterialTheme.shapes.extraLarge,
+        border = BorderStroke(2.dp, MaterialTheme.colorScheme.inversePrimary),
+        modifier = Modifier.fillMaxWidth()
     ) {
         Text(
             text = "${title + 1}",
             textAlign = TextAlign.Center,
             style = MaterialTheme.typography.titleLarge,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp)
+            modifier = Modifier.fillMaxWidth().padding(vertical = 16.dp)
 
         )
     }

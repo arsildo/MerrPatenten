@@ -35,7 +35,7 @@ data class Results(
     val time: String,
 )
 
-@SuppressLint("MagicNumber")
+@Suppress("MagicNumber")
 @Composable
 fun PerformanceGraph(
     results: List<Results>
@@ -72,7 +72,7 @@ fun PerformanceGraph(
                         modifier = Modifier
                             .size(300.dp)
                             .clipToBounds()
-                            .background(MaterialTheme.colorScheme.primaryContainer)
+                            .background(Red.copy(.2f))
                     ) {
 
                         drawRect(
@@ -102,7 +102,7 @@ fun PerformanceGraph(
                             drawCircle(
                                 center = Offset(x = xAxis, y = yAxis),
                                 color = if (results[i].errors > 4) Red else Green,
-                                radius = 16f
+                                radius = (10f+4f)
                             )
                         }
 

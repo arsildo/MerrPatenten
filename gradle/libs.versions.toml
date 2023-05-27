@@ -3,7 +3,7 @@ composeBOM = "2023.05.01"
 composeCompiler = "1.4.7"
 
 kotlin = "1.8.21"
-gradle = "8.2.0-alpha04"
+gradle = "8.2.0-alpha05"
 ksp = "1.8.21-1.0.11"
 hilt = "2.46.1"
 
@@ -20,19 +20,19 @@ androidx-compose-ui = { group = "androidx.compose.ui", name = "compose-ui" }
 androidx-compose-ui-util = { group = "androidx.compose.ui", name = "ui-util" }
 androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version = "1.10.1" }
-androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version = "1.7.1" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version = "1.7.2" }
 androidx-lifecycle-runtime-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version = "2.6.1" }
 
 ## material
 androidx-compose-material-core = { group = "androidx.compose.material", name = "material" }
 androidx-compose-material-iconsExtended = { group = "androidx.compose.material", name = "material-icons-extended" }
-androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3", version = "1.2.0-alpha01" }
-androidx-compose-material3-windowSizeClass = { group = "androidx.compose.material3", name = "material3-window-size-class", version = "1.2.0-alpha01" }
+androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3", version = "1.2.0-alpha02" }
+androidx-compose-material3-windowSizeClass = { group = "androidx.compose.material3", name = "material3-window-size-class", version = "1.2.0-alpha02" }
 
 hilt-android-core = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
 
-androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version = "2.6.0-rc01" }
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version = "2.7.0-alpha01" }
 androidx-hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version = "1.1.0-alpha01" }
 
 androidx-dataStore-preferences = { group = "androidx.datastore", name = "datastore-preferences", version = "1.0.0" }
