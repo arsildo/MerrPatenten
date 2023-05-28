@@ -4,6 +4,7 @@
     <string name="start_exam">Fillo Provimin</string>
     <string name="end_exam">Perfundo provimin</string>
     <string name="restart_exam">Fillo provim të ri</string>
+    <string name="exit_exam">Mbyll</string>
     <string name="true_checkbox">Saktë</string>
     <string name="false_checkbox">Gabim</string>
     <string name="completed_question">Plotësuar</string>

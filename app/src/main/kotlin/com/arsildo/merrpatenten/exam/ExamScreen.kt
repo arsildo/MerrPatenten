@@ -1,5 +1,6 @@
 package com.arsildo.merrpatenten.exam
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
@@ -13,16 +14,12 @@ import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.pager.rememberPagerState
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.DoneAll
 import androidx.compose.material.icons.rounded.ExitToApp
 import androidx.compose.material.icons.rounded.RestartAlt
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.ExtendedFloatingActionButton
-import androidx.compose.material3.FloatingActionButtonDefaults
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.rememberModalBottomSheetState
@@ -41,7 +38,6 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import com.arsildo.merrpatenten.Destinations
 import com.arsildo.merrpatenten.R
-import com.arsildo.merrpatenten.theme.Red
 import com.arsildo.merrpatenten.utils.QUESTIONS_IN_EXAM
 import kotlinx.coroutines.launch
 
@@ -55,8 +51,11 @@ fun ExamScreen(
     val coroutineScope = rememberCoroutineScope()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val pagerState = rememberPagerState { QUESTIONS_IN_EXAM }
-    val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
     var questionMapVisible by remember { mutableStateOf(false) }
+    val sheetState = rememberModalBottomSheetState(
+        skipPartiallyExpanded = true,
+        confirmValueChange = { questionMapVisible }
+    )
     var endExamVisible by remember { mutableStateOf(false) }
 
     Scaffold(
@@ -125,42 +124,41 @@ fun ExamScreen(
                                     }
                                 }
                             )
-                            if (endExamVisible) Row(
-                                modifier = Modifier.fillMaxWidth(),
-                                horizontalArrangement = if (uiState.isCompleted) Arrangement.SpaceBetween else Arrangement.End
-                            ) {
-                                if (uiState.isCompleted) ExtendedFloatingActionButton(
-                                    text = { Text(text = "Leave") },
-                                    icon = {
-                                        Icon(
-                                            imageVector = Icons.Rounded.ExitToApp,
-                                            contentDescription = null
+                            if (endExamVisible) {
+                                if (uiState.isCompleted) {
+                                    Row(
+                                        modifier = Modifier.fillMaxWidth(),
+                                        horizontalArrangement = Arrangement.spacedBy(16.dp)
+                                    ) {
+                                        ExitExamButton(
+                                            title = R.string.exit_exam,
+                                            icon = Icons.Rounded.ExitToApp,
+                                            onClick = { navController.navigate(Destinations.LANDING_ROUTE) },
+                                            modifier = Modifier.fillMaxWidth(.4f)
                                         )
-                                    },
-                                    onClick = { navController.navigate(Destinations.LANDING_ROUTE) },
-                                    modifier = Modifier.fillMaxWidth(.5f),
-                                    elevation = FloatingActionButtonDefaults.loweredElevation(),
-                                    shape = MaterialTheme.shapes.extraLarge
-                                )
-                                EndExamButton(
-                                    title = if (uiState.isCompleted) R.string.restart_exam else R.string.end_exam,
-                                    icon = if (uiState.isCompleted) Icons.Rounded.RestartAlt else Icons.Rounded.DoneAll,
-                                    containerColor = if (uiState.isCompleted) MaterialTheme.colorScheme.secondary else Red,
-                                    onClick = {
-                                        if (uiState.isCompleted) {
-                                            navController.navigate(Destinations.EXAM_ROUTE) {
-                                                popUpTo(Destinations.EXAM_ROUTE) {
-                                                    inclusive = true
+                                        RestartExamButton(
+                                            title = R.string.restart_exam,
+                                            icon = Icons.Rounded.RestartAlt,
+                                            modifier = Modifier.fillMaxWidth(),
+                                            onClick = {
+                                                navController.navigate(Destinations.EXAM_ROUTE) {
+                                                    popUpTo(Destinations.EXAM_ROUTE) {
+                                                        inclusive = true
+                                                    }
                                                 }
                                             }
-                                        } else {
-                                            viewModel.concludeExam()
-                                            questionMapVisible = false
-                                        }
+                                        )
+                                    }
+                                } else EndExamButton(
+                                    title = R.string.end_exam,
+                                    icon = Icons.Rounded.DoneAll,
+                                    modifier = Modifier.fillMaxWidth(),
+                                    onClick = {
+                                        viewModel.concludeExam()
+                                        questionMapVisible = true
                                     }
                                 )
                             }
-
                         }
                     }
                 }
@@ -169,24 +167,22 @@ fun ExamScreen(
         }
     }
 
-    if (questionMapVisible) {
-        Map(
-            sheetState = sheetState,
-            isCompleted = uiState.isCompleted,
-            responses = viewModel.responseList,
-            mistakes = viewModel.mistakePositions,
-            errors = uiState.errors,
-            onQuestionClicked = { page ->
-                coroutineScope.launch { pagerState.animateScrollToPage(page) }
-                questionMapVisible = false
-            },
-            onDismissRequest = { questionMapVisible = false }
-        )
+    if (questionMapVisible) Map(
+        sheetState = sheetState,
+        isCompleted = uiState.isCompleted,
+        responses = viewModel.responseList,
+        mistakes = viewModel.mistakePositions,
+        errors = uiState.errors,
+        onQuestionClicked = { page ->
+            coroutineScope.launch {
+                pagerState.animateScrollToPage(page)
+            }
+            questionMapVisible = false
+        },
+        onDismissRequest = { questionMapVisible = false }
+    )
 
-    }
-
-    /*BackHandler {
+    BackHandler {
         endExamVisible = !endExamVisible
-    }*/
-
+    }
 }
