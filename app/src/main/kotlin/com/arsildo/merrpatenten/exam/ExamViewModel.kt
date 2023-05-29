@@ -1,11 +1,14 @@
 package com.arsildo.merrpatenten.exam
 
+import android.os.CountDownTimer
 import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.arsildo.merrpatenten.data.Question
 import com.arsildo.merrpatenten.data.local.PreferencesRepository
 import com.arsildo.merrpatenten.data.local.QuestionnaireRepository
+import com.arsildo.merrpatenten.utils.EXAM_DURATION
+import com.arsildo.merrpatenten.utils.formatTimer
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -60,24 +63,24 @@ class ExamViewModel @Inject constructor(
 
     init {
         fillExamWithDefaults()
+        startCountDown()
     }
 
-    /*init {
-        object : CountDownTimer(EXAM_DURATION, 1000) {
-            override fun onTick(millisUntilFinished: Long) {
-                updateTimer(millisUntilFinished)
-            }
+    private fun startCountDown(): CountDownTimer = object : CountDownTimer(EXAM_DURATION, 1_000) {
+        override fun onTick(millisUntilFinished: Long) {
+            if (!uiState.value.isCompleted) updateTimer(millisUntilFinished)
+            else concludeExam()
+        }
 
-            override fun onFinish() {
-                cancel()
-            }
+        override fun onFinish() {
+            cancel()
+        }
 
-        }.start()
-    }
+    }.start()
 
     private fun updateTimer(millis: Long) {
         _uiState.update { it.copy(timer = formatTimer(millis)) }
-    }*/
+    }
 
     fun concludeExam() {
         _uiState.update {

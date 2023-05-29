@@ -31,6 +31,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfig = signingConfigs.getByName("debug")
         }
 
         getByName("release") {
@@ -41,6 +42,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfig = signingConfigs.getByName("debug")
         }
 
     }
@@ -59,7 +61,7 @@ android {
 }
 
 dependencies {
-    implementation (libs.androidx.compose.bom)
+    implementation (platform(libs.androidx.compose.bom))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(libs.androidx.activity.compose)
@@ -86,15 +88,14 @@ dependencies {
     implementation(libs.accompanist.systemuicontroller)
 
     implementation(libs.coil.kt.compose)
-    implementation(libs.lottie.compose)
     implementation(libs.gson)
     implementation(libs.androidx.core.splashscreen)
 
     implementation(libs.timber)
 
-    androidTestImplementation (libs.androidx.compose.bom)
+    androidTestImplementation (platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.test.ext.junit)
-    androidTestImplementation(libs.androidx.test.expresso.core)
+    androidTestImplementation(libs.androidx.test.espresso.core)
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)

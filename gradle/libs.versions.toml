@@ -1,15 +1,13 @@
 [versions]
 composeBOM = "2023.05.01"
 composeCompiler = "1.4.7"
-
 kotlin = "1.8.21"
 gradle = "8.2.0-alpha05"
 ksp = "1.8.21-1.0.11"
 hilt = "2.46.1"
-
-accompanist = "0.31.3-beta"
 room = "2.6.0-alpha01"
-lottie = "6.0.0"
+accompanist = "0.31.3-beta"
+detekt = "1.23.0"
 
 [libraries]
 ## compose
@@ -45,18 +43,15 @@ room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
 
 coil-kt-compose = { group = "io.coil-kt", name = "coil-compose", version = "2.3.0" }
-lottie-compose = { group = "com.airbnb.android", name = "lottie-compose", version = "6.0.0" }
 gson = { group = "com.google.code.gson", name = "gson", version = "2.10.1" }
 timber = { group = "com.jakewharton.timber", name = "timber", version = "5.0.1" }
 
 ## testing
 androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit" }
-androidx-test-expresso-core = { group = "androidx.test.espresso", name = "espresso-core" }
+androidx-test-espresso-core = { group = "androidx.test.espresso", name = "espresso-core" }
 androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
-
-gradle-plugin = { group = "com.android.tools.build", name = "gradle", version.ref = "gradle" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "gradle" }
@@ -65,4 +60,4 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
-detekt = { id = "io.gitlab.arturbosch.detekt", version = "1.23.0" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
