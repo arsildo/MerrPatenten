@@ -580,6 +580,8 @@ style:
       - '90'
       - '180'
       - '360'
+      - '1000'
+      - '2000'
     ignoreHashCodeFunction: true
     ignorePropertyDeclaration: false
     ignoreLocalVariableDeclaration: false

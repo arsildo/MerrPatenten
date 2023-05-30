@@ -23,7 +23,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -31,8 +31,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.navigation.NavController
-import com.arsildo.merrpatenten.Destinations
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -95,7 +93,7 @@ fun LandingScreen(
     val onBackPressedTwiceEnabled by viewModel.confirmAppExit.collectAsStateWithLifecycle(
         initialValue = true
     )
-    var timeWhenPressed by remember { mutableStateOf(0L) }
+    var timeWhenPressed by remember { mutableLongStateOf(0L) }
     BackHandler {
         if (onBackPressedTwiceEnabled) onBackPressedTwice(
             timeWhenPressed = timeWhenPressed,
