@@ -1,7 +1,5 @@
 package com.arsildo.merrpatenten
 
-import androidx.compose.animation.AnimatedContentTransitionScope
-import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -20,23 +18,26 @@ fun NavigationGraph(navController: NavHostController = rememberNavController()) 
     NavHost(
         navController = navController,
         route = ROOT_GRAPH,
-        startDestination = Destinations.LANDING_ROUTE,
-        modifier = Modifier.background(MaterialTheme.colorScheme.background)
+        startDestination = Destinations.LANDING_ROUTE
     ) {
         composable(route = Destinations.LANDING_ROUTE) {
-            /*MainScreen(navController)*/
-            LandingScreen(navController = navController)
+            LandingScreen(
+                onStartExamClick = { navController.navigate(Destinations.EXAM_ROUTE) },
+                onStatisticsClick = { navController.navigate(Destinations.STATISTICS_ROUTE) }
+            )
         }
         composable(route = Destinations.EXAM_ROUTE) {
             ExamScreen(navController)
         }
         composable(route = Destinations.STATISTICS_ROUTE) {
-            StatisticsScreen(navController = navController)
+            StatisticsScreen(
+                onBackPress = navController::navigateUp
+            )
         }
         composable(route = Destinations.PREFERENCES_ROUTE) {
-            /* PreferencesScreen(navController)*/
-            PreferencesScreen(navController = navController)
+            PreferencesScreen(
+                onBackPress = navController::navigateUp
+            )
         }
     }
-
 }

@@ -37,7 +37,8 @@ import com.arsildo.merrpatenten.Destinations
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LandingScreen(
-    navController: NavController,
+    onStartExamClick: () -> Unit,
+    onStatisticsClick: () -> Unit,
     viewModel: LandingViewModel = hiltViewModel()
 ) {
     Scaffold(
@@ -46,7 +47,7 @@ fun LandingScreen(
                 title = { /*empty title*/ },
                 actions = {
                     IconButton(
-                        onClick = { navController.navigate(Destinations.PREFERENCES_ROUTE) },
+                        onClick = onStartExamClick,
                     ) {
                         Icon(
                             imageVector = Icons.Rounded.Menu,
@@ -69,7 +70,7 @@ fun LandingScreen(
                         contentDescription = null
                     )
                 },
-                onClick = { navController.navigate(Destinations.STATISTICS_ROUTE) },
+                onClick = onStatisticsClick,
                 contentColor = MaterialTheme.colorScheme.onTertiary,
                 containerColor = MaterialTheme.colorScheme.tertiary,
                 elevation = FloatingActionButtonDefaults.loweredElevation()
@@ -84,7 +85,7 @@ fun LandingScreen(
         ) {
             Column {
                 ExamTypeCard(
-                    onClick = { navController.navigate(Destinations.EXAM_ROUTE) }
+                    onClick = onStartExamClick
                 )
             }
         }

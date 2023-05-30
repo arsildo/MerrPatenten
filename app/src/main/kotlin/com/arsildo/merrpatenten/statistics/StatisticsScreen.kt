@@ -25,7 +25,7 @@ import androidx.navigation.NavController
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun StatisticsScreen(
-    navController: NavController,
+    onBackPress:() -> Unit,
 ) {
     Scaffold(
         topBar = {
@@ -33,7 +33,7 @@ fun StatisticsScreen(
                 title = { Text(text = "Statistics") },
                 navigationIcon = {
                     IconButton(
-                        onClick = navController::popBackStack,
+                        onClick = onBackPress,
                     ) {
                         Icon(
                             imageVector = Icons.Rounded.ArrowBack,
@@ -43,7 +43,7 @@ fun StatisticsScreen(
                 },
                 actions = {
                     IconButton(
-                        onClick = navController::popBackStack,
+                        onClick = onBackPress, // change this.
                     ) {
                         Icon(
                             imageVector = Icons.Rounded.DeleteSweep,

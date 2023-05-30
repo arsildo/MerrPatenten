@@ -35,8 +35,8 @@ import androidx.navigation.NavController
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PreferencesScreen(
-    navController: NavController,
     viewModel: PreferencesViewModel = hiltViewModel(),
+    onBackPress: () -> Unit,
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     AnimateColorSchemeTransition {
@@ -45,7 +45,7 @@ fun PreferencesScreen(
                 TopAppBar(
                     title = { Text(text = "Preferences") },
                     navigationIcon = {
-                        IconButton(onClick = navController::popBackStack) {
+                        IconButton(onClick = onBackPress) {
                             Icon(
                                 imageVector = Icons.Rounded.ArrowBack,
                                 contentDescription = null
