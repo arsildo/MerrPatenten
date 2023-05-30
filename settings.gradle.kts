@@ -13,4 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "MerrPatenten"
-include ':app'
+include (":app")
