@@ -1,6 +1,5 @@
 package com.arsildo.merrpatenten.statistics
 
-import android.annotation.SuppressLint
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -25,8 +24,7 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
-import com.arsildo.merrpatenten.theme.Green
-import com.arsildo.merrpatenten.theme.Red
+import com.arsildo.merrpatenten.utils.ERRORS_ALLOWED
 import java.math.RoundingMode
 import java.text.DecimalFormat
 
@@ -40,18 +38,20 @@ data class Results(
 fun PerformanceGraph(
     results: List<Results>
 ) {
+    val graphSize = 360.dp
     if (results.isNotEmpty())
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.Center
         ) {
             Row(
-                modifier = Modifier.height(320.dp),
+                modifier = Modifier.height(graphSize),
             ) {
-                val primaryColor = MaterialTheme.colorScheme.primary
+                val correctColor = MaterialTheme.colorScheme.onPrimaryContainer
+                val errorColor = MaterialTheme.colorScheme.error
                 Column(
                     modifier = Modifier
-                        .height(300.dp)
+                        .height(graphSize - 20.dp)
                         .padding(end = 4.dp),
                     verticalArrangement = Arrangement.SpaceBetween
                 ) {
@@ -64,23 +64,22 @@ fun PerformanceGraph(
                 Divider(
                     modifier = Modifier
                         .width(2.dp)
-                        .fillMaxHeight((.9f + .044f)),
-                    color = primaryColor
+                        .fillMaxHeight(.95f),
+                    color = MaterialTheme.colorScheme.primary
                 )
                 Column {
                     Canvas(
                         modifier = Modifier
-                            .size(300.dp)
+                            .size(graphSize - 20.dp)
                             .clipToBounds()
-                            .background(Red.copy(.2f))
+                            .background(MaterialTheme.colorScheme.primaryContainer)
                     ) {
 
                         drawRect(
-                            color = Green.copy(.2f),
+                            color = correctColor.copy(.25f),
                             size = Size(size.width, -size.height / 10),
                             topLeft = Offset(0f, size.height)
                         )
-
 
                         val xCoordinates = mutableListOf<Int>()
                         val yCoordinates = mutableListOf<Int>()
@@ -101,8 +100,8 @@ fun PerformanceGraph(
                             val yAxis = size.height - (size.height / 40 * yCoordinates[i])
                             drawCircle(
                                 center = Offset(x = xAxis, y = yAxis),
-                                color = if (results[i].errors > 4) Red else Green,
-                                radius = (10f+4f)
+                                color = if (results[i].errors > ERRORS_ALLOWED) errorColor else correctColor,
+                                radius = (16f)
                             )
                         }
 
@@ -110,22 +109,20 @@ fun PerformanceGraph(
                     Divider(
                         modifier = Modifier
                             .height(2.dp)
-                            .width(300.dp),
-                        color = primaryColor
+                            .width(graphSize - 20.dp),
+                        color = MaterialTheme.colorScheme.primary
                     )
                     Row(
-                        modifier = Modifier.width(300.dp),
+                        modifier = Modifier.width(graphSize - 20.dp),
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
-                        GraphTextDivider(text = "0m")
-                        GraphTextDivider(text = "10m")
-                        GraphTextDivider(text = "20m")
-                        GraphTextDivider(text = "30m")
-                        GraphTextDivider(text = "40m")
+                        GraphTextDivider(text = "0'")
+                        GraphTextDivider(text = "10'")
+                        GraphTextDivider(text = "20'")
+                        GraphTextDivider(text = "30'")
+                        GraphTextDivider(text = "40'")
                     }
                 }
-
-
             }
         }
 }
@@ -134,7 +131,7 @@ fun PerformanceGraph(
 private fun GraphTextDivider(text: String) {
     Text(
         text = text,
-        style = MaterialTheme.typography.labelLarge,
+        style = MaterialTheme.typography.titleSmall,
         color = MaterialTheme.colorScheme.primary
     )
 }
@@ -153,7 +150,8 @@ fun AverageMistakes(previousExamResults: List<Results>) {
                     style = SpanStyle(
                         fontWeight = FontWeight.SemiBold,
                         fontSize = MaterialTheme.typography.titleMedium.fontSize,
-                        color = if (average > 4) Red else Green
+                        color = if (average > ERRORS_ALLOWED)
+                            MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.primary
                     )
                 ) { append("$average") }
                 append(" gabime ne ${previousExamResults.size} provimet e fundit")

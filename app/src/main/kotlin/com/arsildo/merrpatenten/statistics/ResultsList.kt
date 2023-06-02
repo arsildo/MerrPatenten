@@ -23,9 +23,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.arsildo.merrpatenten.theme.Green
-import com.arsildo.merrpatenten.theme.Red
+import com.arsildo.merrpatenten.R
 import com.arsildo.merrpatenten.utils.ERRORS_ALLOWED
 
 @Composable
@@ -38,11 +38,11 @@ fun ResultList(
             bottom = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
         ),
         horizontalArrangement = Arrangement.spacedBy(16.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp),
         modifier = Modifier.fillMaxWidth()
     ) {
-        items(results) {
-            Result(results = it)
+        items(results) { result ->
+            Result(results = result)
         }
     }
 }
@@ -54,8 +54,10 @@ private fun Result(
     val errors = results.errors
     Card(
         colors = CardDefaults.elevatedCardColors(
-            contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
-            containerColor = if (errors > ERRORS_ALLOWED) Red.copy(.4f) else Green.copy(.4f)
+            containerColor = if (errors > ERRORS_ALLOWED)
+                MaterialTheme.colorScheme.errorContainer else MaterialTheme.colorScheme.primary,
+            contentColor = if (errors > ERRORS_ALLOWED)
+                MaterialTheme.colorScheme.onErrorContainer else MaterialTheme.colorScheme.onPrimary
         ),
         modifier = Modifier.fillMaxWidth(),
     ) {
@@ -68,10 +70,11 @@ private fun Result(
         ) {
             Column {
                 Text(
-                    text = "$errors" + if (errors != 1) " Gabime" else " Gabim",
-                    style = MaterialTheme.typography.titleMedium
+                    text = "$errors" + if (errors != 1) " ${stringResource(id = R.string.false_checkbox)}e"
+                    else " ${stringResource(id = R.string.false_checkbox)}",
+                    style = MaterialTheme.typography.titleSmall
                 )
-                Text(text = results.time + " min", style = MaterialTheme.typography.titleSmall)
+                Text(text = results.time + " min", style = MaterialTheme.typography.labelMedium)
             }
             Icon(
                 imageVector = if (errors > 4) Icons.Rounded.Clear else Icons.Rounded.CheckCircleOutline,

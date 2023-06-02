@@ -9,8 +9,9 @@
     <string name="false_checkbox">Gabim</string>
     <string name="completed_question">Plotësuar</string>
     <string name="passed">Urime, ju fituat!</string>
-    <string name="failed">Provoni përseri  :(</string>
+    <string name="failed">Provo përseri!</string>
 
+    <string name="statistics">Statistika</string>
     <string name="results_storing_disabled">Ju keni zgjedhur që rezultatet tuaja të mos ruhen.</string>
     <string name="results_empty">Nuk ka të dhëna.</string>
 </resources>

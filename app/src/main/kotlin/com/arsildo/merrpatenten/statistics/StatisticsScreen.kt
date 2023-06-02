@@ -18,19 +18,25 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
+import com.arsildo.merrpatenten.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun StatisticsScreen(
-    onBackPress:() -> Unit,
+    onBackPress: () -> Unit,
 ) {
+    var deleteResultsDialog by remember { mutableStateOf(false) }
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(text = "Statistics") },
+                title = { Text(text = stringResource(id = R.string.statistics)) },
                 navigationIcon = {
                     IconButton(
                         onClick = onBackPress,
@@ -43,7 +49,7 @@ fun StatisticsScreen(
                 },
                 actions = {
                     IconButton(
-                        onClick = onBackPress, // change this.
+                        onClick = { deleteResultsDialog = true },
                     ) {
                         Icon(
                             imageVector = Icons.Rounded.DeleteSweep,
@@ -111,18 +117,12 @@ fun StatisticsScreen(
                 Results(
                     errors = 8,
                     time = "12:11"
-                ),
-                Results(
-                    errors = 8,
-                    time = "12:11"
-                ),
+                )
             )
             if (results.isEmpty()) ResultStoringDisabled(enabled = false)
             else Column(
-                modifier = Modifier
-                    .padding(horizontal = 16.dp)
-                    .padding(top = 16.dp),
-                verticalArrangement = Arrangement.spacedBy(32.dp)
+                modifier = Modifier.padding(horizontal = 16.dp),
+                verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 PerformanceGraph(results = results)
                 AverageMistakes(previousExamResults = results)
@@ -130,5 +130,10 @@ fun StatisticsScreen(
             }
         }
     }
+
+    if (deleteResultsDialog) DeleteResultsDialog(
+        onConfirm = { /*TODO*/ },
+        onDismiss = { deleteResultsDialog = false }
+    )
 }
 

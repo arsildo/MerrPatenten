@@ -1,6 +1,5 @@
 package com.arsildo.merrpatenten.exam
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -32,6 +31,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.arsildo.merrpatenten.R
@@ -63,21 +63,26 @@ fun Map(
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp),
             colors = CardDefaults.cardColors(
-                containerColor = if (errors > ERRORS_ALLOWED) Red.copy(.15f) else Green.copy(.15f),
+                containerColor = MaterialTheme.colorScheme.background,
                 contentColor = if (errors > ERRORS_ALLOWED) Red else Green
             )
         ) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(16.dp),
+                    .padding(horizontal = 16.dp, vertical = 4.dp),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
                     text = stringResource(id = if (errors > ERRORS_ALLOWED) R.string.failed else R.string.passed),
-                    style = MaterialTheme.typography.titleLarge
+                    style = MaterialTheme.typography.titleLarge,
+                    fontWeight = FontWeight.SemiBold
                 )
-                Text(text = "$errors Gabime", style = MaterialTheme.typography.titleLarge)
+                Text(
+                    text = "$errors Gabime",
+                    style = MaterialTheme.typography.titleLarge,
+                    fontWeight = FontWeight.SemiBold
+                )
             }
 
         }
@@ -92,9 +97,12 @@ fun Map(
                 Question(
                     title = page,
                     containerColor = if (isCompleted) if (mistakes[page] == 0) Green else Red
-                    else if (responses[page].isNotEmpty()) MaterialTheme.colorScheme.secondary else MaterialTheme.colorScheme.primaryContainer,
-                    contentColor = if (isCompleted) if (mistakes[page] == 0) Color.White else Color.White
-                    else if (responses[page].isNotEmpty()) MaterialTheme.colorScheme.onSecondary else MaterialTheme.colorScheme.onPrimaryContainer,
+                    else if (responses[page].isNotEmpty()) MaterialTheme.colorScheme.secondary
+                    else MaterialTheme.colorScheme.primaryContainer,
+                    contentColor = if (isCompleted) if (mistakes[page] == 0) Color.White
+                    else Color.White
+                    else if (responses[page].isNotEmpty()) MaterialTheme.colorScheme.onSecondary
+                    else MaterialTheme.colorScheme.onPrimaryContainer,
                     onClick = { onQuestionClicked(page) }
                 )
             }
@@ -158,14 +166,15 @@ private fun Question(
         ),
         onClick = onClick,
         shape = MaterialTheme.shapes.extraLarge,
-        border = BorderStroke(2.dp, MaterialTheme.colorScheme.inversePrimary),
         modifier = Modifier.fillMaxWidth()
     ) {
         Text(
             text = "${title + 1}",
             textAlign = TextAlign.Center,
             style = MaterialTheme.typography.titleLarge,
-            modifier = Modifier.fillMaxWidth().padding(vertical = 16.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 16.dp)
 
         )
     }

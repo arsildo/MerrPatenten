@@ -19,8 +19,6 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableLongStateOf
@@ -28,37 +26,22 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.arsildo.merrpatenten.theme.Red
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LandingScreen(
     onStartExamClick: () -> Unit,
     onStatisticsClick: () -> Unit,
+    onPreferencesClick: () -> Unit,
     viewModel: LandingViewModel = hiltViewModel()
 ) {
     Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { /*empty title*/ },
-                actions = {
-                    IconButton(
-                        onClick = onStartExamClick,
-                    ) {
-                        Icon(
-                            imageVector = Icons.Rounded.Menu,
-                            contentDescription = null
-                        )
-                    }
-                },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.background,
-                    actionIconContentColor = MaterialTheme.colorScheme.tertiary,
-                ),
-            )
-        },
         floatingActionButton = {
             ExtendedFloatingActionButton(
                 text = { Text(text = "Statistics") },
@@ -69,9 +52,10 @@ fun LandingScreen(
                     )
                 },
                 onClick = onStatisticsClick,
-                contentColor = MaterialTheme.colorScheme.onTertiary,
-                containerColor = MaterialTheme.colorScheme.tertiary,
-                elevation = FloatingActionButtonDefaults.loweredElevation()
+                contentColor = Color.White,
+                containerColor = Red,
+                elevation = FloatingActionButtonDefaults.loweredElevation(),
+                shape = MaterialTheme.shapes.extraLarge
             )
         }
     ) { contentPadding ->
@@ -84,6 +68,17 @@ fun LandingScreen(
             Column {
                 ExamTypeCard(
                     onClick = onStartExamClick
+                )
+            }
+            IconButton(
+                onClick = onPreferencesClick,
+                modifier = Modifier
+                    .align(Alignment.BottomStart)
+                    .padding(16.dp)
+            ) {
+                Icon(
+                    imageVector = Icons.Rounded.Menu,
+                    contentDescription = null
                 )
             }
         }

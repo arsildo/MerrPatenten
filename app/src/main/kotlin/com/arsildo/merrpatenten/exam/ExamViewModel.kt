@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.arsildo.merrpatenten.data.Question
 import com.arsildo.merrpatenten.data.local.PreferencesRepository
 import com.arsildo.merrpatenten.data.local.QuestionnaireRepository
-import com.arsildo.merrpatenten.utils.EXAM_DURATION
 import com.arsildo.merrpatenten.utils.formatTimer
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -66,7 +65,7 @@ class ExamViewModel @Inject constructor(
         startCountDown()
     }
 
-    private fun startCountDown(): CountDownTimer = object : CountDownTimer(EXAM_DURATION, 1_000) {
+    private fun startCountDown(): CountDownTimer = object : CountDownTimer(10000, 1_000) {
         override fun onTick(millisUntilFinished: Long) {
             if (!uiState.value.isCompleted) updateTimer(millisUntilFinished)
             else concludeExam()
@@ -74,6 +73,7 @@ class ExamViewModel @Inject constructor(
 
         override fun onFinish() {
             cancel()
+            concludeExam()
         }
 
     }.start()
