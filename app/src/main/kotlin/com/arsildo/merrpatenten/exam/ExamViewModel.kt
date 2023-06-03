@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.arsildo.merrpatenten.data.Question
 import com.arsildo.merrpatenten.data.local.PreferencesRepository
 import com.arsildo.merrpatenten.data.local.QuestionnaireRepository
+import com.arsildo.merrpatenten.utils.QUESTIONS_IN_EXAM
 import com.arsildo.merrpatenten.utils.formatTimer
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -65,7 +66,7 @@ class ExamViewModel @Inject constructor(
         startCountDown()
     }
 
-    private fun startCountDown(): CountDownTimer = object : CountDownTimer(10000, 1_000) {
+    private fun startCountDown(): CountDownTimer = object : CountDownTimer(360000, 1_000) {
         override fun onTick(millisUntilFinished: Long) {
             if (!uiState.value.isCompleted) updateTimer(millisUntilFinished)
             else concludeExam()
@@ -126,7 +127,7 @@ class ExamViewModel @Inject constructor(
 
     private fun countErrors(): Int {
         var errors = 0
-        for (index in 0..39) {
+        for (index in 0 until QUESTIONS_IN_EXAM) {
             if (responseList[index] != generatedQuestions[index].answer) {
                 errors++
                 mistakePositions.add(index, 1)
@@ -137,7 +138,7 @@ class ExamViewModel @Inject constructor(
     }
 
     private fun fillExamWithDefaults() {
-        for (index in 0..39) {
+        for (index in 0 until QUESTIONS_IN_EXAM) {
             trueCheckedPositions.add(index, false)
             falseCheckedPositions.add(index, false)
             responseList.add(index, "")
