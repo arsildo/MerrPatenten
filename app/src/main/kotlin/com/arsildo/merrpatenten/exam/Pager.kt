@@ -49,6 +49,7 @@ import com.arsildo.merrpatenten.theme.Green
 import com.arsildo.merrpatenten.theme.Red
 import com.arsildo.merrpatenten.utils.getImageResource
 
+@Suppress("MagicNumber")
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun Pager(
@@ -65,6 +66,7 @@ fun Pager(
         state = pagerState,
         contentPadding = PaddingValues(horizontal = 16.dp),
         pageSpacing = 16.dp,
+        key = { index -> questions[index].id },
     ) { page ->
         Question(
             isCompleted = isCompleted,
@@ -79,6 +81,7 @@ fun Pager(
     }
 }
 
+@Suppress("MagicNumber")
 @Composable
 private fun Question(
     isCompleted: Boolean,
@@ -123,28 +126,29 @@ private fun Question(
                     checked = falseChecked,
                     enabled = !isCompleted,
                     onCheckedChange = onFalseCheckedChange,
-                    checkedColor = Red
+                    checkedColor = Red,
                 )
                 QuestionCheckBox(
                     title = R.string.true_checkbox,
                     checked = trueChecked,
                     enabled = !isCompleted,
                     onCheckedChange = onTrueCheckedChange,
-                    checkedColor = Green
+                    checkedColor = Green,
                 )
                 if (isCompleted) Indicator(correctAnswer = correct)
             }
         }
     }
 }
-
+@Suppress("MagicNumber")
 @Composable
 private fun QuestionCheckBox(
+    modifier: Modifier = Modifier,
     @StringRes title: Int,
     checked: Boolean,
     checkedColor: Color,
     onCheckedChange: (Boolean) -> Unit,
-    enabled: Boolean,
+    enabled: Boolean
 ) {
     TextButton(
         onClick = { onCheckedChange(!checked) },
@@ -155,7 +159,8 @@ private fun QuestionCheckBox(
             disabledContentColor = if (checked) checkedColor.copy(.5f)
             else MaterialTheme.colorScheme.primary.copy(.5f),
         ),
-        contentPadding = PaddingValues(end = (16 + 2).dp)
+        contentPadding = PaddingValues(end = (16 + 16 + 4).dp, start = (16 + 4).dp),
+        modifier = modifier
     ) {
         IconToggleButton(
             checked = checked,
@@ -186,7 +191,7 @@ private fun QuestionCheckBox(
         )
     }
 }
-
+@Suppress("MagicNumber")
 @Composable
 private fun QuestionImage(
     @DrawableRes image: Int,
@@ -197,7 +202,7 @@ private fun QuestionImage(
         modifier = Modifier.aspectRatio(1.8f)
     )
 }
-
+@Suppress("MagicNumber")
 @Composable
 private fun Indicator(
     correctAnswer: Boolean,

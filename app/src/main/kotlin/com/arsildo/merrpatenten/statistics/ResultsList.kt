@@ -26,11 +26,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.arsildo.merrpatenten.R
+import com.arsildo.merrpatenten.data.ExamResult
 import com.arsildo.merrpatenten.utils.ERRORS_ALLOWED
 
 @Composable
 fun ResultList(
-    results: List<Results>
+    results: List<ExamResult>
 ) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
@@ -49,7 +50,7 @@ fun ResultList(
 
 @Composable
 private fun Result(
-    results: Results,
+    results: ExamResult,
 ) {
     val errors = results.errors
     Card(

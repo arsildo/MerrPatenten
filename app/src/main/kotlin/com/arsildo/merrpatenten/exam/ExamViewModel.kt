@@ -4,12 +4,16 @@ import android.os.CountDownTimer
 import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.arsildo.merrpatenten.data.ExamResult
 import com.arsildo.merrpatenten.data.Question
+import com.arsildo.merrpatenten.data.local.ExamResultsDAO
 import com.arsildo.merrpatenten.data.local.PreferencesRepository
 import com.arsildo.merrpatenten.data.local.QuestionnaireRepository
+import com.arsildo.merrpatenten.utils.EXAM_DURATION
 import com.arsildo.merrpatenten.utils.QUESTIONS_IN_EXAM
 import com.arsildo.merrpatenten.utils.formatTimer
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -17,6 +21,7 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import timber.log.Timber
 import java.util.Random
 import javax.inject.Inject
@@ -33,6 +38,7 @@ data class ExamUiState(
 class ExamViewModel @Inject constructor(
     private val preferencesRepository: PreferencesRepository,
     private val questionnaireRepository: QuestionnaireRepository,
+    private val examResultsDAO: ExamResultsDAO,
 ) : ViewModel() {
 
     private val generatedQuestions = generateQuestions()
@@ -66,31 +72,34 @@ class ExamViewModel @Inject constructor(
         startCountDown()
     }
 
-    private fun startCountDown(): CountDownTimer = object : CountDownTimer(360000, 1_000) {
+    private fun startCountDown(): CountDownTimer = object : CountDownTimer(EXAM_DURATION, 1_000) {
         override fun onTick(millisUntilFinished: Long) {
-            if (!uiState.value.isCompleted) updateTimer(millisUntilFinished)
-            else concludeExam()
+            if (uiState.value.isCompleted) {
+                concludeExam()
+                cancel()
+            } else updateTimer(millisUntilFinished)
         }
 
         override fun onFinish() {
-            cancel()
             concludeExam()
+            cancel()
         }
 
-    }.start()
+    }/*.start()*/
 
     private fun updateTimer(millis: Long) {
         _uiState.update { it.copy(timer = formatTimer(millis)) }
     }
 
-    fun concludeExam() {
-        _uiState.update {
-            it.copy(
-                isCompleted = true,
-                errors = countErrors()
-            )
-        }
-        Timber.tag("TimberLog").d("Exam Ended")
+    fun completeExam() {
+        _uiState.update { it.copy(isCompleted = true) }
+    }
+
+    private fun concludeExam() {
+        _uiState.update { it.copy(errors = countErrors()) }
+        startCountDown().cancel()
+        insertResult()
+        Timber.tag("TimberLog").d("Exam Concluded")
     }
 
     fun checkTrueAtPosition(position: Int) {
@@ -143,6 +152,19 @@ class ExamViewModel @Inject constructor(
             falseCheckedPositions.add(index, false)
             responseList.add(index, "")
             mistakePositions.add(index, 1)
+        }
+    }
+
+    private fun insertResult() {
+        if (uiState.value.saveStats) viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                examResultsDAO.insertResult(
+                    ExamResult(
+                        errors = uiState.value.errors,
+                        time = uiState.value.timer,
+                    )
+                )
+            }
         }
     }
 

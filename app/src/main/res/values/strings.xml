@@ -13,5 +13,5 @@
 
     <string name="statistics">Statistika</string>
     <string name="results_storing_disabled">Ju keni zgjedhur që rezultatet tuaja të mos ruhen.</string>
-    <string name="results_empty">Nuk ka të dhëna.</string>
-</resources>
+    <string name="results_empty">Nuk ka të dhëna, ju duhet te përfundoni të paktën një provim.</string>
+    <string name="results_change">Ndrysho</string></resources>

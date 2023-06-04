@@ -52,10 +52,10 @@ fun ExamScreen(
     val coroutineScope = rememberCoroutineScope()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val pagerState = rememberPagerState { QUESTIONS_IN_EXAM }
-    var questionMapVisible by remember { mutableStateOf(false) }
-    val sheetState = rememberModalBottomSheetState(
+    var openBottomSheet by remember { mutableStateOf(false) }
+    val bottomSheetState = rememberModalBottomSheetState(
         skipPartiallyExpanded = true,
-        confirmValueChange = { questionMapVisible }
+        confirmValueChange = { openBottomSheet }
     )
     var endExamVisible by remember { mutableStateOf(false) }
 
@@ -90,10 +90,13 @@ fun ExamScreen(
                             pagerState = pagerState,
                             timer = uiState.timer,
                             endExamVisible = endExamVisible,
-                            onMapClick = { questionMapVisible = true },
+                            onMapClick = { openBottomSheet = !openBottomSheet },
                             onShowEndExamButton = { endExamVisible = !endExamVisible }
                         )
 
+                        LaunchedEffect(pagerState.canScrollForward) {
+                            endExamVisible = !pagerState.canScrollForward
+                        }
                         Pager(
                             questions = uiState.questions,
                             pagerState = pagerState,
@@ -154,10 +157,7 @@ fun ExamScreen(
                                     title = R.string.end_exam,
                                     icon = Icons.Rounded.DoneAll,
                                     modifier = Modifier.fillMaxWidth(),
-                                    onClick = {
-                                        viewModel.concludeExam()
-                                        questionMapVisible = true
-                                    }
+                                    onClick = viewModel::completeExam
                                 )
                             }
                         }
@@ -169,21 +169,23 @@ fun ExamScreen(
     }
 
     LaunchedEffect(uiState.isCompleted) {
-        if (uiState.isCompleted) questionMapVisible = true
+        if (uiState.isCompleted) openBottomSheet = true
     }
-    if (questionMapVisible) Map(
-        sheetState = sheetState,
+    if (openBottomSheet) Map(
+        sheetState = bottomSheetState,
         isCompleted = uiState.isCompleted,
         responses = viewModel.responseList,
         mistakes = viewModel.mistakePositions,
         errors = uiState.errors,
         onQuestionClicked = { page ->
-            coroutineScope.launch {
-                pagerState.animateScrollToPage(page)
+            coroutineScope.launch { pagerState.animateScrollToPage(page) }
+            coroutineScope.launch { bottomSheetState.hide() }.invokeOnCompletion {
+                if (!bottomSheetState.isVisible) {
+                    openBottomSheet = false
+                }
             }
-            questionMapVisible = false
         },
-        onDismissRequest = { questionMapVisible = false }
+        onDismissRequest = { openBottomSheet = false }
     )
 
     BackHandler {

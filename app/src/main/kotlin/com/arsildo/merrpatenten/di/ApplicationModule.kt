@@ -6,6 +6,8 @@ import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStoreFile
 import androidx.room.Room
+import com.arsildo.merrpatenten.data.local.ExamResultsDAO
+import com.arsildo.merrpatenten.data.local.ExamResultsDatabase
 import com.arsildo.merrpatenten.data.local.QuestionnaireDAO
 import com.arsildo.merrpatenten.data.local.QuestionnaireDatabase
 import com.arsildo.merrpatenten.utils.DATABASE_PATH
@@ -45,6 +47,22 @@ object ApplicationModule {
     @Provides
     fun provideDatabaseDAO(database: QuestionnaireDatabase): QuestionnaireDAO {
         return database.questionnaireDAO()
+    }
+
+    @Singleton
+    @Provides
+    fun provideExamResultsDatabase(@ApplicationContext context: Context): ExamResultsDatabase {
+        return Room.databaseBuilder(
+            context = context.applicationContext,
+            klass = ExamResultsDatabase::class.java,
+            name = "examResults.db",
+        ).fallbackToDestructiveMigration().build()
+    }
+
+    @Singleton
+    @Provides
+    fun provideExamResultsDatabaseDAO(database: ExamResultsDatabase): ExamResultsDAO {
+        return database.examResultsDAO()
     }
 
 }

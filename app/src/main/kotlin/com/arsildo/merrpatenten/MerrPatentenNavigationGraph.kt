@@ -73,7 +73,8 @@ fun NavigationGraph(navController: NavHostController = rememberNavController()) 
             }
         ) {
             StatisticsScreen(
-                onBackPress = navController::navigateUp
+                onBackPress = navController::navigateUp,
+                onChangePreferenceClick = { navController.navigate(Destinations.PREFERENCES_ROUTE) }
             )
         }
         composable(

@@ -24,19 +24,15 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
+import com.arsildo.merrpatenten.data.ExamResult
 import com.arsildo.merrpatenten.utils.ERRORS_ALLOWED
 import java.math.RoundingMode
 import java.text.DecimalFormat
 
-data class Results(
-    val errors: Int,
-    val time: String,
-)
-
 @Suppress("MagicNumber")
 @Composable
 fun PerformanceGraph(
-    results: List<Results>
+    results: List<ExamResult>
 ) {
     val graphSize = 360.dp
     if (results.isNotEmpty())
@@ -137,7 +133,7 @@ private fun GraphTextDivider(text: String) {
 }
 
 @Composable
-fun AverageMistakes(previousExamResults: List<Results>) {
+fun AverageMistakes(previousExamResults: List<ExamResult>) {
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.Center
@@ -162,7 +158,7 @@ fun AverageMistakes(previousExamResults: List<Results>) {
     }
 }
 
-private fun calculateAverage(data: List<Results>): Double {
+private fun calculateAverage(data: List<ExamResult>): Double {
     var sum = 0.0
     data.forEach { sum += it.errors }
     val formatDouble = DecimalFormat("#.##")

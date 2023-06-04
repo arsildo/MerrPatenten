@@ -3,12 +3,16 @@ package com.arsildo.merrpatenten.statistics
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.ArrowBack
 import androidx.compose.material.icons.rounded.DeleteSweep
+import androidx.compose.material.icons.rounded.MobiledataOff
+import androidx.compose.material.icons.rounded.MultipleStop
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -25,13 +29,18 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.arsildo.merrpatenten.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun StatisticsScreen(
+    viewModel: StatisticsViewModel = hiltViewModel(),
+    onChangePreferenceClick: () -> Unit,
     onBackPress: () -> Unit,
 ) {
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     var deleteResultsDialog by remember { mutableStateOf(false) }
     Scaffold(
         topBar = {
@@ -42,18 +51,16 @@ fun StatisticsScreen(
                         onClick = onBackPress,
                     ) {
                         Icon(
-                            imageVector = Icons.Rounded.ArrowBack,
-                            contentDescription = null
+                            imageVector = Icons.Rounded.ArrowBack, contentDescription = null
                         )
                     }
                 },
                 actions = {
-                    IconButton(
+                    if (uiState.saveResults && uiState.results.isNotEmpty()) IconButton(
                         onClick = { deleteResultsDialog = true },
                     ) {
                         Icon(
-                            imageVector = Icons.Rounded.DeleteSweep,
-                            contentDescription = null
+                            imageVector = Icons.Rounded.DeleteSweep, contentDescription = null
                         )
                     }
                 },
@@ -73,66 +80,45 @@ fun StatisticsScreen(
                 .padding(contentPadding)
                 .fillMaxSize(),
         ) {
-            val results = listOf(
-                Results(
-                    errors = 3,
-                    time = "38:21"
-                ),
-                Results(
-                    errors = 1,
-                    time = "22:21"
-                ),
-                Results(
-                    errors = 10,
-                    time = "27:32"
-                ),
-                Results(
-                    errors = 3,
-                    time = "16:21"
-                ),
-                Results(
-                    errors = 3,
-                    time = "11:21"
-                ),
-                Results(
-                    errors = 13,
-                    time = "16:21"
-                ),
-                Results(
-                    errors = 13,
-                    time = "16:21"
-                ),
-                Results(
-                    errors = 9,
-                    time = "16:21"
-                ),
-                Results(
-                    errors = 8,
-                    time = "12:11"
-                ),
-                Results(
-                    errors = 8,
-                    time = "12:11"
-                ),
-                Results(
-                    errors = 8,
-                    time = "12:11"
+            when {
+                !uiState.saveResults -> ResultStoringDisabled(
+                    text = R.string.results_storing_disabled,
+                    icon = Icons.Rounded.MobiledataOff,
+                    changePreference = {
+                        Button(
+                            onClick = onChangePreferenceClick,
+                            shape = MaterialTheme.shapes.extraLarge,
+                            contentPadding = PaddingValues(horizontal = 32.dp)
+                        ) {
+                            Text(text = stringResource(id = R.string.results_change))
+                        }
+                    }
                 )
-            )
-            if (results.isEmpty()) ResultStoringDisabled(enabled = false)
-            else Column(
-                modifier = Modifier.padding(horizontal = 16.dp),
-                verticalArrangement = Arrangement.spacedBy(16.dp)
-            ) {
-                PerformanceGraph(results = results)
-                AverageMistakes(previousExamResults = results)
-                ResultList(results = results)
+
+                else -> {
+                    val results = uiState.results
+                    if (results.isNotEmpty()) Column(
+                        modifier = Modifier.padding(horizontal = 16.dp),
+                        verticalArrangement = Arrangement.spacedBy(16.dp)
+                    ) {
+                        PerformanceGraph(results = results)
+                        AverageMistakes(previousExamResults = results)
+                        ResultList(results = results)
+                    }
+                    else ResultStoringDisabled(
+                        text = R.string.results_empty,
+                        icon = Icons.Rounded.MultipleStop
+                    )
+                }
             }
         }
     }
 
     if (deleteResultsDialog) DeleteResultsDialog(
-        onConfirm = { /*TODO*/ },
+        onConfirm = {
+            viewModel.deleteAllResults()
+            deleteResultsDialog = false
+        },
         onDismiss = { deleteResultsDialog = false }
     )
 }
