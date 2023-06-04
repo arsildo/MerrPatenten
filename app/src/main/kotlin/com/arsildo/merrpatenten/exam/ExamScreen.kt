@@ -94,8 +94,8 @@ fun ExamScreen(
                             onShowEndExamButton = { endExamVisible = !endExamVisible }
                         )
 
-                        LaunchedEffect(pagerState.canScrollForward) {
-                            endExamVisible = !pagerState.canScrollForward
+                        LaunchedEffect(pagerState.settledPage) {
+                            endExamVisible = pagerState.settledPage == QUESTIONS_IN_EXAM - 1
                         }
                         Pager(
                             questions = uiState.questions,

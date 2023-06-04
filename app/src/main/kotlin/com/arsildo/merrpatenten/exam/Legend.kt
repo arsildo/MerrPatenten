@@ -11,10 +11,9 @@ import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Close
-import androidx.compose.material.icons.rounded.Fullscreen
+import androidx.compose.material.icons.outlined.Cancel
+import androidx.compose.material.icons.rounded.ArrowCircleUp
 import androidx.compose.material.icons.rounded.Looks3
-import androidx.compose.material.icons.rounded.Looks4
 import androidx.compose.material.icons.rounded.LooksOne
 import androidx.compose.material.icons.rounded.LooksTwo
 import androidx.compose.material3.Icon
@@ -56,7 +55,7 @@ fun Legend(
         TextButton(
             onClick = onMapClick,
             modifier = Modifier
-                .fillMaxWidth(.5f)
+                .fillMaxWidth(.6f)
                 .wrapContentSize()
         ) {
             Icon(
@@ -76,7 +75,7 @@ fun Legend(
         Text(
             text = timer,
             style = MaterialTheme.typography.titleMedium,
-            modifier = Modifier.fillMaxWidth(.6f)
+            modifier = Modifier.fillMaxWidth(.7f)
         )
 
 
@@ -91,19 +90,17 @@ fun Legend(
             label = ""
         )
 
+
         IconButton(
             onClick = onShowEndExamButton,
-            colors = IconButtonDefaults.iconButtonColors(
-                contentColor = color
-            ),
+            colors = IconButtonDefaults.iconButtonColors(contentColor = color),
             modifier = Modifier.fillMaxWidth()
         ) {
             Icon(
-                imageVector = if (endExamVisible) Icons.Rounded.Fullscreen else Icons.Rounded.Close,
+                imageVector = if (endExamVisible) Icons.Rounded.ArrowCircleUp else Icons.Outlined.Cancel,
                 contentDescription = null,
                 modifier = Modifier.rotate(rotationState)
             )
         }
-
     }
 }

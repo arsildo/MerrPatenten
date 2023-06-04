@@ -140,6 +140,7 @@ private fun Question(
         }
     }
 }
+
 @Suppress("MagicNumber")
 @Composable
 private fun QuestionCheckBox(
@@ -159,7 +160,10 @@ private fun QuestionCheckBox(
             disabledContentColor = if (checked) checkedColor.copy(.5f)
             else MaterialTheme.colorScheme.primary.copy(.5f),
         ),
-        contentPadding = PaddingValues(end = (16 + 16 + 4).dp, start = (16 + 4).dp),
+        contentPadding = if (enabled) PaddingValues(
+            end = (16 + 16 + 4).dp,
+            start = (16 + 4).dp
+        ) else PaddingValues(end = 16.dp),
         modifier = modifier
     ) {
         IconToggleButton(
@@ -191,6 +195,7 @@ private fun QuestionCheckBox(
         )
     }
 }
+
 @Suppress("MagicNumber")
 @Composable
 private fun QuestionImage(
@@ -202,6 +207,7 @@ private fun QuestionImage(
         modifier = Modifier.aspectRatio(1.8f)
     )
 }
+
 @Suppress("MagicNumber")
 @Composable
 private fun Indicator(
@@ -214,12 +220,9 @@ private fun Indicator(
     Row(
         modifier = Modifier
             .clip(MaterialTheme.shapes.extraLarge)
-            .background(
-                if (correctAnswer) correctColor.copy(.2f) else inCorrectColor.copy(.2f)
-            )
+            .background(if (correctAnswer) correctColor.copy(.2f) else inCorrectColor.copy(.2f))
             .padding(vertical = (8 + 2).dp, horizontal = (16 + 2).dp),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(8.dp)
+        verticalAlignment = Alignment.CenterVertically
     ) {
         Icon(
             imageVector = if (correctAnswer) Icons.Rounded.Check else Icons.Rounded.Clear,
