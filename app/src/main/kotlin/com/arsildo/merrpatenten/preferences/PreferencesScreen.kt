@@ -34,6 +34,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -51,7 +52,7 @@ fun PreferencesScreen(
         Scaffold(
             topBar = {
                 TopAppBar(
-                    title = { Text(text = "Preferences") },
+                    title = { Text(text = stringResource(id = R.string.preferences)) },
                     navigationIcon = {
                         IconButton(onClick = onBackPress) {
                             Icon(
@@ -105,35 +106,33 @@ fun PreferencesScreen(
                         .padding(top = 32.dp)
                 ) {
                     PreferenceCard(
-                        title = "Remember your exam results",
-                        subtitle = "Save exam results and use that information to " +
-                                "generate statistics based on your recent performances. (10 last exams)",
+                        title = stringResource(id = R.string.preferences_store_stats),
+                        subtitle = stringResource(id = R.string.preferences_store_stats_desc),
                         checked = uiState.saveStats,
                         onCheckedChange = viewModel::setSaveStats
                     )
                     PreferenceCard(
-                        title = "Confirm app exit",
-                        subtitle = "Swipe back twice to leave the app.",
+                        title = stringResource(id = R.string.preferences_double_press),
+                        subtitle = stringResource(id = R.string.preferences_double_press_desc),
                         checked = uiState.confirmAppExit,
                         onCheckedChange = viewModel::setConfirmAppExit
                     )
                     PreferenceCard(
-                        title = "Follow System",
-                        subtitle = "Get your color scheme for your system settings.",
+                        title = stringResource(id = R.string.preferences_follow_system_theme),
+                        subtitle = stringResource(id = R.string.preferences_follow_system_theme_desc),
                         checked = uiState.followSystemColors,
                         onCheckedChange = viewModel::setFollowSystem
                     )
                     PreferenceCard(
-                        title = "Dark Mode",
-                        subtitle = "Color scheme used by this application",
+                        title = stringResource(id = R.string.preferences_dark_mode),
+                        subtitle = stringResource(id = R.string.preferences_dark_mode_desc),
                         checked = uiState.colorScheme,
                         enabled = !uiState.followSystemColors,
                         onCheckedChange = viewModel::setColorScheme
                     )
                     PreferenceCard(
-                        title = "Material You",
-                        subtitle = "Dynamic colors generated from your wallpaper." +
-                                " Only supported in Android 12 and later.",
+                        title = stringResource(id = R.string.preferences_material_you),
+                        subtitle = stringResource(id = R.string.preferences_material_you_desc),
                         checked = uiState.dynamicColorScheme,
                         onCheckedChange = viewModel::setDynamicColorScheme
                     )

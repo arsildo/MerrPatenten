@@ -14,4 +14,18 @@
     <string name="statistics">Statistika</string>
     <string name="results_storing_disabled">Ju keni zgjedhur që rezultatet tuaja të mos ruhen.</string>
     <string name="results_empty">Nuk ka të dhëna, ju duhet te përfundoni të paktën një provim.</string>
-    <string name="results_change">Ndrysho</string></resources>
+    <string name="results_change">Ndrysho</string>
+
+    <string name="preferences">Preferencat</string>
+    <string name="preferences_store_stats">Mbaj mend statistikat</string>
+    <string name="preferences_store_stats_desc">Ruaj rezultatet e provimeve dhe gjenero statistika bazuar në to. (20 provimet e fundit.)</string>
+    <string name="preferences_double_press">Konfirmo daljen nga applikacioni</string>
+    <string name="preferences_double_press_desc">Kliko 2 herë pas për të dalë nga applikacioni</string>
+    <string name="preferences_follow_system_theme">Ndiq ngjyrat e sistemit</string>
+    <string name="preferences_follow_system_theme_desc">Merr kombinacionin e ngjurave nga sistemi.</string>
+    <string name="preferences_dark_mode">Dark Mode</string>
+    <string name="preferences_dark_mode_desc">Kombinacioni i ngjyrave.</string>
+    <string name="preferences_material_you">Material you</string>
+    <string name="preferences_material_you_desc">Ngjyra dinamike të gjeneruara nga sistemi i telefonit tuaj.</string>
+
+</resources>
