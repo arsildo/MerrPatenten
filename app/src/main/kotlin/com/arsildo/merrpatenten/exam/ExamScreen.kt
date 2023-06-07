@@ -88,7 +88,7 @@ fun ExamScreen(
 
                         Legend(
                             pagerState = pagerState,
-                            timer = uiState.timer,
+                            timer = remember(viewModel) { { uiState.timer } },
                             endExamVisible = endExamVisible,
                             onMapClick = { openBottomSheet = !openBottomSheet },
                             onShowEndExamButton = { endExamVisible = !endExamVisible }

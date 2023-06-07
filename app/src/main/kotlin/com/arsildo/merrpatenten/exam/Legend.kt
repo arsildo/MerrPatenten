@@ -34,7 +34,7 @@ import com.arsildo.merrpatenten.theme.Red
 @Composable
 fun Legend(
     pagerState: PagerState,
-    timer: String,
+    timer: () -> String,
     endExamVisible: Boolean,
     onMapClick: () -> Unit,
     onShowEndExamButton: () -> Unit,
@@ -73,7 +73,7 @@ fun Legend(
         }
 
         Text(
-            text = timer,
+            text = timer(),
             style = MaterialTheme.typography.titleMedium,
             modifier = Modifier.fillMaxWidth(.7f)
         )

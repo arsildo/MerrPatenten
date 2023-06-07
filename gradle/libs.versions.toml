@@ -1,8 +1,8 @@
 [versions]
-composeBOM = "2023.05.01"
+composeBOM = "2023.06.00"
 composeCompiler = "1.4.7"
 kotlin = "1.8.21"
-gradle = "8.2.0-alpha06"
+gradle = "8.2.0-alpha07"
 ksp = "1.8.21-1.0.11"
 hilt = "2.46.1"
 room = "2.6.0-alpha01"
@@ -55,7 +55,6 @@ androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "gradle" }
-android-library = { id = "com.android.library", version.ref = "gradle" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }

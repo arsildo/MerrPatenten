@@ -85,7 +85,7 @@ class ExamViewModel @Inject constructor(
             cancel()
         }
 
-    }/*.start()*/
+    }.start()
 
     private fun updateTimer(millis: Long) {
         _uiState.update { it.copy(timer = formatTimer(millis)) }
