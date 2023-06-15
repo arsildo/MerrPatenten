@@ -95,9 +95,6 @@ fun ExamScreen(
                             onShowEndExamButton = { endExamVisible = !endExamVisible }
                         )
 
-                        LaunchedEffect(pagerState.settledPage) {
-                            endExamVisible = pagerState.settledPage == QUESTIONS_IN_EXAM - 1
-                        }
                         Pager(
                             questions = uiState.questions,
                             pagerState = pagerState,
@@ -108,6 +105,9 @@ fun ExamScreen(
                             isCompleted = uiState.isCompleted,
                             responses = viewModel.mistakePositions
                         )
+                        LaunchedEffect(pagerState.settledPage) {
+                            endExamVisible = pagerState.settledPage == QUESTIONS_IN_EXAM - 1
+                        }
 
                         Column(
                             modifier = Modifier
@@ -169,13 +169,6 @@ fun ExamScreen(
         }
     }
 
-    LaunchedEffect(uiState.isCompleted) {
-        if (uiState.isCompleted) {
-            delay(500)
-            openBottomSheet = true
-        }
-    }
-
     if (openBottomSheet) Map(
         sheetState = bottomSheetState,
         isCompleted = uiState.isCompleted,
@@ -183,15 +176,22 @@ fun ExamScreen(
         mistakes = viewModel.mistakePositions,
         errors = uiState.errors,
         onQuestionClicked = { page ->
-            coroutineScope.launch { pagerState.animateScrollToPage(page) }
-            coroutineScope.launch { bottomSheetState.hide() }.invokeOnCompletion {
-                if (!bottomSheetState.isVisible) openBottomSheet = false
+            coroutineScope.launch {
+                pagerState.animateScrollToPage(page)
             }
+            coroutineScope.launch {
+                bottomSheetState.hide()
+            }.invokeOnCompletion { if (!bottomSheetState.isVisible) openBottomSheet = false }
         },
         onDismissRequest = { openBottomSheet = false }
     )
 
-    BackHandler {
-        endExamVisible = !endExamVisible
+    LaunchedEffect(uiState.isCompleted) {
+        if (uiState.isCompleted) {
+            delay(5_00)
+            openBottomSheet = true
+        }
     }
+
+    BackHandler { endExamVisible = !endExamVisible }
 }

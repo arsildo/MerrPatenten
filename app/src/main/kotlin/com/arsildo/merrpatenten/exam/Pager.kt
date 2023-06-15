@@ -35,6 +35,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -47,6 +48,8 @@ import com.arsildo.merrpatenten.R
 import com.arsildo.merrpatenten.data.Question
 import com.arsildo.merrpatenten.theme.Green
 import com.arsildo.merrpatenten.theme.Red
+import com.arsildo.merrpatenten.utils.QUESTIONS_IN_EXAM
+import com.arsildo.merrpatenten.utils.formatQuestion
 import com.arsildo.merrpatenten.utils.getImageResource
 
 @Suppress("MagicNumber")
@@ -109,7 +112,7 @@ private fun Question(
         ) {
             QuestionImage(image = image)
             Text(
-                text = question,
+                text = formatQuestion(question),
                 textAlign = TextAlign.Center,
                 style = MaterialTheme.typography.titleMedium,
                 modifier = Modifier

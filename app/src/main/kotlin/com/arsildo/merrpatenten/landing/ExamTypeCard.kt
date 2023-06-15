@@ -1,20 +1,24 @@
 package com.arsildo.merrpatenten.landing
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.Chip
 import androidx.compose.material.ChipDefaults
 import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.QuestionMark
+import androidx.compose.material.icons.rounded.Whatshot
 import androidx.compose.material3.Button
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -36,8 +40,8 @@ fun ExamTypeCard(
 ) {
     ElevatedCard(
         colors = CardDefaults.elevatedCardColors(
-            containerColor = MaterialTheme.colorScheme.secondaryContainer,
-            contentColor = MaterialTheme.colorScheme.primary
+            containerColor = MaterialTheme.colorScheme.onPrimary,
+            contentColor = MaterialTheme.colorScheme.onTertiaryContainer
         ),
         shape = MaterialTheme.shapes.extraLarge,
         modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
@@ -54,50 +58,24 @@ fun ExamTypeCard(
                 text = "A1 A2 B1 B",
                 style = MaterialTheme.typography.headlineMedium
             )
-            Column(
+            Row(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(8.dp)
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 Icon(
                     painter = painterResource(id = R.drawable.ico_category),
                     contentDescription = null,
-                    modifier = Modifier.size(128.dp)
+                    modifier = Modifier.size(128.dp),
+                    tint = MaterialTheme.colorScheme.primary
                 )
                 FlowRow(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceAround,
                 ) {
-                    Chip(
-                        content = {
-                            Text(
-                                text = "40 Minuta",
-                                style = MaterialTheme.typography.titleMedium
-                            )
-                        },
-                        colors = ChipDefaults.outlinedChipColors(),
-                        onClick = { /*TODO*/ }
-                    )
-                    Chip(
-                        content = {
-                            Text(
-                                text = "40 Pyetje",
-                                style = MaterialTheme.typography.titleMedium
-                            )
-                        },
-                        colors = ChipDefaults.outlinedChipColors(),
-                        onClick = { /*TODO*/ }
-                    )
-                    Chip(
-                        content = {
-                            Text(
-                                text = "4 Gabime",
-                                style = MaterialTheme.typography.titleMedium
-                            )
-                        },
-                        colors = ChipDefaults.outlinedChipColors(),
-                        onClick = { /*TODO*/ }
-                    )
+                    ExamChip(text = "40 Minuta")
+                    ExamChip(text = "40 Pyetje")
+                    ExamChip(text = "4 Gabime")
                 }
             }
             Column(
@@ -121,4 +99,27 @@ fun ExamTypeCard(
             }
         }
     }
+}
+
+@OptIn(ExperimentalMaterialApi::class)
+@Composable
+private fun ExamChip(
+    text : String
+){
+    Chip(
+        content = {
+            Text(
+                text = text,
+                style = MaterialTheme.typography.titleMedium,
+                color = MaterialTheme.colorScheme.onPrimaryContainer,
+                modifier = Modifier.padding(vertical = 4.dp)
+            )
+        },
+        colors = ChipDefaults.chipColors(backgroundColor = MaterialTheme.colorScheme.primaryContainer),
+        border = BorderStroke(
+            width = 2.dp,
+            MaterialTheme.colorScheme.inversePrimary
+        ),
+        onClick = { /*TODO*/ }
+    )
 }

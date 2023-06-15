@@ -7,12 +7,14 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.arsildo.merrpatenten.BuildConfig
 import com.arsildo.merrpatenten.data.ExamResult
 import com.arsildo.merrpatenten.data.Question
 import com.arsildo.merrpatenten.data.local.ExamResultsDAO
 import com.arsildo.merrpatenten.data.local.PreferencesRepository
 import com.arsildo.merrpatenten.data.local.QuestionnaireRepository
-import com.arsildo.merrpatenten.utils.EXAM_DURATION
+import com.arsildo.merrpatenten.utils.EXAM_DURATION_DEBUG
+import com.arsildo.merrpatenten.utils.EXAM_DURATION_RELEASE
 import com.arsildo.merrpatenten.utils.QUESTIONS_IN_EXAM
 import com.arsildo.merrpatenten.utils.formatTimer
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -76,7 +78,10 @@ class ExamViewModel @Inject constructor(
         startCountDown()
     }
 
-    private fun startCountDown(): CountDownTimer = object : CountDownTimer(EXAM_DURATION, 1_000) {
+    private fun startCountDown(): CountDownTimer = object : CountDownTimer(
+        if (BuildConfig.DEBUG) EXAM_DURATION_DEBUG else EXAM_DURATION_RELEASE,
+        1_000
+    ) {
         override fun onTick(millisUntilFinished: Long) {
             if (uiState.value.isCompleted) {
                 concludeExam()
