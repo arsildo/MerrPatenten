@@ -40,6 +40,7 @@ import androidx.navigation.NavController
 import com.arsildo.merrpatenten.Destinations
 import com.arsildo.merrpatenten.R
 import com.arsildo.merrpatenten.utils.QUESTIONS_IN_EXAM
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
@@ -169,8 +170,12 @@ fun ExamScreen(
     }
 
     LaunchedEffect(uiState.isCompleted) {
-        if (uiState.isCompleted) openBottomSheet = true
+        if (uiState.isCompleted) {
+            delay(500)
+            openBottomSheet = true
+        }
     }
+
     if (openBottomSheet) Map(
         sheetState = bottomSheetState,
         isCompleted = uiState.isCompleted,
@@ -180,9 +185,7 @@ fun ExamScreen(
         onQuestionClicked = { page ->
             coroutineScope.launch { pagerState.animateScrollToPage(page) }
             coroutineScope.launch { bottomSheetState.hide() }.invokeOnCompletion {
-                if (!bottomSheetState.isVisible) {
-                    openBottomSheet = false
-                }
+                if (!bottomSheetState.isVisible) openBottomSheet = false
             }
         },
         onDismissRequest = { openBottomSheet = false }
