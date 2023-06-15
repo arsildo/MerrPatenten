@@ -25,9 +25,9 @@ android {
     buildTypes {
 
         getByName("debug") {
-            isMinifyEnabled  = false
-            isShrinkResources  = false
-            isDebuggable  = true
+            isMinifyEnabled = false
+            isShrinkResources = false
+            isDebuggable = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -36,9 +36,9 @@ android {
         }
 
         getByName("release") {
-            isMinifyEnabled  = true
-            isShrinkResources  = true
-            isDebuggable  = false
+            isMinifyEnabled = true
+            isShrinkResources = true
+            isDebuggable = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -65,7 +65,7 @@ android {
 }
 
 dependencies {
-    implementation (platform(libs.androidx.compose.bom))
+    implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(libs.androidx.activity.compose)
@@ -97,7 +97,7 @@ dependencies {
 
     implementation(libs.timber)
 
-    androidTestImplementation (platform(libs.androidx.compose.bom))
+    androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.androidx.test.espresso.core)
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)

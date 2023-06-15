@@ -2,22 +2,34 @@ package com.arsildo.merrpatenten.landing
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.material.Chip
+import androidx.compose.material.ChipDefaults
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material3.Button
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.arsildo.merrpatenten.R
 
+@OptIn(
+    ExperimentalMaterialApi::class,
+    ExperimentalLayoutApi::class
+)
 @Composable
 fun ExamTypeCard(
     onClick: () -> Unit,
@@ -47,16 +59,45 @@ fun ExamTypeCard(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                Row(
+                Icon(
+                    painter = painterResource(id = R.drawable.ico_category),
+                    contentDescription = null,
+                    modifier = Modifier.size(128.dp)
+                )
+                FlowRow(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceAround,
-                    verticalAlignment = Alignment.CenterVertically
                 ) {
-
-                        Text(text = "40 Minuta", style = MaterialTheme.typography.titleMedium)
-                        Text(text = "40 Pyetje", style = MaterialTheme.typography.titleMedium)
-                        Text(text = "4 Gabime", style = MaterialTheme.typography.titleMedium)
-
+                    Chip(
+                        content = {
+                            Text(
+                                text = "40 Minuta",
+                                style = MaterialTheme.typography.titleMedium
+                            )
+                        },
+                        colors = ChipDefaults.outlinedChipColors(),
+                        onClick = { /*TODO*/ }
+                    )
+                    Chip(
+                        content = {
+                            Text(
+                                text = "40 Pyetje",
+                                style = MaterialTheme.typography.titleMedium
+                            )
+                        },
+                        colors = ChipDefaults.outlinedChipColors(),
+                        onClick = { /*TODO*/ }
+                    )
+                    Chip(
+                        content = {
+                            Text(
+                                text = "4 Gabime",
+                                style = MaterialTheme.typography.titleMedium
+                            )
+                        },
+                        colors = ChipDefaults.outlinedChipColors(),
+                        onClick = { /*TODO*/ }
+                    )
                 }
             }
             Column(

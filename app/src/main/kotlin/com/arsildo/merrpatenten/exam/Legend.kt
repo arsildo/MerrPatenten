@@ -72,12 +72,7 @@ fun Legend(
             )
         }
 
-        Text(
-            text = timer(),
-            style = MaterialTheme.typography.titleMedium,
-            modifier = Modifier.fillMaxWidth(.7f)
-        )
-
+        TimerText(timer)
 
         val rotationState by animateFloatAsState(
             targetValue = if (endExamVisible) 180f else 0f,
@@ -103,4 +98,15 @@ fun Legend(
             )
         }
     }
+}
+
+@Composable
+private fun TimerText(
+    timer: () -> String,
+) {
+    Text(
+        text = timer(),
+        style = MaterialTheme.typography.titleMedium,
+        modifier = Modifier.fillMaxWidth(.7f)
+    )
 }

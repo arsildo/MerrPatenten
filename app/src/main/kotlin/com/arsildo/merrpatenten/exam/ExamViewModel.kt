@@ -1,7 +1,10 @@
 package com.arsildo.merrpatenten.exam
 
 import android.os.CountDownTimer
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.arsildo.merrpatenten.data.ExamResult
@@ -29,7 +32,6 @@ import javax.inject.Inject
 data class ExamUiState(
     val isCompleted: Boolean = false,
     val saveStats: Boolean = false,
-    val timer: String = "00:00",
     val errors: Int = 0,
     var questions: List<Question> = emptyList()
 )
@@ -43,6 +45,9 @@ class ExamViewModel @Inject constructor(
 
     private val generatedQuestions = generateQuestions()
 
+    var timer by mutableStateOf("00:00")
+        private set
+
     private val _uiState = MutableStateFlow(ExamUiState())
     val uiState: StateFlow<ExamUiState> = combine(
         _uiState,
@@ -51,7 +56,6 @@ class ExamViewModel @Inject constructor(
         ExamUiState(
             isCompleted = state.isCompleted,
             errors = state.errors,
-            timer = state.timer,
             saveStats = stats,
             questions = generatedQuestions
         )
@@ -77,7 +81,7 @@ class ExamViewModel @Inject constructor(
             if (uiState.value.isCompleted) {
                 concludeExam()
                 cancel()
-            } else updateTimer(millisUntilFinished)
+            } else timer = formatTimer(millisUntilFinished)
         }
 
         override fun onFinish() {
@@ -86,10 +90,6 @@ class ExamViewModel @Inject constructor(
         }
 
     }.start()
-
-    private fun updateTimer(millis: Long) {
-        _uiState.update { it.copy(timer = formatTimer(millis)) }
-    }
 
     fun completeExam() {
         _uiState.update { it.copy(isCompleted = true) }
@@ -161,7 +161,7 @@ class ExamViewModel @Inject constructor(
                 examResultsDAO.insertResult(
                     ExamResult(
                         errors = uiState.value.errors,
-                        time = uiState.value.timer,
+                        time = timer,
                     )
                 )
             }
