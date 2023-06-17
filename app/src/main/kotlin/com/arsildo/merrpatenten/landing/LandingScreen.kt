@@ -2,8 +2,11 @@ package com.arsildo.merrpatenten.landing
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.widget.Toast
 import androidx.activity.compose.BackHandler
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,7 +14,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.AutoGraph
 import androidx.compose.material.icons.rounded.Menu
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.Icon
@@ -32,13 +34,14 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.arsildo.merrpatenten.theme.Red
+import com.arsildo.merrpatenten.utils.DPSHTRR_HELP
 
 @Composable
 fun LandingScreen(
+    viewModel: LandingViewModel = hiltViewModel(),
     onStartExamClick: () -> Unit,
     onStatisticsClick: () -> Unit,
-    onPreferencesClick: () -> Unit,
-    viewModel: LandingViewModel = hiltViewModel()
+    onPreferencesClick: () -> Unit
 ) {
     Scaffold(
         floatingActionButton = {
@@ -61,13 +64,21 @@ fun LandingScreen(
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(contentPadding),
+                .padding(contentPadding)
+                .padding(horizontal = 16.dp)
+                .padding(top = 16.dp),
             contentAlignment = Alignment.TopCenter
         ) {
-            Column {
-                ExamTypeCard(
-                    onClick = onStartExamClick
-                )
+            Column(
+                verticalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                ExamTypeCard(onClick = onStartExamClick)
+                val context = LocalContext.current
+                HelpfulMaterialCard {
+                    val dpshtrrLink = Intent(Intent.ACTION_VIEW)
+                    dpshtrrLink.data = Uri.parse(DPSHTRR_HELP)
+                    context.startActivity(dpshtrrLink)
+                }
             }
             IconButton(
                 onClick = onPreferencesClick,

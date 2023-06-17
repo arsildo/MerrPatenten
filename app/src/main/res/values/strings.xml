@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">MerrPatenten</string>
+    <string name="questionnaire_category_one">A1 A2 B1 B</string>
     <string name="questionnaire_version">VERSIONI 2023</string>
-    <string name="start_exam">Fillo Provimin</string>
+    <string name="start_exam">FILLO PROVIMIN</string>
+    <string name="help">Materiale Udhëzuese</string>
+    <string name="help_official">LINKU ZYRTAR NGA DPSHTRR</string>
     <string name="end_exam">Perfundo provimin</string>
     <string name="restart_exam">Fillo provim të ri</string>
     <string name="exit_exam">Mbyll</string>
