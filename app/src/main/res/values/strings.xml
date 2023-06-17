@@ -21,7 +21,7 @@
 
     <string name="preferences">Preferencat</string>
     <string name="preferences_store_stats">Mbaj mend statistikat</string>
-    <string name="preferences_store_stats_desc">Ruaj rezultatet e provimeve dhe gjenero statistika bazuar në to. (20 provimet e fundit.)</string>
+    <string name="preferences_store_stats_desc">Ruaj rezultatet e provimeve dhe gjenero statistika bazuar në to.\n(20 provimet e fundit.)</string>
     <string name="preferences_double_press">Konfirmo daljen nga applikacioni</string>
     <string name="preferences_double_press_desc">Kliko 2 herë pas për të dalë nga applikacioni</string>
     <string name="preferences_follow_system_theme">Ndiq ngjyrat e sistemit</string>

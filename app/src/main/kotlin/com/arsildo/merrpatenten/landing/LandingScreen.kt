@@ -30,9 +30,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.arsildo.merrpatenten.R
 import com.arsildo.merrpatenten.theme.Red
 import com.arsildo.merrpatenten.utils.DPSHTRR_HELP
 
@@ -46,7 +48,7 @@ fun LandingScreen(
     Scaffold(
         floatingActionButton = {
             ExtendedFloatingActionButton(
-                text = { Text(text = "Statistics") },
+                text = { Text(text = stringResource(id = R.string.statistics)) },
                 icon = {
                     Icon(
                         imageVector = Icons.Rounded.AutoGraph,
