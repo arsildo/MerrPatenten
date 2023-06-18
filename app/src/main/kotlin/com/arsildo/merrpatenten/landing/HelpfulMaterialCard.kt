@@ -50,7 +50,7 @@ fun HelpfulMaterialCard(
                 Icon(
                     painter = painterResource(id = R.drawable.dpshtrr),
                     contentDescription = null,
-                    modifier = Modifier.size((32+16).dp),
+                    modifier = Modifier.size((32 + 16).dp)
                 )
                 Column {
                     Text(

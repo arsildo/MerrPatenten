@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.AutoGraph
 import androidx.compose.material.icons.rounded.Menu
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.Icon
@@ -74,7 +75,39 @@ fun LandingScreen(
             Column(
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                ExamTypeCard(onClick = onStartExamClick)
+                ExamTypeCard(
+                    title = R.string.questionnaire_category_one,
+                    description = "40 MINUTA | 40 PYETJE | 4 GABIME",
+                    image = R.drawable.ico_category,
+                    colors = CardDefaults.elevatedCardColors(
+                        containerColor = MaterialTheme.colorScheme.primaryContainer,
+                        contentColor = MaterialTheme.colorScheme.onPrimaryContainer
+                    ),
+                    onClick = onStartExamClick
+                )
+                val toastMessage =
+                    Toast.makeText(LocalContext.current, "Vjen se shpejti...", Toast.LENGTH_LONG)
+
+                ExamTypeCard(
+                    title = R.string.questionnaire_category_two,
+                    description = "40 MINUTA | 40 PYETJE | 4 GABIME",
+                    image = R.drawable.ico_category,
+                    colors = CardDefaults.elevatedCardColors(
+                        containerColor = MaterialTheme.colorScheme.surfaceVariant,
+                        contentColor = MaterialTheme.colorScheme.onSurfaceVariant
+                    ),
+                    onClick = { toastMessage.show() }
+                )
+                ExamTypeCard(
+                    title = R.string.questionnaire_category_three,
+                    description = "10 MINUTA | 10 PYETJE | 1 GABIM",
+                    image = R.drawable.ico_category,
+                    colors = CardDefaults.elevatedCardColors(
+                        containerColor = MaterialTheme.colorScheme.tertiaryContainer,
+                        contentColor = MaterialTheme.colorScheme.onTertiaryContainer
+                    ),
+                    onClick = { toastMessage.show() }
+                )
                 val context = LocalContext.current
                 HelpfulMaterialCard {
                     val dpshtrrLink = Intent(Intent.ACTION_VIEW)
