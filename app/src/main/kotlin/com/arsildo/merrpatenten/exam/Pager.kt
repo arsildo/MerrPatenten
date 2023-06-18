@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PagerState
@@ -35,11 +36,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -48,7 +49,6 @@ import com.arsildo.merrpatenten.R
 import com.arsildo.merrpatenten.data.Question
 import com.arsildo.merrpatenten.theme.Green
 import com.arsildo.merrpatenten.theme.Red
-import com.arsildo.merrpatenten.utils.QUESTIONS_IN_EXAM
 import com.arsildo.merrpatenten.utils.formatQuestion
 import com.arsildo.merrpatenten.utils.getImageResource
 
@@ -103,7 +103,7 @@ private fun Question(
         ),
         modifier = Modifier
             .fillMaxWidth()
-            .fillMaxHeight(.6f)
+            .fillMaxHeight(.7f)
     ) {
         Column(
             modifier = Modifier.fillMaxSize(),
@@ -117,7 +117,7 @@ private fun Question(
                 style = MaterialTheme.typography.titleMedium,
                 modifier = Modifier
                     .padding(vertical = 32.dp)
-                    .fillMaxHeight(.5f),
+                    .fillMaxHeight(.6f),
             )
             Row(
                 modifier = Modifier.fillMaxWidth(),
@@ -198,8 +198,6 @@ private fun QuestionCheckBox(
         )
     }
 }
-
-@Suppress("MagicNumber")
 @Composable
 private fun QuestionImage(
     @DrawableRes image: Int,
@@ -207,10 +205,9 @@ private fun QuestionImage(
     Image(
         painter = painterResource(id = image),
         contentDescription = null,
-        modifier = Modifier.aspectRatio(1.8f)
+        modifier = Modifier.aspectRatio(2f),
     )
 }
-
 @Suppress("MagicNumber")
 @Composable
 private fun Indicator(

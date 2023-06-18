@@ -2,6 +2,7 @@ package com.arsildo.merrpatenten.utils
 
 import com.arsildo.merrpatenten.R
 
+@Suppress("MagicNumber")
 fun getImageResource(id: Int): Int = when (id) {
     1 -> R.drawable.img_1
     2 -> R.drawable.img_2
@@ -493,5 +494,5 @@ fun getImageResource(id: Int): Int = when (id) {
     913 -> R.drawable.img_913
     914 -> R.drawable.img_914
     915 -> R.drawable.img_915
-    else -> R.drawable.img_noimage
+    else -> R.drawable.img_info
 }
