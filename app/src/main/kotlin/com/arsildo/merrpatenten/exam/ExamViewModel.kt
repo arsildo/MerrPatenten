@@ -169,6 +169,7 @@ class ExamViewModel @Inject constructor(
                         time = timer,
                     )
                 )
+                examResultsDAO.limitResults()
             }
         }
     }

@@ -166,6 +166,7 @@ fun PreferenceCard(
             Text(
                 text = subtitle,
                 style = MaterialTheme.typography.labelLarge,
+                color = MaterialTheme.colorScheme.tertiary
             )
         }
         Switch(

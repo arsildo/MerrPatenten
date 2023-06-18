@@ -26,10 +26,12 @@ class StatisticsViewModel @Inject constructor(
 ) : ViewModel() {
 
     val uiState = combine(
-        preferencesRepository.getSaveStats, examResultsDAO.getAllResults()
+        preferencesRepository.getSaveStats,
+        examResultsDAO.getAllResults()
     ) { saveResults, results ->
         StatisticsUiState(
-            results = results, saveResults = saveResults
+            results = results,
+            saveResults = saveResults
         )
     }.stateIn(
         scope = viewModelScope,

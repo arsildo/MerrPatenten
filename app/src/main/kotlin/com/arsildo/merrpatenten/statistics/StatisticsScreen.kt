@@ -96,7 +96,7 @@ fun StatisticsScreen(
                 )
 
                 else -> {
-                    val results = uiState.results
+                    val results = uiState.results.sortedByDescending { it.id }
                     if (results.isNotEmpty()) Column(
                         modifier = Modifier.padding(horizontal = 16.dp),
                         verticalArrangement = Arrangement.spacedBy(16.dp)

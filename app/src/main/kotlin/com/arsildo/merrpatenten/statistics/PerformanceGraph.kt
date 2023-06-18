@@ -150,10 +150,10 @@ fun AverageMistakes(previousExamResults: List<ExamResult>) {
                             MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.primary
                     )
                 ) { append("$average") }
-                append(" gabime ne ${previousExamResults.size} provimet e fundit")
+                append(" gabime ne ${previousExamResults.size} provimet e fundit.")
             },
             color = MaterialTheme.colorScheme.secondary,
-            style = MaterialTheme.typography.titleMedium
+            style = MaterialTheme.typography.titleSmall
         )
     }
 }

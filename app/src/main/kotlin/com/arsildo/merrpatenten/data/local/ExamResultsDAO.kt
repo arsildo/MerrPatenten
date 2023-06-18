@@ -17,4 +17,7 @@ interface ExamResultsDAO {
     @Query("DELETE FROM examResults")
     fun deleteAllResults()
 
+    @Query("DELETE FROM examResults where id NOT IN (SELECT id from examResults ORDER BY id DESC LIMIT 20)")
+    fun limitResults()
+
 }
