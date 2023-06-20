@@ -8,8 +8,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.DialogProperties
+import com.arsildo.merrpatenten.R
 
 @Composable
 fun DeleteResultsDialog(
@@ -17,8 +19,8 @@ fun DeleteResultsDialog(
     onDismiss : () -> Unit,
 ) {
     AlertDialog(
-        title = { Text(text = "Delete all?") },
-        text = { Text(text = "Are you sure you want to delete all records?") },
+        title = { Text(text = stringResource(id = R.string.results_delete)) },
+        text = { Text(text = stringResource(id = R.string.results_delete_description)) },
         onDismissRequest = onDismiss,
         dismissButton = {
             Button(
@@ -28,7 +30,7 @@ fun DeleteResultsDialog(
                     contentColor = MaterialTheme.colorScheme.onPrimary
                 )
             ) {
-                Text(text = "Dismiss")
+                Text(text = stringResource(id = R.string.results_dismiss))
             }
         },
         confirmButton = {
@@ -39,10 +41,11 @@ fun DeleteResultsDialog(
                     contentColor = MaterialTheme.colorScheme.onErrorContainer
                 )
             ) {
-                Text(text = "Confirm")
+                Text(text = stringResource(id = R.string.results_confirm))
             }
         },
         tonalElevation = 0.dp,
         iconContentColor = MaterialTheme.colorScheme.error,
+        modifier = Modifier.fillMaxWidth(),
     )
 }

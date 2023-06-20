@@ -130,8 +130,9 @@ class ExamViewModel @Inject constructor(
         val randomQuestions = mutableListOf<Question>()
         viewModelScope.launch {
             val questions = questionnaire.stateIn(this).value
-            for (index in 0..39) {
+            for (index in 0 until QUESTIONS_IN_EXAM) {
                 val randomNumber = Random().nextInt(questions.size)
+                Timber.tag("TimberLog").d("Generated question $randomNumber")
                 randomQuestions.add(index, questions[randomNumber])
             }
         }

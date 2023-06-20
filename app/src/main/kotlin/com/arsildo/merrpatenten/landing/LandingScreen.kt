@@ -12,6 +12,18 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Looks3
+import androidx.compose.material.icons.filled.LooksOne
+import androidx.compose.material.icons.filled.LooksTwo
+import androidx.compose.material.icons.filled.PlusOne
+import androidx.compose.material.icons.outlined.BusAlert
+import androidx.compose.material.icons.outlined.CarRental
+import androidx.compose.material.icons.outlined.ExposurePlus2
+import androidx.compose.material.icons.outlined.FireTruck
+import androidx.compose.material.icons.outlined.Looks3
+import androidx.compose.material.icons.outlined.LooksOne
+import androidx.compose.material.icons.outlined.LooksTwo
+import androidx.compose.material.icons.outlined.PlusOne
 import androidx.compose.material.icons.rounded.AutoGraph
 import androidx.compose.material.icons.rounded.Menu
 import androidx.compose.material3.CardDefaults
@@ -78,42 +90,49 @@ fun LandingScreen(
                 ExamTypeCard(
                     title = R.string.questionnaire_category_one,
                     description = "40 MINUTA | 40 PYETJE | 4 GABIME",
-                    image = R.drawable.ico_category,
+                    icon = Icons.Filled.LooksOne,
                     colors = CardDefaults.elevatedCardColors(
                         containerColor = MaterialTheme.colorScheme.primaryContainer,
                         contentColor = MaterialTheme.colorScheme.onPrimaryContainer
                     ),
                     onClick = onStartExamClick
                 )
+
                 val toastMessage =
                     Toast.makeText(LocalContext.current, "Vjen se shpejti...", Toast.LENGTH_LONG)
 
                 ExamTypeCard(
                     title = R.string.questionnaire_category_two,
                     description = "40 MINUTA | 40 PYETJE | 4 GABIME",
-                    image = R.drawable.ico_category,
-                    colors = CardDefaults.elevatedCardColors(
-                        containerColor = MaterialTheme.colorScheme.surfaceVariant,
-                        contentColor = MaterialTheme.colorScheme.onSurfaceVariant
-                    ),
-                    onClick = { toastMessage.show() }
-                )
-                ExamTypeCard(
-                    title = R.string.questionnaire_category_three,
-                    description = "10 MINUTA | 10 PYETJE | 1 GABIM",
-                    image = R.drawable.ico_category,
+                    icon = Icons.Filled.LooksTwo,
                     colors = CardDefaults.elevatedCardColors(
                         containerColor = MaterialTheme.colorScheme.tertiaryContainer,
                         contentColor = MaterialTheme.colorScheme.onTertiaryContainer
                     ),
                     onClick = { toastMessage.show() }
                 )
+                ExamTypeCard(
+                    title = R.string.questionnaire_category_three,
+                    description = "10 MINUTA | 10 PYETJE | 1 GABIM",
+                    icon = Icons.Filled.Looks3,
+                    colors = CardDefaults.elevatedCardColors(
+                        containerColor = MaterialTheme.colorScheme.surface,
+                        contentColor = MaterialTheme.colorScheme.onSurface
+                    ),
+                    onClick = { toastMessage.show() }
+                )
                 val context = LocalContext.current
-                HelpfulMaterialCard {
-                    val dpshtrrLink = Intent(Intent.ACTION_VIEW)
-                    dpshtrrLink.data = Uri.parse(DPSHTRR_HELP)
-                    context.startActivity(dpshtrrLink)
-                }
+                HelpfulMaterialCard(
+                    colors = CardDefaults.elevatedCardColors(
+                        containerColor = MaterialTheme.colorScheme.surfaceVariant,
+                        contentColor = MaterialTheme.colorScheme.onSurfaceVariant
+                    ),
+                    onClick = {
+                        val dpshtrrLink = Intent(Intent.ACTION_VIEW)
+                        dpshtrrLink.data = Uri.parse(DPSHTRR_HELP)
+                        context.startActivity(dpshtrrLink)
+                    }
+                )
             }
             IconButton(
                 onClick = onPreferencesClick,

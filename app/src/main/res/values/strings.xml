@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">MerrPatenten</string>
-    <string name="questionnaire_category_one">A1 A2 B1 B</string>
-    <string name="questionnaire_category_two">C1 C</string>
-    <string name="questionnaire_category_three">D1 D</string>
+    <string name="questionnaire_category_one">A1, A2, B1, B</string>
+    <string name="questionnaire_category_two">C1, C</string>
+    <string name="questionnaire_category_three">D1, D</string>
     <string name="questionnaire_version">VERSIONI 2023</string>
     <string name="start_exam">FILLO PROVIMIN</string>
     <string name="help">Materiale Udhëzuese</string>
@@ -19,6 +19,10 @@
     <string name="statistics">Statistika</string>
     <string name="results_storing_disabled">Ju keni zgjedhur që rezultatet tuaja të mos ruhen.</string>
     <string name="results_empty">Nuk ka të dhëna, ju duhet te përfundoni të paktën një provim.</string>
+    <string name="results_dismiss">Jo, kthehu</string>
+    <string name="results_confirm">Në rregull</string>
+    <string name="results_delete">Pastro të gjitha?</string>
+    <string name="results_delete_description">Te gjithë rezultatet do të fshien.</string>
     <string name="results_change">Ndrysho</string>
 
     <string name="preferences">Preferencat</string>
