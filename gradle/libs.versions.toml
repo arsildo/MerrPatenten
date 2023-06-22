@@ -1,12 +1,12 @@
 [versions]
-composeBOM = "2023.06.00"
+composeBOM = "2023.06.01"
 composeCompiler = "1.4.7"
 kotlin = "1.8.21"
-gradle = "8.2.0-alpha08"
+gradle = "8.2.0-alpha09"
 ksp = "1.8.21-1.0.11"
 hilt = "2.46.1"
 room = "2.6.0-alpha01"
-accompanist = "0.31.3-beta"
+accompanist = "0.31.4-beta"
 detekt = "1.23.0"
 
 [libraries]
@@ -24,8 +24,8 @@ androidx-lifecycle-runtime-compose = { group = "androidx.lifecycle", name = "lif
 ## material
 androidx-compose-material-core = { group = "androidx.compose.material", name = "material" }
 androidx-compose-material-iconsExtended = { group = "androidx.compose.material", name = "material-icons-extended" }
-androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3", version = "1.2.0-alpha02" }
-androidx-compose-material3-windowSizeClass = { group = "androidx.compose.material3", name = "material3-window-size-class", version = "1.2.0-alpha02" }
+androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3", version = "1.2.0-alpha03" }
+androidx-compose-material3-windowSizeClass = { group = "androidx.compose.material3", name = "material3-window-size-class", version = "1.2.0-alpha03" }
 
 hilt-android-core = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }

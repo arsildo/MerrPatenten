@@ -9,14 +9,14 @@ plugins {
 
 android {
     namespace = "com.arsildo.merrpatenten"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.arsildo.merrpatenten"
         minSdk = 24
-        targetSdk = 33
-        versionCode = 4
-        versionName = "1.3"
+        targetSdk = 34
+        versionCode = 5
+        versionName = "1.4"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables { useSupportLibrary = true }
@@ -71,6 +71,8 @@ dependencies {
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.ui.util)
+    implementation(libs.androidx.compose.foundation)
+    implementation(libs.androidx.compose.runtime)
 
     implementation(libs.androidx.compose.material.core)
     implementation(libs.androidx.compose.material.iconsExtended)
