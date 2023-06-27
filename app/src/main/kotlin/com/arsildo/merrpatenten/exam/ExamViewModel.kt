@@ -86,7 +86,10 @@ class ExamViewModel @Inject constructor(
             1_000
         ) {
             override fun onTick(millisUntilFinished: Long) {
-                if (uiState.value.isCompleted) cancel()
+                if (uiState.value.isCompleted) {
+                    cancel()
+                    concludeExam()
+                }
                 else timer = formatTimer(millisUntilFinished)
             }
 

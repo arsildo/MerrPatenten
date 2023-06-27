@@ -4,7 +4,7 @@ const val DATASTORE_KEY = "datastore_merr_patenten"
 const val DATABASE_PATH = "database/dpshtrr_questionnaire.db"
 
 const val EXAM_DURATION_RELEASE: Long = 2401000
-const val EXAM_DURATION_DEBUG: Long = 10000
+const val EXAM_DURATION_DEBUG: Long = 150000
 const val QUESTIONS_IN_EXAM = 40
 const val ERRORS_ALLOWED = 4
 
