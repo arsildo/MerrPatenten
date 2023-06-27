@@ -15,15 +15,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Looks3
 import androidx.compose.material.icons.filled.LooksOne
 import androidx.compose.material.icons.filled.LooksTwo
-import androidx.compose.material.icons.filled.PlusOne
-import androidx.compose.material.icons.outlined.BusAlert
-import androidx.compose.material.icons.outlined.CarRental
-import androidx.compose.material.icons.outlined.ExposurePlus2
-import androidx.compose.material.icons.outlined.FireTruck
-import androidx.compose.material.icons.outlined.Looks3
-import androidx.compose.material.icons.outlined.LooksOne
-import androidx.compose.material.icons.outlined.LooksTwo
-import androidx.compose.material.icons.outlined.PlusOne
 import androidx.compose.material.icons.rounded.AutoGraph
 import androidx.compose.material.icons.rounded.Menu
 import androidx.compose.material3.CardDefaults
@@ -52,8 +43,8 @@ import com.arsildo.merrpatenten.theme.Red
 import com.arsildo.merrpatenten.utils.DPSHTRR_HELP
 
 @Composable
-fun LandingScreen(
-    viewModel: LandingViewModel = hiltViewModel(),
+fun DashboardScreen(
+    viewModel: DashboardViewModel = hiltViewModel(),
     onStartExamClick: () -> Unit,
     onStatisticsClick: () -> Unit,
     onPreferencesClick: () -> Unit
@@ -63,10 +54,7 @@ fun LandingScreen(
             ExtendedFloatingActionButton(
                 text = { Text(text = stringResource(id = R.string.statistics)) },
                 icon = {
-                    Icon(
-                        imageVector = Icons.Rounded.AutoGraph,
-                        contentDescription = null
-                    )
+                    Icon(imageVector = Icons.Rounded.AutoGraph, contentDescription = null)
                 },
                 onClick = onStatisticsClick,
                 contentColor = Color.White,
@@ -81,7 +69,7 @@ fun LandingScreen(
                 .fillMaxSize()
                 .padding(contentPadding)
                 .padding(horizontal = 16.dp)
-                .padding(top = 16.dp),
+                .padding(top = 32.dp),
             contentAlignment = Alignment.TopCenter
         ) {
             Column(

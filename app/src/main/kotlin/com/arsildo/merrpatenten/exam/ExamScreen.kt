@@ -138,7 +138,7 @@ fun ExamScreen(
                                         ExitExamButton(
                                             title = R.string.exit_exam,
                                             icon = Icons.Rounded.ExitToApp,
-                                            onClick = { navController.navigate(Destinations.LANDING_ROUTE) },
+                                            onClick = { navController.navigate(Destinations.DASHBOARD_ROUTE) },
                                             modifier = Modifier.fillMaxWidth(.4f)
                                         )
                                         RestartExamButton(

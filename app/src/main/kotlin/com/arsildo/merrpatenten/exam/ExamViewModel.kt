@@ -50,6 +50,8 @@ class ExamViewModel @Inject constructor(
     var timer by mutableStateOf("00:00")
         private set
 
+    private lateinit var countDownTimer: CountDownTimer
+
     private val _uiState = MutableStateFlow(ExamUiState())
     val uiState: StateFlow<ExamUiState> = combine(
         _uiState,
@@ -78,31 +80,36 @@ class ExamViewModel @Inject constructor(
         startCountDown()
     }
 
-    private fun startCountDown(): CountDownTimer = object : CountDownTimer(
-        if (BuildConfig.DEBUG) EXAM_DURATION_DEBUG else EXAM_DURATION_RELEASE,
-        1_000
-    ) {
-        override fun onTick(millisUntilFinished: Long) {
-            if (uiState.value.isCompleted) {
+    private fun startCountDown() {
+        countDownTimer = object : CountDownTimer(
+            if (BuildConfig.DEBUG) EXAM_DURATION_DEBUG else EXAM_DURATION_RELEASE,
+            1_000
+        ) {
+            override fun onTick(millisUntilFinished: Long) {
+                if (uiState.value.isCompleted) cancel()
+                else timer = formatTimer(millisUntilFinished)
+            }
+
+            override fun onFinish() {
                 concludeExam()
                 cancel()
-            } else timer = formatTimer(millisUntilFinished)
-        }
+            }
 
-        override fun onFinish() {
-            concludeExam()
-            cancel()
-        }
-
-    }.start()
+        }.start()
+    }
 
     fun completeExam() {
         _uiState.update { it.copy(isCompleted = true) }
     }
 
     private fun concludeExam() {
-        _uiState.update { it.copy(errors = countErrors()) }
-        startCountDown().cancel()
+        _uiState.update {
+            it.copy(
+                isCompleted = true,
+                errors = countErrors()
+            )
+        }
+        countDownTimer.cancel()
         insertResult()
         Timber.tag("TimberLog").d("Exam Concluded")
     }

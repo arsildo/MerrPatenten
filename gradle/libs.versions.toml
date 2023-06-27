@@ -2,10 +2,10 @@
 composeBOM = "2023.06.01"
 composeCompiler = "1.4.7"
 kotlin = "1.8.21"
-gradle = "8.2.0-alpha09"
+gradle = "8.2.0-alpha10"
 ksp = "1.8.21-1.0.11"
 hilt = "2.46.1"
-room = "2.6.0-alpha01"
+room = "2.6.0-alpha02"
 accompanist = "0.31.4-beta"
 detekt = "1.23.0"
 
