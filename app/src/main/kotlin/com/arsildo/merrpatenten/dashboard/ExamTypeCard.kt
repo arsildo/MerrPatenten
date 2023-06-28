@@ -1,4 +1,4 @@
-package com.arsildo.merrpatenten.landing
+package com.arsildo.merrpatenten.dashboard
 
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Arrangement

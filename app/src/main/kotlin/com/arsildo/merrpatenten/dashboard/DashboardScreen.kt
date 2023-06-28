@@ -1,4 +1,4 @@
-package com.arsildo.merrpatenten.landing
+package com.arsildo.merrpatenten.dashboard
 
 import android.app.Activity
 import android.content.Context

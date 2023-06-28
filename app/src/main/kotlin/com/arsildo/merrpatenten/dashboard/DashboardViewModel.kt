@@ -1,4 +1,4 @@
-package com.arsildo.merrpatenten.landing
+package com.arsildo.merrpatenten.dashboard
 
 import androidx.lifecycle.ViewModel
 import com.arsildo.merrpatenten.data.local.PreferencesRepository
