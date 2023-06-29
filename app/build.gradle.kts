@@ -62,6 +62,9 @@ android {
         baseline = file("lint-baseline.xml")
         abortOnError = true
     }
+    androidResources {
+        generateLocaleConfig = false
+    }
 }
 
 dependencies {
@@ -72,37 +75,20 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.ui.util)
     implementation(libs.androidx.compose.foundation)
-    implementation(libs.androidx.compose.runtime)
-
     implementation(libs.androidx.compose.material.core)
     implementation(libs.androidx.compose.material.iconsExtended)
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.material3.windowSizeClass)
-
     implementation(libs.hilt.android.core)
     kapt(libs.hilt.compiler)
-
     implementation(libs.room.runtime)
     implementation(libs.room.ktx)
     annotationProcessor(libs.room.compiler)
     ksp(libs.room.compiler)
-
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.hilt.navigation.compose)
-
     implementation(libs.androidx.dataStore.preferences)
     implementation(libs.accompanist.systemuicontroller)
-
-    implementation(libs.coil.kt.compose)
-    implementation(libs.gson)
     implementation(libs.androidx.core.splashscreen)
-
     implementation(libs.timber)
-
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.test.ext.junit)
-    androidTestImplementation(libs.androidx.test.espresso.core)
-    androidTestImplementation(libs.androidx.compose.ui.test.junit4)
-    debugImplementation(libs.androidx.compose.ui.tooling)
-    debugImplementation(libs.androidx.compose.ui.test.manifest)
 }

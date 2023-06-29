@@ -62,10 +62,10 @@ fun PreferencesScreen(
                         }
                     },
                     colors = TopAppBarDefaults.topAppBarColors(
-                        containerColor = MaterialTheme.colorScheme.secondaryContainer,
-                        titleContentColor = MaterialTheme.colorScheme.onSecondaryContainer,
-                        actionIconContentColor = MaterialTheme.colorScheme.onSecondaryContainer,
-                        navigationIconContentColor = MaterialTheme.colorScheme.onSecondaryContainer,
+                        containerColor = MaterialTheme.colorScheme.secondary,
+                        titleContentColor = MaterialTheme.colorScheme.onSecondary,
+                        actionIconContentColor = MaterialTheme.colorScheme.onSecondary,
+                        navigationIconContentColor = MaterialTheme.colorScheme.onSecondary,
                     ),
                 )
             },

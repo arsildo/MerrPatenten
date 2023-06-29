@@ -1,7 +1,7 @@
 [versions]
 composeBOM = "2023.06.01"
-composeCompiler = "1.4.7"
-kotlin = "1.8.21"
+composeCompiler = "1.4.8"
+kotlin = "1.8.22"
 gradle = "8.2.0-alpha10"
 ksp = "1.8.21-1.0.11"
 hilt = "2.46.1"
@@ -17,7 +17,7 @@ androidx-compose-runtime = { group = "androidx.compose.runtime", name = "runtime
 androidx-compose-ui = { group = "androidx.compose.ui", name = "compose-ui" }
 androidx-compose-ui-util = { group = "androidx.compose.ui", name = "ui-util" }
 androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
-androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version = "1.10.1" }
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version = "1.11.0-beta02" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version = "1.7.2" }
 androidx-lifecycle-runtime-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version = "2.6.1" }
 
@@ -30,7 +30,7 @@ androidx-compose-material3-windowSizeClass = { group = "androidx.compose.materia
 hilt-android-core = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
 
-androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version = "2.7.0-beta01" }
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version = "2.7.0-beta02" }
 androidx-hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version = "1.1.0-alpha01" }
 
 androidx-dataStore-preferences = { group = "androidx.datastore", name = "datastore-preferences", version = "1.0.0" }
@@ -41,17 +41,7 @@ androidx-core-splashscreen = { group = "androidx.core", name = "core-splashscree
 room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
 room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
-
-coil-kt-compose = { group = "io.coil-kt", name = "coil-compose", version = "2.4.0" }
-gson = { group = "com.google.code.gson", name = "gson", version = "2.10.1" }
 timber = { group = "com.jakewharton.timber", name = "timber", version = "5.0.1" }
-
-## testing
-androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit" }
-androidx-test-espresso-core = { group = "androidx.test.espresso", name = "espresso-core" }
-androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
-androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
-androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "gradle" }
