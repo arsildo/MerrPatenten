@@ -6,7 +6,7 @@ gradle = "8.2.0-alpha10"
 ksp = "1.8.22-1.0.11"
 hilt = "2.46.1"
 room = "2.6.0-alpha02"
-accompanist = "0.31.4-beta"
+accompanist = "0.31.5-beta"
 detekt = "1.23.0"
 
 [libraries]
