@@ -4,12 +4,22 @@ import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.AnimatedContentTransitionScope
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.arsildo.merrpatenten.dashboard.DashboardScreen
+import com.arsildo.merrpatenten.exam.ExamScreen
+import com.arsildo.merrpatenten.preferences.PreferencesScreen
 import com.arsildo.merrpatenten.preferences.PreferencesViewModel
+import com.arsildo.merrpatenten.statistics.StatisticsScreen
 import com.arsildo.merrpatenten.theme.MerrPatentenTheme
 import org.koin.androidx.compose.koinViewModel
 
@@ -30,8 +40,97 @@ class MainActivity : ComponentActivity() {
                 darkTheme = if (uiState.followSystemColors) isSystemInDarkTheme() else uiState.colorScheme,
                 dynamicColor = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) uiState.dynamicColorScheme else false
             ) {
-                MerrPatentetenGraph()
+                MerrPatentenNavigationGraph()
             }
         }
     }
 }
+
+@Composable
+fun MerrPatentenNavigationGraph() {
+    val navController = rememberNavController()
+    NavHost(
+        navController = navController,
+        route = ROOT_GRAPH,
+        startDestination = Destinations.DASHBOARD_ROUTE
+    ) {
+        composable(
+            route = Destinations.DASHBOARD_ROUTE,
+            enterTransition = {
+                slideIntoContainer(
+                    towards = AnimatedContentTransitionScope.SlideDirection.Right,
+                    animationSpec = tween()
+                )
+            },
+            exitTransition = {
+                slideOutOfContainer(
+                    towards = AnimatedContentTransitionScope.SlideDirection.Left,
+                    animationSpec = tween()
+                )
+            }
+        ) {
+            DashboardScreen(
+                onStartExamClick = { navController.navigate(Destinations.EXAM_ROUTE) },
+                onStatisticsClick = { navController.navigate(Destinations.STATISTICS_ROUTE) },
+                onPreferencesClick = { navController.navigate(Destinations.PREFERENCES_ROUTE) }
+            )
+        }
+        composable(
+            route = Destinations.EXAM_ROUTE,
+            enterTransition = {
+                slideIntoContainer(
+                    towards = AnimatedContentTransitionScope.SlideDirection.Left,
+                    animationSpec = tween()
+                )
+            },
+            exitTransition = {
+                slideOutOfContainer(
+                    towards = AnimatedContentTransitionScope.SlideDirection.Right,
+                    animationSpec = tween()
+                )
+            }
+        ) {
+            ExamScreen(navController)
+        }
+        composable(
+            route = Destinations.STATISTICS_ROUTE,
+            enterTransition = {
+                slideIntoContainer(
+                    towards = AnimatedContentTransitionScope.SlideDirection.Left,
+                    animationSpec = tween()
+                )
+            },
+            exitTransition = {
+                slideOutOfContainer(
+                    towards = AnimatedContentTransitionScope.SlideDirection.Right,
+                    animationSpec = tween()
+                )
+            }
+        ) {
+            StatisticsScreen(
+                onBackPress = navController::navigateUp,
+                onChangePreferenceClick = { navController.navigate(Destinations.PREFERENCES_ROUTE) }
+            )
+        }
+        composable(
+            route = Destinations.PREFERENCES_ROUTE,
+            enterTransition = {
+                slideIntoContainer(
+                    towards = AnimatedContentTransitionScope.SlideDirection.Left,
+                    animationSpec = tween()
+                )
+            },
+            exitTransition = {
+                slideOutOfContainer(
+                    towards = AnimatedContentTransitionScope.SlideDirection.Right,
+                    animationSpec = tween()
+                )
+            }
+        ) {
+            PreferencesScreen(
+                onBackPress = navController::navigateUp
+            )
+        }
+    }
+}
+
