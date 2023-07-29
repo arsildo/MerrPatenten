@@ -32,7 +32,7 @@ class MainActivity : ComponentActivity() {
                 darkTheme = if (uiState.followSystemColors) isSystemInDarkTheme() else uiState.colorScheme,
                 dynamicColor = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) uiState.dynamicColorScheme else false
             ) {
-                NavigationGraph()
+                MerrPatententNavigationGraph()
             }
         }
     }

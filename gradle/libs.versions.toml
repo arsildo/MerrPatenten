@@ -1,12 +1,12 @@
 [versions]
 composeBOM = "2023.06.01"
-composeCompiler = "1.4.8"
-kotlin = "1.8.22"
-gradle = "8.2.0-alpha10"
-ksp = "1.8.22-1.0.11"
-hilt = "2.46.1"
+composeCompiler = "1.5.1"
+kotlin = "1.9.0"
+gradle = "8.2.0-alpha14"
+ksp = "1.9.0-1.0.11"
+hilt = "2.47"
 room = "2.6.0-alpha02"
-accompanist = "0.31.4-beta"
+accompanist = "0.31.6-rc"
 detekt = "1.23.0"
 
 [libraries]
@@ -24,13 +24,13 @@ androidx-lifecycle-runtime-compose = { group = "androidx.lifecycle", name = "lif
 ## material
 androidx-compose-material-core = { group = "androidx.compose.material", name = "material" }
 androidx-compose-material-iconsExtended = { group = "androidx.compose.material", name = "material-icons-extended" }
-androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3", version = "1.2.0-alpha03" }
-androidx-compose-material3-windowSizeClass = { group = "androidx.compose.material3", name = "material3-window-size-class", version = "1.2.0-alpha03" }
+androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3", version = "1.2.0-alpha04" }
+androidx-compose-material3-windowSizeClass = { group = "androidx.compose.material3", name = "material3-window-size-class", version = "1.2.0-alpha04" }
 
 hilt-android-core = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
 
-androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version = "2.7.0-beta02" }
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version = "2.7.0-rc01" }
 androidx-hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version = "1.1.0-alpha01" }
 
 androidx-dataStore-preferences = { group = "androidx.datastore", name = "datastore-preferences", version = "1.0.0" }
