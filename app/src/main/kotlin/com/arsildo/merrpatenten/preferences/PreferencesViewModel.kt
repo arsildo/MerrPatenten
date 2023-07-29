@@ -3,15 +3,12 @@ package com.arsildo.merrpatenten.preferences
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.arsildo.merrpatenten.data.local.PreferencesRepository
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
 
 data class PreferencesUiState(
     val saveStats: Boolean = true,
@@ -21,12 +18,9 @@ data class PreferencesUiState(
     val dynamicColorScheme: Boolean = true,
 )
 
-@HiltViewModel
-class PreferencesViewModel @Inject constructor(
+class PreferencesViewModel(
     private val preferencesRepository: PreferencesRepository
 ) : ViewModel() {
-
-    private val _uiState = MutableStateFlow(PreferencesUiState())
     val uiState = combine(
         preferencesRepository.getSaveStats,
         preferencesRepository.getConfirmExitApp,

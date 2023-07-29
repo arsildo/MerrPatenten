@@ -17,7 +17,6 @@ import com.arsildo.merrpatenten.utils.EXAM_DURATION_DEBUG
 import com.arsildo.merrpatenten.utils.EXAM_DURATION_RELEASE
 import com.arsildo.merrpatenten.utils.QUESTIONS_IN_EXAM
 import com.arsildo.merrpatenten.utils.formatTimer
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -29,7 +28,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import timber.log.Timber
 import java.util.Random
-import javax.inject.Inject
 
 data class ExamUiState(
     val isCompleted: Boolean = false,
@@ -38,8 +36,7 @@ data class ExamUiState(
     var questions: List<Question> = emptyList()
 )
 
-@HiltViewModel
-class ExamViewModel @Inject constructor(
+class ExamViewModel(
     private val preferencesRepository: PreferencesRepository,
     private val questionnaireRepository: QuestionnaireRepository,
     private val examResultsDAO: ExamResultsDAO,
@@ -89,8 +86,7 @@ class ExamViewModel @Inject constructor(
                 if (uiState.value.isCompleted) {
                     cancel()
                     concludeExam()
-                }
-                else timer = formatTimer(millisUntilFinished)
+                } else timer = formatTimer(millisUntilFinished)
             }
 
             override fun onFinish() {

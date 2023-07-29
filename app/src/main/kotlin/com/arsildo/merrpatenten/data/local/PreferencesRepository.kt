@@ -11,11 +11,8 @@ import com.arsildo.merrpatenten.data.local.PreferencesRepository.PreferencesKeys
 import com.arsildo.merrpatenten.data.local.PreferencesRepository.PreferencesKeys.SAVE_STATS
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import javax.inject.Inject
 
-class PreferencesRepository @Inject constructor(
-    private val dataStore: DataStore<Preferences>
-) {
+class PreferencesRepository(private val dataStore: DataStore<Preferences>) {
     object PreferencesKeys {
 
         val SAVE_STATS = booleanPreferencesKey("save_stats")

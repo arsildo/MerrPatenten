@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -57,7 +58,7 @@ fun PerformanceGraph(
                     GraphTextDivider(text = "10")
                     GraphTextDivider(text = "0")
                 }
-                Divider(
+                HorizontalDivider(
                     modifier = Modifier
                         .width(2.dp)
                         .fillMaxHeight(.95f),
@@ -102,7 +103,7 @@ fun PerformanceGraph(
                         }
 
                     }
-                    Divider(
+                    HorizontalDivider(
                         modifier = Modifier
                             .height(2.dp)
                             .width(graphSize - 20.dp),

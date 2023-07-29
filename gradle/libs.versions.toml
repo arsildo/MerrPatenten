@@ -4,6 +4,9 @@ composeCompiler = "1.5.1"
 kotlin = "1.9.0"
 gradle = "8.2.0-alpha14"
 ksp = "1.9.0-1.0.11"
+koin = "3.4.2"
+koin-ksp = "1.2.2"
+koin-androidx = "3.4.5"
 hilt = "2.47"
 room = "2.6.0-alpha02"
 material3 = "1.2.0-alpha04"
@@ -38,6 +41,13 @@ androidx-dataStore-preferences = { group = "androidx.datastore", name = "datasto
 accompanist-systemuicontroller = { group = "com.google.accompanist", name = "accompanist-systemuicontroller", version.ref = "accompanist" }
 androidx-core-splashscreen = { group = "androidx.core", name = "core-splashscreen", version = "1.0.1" }
 
+# koin
+koin-core = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
+koin-ksp = { group = "io.insert-koin", name = "koin-ksp-compiler", version.ref = "koin-ksp" }
+koin-annotations = { group = "io.insert-koin", name = "koin-annotations", version.ref = "koin-ksp" }
+koin-compose = { group = "io.insert-koin", name = "koin-androidx-compose", version.ref = "koin-androidx" }
+koin-compose-navigation = { group = "io.insert-koin", name = "koin-androidx-compose-navigation", version.ref = "koin-androidx" }
+
 ## room
 room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
 room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
@@ -51,3 +61,6 @@ kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+
+[bundles]
+koin = ["koin-core", "koin-annotations", "koin-compose", "koin-compose-navigation"]

@@ -36,15 +36,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.arsildo.merrpatenten.R
 import com.arsildo.merrpatenten.theme.Red
 import com.arsildo.merrpatenten.utils.DPSHTRR_HELP
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun DashboardScreen(
-    viewModel: DashboardViewModel = hiltViewModel(),
+    viewModel: DashboardViewModel = koinViewModel(),
     onStartExamClick: () -> Unit,
     onStatisticsClick: () -> Unit,
     onPreferencesClick: () -> Unit

@@ -34,7 +34,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import com.arsildo.merrpatenten.Destinations
@@ -42,12 +41,13 @@ import com.arsildo.merrpatenten.R
 import com.arsildo.merrpatenten.utils.QUESTIONS_IN_EXAM
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
 fun ExamScreen(
     navController: NavController,
-    viewModel: ExamViewModel = hiltViewModel()
+    viewModel: ExamViewModel = koinViewModel()
 ) {
 
     val coroutineScope = rememberCoroutineScope()
