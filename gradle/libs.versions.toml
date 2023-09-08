@@ -1,17 +1,16 @@
 [versions]
-composeBOM = "2023.06.01"
-composeCompiler = "1.5.1"
-kotlin = "1.9.0"
-gradle = "8.2.0-alpha14"
-ksp = "1.9.0-1.0.11"
-koin = "3.4.2"
+composeBOM = "2023.09.00"
+composeCompiler = "1.5.3"
+kotlin = "1.9.10"
+gradle = "8.3.0-alpha03"
+ksp = "1.9.10-1.0.13"
+koin = "3.4.3"
 koin-ksp = "1.2.2"
-koin-androidx = "3.4.5"
-hilt = "2.47"
-room = "2.6.0-alpha02"
-material3 = "1.2.0-alpha04"
+koin-androidx = "3.4.6"
+room = "2.6.0-beta01"
+material3 = "1.2.0-alpha06"
 accompanist = "0.31.6-rc"
-detekt = "1.23.0"
+detekt = "1.23.1"
 
 [libraries]
 ## compose
@@ -31,11 +30,7 @@ androidx-compose-material-iconsExtended = { group = "androidx.compose.material",
 androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "material3" }
 androidx-compose-material3-windowSizeClass = { group = "androidx.compose.material3", name = "material3-window-size-class",  version.ref = "material3" }
 
-hilt-android-core = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
-hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
-
-androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version = "2.7.0-rc01" }
-androidx-hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version = "1.1.0-alpha01" }
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version = "2.7.2" }
 
 androidx-dataStore-preferences = { group = "androidx.datastore", name = "datastore-preferences", version = "1.0.0" }
 accompanist-systemuicontroller = { group = "com.google.accompanist", name = "accompanist-systemuicontroller", version.ref = "accompanist" }
@@ -59,7 +54,6 @@ android-application = { id = "com.android.application", version.ref = "gradle" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
-hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 
 [bundles]
