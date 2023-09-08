@@ -9,7 +9,7 @@ koin-ksp = "1.2.2"
 koin-androidx = "3.4.6"
 room = "2.6.0-beta01"
 material3 = "1.2.0-alpha06"
-accompanist = "0.31.6-rc"
+accompanist = "0.33.1-alpha"
 detekt = "1.23.1"
 
 [libraries]
@@ -22,7 +22,7 @@ androidx-compose-ui-util = { group = "androidx.compose.ui", name = "ui-util" }
 androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version = "1.11.0-beta02" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version = "1.7.2" }
-androidx-lifecycle-runtime-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version = "2.6.1" }
+androidx-lifecycle-runtime-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version = "2.6.2" }
 
 ## material
 androidx-compose-material-core = { group = "androidx.compose.material", name = "material" }
@@ -43,7 +43,7 @@ koin-annotations = { group = "io.insert-koin", name = "koin-annotations", versio
 koin-compose = { group = "io.insert-koin", name = "koin-androidx-compose", version.ref = "koin-androidx" }
 koin-compose-navigation = { group = "io.insert-koin", name = "koin-androidx-compose-navigation", version.ref = "koin-androidx" }
 
-## room
+# room
 room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
 room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
