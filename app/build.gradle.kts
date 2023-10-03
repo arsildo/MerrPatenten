@@ -13,8 +13,8 @@ android {
         applicationId = "com.arsildo.merrpatenten"
         minSdk = 24
         targetSdk = 34
-        versionCode = 8
-        versionName = "1.7"
+        versionCode = 9
+        versionName = "1.8"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables { useSupportLibrary = true }
@@ -84,6 +84,6 @@ dependencies {
     implementation(libs.androidx.core.splashscreen)
     implementation(libs.timber)
 
+    implementation(platform(libs.koin.bom))
     implementation(libs.bundles.koin)
-    ksp(libs.koin.ksp)
 }
