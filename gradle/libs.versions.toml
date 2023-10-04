@@ -1,13 +1,13 @@
 [versions]
-composeBOM = "2023.09.02"
+composeBOM = "2023.10.00"
 composeCompiler = "1.5.3"
 kotlin = "1.9.10"
 gradle = "8.3.0-alpha06"
 ksp = "1.9.10-1.0.13"
 koin-bom = "3.5.1"
 room = "2.6.0-rc01"
-material3 = "1.2.0-alpha08"
-accompanist = "0.33.1-alpha"
+material3 = "1.2.0-alpha09"
+accompanist = "0.33.2-alpha"
 detekt = "1.23.1"
 
 [libraries]
@@ -28,7 +28,7 @@ androidx-compose-material-iconsExtended = { group = "androidx.compose.material",
 androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "material3" }
 androidx-compose-material3-windowSizeClass = { group = "androidx.compose.material3", name = "material3-window-size-class",  version.ref = "material3" }
 
-androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version = "2.7.3" }
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version = "2.7.4" }
 
 androidx-dataStore-preferences = { group = "androidx.datastore", name = "datastore-preferences", version = "1.0.0" }
 accompanist-systemuicontroller = { group = "com.google.accompanist", name = "accompanist-systemuicontroller", version.ref = "accompanist" }
