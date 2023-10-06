@@ -2,12 +2,14 @@ package com.arsildo.merrpatenten
 
 import com.arsildo.merrpatenten.Screens.EXAM_SCREEN
 import com.arsildo.merrpatenten.Screens.DASHBOARD_SCREEN
+import com.arsildo.merrpatenten.Screens.DISCLAIMER_DIALOG
 import com.arsildo.merrpatenten.Screens.PREFERENCES_SCREEN
 import com.arsildo.merrpatenten.Screens.STATISTICS_SCREEN
 
 const val ROOT_GRAPH = "root"
 
-object Screens {
+private object Screens {
+    const val DISCLAIMER_DIALOG = "disclaimer"
     const val DASHBOARD_SCREEN = "dashboard"
     const val EXAM_SCREEN = "exam"
 
@@ -16,6 +18,7 @@ object Screens {
 }
 
 object Destinations {
+    const val DISCLAIMER_ROUTE = DISCLAIMER_DIALOG
     const val DASHBOARD_ROUTE = DASHBOARD_SCREEN
     const val EXAM_ROUTE = EXAM_SCREEN
 

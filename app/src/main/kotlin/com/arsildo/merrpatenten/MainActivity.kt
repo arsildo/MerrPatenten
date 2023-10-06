@@ -8,14 +8,20 @@ import androidx.compose.animation.AnimatedContentTransitionScope
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.dialog
 import androidx.navigation.compose.rememberNavController
 import com.arsildo.merrpatenten.dashboard.DashboardScreen
+import com.arsildo.merrpatenten.disclaimer.DisclaimerDialog
 import com.arsildo.merrpatenten.exam.ExamScreen
 import com.arsildo.merrpatenten.preferences.PreferencesScreen
 import com.arsildo.merrpatenten.preferences.PreferencesViewModel
@@ -49,11 +55,17 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MerrPatentenNavigationGraph() {
     val navController = rememberNavController()
+    var showDisclaimerOnce by remember { mutableStateOf(false) }
     NavHost(
         navController = navController,
         route = ROOT_GRAPH,
         startDestination = Destinations.DASHBOARD_ROUTE
     ) {
+        dialog(route = Destinations.DISCLAIMER_ROUTE) {
+            DisclaimerDialog(
+                onDismissRequest = navController::navigateUp
+            )
+        }
         composable(
             route = Destinations.DASHBOARD_ROUTE,
             enterTransition = {
@@ -74,6 +86,12 @@ fun MerrPatentenNavigationGraph() {
                 onStatisticsClick = { navController.navigate(Destinations.STATISTICS_ROUTE) },
                 onPreferencesClick = { navController.navigate(Destinations.PREFERENCES_ROUTE) }
             )
+            LaunchedEffect(Unit) {
+                if (!showDisclaimerOnce) {
+                    showDisclaimerOnce = true
+                    navController.navigate(Destinations.DISCLAIMER_ROUTE)
+                }
+            }
         }
         composable(
             route = Destinations.EXAM_ROUTE,
