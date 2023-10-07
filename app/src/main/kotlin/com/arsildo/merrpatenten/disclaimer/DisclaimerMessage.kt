@@ -16,6 +16,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import com.arsildo.merrpatenten.R
@@ -36,7 +37,10 @@ fun DisclaimerMessage() {
             ) { append(desc) }
             pushStringAnnotation(tag = tag, annotation = DPSHTRR_HELP)
             withStyle(
-                style = SpanStyle(color = MaterialTheme.colorScheme.primary)
+                style = SpanStyle(
+                    color = MaterialTheme.colorScheme.primary,
+                    textDecoration = TextDecoration.Underline
+                )
             ) { append(tag) }
             pop()
 
