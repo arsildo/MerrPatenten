@@ -134,6 +134,7 @@ fun PreferencesScreen(
                         title = stringResource(id = R.string.preferences_material_you),
                         subtitle = stringResource(id = R.string.preferences_material_you_desc),
                         checked = uiState.dynamicColorScheme,
+                        enabled = android.os.Build.VERSION.SDK_INT >= 31,
                         onCheckedChange = viewModel::setDynamicColorScheme
                     )
                 }
