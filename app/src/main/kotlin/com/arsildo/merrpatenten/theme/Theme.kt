@@ -1,15 +1,14 @@
 package com.arsildo.merrpatenten.theme
 
 import android.annotation.SuppressLint
+import android.content.Context
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 private val lightColorScheme = lightColorScheme(
     primary = md_theme_light_primary,
@@ -80,34 +79,16 @@ private val darkColorScheme = darkColorScheme(
 @Composable
 fun MerrPatentenTheme(
     darkTheme: Boolean,
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean,
+    context: Context = LocalContext.current,
     content: @Composable () -> Unit
 ) {
-
-    val systemUiController = rememberSystemUiController()
-
     val colorScheme = when {
-        dynamicColor && !darkTheme -> {
-            systemUiController.setSystemBarsColor(darkIcons = true, color = Color.Transparent)
-            dynamicLightColorScheme(LocalContext.current)
-        }
-
-        dynamicColor && darkTheme -> {
-            systemUiController.setSystemBarsColor(darkIcons = false, color = Color.Transparent)
-            dynamicDarkColorScheme(LocalContext.current)
-        }
-
-        darkTheme -> {
-            systemUiController.setSystemBarsColor(darkIcons = false, color = Color.Transparent)
-            darkColorScheme
-        }
-
-        else -> {
-            systemUiController.setSystemBarsColor(darkIcons = true, color = Color.Transparent)
-            lightColorScheme
-        }
+        dynamicColor && !darkTheme -> dynamicLightColorScheme(context)
+        dynamicColor && darkTheme -> dynamicDarkColorScheme(context)
+        darkTheme -> darkColorScheme
+        else -> lightColorScheme
     }
-
     MaterialTheme(
         colorScheme = colorScheme,
         content = content

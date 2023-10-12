@@ -19,7 +19,7 @@ androidx-compose-ui = { group = "androidx.compose.ui", name = "compose-ui" }
 androidx-compose-ui-util = { group = "androidx.compose.ui", name = "ui-util" }
 androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version = "1.12.0" }
-androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version = "1.7.2" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version = "1.8.0" }
 androidx-lifecycle-runtime-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version = "2.6.2" }
 
 ## material
@@ -49,7 +49,6 @@ timber = { group = "com.jakewharton.timber", name = "timber", version = "5.0.1" 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "gradle" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 

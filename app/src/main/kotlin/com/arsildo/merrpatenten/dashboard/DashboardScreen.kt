@@ -9,8 +9,14 @@ import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeContentPadding
+import androidx.compose.foundation.layout.safeDrawingPadding
+import androidx.compose.foundation.layout.safeGesturesPadding
+import androidx.compose.foundation.layout.systemBarsPadding
+import androidx.compose.foundation.layout.waterfallPadding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Looks3
 import androidx.compose.material.icons.filled.LooksOne
@@ -60,7 +66,7 @@ fun DashboardScreen(
                 contentColor = Color.White,
                 containerColor = Red,
                 elevation = FloatingActionButtonDefaults.loweredElevation(),
-                shape = MaterialTheme.shapes.extraLarge
+                shape = MaterialTheme.shapes.extraLarge,
             )
         }
     ) { contentPadding ->
@@ -97,7 +103,7 @@ fun DashboardScreen(
                         containerColor = MaterialTheme.colorScheme.tertiaryContainer,
                         contentColor = MaterialTheme.colorScheme.onTertiaryContainer
                     ),
-                    onClick = { toastMessage.show() }
+                    onClick = toastMessage::show
                 )
                 ExamTypeCard(
                     title = R.string.questionnaire_category_three,
@@ -107,7 +113,7 @@ fun DashboardScreen(
                         containerColor = MaterialTheme.colorScheme.surface,
                         contentColor = MaterialTheme.colorScheme.onSurface
                     ),
-                    onClick = { toastMessage.show() }
+                    onClick = toastMessage::show
                 )
                 val context = LocalContext.current
                 HelpfulMaterialCard(
