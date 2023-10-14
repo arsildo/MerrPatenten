@@ -110,7 +110,7 @@ class ExamViewModel(
         }
         countDownTimer.cancel()
         insertResult()
-        Timber.tag("TimberLog").d("Exam Concluded")
+        if (BuildConfig.DEBUG) Timber.tag("TimberLog").d("Exam Concluded")
     }
 
     fun checkTrueAtPosition(position: Int) {
@@ -119,7 +119,7 @@ class ExamViewModel(
             falseCheckedPositions[position] = false
             responseList.set(index = position, "Saktë")
         } else responseList.set(index = position, "")
-        Timber.tag("TimberLog").d("CHECKED true at $position")
+        if (BuildConfig.DEBUG) Timber.tag("TimberLog").d("CHECKED true at $position")
     }
 
     fun checkFalseAtPosition(position: Int) {
@@ -128,7 +128,7 @@ class ExamViewModel(
             trueCheckedPositions[position] = false
             responseList.set(index = position, "Gabim")
         } else responseList.set(index = position, "")
-        Timber.tag("TimberLog").d("CHECKED false at $position")
+        if (BuildConfig.DEBUG) Timber.tag("TimberLog").d("CHECKED false at $position")
     }
 
     private fun generateQuestions(): List<Question> {
@@ -138,11 +138,11 @@ class ExamViewModel(
             val questions = questionnaire.stateIn(this).value
             for (index in 0 until QUESTIONS_IN_EXAM) {
                 val randomNumber = Random().nextInt(questions.size)
-                Timber.tag("TimberLog").d("Generated question $randomNumber")
+                if (BuildConfig.DEBUG) Timber.tag("TimberLog").d("Generated question $randomNumber")
                 randomQuestions.add(index, questions[randomNumber])
             }
         }
-        Timber.tag("TimberLog").d("GENERATED QUESTIONS")
+        if (BuildConfig.DEBUG) Timber.tag("TimberLog").d("GENERATED QUESTIONS")
         return randomQuestions
     }
 
@@ -154,7 +154,7 @@ class ExamViewModel(
                 mistakePositions.add(index, 1)
             } else mistakePositions.add(index, 0)
         }
-        Timber.tag("TimberLog").d("$errors errors Made")
+        if (BuildConfig.DEBUG) Timber.tag("TimberLog").d("$errors errors Made")
         return errors
     }
 
@@ -167,9 +167,9 @@ class ExamViewModel(
         }
     }
 
-    private fun insertResult() {
-        if (uiState.value.saveStats) viewModelScope.launch {
-            withContext(Dispatchers.IO) {
+    private fun insertResult() = viewModelScope.launch {
+        withContext(Dispatchers.IO) {
+            if (uiState.value.saveStats && !BuildConfig.DEBUG) {
                 examResultsDAO.insertResult(
                     ExamResult(
                         errors = uiState.value.errors,
