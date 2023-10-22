@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.rounded.ExitToApp
 import androidx.compose.material.icons.rounded.DoneAll
 import androidx.compose.material.icons.rounded.ExitToApp
 import androidx.compose.material.icons.rounded.RestartAlt
@@ -47,6 +48,7 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun ExamScreen(
     navController: NavController,
+    onImageDetailsClick: (Int) -> Unit,
     viewModel: ExamViewModel = koinViewModel()
 ) {
 
@@ -103,7 +105,8 @@ fun ExamScreen(
                             onCheckFalseAtPage = viewModel::checkFalseAtPosition,
                             onCheckTrueAtPage = viewModel::checkTrueAtPosition,
                             isCompleted = uiState.isCompleted,
-                            responses = viewModel.mistakePositions
+                            responses = viewModel.mistakePositions,
+                            onImageClick = onImageDetailsClick
                         )
                         LaunchedEffect(pagerState.settledPage) {
                             endExamVisible = pagerState.settledPage == QUESTIONS_IN_EXAM - 1
@@ -137,7 +140,7 @@ fun ExamScreen(
                                     ) {
                                         ExitExamButton(
                                             title = R.string.exit_exam,
-                                            icon = Icons.Rounded.ExitToApp,
+                                            icon = Icons.AutoMirrored.Rounded.ExitToApp,
                                             onClick = { navController.navigate(Destinations.DASHBOARD_ROUTE) },
                                             modifier = Modifier.fillMaxWidth(.4f)
                                         )
@@ -187,10 +190,7 @@ fun ExamScreen(
     )
 
     LaunchedEffect(uiState.isCompleted) {
-        if (uiState.isCompleted) {
-            delay(5_00)
-            openBottomSheet = true
-        }
+        if (uiState.isCompleted) { openBottomSheet = true }
     }
 
     BackHandler { endExamVisible = !endExamVisible }

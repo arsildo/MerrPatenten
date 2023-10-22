@@ -2,7 +2,7 @@
 composeBOM = "2023.10.01"
 composeCompiler = "1.5.3"
 kotlin = "1.9.10"
-gradle = "8.3.0-alpha08"
+gradle = "8.3.0-alpha09"
 ksp = "1.9.10-1.0.13"
 koin-bom = "3.5.1"
 room = "2.6.0"

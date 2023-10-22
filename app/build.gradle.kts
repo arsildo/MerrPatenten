@@ -11,6 +11,7 @@ android {
 
     defaultConfig {
         applicationId = "com.arsildo.merrpatenten"
+        applicationIdSuffix = ".test"
         minSdk = 24
         targetSdk = 34
         versionCode = 13

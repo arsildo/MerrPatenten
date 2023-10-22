@@ -9,6 +9,8 @@ import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -36,6 +38,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -60,6 +63,7 @@ fun Pager(
     pagerState: PagerState,
     falseCheckedPages: List<Boolean>,
     trueCheckedPages: List<Boolean>,
+    onImageClick: (Int) -> Unit,
     onCheckFalseAtPage: (Int) -> Unit,
     onCheckTrueAtPage: (Int) -> Unit,
     isCompleted: Boolean,
@@ -75,6 +79,7 @@ fun Pager(
             isCompleted = isCompleted,
             correct = responses[page] == 0,
             image = getImageResource(id = questions[page].image),
+            onImageClick = { onImageClick(questions[page].image) },
             question = questions[page].question,
             falseChecked = falseCheckedPages[page],
             trueChecked = trueCheckedPages[page],
@@ -90,6 +95,7 @@ private fun Question(
     isCompleted: Boolean,
     correct: Boolean,
     @DrawableRes image: Int,
+    onImageClick: () -> Unit,
     question: String,
     falseChecked: Boolean,
     trueChecked: Boolean,
@@ -110,7 +116,7 @@ private fun Question(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            QuestionImage(image = image)
+            QuestionImage(image = image, onClick = onImageClick)
             Text(
                 text = formatQuestion(question),
                 textAlign = TextAlign.Center,
@@ -198,16 +204,26 @@ private fun QuestionCheckBox(
         )
     }
 }
+
 @Composable
 private fun QuestionImage(
     @DrawableRes image: Int,
+    onClick: () -> Unit,
 ) {
+    val interactionSource = remember { MutableInteractionSource() }
     Image(
         painter = painterResource(id = image),
         contentDescription = null,
-        modifier = Modifier.aspectRatio(2f),
+        modifier = Modifier
+            .aspectRatio(2f)
+            .clickable(
+                onClick = onClick,
+                interactionSource = interactionSource,
+                indication = null
+            ),
     )
 }
+
 @Suppress("MagicNumber")
 @Composable
 private fun Indicator(
