@@ -11,7 +11,6 @@ android {
 
     defaultConfig {
         applicationId = "com.arsildo.merrpatenten"
-        applicationIdSuffix = ".test"
         minSdk = 24
         targetSdk = 34
         versionCode = 13
@@ -24,6 +23,7 @@ android {
     buildTypes {
 
         getByName("debug") {
+            applicationIdSuffix = ".debug"
             isMinifyEnabled = false
             isShrinkResources = false
             isDebuggable = true
