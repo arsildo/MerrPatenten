@@ -120,7 +120,7 @@ fun ExamScreen(
                                 .padding(16.dp),
                             verticalArrangement = Arrangement.spacedBy(16.dp)
                         ) {
-                            PagerNavigation(
+                            if (!uiState.immersiveMode) PagerNavigation(
                                 onPreviousPageClick = {
                                     if (pagerState.canScrollBackward) coroutineScope.launch {
                                         pagerState.animateScrollToPage(page = pagerState.currentPage - 1)
@@ -190,7 +190,9 @@ fun ExamScreen(
     )
 
     LaunchedEffect(uiState.isCompleted) {
-        if (uiState.isCompleted) { openBottomSheet = true }
+        if (uiState.isCompleted) {
+            openBottomSheet = true
+        }
     }
 
     BackHandler { endExamVisible = !endExamVisible }

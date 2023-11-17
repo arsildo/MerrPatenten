@@ -28,6 +28,8 @@
     <string name="results_change">Ndrysho</string>
 
     <string name="preferences">Preferencat</string>
+    <string name="preferences_navigation_buttons">Metoda e fokusuar</string>
+    <string name="preferences_navigation_buttons_desc">Përdor swipe per te naviguar pyetjet, fshih buttonat e navigimit gjatë provimit.</string>
     <string name="preferences_store_stats">Mbaj mend statistikat</string>
     <string name="preferences_store_stats_desc">Ruaj rezultatet e provimeve dhe gjenero statistika bazuar në to.\n(20 provimet e fundit)</string>
     <string name="preferences_double_press">Konfirmo daljen nga applikacioni</string>

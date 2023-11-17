@@ -8,6 +8,7 @@ import com.arsildo.merrpatenten.data.local.PreferencesRepository.PreferencesKeys
 import com.arsildo.merrpatenten.data.local.PreferencesRepository.PreferencesKeys.COLOR_SCHEME
 import com.arsildo.merrpatenten.data.local.PreferencesRepository.PreferencesKeys.CONFIRM_APP_EXIT
 import com.arsildo.merrpatenten.data.local.PreferencesRepository.PreferencesKeys.DYNAMIC_COLOR_SCHEME
+import com.arsildo.merrpatenten.data.local.PreferencesRepository.PreferencesKeys.IMMERSIVE_MODE
 import com.arsildo.merrpatenten.data.local.PreferencesRepository.PreferencesKeys.SAVE_STATS
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -15,6 +16,7 @@ import kotlinx.coroutines.flow.map
 class PreferencesRepository(private val dataStore: DataStore<Preferences>) {
     object PreferencesKeys {
 
+        val IMMERSIVE_MODE = booleanPreferencesKey("immersive_mode")
         val SAVE_STATS = booleanPreferencesKey("save_stats")
         val CONFIRM_APP_EXIT = booleanPreferencesKey("confirm_app_exit")
 
@@ -22,6 +24,15 @@ class PreferencesRepository(private val dataStore: DataStore<Preferences>) {
         val COLOR_SCHEME = booleanPreferencesKey("color_scheme")
         val DYNAMIC_COLOR_SCHEME = booleanPreferencesKey("dynamic_color_scheme")
 
+    }
+
+    // Immersive Mode
+    val getImmersiveMode: Flow<Boolean> = dataStore.data.map { preferences ->
+        preferences[IMMERSIVE_MODE] ?: false
+    }
+
+    suspend fun setImmersiveMode(enabled: Boolean) {
+        dataStore.edit { preferences -> preferences[IMMERSIVE_MODE] = enabled }
     }
 
     // Save exam statistics

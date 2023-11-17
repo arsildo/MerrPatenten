@@ -33,7 +33,8 @@ data class ExamUiState(
     val isCompleted: Boolean = false,
     val saveStats: Boolean = false,
     val errors: Int = 0,
-    var questions: List<Question> = emptyList()
+    var questions: List<Question> = emptyList(),
+    val immersiveMode: Boolean = false
 )
 
 class ExamViewModel(
@@ -53,12 +54,14 @@ class ExamViewModel(
     val uiState: StateFlow<ExamUiState> = combine(
         _uiState,
         preferencesRepository.getSaveStats,
-    ) { state, stats ->
+        preferencesRepository.getImmersiveMode,
+    ) { state, stats, immersive ->
         ExamUiState(
             isCompleted = state.isCompleted,
             errors = state.errors,
             saveStats = stats,
-            questions = generatedQuestions
+            questions = generatedQuestions,
+            immersiveMode = immersive
         )
 
     }.stateIn(

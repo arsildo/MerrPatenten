@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.rounded.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExtendedFloatingActionButton
@@ -57,7 +58,7 @@ fun PreferencesScreen(
                     navigationIcon = {
                         IconButton(onClick = onBackPress) {
                             Icon(
-                                imageVector = Icons.Rounded.ArrowBack,
+                                imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
                                 contentDescription = null
                             )
                         }
@@ -106,6 +107,12 @@ fun PreferencesScreen(
                     modifier = Modifier
                         .padding(top = 32.dp)
                 ) {
+                    PreferenceCard(
+                        title = stringResource(id = R.string.preferences_navigation_buttons),
+                        subtitle = stringResource(id = R.string.preferences_navigation_buttons_desc),
+                        checked = uiState.immersiveMode,
+                        onCheckedChange = viewModel::setImmersiveMode
+                    )
                     PreferenceCard(
                         title = stringResource(id = R.string.preferences_store_stats),
                         subtitle = stringResource(id = R.string.preferences_store_stats_desc),

@@ -13,8 +13,8 @@ android {
         applicationId = "com.arsildo.merrpatenten"
         minSdk = 24
         targetSdk = 34
-        versionCode = 13
-        versionName = "2.0.2"
+        versionCode = 14
+        versionName = "2.0.3"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables { useSupportLibrary = true }
@@ -81,7 +81,6 @@ dependencies {
     ksp(libs.room.compiler)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.dataStore.preferences)
-    implementation(libs.accompanist.systemuicontroller)
     implementation(libs.androidx.core.splashscreen)
     implementation(libs.timber)
 
