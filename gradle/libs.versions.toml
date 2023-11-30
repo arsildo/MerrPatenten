@@ -1,12 +1,12 @@
 [versions]
 composeBOM = "2023.10.01"
-composeCompiler = "1.5.4"
+composeCompiler = "1.5.5"
 kotlin = "1.9.20"
-gradle = "8.3.0-alpha14"
+gradle = "8.3.0-alpha15"
 ksp = "1.9.20-1.0.14"
 koin-bom = "3.5.1"
-room = "2.6.0"
-material3 = "1.2.0-alpha11"
+room = "2.6.1"
+material3 = "1.2.0-alpha12"
 detekt = "1.23.3"
 
 [libraries]
@@ -17,7 +17,7 @@ androidx-compose-runtime = { group = "androidx.compose.runtime", name = "runtime
 androidx-compose-ui = { group = "androidx.compose.ui", name = "compose-ui" }
 androidx-compose-ui-util = { group = "androidx.compose.ui", name = "ui-util" }
 androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
-androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version = "1.13.0-alpha01" }
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version = "1.13.0-alpha02" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version = "1.8.1" }
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version = "2.7.5" }
 androidx-lifecycle-runtime-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version = "2.7.0-rc01" }
