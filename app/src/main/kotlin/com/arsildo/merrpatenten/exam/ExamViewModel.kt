@@ -33,7 +33,7 @@ data class ExamUiState(
     val isCompleted: Boolean = false,
     val saveStats: Boolean = false,
     val errors: Int = 0,
-    var questions: List<Question> = emptyList(),
+    val questions: List<Question> = emptyList(),
     val immersiveMode: Boolean = false
 )
 
@@ -120,8 +120,8 @@ class ExamViewModel(
         trueCheckedPositions[position] = !trueCheckedPositions[position]
         if (trueCheckedPositions[position]) {
             falseCheckedPositions[position] = false
-            responseList.set(index = position, "Saktë")
-        } else responseList.set(index = position, "")
+            responseList[position] = "Saktë"
+        } else responseList[position] = ""
         if (BuildConfig.DEBUG) Timber.tag("TimberLog").d("CHECKED true at $position")
     }
 
@@ -129,8 +129,8 @@ class ExamViewModel(
         falseCheckedPositions[position] = !falseCheckedPositions[position]
         if (falseCheckedPositions[position]) {
             trueCheckedPositions[position] = false
-            responseList.set(index = position, "Gabim")
-        } else responseList.set(index = position, "")
+            responseList[position] = "Gabim"
+        } else responseList[position] = ""
         if (BuildConfig.DEBUG) Timber.tag("TimberLog").d("CHECKED false at $position")
     }
 

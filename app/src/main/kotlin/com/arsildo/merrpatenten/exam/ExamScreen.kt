@@ -45,6 +45,7 @@ import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
+@Suppress("MagicNumber", "LongMethod")
 @Composable
 fun ExamScreen(
     navController: NavController,
