@@ -1,26 +1,26 @@
 [versions]
-composeBOM = "2023.10.01"
-composeCompiler = "1.5.7"
-kotlin = "1.9.21"
-gradle = "8.3.0-alpha18"
-ksp = "1.9.21-1.0.16"
+composeBOM = "2024.01.00-alpha01"
+composeCompiler = "1.5.8"
+kotlin = "1.9.22"
+gradle = "8.4.0-alpha04"
+ksp = "1.9.22-1.0.17"
 koin-bom = "3.5.3"
 room = "2.6.1"
-material3 = "1.2.0-beta01"
-detekt = "1.23.3"
+material3 = "1.2.0-beta02"
+detekt = "1.23.4"
 
 [libraries]
 ## compose
-androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBOM" }
+androidx-compose-bom = { group = "dev.chrisbanes.compose", name = "compose-bom", version.ref = "composeBOM" }
 androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation" }
 androidx-compose-runtime = { group = "androidx.compose.runtime", name = "runtime" }
 androidx-compose-ui = { group = "androidx.compose.ui", name = "compose-ui" }
 androidx-compose-ui-util = { group = "androidx.compose.ui", name = "ui-util" }
 androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
-androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version = "1.13.0-alpha02" }
-androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version = "1.8.2" }
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version = "1.13.0-alpha03" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version = "1.9.0-alpha01" }
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version = "2.7.6" }
-androidx-lifecycle-runtime-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version = "2.7.0-rc02" }
+androidx-lifecycle-runtime-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version = "2.7.0" }
 
 ## material
 androidx-compose-material-core = { group = "androidx.compose.material", name = "material" }
@@ -28,7 +28,7 @@ androidx-compose-material-iconsExtended = { group = "androidx.compose.material",
 androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "material3" }
 androidx-compose-material3-windowSizeClass = { group = "androidx.compose.material3", name = "material3-window-size-class",  version.ref = "material3" }
 
-androidx-dataStore-preferences = { group = "androidx.datastore", name = "datastore-preferences", version = "1.0.0" }
+androidx-dataStore-preferences = { group = "androidx.datastore", name = "datastore-preferences", version = "1.1.0-beta01" }
 androidx-core-splashscreen = { group = "androidx.core", name = "core-splashscreen", version = "1.0.1" }
 
 # koin
