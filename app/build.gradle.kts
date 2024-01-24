@@ -13,8 +13,8 @@ android {
         applicationId = "com.arsildo.merrpatenten"
         minSdk = 24
         targetSdk = 34
-        versionCode = 16
-        versionName = "2.0.5"
+        versionCode = 19
+        versionName = "2.0.8"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables { useSupportLibrary = true }
