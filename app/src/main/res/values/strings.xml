@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">MerrPatenten</string>
     <string name="disclaimer_title">Kujdes!</string>
-    <string name="disclaimer_description">Ky aplikacion NUK është një aplikacion zyrtar i aprovuar nga DPSHTRR apo nga qeveria shqiptare, aplikacioni është bazuar në materialet udhëzuese që mund ti gjeni në faqen e parë të aplikacionit ose këtu.</string>
+    <string name="disclaimer_description">Ky aplikacion NUK është një aplikacion zyrtar i aprovuar nga DPSHTRR apo nga qeveria shqiptare, aplikacioni është bazuar në materialet udhëzuese që mund ti gjeni në faqen e parë të aplikacionit ose duke klikuar këtë tekts.</string>
     <string name="questionnaire_category_one">A1, A2, B1, B</string>
     <string name="questionnaire_category_two">C1, C</string>
     <string name="questionnaire_category_three">D1, D</string>

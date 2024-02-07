@@ -19,6 +19,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.arsildo.merrpatenten.R
 import com.arsildo.merrpatenten.utils.DPSHTRR_HELP
 
@@ -29,18 +30,15 @@ fun DisclaimerMessage() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         val context = LocalContext.current
-        val desc = stringResource(R.string.disclaimer_description, DPSHTRR_HELP).dropLast(n = 5)
-        val tag = stringResource(R.string.disclaimer_description).takeLast(n = 5)
+        val tag = stringResource(R.string.disclaimer_description)
         val annotatedString = buildAnnotatedString {
-            withStyle(
-                style = SpanStyle(color = MaterialTheme.colorScheme.onBackground)
-            ) { append(desc) }
+
             pushStringAnnotation(tag = tag, annotation = DPSHTRR_HELP)
             withStyle(
                 style = SpanStyle(
                     color = MaterialTheme.colorScheme.primary,
                     textDecoration = TextDecoration.Underline
-                )
+                ),
             ) { append(tag) }
             pop()
 
@@ -51,17 +49,12 @@ fun DisclaimerMessage() {
         )
         ClickableText(
             text = annotatedString,
-            style = MaterialTheme.typography.bodyMedium,
-            onClick = { offset ->
-                annotatedString.getStringAnnotations(
-                    tag = tag,
-                    start = offset,
-                    end = offset
-                ).firstOrNull()?.let {
-                    val dpshtrrLink = Intent(Intent.ACTION_VIEW)
-                    dpshtrrLink.data = Uri.parse(DPSHTRR_HELP)
-                    context.startActivity(dpshtrrLink)
-                }
-            })
+            style = MaterialTheme.typography.bodyLarge,
+            onClick = {
+                val dpshtrrLink = Intent(Intent.ACTION_VIEW)
+                dpshtrrLink.data = Uri.parse(DPSHTRR_HELP)
+                context.startActivity(dpshtrrLink)
+            }
+        )
     }
 }

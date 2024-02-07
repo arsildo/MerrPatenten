@@ -47,7 +47,7 @@ class MainActivity : ComponentActivity() {
 
             MerrPatentenTheme(
                 darkTheme = if (uiState.followSystemColors) isSystemInDarkTheme() else uiState.colorScheme,
-                dynamicColor = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) uiState.dynamicColorScheme else false
+                dynamicColor = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && uiState.dynamicColorScheme
             ) {
                 MerrPatentenNavigationGraph()
             }
@@ -92,7 +92,7 @@ fun MerrPatentenNavigationGraph() {
             LaunchedEffect(Unit) {
                 if (!showDisclaimerOnce) {
                     showDisclaimerOnce = true
-                    if (!BuildConfig.DEBUG) navController.navigate(Destinations.DISCLAIMER_ROUTE)
+                    navController.navigate(Destinations.DISCLAIMER_ROUTE)
                 }
             }
         }
