@@ -104,7 +104,7 @@ class ExamViewModel(
         _uiState.update { it.copy(isCompleted = true) }
     }
 
-    private fun concludeExam() {
+    private fun concludeExam() = viewModelScope.launch {
         _uiState.update {
             it.copy(
                 isCompleted = true,

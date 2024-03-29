@@ -6,21 +6,18 @@ plugins {
 
 android {
     namespace = "com.arsildo.merrpatenten"
-    compileSdk = 34
-
+    compileSdk = libs.versions.android.compileSdk.get().toInt()
     defaultConfig {
         applicationId = "com.arsildo.merrpatenten"
-        minSdk = 24
-        targetSdk = 34
-        versionCode = 23
-        versionName = "2.1.2"
-
+        minSdk = libs.versions.android.minSdk.get().toInt()
+        targetSdk = libs.versions.android.targetSdk.get().toInt()
+        versionCode = 24
+        versionName = "2.1.3"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables { useSupportLibrary = true }
     }
 
     buildTypes {
-
         getByName("debug") {
             applicationIdSuffix = ".debug"
             isMinifyEnabled = false
@@ -32,7 +29,6 @@ android {
             )
             signingConfig = signingConfigs.getByName("debug")
         }
-
         getByName("release") {
             isMinifyEnabled = true
             isShrinkResources = true
@@ -43,7 +39,6 @@ android {
             )
             signingConfig = signingConfigs.getByName("debug")
         }
-
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -54,7 +49,7 @@ android {
         compose = true
         buildConfig = true
     }
-    composeOptions { kotlinCompilerExtensionVersion = libs.versions.composeCompiler.get() }
+    composeOptions { kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get() }
     packaging { resources { excludes += "/META-INF/{AL2.0,LGPL2.1}" } }
     lint {
         baseline = file("lint-baseline.xml")
@@ -63,25 +58,28 @@ android {
 }
 
 dependencies {
-    implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(libs.androidx.activity.compose)
-    implementation(libs.androidx.compose.ui.tooling.preview)
-    implementation(libs.androidx.compose.ui.util)
-    implementation(libs.androidx.compose.foundation)
-    implementation(libs.androidx.compose.material.core)
-    implementation(libs.androidx.compose.material.iconsExtended)
-    implementation(libs.androidx.compose.material3)
-    implementation(libs.androidx.compose.material3.windowSizeClass)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.lifecycle.runtime.compose)
+
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.ui)
+    implementation(libs.androidx.ui.graphics)
+    implementation(libs.androidx.ui.tooling.preview)
+    implementation(libs.androidx.material3)
+    implementation(libs.androidx.material.iconsExtended)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.core.splashscreen)
+    implementation(libs.androidx.dataStore.preferences)
+
+    implementation(libs.timber)
+
     implementation(libs.room.runtime)
     implementation(libs.room.ktx)
     annotationProcessor(libs.room.compiler)
     ksp(libs.room.compiler)
-    implementation(libs.androidx.navigation.compose)
-    implementation(libs.androidx.dataStore.preferences)
-    implementation(libs.androidx.core.splashscreen)
-    implementation(libs.timber)
+
 
     implementation(platform(libs.koin.bom))
     implementation(libs.bundles.koin)

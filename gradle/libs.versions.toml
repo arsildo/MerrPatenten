@@ -1,32 +1,35 @@
 [versions]
-composeBOM = "2024.03.00"
-composeCompiler = "1.5.11"
+agp = "8.3.1"
 kotlin = "1.9.23"
-gradle = "8.5.0-alpha02"
 ksp = "1.9.23-1.0.19"
-koin-bom = "3.5.3"
-room = "2.6.1"
-material3 = "1.2.1"
-detekt = "1.23.5"
+
+android-compileSdk = "34"
+android-minSdk = "24"
+android-targetSdk = "34"
+
+composeBom = "2024.03.00-alpha02"
+compose-compiler = "1.5.11"
+
+androidx-room = "2.6.1"
+androidx-lifecycle = "2.8.0-alpha03"
+
+koin-bom = "3.5.4-RC1"
 
 [libraries]
-## compose
-androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBOM" }
-androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation" }
-androidx-compose-runtime = { group = "androidx.compose.runtime", name = "runtime" }
-androidx-compose-ui = { group = "androidx.compose.ui", name = "compose-ui" }
-androidx-compose-ui-util = { group = "androidx.compose.ui", name = "ui-util" }
-androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version = "1.13.0-beta01" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version = "1.9.0-beta01" }
-androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version = "2.8.0-alpha05" }
-androidx-lifecycle-runtime-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version = "2.8.0-alpha03" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version = "1.7.0-alpha03" }
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "androidx-lifecycle" }
+androidx-lifecycle-runtime-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
 
-## material
-androidx-compose-material-core = { group = "androidx.compose.material", name = "material" }
-androidx-compose-material-iconsExtended = { group = "androidx.compose.material", name = "material-icons-extended" }
-androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "material3" }
-androidx-compose-material3-windowSizeClass = { group = "androidx.compose.material3", name = "material3-window-size-class",  version.ref = "material3" }
+androidx-compose-bom = { group = "dev.chrisbanes.compose", name = "compose-bom", version.ref = "composeBom" }
+androidx-ui = { group = "androidx.compose.ui", name = "ui" }
+androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-material-iconsExtended = { group = "androidx.compose.material", name = "material-icons-extended" }
+androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version = "2.8.0-alpha05" }
 
 androidx-dataStore-preferences = { group = "androidx.datastore", name = "datastore-preferences", version = "1.1.0-beta02" }
 androidx-core-splashscreen = { group = "androidx.core", name = "core-splashscreen", version = "1.1.0-alpha02" }
@@ -38,18 +41,17 @@ koin-compose = { group = "io.insert-koin", name = "koin-androidx-compose" }
 koin-compose-navigation = { group = "io.insert-koin", name = "koin-androidx-compose-navigation" }
 
 # room
-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "androidx-room" }
+room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "androidx-room" }
+room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "androidx-room" }
 
 ## timber
 timber = { group = "com.jakewharton.timber", name = "timber", version = "5.0.1" }
 
 [plugins]
-android-application = { id = "com.android.application", version.ref = "gradle" }
+android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
-detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 
 [bundles]
 koin = ["koin-core", "koin-compose", "koin-compose-navigation"]
