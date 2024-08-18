@@ -17,12 +17,17 @@ import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ExitToApp
 import androidx.compose.material.icons.rounded.DoneAll
+import androidx.compose.material.icons.rounded.ErrorOutline
 import androidx.compose.material.icons.rounded.ExitToApp
 import androidx.compose.material.icons.rounded.RestartAlt
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -57,6 +62,7 @@ fun ExamScreen(
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val pagerState = rememberPagerState { QUESTIONS_IN_EXAM }
     var openBottomSheet by remember { mutableStateOf(false) }
+    var questionsUnCompletedDialog by remember { mutableStateOf(false) }
     val bottomSheetState = rememberModalBottomSheetState(
         skipPartiallyExpanded = true,
         confirmValueChange = { openBottomSheet }
@@ -162,7 +168,13 @@ fun ExamScreen(
                                     title = R.string.end_exam,
                                     icon = Icons.Rounded.DoneAll,
                                     modifier = Modifier.fillMaxWidth(),
-                                    onClick = viewModel::completeExam
+                                    onClick = {
+                                        if (viewModel.countCompletedQuestions() != QUESTIONS_IN_EXAM) {
+                                            questionsUnCompletedDialog = true
+                                        } else {
+                                            viewModel.completeExam()
+                                        }
+                                    }
                                 )
                             }
                         }
@@ -171,6 +183,50 @@ fun ExamScreen(
 
             }
         }
+    }
+
+    if (questionsUnCompletedDialog) {
+        AlertDialog(
+            onDismissRequest = { questionsUnCompletedDialog = false },
+            tonalElevation = 0.dp,
+            icon = {
+                Icon(imageVector = Icons.Rounded.ErrorOutline, contentDescription = null,)
+            },
+            text = {
+                Text(text = "Ju nuk i keni plotesuar te gjithe pyetjet...")
+            },
+            confirmButton = {
+                Column {
+                    Button(
+                        onClick = {
+                            questionsUnCompletedDialog = false
+                            openBottomSheet = true
+                        },
+                        content = {
+                            Text(text = "Shiko pyetjet e papergjigjura")
+                        }
+                    )
+                }
+                Button(
+                    onClick = {
+                        questionsUnCompletedDialog = false
+                        openBottomSheet = true
+                        viewModel.completeExam()
+                    },
+                    content = {
+                        Text(text = "Perfundo provimin.")
+                    }
+                )
+            },
+            dismissButton = {
+                Button(
+                    onClick = navController::navigateUp,
+                    content = {
+                        Text(text = "Dil nga provimi")
+                    }
+                )
+            }
+        )
     }
 
     if (openBottomSheet) Map(

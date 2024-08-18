@@ -1,24 +1,21 @@
 [versions]
-agp = "8.3.1"
-kotlin = "1.9.23"
-ksp = "1.9.23-1.0.19"
+agp = "8.4.2"
+kotlin = "2.0.20-RC2"
+ksp = "2.0.20-RC2-1.0.24"
 
-android-compileSdk = "34"
+android-compileSdk = "35"
 android-minSdk = "24"
-android-targetSdk = "34"
+android-targetSdk = "35"
 
-composeBom = "2024.03.00-alpha02"
-compose-compiler = "1.5.11"
+composeBom = "2024.08.00-alpha01"
 
-androidx-room = "2.6.1"
-androidx-lifecycle = "2.8.0-alpha03"
-
-koin-bom = "3.5.4-RC1"
+androidx-room = "2.7.0-alpha06"
+androidx-lifecycle = "2.8.4"
+koin-bom = "3.5.6"
 
 [libraries]
-androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version = "1.13.0-beta01" }
-androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version = "1.9.0-beta01" }
-androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version = "1.7.0-alpha03" }
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version = "1.13.1" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version = "1.9.1" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "androidx-lifecycle" }
 androidx-lifecycle-runtime-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
 
@@ -29,10 +26,10 @@ androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 androidx-material-iconsExtended = { group = "androidx.compose.material", name = "material-icons-extended" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
-androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version = "2.8.0-alpha05" }
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version = "2.8.0-beta07" }
 
-androidx-dataStore-preferences = { group = "androidx.datastore", name = "datastore-preferences", version = "1.1.0-beta02" }
-androidx-core-splashscreen = { group = "androidx.core", name = "core-splashscreen", version = "1.1.0-alpha02" }
+androidx-dataStore-preferences = { group = "androidx.datastore", name = "datastore-preferences", version = "1.1.1" }
+androidx-core-splashscreen = { group = "androidx.core", name = "core-splashscreen", version = "1.2.0-alpha01" }
 
 # koin
 koin-bom = { group = "io.insert-koin", name = "koin-bom", version.ref = "koin-bom" }
@@ -50,7 +47,8 @@ timber = { group = "com.jakewharton.timber", name = "timber", version = "5.0.1" 
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+jetbrains-compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 
 [bundles]

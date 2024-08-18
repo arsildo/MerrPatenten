@@ -100,6 +100,12 @@ class ExamViewModel(
         }.start()
     }
 
+    fun countCompletedQuestions(): Int {
+        val completedQuestions = responseList.count { it.isNotBlank() }
+        if (BuildConfig.DEBUG) Timber.tag("TimberLog").d("Exam Concluded")
+        return completedQuestions
+    }
+
     fun completeExam() {
         _uiState.update { it.copy(isCompleted = true) }
     }

@@ -60,7 +60,7 @@ fun Map(
         sheetState = sheetState,
         contentColor = MaterialTheme.colorScheme.primary,
         tonalElevation = 0.dp,
-        windowInsets = WindowInsets(top = 0, bottom = 0)
+        contentWindowInsets = { WindowInsets(top = 0, bottom = 0) }
     ) {
         if (isCompleted) Card(
             modifier = Modifier
@@ -69,7 +69,8 @@ fun Map(
             colors = CardDefaults.cardColors(
                 containerColor = MaterialTheme.colorScheme.background,
                 contentColor = if (errors > ERRORS_ALLOWED) Red else Green
-            )
+            ),
+            elevation = CardDefaults.elevatedCardElevation(0.dp)
         ) {
             Row(
                 modifier = Modifier
