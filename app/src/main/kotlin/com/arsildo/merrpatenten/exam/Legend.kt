@@ -6,7 +6,6 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.foundation.layout.wrapContentSize
@@ -17,7 +16,6 @@ import androidx.compose.material.icons.rounded.ArrowCircleUp
 import androidx.compose.material.icons.rounded.Looks3
 import androidx.compose.material.icons.rounded.LooksOne
 import androidx.compose.material.icons.rounded.LooksTwo
-import androidx.compose.material.icons.rounded.Pin
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
@@ -32,7 +30,6 @@ import androidx.compose.ui.draw.rotate
 import com.arsildo.merrpatenten.theme.Red
 
 @Suppress("MagicNumber")
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun Legend(
     pagerState: PagerState,

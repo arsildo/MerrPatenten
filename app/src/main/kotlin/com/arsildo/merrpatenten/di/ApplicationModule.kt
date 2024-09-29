@@ -14,8 +14,8 @@ import com.arsildo.merrpatenten.statistics.StatisticsViewModel
 import com.arsildo.merrpatenten.utils.DATABASE_PATH
 import com.arsildo.merrpatenten.utils.DATASTORE_KEY
 import org.koin.android.ext.koin.androidContext
-import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.core.module.dsl.singleOf
+import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.module
 
 val applicationModule = module {
@@ -41,7 +41,7 @@ val databaseModule = module {
             klass = QuestionnaireDatabase::class.java,
             name = "questionnaire.db",
         ).createFromAsset(DATABASE_PATH)
-            .fallbackToDestructiveMigration()
+            .fallbackToDestructiveMigration(dropAllTables = true)
             .build()
     }
     single { get<QuestionnaireDatabase>().questionnaireDAO() }
@@ -52,7 +52,9 @@ val databaseModule = module {
             context = androidContext().applicationContext,
             klass = ExamResultsDatabase::class.java,
             name = "examResults.db",
-        ).fallbackToDestructiveMigration().build()
+        )
+            .fallbackToDestructiveMigration(dropAllTables = true)
+            .build()
     }
     single { get<ExamResultsDatabase>().examResultsDAO() }
 }

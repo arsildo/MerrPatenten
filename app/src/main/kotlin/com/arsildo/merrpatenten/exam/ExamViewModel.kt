@@ -22,6 +22,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -38,7 +39,7 @@ data class ExamUiState(
 )
 
 class ExamViewModel(
-    private val preferencesRepository: PreferencesRepository,
+    preferencesRepository: PreferencesRepository,
     private val questionnaireRepository: QuestionnaireRepository,
     private val examResultsDAO: ExamResultsDAO,
 ) : ViewModel() {
@@ -63,22 +64,21 @@ class ExamViewModel(
             questions = generatedQuestions,
             immersiveMode = immersive
         )
-
-    }.stateIn(
-        scope = viewModelScope,
-        started = SharingStarted.WhileSubscribed(5_000),
-        initialValue = ExamUiState()
-    )
+    }
+        .onStart {
+            fillExamWithDefaults()
+            startCountDown()
+        }
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5_000),
+            initialValue = ExamUiState()
+        )
 
     val trueCheckedPositions = mutableStateListOf<Boolean>()
     val falseCheckedPositions = mutableStateListOf<Boolean>()
     val responseList = mutableStateListOf<String>()
     val mistakePositions = mutableStateListOf<Int>()
-
-    init {
-        fillExamWithDefaults()
-        startCountDown()
-    }
 
     private fun startCountDown() {
         countDownTimer = object : CountDownTimer(
@@ -178,7 +178,7 @@ class ExamViewModel(
 
     private fun insertResult() = viewModelScope.launch {
         withContext(Dispatchers.IO) {
-            if (uiState.value.saveStats && !BuildConfig.DEBUG) {
+            if (uiState.value.saveStats) {
                 examResultsDAO.insertResult(
                     ExamResult(
                         errors = uiState.value.errors,
@@ -189,5 +189,4 @@ class ExamViewModel(
             }
         }
     }
-
 }
