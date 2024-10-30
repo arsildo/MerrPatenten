@@ -6,6 +6,7 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
@@ -17,14 +18,12 @@ import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ExitToApp
 import androidx.compose.material.icons.rounded.DoneAll
-import androidx.compose.material.icons.rounded.ErrorOutline
-import androidx.compose.material.icons.rounded.ExitToApp
 import androidx.compose.material.icons.rounded.RestartAlt
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -38,14 +37,15 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import com.arsildo.merrpatenten.Destinations
 import com.arsildo.merrpatenten.R
+import com.arsildo.merrpatenten.theme.Red
 import com.arsildo.merrpatenten.utils.QUESTIONS_IN_EXAM
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
 
@@ -189,42 +189,54 @@ fun ExamScreen(
         AlertDialog(
             onDismissRequest = { questionsUnCompletedDialog = false },
             tonalElevation = 0.dp,
-            icon = {
-                Icon(imageVector = Icons.Rounded.ErrorOutline, contentDescription = null,)
+            title = {
+                Text(text = "Kujdes!")
             },
             text = {
                 Text(text = "Ju nuk i keni plotesuar te gjithe pyetjet...")
             },
             confirmButton = {
-                Column {
+                Column(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalArrangement = Arrangement.spacedBy(16.dp)
+                ) {
                     Button(
                         onClick = {
                             questionsUnCompletedDialog = false
                             openBottomSheet = true
                         },
+                        modifier = Modifier.fillMaxWidth(),
+                        contentPadding = PaddingValues(16.dp),
                         content = {
                             Text(text = "Shiko pyetjet e papergjigjura")
                         }
+
+                    )
+                    Button(
+                        onClick = {
+                            questionsUnCompletedDialog = false
+                            openBottomSheet = true
+                            viewModel.completeExam()
+                        },
+                        modifier = Modifier.fillMaxWidth(),
+                        contentPadding = PaddingValues(16.dp),
+                        content = {
+                            Text(text = "Perfundo provimin")
+                        }
+                    )
+                    Button(
+                        onClick = navController::navigateUp,
+                        modifier = Modifier.fillMaxWidth(),
+                        contentPadding = PaddingValues(16.dp),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = Red,
+                            contentColor = Color.White
+                        ),
+                        content = {
+                            Text(text = "Dil nga provimi")
+                        }
                     )
                 }
-                Button(
-                    onClick = {
-                        questionsUnCompletedDialog = false
-                        openBottomSheet = true
-                        viewModel.completeExam()
-                    },
-                    content = {
-                        Text(text = "Perfundo provimin.")
-                    }
-                )
-            },
-            dismissButton = {
-                Button(
-                    onClick = navController::navigateUp,
-                    content = {
-                        Text(text = "Dil nga provimi")
-                    }
-                )
             }
         )
     }
