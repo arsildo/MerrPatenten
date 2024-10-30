@@ -1,21 +1,21 @@
 [versions]
-agp = "8.5.2"
-kotlin = "2.0.20"
-ksp = "2.0.20-1.0.25"
+agp = "8.8.0-alpha08"
+kotlin = "2.1.0-Beta2"
+ksp = "2.1.0-Beta2-1.0.26"
 
 android-compileSdk = "35"
 android-minSdk = "24"
 android-targetSdk = "35"
 
-composeBom = "2024.09.02"
+composeBom = "2024.10.00"
 
-androidx-room = "2.7.0-alpha08"
+androidx-room = "2.7.0-alpha10"
 androidx-lifecycle = "2.8.6"
 koin-bom = "4.0.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version = "1.13.1" }
-androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version = "1.9.2" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version = "1.9.3" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "androidx-lifecycle" }
 androidx-lifecycle-runtime-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
 
@@ -26,7 +26,7 @@ androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 androidx-material-iconsExtended = { group = "androidx.compose.material", name = "material-icons-extended" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
-androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version = "2.8.1" }
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version = "2.8.3" }
 
 androidx-dataStore-preferences = { group = "androidx.datastore", name = "datastore-preferences", version = "1.1.1" }
 androidx-core-splashscreen = { group = "androidx.core", name = "core-splashscreen", version = "1.2.0-alpha02" }
