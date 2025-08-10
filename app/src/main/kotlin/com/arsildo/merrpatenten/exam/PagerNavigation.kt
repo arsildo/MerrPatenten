@@ -6,8 +6,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.NavigateBefore
-import androidx.compose.material.icons.rounded.NavigateNext
+import androidx.compose.material.icons.automirrored.rounded.NavigateBefore
+import androidx.compose.material.icons.automirrored.rounded.NavigateNext
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.Icon
@@ -31,12 +31,12 @@ fun PagerNavigation(
         PagerNavigationButton(
             onClick = onPreviousPageClick,
             modifier = Modifier.weight(1f),
-            icon = Icons.Rounded.NavigateBefore
+            icon = Icons.AutoMirrored.Rounded.NavigateBefore
         )
         PagerNavigationButton(
             onClick = onNextPageClick,
             modifier = Modifier.weight(1f),
-            icon = Icons.Rounded.NavigateNext
+            icon = Icons.AutoMirrored.Rounded.NavigateNext
         )
 
     }

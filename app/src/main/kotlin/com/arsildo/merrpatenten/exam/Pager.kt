@@ -6,9 +6,10 @@ import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.togetherWith
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -35,6 +36,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -47,15 +49,17 @@ import com.arsildo.merrpatenten.R
 import com.arsildo.merrpatenten.data.Question
 import com.arsildo.merrpatenten.theme.Green
 import com.arsildo.merrpatenten.theme.Red
+import com.arsildo.merrpatenten.utils.formatQuestion
 import com.arsildo.merrpatenten.utils.getImageResource
 
-@OptIn(ExperimentalFoundationApi::class)
+@Suppress("MagicNumber")
 @Composable
 fun Pager(
     questions: List<Question>,
     pagerState: PagerState,
     falseCheckedPages: List<Boolean>,
     trueCheckedPages: List<Boolean>,
+    onImageClick: (Int) -> Unit,
     onCheckFalseAtPage: (Int) -> Unit,
     onCheckTrueAtPage: (Int) -> Unit,
     isCompleted: Boolean,
@@ -65,11 +69,13 @@ fun Pager(
         state = pagerState,
         contentPadding = PaddingValues(horizontal = 16.dp),
         pageSpacing = 16.dp,
+        key = { index -> questions[index].id },
     ) { page ->
         Question(
             isCompleted = isCompleted,
             correct = responses[page] == 0,
             image = getImageResource(id = questions[page].image),
+            onImageClick = { onImageClick(questions[page].image) },
             question = questions[page].question,
             falseChecked = falseCheckedPages[page],
             trueChecked = trueCheckedPages[page],
@@ -79,11 +85,13 @@ fun Pager(
     }
 }
 
+@Suppress("MagicNumber")
 @Composable
 private fun Question(
     isCompleted: Boolean,
     correct: Boolean,
     @DrawableRes image: Int,
+    onImageClick: () -> Unit,
     question: String,
     falseChecked: Boolean,
     trueChecked: Boolean,
@@ -97,21 +105,21 @@ private fun Question(
         ),
         modifier = Modifier
             .fillMaxWidth()
-            .fillMaxHeight(.6f)
+            .fillMaxHeight(.7f)
     ) {
         Column(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            QuestionImage(image = image)
+            QuestionImage(image = image, onClick = onImageClick)
             Text(
-                text = question,
+                text = formatQuestion(question),
                 textAlign = TextAlign.Center,
                 style = MaterialTheme.typography.titleMedium,
                 modifier = Modifier
                     .padding(vertical = 32.dp)
-                    .fillMaxHeight(.5f),
+                    .fillMaxHeight(.6f),
             )
             Row(
                 modifier = Modifier.fillMaxWidth(),
@@ -119,18 +127,18 @@ private fun Question(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 QuestionCheckBox(
-                    title = R.string.falseCheckBox,
+                    title = R.string.false_checkbox,
                     checked = falseChecked,
                     enabled = !isCompleted,
                     onCheckedChange = onFalseCheckedChange,
-                    checkedColor = Red
+                    checkedColor = Red,
                 )
                 QuestionCheckBox(
-                    title = R.string.trueCheckBox,
+                    title = R.string.true_checkbox,
                     checked = trueChecked,
                     enabled = !isCompleted,
                     onCheckedChange = onTrueCheckedChange,
-                    checkedColor = Green
+                    checkedColor = Green,
                 )
                 if (isCompleted) Indicator(correctAnswer = correct)
             }
@@ -138,13 +146,15 @@ private fun Question(
     }
 }
 
+@Suppress("MagicNumber")
 @Composable
 private fun QuestionCheckBox(
+    modifier: Modifier = Modifier,
     @StringRes title: Int,
     checked: Boolean,
     checkedColor: Color,
     onCheckedChange: (Boolean) -> Unit,
-    enabled: Boolean,
+    enabled: Boolean
 ) {
     TextButton(
         onClick = { onCheckedChange(!checked) },
@@ -155,7 +165,11 @@ private fun QuestionCheckBox(
             disabledContentColor = if (checked) checkedColor.copy(.5f)
             else MaterialTheme.colorScheme.primary.copy(.5f),
         ),
-        contentPadding = PaddingValues(end = (16 + 2).dp)
+        contentPadding = if (enabled) PaddingValues(
+            end = (16 + 16 + 4).dp,
+            start = (16 + 4).dp
+        ) else PaddingValues(end = 16.dp),
+        modifier = modifier
     ) {
         IconToggleButton(
             checked = checked,
@@ -190,31 +204,37 @@ private fun QuestionCheckBox(
 @Composable
 private fun QuestionImage(
     @DrawableRes image: Int,
+    onClick: () -> Unit,
 ) {
+    val interactionSource = remember { MutableInteractionSource() }
     Image(
         painter = painterResource(id = image),
         contentDescription = null,
-        modifier = Modifier.aspectRatio(1.8f)
+        modifier = Modifier
+            .aspectRatio(2f)
+            .clickable(
+                onClick = onClick,
+                interactionSource = interactionSource,
+                indication = null
+            ),
     )
 }
 
+@Suppress("MagicNumber")
 @Composable
 private fun Indicator(
     correctAnswer: Boolean,
-    @StringRes inCorrect: Int = R.string.falseCheckBox,
-    @StringRes correct: Int = R.string.trueCheckBox
+    @StringRes inCorrect: Int = R.string.false_checkbox,
+    @StringRes correct: Int = R.string.true_checkbox
 ) {
     val correctColor = Green
     val inCorrectColor = Red
     Row(
         modifier = Modifier
             .clip(MaterialTheme.shapes.extraLarge)
-            .background(
-                if (correctAnswer) correctColor.copy(.2f) else inCorrectColor.copy(.2f)
-            )
+            .background(if (correctAnswer) correctColor.copy(.2f) else inCorrectColor.copy(.2f))
             .padding(vertical = (8 + 2).dp, horizontal = (16 + 2).dp),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(8.dp)
+        verticalAlignment = Alignment.CenterVertically
     ) {
         Icon(
             imageVector = if (correctAnswer) Icons.Rounded.Check else Icons.Rounded.Clear,

@@ -1,12 +1,18 @@
 package com.arsildo.merrpatenten.exam
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -29,6 +35,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.arsildo.merrpatenten.R
@@ -52,28 +59,35 @@ fun Map(
         onDismissRequest = onDismissRequest,
         sheetState = sheetState,
         contentColor = MaterialTheme.colorScheme.primary,
-        tonalElevation = 0.dp
+        tonalElevation = 0.dp,
+        contentWindowInsets = { WindowInsets(top = 0, bottom = 0) }
     ) {
         if (isCompleted) Card(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp),
             colors = CardDefaults.cardColors(
-                containerColor = if (errors > ERRORS_ALLOWED) Red.copy(.15f) else Green.copy(.15f),
+                containerColor = MaterialTheme.colorScheme.background,
                 contentColor = if (errors > ERRORS_ALLOWED) Red else Green
-            )
+            ),
+            elevation = CardDefaults.elevatedCardElevation(0.dp)
         ) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(16.dp),
+                    .padding(horizontal = 16.dp, vertical = 4.dp),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
                     text = stringResource(id = if (errors > ERRORS_ALLOWED) R.string.failed else R.string.passed),
-                    style = MaterialTheme.typography.titleLarge
+                    style = MaterialTheme.typography.titleLarge,
+                    fontWeight = FontWeight.SemiBold
                 )
-                Text(text = "$errors Gabime", style = MaterialTheme.typography.titleLarge)
+                Text(
+                    text = "$errors Gabime",
+                    style = MaterialTheme.typography.titleLarge,
+                    fontWeight = FontWeight.SemiBold
+                )
             }
 
         }
@@ -88,9 +102,12 @@ fun Map(
                 Question(
                     title = page,
                     containerColor = if (isCompleted) if (mistakes[page] == 0) Green else Red
-                    else if (responses[page].isNotEmpty()) MaterialTheme.colorScheme.secondary else MaterialTheme.colorScheme.primaryContainer,
-                    contentColor = if (isCompleted) if (mistakes[page] == 0) Color.White else Color.White
-                    else if (responses[page].isNotEmpty()) MaterialTheme.colorScheme.onSecondary else MaterialTheme.colorScheme.onPrimaryContainer,
+                    else if (responses[page].isNotEmpty()) MaterialTheme.colorScheme.secondary
+                    else MaterialTheme.colorScheme.primaryContainer,
+                    contentColor = if (isCompleted) if (mistakes[page] == 0) Color.White
+                    else Color.White
+                    else if (responses[page].isNotEmpty()) MaterialTheme.colorScheme.onSecondary
+                    else MaterialTheme.colorScheme.onPrimaryContainer,
                     onClick = { onQuestionClicked(page) }
                 )
             }
@@ -98,24 +115,25 @@ fun Map(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 16.dp),
+                .padding(horizontal = 16.dp)
+                .navigationBarsPadding(),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
 
             if (!isCompleted) Indicator(
-                title = stringResource(id = R.string.completedQuestion),
+                title = stringResource(id = R.string.completed_question),
                 containerColor = MaterialTheme.colorScheme.secondary,
                 contentColor = MaterialTheme.colorScheme.onSecondary,
             )
             else {
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     Indicator(
-                        title = stringResource(id = R.string.falseCheckBox),
+                        title = stringResource(id = R.string.false_checkbox),
                         containerColor = Red.copy(.15f),
                         contentColor = Red,
                     )
                     Indicator(
-                        title = stringResource(id = R.string.trueCheckBox),
+                        title = stringResource(id = R.string.true_checkbox),
                         containerColor = Green.copy(.15f),
                         contentColor = Green,
                     )
@@ -138,7 +156,7 @@ fun Map(
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
+
 @Composable
 private fun Question(
     title: Int,
@@ -146,22 +164,19 @@ private fun Question(
     contentColor: Color,
     onClick: () -> Unit,
 ) {
-    Card(
-        colors = CardDefaults.cardColors(
-            containerColor = containerColor,
-            contentColor = contentColor
-        ),
-        onClick = onClick,
-        shape = MaterialTheme.shapes.extraLarge
+    Box(
+        modifier = Modifier
+            .clip(MaterialTheme.shapes.extraLarge)
+            .aspectRatio(1f)
+            .background(containerColor)
+            .clickable(onClick = onClick),
+        contentAlignment = Alignment.Center
     ) {
         Text(
             text = "${title + 1}",
-            textAlign = TextAlign.Center,
+            color = contentColor,
             style = MaterialTheme.typography.titleLarge,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp)
-
+            fontWeight = FontWeight.SemiBold
         )
     }
 }

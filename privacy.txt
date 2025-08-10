@@ -1,0 +1,38 @@
+Privacy Policy for MerrPatenten
+
+This Privacy Policy governs the manner in which MerrPatenten collects, uses, maintains, and discloses information collected from users (each, a "User") of the MerrPatenten application ("App") on the Google Play Console.
+
+Information We Collect
+
+MerrPatenten does not collect any personal identification information from Users. We do not require or store any personal data such as names, email addresses, or any other identifying information.
+
+We may collect non-personal identification information about Users whenever they interact with the App. This may include technical information about the User's device, such as the device model, operating system version, unique device identifiers, and mobile network information. This information is collected solely for the purpose of generating user performance statistics and improving the App's functionality.
+
+How We Use Collected Information
+
+The non-personal identification information collected by MerrPatenten is used solely for the purpose of generating user performance statistics and improving the App's functionality. We do not share, sell, trade, or rent this information with any third parties.
+
+How We Protect Your Information
+
+We take appropriate measures to ensure the security of the non-personal identification information collected through the App. We use industry-standard security practices to protect against unauthorized access, alteration, disclosure, or destruction of this information.
+
+Third-Party Services
+
+MerrPatenten may use third-party services, such as analytics tools, to help us analyze how Users use the App. These third-party services may collect and use non-personal identification information in accordance with their own privacy policies. We encourage Users to review the privacy policies of these third-party services.
+
+Children's Privacy
+
+Our App is not directed to children under the age of 13. We do not knowingly collect any personal information from children under the age of 13. If you believe that a child has provided us with personal information, please contact us, and we will take steps to remove that information from our systems.
+
+Changes to This Privacy Policy
+
+MerrPatenten has the discretion to update this Privacy Policy at any time. When we do, we will revise the updated date at the bottom of this page. We encourage Users to frequently check this page for any changes to stay informed about how we are protecting the information collected. You acknowledge and agree that it is your responsibility to review this Privacy Policy periodically and become aware of modifications.
+
+Your Acceptance of These Terms
+
+By using this App, you signify your acceptance of this Privacy Policy. If you do not agree to this Privacy Policy, please do not use our App. Your continued use of the App following the posting of changes to this Privacy Policy will be deemed your acceptance of those changes.
+
+Contact Us
+
+If you have any questions about this Privacy Policy, the practices of this App, or your dealings with this App, please contact us at arsildo.murati
+@gmail.com

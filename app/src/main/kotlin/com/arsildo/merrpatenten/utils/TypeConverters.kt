@@ -11,3 +11,8 @@ fun formatTimer(millisUntilFinished: Long): String {
         TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) % 60
     )
 }
+
+fun formatQuestion(question: String): String {
+    val lines = question.lines().filter { it.isNotBlank() }
+    return lines.joinToString(" ")
+}

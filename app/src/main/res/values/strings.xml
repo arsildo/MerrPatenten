@@ -1,11 +1,44 @@
 <resources>
     <string name="app_name">MerrPatenten</string>
-    <string name="startExam">Fillo Provimin</string>
-    <string name="endExam">Perfundo provimin</string>
-    <string name="restartExam">Fillo provim të ri</string>
-    <string name="trueCheckBox">Saktë</string>
-    <string name="falseCheckBox">Gabim</string>
-    <string name="completedQuestion">Plotësuar</string>
+    <string name="disclaimer_title">Kujdes!</string>
+    <string name="disclaimer_description">Ky aplikacion NUK është një aplikacion zyrtar i aprovuar nga DPSHTRR apo nga qeveria shqiptare, aplikacioni është bazuar në materialet udhëzuese që mund ti gjeni në faqen e parë të aplikacionit ose duke klikuar këtë tekts.</string>
+    <string name="questionnaire_category_one">A1, A2, B1, B</string>
+    <string name="questionnaire_category_two">C1, C</string>
+    <string name="questionnaire_category_three">D1, D</string>
+    <string name="questionnaire_version">VERSIONI 2023</string>
+    <string name="start_exam">FILLO PROVIMIN</string>
+    <string name="help">Materiale Udhëzuese</string>
+    <string name="help_official">LINKU ZYRTAR NGA DPSHTRR</string>
+    <string name="end_exam">Perfundo provimin</string>
+    <string name="restart_exam">Fillo provim të ri</string>
+    <string name="exit_exam">Mbyll</string>
+    <string name="true_checkbox">Saktë</string>
+    <string name="false_checkbox">Gabim</string>
+    <string name="completed_question">Plotësuar</string>
     <string name="passed">Urime, ju fituat!</string>
-    <string name="failed">Provoni përseri  :(</string>
+    <string name="failed">Provo përseri!</string>
+
+    <string name="statistics">Statistika</string>
+    <string name="results_storing_disabled">Ju keni zgjedhur që rezultatet tuaja të mos ruhen.</string>
+    <string name="results_empty">Nuk ka të dhëna, ju duhet te përfundoni të paktën një provim.</string>
+    <string name="results_dismiss">Jo, kthehu</string>
+    <string name="results_confirm">Në rregull</string>
+    <string name="results_delete">Pastro të gjitha?</string>
+    <string name="results_delete_description">Te gjithë rezultatet do të fshien.</string>
+    <string name="results_change">Ndrysho</string>
+
+    <string name="preferences">Preferencat</string>
+    <string name="preferences_navigation_buttons">Metoda e fokusuar</string>
+    <string name="preferences_navigation_buttons_desc">Përdor swipe per te naviguar pyetjet, fshih buttonat e navigimit gjatë provimit.</string>
+    <string name="preferences_store_stats">Mbaj mend statistikat</string>
+    <string name="preferences_store_stats_desc">Ruaj rezultatet e provimeve dhe gjenero statistika bazuar në to.\n(20 provimet e fundit)</string>
+    <string name="preferences_double_press">Konfirmo daljen nga applikacioni</string>
+    <string name="preferences_double_press_desc">Kliko 2 herë pas për të dalë nga applikacioni</string>
+    <string name="preferences_follow_system_theme">Ndiq ngjyrat e sistemit</string>
+    <string name="preferences_follow_system_theme_desc">Merr kombinacionin e ngjyrave nga sistemi</string>
+    <string name="preferences_dark_mode">Dark Mode</string>
+    <string name="preferences_dark_mode_desc">Kombinacioni i ngjyrave</string>
+    <string name="preferences_material_you">Material you</string>
+    <string name="preferences_material_you_desc">Ngjyra dinamike të gjeneruara nga sistemi i telefonit tuaj</string>
+
 </resources>

@@ -7,15 +7,14 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.requiredWidth
 import androidx.compose.foundation.layout.safeContentPadding
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Close
-import androidx.compose.material.icons.rounded.Fullscreen
+import androidx.compose.material.icons.outlined.Cancel
+import androidx.compose.material.icons.rounded.ArrowCircleUp
 import androidx.compose.material.icons.rounded.Looks3
-import androidx.compose.material.icons.rounded.Looks4
-import androidx.compose.material.icons.rounded.Looks5
+import androidx.compose.material.icons.rounded.LooksOne
 import androidx.compose.material.icons.rounded.LooksTwo
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -28,14 +27,13 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
-import androidx.compose.ui.unit.dp
 import com.arsildo.merrpatenten.theme.Red
 
-@OptIn(ExperimentalFoundationApi::class)
+@Suppress("MagicNumber")
 @Composable
 fun Legend(
     pagerState: PagerState,
-    timer: String,
+    timer: () -> String,
     endExamVisible: Boolean,
     onMapClick: () -> Unit,
     onShowEndExamButton: () -> Unit,
@@ -48,14 +46,21 @@ fun Legend(
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
-            text = "${pagerState.settledPage + 1}/40",
+            text = "${pagerState.currentPage + 1}/40",
             style = MaterialTheme.typography.titleMedium,
-            modifier = Modifier.requiredWidth(width = 64.dp)
+            modifier = Modifier.fillMaxWidth(.15f)
         )
 
         TextButton(
             onClick = onMapClick,
+            modifier = Modifier
+                .fillMaxWidth(.6f)
+                .wrapContentSize()
         ) {
+            Icon(
+                imageVector = Icons.Rounded.LooksOne,
+                contentDescription = null
+            )
             Icon(
                 imageVector = Icons.Rounded.LooksTwo,
                 contentDescription = null
@@ -64,21 +69,9 @@ fun Legend(
                 imageVector = Icons.Rounded.Looks3,
                 contentDescription = null
             )
-            Icon(
-                imageVector = Icons.Rounded.Looks4,
-                contentDescription = null
-            )
-            Icon(
-                imageVector = Icons.Rounded.Looks5,
-                contentDescription = null
-            )
         }
 
-        Text(
-            text = timer,
-            style = MaterialTheme.typography.titleMedium
-        )
-
+        TimerText(timer)
 
         val rotationState by animateFloatAsState(
             targetValue = if (endExamVisible) 180f else 0f,
@@ -91,18 +84,28 @@ fun Legend(
             label = ""
         )
 
+
         IconButton(
             onClick = onShowEndExamButton,
-            colors = IconButtonDefaults.iconButtonColors(
-                contentColor = color
-            )
+            colors = IconButtonDefaults.iconButtonColors(contentColor = color),
+            modifier = Modifier.fillMaxWidth()
         ) {
             Icon(
-                imageVector = if (endExamVisible) Icons.Rounded.Fullscreen else Icons.Rounded.Close,
+                imageVector = if (endExamVisible) Icons.Rounded.ArrowCircleUp else Icons.Outlined.Cancel,
                 contentDescription = null,
                 modifier = Modifier.rotate(rotationState)
             )
         }
-
     }
+}
+
+@Composable
+private fun TimerText(
+    timer: () -> String,
+) {
+    Text(
+        text = timer(),
+        style = MaterialTheme.typography.titleMedium,
+        modifier = Modifier.fillMaxWidth(.7f)
+    )
 }

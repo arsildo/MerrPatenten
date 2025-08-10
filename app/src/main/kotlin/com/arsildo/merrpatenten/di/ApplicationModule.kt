@@ -1,50 +1,60 @@
 package com.arsildo.merrpatenten.di
 
-import android.content.Context
-import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.PreferenceDataStoreFactory
-import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStoreFile
 import androidx.room.Room
-import com.arsildo.merrpatenten.data.local.QuestionnaireDAO
+import com.arsildo.merrpatenten.dashboard.DashboardViewModel
+import com.arsildo.merrpatenten.data.local.ExamResultsDatabase
+import com.arsildo.merrpatenten.data.local.PreferencesRepository
 import com.arsildo.merrpatenten.data.local.QuestionnaireDatabase
+import com.arsildo.merrpatenten.data.local.QuestionnaireRepository
+import com.arsildo.merrpatenten.exam.ExamViewModel
+import com.arsildo.merrpatenten.preferences.PreferencesViewModel
+import com.arsildo.merrpatenten.statistics.StatisticsViewModel
 import com.arsildo.merrpatenten.utils.DATABASE_PATH
 import com.arsildo.merrpatenten.utils.DATASTORE_KEY
-import dagger.Module
-import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
-import dagger.hilt.components.SingletonComponent
-import javax.inject.Singleton
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.module.dsl.singleOf
+import org.koin.core.module.dsl.viewModelOf
+import org.koin.dsl.module
 
-@Module
-@InstallIn(SingletonComponent::class)
-object ApplicationModule {
+val applicationModule = module {
+    viewModelOf(::DashboardViewModel)
+    viewModelOf(::ExamViewModel)
+    viewModelOf(::PreferencesViewModel)
+    viewModelOf(::StatisticsViewModel)
+}
 
-    @Singleton
-    @Provides
-    fun provideDatastore(@ApplicationContext context: Context): DataStore<Preferences> {
-        return PreferenceDataStoreFactory.create(
-            produceFile = { context.preferencesDataStoreFile(DATASTORE_KEY) },
+val dataStoreModule = module {
+    single {
+        PreferenceDataStoreFactory.create(
+            produceFile = { androidContext().preferencesDataStoreFile(DATASTORE_KEY) }
         )
     }
+    singleOf(::PreferencesRepository)
+}
 
-    @Singleton
-    @Provides
-    fun provideDatabase(@ApplicationContext context: Context): QuestionnaireDatabase {
-        return Room.databaseBuilder(
-            context = context.applicationContext,
+val databaseModule = module {
+    single {
+        Room.databaseBuilder(
+            context = androidContext().applicationContext,
             klass = QuestionnaireDatabase::class.java,
             name = "questionnaire.db",
         ).createFromAsset(DATABASE_PATH)
-            .fallbackToDestructiveMigration()
+            .fallbackToDestructiveMigration(dropAllTables = true)
             .build()
     }
+    single { get<QuestionnaireDatabase>().questionnaireDAO() }
+    singleOf(::QuestionnaireRepository)
 
-    @Singleton
-    @Provides
-    fun provideDatabaseDAO(database: QuestionnaireDatabase): QuestionnaireDAO {
-        return database.questionnaireDAO()
+    single {
+        Room.databaseBuilder(
+            context = androidContext().applicationContext,
+            klass = ExamResultsDatabase::class.java,
+            name = "examResults.db",
+        )
+            .fallbackToDestructiveMigration(dropAllTables = true)
+            .build()
     }
-
+    single { get<ExamResultsDatabase>().examResultsDAO() }
 }
