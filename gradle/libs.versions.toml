@@ -1,23 +1,23 @@
 [versions]
 agp = "8.11.1"
-kotlin = "2.2.20-Beta2"
-ksp = "2.2.20-Beta2-2.0.2"
+kotlin = "2.2.20-RC"
+ksp = "2.2.20-RC-2.0.2"
 
 android-compileSdk = "36"
 android-minSdk = "24"
 android-targetSdk = "36"
 
 androidx-room = "2.7.2"
-androidx-lifecycle = "2.9.2"
+androidx-lifecycle = "2.9.3"
 koin-bom = "4.1.0"
 
 [libraries]
-androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version = "1.16.0" }
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version = "1.17.0" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version = "1.10.1" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "androidx-lifecycle" }
 androidx-lifecycle-runtime-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
 
-androidx-compose-bom = { group = "androidx.compose", name = "compose-bom-alpha", version = "2025.07.01" }
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom-alpha", version = "2025.08.01" }
 androidx-ui = { group = "androidx.compose.ui", name = "ui" }
 androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
