@@ -233,3 +233,33 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
+
+
+# --- Additions for modern Android/Kotlin and project-specific ignores ---
+# Kotlin/Gradle generated and caches
+.kotlin/
+.ksp/
+ksp/
+**/build/ksp/
+**/generated/ksp/
+
+# OS files
+**/.DS_Store
+Thumbs.db
+
+# Room schema exports (if enabled)
+app/schemas/
+
+# Local tooling artifacts
+.junie/
+
+# Release outputs kept locally
+app/release/
+
+# --- IDEA/Android Studio project files ---
+# Prefer ignoring the whole .idea directory; selectively keep shareable settings if needed.
+.idea/
+# Uncomment the lines below if you want to keep specific shareable configs in VCS
+# !.idea/codeStyles/
+# !.idea/inspectionProfiles/
+# !.idea/runConfigurations/
