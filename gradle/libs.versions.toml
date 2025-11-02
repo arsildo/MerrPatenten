@@ -1,30 +1,30 @@
 [versions]
-agp = "8.11.1"
-kotlin = "2.2.20-RC"
-ksp = "2.2.20-RC-2.0.2"
+agp = "8.12.3"
+kotlin = "2.2.21"
+ksp = "2.3.0"
 
 android-compileSdk = "36"
 android-minSdk = "24"
 android-targetSdk = "36"
 
-androidx-room = "2.7.2"
-androidx-lifecycle = "2.9.3"
-koin-bom = "4.1.0"
+androidx-room = "2.8.3"
+androidx-lifecycle = "2.9.4"
+koin-bom = "4.1.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version = "1.17.0" }
-androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version = "1.10.1" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version = "1.11.0" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "androidx-lifecycle" }
 androidx-lifecycle-runtime-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
 
-androidx-compose-bom = { group = "androidx.compose", name = "compose-bom-alpha", version = "2025.08.01" }
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom-alpha", version = "2025.10.01" }
 androidx-ui = { group = "androidx.compose.ui", name = "ui" }
 androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 androidx-material-iconsExtended = { group = "androidx.compose.material", name = "material-icons-extended" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
-androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version = "2.9.3" }
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version = "2.9.5" }
 
 androidx-dataStore-preferences = { group = "androidx.datastore", name = "datastore-preferences", version = "1.1.7" }
 androidx-core-splashscreen = { group = "androidx.core", name = "core-splashscreen", version = "1.2.0-rc01" }
