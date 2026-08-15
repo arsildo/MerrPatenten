@@ -9,19 +9,15 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowForward
 import androidx.compose.material3.CardColors
 import androidx.compose.material3.Card
-import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
-import androidx.compose.material3.FilledTonalIconButton
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.MaterialShapes
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.toShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -29,7 +25,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 
-@OptIn(ExperimentalLayoutApi::class, ExperimentalMaterial3ExpressiveApi::class)
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun ExamTypeCard(
     title: String,
@@ -41,7 +37,7 @@ fun ExamTypeCard(
 ) {
     Card(
         colors = colors,
-        shape = MaterialShapes.Cookie9Sided.toShape(),
+        shape = MaterialTheme.shapes.extraLarge,
         onClick = onClick,
         modifier = modifier.fillMaxWidth()
     ) {
@@ -62,45 +58,40 @@ fun ExamTypeCard(
                     modifier = Modifier.weight(1f)
                 ) {
                     Surface(
-                        shape = MaterialTheme.shapes.large,
+                        shape = CircleShape,
                         color = colors.contentColor.copy(alpha = 0.12f),
-                        modifier = Modifier.size(52.dp)
+                        modifier = Modifier.size(48.dp)
                     ) {
                         Box(contentAlignment = Alignment.Center) {
                             Icon(
                                 imageVector = icon,
                                 contentDescription = null,
                                 tint = colors.contentColor,
-                                modifier = Modifier.size(30.dp)
+                                modifier = Modifier.size(28.dp)
                             )
                         }
                     }
-                    Column(
-                        verticalArrangement = Arrangement.spacedBy(2.dp)
-                    ) {
-                        Text(
-                            text = title,
-                            style = MaterialTheme.typography.titleLarge,
-                            fontWeight = FontWeight.Bold,
-                            color = colors.contentColor
-                        )
-                    }
+                    Text(
+                        text = title,
+                        style = MaterialTheme.typography.titleLarge,
+                        fontWeight = FontWeight.Bold,
+                        color = colors.contentColor
+                    )
                 }
 
-                FilledTonalIconButton(
-                    onClick = onClick,
-                    colors = IconButtonDefaults.filledTonalIconButtonColors(
-                        containerColor = colors.contentColor.copy(alpha = 0.14f),
-                        contentColor = colors.contentColor
-                    ),
-                    shape = MaterialTheme.shapes.medium,
-                    modifier = Modifier.size(42.dp)
+                Surface(
+                    shape = CircleShape,
+                    color = colors.contentColor.copy(alpha = 0.14f),
+                    contentColor = colors.contentColor,
+                    modifier = Modifier.size(38.dp)
                 ) {
-                    Icon(
-                        imageVector = Icons.AutoMirrored.Rounded.ArrowForward,
-                        contentDescription = null,
-                        modifier = Modifier.size(20.dp)
-                    )
+                    Box(contentAlignment = Alignment.Center) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Rounded.ArrowForward,
+                            contentDescription = null,
+                            modifier = Modifier.size(18.dp)
+                        )
+                    }
                 }
             }
 
@@ -112,15 +103,15 @@ fun ExamTypeCard(
                 ) {
                     tags.forEach { tag ->
                         Surface(
-                            shape = MaterialTheme.shapes.small,
-                            color = colors.contentColor.copy(alpha = 0.10f),
+                            shape = CircleShape,
+                            color = colors.contentColor.copy(alpha = 0.12f),
                             contentColor = colors.contentColor
                         ) {
                             Text(
                                 text = tag,
                                 style = MaterialTheme.typography.labelMedium,
                                 fontWeight = FontWeight.SemiBold,
-                                modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp)
+                                modifier = Modifier.padding(horizontal = 12.dp, vertical = 5.dp)
                             )
                         }
                     }

@@ -10,6 +10,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 
 private val LightColorScheme = lightColorScheme(
@@ -90,18 +92,28 @@ private val DarkColorScheme = darkColorScheme(
     surfaceContainerHighest = md_theme_dark_surfaceContainerHighest,
 )
 
+val LocalSemanticColors = staticCompositionLocalOf { LightSemanticColors }
+
+val MaterialTheme.semanticColors: SemanticColors
+    @Composable
+    get() = LocalSemanticColors.current
+
 @Composable
 fun MerrPatentenTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
     val colorScheme = if (darkTheme) DarkColorScheme else LightColorScheme
-    MaterialExpressiveTheme(
-        colorScheme = colorScheme,
-        typography = GoogleSansFlexTypography(),
-        shapes = MerrPatentenShapes,
-        content = content
-    )
+    val semanticColors = if (darkTheme) DarkSemanticColors else LightSemanticColors
+
+    CompositionLocalProvider(LocalSemanticColors provides semanticColors) {
+        MaterialExpressiveTheme(
+            colorScheme = colorScheme,
+            typography = GoogleSansFlexTypography(),
+            shapes = MerrPatentenShapes,
+            content = content
+        )
+    }
 }
 
 @Composable
@@ -127,9 +139,11 @@ fun AnimateColorSchemeTransition(content: @Composable () -> Unit) {
             label = "Secondary Color Transition"
         ).value,
     )
-    MaterialTheme(
+    MaterialExpressiveTheme(
         colorScheme = colors,
         typography = GoogleSansFlexTypography(),
+        shapes = MerrPatentenShapes,
         content = content
     )
 }
+

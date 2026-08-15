@@ -31,9 +31,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import com.arsildo.merrpatenten.shared.core.designsystem.ERRORS_ALLOWED
-import com.arsildo.merrpatenten.shared.core.designsystem.Green
-import com.arsildo.merrpatenten.shared.core.designsystem.GreenContainer
-import com.arsildo.merrpatenten.shared.core.designsystem.Red
+import com.arsildo.merrpatenten.shared.core.designsystem.semanticColors
 import com.arsildo.merrpatenten.shared.core.model.ExamResult
 import merrpatenten.shared_core.design_system.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
@@ -46,6 +44,10 @@ fun PerformanceGraph(
 ) {
     if (results.isEmpty()) return
 
+    val successColor = MaterialTheme.semanticColors.success
+    val errorColor = MaterialTheme.colorScheme.error
+    val passingZoneColor = MaterialTheme.semanticColors.successContainer.copy(alpha = 0.35f)
+
     Surface(
         shape = MaterialTheme.shapes.extraLarge,
         color = MaterialTheme.colorScheme.surfaceContainerHigh,
@@ -56,10 +58,9 @@ fun PerformanceGraph(
             verticalArrangement = Arrangement.spacedBy(14.dp)
         ) {
             // Header with legend
-            Row(
+            Column(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
+                verticalArrangement = Arrangement.spacedBy(6.dp)
             ) {
                 Text(
                     text = stringResource(Res.string.performance_title),
@@ -69,19 +70,17 @@ fun PerformanceGraph(
                 )
 
                 Row(
-                    horizontalArrangement = Arrangement.spacedBy(12.dp),
+                    horizontalArrangement = Arrangement.spacedBy(14.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    LegendItem(color = Green, label = stringResource(Res.string.performance_passed))
-                    LegendItem(color = Red, label = stringResource(Res.string.performance_failed))
+                    LegendItem(color = successColor, label = stringResource(Res.string.performance_passed))
+                    LegendItem(color = errorColor, label = stringResource(Res.string.performance_failed))
                 }
             }
 
             val graphHeight = 240.dp
             val axisColor = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f)
-            val correctColor = Green
-            val errorColor = Red
-            val passingZoneColor = GreenContainer.copy(alpha = 0.35f)
+            val correctColor = successColor
 
             Row(
                 modifier = Modifier.fillMaxWidth(),

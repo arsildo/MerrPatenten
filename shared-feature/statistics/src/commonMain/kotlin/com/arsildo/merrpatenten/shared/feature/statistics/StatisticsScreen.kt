@@ -81,8 +81,8 @@ internal fun StatisticsScreen(
                         FilledTonalIconButton(
                             onClick = { deleteResultsDialog = true },
                             colors = IconButtonDefaults.filledTonalIconButtonColors(
-                                containerColor = RedContainer,
-                                contentColor = Red
+                                containerColor = MaterialTheme.colorScheme.errorContainer,
+                                contentColor = MaterialTheme.colorScheme.error
                             ),
                             shape = MaterialTheme.shapes.medium,
                             modifier = Modifier.padding(end = 8.dp)
@@ -162,8 +162,8 @@ internal fun StatisticsScreen(
                                     title = stringResource(Res.string.stat_average),
                                     value = "$avgErrors",
                                     icon = Icons.Rounded.CheckCircle,
-                                    containerColor = if (avgErrors <= ERRORS_ALLOWED) GreenContainer else RedContainer,
-                                    contentColor = if (avgErrors <= ERRORS_ALLOWED) OnGreenContainer else OnRedContainer,
+                                    containerColor = if (avgErrors <= ERRORS_ALLOWED) MaterialTheme.semanticColors.successContainer else MaterialTheme.colorScheme.errorContainer,
+                                    contentColor = if (avgErrors <= ERRORS_ALLOWED) MaterialTheme.semanticColors.onSuccessContainer else MaterialTheme.colorScheme.onErrorContainer,
                                     modifier = Modifier.weight(1f)
                                 )
                                 StatSummaryCard(

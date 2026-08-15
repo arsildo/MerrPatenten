@@ -27,7 +27,7 @@ private const val ANSWER_TRUE = "Saktë"
 private const val ANSWER_FALSE = "Gabim"
 private const val INITIAL_TIMER = "40:00"
 
-data class ExamUiState(
+internal data class ExamUiState(
     val isCompleted: Boolean = false,
     val saveStats: Boolean = false,
     val errors: Int = 0,
@@ -40,7 +40,7 @@ data class ExamUiState(
     val mistakePositions: List<Int> = emptyList(),
 )
 
-class ExamViewModel(
+internal class ExamViewModel(
     private val preferencesRepository: PreferencesRepository,
     private val questionnaireRepository: QuestionnaireRepository,
     private val examResultsRepository: ExamResultsRepository,

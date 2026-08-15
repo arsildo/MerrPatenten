@@ -19,14 +19,16 @@ fun SectionHeader(
     title: String,
     modifier: Modifier = Modifier,
     color: Color = MaterialTheme.colorScheme.primary,
-    style: TextStyle = MaterialTheme.typography.headlineMedium,
+    style: TextStyle = MaterialTheme.typography.titleLarge,
 ) {
     Text(
         text = title,
         style = style,
+        fontWeight = FontWeight.Bold,
         color = color,
         modifier = modifier
             .fillMaxWidth()
-            .padding(horizontal = 8.dp, vertical = 4.dp)
+            .padding(horizontal = 4.dp, vertical = 4.dp)
     )
 }
+

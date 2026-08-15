@@ -20,10 +20,10 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(projects.sharedCore.model)
-            implementation(projects.sharedCore.designSystem)
-            implementation(projects.sharedCore.navigation)
-            implementation(projects.sharedCore.datastore)
+            implementation(project(":shared-core:model"))
+            implementation(project(":shared-core:design-system"))
+            implementation(project(":shared-core:navigation"))
+            implementation(project(":shared-core:datastore"))
 
             implementation(libs.compose.runtime)
             implementation(libs.compose.foundation)

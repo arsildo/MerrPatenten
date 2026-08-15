@@ -27,8 +27,8 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(projects.sharedCore.model)
-            implementation(projects.sharedCore.designSystem)
+            implementation(project(":shared-core:model"))
+            implementation(project(":shared-core:design-system"))
 
             api(libs.room.runtime)
             api(libs.sqlite.bundled)

@@ -1,18 +1,7 @@
 package com.arsildo.merrpatenten.shared.feature.exam
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.navigationBarsPadding
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.CircleShape
@@ -20,41 +9,26 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.CheckCircle
 import androidx.compose.material.icons.rounded.HighlightOff
 import androidx.compose.material.icons.rounded.KeyboardArrowDown
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.IconButtonDefaults
-import androidx.compose.material3.MaterialShapes
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.ModalBottomSheet
-import androidx.compose.material3.SheetState
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.material3.rememberModalBottomSheetState
-import androidx.compose.material3.toShape
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.arsildo.merrpatenten.shared.core.designsystem.ERRORS_ALLOWED
-import com.arsildo.merrpatenten.shared.core.designsystem.Green
-import com.arsildo.merrpatenten.shared.core.designsystem.GreenContainer
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
-import com.arsildo.merrpatenten.shared.core.designsystem.OnGreenContainer
-import com.arsildo.merrpatenten.shared.core.designsystem.OnRedContainer
 import com.arsildo.merrpatenten.shared.core.designsystem.QUESTIONS_IN_EXAM
-import com.arsildo.merrpatenten.shared.core.designsystem.Red
-import com.arsildo.merrpatenten.shared.core.designsystem.RedContainer
+import com.arsildo.merrpatenten.shared.core.designsystem.semanticColors
 import merrpatenten.shared_core.design_system.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
 
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Map(
     isCompleted: Boolean,
@@ -93,7 +67,6 @@ fun Map(
     }
 }
 
-@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun MapContent(
     isCompleted: Boolean,
@@ -105,10 +78,10 @@ fun MapContent(
     modifier: Modifier = Modifier,
 ) {
     val isPassed = errors <= ERRORS_ALLOWED
-    val heroContainer = if (isPassed) GreenContainer else RedContainer
-    val heroContent = if (isPassed) OnGreenContainer else OnRedContainer
+    val heroContainer = if (isPassed) MaterialTheme.semanticColors.successContainer else MaterialTheme.colorScheme.errorContainer
+    val heroContent = if (isPassed) MaterialTheme.semanticColors.onSuccessContainer else MaterialTheme.colorScheme.onErrorContainer
     val heroIcon = if (isPassed) Icons.Rounded.CheckCircle else Icons.Rounded.HighlightOff
-    val heroIconColor = if (isPassed) Green else Red
+    val heroIconColor = if (isPassed) MaterialTheme.semanticColors.success else MaterialTheme.colorScheme.error
 
     Column(
         modifier = modifier
@@ -187,7 +160,7 @@ fun MapContent(
                 val isCorrect = page < mistakes.size && mistakes[page] == 0
 
                 val container = if (isCompleted) {
-                    if (isCorrect) GreenContainer else RedContainer
+                    if (isCorrect) MaterialTheme.semanticColors.successContainer else MaterialTheme.colorScheme.errorContainer
                 } else if (hasResponse) {
                     MaterialTheme.colorScheme.primaryContainer
                 } else {
@@ -195,26 +168,29 @@ fun MapContent(
                 }
 
                 val content = if (isCompleted) {
-                    if (isCorrect) OnGreenContainer else OnRedContainer
+                    if (isCorrect) MaterialTheme.semanticColors.onSuccessContainer else MaterialTheme.colorScheme.onErrorContainer
                 } else if (hasResponse) {
                     MaterialTheme.colorScheme.onPrimaryContainer
                 } else {
                     MaterialTheme.colorScheme.onSurfaceVariant
                 }
 
-                val shape = if (isCompleted) {
-                    if (isCorrect) MaterialShapes.Sunny.toShape() else MaterialShapes.Cookie9Sided.toShape()
-                } else if (hasResponse) {
-                    MaterialShapes.Slanted.toShape()
-                } else {
-                    MaterialShapes.Cookie9Sided.toShape()
-                }
+                val isSelected = hasResponse
 
                 QuestionGridItem(
                     title = page,
                     containerColor = container,
                     contentColor = content,
-                    shape = shape,
+                    shape = MaterialTheme.shapes.medium,
+                    contentDescription = "Pyetja ${page + 1}: ${
+                        if (isCompleted) {
+                            if (isCorrect) "Saktë" else "Gabim"
+                        } else if (hasResponse) {
+                            "E plotësuar"
+                        } else {
+                            "E paplotësuar"
+                        }
+                    }",
                     onClick = { onQuestionClicked(page) }
                 )
             }
@@ -237,13 +213,13 @@ fun MapContent(
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     StatusIndicator(
                         title = stringResource(Res.string.false_checkbox),
-                        containerColor = RedContainer,
-                        contentColor = OnRedContainer,
+                        containerColor = MaterialTheme.colorScheme.errorContainer,
+                        contentColor = MaterialTheme.colorScheme.onErrorContainer,
                     )
                     StatusIndicator(
                         title = stringResource(Res.string.true_checkbox),
-                        containerColor = GreenContainer,
-                        contentColor = OnGreenContainer,
+                        containerColor = MaterialTheme.semanticColors.successContainer,
+                        contentColor = MaterialTheme.semanticColors.onSuccessContainer,
                     )
                 }
             }
@@ -268,23 +244,27 @@ private fun QuestionGridItem(
     title: Int,
     containerColor: Color,
     contentColor: Color,
+    contentDescription: String,
     shape: Shape = MaterialTheme.shapes.medium,
     onClick: () -> Unit,
 ) {
-    Box(
+    Surface(
+        onClick = onClick,
+        shape = shape,
+        color = containerColor,
+        contentColor = contentColor,
         modifier = Modifier
-            .clip(shape)
             .aspectRatio(1f)
-            .background(containerColor)
-            .clickable(onClick = onClick),
-        contentAlignment = Alignment.Center
+            .semantics { this.contentDescription = contentDescription }
     ) {
-        Text(
-            text = "${title + 1}",
-            color = contentColor,
-            style = MaterialTheme.typography.titleMedium,
-            fontWeight = FontWeight.Bold
-        )
+        Box(contentAlignment = Alignment.Center) {
+            Text(
+                text = "${title + 1}",
+                color = contentColor,
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.Bold
+            )
+        }
     }
 }
 

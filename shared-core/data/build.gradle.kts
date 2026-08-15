@@ -16,9 +16,9 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(projects.sharedCore.model)
-            implementation(projects.sharedCore.database)
-            implementation(projects.sharedCore.datastore)
+            implementation(project(":shared-core:model"))
+            implementation(project(":shared-core:database"))
+            implementation(project(":shared-core:datastore"))
 
             implementation(libs.kotlinx.coroutinesCore)
             implementation(project.dependencies.platform(libs.koin.bom))

@@ -16,17 +16,16 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
 import com.arsildo.merrpatenten.shared.core.designsystem.QUESTIONS_IN_EXAM
-import com.arsildo.merrpatenten.shared.core.designsystem.Red
 import com.arsildo.merrpatenten.shared.core.designsystem.components.EndExamButton
 import com.arsildo.merrpatenten.shared.core.designsystem.components.ExitExamButton
 import com.arsildo.merrpatenten.shared.core.designsystem.components.RestartExamButton
+import com.arsildo.merrpatenten.shared.core.designsystem.semanticColors
 import com.arsildo.merrpatenten.shared.core.model.Question
 import kotlinx.coroutines.launch
 import merrpatenten.shared_core.design_system.generated.resources.*
@@ -119,19 +118,19 @@ internal fun ExamScreen(
 
                 if (endExamVisible) {
                     if (uiState.isCompleted) {
-                        Row(
+                        Column(
                             modifier = Modifier.fillMaxWidth(),
-                            horizontalArrangement = Arrangement.spacedBy(16.dp)
+                            verticalArrangement = Arrangement.spacedBy(16.dp)
                         ) {
-                            ExitExamButton(
-                                icon = Icons.AutoMirrored.Rounded.ExitToApp,
-                                onClick = onExitExam,
-                                modifier = Modifier.fillMaxWidth(0.4f)
-                            )
                             RestartExamButton(
                                 icon = Icons.Rounded.RestartAlt,
                                 modifier = Modifier.fillMaxWidth(),
                                 onClick = onRestartExam
+                            )
+                            ExitExamButton(
+                                icon = Icons.AutoMirrored.Rounded.ExitToApp,
+                                onClick = onExitExam,
+                                modifier = Modifier.fillMaxWidth()
                             )
                         }
                     } else {
@@ -172,7 +171,9 @@ internal fun ExamScreen(
                     verticalArrangement = Arrangement.SpaceBetween,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Column(modifier = Modifier.fillMaxWidth()) {
+                    Column(
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
                         Legend(
                             pagerState = pagerState,
                             timer = { uiState.timer },
@@ -196,14 +197,11 @@ internal fun ExamScreen(
 
                         LinearProgressIndicator(
                             progress = { animatedProgress },
+                            color = MaterialTheme.semanticColors.successContainer,
+                            drawStopIndicator = {},
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(horizontal = 16.dp, vertical = 4.dp)
-                                .height(6.dp)
-                                .clip(CircleShape),
-                            color = MaterialTheme.colorScheme.primary,
-                            trackColor = MaterialTheme.colorScheme.surfaceContainerHighest,
-                            strokeCap = StrokeCap.Round,
+                                .padding(16.dp)
                         )
                     }
 
@@ -318,8 +316,8 @@ internal fun ExamScreen(
                         modifier = Modifier.fillMaxWidth(),
                         contentPadding = PaddingValues(14.dp),
                         colors = ButtonDefaults.buttonColors(
-                            containerColor = Red,
-                            contentColor = Color.White
+                            containerColor = MaterialTheme.colorScheme.error,
+                            contentColor = MaterialTheme.colorScheme.onError
                         ),
                         content = {
                             Text(

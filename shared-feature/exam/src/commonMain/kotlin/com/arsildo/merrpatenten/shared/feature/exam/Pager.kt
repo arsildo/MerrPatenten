@@ -1,74 +1,37 @@
 package com.arsildo.merrpatenten.shared.feature.exam
 
-import androidx.compose.animation.AnimatedContent
-import androidx.compose.animation.animateColorAsState
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
-import androidx.compose.animation.togetherWith
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.animation.*
+import androidx.compose.foundation.*
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.CheckCircle
 import androidx.compose.material.icons.outlined.Cancel
+import androidx.compose.material.icons.outlined.CheckCircle
 import androidx.compose.material.icons.outlined.ZoomIn
+import androidx.compose.material.icons.rounded.Cancel
 import androidx.compose.material.icons.rounded.Check
 import androidx.compose.material.icons.rounded.CheckCircle
-import androidx.compose.material.icons.rounded.Cancel
 import androidx.compose.material.icons.rounded.Clear
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.ButtonShapes
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.MaterialShapes
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.material3.toShape
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.arsildo.merrpatenten.shared.core.designsystem.Green
-import com.arsildo.merrpatenten.shared.core.designsystem.GreenContainer
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
-import com.arsildo.merrpatenten.shared.core.designsystem.OnGreenContainer
-import com.arsildo.merrpatenten.shared.core.designsystem.OnRedContainer
-import com.arsildo.merrpatenten.shared.core.designsystem.Red
-import com.arsildo.merrpatenten.shared.core.designsystem.RedContainer
 import com.arsildo.merrpatenten.shared.core.designsystem.formatQuestion
 import com.arsildo.merrpatenten.shared.core.designsystem.getImageResource
+import com.arsildo.merrpatenten.shared.core.designsystem.semanticColors
 import com.arsildo.merrpatenten.shared.core.model.Question
 import merrpatenten.shared_core.design_system.generated.resources.*
 import org.jetbrains.compose.resources.DrawableResource
@@ -98,12 +61,12 @@ fun Pager(
         if (page < questions.size) {
             QuestionItem(
                 isCompleted = isCompleted,
-                correct = if (page < responses.size) responses[page] == 0 else false,
+                correct = page < responses.size && responses[page] == 0,
                 image = getImageResource(id = questions[page].image),
                 onImageClick = { onImageClick(questions[page].image) },
                 question = questions[page].question,
-                falseChecked = if (page < falseCheckedPages.size) falseCheckedPages[page] else false,
-                trueChecked = if (page < trueCheckedPages.size) trueCheckedPages[page] else false,
+                falseChecked = page < falseCheckedPages.size && falseCheckedPages[page],
+                trueChecked = page < trueCheckedPages.size && trueCheckedPages[page],
                 onFalseCheckedChange = { onCheckFalseAtPage(page) },
                 onTrueCheckedChange = { onCheckTrueAtPage(page) }
             )
@@ -111,7 +74,6 @@ fun Pager(
     }
 }
 
-@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 private fun QuestionItem(
     isCompleted: Boolean,
@@ -129,10 +91,8 @@ private fun QuestionItem(
             containerColor = MaterialTheme.colorScheme.surfaceContainerLow,
             contentColor = MaterialTheme.colorScheme.onSurface
         ),
-        shape = MaterialShapes.Cookie9Sided.toShape(),
-        modifier = Modifier
-            .fillMaxWidth()
-            .fillMaxHeight(0.92f)
+        shape = MaterialTheme.shapes.extraLarge,
+        modifier = Modifier.fillMaxSize()
     ) {
         Column(
             modifier = Modifier
@@ -182,9 +142,9 @@ private fun QuestionItem(
                         iconUnselected = Icons.Outlined.Cancel,
                         isChecked = falseChecked,
                         enabled = !isCompleted,
-                        selectedContainerColor = RedContainer,
-                        selectedContentColor = OnRedContainer,
-                        selectedBorderColor = Red,
+                        selectedContainerColor = MaterialTheme.colorScheme.errorContainer,
+                        selectedContentColor = MaterialTheme.colorScheme.onErrorContainer,
+                        selectedBorderColor = MaterialTheme.colorScheme.error,
                         onClick = { onFalseCheckedChange(!falseChecked) },
                         modifier = Modifier.weight(1f)
                     )
@@ -195,9 +155,9 @@ private fun QuestionItem(
                         iconUnselected = Icons.Outlined.CheckCircle,
                         isChecked = trueChecked,
                         enabled = !isCompleted,
-                        selectedContainerColor = GreenContainer,
-                        selectedContentColor = OnGreenContainer,
-                        selectedBorderColor = Green,
+                        selectedContainerColor = MaterialTheme.semanticColors.successContainer,
+                        selectedContentColor = MaterialTheme.semanticColors.onSuccessContainer,
+                        selectedBorderColor = MaterialTheme.semanticColors.success,
                         onClick = { onTrueCheckedChange(!trueChecked) },
                         modifier = Modifier.weight(1f)
                     )
@@ -211,7 +171,6 @@ private fun QuestionItem(
     }
 }
 
-@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 private fun ExpressiveOptionCard(
     title: String,
@@ -290,50 +249,40 @@ private fun QuestionImage(
     image: DrawableResource,
     onClick: () -> Unit,
 ) {
-    Surface(
-        shape = MaterialTheme.shapes.large,
-        color = MaterialTheme.colorScheme.surfaceContainerHighest,
-        modifier = Modifier
-            .fillMaxWidth()
-            .clip(MaterialTheme.shapes.large)
-            .clickable(onClick = onClick)
+    Box(
+        modifier = Modifier.fillMaxWidth() .clickable(onClick = onClick),
+        contentAlignment = Alignment.BottomEnd
     ) {
-        Box(
-            modifier = Modifier.fillMaxWidth(),
-            contentAlignment = Alignment.BottomEnd
-        ) {
-            Image(
-                painter = painterResource(image),
-                contentDescription = null,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .aspectRatio(2f)
-                    .padding(8.dp)
-            )
+        Image(
+            painter = painterResource(image),
+            contentDescription = null,
+            modifier = Modifier
+                .fillMaxWidth()
+                .aspectRatio(1.5f)
+        )
 
-            // Zoom Hint Pill
-            Surface(
-                shape = CircleShape,
-                color = MaterialTheme.colorScheme.surface.copy(alpha = 0.85f),
-                contentColor = MaterialTheme.colorScheme.onSurface,
-                modifier = Modifier.padding(12.dp)
+        // Zoom Hint Pill
+        Surface(
+            shape = CircleShape,
+            color = MaterialTheme.colorScheme.surface.copy(alpha = 0.85f),
+            contentColor = MaterialTheme.colorScheme.onSurface,
+            modifier = Modifier.padding(12.dp)
+        ) {
+            Row(
+                modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp),
+                horizontalArrangement = Arrangement.spacedBy(4.dp),
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                Row(
-                    modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp),
-                    horizontalArrangement = Arrangement.spacedBy(4.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Icon(
-                        imageVector = Icons.Outlined.ZoomIn,
-                        contentDescription = stringResource(Res.string.zoom),
-                        modifier = Modifier.size(16.dp)
-                    )
-                    Text(
-                        text = stringResource(Res.string.zoom),
-                        style = MaterialTheme.typography.labelSmall,
-                        fontWeight = FontWeight.Medium
-                    )
-                }
+                Icon(
+                    imageVector = Icons.Outlined.ZoomIn,
+                    contentDescription = stringResource(Res.string.zoom),
+                    modifier = Modifier.size(16.dp)
+                )
+                Text(
+                    text = stringResource(Res.string.zoom),
+                    style = MaterialTheme.typography.labelSmall,
+                    fontWeight = FontWeight.Medium
+                )
             }
         }
     }
@@ -343,9 +292,9 @@ private fun QuestionImage(
 private fun Indicator(
     correctAnswer: Boolean,
 ) {
-    val containerColor = if (correctAnswer) GreenContainer else RedContainer
-    val contentColor = if (correctAnswer) OnGreenContainer else OnRedContainer
-    val iconColor = if (correctAnswer) Green else Red
+    val containerColor = if (correctAnswer) MaterialTheme.semanticColors.successContainer else MaterialTheme.colorScheme.errorContainer
+    val contentColor = if (correctAnswer) MaterialTheme.semanticColors.onSuccessContainer else MaterialTheme.colorScheme.onErrorContainer
+    val iconColor = if (correctAnswer) MaterialTheme.semanticColors.success else MaterialTheme.colorScheme.error
 
     Surface(
         shape = MaterialTheme.shapes.medium,
@@ -376,6 +325,7 @@ private fun Indicator(
         }
     }
 }
+
 
 @Preview
 @Composable

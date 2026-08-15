@@ -69,12 +69,13 @@ fun ExitExamButton(
         icon = icon,
         onClick = onClick,
         colors = ButtonDefaults.buttonColors(
-            containerColor = Red,
-            contentColor = Color.White
+            containerColor = MaterialTheme.colorScheme.error,
+            contentColor = MaterialTheme.colorScheme.onError
         ),
         modifier = modifier
     )
 }
+
 
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable

@@ -20,14 +20,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.arsildo.merrpatenten.shared.core.designsystem.ERRORS_ALLOWED
-import com.arsildo.merrpatenten.shared.core.designsystem.Green
-import com.arsildo.merrpatenten.shared.core.designsystem.GreenContainer
-import com.arsildo.merrpatenten.shared.core.designsystem.OnGreenContainer
-import com.arsildo.merrpatenten.shared.core.designsystem.OnRedContainer
-import com.arsildo.merrpatenten.shared.core.designsystem.Red
-import com.arsildo.merrpatenten.shared.core.designsystem.RedContainer
+import com.arsildo.merrpatenten.shared.core.designsystem.semanticColors
 import com.arsildo.merrpatenten.shared.core.model.ExamResult
-
 import merrpatenten.shared_core.design_system.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
 
@@ -73,10 +67,10 @@ internal fun ResultItem(
 ) {
     val errors = result.errors
     val isPassed = errors <= ERRORS_ALLOWED
-    val containerColor = if (isPassed) GreenContainer else RedContainer
-    val contentColor = if (isPassed) OnGreenContainer else OnRedContainer
+    val containerColor = if (isPassed) MaterialTheme.semanticColors.successContainer else MaterialTheme.colorScheme.errorContainer
+    val contentColor = if (isPassed) MaterialTheme.semanticColors.onSuccessContainer else MaterialTheme.colorScheme.onErrorContainer
     val icon = if (isPassed) Icons.Rounded.CheckCircle else Icons.Rounded.HighlightOff
-    val iconTint = if (isPassed) Green else Red
+    val iconTint = if (isPassed) MaterialTheme.semanticColors.success else MaterialTheme.colorScheme.error
 
     Surface(
         shape = MaterialTheme.shapes.large,

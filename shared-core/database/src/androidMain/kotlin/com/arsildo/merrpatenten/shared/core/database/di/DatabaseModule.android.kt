@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.arsildo.merrpatenten.shared.core.database.MerrPatentenDatabase
+import kotlinx.coroutines.runBlocking
+import merrpatenten.shared_core.design_system.generated.resources.Res
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
@@ -14,13 +16,10 @@ internal fun getDatabaseBuilder(context: Context): RoomDatabase.Builder<MerrPate
     if (!dbFile.exists() || dbFile.length() == 0L) {
         dbFile.parentFile?.mkdirs()
         try {
-            applicationContext.assets.open("database/dpshtrr_questionnaire.db").use { input ->
-                dbFile.outputStream().use { output ->
-                    input.copyTo(output)
-                }
-            }
-        } catch (_: Exception) {
-            // fallback if assets not in old folder
+            val bytes = runBlocking { Res.readBytes("files/dpshtrr_questionnaire.db") }
+            dbFile.writeBytes(bytes)
+        } catch (e: Exception) {
+            println("Failed to copy pre-populated database on Android: ${e.message}")
         }
     }
     return Room.databaseBuilder<MerrPatentenDatabase>(
@@ -32,3 +31,4 @@ internal fun getDatabaseBuilder(context: Context): RoomDatabase.Builder<MerrPate
 actual val platformDatabaseModule: Module = module {
     singleOf(::getDatabaseBuilder)
 }
+

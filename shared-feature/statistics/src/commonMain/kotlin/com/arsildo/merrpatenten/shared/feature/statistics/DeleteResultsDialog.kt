@@ -24,15 +24,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
-import com.arsildo.merrpatenten.shared.core.designsystem.Red
-import com.arsildo.merrpatenten.shared.core.designsystem.RedContainer
 import merrpatenten.shared_core.design_system.generated.resources.Res
 import merrpatenten.shared_core.design_system.generated.resources.results_delete
 import merrpatenten.shared_core.design_system.generated.resources.results_delete_description
 import merrpatenten.shared_core.design_system.generated.resources.results_dismiss
 import org.jetbrains.compose.resources.stringResource
 
-@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun DeleteResultsDialog(
     onConfirm: () -> Unit,
@@ -45,14 +42,14 @@ fun DeleteResultsDialog(
         icon = {
             Surface(
                 shape = CircleShape,
-                color = RedContainer,
+                color = MaterialTheme.colorScheme.errorContainer,
                 modifier = Modifier.size(56.dp)
             ) {
                 Box(contentAlignment = Alignment.Center) {
                     Icon(
                         imageVector = Icons.Rounded.Delete,
                         contentDescription = null,
-                        tint = Red,
+                        tint = MaterialTheme.colorScheme.onErrorContainer,
                         modifier = Modifier.size(28.dp)
                     )
                 }
@@ -82,8 +79,8 @@ fun DeleteResultsDialog(
                 ),
                 contentPadding = PaddingValues(horizontal = 20.dp, vertical = 12.dp),
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = Red,
-                    contentColor = Color.White
+                    containerColor = MaterialTheme.colorScheme.error,
+                    contentColor = MaterialTheme.colorScheme.onError
                 )
             ) {
                 Text(
