@@ -10,13 +10,16 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.OpenInNew
 import androidx.compose.material3.CardColors
-import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.Card
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.FilledTonalIconButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.MaterialShapes
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.toShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -29,15 +32,16 @@ import merrpatenten.shared_core.design_system.generated.resources.help_official
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun HelpfulMaterialCard(
     onClick: () -> Unit,
     colors: CardColors,
     modifier: Modifier = Modifier,
 ) {
-    ElevatedCard(
+    Card(
         colors = colors,
-        shape = MaterialTheme.shapes.extraLarge,
+        shape = MaterialShapes.Cookie9Sided.toShape(),
         onClick = onClick,
         modifier = modifier.fillMaxWidth()
     ) {

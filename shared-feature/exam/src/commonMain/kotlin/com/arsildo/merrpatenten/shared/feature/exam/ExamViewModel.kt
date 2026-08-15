@@ -21,6 +21,7 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlin.time.Duration.Companion.milliseconds
 
 private const val ANSWER_TRUE = "Saktë"
 private const val ANSWER_FALSE = "Gabim"
@@ -117,7 +118,7 @@ class ExamViewModel(
                 }
                 val formatted = formatTimer(remainingMillis)
                 _internalUiState.update { it.copy(timer = formatted) }
-                delay(1000L)
+                delay(1000L.milliseconds)
                 remainingMillis -= 1000L
             }
             if (!_internalUiState.value.isCompleted) {
