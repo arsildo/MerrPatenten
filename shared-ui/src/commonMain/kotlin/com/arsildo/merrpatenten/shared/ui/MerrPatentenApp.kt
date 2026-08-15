@@ -81,7 +81,7 @@ fun MerrPatentenApp() {
             entryProvider = entryProvider {
                 dashboardEntry(
                     backStack = backStack,
-                    onStartExamClick = { backStack.add(Exam) },
+                    onStartExamClick = { category -> backStack.add(Exam(category)) },
                     onStatisticsClick = { backStack.add(Statistics) },
                     onPreferencesClick = { backStack.add(Preferences) }
                 )
@@ -92,9 +92,9 @@ fun MerrPatentenApp() {
                         backStack.clear()
                         backStack.add(Dashboard)
                     },
-                    onRestartExam = {
+                    onRestartExam = { category ->
                         backStack.removeLastOrNull()
-                        backStack.add(Exam)
+                        backStack.add(Exam(category))
                     }
                 )
                 imageDetailsEntry(

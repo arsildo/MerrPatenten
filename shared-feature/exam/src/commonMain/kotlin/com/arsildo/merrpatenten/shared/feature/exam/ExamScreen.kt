@@ -34,12 +34,16 @@ import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 internal fun ExamRoute(
+    category: String,
     onImageDetailsClick: (Int) -> Unit,
     onOpenMap: () -> Unit,
     onExitExam: () -> Unit,
     onRestartExam: () -> Unit,
     viewModel: ExamViewModel = koinViewModel(),
 ) {
+    LaunchedEffect(category) {
+        viewModel.startExam(category)
+    }
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val targetPage by viewModel.targetPage.collectAsStateWithLifecycle()
 

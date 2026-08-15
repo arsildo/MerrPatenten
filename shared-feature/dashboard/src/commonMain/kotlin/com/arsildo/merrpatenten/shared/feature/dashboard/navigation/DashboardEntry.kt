@@ -14,7 +14,7 @@ object Disclaimer : NavKey
 
 fun EntryProviderScope<NavKey>.dashboardEntry(
     backStack: NavBackStack<NavKey>,
-    onStartExamClick: () -> Unit,
+    onStartExamClick: (String) -> Unit,
     onStatisticsClick: () -> Unit,
     onPreferencesClick: () -> Unit,
 ) {

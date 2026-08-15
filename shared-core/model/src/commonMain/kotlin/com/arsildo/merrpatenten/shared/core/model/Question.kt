@@ -8,4 +8,5 @@ data class Question(
     val question: String,
     val answer: String,
     val image: Int,
+    val category: String = "B",
 )

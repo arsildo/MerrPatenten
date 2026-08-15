@@ -60,13 +60,8 @@ internal fun PreferencesScreen(
         Scaffold(
             modifier = modifier,
             topBar = {
-                MediumTopAppBar(
-                    title = {
-                        Text(
-                            text = stringResource(Res.string.preferences),
-                            fontWeight = FontWeight.Bold,
-                            style = MaterialTheme.typography.headlineMedium
-                        )
+                TopAppBar(
+                    title = { Text(text = stringResource(Res.string.preferences))
                     },
                     navigationIcon = {
                         FilledTonalIconButton(
@@ -74,19 +69,14 @@ internal fun PreferencesScreen(
                             colors = IconButtonDefaults.filledTonalIconButtonColors(
                                 containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
                                 contentColor = MaterialTheme.colorScheme.onSurface
-                            ),
-                            modifier = Modifier.padding(start = 8.dp)
+                            )
                         ) {
                             Icon(
                                 imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
                                 contentDescription = stringResource(Res.string.back)
                             )
                         }
-                    },
-                    colors = TopAppBarDefaults.topAppBarColors(
-                        containerColor = MaterialTheme.colorScheme.background,
-                        titleContentColor = MaterialTheme.colorScheme.onBackground,
-                    ),
+                    }
                 )
             },
             floatingActionButton = {

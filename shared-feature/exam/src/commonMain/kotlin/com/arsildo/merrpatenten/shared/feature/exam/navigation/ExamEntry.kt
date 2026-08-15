@@ -13,34 +13,38 @@ import navigation.SharedViewModelStoreNavEntryDecorator
 import navigation.toContentKey
 
 @Serializable
-object Exam : NavKey
+data class Exam(val category: String = "B") : NavKey
 
 @Serializable
-object ExamResultBottomSheet : NavKey
+data class ExamResultBottomSheet(val category: String = "B") : NavKey
 
 @OptIn(ExperimentalMaterial3Api::class)
 fun EntryProviderScope<NavKey>.examEntry(
     backStack: NavBackStack<NavKey>,
     onImageDetailsClick: (Int) -> Unit,
     onExitExam: () -> Unit,
-    onRestartExam: () -> Unit,
+    onRestartExam: (String) -> Unit,
 ) {
     entry<Exam>(
         clazzContentKey = { key -> key.toContentKey() }
-    ) {
+    ) { examKey ->
         ExamRoute(
+            category = examKey.category,
             onImageDetailsClick = onImageDetailsClick,
-            onOpenMap = { backStack.add(ExamResultBottomSheet) },
+            onOpenMap = { backStack.add(ExamResultBottomSheet(examKey.category)) },
             onExitExam = onExitExam,
-            onRestartExam = onRestartExam
+            onRestartExam = { onRestartExam(examKey.category) }
         )
     }
 
     entry<ExamResultBottomSheet>(
-        metadata = SharedViewModelStoreNavEntryDecorator.parent(
-            contentKey = Exam.toContentKey()
-        ) + BottomSheetSceneStrategy.bottomSheet(skipPartiallyExpanded = true)
-    ) {
+        clazzContentKey = { key -> key.toContentKey() },
+        metadata = { key ->
+            SharedViewModelStoreNavEntryDecorator.parent(
+                contentKey = Exam(key.category).toContentKey()
+            ) + BottomSheetSceneStrategy.bottomSheet(skipPartiallyExpanded = true)
+        }
+    ) { sheetKey ->
         ExamResultBottomSheetRoute(
             onQuestionClicked = {
                 backStack.removeLastOrNull()
@@ -51,7 +55,7 @@ fun EntryProviderScope<NavKey>.examEntry(
             },
             onRestartExam = {
                 backStack.removeLastOrNull()
-                onRestartExam()
+                onRestartExam(sheetKey.category)
             },
             onDismiss = dropUnlessResumed(block = backStack::removeLastOrNull)
         )

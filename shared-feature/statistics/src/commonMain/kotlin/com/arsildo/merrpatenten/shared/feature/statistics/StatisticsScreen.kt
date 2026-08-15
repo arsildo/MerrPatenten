@@ -16,8 +16,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.arsildo.merrpatenten.shared.core.designsystem.*
+import com.arsildo.merrpatenten.shared.core.designsystem.ERRORS_ALLOWED
+import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
 import com.arsildo.merrpatenten.shared.core.designsystem.components.SectionHeader
+import com.arsildo.merrpatenten.shared.core.designsystem.semanticColors
 import com.arsildo.merrpatenten.shared.core.model.ExamResult
 import merrpatenten.shared_core.design_system.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
@@ -52,14 +54,8 @@ internal fun StatisticsScreen(
     Scaffold(
         modifier = modifier,
         topBar = {
-            MediumTopAppBar(
-                title = {
-                    Text(
-                        text = stringResource(Res.string.statistics),
-                        fontWeight = FontWeight.Bold,
-                        style = MaterialTheme.typography.headlineMedium
-                    )
-                },
+            TopAppBar(
+                title = { Text(text = stringResource(Res.string.statistics)) },
                 navigationIcon = {
                     FilledTonalIconButton(
                         onClick = onBackPress,
@@ -67,8 +63,7 @@ internal fun StatisticsScreen(
                             containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
                             contentColor = MaterialTheme.colorScheme.onSurface
                         ),
-                        shape = MaterialTheme.shapes.medium,
-                        modifier = Modifier.padding(start = 8.dp)
+                        shape = MaterialTheme.shapes.medium
                     ) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
@@ -84,8 +79,7 @@ internal fun StatisticsScreen(
                                 containerColor = MaterialTheme.colorScheme.errorContainer,
                                 contentColor = MaterialTheme.colorScheme.error
                             ),
-                            shape = MaterialTheme.shapes.medium,
-                            modifier = Modifier.padding(end = 8.dp)
+                            shape = MaterialTheme.shapes.medium
                         ) {
                             Icon(
                                 imageVector = Icons.Rounded.DeleteSweep,

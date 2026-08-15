@@ -25,7 +25,7 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 internal fun DashboardRoute(
-    onStartExamClick: () -> Unit,
+    onStartExamClick: (String) -> Unit,
     onPreferencesClick: () -> Unit,
     onStatisticsClick: () -> Unit,
 ) {
@@ -38,18 +38,13 @@ internal fun DashboardRoute(
 
 @Composable
 internal fun DashboardScreen(
-    onStartExamClick: () -> Unit,
+    onStartExamClick: (String) -> Unit,
     onPreferencesClick: () -> Unit,
     onStatisticsClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val uriHandler = LocalUriHandler.current
     var showDisclaimerDialog by remember { mutableStateOf(false) }
-    val coroutineScope = rememberCoroutineScope()
-    val snackbarHostState = remember { SnackbarHostState() }
-
-    val categoryAInProgressMessage = stringResource(Res.string.category_a_in_progress)
-    val categoryCDInProgressMessage = stringResource(Res.string.category_cd_in_progress)
 
     Scaffold(
         topBar = {
@@ -74,21 +69,20 @@ internal fun DashboardScreen(
             )
         },
         modifier = modifier,
-        snackbarHost = { SnackbarHost(snackbarHostState) },
         floatingActionButton = {
             HorizontalFloatingToolbar(
                 expanded = true,
                 modifier = Modifier.navigationBarsPadding(),
                 colors = FloatingToolbarDefaults.vibrantFloatingToolbarColors()
             ) {
-                IconButton(onClick = { showDisclaimerDialog = true }) {
-                    Icon(imageVector = Icons.Outlined.Info, contentDescription = stringResource(Res.string.info))
+                IconButton(onClick = onStatisticsClick) {
+                    Icon(Icons.Rounded.AutoGraph, stringResource(Res.string.statistics))
                 }
                 IconButton(onClick = onPreferencesClick) {
                     Icon(Icons.Rounded.Settings, stringResource(Res.string.preferences))
                 }
-                IconButton(onClick = onStatisticsClick) {
-                    Icon(Icons.Rounded.AutoGraph, stringResource(Res.string.statistics))
+                IconButton(onClick = { showDisclaimerDialog = true }) {
+                    Icon(imageVector = Icons.Outlined.Info, contentDescription = stringResource(Res.string.info))
                 }
             }
         },
@@ -113,7 +107,7 @@ internal fun DashboardScreen(
                 title = stringResource(Res.string.questionnaire_category_one),
                 description = stringResource(Res.string.category_b_desc),
                 icon = Icons.Rounded.DirectionsCar,
-                onClick = onStartExamClick,
+                onClick = { onStartExamClick("B") },
                 colors = CardDefaults.elevatedCardColors(
                     containerColor = MaterialTheme.colorScheme.primaryContainer,
                     contentColor = MaterialTheme.colorScheme.onPrimaryContainer
@@ -122,13 +116,9 @@ internal fun DashboardScreen(
 
             ExamTypeCard(
                 title = stringResource(Res.string.questionnaire_category_two),
-                description = stringResource(Res.string.category_a_desc),
-                icon = Icons.Rounded.Motorcycle,
-                onClick = {
-                    coroutineScope.launch {
-                        snackbarHostState.showSnackbar(categoryAInProgressMessage)
-                    }
-                },
+                description = stringResource(Res.string.category_cd_desc),
+                icon = Icons.Rounded.LocalShipping,
+                onClick = { onStartExamClick("C") },
                 colors = CardDefaults.elevatedCardColors(
                     containerColor = MaterialTheme.colorScheme.secondaryContainer,
                     contentColor = MaterialTheme.colorScheme.onSecondaryContainer
@@ -139,11 +129,7 @@ internal fun DashboardScreen(
                 title = stringResource(Res.string.questionnaire_category_three),
                 description = stringResource(Res.string.category_cd_desc),
                 icon = Icons.Rounded.DirectionsBus,
-                onClick = {
-                    coroutineScope.launch {
-                        snackbarHostState.showSnackbar(categoryCDInProgressMessage)
-                    }
-                },
+                onClick = { onStartExamClick("D") },
                 colors = CardDefaults.elevatedCardColors(
                     containerColor = MaterialTheme.colorScheme.tertiaryContainer,
                     contentColor = MaterialTheme.colorScheme.onTertiaryContainer

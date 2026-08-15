@@ -28,6 +28,7 @@ private const val ANSWER_FALSE = "Gabim"
 private const val INITIAL_TIMER = "40:00"
 
 internal data class ExamUiState(
+    val category: String = "B",
     val isCompleted: Boolean = false,
     val saveStats: Boolean = false,
     val errors: Int = 0,
@@ -83,28 +84,30 @@ internal class ExamViewModel(
         initialValue = _internalUiState.value
     )
 
-    init {
-        loadQuestionsAndStartTimer()
-    }
-
-    private fun loadQuestionsAndStartTimer() = viewModelScope.launch {
+    fun startExam(category: String = "B") = viewModelScope.launch {
+        timerJob?.cancel()
         try {
-            val allQuestions = questionnaireRepository.getAll().first { it.isNotEmpty() }
+            val allQuestions = questionnaireRepository.getByCategory(category).first { it.isNotEmpty() }
             val selectedQuestions = allQuestions.shuffled().take(QUESTIONS_IN_EXAM)
             val questionCount = selectedQuestions.size
 
-            _internalUiState.update { current ->
-                current.copy(
+            _internalUiState.update {
+                ExamUiState(
+                    category = category,
                     questions = selectedQuestions,
                     trueCheckedPositions = List(questionCount) { false },
                     falseCheckedPositions = List(questionCount) { false },
                     responseList = List(questionCount) { "" },
                     mistakePositions = List(questionCount) { 1 },
+                    timer = INITIAL_TIMER,
+                    isCompleted = false,
+                    errors = 0,
                 )
             }
             startCountdown()
-        } catch (_: Exception) {
-            // Keep empty questions state on error so UI handles loading appropriately
+        } catch (e: Exception) {
+            println("Error in startExam($category): ${e.message}")
+            e.printStackTrace()
         }
     }
 
@@ -224,6 +227,7 @@ internal class ExamViewModel(
                     ExamResult(
                         errors = errors,
                         time = timeSpent,
+                        category = _internalUiState.value.category,
                     )
                 )
                 examResultsRepository.limitResults()

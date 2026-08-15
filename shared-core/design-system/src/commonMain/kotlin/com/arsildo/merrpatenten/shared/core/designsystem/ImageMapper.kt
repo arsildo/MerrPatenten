@@ -165,6 +165,7 @@ fun getImageResource(id: Int): DrawableResource = when (id) {
     162 -> Res.drawable.img_162
     163 -> Res.drawable.img_163
     164 -> Res.drawable.img_164
+    165 -> Res.drawable.img_165
     166 -> Res.drawable.img_166
     167 -> Res.drawable.img_167
     168 -> Res.drawable.img_168
@@ -495,5 +496,24 @@ fun getImageResource(id: Int): DrawableResource = when (id) {
     913 -> Res.drawable.img_913
     914 -> Res.drawable.img_914
     915 -> Res.drawable.img_915
+    916 -> Res.drawable.img_916
+    917 -> Res.drawable.img_917
+    918 -> Res.drawable.img_918
+    919 -> Res.drawable.img_919
+    920 -> Res.drawable.img_920
+    921 -> Res.drawable.img_921
+    922 -> Res.drawable.img_922
+    923 -> Res.drawable.img_923
+    950 -> Res.drawable.img_950
+    951 -> Res.drawable.img_951
+    952 -> Res.drawable.img_952
+    953 -> Res.drawable.img_953
+    954 -> Res.drawable.img_954
+    955 -> Res.drawable.img_955
+    956 -> Res.drawable.img_956
+    957 -> Res.drawable.img_957
+    958 -> Res.drawable.img_958
+    959 -> Res.drawable.img_959
+    960 -> Res.drawable.img_960
     else -> Res.drawable.img_info
 }

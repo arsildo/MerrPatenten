@@ -16,8 +16,19 @@ internal fun getDatabaseBuilder(): RoomDatabase.Builder<MerrPatentenDatabase> {
     val dbFile = File(appData, "merrpatenten.db")
     if (!dbFile.exists() || dbFile.length() == 0L) {
         try {
-            val bytes = runBlocking { Res.readBytes("files/dpshtrr_questionnaire.db") }
-            dbFile.writeBytes(bytes)
+            val resourcePath = "composeResources/merrpatenten.shared_core.design_system.generated.resources/files/dpshtrr_questionnaire.db"
+            val stream = Res::class.java.classLoader?.getResourceAsStream(resourcePath)
+                ?: Thread.currentThread().contextClassLoader?.getResourceAsStream(resourcePath)
+            if (stream != null) {
+                stream.use { input ->
+                    dbFile.outputStream().use { output ->
+                        input.copyTo(output)
+                    }
+                }
+            } else {
+                val bytes = runBlocking { Res.readBytes("files/dpshtrr_questionnaire.db") }
+                dbFile.writeBytes(bytes)
+            }
         } catch (e: Exception) {
             println("Failed to copy pre-populated database on JVM: ${e.message}")
         }

@@ -13,16 +13,20 @@ data class ExamResultEntity(
     val errors: Int,
     @ColumnInfo(name = "time")
     val time: String,
+    @ColumnInfo(name = "category", defaultValue = "B")
+    val category: String = "B",
 )
 
 fun ExamResultEntity.toDomain() = ExamResult(
     id = id,
     errors = errors,
-    time = time
+    time = time,
+    category = category,
 )
 
 fun ExamResult.toEntity() = ExamResultEntity(
     id = id,
     errors = errors,
-    time = time
+    time = time,
+    category = category,
 )
