@@ -1,0 +1,103 @@
+<resources>
+    <!-- App & General -->
+    <string name="app_name">MerrPatenten</string>
+    <string name="app_tagline">Pyetësorët zyrtarë të patentës</string>
+    <string name="back">Kthehu</string>
+    <string name="close">Mbyll</string>
+    <string name="info">Informacion</string>
+    <string name="github">Github</string>
+    <string name="warning">Kujdes!</string>
+
+    <!-- Disclaimer Dialog -->
+    <string name="disclaimer_title">Kujdes!</string>
+    <string name="disclaimer_description">Ky aplikacion NUK është një aplikacion zyrtar i aprovuar nga DPSHTRR apo nga qeveria shqiptare, aplikacioni është bazuar në materialet udhëzuese që mund ti gjeni në faqen e parë të aplikacionit ose duke klikuar këtë tekts.</string>
+
+    <!-- Dashboard -->
+    <string name="select_category">Zgjidh kategorinë</string>
+    <string name="questionnaire_category_one">A1, A2, B1, B</string>
+    <string name="questionnaire_category_two">C1, C</string>
+    <string name="questionnaire_category_three">D1, D</string>
+    <string name="questionnaire_version">VERSIONI 2023</string>
+    <string name="category_b_desc">40 MINUTA | 40 PYETJE | 4 GABIME MAX</string>
+    <string name="category_a_desc">30 MINUTA | 30 PYETJE | 3 GABIME MAX</string>
+    <string name="category_cd_desc">40 MINUTA | 40 PYETJE | 4 GABIME MAX</string>
+    <string name="category_a_in_progress">Kategoria A është në përpunim e sipër.</string>
+    <string name="category_cd_in_progress">Kategoria C/D është në përpunim e sipër.</string>
+    <string name="start_exam">FILLO PROVIMIN</string>
+    <string name="help">Materiale Udhëzuese</string>
+    <string name="help_official">LINKU ZYRTAR NGA DPSHTRR</string>
+
+    <!-- Exam Screen & Controls -->
+    <string name="end_exam">Përfundo provimin</string>
+    <string name="restart_exam">Fillo provim të ri</string>
+    <string name="exit_exam">Mbyll</string>
+    <string name="exit_exam_button">Dil nga provimi</string>
+    <string name="previous_page">Mbrapa</string>
+    <string name="next_page">Përpara</string>
+    <string name="true_checkbox">Saktë</string>
+    <string name="false_checkbox">Gabim</string>
+    <string name="completed_question">Plotësuar</string>
+    <string name="zoom">Zmadho</string>
+    <string name="question_map">Harta e pyetjeve</string>
+    <string name="toggle_end_exam">Shfaq përfundimin</string>
+
+    <!-- Exam Uncompleted Dialog -->
+    <string name="uncompleted_dialog_title">Kujdes!</string>
+    <string name="uncompleted_dialog_desc">Ju nuk i keni plotësuar të gjithë pyetjet. Dëshironi të shikoni pyetjet e mbetura apo të përfundoni?</string>
+    <string name="review_unanswered">Shiko pyetjet e papërgjigjura</string>
+    <string name="finish_anyway">Përfundo provimin gjithsesi</string>
+
+    <!-- Exam Results Sheet / Map -->
+    <string name="passed">Urime, ju fituat!</string>
+    <string name="failed">Provo përseri!</string>
+    <string name="exam_passed_subtitle">Provimi u kalua me sukses!</string>
+    <string name="exam_failed_subtitle">Më shumë se 4 gabime të lejuara</string>
+    <string name="correct_answer_feedback">Përgjigje e Saktë</string>
+    <string name="wrong_answer_feedback">Përgjigje e Gabuar</string>
+    <string name="error_singular">Gabim</string>
+    <string name="errors_plural">Gabime</string>
+
+    <!-- Statistics -->
+    <string name="statistics">Statistika</string>
+    <string name="stat_exams">Provime</string>
+    <string name="stat_average">Mesatarja</string>
+    <string name="stat_pass_rate">Kalueshmëria</string>
+    <string name="exam_history">Historiku i provimeve</string>
+    <string name="performance_title">Performanca (Gabime / Koha)</string>
+    <string name="performance_passed">Kaluar</string>
+    <string name="performance_failed">Mbetur</string>
+    <string name="performance_average_prefix">Mesatarisht </string>
+    <string name="performance_average_middle"> gabime në </string>
+    <string name="performance_average_suffix"> provimet e fundit.</string>
+    <string name="results_storing_disabled">Ju keni zgjedhur që rezultatet tuaja të mos ruhen.</string>
+    <string name="results_empty">Nuk ka të dhëna, ju duhet te përfundoni të paktën një provim.</string>
+    <string name="results_dismiss">Jo, kthehu</string>
+    <string name="results_confirm">Në rregull</string>
+    <string name="results_delete">Pastro të gjitha?</string>
+    <string name="results_delete_description">Te gjithë rezultatet do të fshien.</string>
+    <string name="results_change">Ndrysho</string>
+
+    <!-- Preferences -->
+    <string name="preferences">Preferencat</string>
+    <string name="pref_section_behavior">Sjellja dhe provimi</string>
+    <string name="pref_section_appearance">Tema dhe pamja</string>
+    <string name="preferences_navigation_buttons">Metoda e fokusuar</string>
+    <string name="preferences_navigation_buttons_desc">Përdor swipe per te naviguar pyetjet, fshih buttonat e navigimit gjatë provimit.</string>
+    <string name="preferences_store_stats">Mbaj mend statistikat</string>
+    <string name="preferences_store_stats_desc">Ruaj rezultatet e provimeve dhe gjenero statistika bazuar në to.\n(20 provimet e fundit)</string>
+    <string name="preferences_follow_system_theme">Ndiq ngjyrat e sistemit</string>
+    <string name="preferences_follow_system_theme_desc">Merr kombinacionin e ngjyrave nga sistemi</string>
+    <string name="preferences_dark_mode">Tema e errët</string>
+    <string name="preferences_dark_mode_desc">Pamje me ngjyra të errëta</string>
+    <string name="preferences_material_you">Ngjyrat dinamike</string>
+    <string name="preferences_material_you_desc">Ngjyra dinamike bazuar në sistemin e pajisjes suaj</string>
+
+    <!-- Language & Localization -->
+    <string name="pref_section_localization">Gjuha dhe lokalizimi</string>
+    <string name="language">Gjuha</string>
+    <string name="language_description">Ndrysho gjuhën e shfaqjes së aplikacionit</string>
+    <string name="english">English</string>
+    <string name="albanian">Shqip</string>
+    <string name="language_restart_title">Gjuha u Ndryshua</string>
+    <string name="language_restart_desc">Ju lutem rinisni aplikacionin për të aplikuar ndryshimin e gjuhës.</string>
+</resources>

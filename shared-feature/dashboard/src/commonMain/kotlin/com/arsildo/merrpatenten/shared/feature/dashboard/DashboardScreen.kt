@@ -3,169 +3,238 @@ package com.arsildo.merrpatenten.shared.feature.dashboard
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Looks3
-import androidx.compose.material.icons.filled.LooksOne
-import androidx.compose.material.icons.filled.LooksTwo
+import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.rounded.AutoGraph
-import androidx.compose.material.icons.rounded.Menu
+import androidx.compose.material.icons.rounded.DirectionsBus
+import androidx.compose.material.icons.rounded.DirectionsCar
+import androidx.compose.material.icons.rounded.Motorcycle
+import androidx.compose.material.icons.rounded.Settings
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.FloatingActionButtonDefaults
+import androidx.compose.material3.FilledTonalIconButton
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
+import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.arsildo.merrpatenten.shared.core.designsystem.DPSHTRR_HELP
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
 import com.arsildo.merrpatenten.shared.core.designsystem.Red
 import com.arsildo.merrpatenten.shared.core.designsystem.components.ExamTypeCard
 import com.arsildo.merrpatenten.shared.core.designsystem.components.HelpfulMaterialCard
+import com.arsildo.merrpatenten.shared.core.designsystem.components.SectionHeader
 import kotlinx.coroutines.launch
-import androidx.compose.ui.tooling.preview.Preview
-import merrpatenten.shared_core.design_system.generated.resources.Res
-import merrpatenten.shared_core.design_system.generated.resources.questionnaire_category_one
-import merrpatenten.shared_core.design_system.generated.resources.questionnaire_category_three
-import merrpatenten.shared_core.design_system.generated.resources.questionnaire_category_two
-import merrpatenten.shared_core.design_system.generated.resources.statistics
+import merrpatenten.shared_core.design_system.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
-import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun DashboardRoute(
     onStartExamClick: () -> Unit,
-    onStatisticsClick: () -> Unit,
     onPreferencesClick: () -> Unit,
-    viewModel: DashboardViewModel = koinViewModel(),
+    onStatisticsClick: () -> Unit,
 ) {
-    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     DashboardScreen(
-        uiState = uiState,
         onStartExamClick = onStartExamClick,
-        onStatisticsClick = onStatisticsClick,
         onPreferencesClick = onPreferencesClick,
+        onStatisticsClick = onStatisticsClick,
     )
 }
 
 @Composable
 fun DashboardScreen(
-    uiState: DashboardUiState,
     onStartExamClick: () -> Unit,
-    onStatisticsClick: () -> Unit,
     onPreferencesClick: () -> Unit,
+    onStatisticsClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val uriHandler = LocalUriHandler.current
+    var showDisclaimerDialog by remember { mutableStateOf(false) }
+    val coroutineScope = rememberCoroutineScope()
     val snackbarHostState = remember { SnackbarHostState() }
-    val scope = rememberCoroutineScope()
+
+    val categoryAInProgressMessage = stringResource(Res.string.category_a_in_progress)
+    val categoryCDInProgressMessage = stringResource(Res.string.category_cd_in_progress)
 
     Scaffold(
         modifier = modifier,
         snackbarHost = { SnackbarHost(snackbarHostState) },
         floatingActionButton = {
             ExtendedFloatingActionButton(
-                text = { Text(text = stringResource(Res.string.statistics)) },
+                text = {
+                    Text(
+                        text = stringResource(Res.string.statistics),
+                        style = MaterialTheme.typography.labelLarge,
+                        fontWeight = FontWeight.Bold
+                    )
+                },
                 icon = {
                     Icon(imageVector = Icons.Rounded.AutoGraph, contentDescription = null)
                 },
                 onClick = onStatisticsClick,
                 contentColor = Color.White,
                 containerColor = Red,
-                elevation = FloatingActionButtonDefaults.loweredElevation(),
-                shape = MaterialTheme.shapes.extraLarge,
+                elevation = FloatingActionButtonDefaults.elevation(defaultElevation = 3.dp),
+                shape = MaterialTheme.shapes.large,
             )
         }
     ) { contentPadding ->
-        Box(
+        Column(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(contentPadding)
-                .padding(horizontal = 16.dp)
-                .padding(top = 32.dp),
-            contentAlignment = Alignment.TopCenter
+                .verticalScroll(rememberScrollState())
+                .padding(horizontal = 20.dp)
+                .padding(top = 24.dp, bottom = 88.dp),
+            verticalArrangement = Arrangement.spacedBy(20.dp)
         ) {
-            Column(
-                verticalArrangement = Arrangement.spacedBy(16.dp)
+            // Expressive Top Header
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                ExamTypeCard(
-                    title = stringResource(Res.string.questionnaire_category_one),
-                    description = "40 MINUTA | 40 PYETJE | 4 GABIME",
-                    icon = Icons.Filled.LooksOne,
-                    colors = CardDefaults.elevatedCardColors(
-                        containerColor = MaterialTheme.colorScheme.primaryContainer,
-                        contentColor = MaterialTheme.colorScheme.onPrimaryContainer
-                    ),
-                    onClick = onStartExamClick
-                )
+                Column(
+                    verticalArrangement = Arrangement.spacedBy(4.dp)
+                ) {
+                    Text(
+                        text = stringResource(Res.string.app_name),
+                        style = MaterialTheme.typography.headlineMedium,
+                        fontWeight = FontWeight.Bold,
+                        color = MaterialTheme.colorScheme.onBackground
+                    )
+                    Text(
+                        text = stringResource(Res.string.app_tagline),
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
 
-                ExamTypeCard(
-                    title = stringResource(Res.string.questionnaire_category_two),
-                    description = "40 MINUTA | 40 PYETJE | 4 GABIME",
-                    icon = Icons.Filled.LooksTwo,
-                    colors = CardDefaults.elevatedCardColors(
-                        containerColor = MaterialTheme.colorScheme.tertiaryContainer,
-                        contentColor = MaterialTheme.colorScheme.onTertiaryContainer
-                    ),
-                    onClick = {
-                        scope.launch {
-                            snackbarHostState.showSnackbar("Vjen së shpejti...")
-                        }
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    FilledTonalIconButton(
+                        onClick = { showDisclaimerDialog = true },
+                        colors = IconButtonDefaults.filledTonalIconButtonColors(
+                            containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
+                            contentColor = MaterialTheme.colorScheme.onSurfaceVariant
+                        ),
+                        shape = MaterialTheme.shapes.medium,
+                        modifier = Modifier.size(44.dp)
+                    ) {
+                        Icon(
+                            imageVector = Icons.Outlined.Info,
+                            contentDescription = stringResource(Res.string.info),
+                            modifier = Modifier.size(22.dp)
+                        )
                     }
-                )
 
-                ExamTypeCard(
-                    title = stringResource(Res.string.questionnaire_category_three),
-                    description = "10 MINUTA | 10 PYETJE | 1 GABIM",
-                    icon = Icons.Filled.Looks3,
-                    colors = CardDefaults.elevatedCardColors(
-                        containerColor = MaterialTheme.colorScheme.surface,
-                        contentColor = MaterialTheme.colorScheme.onSurface
-                    ),
-                    onClick = {
-                        scope.launch {
-                            snackbarHostState.showSnackbar("Vjen së shpejti...")
-                        }
+                    FilledTonalIconButton(
+                        onClick = onPreferencesClick,
+                        colors = IconButtonDefaults.filledTonalIconButtonColors(
+                            containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
+                            contentColor = MaterialTheme.colorScheme.onSurfaceVariant
+                        ),
+                        shape = MaterialTheme.shapes.medium,
+                        modifier = Modifier.size(44.dp)
+                    ) {
+                        Icon(
+                            imageVector = Icons.Rounded.Settings,
+                            contentDescription = stringResource(Res.string.preferences),
+                            modifier = Modifier.size(22.dp)
+                        )
                     }
-                )
-
-                HelpfulMaterialCard(
-                    colors = CardDefaults.elevatedCardColors(
-                        containerColor = MaterialTheme.colorScheme.surfaceVariant,
-                        contentColor = MaterialTheme.colorScheme.onSurfaceVariant
-                    ),
-                    onClick = {
-                        uriHandler.openUri(DPSHTRR_HELP)
-                    }
-                )
+                }
             }
 
-            IconButton(
-                onClick = onPreferencesClick,
-                modifier = Modifier
-                    .align(Alignment.BottomStart)
-                    .padding(16.dp)
-            ) {
-                Icon(
-                    imageVector = Icons.Rounded.Menu,
-                    contentDescription = null
-                )
-            }
+            // Categories Section Title
+            SectionHeader(title = stringResource(Res.string.select_category))
+
+            // Exam Category Cards
+            ExamTypeCard(
+                title = stringResource(Res.string.questionnaire_category_one),
+                description = stringResource(Res.string.category_b_desc),
+                icon = Icons.Rounded.DirectionsCar,
+                onClick = onStartExamClick,
+                colors = CardDefaults.elevatedCardColors(
+                    containerColor = MaterialTheme.colorScheme.primaryContainer,
+                    contentColor = MaterialTheme.colorScheme.onPrimaryContainer
+                ),
+            )
+
+            ExamTypeCard(
+                title = stringResource(Res.string.questionnaire_category_two),
+                description = stringResource(Res.string.category_a_desc),
+                icon = Icons.Rounded.Motorcycle,
+                onClick = {
+                    coroutineScope.launch {
+                        snackbarHostState.showSnackbar(categoryAInProgressMessage)
+                    }
+                },
+                colors = CardDefaults.elevatedCardColors(
+                    containerColor = MaterialTheme.colorScheme.secondaryContainer,
+                    contentColor = MaterialTheme.colorScheme.onSecondaryContainer
+                ),
+            )
+
+            ExamTypeCard(
+                title = stringResource(Res.string.questionnaire_category_three),
+                description = stringResource(Res.string.category_cd_desc),
+                icon = Icons.Rounded.DirectionsBus,
+                onClick = {
+                    coroutineScope.launch {
+                        snackbarHostState.showSnackbar(categoryCDInProgressMessage)
+                    }
+                },
+                colors = CardDefaults.elevatedCardColors(
+                    containerColor = MaterialTheme.colorScheme.tertiaryContainer,
+                    contentColor = MaterialTheme.colorScheme.onTertiaryContainer
+                ),
+            )
+
+            // Helpful Material Card
+            HelpfulMaterialCard(
+                onClick = { uriHandler.openUri(DPSHTRR_HELP) },
+                colors = CardDefaults.elevatedCardColors(
+                    containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
+                    contentColor = MaterialTheme.colorScheme.onSurface
+                ),
+            )
         }
+    }
+
+    if (showDisclaimerDialog) {
+        DisclaimerDialog(
+            onDismissRequest = { showDisclaimerDialog = false }
+        )
     }
 }
 
@@ -174,24 +243,9 @@ fun DashboardScreen(
 private fun DashboardScreenPreview() {
     MerrPatentenTheme {
         DashboardScreen(
-            uiState = DashboardUiState(),
             onStartExamClick = {},
+            onPreferencesClick = {},
             onStatisticsClick = {},
-            onPreferencesClick = {}
         )
     }
 }
-
-@Preview
-@Composable
-private fun DashboardScreenDarkPreview() {
-    MerrPatentenTheme(darkTheme = true) {
-        DashboardScreen(
-            uiState = DashboardUiState(),
-            onStartExamClick = {},
-            onStatisticsClick = {},
-            onPreferencesClick = {}
-        )
-    }
-}
-

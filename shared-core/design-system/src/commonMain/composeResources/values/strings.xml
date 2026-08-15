@@ -1,44 +1,103 @@
 <resources>
+    <!-- App & General -->
     <string name="app_name">MerrPatenten</string>
-    <string name="disclaimer_title">Kujdes!</string>
-    <string name="disclaimer_description">Ky aplikacion NUK është një aplikacion zyrtar i aprovuar nga DPSHTRR apo nga qeveria shqiptare, aplikacioni është bazuar në materialet udhëzuese që mund ti gjeni në faqen e parë të aplikacionit ose duke klikuar këtë tekts.</string>
+    <string name="app_tagline">Official Driving License Questionnaires</string>
+    <string name="back">Back</string>
+    <string name="close">Close</string>
+    <string name="info">Info</string>
+    <string name="github">Github</string>
+    <string name="warning">Warning!</string>
+
+    <!-- Disclaimer Dialog -->
+    <string name="disclaimer_title">Warning!</string>
+    <string name="disclaimer_description">This application is NOT an official app approved by DPSHTRR or the Albanian government. The application is based on guidance materials that can be found on the main page of the app or by clicking this text.</string>
+
+    <!-- Dashboard -->
+    <string name="select_category">Choose Category</string>
     <string name="questionnaire_category_one">A1, A2, B1, B</string>
     <string name="questionnaire_category_two">C1, C</string>
     <string name="questionnaire_category_three">D1, D</string>
-    <string name="questionnaire_version">VERSIONI 2023</string>
-    <string name="start_exam">FILLO PROVIMIN</string>
-    <string name="help">Materiale Udhëzuese</string>
-    <string name="help_official">LINKU ZYRTAR NGA DPSHTRR</string>
-    <string name="end_exam">Perfundo provimin</string>
-    <string name="restart_exam">Fillo provim të ri</string>
-    <string name="exit_exam">Mbyll</string>
-    <string name="true_checkbox">Saktë</string>
-    <string name="false_checkbox">Gabim</string>
-    <string name="completed_question">Plotësuar</string>
-    <string name="passed">Urime, ju fituat!</string>
-    <string name="failed">Provo përseri!</string>
+    <string name="questionnaire_version">2023 VERSION</string>
+    <string name="category_b_desc">40 MINUTES | 40 QUESTIONS | 4 ERRORS MAX</string>
+    <string name="category_a_desc">30 MINUTES | 30 QUESTIONS | 3 ERRORS MAX</string>
+    <string name="category_cd_desc">40 MINUTES | 40 QUESTIONS | 4 ERRORS MAX</string>
+    <string name="category_a_in_progress">Category A is under development.</string>
+    <string name="category_cd_in_progress">Category C/D is under development.</string>
+    <string name="start_exam">START EXAM</string>
+    <string name="help">Guidance Materials</string>
+    <string name="help_official">OFFICIAL LINK FROM DPSHTRR</string>
 
-    <string name="statistics">Statistika</string>
-    <string name="results_storing_disabled">Ju keni zgjedhur që rezultatet tuaja të mos ruhen.</string>
-    <string name="results_empty">Nuk ka të dhëna, ju duhet te përfundoni të paktën një provim.</string>
-    <string name="results_dismiss">Jo, kthehu</string>
-    <string name="results_confirm">Në rregull</string>
-    <string name="results_delete">Pastro të gjitha?</string>
-    <string name="results_delete_description">Te gjithë rezultatet do të fshien.</string>
-    <string name="results_change">Ndrysho</string>
+    <!-- Exam Screen & Controls -->
+    <string name="end_exam">Finish exam</string>
+    <string name="restart_exam">Start new exam</string>
+    <string name="exit_exam">Close</string>
+    <string name="exit_exam_button">Exit exam</string>
+    <string name="previous_page">Back</string>
+    <string name="next_page">Forward</string>
+    <string name="true_checkbox">True</string>
+    <string name="false_checkbox">False</string>
+    <string name="completed_question">Completed</string>
+    <string name="zoom">Zoom</string>
+    <string name="question_map">Question Map</string>
+    <string name="toggle_end_exam">Toggle End Exam</string>
 
-    <string name="preferences">Preferencat</string>
-    <string name="preferences_navigation_buttons">Metoda e fokusuar</string>
-    <string name="preferences_navigation_buttons_desc">Përdor swipe per te naviguar pyetjet, fshih buttonat e navigimit gjatë provimit.</string>
-    <string name="preferences_store_stats">Mbaj mend statistikat</string>
-    <string name="preferences_store_stats_desc">Ruaj rezultatet e provimeve dhe gjenero statistika bazuar në to.\n(20 provimet e fundit)</string>
-    <string name="preferences_double_press">Konfirmo daljen nga applikacioni</string>
-    <string name="preferences_double_press_desc">Kliko 2 herë pas për të dalë nga applikacioni</string>
-    <string name="preferences_follow_system_theme">Ndiq ngjyrat e sistemit</string>
-    <string name="preferences_follow_system_theme_desc">Merr kombinacionin e ngjyrave nga sistemi</string>
+    <!-- Exam Uncompleted Dialog -->
+    <string name="uncompleted_dialog_title">Warning!</string>
+    <string name="uncompleted_dialog_desc">You have not answered all questions. Would you like to review remaining questions or finish?</string>
+    <string name="review_unanswered">Review unanswered questions</string>
+    <string name="finish_anyway">Finish exam anyway</string>
+
+    <!-- Exam Results Sheet / Map -->
+    <string name="passed">Congratulations, you passed!</string>
+    <string name="failed">Try again!</string>
+    <string name="exam_passed_subtitle">Exam completed successfully!</string>
+    <string name="exam_failed_subtitle">More than 4 allowed errors</string>
+    <string name="correct_answer_feedback">Correct Answer</string>
+    <string name="wrong_answer_feedback">Incorrect Answer</string>
+    <string name="error_singular">Error</string>
+    <string name="errors_plural">Errors</string>
+
+    <!-- Statistics -->
+    <string name="statistics">Statistics</string>
+    <string name="stat_exams">Exams</string>
+    <string name="stat_average">Average</string>
+    <string name="stat_pass_rate">Pass Rate</string>
+    <string name="exam_history">Exam history</string>
+    <string name="performance_title">Performance (Errors / Time)</string>
+    <string name="performance_passed">Passed</string>
+    <string name="performance_failed">Failed</string>
+    <string name="performance_average_prefix">Average of </string>
+    <string name="performance_average_middle"> errors in the last </string>
+    <string name="performance_average_suffix"> exams.</string>
+    <string name="results_storing_disabled">You have chosen not to save your results.</string>
+    <string name="results_empty">No data available, you need to complete at least one exam.</string>
+    <string name="results_dismiss">No, go back</string>
+    <string name="results_confirm">OK</string>
+    <string name="results_delete">Clear all?</string>
+    <string name="results_delete_description">All results will be deleted.</string>
+    <string name="results_change">Change</string>
+
+    <!-- Preferences -->
+    <string name="preferences">Preferences</string>
+    <string name="pref_section_behavior">Behavior &amp; Exam</string>
+    <string name="pref_section_appearance">Theme &amp; Appearance</string>
+    <string name="preferences_navigation_buttons">Focused mode</string>
+    <string name="preferences_navigation_buttons_desc">Use swipe to navigate questions, hide navigation buttons during exam.</string>
+    <string name="preferences_store_stats">Save statistics</string>
+    <string name="preferences_store_stats_desc">Save exam results and generate statistics based on them.\n(Last 20 exams)</string>
+    <string name="preferences_follow_system_theme">Follow system theme</string>
+    <string name="preferences_follow_system_theme_desc">Match color palette with system theme</string>
     <string name="preferences_dark_mode">Dark Mode</string>
-    <string name="preferences_dark_mode_desc">Kombinacioni i ngjyrave</string>
-    <string name="preferences_material_you">Material you</string>
-    <string name="preferences_material_you_desc">Ngjyra dinamike të gjeneruara nga sistemi i telefonit tuaj</string>
+    <string name="preferences_dark_mode_desc">Dark color scheme</string>
+    <string name="preferences_material_you">Dynamic colors</string>
+    <string name="preferences_material_you_desc">Dynamic colors generated by your device system</string>
 
+    <!-- Language & Localization -->
+    <string name="pref_section_localization">Language &amp; Localization</string>
+    <string name="language">Language</string>
+    <string name="language_description">Change application display language</string>
+    <string name="english">English</string>
+    <string name="albanian">Shqip</string>
+    <string name="language_restart_title">Language Changed</string>
+    <string name="language_restart_desc">Please restart the app to apply the language change.</string>
 </resources>

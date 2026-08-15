@@ -1,56 +1,32 @@
 package com.arsildo.merrpatenten.shared.feature.preferences
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.ExtendedFloatingActionButton
-import androidx.compose.material3.FloatingActionButtonDefaults
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
+import androidx.compose.material.icons.automirrored.rounded.KeyboardArrowRight
+import androidx.compose.material.icons.rounded.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.arsildo.merrpatenten.shared.core.designsystem.AnimateColorSchemeTransition
-import com.arsildo.merrpatenten.shared.core.designsystem.GITHUB_URL
-import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
+import com.arsildo.merrpatenten.shared.core.designsystem.*
 import com.arsildo.merrpatenten.shared.core.designsystem.components.PreferenceCard
-import merrpatenten.shared_core.design_system.generated.resources.Res
-import merrpatenten.shared_core.design_system.generated.resources.github
-import merrpatenten.shared_core.design_system.generated.resources.preferences
-import merrpatenten.shared_core.design_system.generated.resources.preferences_dark_mode
-import merrpatenten.shared_core.design_system.generated.resources.preferences_dark_mode_desc
-import merrpatenten.shared_core.design_system.generated.resources.preferences_double_press
-import merrpatenten.shared_core.design_system.generated.resources.preferences_double_press_desc
-import merrpatenten.shared_core.design_system.generated.resources.preferences_follow_system_theme
-import merrpatenten.shared_core.design_system.generated.resources.preferences_follow_system_theme_desc
-import merrpatenten.shared_core.design_system.generated.resources.preferences_material_you
-import merrpatenten.shared_core.design_system.generated.resources.preferences_material_you_desc
-import merrpatenten.shared_core.design_system.generated.resources.preferences_navigation_buttons
-import merrpatenten.shared_core.design_system.generated.resources.preferences_navigation_buttons_desc
-import merrpatenten.shared_core.design_system.generated.resources.preferences_store_stats
-import merrpatenten.shared_core.design_system.generated.resources.preferences_store_stats_desc
+import com.arsildo.merrpatenten.shared.core.designsystem.components.SectionHeader
+import merrpatenten.shared_core.design_system.generated.resources.*
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
-fun PreferencesRoute(
+internal fun PreferencesRoute(
     onBackPress: () -> Unit,
     viewModel: PreferencesViewModel = koinViewModel(),
 ) {
@@ -60,21 +36,19 @@ fun PreferencesRoute(
         onBackPress = onBackPress,
         onImmersiveModeChange = viewModel::setImmersiveMode,
         onSaveStatsChange = viewModel::setSaveStats,
-        onConfirmAppExitChange = viewModel::setConfirmAppExit,
         onFollowSystemChange = viewModel::setFollowSystem,
         onColorSchemeChange = viewModel::setColorScheme,
         onDynamicColorSchemeChange = viewModel::setDynamicColorScheme,
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
-fun PreferencesScreen(
+internal fun PreferencesScreen(
     uiState: PreferencesUiState,
     onBackPress: () -> Unit,
     onImmersiveModeChange: (Boolean) -> Unit,
     onSaveStatsChange: (Boolean) -> Unit,
-    onConfirmAppExitChange: (Boolean) -> Unit,
     onFollowSystemChange: (Boolean) -> Unit,
     onColorSchemeChange: (Boolean) -> Unit,
     onDynamicColorSchemeChange: (Boolean) -> Unit,
@@ -86,21 +60,32 @@ fun PreferencesScreen(
         Scaffold(
             modifier = modifier,
             topBar = {
-                TopAppBar(
-                    title = { Text(text = stringResource(Res.string.preferences)) },
+                MediumTopAppBar(
+                    title = {
+                        Text(
+                            text = stringResource(Res.string.preferences),
+                            fontWeight = FontWeight.Bold,
+                            style = MaterialTheme.typography.headlineMedium
+                        )
+                    },
                     navigationIcon = {
-                        IconButton(onClick = onBackPress) {
+                        FilledTonalIconButton(
+                            onClick = onBackPress,
+                            colors = IconButtonDefaults.filledTonalIconButtonColors(
+                                containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
+                                contentColor = MaterialTheme.colorScheme.onSurface
+                            ),
+                            modifier = Modifier.padding(start = 8.dp)
+                        ) {
                             Icon(
                                 imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
-                                contentDescription = null
+                                contentDescription = stringResource(Res.string.back)
                             )
                         }
                     },
                     colors = TopAppBarDefaults.topAppBarColors(
-                        containerColor = MaterialTheme.colorScheme.secondary,
-                        titleContentColor = MaterialTheme.colorScheme.onSecondary,
-                        actionIconContentColor = MaterialTheme.colorScheme.onSecondary,
-                        navigationIconContentColor = MaterialTheme.colorScheme.onSecondary,
+                        containerColor = MaterialTheme.colorScheme.background,
+                        titleContentColor = MaterialTheme.colorScheme.onBackground,
                     ),
                 )
             },
@@ -109,70 +94,240 @@ fun PreferencesScreen(
                     onClick = {
                         uriHandler.openUri(GITHUB_URL)
                     },
-                    text = { Text(text = "Github") },
+                    text = {
+                        Text(
+                            text = stringResource(Res.string.github),
+                            fontWeight = FontWeight.SemiBold
+                        )
+                    },
                     icon = {
                         Icon(
                             painter = painterResource(Res.drawable.github),
                             contentDescription = null,
-                            modifier = Modifier.size(32.dp)
+                            modifier = Modifier.size(28.dp)
                         )
                     },
-                    elevation = FloatingActionButtonDefaults.loweredElevation(),
+                    elevation = FloatingActionButtonDefaults.elevation(defaultElevation = 2.dp),
                     containerColor = MaterialTheme.colorScheme.secondaryContainer,
                     contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
-                    shape = MaterialTheme.shapes.extraLarge
+                    shape = MaterialTheme.shapes.large
                 )
             },
-            contentColor = MaterialTheme.colorScheme.primary
+            contentColor = MaterialTheme.colorScheme.onBackground
         ) { contentPadding ->
-            Box(
+            Column(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(contentPadding)
+                    .verticalScroll(rememberScrollState())
                     .padding(horizontal = 16.dp)
+                    .padding(bottom = 96.dp),
+                verticalArrangement = Arrangement.spacedBy(24.dp)
             ) {
+                // Section 1: Behavior
                 Column(
-                    verticalArrangement = Arrangement.spacedBy(32.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    modifier = Modifier.padding(top = 32.dp)
+                    verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    PreferenceCard(
-                        title = stringResource(Res.string.preferences_navigation_buttons),
-                        subtitle = stringResource(Res.string.preferences_navigation_buttons_desc),
-                        checked = uiState.immersiveMode,
-                        onCheckedChange = onImmersiveModeChange
+                    SectionHeader(title = stringResource(Res.string.pref_section_behavior))
+
+                    Column(
+                        verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap)
+                    ) {
+                        PreferenceCard(
+                            title = stringResource(Res.string.preferences_navigation_buttons),
+                            subtitle = stringResource(Res.string.preferences_navigation_buttons_desc),
+                            checked = uiState.immersiveMode,
+                            index = 0,
+                            count = 2,
+                            leadingIcon = {
+                                Icon(
+                                    imageVector = Icons.Rounded.TouchApp,
+                                    contentDescription = null,
+                                    tint = MaterialTheme.colorScheme.primary
+                                )
+                            },
+                            onCheckedChange = onImmersiveModeChange
+                        )
+                        PreferenceCard(
+                            title = stringResource(Res.string.preferences_store_stats),
+                            subtitle = stringResource(Res.string.preferences_store_stats_desc),
+                            checked = uiState.saveStats,
+                            index = 1,
+                            count = 2,
+                            leadingIcon = {
+                                Icon(
+                                    imageVector = Icons.Rounded.Insights,
+                                    contentDescription = null,
+                                    tint = MaterialTheme.colorScheme.primary
+                                )
+                            },
+                            onCheckedChange = onSaveStatsChange
+                        )
+                    }
+                }
+
+                // Section 2: Appearance
+                Column(
+                    verticalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    SectionHeader(title = stringResource(Res.string.pref_section_appearance))
+
+                    Column(
+                        verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap)
+                    ) {
+                        PreferenceCard(
+                            title = stringResource(Res.string.preferences_follow_system_theme),
+                            subtitle = stringResource(Res.string.preferences_follow_system_theme_desc),
+                            checked = uiState.followSystemColors,
+                            index = 0,
+                            count = 3,
+                            leadingIcon = {
+                                Icon(
+                                    imageVector = Icons.Rounded.BrightnessAuto,
+                                    contentDescription = null,
+                                    tint = MaterialTheme.colorScheme.primary
+                                )
+                            },
+                            onCheckedChange = onFollowSystemChange
+                        )
+                        PreferenceCard(
+                            title = stringResource(Res.string.preferences_dark_mode),
+                            subtitle = stringResource(Res.string.preferences_dark_mode_desc),
+                            checked = uiState.colorScheme,
+                            enabled = !uiState.followSystemColors,
+                            index = 1,
+                            count = 3,
+                            leadingIcon = {
+                                Icon(
+                                    imageVector = Icons.Rounded.DarkMode,
+                                    contentDescription = null,
+                                    tint = MaterialTheme.colorScheme.primary
+                                )
+                            },
+                            onCheckedChange = onColorSchemeChange
+                        )
+                        PreferenceCard(
+                            title = stringResource(Res.string.preferences_material_you),
+                            subtitle = stringResource(Res.string.preferences_material_you_desc),
+                            checked = uiState.dynamicColorScheme,
+                            index = 2,
+                            count = 3,
+                            leadingIcon = {
+                                Icon(
+                                    imageVector = Icons.Rounded.Palette,
+                                    contentDescription = null,
+                                    tint = MaterialTheme.colorScheme.primary
+                                )
+                            },
+                            onCheckedChange = onDynamicColorSchemeChange
+                        )
+                    }
+                }
+
+                // Section 3: Language & Localization
+                Column(
+                    verticalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    SectionHeader(title = stringResource(Res.string.pref_section_localization))
+
+                    val currentLocale = rememberApplicationLocale()
+                    var languageDialogVisible by remember { mutableStateOf(false) }
+
+                    SegmentedListItem(
+                        selected = false,
+                        onClick = { languageDialogVisible = true },
+                        colors = ListItemDefaults.colors(
+                            containerColor = MaterialTheme.colorScheme.surfaceContainerLow,
+                        ),
+                        shapes = ListItemDefaults.segmentedShapes(index = 0, count = 1),
+                        leadingContent = {
+                            Icon(
+                                imageVector = Icons.Rounded.Language,
+                                contentDescription = null,
+                                tint = MaterialTheme.colorScheme.primary
+                            )
+                        },
+                        content = {
+                            Text(
+                                text = stringResource(Res.string.language),
+                                style = MaterialTheme.typography.titleMedium,
+                                fontWeight = FontWeight.SemiBold
+                            )
+                        },
+                        supportingContent = {
+                            Text(
+                                text = stringResource(currentLocale.res),
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.primary
+                            )
+                        },
+                        trailingContent = {
+                            Icon(
+                                imageVector = Icons.AutoMirrored.Rounded.KeyboardArrowRight,
+                                contentDescription = null,
+                                tint = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
                     )
-                    PreferenceCard(
-                        title = stringResource(Res.string.preferences_store_stats),
-                        subtitle = stringResource(Res.string.preferences_store_stats_desc),
-                        checked = uiState.saveStats,
-                        onCheckedChange = onSaveStatsChange
-                    )
-                    PreferenceCard(
-                        title = stringResource(Res.string.preferences_double_press),
-                        subtitle = stringResource(Res.string.preferences_double_press_desc),
-                        checked = uiState.confirmAppExit,
-                        onCheckedChange = onConfirmAppExitChange
-                    )
-                    PreferenceCard(
-                        title = stringResource(Res.string.preferences_follow_system_theme),
-                        subtitle = stringResource(Res.string.preferences_follow_system_theme_desc),
-                        checked = uiState.followSystemColors,
-                        onCheckedChange = onFollowSystemChange
-                    )
-                    PreferenceCard(
-                        title = stringResource(Res.string.preferences_dark_mode),
-                        subtitle = stringResource(Res.string.preferences_dark_mode_desc),
-                        checked = uiState.colorScheme,
-                        enabled = !uiState.followSystemColors,
-                        onCheckedChange = onColorSchemeChange
-                    )
-                    PreferenceCard(
-                        title = stringResource(Res.string.preferences_material_you),
-                        subtitle = stringResource(Res.string.preferences_material_you_desc),
-                        checked = uiState.dynamicColorScheme,
-                        onCheckedChange = onDynamicColorSchemeChange
-                    )
+
+                    if (languageDialogVisible) {
+                        AlertDialog(
+                            onDismissRequest = { languageDialogVisible = false },
+                            title = {
+                                Text(
+                                    text = stringResource(Res.string.language),
+                                    style = MaterialTheme.typography.headlineSmall,
+                                    fontWeight = FontWeight.Bold
+                                )
+                            },
+                            text = {
+                                Column(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    verticalArrangement = Arrangement.spacedBy(8.dp)
+                                ) {
+                                    ApplicationLocale.entries.forEach { locale ->
+                                        Surface(
+                                            shape = MaterialTheme.shapes.medium,
+                                            color = if (currentLocale == locale) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surfaceContainerHigh,
+                                            modifier = Modifier
+                                                .fillMaxWidth()
+                                                .clickable {
+                                                    ApplicationLocaleManager.setLocale(locale)
+                                                    languageDialogVisible = false
+                                                }
+                                        ) {
+                                            Row(
+                                                modifier = Modifier
+                                                    .fillMaxWidth()
+                                                    .padding(horizontal = 16.dp, vertical = 14.dp),
+                                                horizontalArrangement = Arrangement.SpaceBetween,
+                                                verticalAlignment = Alignment.CenterVertically
+                                            ) {
+                                                Text(
+                                                    text = stringResource(locale.res),
+                                                    style = MaterialTheme.typography.titleMedium,
+                                                    fontWeight = if (currentLocale == locale) FontWeight.Bold else FontWeight.Normal,
+                                                    color = if (currentLocale == locale) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.onSurface
+                                                )
+                                                RadioButton(
+                                                    selected = currentLocale == locale,
+                                                    onClick = {
+                                                        ApplicationLocaleManager.setLocale(locale)
+                                                        languageDialogVisible = false
+                                                    }
+                                                )
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            confirmButton = {
+                                TextButton(onClick = { languageDialogVisible = false }) {
+                                    Text(text = stringResource(Res.string.close))
+                                }
+                            }
+                        )
+                    }
                 }
             }
         }
@@ -188,7 +343,6 @@ private fun PreferencesScreenPreview() {
             onBackPress = {},
             onImmersiveModeChange = {},
             onSaveStatsChange = {},
-            onConfirmAppExitChange = {},
             onFollowSystemChange = {},
             onColorSchemeChange = {},
             onDynamicColorSchemeChange = {},
@@ -205,11 +359,9 @@ private fun PreferencesScreenDarkPreview() {
             onBackPress = {},
             onImmersiveModeChange = {},
             onSaveStatsChange = {},
-            onConfirmAppExitChange = {},
             onFollowSystemChange = {},
             onColorSchemeChange = {},
             onDynamicColorSchemeChange = {},
         )
     }
 }
-

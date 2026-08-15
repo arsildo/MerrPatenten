@@ -34,5 +34,8 @@ kotlin {
             implementation(libs.androidx.annotation)
             api(libs.kotlinx.datetime)
         }
+        androidMain.dependencies {
+            implementation(libs.androidx.appcompat)
+        }
     }
 }

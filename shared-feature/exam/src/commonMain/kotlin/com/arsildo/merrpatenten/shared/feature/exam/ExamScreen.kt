@@ -1,8 +1,12 @@
 package com.arsildo.merrpatenten.shared.feature.exam
 
 import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.spring
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ExitToApp
 import androidx.compose.material.icons.rounded.DoneAll
@@ -11,6 +15,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.tooling.preview.Preview
@@ -24,10 +29,12 @@ import com.arsildo.merrpatenten.shared.core.designsystem.components.ExitExamButt
 import com.arsildo.merrpatenten.shared.core.designsystem.components.RestartExamButton
 import com.arsildo.merrpatenten.shared.core.model.Question
 import kotlinx.coroutines.launch
+import merrpatenten.shared_core.design_system.generated.resources.*
+import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
-fun ExamRoute(
+internal fun ExamRoute(
     onImageDetailsClick: (Int) -> Unit,
     onOpenMap: () -> Unit,
     onExitExam: () -> Unit,
@@ -51,6 +58,7 @@ fun ExamRoute(
     )
 }
 
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 internal fun ExamScreen(
     modifier: Modifier = Modifier,
@@ -81,6 +89,68 @@ internal fun ExamScreen(
         modifier = modifier,
         contentWindowInsets = WindowInsets(bottom = 0),
         contentColor = MaterialTheme.colorScheme.primary,
+        bottomBar = {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .animateContentSize()
+                    .padding(16.dp)
+                    .navigationBarsPadding(),
+                verticalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                if (!uiState.immersiveMode) {
+                    PagerNavigation(
+                        onPreviousPageClick = {
+                            if (pagerState.canScrollBackward) {
+                                coroutineScope.launch {
+                                    pagerState.animateScrollToPage(page = pagerState.currentPage - 1)
+                                }
+                            }
+                        },
+                        onNextPageClick = {
+                            if (pagerState.canScrollForward) {
+                                coroutineScope.launch {
+                                    pagerState.animateScrollToPage(page = pagerState.currentPage + 1)
+                                }
+                            }
+                        }
+                    )
+                }
+
+                if (endExamVisible) {
+                    if (uiState.isCompleted) {
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(16.dp)
+                        ) {
+                            ExitExamButton(
+                                icon = Icons.AutoMirrored.Rounded.ExitToApp,
+                                onClick = onExitExam,
+                                modifier = Modifier.fillMaxWidth(0.4f)
+                            )
+                            RestartExamButton(
+                                icon = Icons.Rounded.RestartAlt,
+                                modifier = Modifier.fillMaxWidth(),
+                                onClick = onRestartExam
+                            )
+                        }
+                    } else {
+                        EndExamButton(
+                            icon = Icons.Rounded.DoneAll,
+                            modifier = Modifier.fillMaxWidth(),
+                            onClick = {
+                                val completedCount = uiState.responseList.count { it.isNotBlank() }
+                                if (completedCount != QUESTIONS_IN_EXAM) {
+                                    questionsUnCompletedDialog = true
+                                } else {
+                                    onCompleteExam()
+                                }
+                            }
+                        )
+                    }
+                }
+            }
+        }
     ) { contentPadding ->
         Box(
             modifier = Modifier
@@ -89,8 +159,7 @@ internal fun ExamScreen(
             contentAlignment = Alignment.Center
         ) {
             if (uiState.questions.isEmpty()) {
-                CircularProgressIndicator(
-                    strokeCap = StrokeCap.Round,
+                LoadingIndicator(
                     modifier = Modifier
                         .fillMaxSize()
                         .wrapContentSize()
@@ -103,13 +172,40 @@ internal fun ExamScreen(
                     verticalArrangement = Arrangement.SpaceBetween,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Legend(
-                        pagerState = pagerState,
-                        timer = { uiState.timer },
-                        endExamVisible = endExamVisible,
-                        onMapClick = onOpenMap,
-                        onShowEndExamButton = { endExamVisible = !endExamVisible }
-                    )
+                    Column(modifier = Modifier.fillMaxWidth()) {
+                        Legend(
+                            pagerState = pagerState,
+                            timer = { uiState.timer },
+                            endExamVisible = endExamVisible,
+                            onMapClick = onOpenMap,
+                            onShowEndExamButton = { endExamVisible = !endExamVisible }
+                        )
+
+                        val completedCount = remember(uiState.responseList) {
+                            uiState.responseList.count { it.isNotBlank() }
+                        }
+                        val progress = (completedCount.toFloat() / QUESTIONS_IN_EXAM.toFloat()).coerceIn(0f, 1f)
+                        val animatedProgress by animateFloatAsState(
+                            targetValue = progress,
+                            animationSpec = spring(
+                                dampingRatio = Spring.DampingRatioNoBouncy,
+                                stiffness = Spring.StiffnessMediumLow
+                            ),
+                            label = "ExamCompletionProgress"
+                        )
+
+                        LinearProgressIndicator(
+                            progress = { animatedProgress },
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(horizontal = 16.dp, vertical = 4.dp)
+                                .height(6.dp)
+                                .clip(CircleShape),
+                            color = MaterialTheme.colorScheme.primary,
+                            trackColor = MaterialTheme.colorScheme.surfaceContainerHighest,
+                            strokeCap = StrokeCap.Round,
+                        )
+                    }
 
                     Pager(
                         questions = uiState.questions,
@@ -126,66 +222,6 @@ internal fun ExamScreen(
                     LaunchedEffect(pagerState.settledPage) {
                         endExamVisible = pagerState.settledPage == QUESTIONS_IN_EXAM - 1
                     }
-
-                    Column(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .animateContentSize()
-                            .padding(16.dp),
-                        verticalArrangement = Arrangement.spacedBy(16.dp)
-                    ) {
-                        if (!uiState.immersiveMode) {
-                            PagerNavigation(
-                                onPreviousPageClick = {
-                                    if (pagerState.canScrollBackward) {
-                                        coroutineScope.launch {
-                                            pagerState.animateScrollToPage(page = pagerState.currentPage - 1)
-                                        }
-                                    }
-                                },
-                                onNextPageClick = {
-                                    if (pagerState.canScrollForward) {
-                                        coroutineScope.launch {
-                                            pagerState.animateScrollToPage(page = pagerState.currentPage + 1)
-                                        }
-                                    }
-                                }
-                            )
-                        }
-
-                        if (endExamVisible) {
-                            if (uiState.isCompleted) {
-                                Row(
-                                    modifier = Modifier.fillMaxWidth(),
-                                    horizontalArrangement = Arrangement.spacedBy(16.dp)
-                                ) {
-                                    ExitExamButton(
-                                        icon = Icons.AutoMirrored.Rounded.ExitToApp,
-                                        onClick = onExitExam,
-                                        modifier = Modifier.fillMaxWidth(0.4f)
-                                    )
-                                    RestartExamButton(
-                                        icon = Icons.Rounded.RestartAlt,
-                                        modifier = Modifier.fillMaxWidth(),
-                                        onClick = onRestartExam
-                                    )
-                                }
-                            } else {
-                                EndExamButton(
-                                    icon = Icons.Rounded.DoneAll,
-                                    modifier = Modifier.fillMaxWidth(),
-                                    onClick = {
-                                        val completedCount = uiState.responseList.count { it.isNotBlank() }
-                                        if (completedCount != QUESTIONS_IN_EXAM) {
-                                            questionsUnCompletedDialog = true
-                                        } else {
-                                            onCompleteExam()
-                                        }
-                                    }
-                                )
-                            }
-                        }
-                    }
                 }
             }
         }
@@ -194,39 +230,80 @@ internal fun ExamScreen(
     if (questionsUnCompletedDialog) {
         AlertDialog(
             onDismissRequest = { questionsUnCompletedDialog = false },
-            tonalElevation = 0.dp,
+            shape = MaterialTheme.shapes.extraLarge,
+            containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
+            icon = {
+                Surface(
+                    shape = CircleShape,
+                    color = MaterialTheme.colorScheme.errorContainer,
+                    modifier = Modifier.size(56.dp)
+                ) {
+                    Box(contentAlignment = Alignment.Center) {
+                        Icon(
+                            imageVector = Icons.Rounded.DoneAll,
+                            contentDescription = null,
+                            tint = MaterialTheme.colorScheme.onErrorContainer,
+                            modifier = Modifier.size(28.dp)
+                        )
+                    }
+                }
+            },
             title = {
-                Text(text = "Kujdes!")
+                Text(
+                    text = stringResource(Res.string.uncompleted_dialog_title),
+                    style = MaterialTheme.typography.headlineSmall,
+                    fontWeight = androidx.compose.ui.text.font.FontWeight.Bold
+                )
             },
             text = {
-                Text(text = "Ju nuk i keni plotësuar të gjithë pyetjet...")
+                Text(
+                    text = stringResource(Res.string.uncompleted_dialog_desc),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
             },
             confirmButton = {
                 Column(
                     modifier = Modifier.fillMaxWidth(),
-                    verticalArrangement = Arrangement.spacedBy(16.dp)
+                    verticalArrangement = Arrangement.spacedBy(10.dp)
                 ) {
                     Button(
                         onClick = {
                             questionsUnCompletedDialog = false
                             onOpenMap()
                         },
+                        shapes = ButtonShapes(
+                            shape = MaterialTheme.shapes.medium,
+                            pressedShape = MaterialTheme.shapes.small
+                        ),
                         modifier = Modifier.fillMaxWidth(),
-                        contentPadding = PaddingValues(16.dp),
+                        contentPadding = PaddingValues(14.dp),
                         content = {
-                            Text(text = "Shiko pyetjet e papërgjigjura")
+                            Text(
+                                text = stringResource(Res.string.review_unanswered),
+                                style = MaterialTheme.typography.labelLarge,
+                                fontWeight = androidx.compose.ui.text.font.FontWeight.SemiBold
+                            )
                         }
                     )
-                    Button(
+                    FilledTonalButton(
                         onClick = {
                             questionsUnCompletedDialog = false
                             onCompleteExam()
                             onOpenMap()
                         },
+                        shapes = ButtonShapes(
+                            shape = MaterialTheme.shapes.medium,
+                            pressedShape = MaterialTheme.shapes.small
+                        ),
                         modifier = Modifier.fillMaxWidth(),
-                        contentPadding = PaddingValues(16.dp),
+                        contentPadding = PaddingValues(14.dp),
                         content = {
-                            Text(text = "Përfundo provimin")
+                            Text(
+                                text = stringResource(Res.string.finish_anyway),
+                                style = MaterialTheme.typography.labelLarge,
+                                fontWeight = androidx.compose.ui.text.font.FontWeight.SemiBold
+                            )
                         }
                     )
                     Button(
@@ -234,14 +311,22 @@ internal fun ExamScreen(
                             questionsUnCompletedDialog = false
                             onExitExam()
                         },
+                        shapes = ButtonShapes(
+                            shape = MaterialTheme.shapes.medium,
+                            pressedShape = MaterialTheme.shapes.small
+                        ),
                         modifier = Modifier.fillMaxWidth(),
-                        contentPadding = PaddingValues(16.dp),
+                        contentPadding = PaddingValues(14.dp),
                         colors = ButtonDefaults.buttonColors(
                             containerColor = Red,
                             contentColor = Color.White
                         ),
                         content = {
-                            Text(text = "Dil nga provimi")
+                            Text(
+                                text = stringResource(Res.string.exit_exam_button),
+                                style = MaterialTheme.typography.labelLarge,
+                                fontWeight = androidx.compose.ui.text.font.FontWeight.SemiBold
+                            )
                         }
                     )
                 }
@@ -293,6 +378,69 @@ private fun ExamScreenLoadingPreview() {
     MerrPatentenTheme {
         ExamScreen(
             uiState = ExamUiState(questions = emptyList()),
+            onImageDetailsClick = {},
+            onOpenMap = {},
+            onExitExam = {},
+            onRestartExam = {},
+            onCheckTrueAtPage = {},
+            onCheckFalseAtPage = {},
+            onCompleteExam = {},
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun ExamScreenDarkPreview() {
+    MerrPatentenTheme(darkTheme = true) {
+        ExamScreen(
+            uiState = ExamUiState(
+                questions = listOf(
+                    Question(
+                        id = 1,
+                        question = "Sinjali i paraqitur në figurë tregon një kthesë të rrezikshme majtas.",
+                        image = 1,
+                        answer = "Saktë"
+                    )
+                ),
+                trueCheckedPositions = List(QUESTIONS_IN_EXAM) { false },
+                falseCheckedPositions = List(QUESTIONS_IN_EXAM) { false },
+                responseList = List(QUESTIONS_IN_EXAM) { "" },
+                mistakePositions = List(QUESTIONS_IN_EXAM) { 1 },
+                timer = "39:42"
+            ),
+            onImageDetailsClick = {},
+            onOpenMap = {},
+            onExitExam = {},
+            onRestartExam = {},
+            onCheckTrueAtPage = {},
+            onCheckFalseAtPage = {},
+            onCompleteExam = {},
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun ExamScreenCompletedPreview() {
+    MerrPatentenTheme {
+        ExamScreen(
+            uiState = ExamUiState(
+                questions = listOf(
+                    Question(
+                        id = 1,
+                        question = "Sinjali i paraqitur në figurë tregon një kthesë të rrezikshme majtas.",
+                        image = 1,
+                        answer = "Saktë"
+                    )
+                ),
+                trueCheckedPositions = List(QUESTIONS_IN_EXAM) { true },
+                falseCheckedPositions = List(QUESTIONS_IN_EXAM) { false },
+                responseList = List(QUESTIONS_IN_EXAM) { "Saktë" },
+                mistakePositions = List(QUESTIONS_IN_EXAM) { 0 },
+                isCompleted = true,
+                timer = "24:10"
+            ),
             onImageDetailsClick = {},
             onOpenMap = {},
             onExitExam = {},

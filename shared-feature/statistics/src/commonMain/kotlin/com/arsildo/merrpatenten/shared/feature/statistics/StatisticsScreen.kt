@@ -1,50 +1,34 @@
 package com.arsildo.merrpatenten.shared.feature.statistics
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
-import androidx.compose.material.icons.rounded.DeleteSweep
-import androidx.compose.material.icons.rounded.MobiledataOff
-import androidx.compose.material.icons.rounded.MultipleStop
-import androidx.compose.material3.Button
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.material.icons.rounded.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
+import com.arsildo.merrpatenten.shared.core.designsystem.*
+import com.arsildo.merrpatenten.shared.core.designsystem.components.SectionHeader
 import com.arsildo.merrpatenten.shared.core.model.ExamResult
-import merrpatenten.shared_core.design_system.generated.resources.Res
-import merrpatenten.shared_core.design_system.generated.resources.results_change
-import merrpatenten.shared_core.design_system.generated.resources.results_empty
-import merrpatenten.shared_core.design_system.generated.resources.results_storing_disabled
-import merrpatenten.shared_core.design_system.generated.resources.statistics
+import merrpatenten.shared_core.design_system.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
+import kotlin.math.roundToInt
 
 @Composable
-fun StatisticsRoute(
+internal fun StatisticsRoute(
+    viewModel: StatisticsViewModel = koinViewModel(),
     onChangePreferenceClick: () -> Unit,
     onBackPress: () -> Unit,
-    viewModel: StatisticsViewModel = koinViewModel(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     StatisticsScreen(
@@ -55,9 +39,8 @@ fun StatisticsRoute(
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun StatisticsScreen(
+internal fun StatisticsScreen(
     uiState: StatisticsUiState,
     onChangePreferenceClick: () -> Unit,
     onBackPress: () -> Unit,
@@ -69,35 +52,55 @@ fun StatisticsScreen(
     Scaffold(
         modifier = modifier,
         topBar = {
-            TopAppBar(
-                title = { Text(text = stringResource(Res.string.statistics)) },
+            MediumTopAppBar(
+                title = {
+                    Text(
+                        text = stringResource(Res.string.statistics),
+                        fontWeight = FontWeight.Bold,
+                        style = MaterialTheme.typography.headlineMedium
+                    )
+                },
                 navigationIcon = {
-                    IconButton(onClick = onBackPress) {
+                    FilledTonalIconButton(
+                        onClick = onBackPress,
+                        colors = IconButtonDefaults.filledTonalIconButtonColors(
+                            containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
+                            contentColor = MaterialTheme.colorScheme.onSurface
+                        ),
+                        shape = MaterialTheme.shapes.medium,
+                        modifier = Modifier.padding(start = 8.dp)
+                    ) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
-                            contentDescription = null
+                            contentDescription = stringResource(Res.string.back)
                         )
                     }
                 },
                 actions = {
                     if (uiState.saveResults && uiState.results.isNotEmpty()) {
-                        IconButton(onClick = { deleteResultsDialog = true }) {
+                        FilledTonalIconButton(
+                            onClick = { deleteResultsDialog = true },
+                            colors = IconButtonDefaults.filledTonalIconButtonColors(
+                                containerColor = RedContainer,
+                                contentColor = Red
+                            ),
+                            shape = MaterialTheme.shapes.medium,
+                            modifier = Modifier.padding(end = 8.dp)
+                        ) {
                             Icon(
                                 imageVector = Icons.Rounded.DeleteSweep,
-                                contentDescription = null
+                                contentDescription = stringResource(Res.string.results_delete)
                             )
                         }
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.background,
-                    navigationIconContentColor = MaterialTheme.colorScheme.primary,
-                    actionIconContentColor = MaterialTheme.colorScheme.primary,
-                    titleContentColor = MaterialTheme.colorScheme.primary,
+                    titleContentColor = MaterialTheme.colorScheme.onBackground,
                 ),
             )
         },
-        contentColor = MaterialTheme.colorScheme.secondary,
+        contentColor = MaterialTheme.colorScheme.onBackground,
         contentWindowInsets = WindowInsets(top = 0, bottom = 0)
     ) { contentPadding ->
         Box(
@@ -112,10 +115,17 @@ fun StatisticsScreen(
                     changePreference = {
                         Button(
                             onClick = onChangePreferenceClick,
-                            shape = MaterialTheme.shapes.extraLarge,
-                            contentPadding = PaddingValues(horizontal = 32.dp)
+                            shapes = ButtonShapes(
+                                shape = MaterialTheme.shapes.large,
+                                pressedShape = MaterialTheme.shapes.small
+                            ),
+                            contentPadding = PaddingValues(horizontal = 28.dp, vertical = 12.dp)
                         ) {
-                            Text(text = stringResource(Res.string.results_change))
+                            Text(
+                                text = stringResource(Res.string.results_change),
+                                style = MaterialTheme.typography.labelLarge,
+                                fontWeight = FontWeight.Bold
+                            )
                         }
                     }
                 )
@@ -123,13 +133,57 @@ fun StatisticsScreen(
                 else -> {
                     val results = uiState.results.sortedByDescending { it.id }
                     if (results.isNotEmpty()) {
+                        val passedCount = results.count { it.errors <= ERRORS_ALLOWED }
+                        val passRate = ((passedCount.toDouble() / results.size) * 100).roundToInt()
+                        val totalErrors = results.sumOf { it.errors }
+                        val avgErrors = ((totalErrors.toDouble() / results.size) * 10).roundToInt() / 10.0
+
                         Column(
-                            modifier = Modifier.padding(horizontal = 16.dp),
-                            verticalArrangement = Arrangement.spacedBy(16.dp)
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .verticalScroll(rememberScrollState())
+                                .padding(horizontal = 16.dp)
+                                .padding(bottom = 32.dp),
+                            verticalArrangement = Arrangement.spacedBy(20.dp)
                         ) {
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.spacedBy(10.dp)
+                            ) {
+                                StatSummaryCard(
+                                    title = stringResource(Res.string.stat_exams),
+                                    value = "${results.size}",
+                                    icon = Icons.Rounded.Quiz,
+                                    containerColor = MaterialTheme.colorScheme.primaryContainer,
+                                    contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                                    modifier = Modifier.weight(1f)
+                                )
+                                StatSummaryCard(
+                                    title = stringResource(Res.string.stat_average),
+                                    value = "$avgErrors",
+                                    icon = Icons.Rounded.CheckCircle,
+                                    containerColor = if (avgErrors <= ERRORS_ALLOWED) GreenContainer else RedContainer,
+                                    contentColor = if (avgErrors <= ERRORS_ALLOWED) OnGreenContainer else OnRedContainer,
+                                    modifier = Modifier.weight(1f)
+                                )
+                                StatSummaryCard(
+                                    title = stringResource(Res.string.stat_pass_rate),
+                                    value = "$passRate%",
+                                    icon = Icons.Rounded.EmojiEvents,
+                                    containerColor = MaterialTheme.colorScheme.tertiaryContainer,
+                                    contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
+                                    modifier = Modifier.weight(1f)
+                                )
+                            }
+
                             PerformanceGraph(results = results)
-                            AverageMistakes(previousExamResults = results)
-                            ResultList(results = results)
+
+                            Column(
+                                verticalArrangement = Arrangement.spacedBy(8.dp)
+                            ) {
+                                SectionHeader(title = stringResource(Res.string.exam_history))
+                                ResultList(results = results)
+                            }
                         }
                     } else {
                         ResultStoringDisabled(
@@ -150,6 +204,45 @@ fun StatisticsScreen(
             },
             onDismiss = { deleteResultsDialog = false }
         )
+    }
+}
+
+@Composable
+private fun StatSummaryCard(
+    title: String,
+    value: String,
+    icon: ImageVector,
+    containerColor: Color,
+    contentColor: Color,
+    modifier: Modifier = Modifier,
+) {
+    Surface(
+        shape = MaterialTheme.shapes.large,
+        color = containerColor,
+        contentColor = contentColor,
+        modifier = modifier
+    ) {
+        Column(
+            modifier = Modifier.padding(horizontal = 12.dp, vertical = 14.dp),
+            verticalArrangement = Arrangement.spacedBy(6.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Icon(
+                imageVector = icon,
+                contentDescription = null,
+                modifier = Modifier.size(22.dp)
+            )
+            Text(
+                text = value,
+                style = MaterialTheme.typography.titleLarge,
+                fontWeight = FontWeight.Bold
+            )
+            Text(
+                text = title,
+                style = MaterialTheme.typography.labelSmall,
+                color = contentColor.copy(alpha = 0.8f)
+            )
+        }
     }
 }
 
@@ -198,4 +291,3 @@ private fun StatisticsScreenDisabledPreview() {
         )
     }
 }
-

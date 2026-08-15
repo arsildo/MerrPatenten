@@ -59,6 +59,6 @@ dependencies {
     implementation(libs.koin.core)
     implementation(libs.koin.androidx.compose)
     implementation(libs.koin.androidx.startup)
-
+    implementation(projects.sharedCore.designSystem)
     implementation(projects.sharedUi)
 }

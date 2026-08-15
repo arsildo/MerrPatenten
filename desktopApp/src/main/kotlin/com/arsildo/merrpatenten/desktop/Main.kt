@@ -5,10 +5,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberWindowState
+import com.arsildo.merrpatenten.shared.core.designsystem.ApplicationLocaleManager
 import com.arsildo.merrpatenten.shared.ui.MerrPatentenApp
 import com.arsildo.merrpatenten.shared.ui.di.initKoin
 
 fun main() {
+    ApplicationLocaleManager.setDefaultLocale()
     initKoin()
     application {
         Window(

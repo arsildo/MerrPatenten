@@ -3,86 +3,160 @@ package com.arsildo.merrpatenten.shared.feature.exam
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.pager.PagerState
+import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Cancel
 import androidx.compose.material.icons.rounded.ArrowCircleUp
-import androidx.compose.material.icons.rounded.Looks3
-import androidx.compose.material.icons.rounded.LooksOne
-import androidx.compose.material.icons.rounded.LooksTwo
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.IconButtonDefaults
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
+import androidx.compose.material.icons.rounded.GridView
+import androidx.compose.material.icons.rounded.Timer
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
+import com.arsildo.merrpatenten.shared.core.designsystem.QUESTIONS_IN_EXAM
 import com.arsildo.merrpatenten.shared.core.designsystem.Red
 
+import merrpatenten.shared_core.design_system.generated.resources.*
+import org.jetbrains.compose.resources.stringResource
+
 @Composable
-fun Legend(
+internal fun Legend(
     pagerState: PagerState,
     timer: () -> String,
     endExamVisible: Boolean,
     onMapClick: () -> Unit,
     onShowEndExamButton: () -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     Row(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 8.dp),
+            .padding(horizontal = 12.dp, vertical = 8.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Text(
-            text = "${pagerState.currentPage + 1}/40",
-            style = MaterialTheme.typography.titleMedium,
-        )
-
-        TextButton(
-            onClick = onMapClick,
-            modifier = Modifier.wrapContentSize()
+        // Question Counter Pill
+        Surface(
+            shape = CircleShape,
+            color = MaterialTheme.colorScheme.primaryContainer,
+            contentColor = MaterialTheme.colorScheme.onPrimaryContainer
         ) {
-            Icon(imageVector = Icons.Rounded.LooksOne, contentDescription = null)
-            Icon(imageVector = Icons.Rounded.LooksTwo, contentDescription = null)
-            Icon(imageVector = Icons.Rounded.Looks3, contentDescription = null)
+            Text(
+                text = "${pagerState.currentPage + 1}/$QUESTIONS_IN_EXAM",
+                style = MaterialTheme.typography.labelLarge,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp)
+            )
         }
 
-        Text(
-            text = timer(),
-            style = MaterialTheme.typography.titleMedium,
-        )
+        // Map / Grid Action
+        FilledTonalButton(
+            onClick = onMapClick,
+            shapes = ButtonShapes(
+                shape = MaterialTheme.shapes.medium,
+                pressedShape = MaterialTheme.shapes.small
+            ),
+            modifier = Modifier.padding(horizontal = 4.dp)
+        ) {
+            Icon(
+                imageVector = Icons.Rounded.GridView,
+                contentDescription = stringResource(Res.string.question_map),
+                modifier = Modifier.size(18.dp)
+            )
+        }
+
+        // Timer Badge
+        val timerText = timer()
+        val isLowTime = timerText.startsWith("0") && (timerText.startsWith("00:") || timerText.startsWith("01:") || timerText.startsWith("02:"))
+        Surface(
+            shape = CircleShape,
+            color = if (isLowTime) MaterialTheme.colorScheme.errorContainer
+            else MaterialTheme.colorScheme.tertiaryContainer,
+            contentColor = if (isLowTime) MaterialTheme.colorScheme.onErrorContainer
+            else MaterialTheme.colorScheme.onTertiaryContainer
+        ) {
+            Row(
+                modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp),
+                horizontalArrangement = Arrangement.spacedBy(4.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Icon(
+                    imageVector = Icons.Rounded.Timer,
+                    contentDescription = null,
+                    modifier = Modifier.size(16.dp)
+                )
+                Text(
+                    text = timerText,
+                    style = MaterialTheme.typography.labelLarge,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+        }
 
         val rotationState by animateFloatAsState(
             targetValue = if (endExamVisible) 180f else 0f,
-            label = "",
-            animationSpec = tween(durationMillis = 512)
+            label = "EndExamRotation",
+            animationSpec = tween(durationMillis = 350)
         )
 
-        val color by animateColorAsState(
-            targetValue = if (rotationState == 0f) Red else MaterialTheme.colorScheme.primary,
-            label = ""
+        val actionColor by animateColorAsState(
+            targetValue = if (endExamVisible) MaterialTheme.colorScheme.primary else Red,
+            label = "EndExamColor"
         )
 
-        IconButton(
+        FilledTonalIconButton(
             onClick = onShowEndExamButton,
-            colors = IconButtonDefaults.iconButtonColors(contentColor = color)
+            colors = IconButtonDefaults.filledTonalIconButtonColors(
+                containerColor = actionColor.copy(alpha = 0.12f),
+                contentColor = actionColor
+            ),
+            shape = CircleShape,
+            modifier = Modifier.size(40.dp)
         ) {
             Icon(
                 imageVector = if (endExamVisible) Icons.Rounded.ArrowCircleUp else Icons.Outlined.Cancel,
-                contentDescription = null,
-                modifier = Modifier.rotate(rotationState)
+                contentDescription = stringResource(Res.string.toggle_end_exam),
+                modifier = Modifier
+                    .size(22.dp)
+                    .rotate(rotationState)
             )
         }
+    }
+}
+
+@Preview
+@Composable
+private fun LegendPreview() {
+    MerrPatentenTheme {
+        Legend(
+            pagerState = rememberPagerState(initialPage = 0, pageCount = { QUESTIONS_IN_EXAM }),
+            timer = { "39:42" },
+            endExamVisible = false,
+            onMapClick = {},
+            onShowEndExamButton = {}
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun LegendDarkPreview() {
+    MerrPatentenTheme(darkTheme = true) {
+        Legend(
+            pagerState = rememberPagerState(initialPage = 39, pageCount = { QUESTIONS_IN_EXAM }),
+            timer = { "01:23" },
+            endExamVisible = true,
+            onMapClick = {},
+            onShowEndExamButton = {}
+        )
     }
 }

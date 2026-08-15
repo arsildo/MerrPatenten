@@ -3,119 +3,177 @@ package com.arsildo.merrpatenten.shared.feature.statistics
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import com.arsildo.merrpatenten.shared.core.designsystem.ERRORS_ALLOWED
+import com.arsildo.merrpatenten.shared.core.designsystem.Green
+import com.arsildo.merrpatenten.shared.core.designsystem.GreenContainer
+import com.arsildo.merrpatenten.shared.core.designsystem.Red
 import com.arsildo.merrpatenten.shared.core.model.ExamResult
+import merrpatenten.shared_core.design_system.generated.resources.*
+import org.jetbrains.compose.resources.stringResource
 import kotlin.math.round
 
 @Composable
 fun PerformanceGraph(
-    results: List<ExamResult>
+    results: List<ExamResult>,
+    modifier: Modifier = Modifier,
 ) {
-    val graphSize = 360.dp
-    if (results.isNotEmpty()) {
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.Center
+    if (results.isEmpty()) return
+
+    Surface(
+        shape = MaterialTheme.shapes.extraLarge,
+        color = MaterialTheme.colorScheme.surfaceContainerHigh,
+        modifier = modifier.fillMaxWidth()
+    ) {
+        Column(
+            modifier = Modifier.padding(18.dp),
+            verticalArrangement = Arrangement.spacedBy(14.dp)
         ) {
+            // Header with legend
             Row(
-                modifier = Modifier.height(graphSize),
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                val correctColor = MaterialTheme.colorScheme.onPrimaryContainer
-                val errorColor = MaterialTheme.colorScheme.error
+                Text(
+                    text = stringResource(Res.string.performance_title),
+                    style = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
+
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(12.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    LegendItem(color = Green, label = stringResource(Res.string.performance_passed))
+                    LegendItem(color = Red, label = stringResource(Res.string.performance_failed))
+                }
+            }
+
+            val graphHeight = 240.dp
+            val axisColor = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f)
+            val correctColor = Green
+            val errorColor = Red
+            val passingZoneColor = GreenContainer.copy(alpha = 0.35f)
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.Center
+            ) {
+                // Y-Axis Labels
                 Column(
                     modifier = Modifier
-                        .height(graphSize - 20.dp)
-                        .padding(end = 4.dp),
-                    verticalArrangement = Arrangement.SpaceBetween
+                        .height(graphHeight)
+                        .padding(end = 8.dp),
+                    verticalArrangement = Arrangement.SpaceBetween,
+                    horizontalAlignment = Alignment.End
                 ) {
-                    GraphTextDivider(text = "40")
-                    GraphTextDivider(text = "30")
-                    GraphTextDivider(text = "20")
-                    GraphTextDivider(text = "10")
-                    GraphTextDivider(text = "0")
+                    GraphAxisText(text = "40")
+                    GraphAxisText(text = "30")
+                    GraphAxisText(text = "20")
+                    GraphAxisText(text = "10")
+                    GraphAxisText(text = "0")
                 }
-                HorizontalDivider(
-                    modifier = Modifier
-                        .width(2.dp)
-                        .fillMaxHeight(0.95f),
-                    color = MaterialTheme.colorScheme.primary
-                )
-                Column {
+
+                Column(
+                    modifier = Modifier.weight(1f)
+                ) {
                     Canvas(
                         modifier = Modifier
-                            .size(graphSize - 20.dp)
-                            .clipToBounds()
-                            .background(MaterialTheme.colorScheme.primaryContainer)
+                            .fillMaxWidth()
+                            .height(graphHeight)
+                            .clip(MaterialTheme.shapes.large)
+                            .background(MaterialTheme.colorScheme.surfaceContainerHigh)
                     ) {
+                        // Passing Zone background highlight (Errors 0 to 4 is at the bottom 10% of height)
+                        val passZoneHeight = size.height / 40f * ERRORS_ALLOWED.toFloat()
                         drawRect(
-                            color = correctColor.copy(0.25f),
-                            size = Size(size.width, -size.height / 10),
-                            topLeft = Offset(0f, size.height)
+                            color = passingZoneColor,
+                            topLeft = Offset(0f, size.height - passZoneHeight),
+                            size = Size(size.width, passZoneHeight)
                         )
 
-                        val xCoordinates = mutableListOf<Int>()
-                        val yCoordinates = mutableListOf<Int>()
+                        // Grid lines
+                        for (i in 1..3) {
+                            val y = size.height - (size.height / 4f * i)
+                            drawLine(
+                                color = axisColor,
+                                start = Offset(0f, y),
+                                end = Offset(size.width, y),
+                                strokeWidth = 1.dp.toPx()
+                            )
+                        }
 
+                        // Data points
                         for (i in results.indices) {
                             val timeStr = results[i].time
                             val minutes = if (timeStr.length >= 2) {
                                 "${timeStr[0]}${timeStr[1]}".toIntOrNull() ?: 0
                             } else 0
-                            yCoordinates.add(results[i].errors)
-                            xCoordinates.add(minutes)
-                        }
 
-                        val points = mutableListOf<Offset>()
-                        for (i in 0 until xCoordinates.size) {
-                            points.add(Offset(xCoordinates[i].toFloat(), yCoordinates[i].toFloat()))
-                        }
+                            val xCoord = minutes.coerceIn(0, 40)
+                            val yCoord = results[i].errors.coerceIn(0, 40)
 
-                        for (i in points.indices) {
-                            val xAxis = size.width / 40 * xCoordinates[i]
-                            val yAxis = size.height - (size.height / 40 * yCoordinates[i])
+                            val xPos = (size.width / 40f) * xCoord.toFloat()
+                            val yPos = size.height - ((size.height / 40f) * yCoord.toFloat())
+
+                            val isPassed = results[i].errors <= ERRORS_ALLOWED
+                            val dotColor = if (isPassed) correctColor else errorColor
+
+                            // Draw subtle outer halo
                             drawCircle(
-                                center = Offset(x = xAxis, y = yAxis),
-                                color = if (results[i].errors > ERRORS_ALLOWED) errorColor else correctColor,
-                                radius = 16f
+                                color = dotColor.copy(alpha = 0.25f),
+                                radius = 10.dp.toPx(),
+                                center = Offset(xPos, yPos)
+                            )
+                            // Draw main point
+                            drawCircle(
+                                color = dotColor,
+                                radius = 6.dp.toPx(),
+                                center = Offset(xPos, yPos)
                             )
                         }
                     }
-                    HorizontalDivider(
-                        modifier = Modifier
-                            .height(2.dp)
-                            .width(graphSize - 20.dp),
-                        color = MaterialTheme.colorScheme.primary
-                    )
+
+                    Spacer(modifier = Modifier.height(6.dp))
+
+                    // X-Axis Labels
                     Row(
-                        modifier = Modifier.width(graphSize - 20.dp),
+                        modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
-                        GraphTextDivider(text = "0'")
-                        GraphTextDivider(text = "10'")
-                        GraphTextDivider(text = "20'")
-                        GraphTextDivider(text = "30'")
-                        GraphTextDivider(text = "40'")
+                        GraphAxisText(text = "0'")
+                        GraphAxisText(text = "10'")
+                        GraphAxisText(text = "20'")
+                        GraphAxisText(text = "30'")
+                        GraphAxisText(text = "40'")
                     }
                 }
             }
@@ -124,11 +182,31 @@ fun PerformanceGraph(
 }
 
 @Composable
-private fun GraphTextDivider(text: String) {
+private fun LegendItem(color: Color, label: String) {
+    Row(
+        horizontalArrangement = Arrangement.spacedBy(4.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Surface(
+            shape = CircleShape,
+            color = color,
+            modifier = Modifier.size(8.dp)
+        ) {}
+        Text(
+            text = label,
+            style = MaterialTheme.typography.labelSmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+    }
+}
+
+@Composable
+private fun GraphAxisText(text: String) {
     Text(
         text = text,
-        style = MaterialTheme.typography.titleSmall,
-        color = MaterialTheme.colorScheme.primary
+        style = MaterialTheme.typography.labelSmall,
+        fontWeight = FontWeight.Medium,
+        color = MaterialTheme.colorScheme.onSurfaceVariant
     )
 }
 
@@ -139,21 +217,24 @@ fun AverageMistakes(previousExamResults: List<ExamResult>) {
         horizontalArrangement = Arrangement.Center
     ) {
         val average = calculateAverage(previousExamResults)
+        val prefix = stringResource(Res.string.performance_average_prefix)
+        val middle = stringResource(Res.string.performance_average_middle)
+        val suffix = stringResource(Res.string.performance_average_suffix)
         Text(
             buildAnnotatedString {
-                append("Mesatarisht ")
+                append(prefix)
                 withStyle(
                     style = SpanStyle(
-                        fontWeight = FontWeight.SemiBold,
+                        fontWeight = FontWeight.Bold,
                         fontSize = MaterialTheme.typography.titleMedium.fontSize,
                         color = if (average > ERRORS_ALLOWED)
                             MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.primary
                     )
                 ) { append("$average") }
-                append(" gabime në ${previousExamResults.size} provimet e fundit.")
+                append("$middle${previousExamResults.size}$suffix")
             },
-            color = MaterialTheme.colorScheme.secondary,
-            style = MaterialTheme.typography.titleSmall
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            style = MaterialTheme.typography.bodyMedium
         )
     }
 }

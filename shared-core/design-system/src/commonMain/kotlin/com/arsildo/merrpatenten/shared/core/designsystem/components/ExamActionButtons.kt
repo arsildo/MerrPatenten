@@ -3,17 +3,14 @@ package com.arsildo.merrpatenten.shared.core.designsystem.components
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonColors
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.foundation.layout.size
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.arsildo.merrpatenten.shared.core.designsystem.Red
 import merrpatenten.shared_core.design_system.generated.resources.Res
@@ -24,10 +21,10 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun EndExamButton(
+    modifier: Modifier = Modifier,
     title: String = stringResource(Res.string.end_exam),
     icon: ImageVector,
     onClick: () -> Unit,
-    modifier: Modifier = Modifier,
 ) {
     ActionButton(
         title = title,
@@ -43,10 +40,10 @@ fun EndExamButton(
 
 @Composable
 fun RestartExamButton(
+    modifier: Modifier = Modifier,
     title: String = stringResource(Res.string.restart_exam),
     icon: ImageVector,
     onClick: () -> Unit,
-    modifier: Modifier = Modifier,
 ) {
     ActionButton(
         title = title,
@@ -62,10 +59,10 @@ fun RestartExamButton(
 
 @Composable
 fun ExitExamButton(
+    modifier: Modifier = Modifier,
     title: String = stringResource(Res.string.exit_exam),
     icon: ImageVector,
     onClick: () -> Unit,
-    modifier: Modifier = Modifier,
 ) {
     ActionButton(
         title = title,
@@ -79,27 +76,39 @@ fun ExitExamButton(
     )
 }
 
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 private fun ActionButton(
+    modifier: Modifier = Modifier,
     title: String,
     icon: ImageVector,
     onClick: () -> Unit,
     colors: ButtonColors,
-    modifier: Modifier = Modifier,
 ) {
     Button(
         onClick = onClick,
-        shape = MaterialTheme.shapes.extraLarge,
+        shapes = ButtonShapes(
+            shape = MaterialTheme.shapes.large,
+            pressedShape = MaterialTheme.shapes.small
+        ),
         contentPadding = PaddingValues(16.dp),
         colors = colors,
-        modifier = modifier
+        modifier = modifier,
     ) {
         Row(
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
+            horizontalArrangement = Arrangement.spacedBy(10.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Icon(imageVector = icon, contentDescription = null)
-            Text(text = title, style = MaterialTheme.typography.titleMedium)
+            Icon(
+                imageVector = icon,
+                contentDescription = null,
+                modifier = Modifier.size(22.dp)
+            )
+            Text(
+                text = title,
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.SemiBold
+            )
         }
     }
 }

@@ -4,149 +4,246 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.CheckCircle
+import androidx.compose.material.icons.rounded.HighlightOff
 import androidx.compose.material.icons.rounded.KeyboardArrowDown
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
+import androidx.compose.material3.MaterialShapes
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.SheetState
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.rememberModalBottomSheetState
+import androidx.compose.material3.toShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.arsildo.merrpatenten.shared.core.designsystem.ERRORS_ALLOWED
 import com.arsildo.merrpatenten.shared.core.designsystem.Green
+import com.arsildo.merrpatenten.shared.core.designsystem.GreenContainer
+import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
+import com.arsildo.merrpatenten.shared.core.designsystem.OnGreenContainer
+import com.arsildo.merrpatenten.shared.core.designsystem.OnRedContainer
 import com.arsildo.merrpatenten.shared.core.designsystem.QUESTIONS_IN_EXAM
 import com.arsildo.merrpatenten.shared.core.designsystem.Red
-import merrpatenten.shared_core.design_system.generated.resources.Res
-import merrpatenten.shared_core.design_system.generated.resources.completed_question
-import merrpatenten.shared_core.design_system.generated.resources.failed
-import merrpatenten.shared_core.design_system.generated.resources.false_checkbox
-import merrpatenten.shared_core.design_system.generated.resources.passed
-import merrpatenten.shared_core.design_system.generated.resources.true_checkbox
+import com.arsildo.merrpatenten.shared.core.designsystem.RedContainer
+import merrpatenten.shared_core.design_system.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun Map(
-    sheetState: SheetState,
     isCompleted: Boolean,
-    responses: List<String>,
-    mistakes: List<Int>,
     errors: Int,
+    mistakes: List<Int>,
+    responses: List<String>,
     onQuestionClicked: (Int) -> Unit,
     onDismissRequest: () -> Unit,
+    modifier: Modifier = Modifier,
+    sheetState: SheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true),
 ) {
     ModalBottomSheet(
         onDismissRequest = onDismissRequest,
         sheetState = sheetState,
-        contentColor = MaterialTheme.colorScheme.primary,
-        tonalElevation = 0.dp,
-        contentWindowInsets = { WindowInsets(top = 0, bottom = 0) }
+        dragHandle = {
+            Surface(
+                shape = MaterialTheme.shapes.extraSmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f),
+                modifier = Modifier
+                    .padding(top = 12.dp)
+                    .size(width = 36.dp, height = 4.dp)
+            ) {}
+        },
+        containerColor = MaterialTheme.colorScheme.surfaceContainer,
+        shape = MaterialTheme.shapes.extraLarge,
+        modifier = modifier
+    ) {
+        MapContent(
+            isCompleted = isCompleted,
+            errors = errors,
+            mistakes = mistakes,
+            responses = responses,
+            onQuestionClicked = onQuestionClicked,
+            onDismissRequest = onDismissRequest
+        )
+    }
+}
+
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
+@Composable
+fun MapContent(
+    isCompleted: Boolean,
+    errors: Int,
+    mistakes: List<Int>,
+    responses: List<String>,
+    onQuestionClicked: (Int) -> Unit,
+    onDismissRequest: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val isPassed = errors <= ERRORS_ALLOWED
+    val heroContainer = if (isPassed) GreenContainer else RedContainer
+    val heroContent = if (isPassed) OnGreenContainer else OnRedContainer
+    val heroIcon = if (isPassed) Icons.Rounded.CheckCircle else Icons.Rounded.HighlightOff
+    val heroIconColor = if (isPassed) Green else Red
+
+    Column(
+        modifier = modifier
+            .fillMaxWidth()
+            .navigationBarsPadding()
+            .padding(bottom = 16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         if (isCompleted) {
-            Card(
+            Surface(
+                shape = MaterialTheme.shapes.extraLarge,
+                color = heroContainer,
+                contentColor = heroContent,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 16.dp),
-                colors = CardDefaults.cardColors(
-                    containerColor = MaterialTheme.colorScheme.background,
-                    contentColor = if (errors > ERRORS_ALLOWED) Red else Green
-                ),
-                elevation = CardDefaults.elevatedCardElevation(0.dp)
+                    .padding(horizontal = 16.dp)
             ) {
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 16.dp, vertical = 4.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween
+                        .padding(horizontal = 20.dp, vertical = 16.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text(
-                        text = stringResource(if (errors > ERRORS_ALLOWED) Res.string.failed else Res.string.passed),
-                        style = MaterialTheme.typography.titleLarge,
-                        fontWeight = FontWeight.SemiBold
-                    )
-                    Text(
-                        text = "$errors Gabime",
-                        style = MaterialTheme.typography.titleLarge,
-                        fontWeight = FontWeight.SemiBold
-                    )
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(12.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Icon(
+                            imageVector = heroIcon,
+                            contentDescription = null,
+                            tint = heroIconColor,
+                            modifier = Modifier.size(32.dp)
+                        )
+                        Column {
+                            Text(
+                                text = stringResource(if (isPassed) Res.string.passed else Res.string.failed),
+                                style = MaterialTheme.typography.titleLarge,
+                                fontWeight = FontWeight.Bold
+                            )
+                            Text(
+                                text = stringResource(if (isPassed) Res.string.exam_passed_subtitle else Res.string.exam_failed_subtitle),
+                                style = MaterialTheme.typography.bodySmall,
+                                color = heroContent.copy(alpha = 0.8f)
+                            )
+                        }
+                    }
+
+                    val errorLabel = stringResource(if (errors == 1) Res.string.error_singular else Res.string.errors_plural)
+                    Surface(
+                        shape = CircleShape,
+                        color = heroIconColor.copy(alpha = 0.15f)
+                    ) {
+                        Text(
+                            text = "$errors $errorLabel",
+                            style = MaterialTheme.typography.labelLarge,
+                            fontWeight = FontWeight.Bold,
+                            color = heroIconColor,
+                            modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp)
+                        )
+                    }
                 }
             }
         }
+
         LazyVerticalGrid(
             columns = GridCells.Fixed(5),
             contentPadding = PaddingValues(16.dp),
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp),
+            horizontalArrangement = Arrangement.spacedBy(10.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp),
             modifier = Modifier.fillMaxWidth()
         ) {
             items(count = QUESTIONS_IN_EXAM) { page ->
                 val hasResponse = page < responses.size && responses[page].isNotEmpty()
                 val isCorrect = page < mistakes.size && mistakes[page] == 0
+
+                val container = if (isCompleted) {
+                    if (isCorrect) GreenContainer else RedContainer
+                } else if (hasResponse) {
+                    MaterialTheme.colorScheme.primaryContainer
+                } else {
+                    MaterialTheme.colorScheme.surfaceContainerHigh
+                }
+
+                val content = if (isCompleted) {
+                    if (isCorrect) OnGreenContainer else OnRedContainer
+                } else if (hasResponse) {
+                    MaterialTheme.colorScheme.onPrimaryContainer
+                } else {
+                    MaterialTheme.colorScheme.onSurfaceVariant
+                }
+
+                val shape = if (isCompleted) {
+                    if (isCorrect) MaterialShapes.Sunny.toShape() else MaterialShapes.Cookie9Sided.toShape()
+                } else if (hasResponse) {
+                    MaterialShapes.Slanted.toShape()
+                } else {
+                    MaterialShapes.Cookie9Sided.toShape()
+                }
+
                 QuestionGridItem(
                     title = page,
-                    containerColor = if (isCompleted) {
-                        if (isCorrect) Green else Red
-                    } else if (hasResponse) {
-                        MaterialTheme.colorScheme.secondary
-                    } else {
-                        MaterialTheme.colorScheme.primaryContainer
-                    },
-                    contentColor = if (isCompleted) {
-                        Color.White
-                    } else if (hasResponse) {
-                        MaterialTheme.colorScheme.onSecondary
-                    } else {
-                        MaterialTheme.colorScheme.onPrimaryContainer
-                    },
+                    containerColor = container,
+                    contentColor = content,
+                    shape = shape,
                     onClick = { onQuestionClicked(page) }
                 )
             }
         }
+
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 16.dp, vertical = 8.dp),
+                .padding(horizontal = 16.dp),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
             if (!isCompleted) {
                 StatusIndicator(
                     title = stringResource(Res.string.completed_question),
-                    containerColor = MaterialTheme.colorScheme.secondary,
-                    contentColor = MaterialTheme.colorScheme.onSecondary,
+                    containerColor = MaterialTheme.colorScheme.primaryContainer,
+                    contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
                 )
             } else {
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     StatusIndicator(
                         title = stringResource(Res.string.false_checkbox),
-                        containerColor = Red.copy(0.15f),
-                        contentColor = Red,
+                        containerColor = RedContainer,
+                        contentColor = OnRedContainer,
                     )
                     StatusIndicator(
                         title = stringResource(Res.string.true_checkbox),
-                        containerColor = Green.copy(0.15f),
-                        contentColor = Green,
+                        containerColor = GreenContainer,
+                        contentColor = OnGreenContainer,
                     )
                 }
             }
@@ -158,7 +255,8 @@ fun Map(
             ) {
                 Icon(
                     imageVector = Icons.Rounded.KeyboardArrowDown,
-                    contentDescription = null
+                    contentDescription = stringResource(Res.string.close),
+                    modifier = Modifier.size(28.dp)
                 )
             }
         }
@@ -170,11 +268,12 @@ private fun QuestionGridItem(
     title: Int,
     containerColor: Color,
     contentColor: Color,
+    shape: Shape = MaterialTheme.shapes.medium,
     onClick: () -> Unit,
 ) {
     Box(
         modifier = Modifier
-            .clip(MaterialTheme.shapes.extraLarge)
+            .clip(shape)
             .aspectRatio(1f)
             .background(containerColor)
             .clickable(onClick = onClick),
@@ -183,8 +282,8 @@ private fun QuestionGridItem(
         Text(
             text = "${title + 1}",
             color = contentColor,
-            style = MaterialTheme.typography.titleLarge,
-            fontWeight = FontWeight.SemiBold
+            style = MaterialTheme.typography.titleMedium,
+            fontWeight = FontWeight.Bold
         )
     }
 }
@@ -195,28 +294,95 @@ private fun StatusIndicator(
     containerColor: Color,
     contentColor: Color,
 ) {
-    Card(
-        shape = MaterialTheme.shapes.extraLarge,
-        colors = CardDefaults.cardColors(
-            containerColor = containerColor,
-            contentColor = contentColor
-        )
+    Surface(
+        shape = CircleShape,
+        color = containerColor,
+        contentColor = contentColor
     ) {
         Row(
-            modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
-            horizontalArrangement = Arrangement.spacedBy(4.dp),
+            modifier = Modifier.padding(horizontal = 14.dp, vertical = 6.dp),
+            horizontalArrangement = Arrangement.spacedBy(6.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text(
-                text = title,
-                style = MaterialTheme.typography.labelMedium
-            )
             Box(
                 modifier = Modifier
                     .size(8.dp)
                     .clip(CircleShape)
                     .background(contentColor)
             )
+            Text(
+                text = title,
+                style = MaterialTheme.typography.labelMedium,
+                fontWeight = FontWeight.SemiBold
+            )
         }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Preview
+@Composable
+private fun MapInProgressPreview() {
+    MerrPatentenTheme {
+        Map(
+            sheetState = rememberModalBottomSheetState(),
+            isCompleted = false,
+            responses = List(QUESTIONS_IN_EXAM) { if (it < 15) "Saktë" else "" },
+            mistakes = List(QUESTIONS_IN_EXAM) { 0 },
+            errors = 0,
+            onQuestionClicked = {},
+            onDismissRequest = {}
+        )
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Preview
+@Composable
+private fun MapPassedPreview() {
+    MerrPatentenTheme {
+        Map(
+            sheetState = rememberModalBottomSheetState(),
+            isCompleted = true,
+            responses = List(QUESTIONS_IN_EXAM) { "Saktë" },
+            mistakes = List(QUESTIONS_IN_EXAM) { if (it < 2) 1 else 0 },
+            errors = 2,
+            onQuestionClicked = {},
+            onDismissRequest = {}
+        )
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Preview
+@Composable
+private fun MapFailedPreview() {
+    MerrPatentenTheme {
+        Map(
+            sheetState = rememberModalBottomSheetState(),
+            isCompleted = true,
+            responses = List(QUESTIONS_IN_EXAM) { "Saktë" },
+            mistakes = List(QUESTIONS_IN_EXAM) { if (it < 7) 1 else 0 },
+            errors = 7,
+            onQuestionClicked = {},
+            onDismissRequest = {}
+        )
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Preview
+@Composable
+private fun MapDarkPreview() {
+    MerrPatentenTheme(darkTheme = true) {
+        Map(
+            sheetState = rememberModalBottomSheetState(),
+            isCompleted = false,
+            responses = List(QUESTIONS_IN_EXAM) { if (it < 10) "Saktë" else "" },
+            mistakes = List(QUESTIONS_IN_EXAM) { 0 },
+            errors = 0,
+            onQuestionClicked = {},
+            onDismissRequest = {}
+        )
     }
 }
