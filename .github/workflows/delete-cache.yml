@@ -1,0 +1,65 @@
+name: Delete Actions Caches
+
+on:
+  workflow_dispatch:
+    inputs:
+      delete_all:
+        description: 'Delete all caches'
+        required: true
+        type: boolean
+        default: true
+      branch_ref:
+        description: 'Limit to specific branch/ref (e.g. refs/heads/main) - only used if delete_all is true'
+        required: false
+        type: string
+        default: ''
+      cache_key:
+        description: 'Specific cache key or cache ID to delete (used if delete_all is false)'
+        required: false
+        type: string
+        default: ''
+
+jobs:
+  delete-cache:
+    name: Delete Caches
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+    steps:
+      - name: List Caches (Before Deletion)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "=== Current Caches ==="
+          gh cache list --repo ${{ github.repository }} --limit 100 || echo "Failed to list caches or no caches found"
+          echo "======================"
+
+      - name: Delete Cache(s)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ "${{ inputs.delete_all }}" = "true" ]; then
+            if [ -n "${{ inputs.branch_ref }}" ]; then
+              echo "Deleting all caches for ref: ${{ inputs.branch_ref }}"
+              gh cache delete --all --repo ${{ github.repository }} --ref "${{ inputs.branch_ref }}"
+            else
+              echo "Deleting all caches in the repository"
+              gh cache delete --all --repo ${{ github.repository }} --succeed-on-no-caches
+            fi
+          else
+            if [ -n "${{ inputs.cache_key }}" ]; then
+              echo "Deleting cache with key/ID: ${{ inputs.cache_key }}"
+              gh cache delete "${{ inputs.cache_key }}" --repo ${{ github.repository }}
+            else
+              echo "Error: delete_all is false, but no cache_key was provided."
+              exit 1
+            fi
+          fi
+
+      - name: List Caches (After Deletion)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "=== Remaining Caches ==="
+          gh cache list --repo ${{ github.repository }} --limit 100 || echo "Failed to list caches or no caches found"
+          echo "========================"
