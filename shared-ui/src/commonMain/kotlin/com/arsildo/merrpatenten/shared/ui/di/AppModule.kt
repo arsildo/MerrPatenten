@@ -8,7 +8,7 @@ import com.arsildo.merrpatenten.shared.feature.statistics.di.statisticsModule
 import org.koin.core.context.startKoin
 import org.koin.mp.KoinPlatformTools
 
-internal val appModules = listOf(
+val appModules = listOf(
     dataModule,
     dashboardModule,
     examModule,
