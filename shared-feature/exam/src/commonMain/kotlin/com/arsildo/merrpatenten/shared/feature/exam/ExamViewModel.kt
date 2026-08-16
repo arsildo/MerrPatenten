@@ -79,7 +79,7 @@ internal class ExamViewModel(
         )
     }.stateIn(
         scope = viewModelScope,
-        started = SharingStarted.WhileSubscribed(5_000),
+        started = SharingStarted.WhileSubscribed(stopTimeoutMillis = 5_000),
         initialValue = _internalUiState.value
     )
 
@@ -87,7 +87,7 @@ internal class ExamViewModel(
         startExam()
     }
 
-    fun startExam(category: String = this.category) = viewModelScope.launch {
+    fun startExam() = viewModelScope.launch {
         timerJob?.cancel()
         try {
             val allQuestions = questionnaireRepository.getByCategory(category).first { it.isNotEmpty() }
