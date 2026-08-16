@@ -103,7 +103,7 @@ fun ExamTypeCard(
                                 text = tag,
                                 style = MaterialTheme.typography.labelMedium,
                                 fontWeight = FontWeight.SemiBold,
-                                modifier = Modifier.padding(horizontal = 12.dp, vertical = 5.dp)
+                                modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
                             )
                         }
                     }

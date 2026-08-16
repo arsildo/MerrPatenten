@@ -1,19 +1,15 @@
 package com.arsildo.merrpatenten.shared.feature.statistics
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.grid.GridItemSpan
+import androidx.compose.foundation.lazy.grid.LazyGridScope
+import androidx.compose.foundation.lazy.grid.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.CheckCircle
 import androidx.compose.material.icons.rounded.HighlightOff
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
+import androidx.compose.material.icons.rounded.Schedule
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -25,95 +21,86 @@ import com.arsildo.merrpatenten.shared.core.model.ExamResult
 import merrpatenten.shared_core.design_system.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
 
-@Composable
-internal fun ResultList(
+internal fun LazyGridScope.resultList(
     results: List<ExamResult>,
-    modifier: Modifier = Modifier,
 ) {
-    Column(
-        modifier = modifier.fillMaxWidth(),
-        verticalArrangement = Arrangement.spacedBy(12.dp)
-    ) {
-        val pairs = results.chunked(2)
-        pairs.forEach { pair ->
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(12.dp)
-            ) {
-                ResultItem(
-                    result = pair[0],
-                    modifier = Modifier.weight(1f)
-                )
-                if (pair.size > 1) {
-                    ResultItem(
-                        result = pair[1],
-                        modifier = Modifier.weight(1f)
-                    )
-                } else {
-                    Surface(
-                        modifier = Modifier.weight(1f),
-                        color = androidx.compose.ui.graphics.Color.Transparent
-                    ) {}
-                }
-            }
-        }
+    itemsIndexed(
+        items = results,
+        key = { _, item -> item.id },
+        span = { _, _ -> GridItemSpan(maxLineSpan) }
+    ) { index, result ->
+        ResultItem(
+            result = result,
+            index = index,
+            count = results.size
+        )
     }
 }
 
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 internal fun ResultItem(
     result: ExamResult,
+    index: Int,
+    count: Int,
     modifier: Modifier = Modifier,
 ) {
     val errors = result.errors
     val isPassed = errors <= ERRORS_ALLOWED
-    val containerColor = if (isPassed) MaterialTheme.semanticColors.successContainer else MaterialTheme.colorScheme.errorContainer
-    val contentColor = if (isPassed) MaterialTheme.semanticColors.onSuccessContainer else MaterialTheme.colorScheme.onErrorContainer
+    val errorLabel = stringResource(if (errors == 1) Res.string.error_singular else Res.string.errors_plural)
+    val statusText = stringResource(if (isPassed) Res.string.performance_passed else Res.string.performance_failed)
     val icon = if (isPassed) Icons.Rounded.CheckCircle else Icons.Rounded.HighlightOff
-    val iconTint = if (isPassed) MaterialTheme.semanticColors.success else MaterialTheme.colorScheme.error
+    val statusContainerColor = if (isPassed) MaterialTheme.semanticColors.successContainer else MaterialTheme.colorScheme.errorContainer
+    val statusContentColor = if (isPassed) MaterialTheme.semanticColors.onSuccessContainer else MaterialTheme.colorScheme.onErrorContainer
+    val statusIconTint = if (isPassed) MaterialTheme.semanticColors.success else MaterialTheme.colorScheme.error
 
-    Surface(
-        shape = MaterialTheme.shapes.large,
-        color = containerColor,
-        contentColor = contentColor,
-        modifier = modifier.fillMaxWidth()
-    ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 14.dp, vertical = 12.dp),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Column(
-                verticalArrangement = Arrangement.spacedBy(2.dp)
+    SegmentedListItem(
+        selected = false,
+        onClick = {},
+        colors = ListItemDefaults.colors(
+            containerColor = MaterialTheme.colorScheme.surfaceContainerLow,
+            selectedContainerColor = MaterialTheme.colorScheme.surfaceContainerLow,
+        ),
+        shapes = ListItemDefaults.segmentedShapes(index = index, count = count),
+        content = {
+            Text(
+                text = "$errors $errorLabel",
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.SemiBold
+            )
+        },
+        supportingContent = {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(4.dp)
             ) {
-                val errorLabel = stringResource(if (errors == 1) Res.string.error_singular else Res.string.errors_plural)
-                Text(
-                    text = "$errors $errorLabel",
-                    style = MaterialTheme.typography.titleSmall,
-                    fontWeight = FontWeight.Bold
+                Icon(
+                    imageVector = Icons.Rounded.Schedule,
+                    contentDescription = null,
+                    modifier = Modifier.size(14.dp),
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant
                 )
                 Text(
                     text = "${result.time} min",
                     style = MaterialTheme.typography.bodySmall,
-                    color = contentColor.copy(alpha = 0.8f)
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
+        },
+        trailingContent = {
             Surface(
-                shape = CircleShape,
-                color = iconTint.copy(alpha = 0.15f),
-                modifier = Modifier.size(32.dp)
+                shape = MaterialTheme.shapes.small,
+                color = statusContainerColor
             ) {
-                Icon(
-                    imageVector = icon,
-                    contentDescription = null,
-                    tint = iconTint,
-                    modifier = Modifier
-                        .padding(5.dp)
-                        .size(22.dp)
+                Text(
+                    text = statusText,
+                    style = MaterialTheme.typography.labelSmall,
+                    fontWeight = FontWeight.Bold,
+                    color = statusContentColor,
+                    modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
                 )
             }
-        }
-    }
+        },
+        modifier = modifier.fillMaxWidth()
+    )
 }

@@ -193,12 +193,10 @@ internal fun DashboardScreen(
 
 @Preview
 @Composable
-private fun DashboardScreenPreview() {
-    MerrPatentenTheme {
-        DashboardScreen(
-            onStartExamClick = {},
-            onPreferencesClick = {},
-            onStatisticsClick = {},
-        )
-    }
+private fun DashboardScreenPreview() = MerrPatentenTheme {
+    DashboardScreen(
+        onStartExamClick = {},
+        onPreferencesClick = {},
+        onStatisticsClick = {},
+    )
 }

@@ -1,8 +1,9 @@
 package com.arsildo.merrpatenten.shared.feature.statistics
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.GridItemSpan
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.rounded.*
@@ -28,6 +29,7 @@ import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 import kotlin.math.roundToInt
 
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 internal fun StatisticsRoute(
     viewModel: StatisticsViewModel = koinViewModel(),
@@ -43,6 +45,7 @@ internal fun StatisticsRoute(
     )
 }
 
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 internal fun StatisticsScreen(
     uiState: StatisticsUiState,
@@ -144,52 +147,62 @@ internal fun StatisticsScreen(
                         val totalErrors = results.sumOf { it.errors }
                         val avgErrors = ((totalErrors.toDouble() / results.size) * 10).roundToInt() / 10.0
 
-                        Column(
-                            modifier = Modifier
-                                .fillMaxSize()
-                                .verticalScroll(rememberScrollState())
-                                .padding(horizontal = 16.dp)
-                                .padding(bottom = 32.dp),
-                            verticalArrangement = Arrangement.spacedBy(20.dp)
+                        LazyVerticalGrid(
+                            columns = GridCells.Fixed(2),
+                            contentPadding = PaddingValues(start = 16.dp, top = 0.dp, end = 16.dp, bottom = 32.dp),
+                            horizontalArrangement = Arrangement.spacedBy(10.dp),
+                            verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap),
+                            modifier = Modifier.fillMaxSize()
                         ) {
-                            Row(
-                                modifier = Modifier.fillMaxWidth(),
-                                horizontalArrangement = Arrangement.spacedBy(10.dp)
-                            ) {
-                                StatSummaryCard(
-                                    title = stringResource(Res.string.stat_exams),
-                                    value = "${results.size}",
-                                    icon = Icons.Rounded.Quiz,
-                                    containerColor = MaterialTheme.colorScheme.primaryContainer,
-                                    contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
-                                    modifier = Modifier.weight(1f)
-                                )
-                                StatSummaryCard(
-                                    title = stringResource(Res.string.stat_average),
-                                    value = "$avgErrors",
-                                    icon = Icons.Rounded.CheckCircle,
-                                    containerColor = if (avgErrors <= ERRORS_ALLOWED) MaterialTheme.semanticColors.successContainer else MaterialTheme.colorScheme.errorContainer,
-                                    contentColor = if (avgErrors <= ERRORS_ALLOWED) MaterialTheme.semanticColors.onSuccessContainer else MaterialTheme.colorScheme.onErrorContainer,
-                                    modifier = Modifier.weight(1f)
-                                )
-                                StatSummaryCard(
-                                    title = stringResource(Res.string.stat_pass_rate),
-                                    value = "$passRate%",
-                                    icon = Icons.Rounded.EmojiEvents,
-                                    containerColor = MaterialTheme.colorScheme.tertiaryContainer,
-                                    contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
-                                    modifier = Modifier.weight(1f)
+                            item(span = { GridItemSpan(maxLineSpan) }) {
+                                Row(
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(bottom = 16.dp),
+                                    horizontalArrangement = Arrangement.spacedBy(10.dp)
+                                ) {
+                                    StatSummaryCard(
+                                        title = stringResource(Res.string.stat_exams),
+                                        value = "${results.size}",
+                                        icon = Icons.Rounded.Quiz,
+                                        containerColor = MaterialTheme.colorScheme.primaryContainer,
+                                        contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                                        modifier = Modifier.weight(1f)
+                                    )
+                                    StatSummaryCard(
+                                        title = stringResource(Res.string.stat_average),
+                                        value = "$avgErrors",
+                                        icon = Icons.Rounded.CheckCircle,
+                                        containerColor = if (avgErrors <= ERRORS_ALLOWED) MaterialTheme.semanticColors.successContainer else MaterialTheme.colorScheme.errorContainer,
+                                        contentColor = if (avgErrors <= ERRORS_ALLOWED) MaterialTheme.semanticColors.onSuccessContainer else MaterialTheme.colorScheme.onErrorContainer,
+                                        modifier = Modifier.weight(1f)
+                                    )
+                                    StatSummaryCard(
+                                        title = stringResource(Res.string.stat_pass_rate),
+                                        value = "$passRate%",
+                                        icon = Icons.Rounded.EmojiEvents,
+                                        containerColor = MaterialTheme.colorScheme.tertiaryContainer,
+                                        contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
+                                        modifier = Modifier.weight(1f)
+                                    )
+                                }
+                            }
+
+                            item(span = { GridItemSpan(maxLineSpan) }) {
+                                PerformanceGraph(
+                                    results = results,
+                                    modifier = Modifier.padding(bottom = 16.dp)
                                 )
                             }
 
-                            PerformanceGraph(results = results)
-
-                            Column(
-                                verticalArrangement = Arrangement.spacedBy(8.dp)
-                            ) {
-                                SectionHeader(title = stringResource(Res.string.exam_history))
-                                ResultList(results = results)
+                            item(span = { GridItemSpan(maxLineSpan) }) {
+                                SectionHeader(
+                                    title = stringResource(Res.string.exam_history),
+                                    modifier = Modifier.padding(top = 4.dp, bottom = 4.dp)
+                                )
                             }
+
+                            resultList(results = results)
                         }
                     } else {
                         ResultStoringDisabled(
