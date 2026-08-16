@@ -24,7 +24,7 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(project(":shared-core:design-system"))
+            implementation(projects.sharedCore.designSystem)
 
             api(libs.androidx.datastorePreferencesCore)
             api(libs.androidx.datastoreCore)

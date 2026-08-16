@@ -3,6 +3,7 @@ package com.arsildo.merrpatenten.shared.feature.exam
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.toRoute
 import com.arsildo.merrpatenten.shared.core.data.ExamResultsRepository
 import com.arsildo.merrpatenten.shared.core.data.QuestionnaireRepository
 import com.arsildo.merrpatenten.shared.core.datastore.PreferencesRepository
@@ -11,16 +12,10 @@ import com.arsildo.merrpatenten.shared.core.designsystem.QUESTIONS_IN_EXAM
 import com.arsildo.merrpatenten.shared.core.designsystem.formatTimer
 import com.arsildo.merrpatenten.shared.core.model.ExamResult
 import com.arsildo.merrpatenten.shared.core.model.Question
+import com.arsildo.merrpatenten.shared.feature.exam.navigation.Exam
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.stateIn
-import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import kotlin.time.Duration.Companion.milliseconds
 
@@ -49,7 +44,7 @@ internal class ExamViewModel(
     private val examResultsRepository: ExamResultsRepository,
 ) : ViewModel() {
 
-    private val category: String = savedStateHandle.get<String>("category") ?: "B"
+    private val category: String = savedStateHandle.toRoute<Exam>().category
 
     private var timerJob: Job? = null
 
@@ -89,7 +84,7 @@ internal class ExamViewModel(
     )
 
     init {
-        startExam(category)
+        startExam()
     }
 
     fun startExam(category: String = this.category) = viewModelScope.launch {

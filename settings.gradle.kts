@@ -1,3 +1,5 @@
+rootProject.name = "MerrPatenten"
+
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {

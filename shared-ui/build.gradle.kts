@@ -24,20 +24,20 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(project(":shared"))
+            implementation(projects.shared)
 
-            implementation(project(":shared-core:model"))
-            implementation(project(":shared-core:design-system"))
-            implementation(project(":shared-core:navigation"))
-            implementation(project(":shared-core:datastore"))
-            implementation(project(":shared-core:database"))
-            implementation(project(":shared-core:data"))
+            implementation(projects.sharedCore.model)
+            implementation(projects.sharedCore.designSystem)
+            implementation(projects.sharedCore.navigation)
+            implementation(projects.sharedCore.datastore)
+            implementation(projects.sharedCore.database)
+            implementation(projects.sharedCore.data)
 
-            implementation(project(":shared-feature:dashboard"))
-            implementation(project(":shared-feature:exam"))
-            implementation(project(":shared-feature:image-details"))
-            implementation(project(":shared-feature:statistics"))
-            implementation(project(":shared-feature:preferences"))
+            implementation(projects.sharedFeature.dashboard)
+            implementation(projects.sharedFeature.exam)
+            implementation(projects.sharedFeature.imageDetails)
+            implementation(projects.sharedFeature.statistics)
+            implementation(projects.sharedFeature.preferences)
 
             implementation(libs.compose.runtime)
             implementation(libs.compose.foundation)

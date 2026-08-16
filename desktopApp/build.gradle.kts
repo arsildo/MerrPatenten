@@ -7,7 +7,7 @@ plugins {
 }
 
 dependencies {
-    implementation(project(":shared-ui"))
+    implementation(projects.sharedUi)
 
     implementation(libs.compose.runtime)
     implementation(libs.compose.ui)
@@ -17,7 +17,7 @@ dependencies {
     implementation(project.dependencies.platform(libs.koin.bom))
     implementation(libs.koin.core)
 
-    implementation(project(":shared-core:design-system"))
+    implementation(projects.sharedCore.designSystem)
 }
 
 compose.desktop {

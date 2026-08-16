@@ -12,8 +12,8 @@ android {
     defaultConfig {
         applicationId = "com.arsildo.merrpatenten"
         minSdk = 31
-        versionCode = 32
-        versionName = "3.0.0"
+        versionCode = 33
+        versionName = "3.0.1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -58,6 +58,6 @@ dependencies {
     implementation(libs.koin.core)
     implementation(libs.koin.androidx.compose)
     implementation(libs.koin.androidx.startup)
-    implementation(project(":shared-core:design-system"))
-    implementation(project(":shared-ui"))
+    implementation(projects.sharedCore.designSystem)
+    implementation(projects.sharedUi)
 }

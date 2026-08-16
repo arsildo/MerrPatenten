@@ -61,6 +61,12 @@ internal fun ExamRoute(
         onCheckFalseAtPage = viewModel::checkFalseAtPosition,
         onCompleteExam = viewModel::completeExam,
     )
+
+    LaunchedEffect(uiState.isCompleted) {
+        if (uiState.isCompleted) {
+            onOpenMap()
+        }
+    }
 }
 
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
@@ -336,12 +342,6 @@ internal fun ExamScreen(
                 }
             }
         )
-    }
-
-    LaunchedEffect(uiState.isCompleted) {
-        if (uiState.isCompleted) {
-            onOpenMap()
-        }
     }
 }
 
