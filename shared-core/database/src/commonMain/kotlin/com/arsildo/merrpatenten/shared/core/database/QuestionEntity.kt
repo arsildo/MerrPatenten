@@ -23,8 +23,8 @@ data class QuestionEntity(
 
 fun QuestionEntity.toDomain() = Question(
     id = id,
-    question = question,
-    answer = answer,
+    question = question.trim(),
+    answer = answer.trim(),
     image = image,
-    category = category,
+    category = category.trim(),
 )

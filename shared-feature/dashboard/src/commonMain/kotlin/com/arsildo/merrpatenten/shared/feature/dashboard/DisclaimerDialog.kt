@@ -31,7 +31,6 @@ import merrpatenten.shared_core.design_system.generated.resources.disclaimer_tit
 import merrpatenten.shared_core.design_system.generated.resources.results_confirm
 import org.jetbrains.compose.resources.stringResource
 
-@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun DisclaimerDialog(
     onDismissRequest: () -> Unit,
