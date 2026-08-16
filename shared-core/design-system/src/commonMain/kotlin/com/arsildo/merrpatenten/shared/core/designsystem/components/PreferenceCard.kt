@@ -3,6 +3,8 @@ package com.arsildo.merrpatenten.shared.core.designsystem.components
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalHapticFeedback
 
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
@@ -17,9 +19,17 @@ fun PreferenceCard(
     leadingIcon: (@Composable () -> Unit)? = null,
     onCheckedChange: (Boolean) -> Unit,
 ) {
+    val hapticFeedback = LocalHapticFeedback.current
+    val handleCheckedChange: (Boolean) -> Unit = { newChecked ->
+        hapticFeedback.performHapticFeedback(
+            if (newChecked) HapticFeedbackType.ToggleOn else HapticFeedbackType.ToggleOff
+        )
+        onCheckedChange(newChecked)
+    }
+
     SegmentedListItem(
         selected = checked,
-        onClick = { onCheckedChange(!checked) },
+        onClick = { handleCheckedChange(!checked) },
         enabled = enabled,
         colors = ListItemDefaults.colors(
             containerColor = MaterialTheme.colorScheme.surfaceContainerLow,
@@ -40,7 +50,7 @@ fun PreferenceCard(
             Switch(
                 checked = checked,
                 enabled = enabled,
-                onCheckedChange = onCheckedChange
+                onCheckedChange = handleCheckedChange
             )
         },
         modifier = modifier

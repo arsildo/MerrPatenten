@@ -85,6 +85,8 @@
     <string name="preferences_navigation_buttons_desc">Përdor swipe per te naviguar pyetjet, fshih buttonat e navigimit gjatë provimit.</string>
     <string name="preferences_store_stats">Mbaj mend statistikat</string>
     <string name="preferences_store_stats_desc">Ruaj rezultatet e provimeve dhe gjenero statistika bazuar në to.\n(20 provimet e fundit)</string>
+    <string name="preferences_haptic_feedback">Dridhje gjatë veprimeve</string>
+    <string name="preferences_haptic_feedback_desc">Vibrim gjatë përgjigjeve, klikimeve dhe përfundimit të provimit.</string>
     <string name="preferences_follow_system_theme">Ndiq ngjyrat e sistemit</string>
     <string name="preferences_follow_system_theme_desc">Merr kombinacionin e ngjyrave nga sistemi</string>
     <string name="preferences_dark_mode">Tema e errët</string>

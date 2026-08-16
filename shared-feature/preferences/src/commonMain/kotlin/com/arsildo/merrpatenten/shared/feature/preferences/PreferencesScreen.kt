@@ -11,6 +11,8 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -36,6 +38,7 @@ internal fun PreferencesRoute(
         onBackPress = onBackPress,
         onImmersiveModeChange = viewModel::setImmersiveMode,
         onSaveStatsChange = viewModel::setSaveStats,
+        onHapticFeedbackChange = viewModel::setHapticFeedback,
         onFollowSystemChange = viewModel::setFollowSystem,
         onColorSchemeChange = viewModel::setColorScheme,
         onDynamicColorSchemeChange = viewModel::setDynamicColorScheme,
@@ -50,12 +53,14 @@ internal fun PreferencesScreen(
     onBackPress: () -> Unit,
     onImmersiveModeChange: (Boolean) -> Unit,
     onSaveStatsChange: (Boolean) -> Unit,
+    onHapticFeedbackChange: (Boolean) -> Unit,
     onFollowSystemChange: (Boolean) -> Unit,
     onColorSchemeChange: (Boolean) -> Unit,
     onDynamicColorSchemeChange: (Boolean) -> Unit,
     onQuestionTextSizeChange: (QuestionTextSize) -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    val hapticFeedback = LocalHapticFeedback.current
     val uriHandler = LocalUriHandler.current
     val currentLocale = rememberApplicationLocale()
     var languageDialogVisible by remember { mutableStateOf(false) }
@@ -70,7 +75,10 @@ internal fun PreferencesScreen(
                     },
                     navigationIcon = {
                         FilledTonalIconButton(
-                            onClick = onBackPress,
+                            onClick = {
+                                hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+                                onBackPress()
+                            },
                             colors = IconButtonDefaults.filledTonalIconButtonColors(
                                 containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
                                 contentColor = MaterialTheme.colorScheme.onSurface
@@ -84,7 +92,10 @@ internal fun PreferencesScreen(
                     },
                     actions = {
                         FilledTonalIconButton(
-                            onClick = { languageDialogVisible = true },
+                            onClick = {
+                                hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+                                languageDialogVisible = true
+                            },
                             colors = IconButtonDefaults.filledTonalIconButtonColors(
                                 containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
                                 contentColor = MaterialTheme.colorScheme.onSurface
@@ -101,6 +112,7 @@ internal fun PreferencesScreen(
             floatingActionButton = {
                 ExtendedFloatingActionButton(
                     onClick = {
+                        hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
                         uriHandler.openUri(GITHUB_URL)
                     },
                     text = {
@@ -147,7 +159,7 @@ internal fun PreferencesScreen(
                             subtitle = stringResource(Res.string.preferences_navigation_buttons_desc),
                             checked = uiState.immersiveMode,
                             index = 0,
-                            count = 2,
+                            count = 3,
                             leadingIcon = {
                                 Icon(
                                     imageVector = Icons.Rounded.TouchApp,
@@ -162,7 +174,7 @@ internal fun PreferencesScreen(
                             subtitle = stringResource(Res.string.preferences_store_stats_desc),
                             checked = uiState.saveStats,
                             index = 1,
-                            count = 2,
+                            count = 3,
                             leadingIcon = {
                                 Icon(
                                     imageVector = Icons.Rounded.Insights,
@@ -171,6 +183,21 @@ internal fun PreferencesScreen(
                                 )
                             },
                             onCheckedChange = onSaveStatsChange
+                        )
+                        PreferenceCard(
+                            title = stringResource(Res.string.preferences_haptic_feedback),
+                            subtitle = stringResource(Res.string.preferences_haptic_feedback_desc),
+                            checked = uiState.hapticFeedback,
+                            index = 2,
+                            count = 3,
+                            leadingIcon = {
+                                Icon(
+                                    imageVector = Icons.Rounded.Vibration,
+                                    contentDescription = null,
+                                    tint = MaterialTheme.colorScheme.primary
+                                )
+                            },
+                            onCheckedChange = onHapticFeedbackChange
                         )
                     }
                 }
@@ -260,15 +287,17 @@ internal fun PreferencesScreen(
                             verticalArrangement = Arrangement.spacedBy(8.dp)
                         ) {
                             ApplicationLocale.entries.forEach { locale ->
+                                val onSelectLocale = {
+                                    hapticFeedback.performHapticFeedback(HapticFeedbackType.SegmentTick)
+                                    ApplicationLocaleManager.setLocale(locale)
+                                    languageDialogVisible = false
+                                }
                                 Surface(
                                     shape = MaterialTheme.shapes.medium,
                                     color = if (currentLocale == locale) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surfaceContainerHigh,
                                     modifier = Modifier
                                         .fillMaxWidth()
-                                        .clickable {
-                                            ApplicationLocaleManager.setLocale(locale)
-                                            languageDialogVisible = false
-                                        }
+                                        .clickable(onClick = onSelectLocale)
                                 ) {
                                     Row(
                                         modifier = Modifier
@@ -285,10 +314,7 @@ internal fun PreferencesScreen(
                                         )
                                         RadioButton(
                                             selected = currentLocale == locale,
-                                            onClick = {
-                                                ApplicationLocaleManager.setLocale(locale)
-                                                languageDialogVisible = false
-                                            }
+                                            onClick = onSelectLocale
                                         )
                                     }
                                 }
@@ -296,7 +322,12 @@ internal fun PreferencesScreen(
                         }
                     },
                     confirmButton = {
-                        TextButton(onClick = { languageDialogVisible = false }) {
+                        TextButton(
+                            onClick = {
+                                hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+                                languageDialogVisible = false
+                            }
+                        ) {
                             Text(text = stringResource(Res.string.close))
                         }
                     }
@@ -315,6 +346,7 @@ private fun PreferencesScreenPreview() {
             onBackPress = {},
             onImmersiveModeChange = {},
             onSaveStatsChange = {},
+            onHapticFeedbackChange = {},
             onFollowSystemChange = {},
             onColorSchemeChange = {},
             onDynamicColorSchemeChange = {},
@@ -332,6 +364,7 @@ private fun PreferencesScreenDarkPreview() {
             onBackPress = {},
             onImmersiveModeChange = {},
             onSaveStatsChange = {},
+            onHapticFeedbackChange = {},
             onFollowSystemChange = {},
             onColorSchemeChange = {},
             onDynamicColorSchemeChange = {},

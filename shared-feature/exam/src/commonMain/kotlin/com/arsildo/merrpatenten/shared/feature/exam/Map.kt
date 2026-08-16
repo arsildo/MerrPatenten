@@ -11,11 +11,14 @@ import androidx.compose.material.icons.rounded.HighlightOff
 import androidx.compose.material.icons.rounded.KeyboardArrowDown
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
@@ -82,6 +85,17 @@ fun MapContent(
     val heroContent = if (isPassed) MaterialTheme.semanticColors.onSuccessContainer else MaterialTheme.colorScheme.onErrorContainer
     val heroIcon = if (isPassed) Icons.Rounded.CheckCircle else Icons.Rounded.HighlightOff
     val heroIconColor = if (isPassed) MaterialTheme.semanticColors.success else MaterialTheme.colorScheme.error
+
+    val hapticFeedback = LocalHapticFeedback.current
+    LaunchedEffect(isCompleted) {
+        if (isCompleted) {
+            if (isPassed) {
+                hapticFeedback.performHapticFeedback(HapticFeedbackType.Confirm)
+            } else {
+                hapticFeedback.performHapticFeedback(HapticFeedbackType.Reject)
+            }
+        }
+    }
 
     Column(
         modifier = modifier
@@ -224,7 +238,10 @@ fun MapContent(
                 }
             }
             IconButton(
-                onClick = onDismissRequest,
+                onClick = {
+                    hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+                    onDismissRequest()
+                },
                 colors = IconButtonDefaults.iconButtonColors(
                     contentColor = MaterialTheme.colorScheme.secondary
                 )
@@ -248,8 +265,12 @@ private fun QuestionGridItem(
     shape: Shape = MaterialTheme.shapes.medium,
     onClick: () -> Unit,
 ) {
+    val hapticFeedback = LocalHapticFeedback.current
     Surface(
-        onClick = onClick,
+        onClick = {
+            hapticFeedback.performHapticFeedback(HapticFeedbackType.SegmentTick)
+            onClick()
+        },
         shape = shape,
         color = containerColor,
         contentColor = contentColor,

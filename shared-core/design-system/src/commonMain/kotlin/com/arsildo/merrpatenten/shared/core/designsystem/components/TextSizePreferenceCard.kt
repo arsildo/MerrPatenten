@@ -7,6 +7,8 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.unit.dp
 import com.arsildo.merrpatenten.shared.core.designsystem.QuestionTextSize
 import merrpatenten.shared_core.design_system.generated.resources.*
@@ -21,6 +23,7 @@ fun TextSizePreferenceCard(
     index: Int = 0,
     count: Int = 1,
 ) {
+    val hapticFeedback = LocalHapticFeedback.current
     Surface(
         shape = ListItemDefaults.segmentedShapes(index = index, count = count).shape,
         color = MaterialTheme.colorScheme.surfaceContainerLow,
@@ -62,7 +65,10 @@ fun TextSizePreferenceCard(
                 QuestionTextSize.entries.forEachIndexed { idx, size ->
                     SegmentedButton(
                         selected = selectedSize == size,
-                        onClick = { onSizeSelected(size) },
+                        onClick = {
+                            hapticFeedback.performHapticFeedback(HapticFeedbackType.SegmentTick)
+                            onSizeSelected(size)
+                        },
                         shape = SegmentedButtonDefaults.itemShape(
                             index = idx,
                             count = QuestionTextSize.entries.size

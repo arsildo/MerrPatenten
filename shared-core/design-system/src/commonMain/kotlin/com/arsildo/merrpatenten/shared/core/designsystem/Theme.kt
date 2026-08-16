@@ -103,6 +103,7 @@ expect val supportsDynamicColor: Boolean
 @Composable
 fun MerrPatentenTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
+    hapticFeedback: Boolean = true,
     content: @Composable () -> Unit
 ) {
     val colorScheme = if (darkTheme) DarkColorScheme else LightColorScheme
@@ -148,4 +149,3 @@ fun AnimateColorSchemeTransition(content: @Composable () -> Unit) {
         content = content
     )
 }
-

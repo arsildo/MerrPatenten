@@ -24,6 +24,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -188,6 +190,7 @@ private fun ExpressiveOptionCard(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    val hapticFeedback = LocalHapticFeedback.current
     val containerColor by animateColorAsState(
         targetValue = if (isChecked) selectedContainerColor
         else MaterialTheme.colorScheme.surfaceContainerHigh,
@@ -204,7 +207,10 @@ private fun ExpressiveOptionCard(
     else MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f)
 
     Button(
-        onClick = onClick,
+        onClick = {
+            hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
+            onClick()
+        },
         enabled = enabled,
         shapes = ButtonShapes(
             shape = MaterialTheme.shapes.large,
@@ -253,8 +259,14 @@ private fun QuestionImage(
     image: DrawableResource,
     onClick: () -> Unit,
 ) {
+    val hapticFeedback = LocalHapticFeedback.current
     Box(
-        modifier = Modifier.fillMaxWidth() .clickable(onClick = onClick),
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable {
+                hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+                onClick()
+            },
         contentAlignment = Alignment.BottomEnd
     ) {
         Image(

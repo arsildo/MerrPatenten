@@ -8,11 +8,11 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.arsildo.merrpatenten.shared.core.designsystem.Red
 import merrpatenten.shared_core.design_system.generated.resources.Res
 import merrpatenten.shared_core.design_system.generated.resources.end_exam
 import merrpatenten.shared_core.design_system.generated.resources.exit_exam
@@ -76,8 +76,6 @@ fun ExitExamButton(
     )
 }
 
-
-@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 private fun ActionButton(
     modifier: Modifier = Modifier,
@@ -86,8 +84,12 @@ private fun ActionButton(
     onClick: () -> Unit,
     colors: ButtonColors,
 ) {
+    val hapticFeedback = LocalHapticFeedback.current
     Button(
-        onClick = onClick,
+        onClick = {
+            hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
+            onClick()
+        },
         shapes = ButtonShapes(
             shape = MaterialTheme.shapes.large,
             pressedShape = MaterialTheme.shapes.small

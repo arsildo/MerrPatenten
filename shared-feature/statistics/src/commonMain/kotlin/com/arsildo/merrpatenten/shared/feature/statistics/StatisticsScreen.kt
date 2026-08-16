@@ -12,6 +12,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -49,6 +51,7 @@ internal fun StatisticsScreen(
     onDeleteAllResults: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    val hapticFeedback = LocalHapticFeedback.current
     var deleteResultsDialog by remember { mutableStateOf(false) }
 
     Scaffold(
@@ -58,7 +61,10 @@ internal fun StatisticsScreen(
                 title = { Text(text = stringResource(Res.string.statistics)) },
                 navigationIcon = {
                     FilledTonalIconButton(
-                        onClick = onBackPress,
+                        onClick = {
+                            hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+                            onBackPress()
+                        },
                         colors = IconButtonDefaults.filledTonalIconButtonColors(
                             containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
                             contentColor = MaterialTheme.colorScheme.onSurface
@@ -74,7 +80,10 @@ internal fun StatisticsScreen(
                 actions = {
                     if (uiState.saveResults && uiState.results.isNotEmpty()) {
                         FilledTonalIconButton(
-                            onClick = { deleteResultsDialog = true },
+                            onClick = {
+                                hapticFeedback.performHapticFeedback(HapticFeedbackType.GestureThresholdActivate)
+                                deleteResultsDialog = true
+                            },
                             colors = IconButtonDefaults.filledTonalIconButtonColors(
                                 containerColor = MaterialTheme.colorScheme.errorContainer,
                                 contentColor = MaterialTheme.colorScheme.error
@@ -108,7 +117,10 @@ internal fun StatisticsScreen(
                     icon = Icons.Rounded.MobiledataOff,
                     changePreference = {
                         Button(
-                            onClick = onChangePreferenceClick,
+                            onClick = {
+                                hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+                                onChangePreferenceClick()
+                            },
                             shapes = ButtonShapes(
                                 shape = MaterialTheme.shapes.large,
                                 pressedShape = MaterialTheme.shapes.small

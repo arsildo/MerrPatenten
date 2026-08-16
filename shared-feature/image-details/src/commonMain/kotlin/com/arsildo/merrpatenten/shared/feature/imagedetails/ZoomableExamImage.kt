@@ -23,6 +23,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -54,10 +56,15 @@ fun ZoomableExamImage(
     onDismiss: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    val hapticFeedback = LocalHapticFeedback.current
+    val handleDismiss = {
+        hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+        onDismiss()
+    }
     Box(
         modifier = modifier
             .fillMaxSize()
-            .clickable(onClick = onDismiss),
+            .clickable(onClick = handleDismiss),
         contentAlignment = Alignment.Center
     ) {
         var scale by remember { mutableFloatStateOf(1f) }
@@ -80,7 +87,7 @@ fun ZoomableExamImage(
                 .transformable(state = state)
         )
         ExtendedFloatingActionButton(
-            onClick = onDismiss,
+            onClick = handleDismiss,
             text = {
                 Text(
                     text = stringResource(Res.string.back),

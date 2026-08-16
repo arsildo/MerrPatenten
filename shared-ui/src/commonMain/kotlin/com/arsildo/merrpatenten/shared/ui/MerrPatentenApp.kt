@@ -64,7 +64,10 @@ fun MerrPatentenApp() {
         uiState.colorScheme
     }
 
-    MerrPatentenTheme(darkTheme = isDark) {
+    MerrPatentenTheme(
+        darkTheme = isDark,
+        hapticFeedback = uiState.hapticFeedback
+    ) {
         val backStack = rememberNavBackStack(configuration = config, Dashboard)
         var showDisclaimer by remember { mutableStateOf(false) }
 

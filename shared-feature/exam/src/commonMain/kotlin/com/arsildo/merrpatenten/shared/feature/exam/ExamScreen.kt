@@ -17,6 +17,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.DEFAULT_ARGS_KEY
@@ -84,6 +86,7 @@ internal fun ExamScreen(
     onCheckFalseAtPage: (Int) -> Unit,
     onCompleteExam: () -> Unit,
 ) {
+    val hapticFeedback = LocalHapticFeedback.current
     val coroutineScope = rememberCoroutineScope()
     val pagerState = rememberPagerState(pageCount = { QUESTIONS_IN_EXAM })
     var questionsUnCompletedDialog by remember { mutableStateOf(false) }
@@ -152,6 +155,7 @@ internal fun ExamScreen(
                             onClick = {
                                 val completedCount = uiState.responseList.count { it.isNotBlank() }
                                 if (completedCount != QUESTIONS_IN_EXAM) {
+                                    hapticFeedback.performHapticFeedback(HapticFeedbackType.GestureThresholdActivate)
                                     questionsUnCompletedDialog = true
                                 } else {
                                     onCompleteExam()
@@ -280,6 +284,7 @@ internal fun ExamScreen(
                 ) {
                     Button(
                         onClick = {
+                            hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
                             questionsUnCompletedDialog = false
                             onOpenMap()
                         },
@@ -299,6 +304,7 @@ internal fun ExamScreen(
                     )
                     FilledTonalButton(
                         onClick = {
+                            hapticFeedback.performHapticFeedback(HapticFeedbackType.GestureThresholdActivate)
                             questionsUnCompletedDialog = false
                             onCompleteExam()
                             onOpenMap()
@@ -319,6 +325,7 @@ internal fun ExamScreen(
                     )
                     Button(
                         onClick = {
+                            hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
                             questionsUnCompletedDialog = false
                             onExitExam()
                         },

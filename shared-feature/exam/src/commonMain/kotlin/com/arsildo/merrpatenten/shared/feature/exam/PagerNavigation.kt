@@ -8,6 +8,8 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -22,13 +24,17 @@ internal fun PagerNavigation(
     onNextPageClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    val hapticFeedback = LocalHapticFeedback.current
     Row(
         modifier = modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         FilledTonalButton(
-            onClick = onPreviousPageClick,
+            onClick = {
+                hapticFeedback.performHapticFeedback(HapticFeedbackType.SegmentTick)
+                onPreviousPageClick()
+            },
             shapes = ButtonShapes(
                 shape = MaterialTheme.shapes.large,
                 pressedShape = MaterialTheme.shapes.small
@@ -52,7 +58,10 @@ internal fun PagerNavigation(
         }
 
         ElevatedButton(
-            onClick = onNextPageClick,
+            onClick = {
+                hapticFeedback.performHapticFeedback(HapticFeedbackType.SegmentTick)
+                onNextPageClick()
+            },
             shapes = ButtonShapes(
                 shape = MaterialTheme.shapes.large,
                 pressedShape = MaterialTheme.shapes.small

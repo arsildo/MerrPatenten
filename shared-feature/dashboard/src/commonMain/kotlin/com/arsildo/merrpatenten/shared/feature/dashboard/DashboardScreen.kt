@@ -8,8 +8,9 @@ import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.rounded.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -19,7 +20,6 @@ import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
 import com.arsildo.merrpatenten.shared.core.designsystem.components.ExamTypeCard
 import com.arsildo.merrpatenten.shared.core.designsystem.components.HelpfulMaterialCard
 import com.arsildo.merrpatenten.shared.core.designsystem.components.SectionHeader
-import kotlinx.coroutines.launch
 import merrpatenten.shared_core.design_system.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
 
@@ -43,6 +43,7 @@ internal fun DashboardScreen(
     onStatisticsClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    val hapticFeedback = LocalHapticFeedback.current
     val uriHandler = LocalUriHandler.current
     var showDisclaimerDialog by remember { mutableStateOf(false) }
 
@@ -75,14 +76,38 @@ internal fun DashboardScreen(
                 modifier = Modifier.navigationBarsPadding(),
                 colors = FloatingToolbarDefaults.vibrantFloatingToolbarColors()
             ) {
-                IconButton(onClick = onStatisticsClick) {
-                    Icon(Icons.Rounded.AutoGraph, stringResource(Res.string.statistics))
+                IconButton(
+                    onClick = {
+                        hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+                        onStatisticsClick()
+                    }
+                ) {
+                    Icon(
+                        imageVector = Icons.Rounded.AutoGraph,
+                        contentDescription = stringResource(Res.string.statistics)
+                    )
                 }
-                IconButton(onClick = onPreferencesClick) {
-                    Icon(Icons.Rounded.Settings, stringResource(Res.string.preferences))
+                IconButton(
+                    onClick = {
+                        hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+                        onPreferencesClick()
+                    }
+                ) {
+                    Icon(
+                        imageVector = Icons.Rounded.Settings,
+                        contentDescription = stringResource(Res.string.preferences)
+                    )
                 }
-                IconButton(onClick = { showDisclaimerDialog = true }) {
-                    Icon(imageVector = Icons.Outlined.Info, contentDescription = stringResource(Res.string.info))
+                IconButton(
+                    onClick = {
+                        hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+                        showDisclaimerDialog = true
+                    }
+                ) {
+                    Icon(
+                        imageVector = Icons.Outlined.Info,
+                        contentDescription = stringResource(Res.string.info)
+                    )
                 }
             }
         },
@@ -107,7 +132,10 @@ internal fun DashboardScreen(
                 title = stringResource(Res.string.questionnaire_category_one),
                 description = stringResource(Res.string.category_b_desc),
                 icon = Icons.Rounded.DirectionsCar,
-                onClick = { onStartExamClick("B") },
+                onClick = {
+                    hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
+                    onStartExamClick("B")
+                },
                 colors = CardDefaults.elevatedCardColors(
                     containerColor = MaterialTheme.colorScheme.primaryContainer,
                     contentColor = MaterialTheme.colorScheme.onPrimaryContainer
@@ -118,7 +146,10 @@ internal fun DashboardScreen(
                 title = stringResource(Res.string.questionnaire_category_two),
                 description = stringResource(Res.string.category_cd_desc),
                 icon = Icons.Rounded.LocalShipping,
-                onClick = { onStartExamClick("C") },
+                onClick = {
+                    hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
+                    onStartExamClick("C")
+                },
                 colors = CardDefaults.elevatedCardColors(
                     containerColor = MaterialTheme.colorScheme.secondaryContainer,
                     contentColor = MaterialTheme.colorScheme.onSecondaryContainer
@@ -129,7 +160,10 @@ internal fun DashboardScreen(
                 title = stringResource(Res.string.questionnaire_category_three),
                 description = stringResource(Res.string.category_cd_desc),
                 icon = Icons.Rounded.DirectionsBus,
-                onClick = { onStartExamClick("D") },
+                onClick = {
+                    hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
+                    onStartExamClick("D")
+                },
                 colors = CardDefaults.elevatedCardColors(
                     containerColor = MaterialTheme.colorScheme.tertiaryContainer,
                     contentColor = MaterialTheme.colorScheme.onTertiaryContainer
@@ -138,7 +172,10 @@ internal fun DashboardScreen(
 
             // Helpful Material Card
             HelpfulMaterialCard(
-                onClick = { uriHandler.openUri(DPSHTRR_HELP) },
+                onClick = {
+                    hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+                    uriHandler.openUri(DPSHTRR_HELP)
+                },
                 colors = CardDefaults.elevatedCardColors(
                     containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
                     contentColor = MaterialTheme.colorScheme.onSurface

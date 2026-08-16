@@ -13,6 +13,7 @@ class PreferencesRepository(private val dataStore: DataStore<Preferences>) {
     object PreferencesKeys {
         val IMMERSIVE_MODE = booleanPreferencesKey("immersive_mode")
         val SAVE_STATS = booleanPreferencesKey("save_stats")
+        val HAPTIC_FEEDBACK = booleanPreferencesKey("haptic_feedback")
         val AUTOMATIC_COLOR_SCHEME = booleanPreferencesKey("automatic_color_scheme")
         val COLOR_SCHEME = booleanPreferencesKey("color_scheme")
         val DYNAMIC_COLOR_SCHEME = booleanPreferencesKey("dynamic_color_scheme")
@@ -33,6 +34,14 @@ class PreferencesRepository(private val dataStore: DataStore<Preferences>) {
 
     suspend fun setSaveStats(save: Boolean) {
         dataStore.edit { preferences -> preferences[PreferencesKeys.SAVE_STATS] = save }
+    }
+
+    val getHapticFeedback: Flow<Boolean> = dataStore.data.map { preferences ->
+        preferences[PreferencesKeys.HAPTIC_FEEDBACK] ?: true
+    }
+
+    suspend fun setHapticFeedback(enabled: Boolean) {
+        dataStore.edit { preferences -> preferences[PreferencesKeys.HAPTIC_FEEDBACK] = enabled }
     }
 
     val getSystemColorScheme: Flow<Boolean> = dataStore.data.map { preferences ->

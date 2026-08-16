@@ -85,6 +85,8 @@
     <string name="preferences_navigation_buttons_desc">Use swipe to navigate questions, hide navigation buttons during exam.</string>
     <string name="preferences_store_stats">Save statistics</string>
     <string name="preferences_store_stats_desc">Save exam results and generate statistics based on them.\n(Last 20 exams)</string>
+    <string name="preferences_haptic_feedback">Haptic feedback</string>
+    <string name="preferences_haptic_feedback_desc">Vibrate during clicks, answer selections, and exam results.</string>
     <string name="preferences_follow_system_theme">Follow system theme</string>
     <string name="preferences_follow_system_theme_desc">Match color palette with system theme</string>
     <string name="preferences_dark_mode">Dark Mode</string>

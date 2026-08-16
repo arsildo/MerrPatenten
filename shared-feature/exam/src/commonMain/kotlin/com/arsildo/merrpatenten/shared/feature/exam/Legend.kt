@@ -18,6 +18,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -37,6 +39,7 @@ internal fun Legend(
     onShowEndExamButton: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    val hapticFeedback = LocalHapticFeedback.current
     Row(
         modifier = modifier
             .fillMaxWidth()
@@ -60,7 +63,10 @@ internal fun Legend(
 
         // Map / Grid Action
         FilledTonalButton(
-            onClick = onMapClick,
+            onClick = {
+                hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+                onMapClick()
+            },
             shapes = ButtonShapes(
                 shape = MaterialTheme.shapes.medium,
                 pressedShape = MaterialTheme.shapes.small
@@ -114,7 +120,10 @@ internal fun Legend(
         )
 
         FilledTonalIconButton(
-            onClick = onShowEndExamButton,
+            onClick = {
+                hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+                onShowEndExamButton()
+            },
             colors = IconButtonDefaults.filledTonalIconButtonColors(
                 containerColor = actionColor.copy(alpha = 0.12f),
                 contentColor = actionColor
