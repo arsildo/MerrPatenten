@@ -9,7 +9,7 @@ actual object ApplicationLocaleManager : ApplicationLocaleManagerUseCase {
     private const val INITIAL_LOCALE_KEY = "initialLocale"
     private const val APPLE_LANGUAGES_KEY = "AppleLanguages"
 
-    override fun setDefaultLocale() {
+    actual override fun setDefaultLocale() {
         val userDefaults = NSUserDefaults.standardUserDefaults
         if (userDefaults.stringForKey(defaultName = INITIAL_LOCALE_KEY) == null) {
             setLocale(ApplicationLocale.Albanian)
@@ -18,9 +18,9 @@ actual object ApplicationLocaleManager : ApplicationLocaleManagerUseCase {
         }
     }
 
-    override fun getLocale(): String = NSLocale.currentLocale.languageCode
+    actual override fun getLocale(): String = NSLocale.currentLocale.languageCode
 
-    override fun setLocale(locale: ApplicationLocale) {
+    actual override fun setLocale(locale: ApplicationLocale) {
         NSUserDefaults.standardUserDefaults.setObject(
             value = arrayListOf(locale.localeCode),
             forKey = APPLE_LANGUAGES_KEY
@@ -28,7 +28,7 @@ actual object ApplicationLocaleManager : ApplicationLocaleManagerUseCase {
         NSUserDefaults.standardUserDefaults.synchronize()
     }
 
-    override fun restartApp() {
+    actual override fun restartApp() {
         kotlin.system.exitProcess(status = 0)
     }
 }

@@ -6,7 +6,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
-import androidx.compose.material.icons.automirrored.rounded.KeyboardArrowRight
 import androidx.compose.material.icons.rounded.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -55,13 +54,16 @@ internal fun PreferencesScreen(
     modifier: Modifier = Modifier,
 ) {
     val uriHandler = LocalUriHandler.current
+    val currentLocale = rememberApplicationLocale()
+    var languageDialogVisible by remember { mutableStateOf(false) }
 
     AnimateColorSchemeTransition {
         Scaffold(
             modifier = modifier,
             topBar = {
                 TopAppBar(
-                    title = { Text(text = stringResource(Res.string.preferences))
+                    title = {
+                        Text(text = stringResource(Res.string.preferences))
                     },
                     navigationIcon = {
                         FilledTonalIconButton(
@@ -74,6 +76,20 @@ internal fun PreferencesScreen(
                             Icon(
                                 imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
                                 contentDescription = stringResource(Res.string.back)
+                            )
+                        }
+                    },
+                    actions = {
+                        FilledTonalIconButton(
+                            onClick = { languageDialogVisible = true },
+                            colors = IconButtonDefaults.filledTonalIconButtonColors(
+                                containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
+                                contentColor = MaterialTheme.colorScheme.onSurface
+                            )
+                        ) {
+                            Icon(
+                                imageVector = Icons.Rounded.Language,
+                                contentDescription = stringResource(Res.string.language)
                             )
                         }
                     }
@@ -162,6 +178,8 @@ internal fun PreferencesScreen(
                 ) {
                     SectionHeader(title = stringResource(Res.string.pref_section_appearance))
 
+                    val appearanceCount = if (supportsDynamicColor) 3 else 2
+
                     Column(
                         verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap)
                     ) {
@@ -170,7 +188,7 @@ internal fun PreferencesScreen(
                             subtitle = stringResource(Res.string.preferences_follow_system_theme_desc),
                             checked = uiState.followSystemColors,
                             index = 0,
-                            count = 3,
+                            count = appearanceCount,
                             leadingIcon = {
                                 Icon(
                                     imageVector = Icons.Rounded.BrightnessAuto,
@@ -186,7 +204,7 @@ internal fun PreferencesScreen(
                             checked = uiState.colorScheme,
                             enabled = !uiState.followSystemColors,
                             index = 1,
-                            count = 3,
+                            count = appearanceCount,
                             leadingIcon = {
                                 Icon(
                                     imageVector = Icons.Rounded.DarkMode,
@@ -196,129 +214,84 @@ internal fun PreferencesScreen(
                             },
                             onCheckedChange = onColorSchemeChange
                         )
-                        PreferenceCard(
-                            title = stringResource(Res.string.preferences_material_you),
-                            subtitle = stringResource(Res.string.preferences_material_you_desc),
-                            checked = uiState.dynamicColorScheme,
-                            index = 2,
-                            count = 3,
-                            leadingIcon = {
-                                Icon(
-                                    imageVector = Icons.Rounded.Palette,
-                                    contentDescription = null,
-                                    tint = MaterialTheme.colorScheme.primary
-                                )
-                            },
-                            onCheckedChange = onDynamicColorSchemeChange
-                        )
-                    }
-                }
-
-                // Section 3: Language & Localization
-                Column(
-                    verticalArrangement = Arrangement.spacedBy(8.dp)
-                ) {
-                    SectionHeader(title = stringResource(Res.string.pref_section_localization))
-
-                    val currentLocale = rememberApplicationLocale()
-                    var languageDialogVisible by remember { mutableStateOf(false) }
-
-                    SegmentedListItem(
-                        selected = false,
-                        onClick = { languageDialogVisible = true },
-                        colors = ListItemDefaults.colors(
-                            containerColor = MaterialTheme.colorScheme.surfaceContainerLow,
-                        ),
-                        shapes = ListItemDefaults.segmentedShapes(index = 0, count = 1),
-                        leadingContent = {
-                            Icon(
-                                imageVector = Icons.Rounded.Language,
-                                contentDescription = null,
-                                tint = MaterialTheme.colorScheme.primary
-                            )
-                        },
-                        content = {
-                            Text(
-                                text = stringResource(Res.string.language),
-                                style = MaterialTheme.typography.titleMedium,
-                                fontWeight = FontWeight.SemiBold
-                            )
-                        },
-                        supportingContent = {
-                            Text(
-                                text = stringResource(currentLocale.res),
-                                style = MaterialTheme.typography.bodySmall,
-                                color = MaterialTheme.colorScheme.primary
-                            )
-                        },
-                        trailingContent = {
-                            Icon(
-                                imageVector = Icons.AutoMirrored.Rounded.KeyboardArrowRight,
-                                contentDescription = null,
-                                tint = MaterialTheme.colorScheme.onSurfaceVariant
+                        if (supportsDynamicColor) {
+                            PreferenceCard(
+                                title = stringResource(Res.string.preferences_material_you),
+                                subtitle = stringResource(Res.string.preferences_material_you_desc),
+                                checked = uiState.dynamicColorScheme,
+                                index = 2,
+                                count = appearanceCount,
+                                leadingIcon = {
+                                    Icon(
+                                        imageVector = Icons.Rounded.Palette,
+                                        contentDescription = null,
+                                        tint = MaterialTheme.colorScheme.primary
+                                    )
+                                },
+                                onCheckedChange = onDynamicColorSchemeChange
                             )
                         }
-                    )
-
-                    if (languageDialogVisible) {
-                        AlertDialog(
-                            onDismissRequest = { languageDialogVisible = false },
-                            title = {
-                                Text(
-                                    text = stringResource(Res.string.language),
-                                    style = MaterialTheme.typography.headlineSmall,
-                                    fontWeight = FontWeight.Bold
-                                )
-                            },
-                            text = {
-                                Column(
-                                    modifier = Modifier.fillMaxWidth(),
-                                    verticalArrangement = Arrangement.spacedBy(8.dp)
-                                ) {
-                                    ApplicationLocale.entries.forEach { locale ->
-                                        Surface(
-                                            shape = MaterialTheme.shapes.medium,
-                                            color = if (currentLocale == locale) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surfaceContainerHigh,
-                                            modifier = Modifier
-                                                .fillMaxWidth()
-                                                .clickable {
-                                                    ApplicationLocaleManager.setLocale(locale)
-                                                    languageDialogVisible = false
-                                                }
-                                        ) {
-                                            Row(
-                                                modifier = Modifier
-                                                    .fillMaxWidth()
-                                                    .padding(horizontal = 16.dp, vertical = 14.dp),
-                                                horizontalArrangement = Arrangement.SpaceBetween,
-                                                verticalAlignment = Alignment.CenterVertically
-                                            ) {
-                                                Text(
-                                                    text = stringResource(locale.res),
-                                                    style = MaterialTheme.typography.titleMedium,
-                                                    fontWeight = if (currentLocale == locale) FontWeight.Bold else FontWeight.Normal,
-                                                    color = if (currentLocale == locale) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.onSurface
-                                                )
-                                                RadioButton(
-                                                    selected = currentLocale == locale,
-                                                    onClick = {
-                                                        ApplicationLocaleManager.setLocale(locale)
-                                                        languageDialogVisible = false
-                                                    }
-                                                )
-                                            }
-                                        }
-                                    }
-                                }
-                            },
-                            confirmButton = {
-                                TextButton(onClick = { languageDialogVisible = false }) {
-                                    Text(text = stringResource(Res.string.close))
-                                }
-                            }
-                        )
                     }
                 }
+            }
+
+            if (languageDialogVisible) {
+                AlertDialog(
+                    onDismissRequest = { languageDialogVisible = false },
+                    title = {
+                        Text(
+                            text = stringResource(Res.string.language),
+                            style = MaterialTheme.typography.headlineSmall,
+                            fontWeight = FontWeight.Bold
+                        )
+                    },
+                    text = {
+                        Column(
+                            modifier = Modifier.fillMaxWidth(),
+                            verticalArrangement = Arrangement.spacedBy(8.dp)
+                        ) {
+                            ApplicationLocale.entries.forEach { locale ->
+                                Surface(
+                                    shape = MaterialTheme.shapes.medium,
+                                    color = if (currentLocale == locale) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surfaceContainerHigh,
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .clickable {
+                                            ApplicationLocaleManager.setLocale(locale)
+                                            languageDialogVisible = false
+                                        }
+                                ) {
+                                    Row(
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .padding(horizontal = 16.dp, vertical = 14.dp),
+                                        horizontalArrangement = Arrangement.SpaceBetween,
+                                        verticalAlignment = Alignment.CenterVertically
+                                    ) {
+                                        Text(
+                                            text = stringResource(locale.res),
+                                            style = MaterialTheme.typography.titleMedium,
+                                            fontWeight = if (currentLocale == locale) FontWeight.Bold else FontWeight.Normal,
+                                            color = if (currentLocale == locale) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.onSurface
+                                        )
+                                        RadioButton(
+                                            selected = currentLocale == locale,
+                                            onClick = {
+                                                ApplicationLocaleManager.setLocale(locale)
+                                                languageDialogVisible = false
+                                            }
+                                        )
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    confirmButton = {
+                        TextButton(onClick = { languageDialogVisible = false }) {
+                            Text(text = stringResource(Res.string.close))
+                        }
+                    }
+                )
             }
         }
     }

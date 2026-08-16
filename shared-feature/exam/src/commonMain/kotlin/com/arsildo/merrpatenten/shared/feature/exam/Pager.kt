@@ -213,7 +213,7 @@ private fun ExpressiveOptionCard(
             disabledContentColor = contentColor
         ),
         border = BorderStroke(if (isChecked) 2.dp else 1.dp, borderColor),
-        contentPadding = PaddingValues(vertical = 14.dp, horizontal = 12.dp),
+        contentPadding = PaddingValues(16.dp),
         modifier = modifier
     ) {
         Row(

@@ -98,6 +98,8 @@ val MaterialTheme.semanticColors: SemanticColors
     @Composable
     get() = LocalSemanticColors.current
 
+expect val supportsDynamicColor: Boolean
+
 @Composable
 fun MerrPatentenTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),

@@ -5,17 +5,17 @@ import java.util.Locale
 actual object ApplicationLocaleManager : ApplicationLocaleManagerUseCase {
     private var currentLocale: String = "sq"
 
-    override fun setDefaultLocale() {
+    actual override fun setDefaultLocale() {
         Locale.setDefault(Locale.forLanguageTag("sq"))
         currentLocale = "sq"
     }
 
-    override fun getLocale(): String = currentLocale
+    actual override fun getLocale(): String = currentLocale
 
-    override fun setLocale(locale: ApplicationLocale) {
+    actual override fun setLocale(locale: ApplicationLocale) {
         currentLocale = locale.localeCode
         Locale.setDefault(Locale.forLanguageTag(locale.localeCode))
     }
 
-    override fun restartApp() = Unit
+    actual override fun restartApp() = Unit
 }
