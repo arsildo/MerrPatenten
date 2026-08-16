@@ -19,7 +19,13 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.DEFAULT_ARGS_KEY
+import androidx.lifecycle.HasDefaultViewModelProviderFactory
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.CreationExtras
+import androidx.lifecycle.viewmodel.MutableCreationExtras
+import androidx.lifecycle.viewmodel.compose.LocalViewModelStoreOwner
+import androidx.savedstate.savedState
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
 import com.arsildo.merrpatenten.shared.core.designsystem.QUESTIONS_IN_EXAM
 import com.arsildo.merrpatenten.shared.core.designsystem.components.EndExamButton
@@ -34,16 +40,12 @@ import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 internal fun ExamRoute(
-    category: String,
+    viewModel: ExamViewModel = koinViewModel(),
     onImageDetailsClick: (Int) -> Unit,
     onOpenMap: () -> Unit,
     onExitExam: () -> Unit,
     onRestartExam: () -> Unit,
-    viewModel: ExamViewModel = koinViewModel(),
 ) {
-    LaunchedEffect(category) {
-        viewModel.startExam(category)
-    }
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val targetPage by viewModel.targetPage.collectAsStateWithLifecycle()
 

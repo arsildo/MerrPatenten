@@ -24,7 +24,7 @@ internal fun PagerNavigation(
 ) {
     Row(
         modifier = modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.spacedBy(16.dp),
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         FilledTonalButton(
@@ -46,13 +46,7 @@ internal fun PagerNavigation(
             ) {
                 Icon(
                     imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
-                    contentDescription = stringResource(Res.string.previous_page),
-                    modifier = Modifier.size(20.dp)
-                )
-                Text(
-                    text = stringResource(Res.string.previous_page),
-                    style = MaterialTheme.typography.labelLarge,
-                    fontWeight = FontWeight.SemiBold
+                    contentDescription = stringResource(Res.string.previous_page)
                 )
             }
         }
@@ -74,15 +68,9 @@ internal fun PagerNavigation(
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(
-                    text = stringResource(Res.string.next_page),
-                    style = MaterialTheme.typography.labelLarge,
-                    fontWeight = FontWeight.Bold
-                )
                 Icon(
                     imageVector = Icons.AutoMirrored.Rounded.ArrowForward,
-                    contentDescription = stringResource(Res.string.next_page),
-                    modifier = Modifier.size(20.dp)
+                    contentDescription = stringResource(Res.string.next_page)
                 )
             }
         }

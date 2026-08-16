@@ -1,5 +1,6 @@
 package com.arsildo.merrpatenten.shared.feature.exam
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.arsildo.merrpatenten.shared.core.data.ExamResultsRepository
@@ -42,10 +43,13 @@ internal data class ExamUiState(
 )
 
 internal class ExamViewModel(
+    savedStateHandle: SavedStateHandle,
     private val preferencesRepository: PreferencesRepository,
     private val questionnaireRepository: QuestionnaireRepository,
     private val examResultsRepository: ExamResultsRepository,
 ) : ViewModel() {
+
+    private val category: String = savedStateHandle.get<String>("category") ?: "B"
 
     private var timerJob: Job? = null
 
@@ -84,7 +88,11 @@ internal class ExamViewModel(
         initialValue = _internalUiState.value
     )
 
-    fun startExam(category: String = "B") = viewModelScope.launch {
+    init {
+        startExam(category)
+    }
+
+    fun startExam(category: String = this.category) = viewModelScope.launch {
         timerJob?.cancel()
         try {
             val allQuestions = questionnaireRepository.getByCategory(category).first { it.isNotEmpty() }
