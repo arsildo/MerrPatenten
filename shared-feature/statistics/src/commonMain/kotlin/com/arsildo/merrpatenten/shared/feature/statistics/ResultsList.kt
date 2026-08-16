@@ -81,7 +81,7 @@ internal fun ResultItem(
                     tint = MaterialTheme.colorScheme.onSurfaceVariant
                 )
                 Text(
-                    text = "${result.time} min",
+                    text = "${result.time} ${stringResource(Res.string.minutes_abbreviation)}",
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )

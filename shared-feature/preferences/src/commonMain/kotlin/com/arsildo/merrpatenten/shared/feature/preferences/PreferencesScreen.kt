@@ -128,21 +128,21 @@ internal fun PreferencesScreen(
                             modifier = Modifier.size(28.dp)
                         )
                     },
-                    elevation = FloatingActionButtonDefaults.elevation(defaultElevation = 2.dp),
+                    elevation = FloatingActionButtonDefaults.loweredElevation(),
                     containerColor = MaterialTheme.colorScheme.secondaryContainer,
                     contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
                     shape = MaterialTheme.shapes.large
                 )
             },
-            contentColor = MaterialTheme.colorScheme.onBackground
+            contentColor = MaterialTheme.colorScheme.onBackground,
+            contentWindowInsets = WindowInsets(bottom = 0)
         ) { contentPadding ->
             Column(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(contentPadding)
                     .verticalScroll(rememberScrollState())
-                    .padding(horizontal = 16.dp)
-                    .padding(bottom = 96.dp),
+                    .padding(horizontal = 16.dp),
                 verticalArrangement = Arrangement.spacedBy(24.dp)
             ) {
                 // Section 1: Behavior
@@ -269,6 +269,8 @@ internal fun PreferencesScreen(
                         )
                     }
                 }
+
+                Spacer(modifier = Modifier.height(32.dp).navigationBarsPadding())
             }
 
             if (languageDialogVisible) {

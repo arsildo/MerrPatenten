@@ -150,7 +150,7 @@ internal fun StatisticsScreen(
                         LazyVerticalGrid(
                             columns = GridCells.Fixed(2),
                             contentPadding = PaddingValues(start = 16.dp, top = 0.dp, end = 16.dp, bottom = 32.dp),
-                            horizontalArrangement = Arrangement.spacedBy(10.dp),
+                            horizontalArrangement = Arrangement.spacedBy(16.dp),
                             verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap),
                             modifier = Modifier.fillMaxSize()
                         ) {

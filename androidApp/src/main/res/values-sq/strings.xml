@@ -10,7 +10,7 @@
 
     <!-- Disclaimer Dialog -->
     <string name="disclaimer_title">Kujdes!</string>
-    <string name="disclaimer_description">Ky aplikacion NUK është një aplikacion zyrtar i aprovuar nga DPSHTRR apo nga qeveria shqiptare, aplikacioni është bazuar në materialet udhëzuese që mund ti gjeni në faqen e parë të aplikacionit ose duke klikuar këtë tekts.</string>
+    <string name="disclaimer_description">Ky aplikacion NUK është një aplikacion zyrtar i aprovuar nga DPSHTRR apo nga qeveria shqiptare, aplikacioni është bazuar në materialet udhëzuese që mund ti gjeni në faqen e parë të aplikacionit ose duke klikuar këtë tekst.</string>
 
     <!-- Dashboard -->
     <string name="select_category">Zgjidh kategorinë</string>
@@ -39,6 +39,10 @@
     <string name="completed_question">Plotësuar</string>
     <string name="zoom">Zmadho</string>
     <string name="question_map">Harta e pyetjeve</string>
+    <string name="question_number_format">Pyetja %1$d</string>
+    <string name="question_status_format">%1$s: %2$s</string>
+    <string name="uncompleted_question">E paplotësuar</string>
+    <string name="minutes_abbreviation">min</string>
     <string name="toggle_end_exam">Shfaq përfundimin</string>
 
     <!-- Exam Uncompleted Dialog -->
@@ -70,11 +74,11 @@
     <string name="performance_average_middle"> gabime në </string>
     <string name="performance_average_suffix"> provimet e fundit.</string>
     <string name="results_storing_disabled">Ju keni zgjedhur që rezultatet tuaja të mos ruhen.</string>
-    <string name="results_empty">Nuk ka të dhëna, ju duhet te përfundoni të paktën një provim.</string>
+    <string name="results_empty">Nuk ka të dhëna, ju duhet të përfundoni të paktën një provim.</string>
     <string name="results_dismiss">Jo, kthehu</string>
     <string name="results_confirm">Në rregull</string>
     <string name="results_delete">Pastro të gjitha?</string>
-    <string name="results_delete_description">Te gjithë rezultatet do të fshien.</string>
+    <string name="results_delete_description">Të gjitha rezultatet do të fshihen.</string>
     <string name="results_change">Ndrysho</string>
 
     <!-- Preferences -->
@@ -82,15 +86,22 @@
     <string name="pref_section_behavior">Sjellja dhe provimi</string>
     <string name="pref_section_appearance">Tema dhe pamja</string>
     <string name="preferences_navigation_buttons">Metoda e fokusuar</string>
-    <string name="preferences_navigation_buttons_desc">Përdor swipe per te naviguar pyetjet, fshih buttonat e navigimit gjatë provimit.</string>
+    <string name="preferences_navigation_buttons_desc">Përdor rrëshqitjen për të naviguar pyetjet, fshih butonat e navigimit gjatë provimit.</string>
     <string name="preferences_store_stats">Mbaj mend statistikat</string>
     <string name="preferences_store_stats_desc">Ruaj rezultatet e provimeve dhe gjenero statistika bazuar në to.\n(20 provimet e fundit)</string>
+    <string name="preferences_haptic_feedback">Dridhje gjatë veprimeve</string>
+    <string name="preferences_haptic_feedback_desc">Vibrim gjatë përgjigjeve, klikimeve dhe përfundimit të provimit.</string>
     <string name="preferences_follow_system_theme">Ndiq ngjyrat e sistemit</string>
     <string name="preferences_follow_system_theme_desc">Merr kombinacionin e ngjyrave nga sistemi</string>
     <string name="preferences_dark_mode">Tema e errët</string>
     <string name="preferences_dark_mode_desc">Pamje me ngjyra të errëta</string>
     <string name="preferences_material_you">Ngjyrat dinamike</string>
     <string name="preferences_material_you_desc">Ngjyra dinamike bazuar në sistemin e pajisjes suaj</string>
+    <string name="preferences_question_text_size">Madhësia e tekstit të pyetjeve</string>
+    <string name="preferences_question_text_size_desc">Përshtat madhësinë e shkrimit për pyetjet</string>
+    <string name="text_size_small">I vogël</string>
+    <string name="text_size_medium">Mesatar</string>
+    <string name="text_size_large">I madh</string>
 
     <!-- Language & Localization -->
     <string name="pref_section_localization">Gjuha dhe lokalizimi</string>

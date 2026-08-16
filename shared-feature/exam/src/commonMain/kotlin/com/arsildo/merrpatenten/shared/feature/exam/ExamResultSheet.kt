@@ -150,12 +150,15 @@ internal fun ExamResultBottomSheet(
                     MaterialTheme.colorScheme.onSurfaceVariant
                 }
 
+                val statusText = stringResource(if (isCorrect) Res.string.true_checkbox else Res.string.false_checkbox)
+                val questionTitle = stringResource(Res.string.question_number_format, page + 1)
+
                 QuestionResultGridItem(
                     title = page,
                     containerColor = container,
                     contentColor = content,
                     shape = if (hasResponse) MaterialShapes.Cookie6Sided.toShape() else MaterialShapes.Slanted.toShape(),
-                    contentDescription = "Pyetja ${page + 1}: ${if (isCorrect) "Saktë" else "Gabim"}",
+                    contentDescription = stringResource(Res.string.question_status_format, questionTitle, statusText),
                     onClick = { onQuestionClicked(page) }
                 )
             }

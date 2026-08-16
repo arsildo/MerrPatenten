@@ -191,20 +191,21 @@ fun MapContent(
 
                 val isSelected = hasResponse
 
+                val statusText = if (isCompleted) {
+                    stringResource(if (isCorrect) Res.string.true_checkbox else Res.string.false_checkbox)
+                } else if (hasResponse) {
+                    stringResource(Res.string.completed_question)
+                } else {
+                    stringResource(Res.string.uncompleted_question)
+                }
+                val questionTitle = stringResource(Res.string.question_number_format, page + 1)
+
                 QuestionGridItem(
                     title = page,
                     containerColor = container,
                     contentColor = content,
                     shape = MaterialTheme.shapes.medium,
-                    contentDescription = "Pyetja ${page + 1}: ${
-                        if (isCompleted) {
-                            if (isCorrect) "Saktë" else "Gabim"
-                        } else if (hasResponse) {
-                            "E plotësuar"
-                        } else {
-                            "E paplotësuar"
-                        }
-                    }",
+                    contentDescription = stringResource(Res.string.question_status_format, questionTitle, statusText),
                     onClick = { onQuestionClicked(page) }
                 )
             }

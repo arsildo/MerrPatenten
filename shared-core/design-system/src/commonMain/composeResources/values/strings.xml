@@ -39,6 +39,10 @@
     <string name="completed_question">Completed</string>
     <string name="zoom">Zoom</string>
     <string name="question_map">Question Map</string>
+    <string name="question_number_format">Question %1$d</string>
+    <string name="question_status_format">%1$s: %2$s</string>
+    <string name="uncompleted_question">Unanswered</string>
+    <string name="minutes_abbreviation">min</string>
     <string name="toggle_end_exam">Toggle End Exam</string>
 
     <!-- Exam Uncompleted Dialog -->
