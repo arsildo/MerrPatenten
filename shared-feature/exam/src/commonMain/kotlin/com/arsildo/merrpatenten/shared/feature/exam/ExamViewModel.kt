@@ -10,6 +10,7 @@ import com.arsildo.merrpatenten.shared.core.datastore.PreferencesRepository
 import com.arsildo.merrpatenten.shared.core.designsystem.EXAM_DURATION_RELEASE
 import com.arsildo.merrpatenten.shared.core.designsystem.QUESTIONS_IN_EXAM
 import com.arsildo.merrpatenten.shared.core.designsystem.formatTimer
+import com.arsildo.merrpatenten.shared.core.designsystem.QuestionTextSize
 import com.arsildo.merrpatenten.shared.core.model.ExamResult
 import com.arsildo.merrpatenten.shared.core.model.Question
 import com.arsildo.merrpatenten.shared.feature.exam.navigation.Exam
@@ -30,6 +31,7 @@ internal data class ExamUiState(
     val errors: Int = 0,
     val questions: List<Question> = emptyList(),
     val immersiveMode: Boolean = false,
+    val questionTextSize: QuestionTextSize = QuestionTextSize.DEFAULT,
     val timer: String = INITIAL_TIMER,
     val trueCheckedPositions: List<Boolean> = emptyList(),
     val falseCheckedPositions: List<Boolean> = emptyList(),
@@ -72,10 +74,12 @@ internal class ExamViewModel(
         _internalUiState,
         preferencesRepository.getSaveStats,
         preferencesRepository.getImmersiveMode,
-    ) { state, saveStats, immersiveMode ->
+        preferencesRepository.getQuestionTextSize,
+    ) { state, saveStats, immersiveMode, questionTextSize ->
         state.copy(
             saveStats = saveStats,
             immersiveMode = immersiveMode,
+            questionTextSize = questionTextSize,
         )
     }.stateIn(
         scope = viewModelScope,

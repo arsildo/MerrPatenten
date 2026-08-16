@@ -12,8 +12,8 @@ android {
     defaultConfig {
         applicationId = "com.arsildo.merrpatenten"
         minSdk = 31
-        versionCode = 33
-        versionName = "3.0.1"
+        versionCode = (project.findProperty("versionCode") as? String)?.toIntOrNull() ?: 33
+        versionName = (project.findProperty("versionName") as? String) ?: "3.0.1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -28,6 +28,24 @@ android {
         }
     }
 
+    signingConfigs {
+        create("release") {
+            val keystorePath = System.getenv("KEYSTORE_FILE")
+            val keystorePassword = System.getenv("KEYSTORE_PASSWORD")
+            val keyAlias = System.getenv("KEY_ALIAS")
+            val keyPassword = System.getenv("KEY_PASSWORD")
+
+            if (!keystorePath.isNullOrEmpty() && file(keystorePath).exists() &&
+                !keystorePassword.isNullOrBlank() && !keyAlias.isNullOrBlank() && !keyPassword.isNullOrBlank()
+            ) {
+                storeFile = file(keystorePath)
+                storePassword = keystorePassword
+                this.keyAlias = keyAlias
+                this.keyPassword = keyPassword
+            }
+        }
+    }
+
     buildTypes {
         getByName("debug") {
             applicationIdSuffix = ".debug"
@@ -35,6 +53,10 @@ android {
         }
         getByName("release") {
             isMinifyEnabled = true
+            val releaseSigning = signingConfigs.getByName("release")
+            if (releaseSigning.storeFile != null) {
+                signingConfig = releaseSigning
+            }
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"

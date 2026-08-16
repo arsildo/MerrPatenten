@@ -227,6 +227,7 @@ internal fun ExamScreen(
                         onCheckTrueAtPage = onCheckTrueAtPage,
                         isCompleted = uiState.isCompleted,
                         responses = uiState.mistakePositions,
+                        questionTextSize = uiState.questionTextSize,
                     )
 
                     LaunchedEffect(pagerState.settledPage) {

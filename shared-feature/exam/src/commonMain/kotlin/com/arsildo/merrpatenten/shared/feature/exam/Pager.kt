@@ -29,6 +29,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
+import com.arsildo.merrpatenten.shared.core.designsystem.QuestionTextSize
 import com.arsildo.merrpatenten.shared.core.designsystem.formatQuestion
 import com.arsildo.merrpatenten.shared.core.designsystem.getImageResource
 import com.arsildo.merrpatenten.shared.core.designsystem.semanticColors
@@ -49,6 +50,7 @@ fun Pager(
     onCheckTrueAtPage: (Int) -> Unit,
     isCompleted: Boolean,
     responses: List<Int>,
+    questionTextSize: QuestionTextSize = QuestionTextSize.DEFAULT,
     modifier: Modifier = Modifier,
 ) {
     HorizontalPager(
@@ -67,6 +69,7 @@ fun Pager(
                 question = questions[page].question,
                 falseChecked = page < falseCheckedPages.size && falseCheckedPages[page],
                 trueChecked = page < trueCheckedPages.size && trueCheckedPages[page],
+                questionTextSize = questionTextSize,
                 onFalseCheckedChange = { onCheckFalseAtPage(page) },
                 onTrueCheckedChange = { onCheckTrueAtPage(page) }
             )
@@ -83,6 +86,7 @@ private fun QuestionItem(
     question: String,
     falseChecked: Boolean,
     trueChecked: Boolean,
+    questionTextSize: QuestionTextSize = QuestionTextSize.DEFAULT,
     onFalseCheckedChange: (Boolean) -> Unit,
     onTrueCheckedChange: (Boolean) -> Unit,
 ) {
@@ -115,7 +119,7 @@ private fun QuestionItem(
                 Text(
                     text = formatQuestion(question),
                     textAlign = TextAlign.Center,
-                    style = MaterialTheme.typography.titleMedium,
+                    style = questionTextSize.textStyle,
                     fontWeight = FontWeight.Medium,
                     color = MaterialTheme.colorScheme.onSurface,
                     modifier = Modifier

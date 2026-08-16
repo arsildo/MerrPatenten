@@ -19,6 +19,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.arsildo.merrpatenten.shared.core.designsystem.*
 import com.arsildo.merrpatenten.shared.core.designsystem.components.PreferenceCard
 import com.arsildo.merrpatenten.shared.core.designsystem.components.SectionHeader
+import com.arsildo.merrpatenten.shared.core.designsystem.components.TextSizePreferenceCard
 import merrpatenten.shared_core.design_system.generated.resources.*
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -26,8 +27,8 @@ import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 internal fun PreferencesRoute(
-    onBackPress: () -> Unit,
     viewModel: PreferencesViewModel = koinViewModel(),
+    onBackPress: () -> Unit,
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     PreferencesScreen(
@@ -38,6 +39,7 @@ internal fun PreferencesRoute(
         onFollowSystemChange = viewModel::setFollowSystem,
         onColorSchemeChange = viewModel::setColorScheme,
         onDynamicColorSchemeChange = viewModel::setDynamicColorScheme,
+        onQuestionTextSizeChange = viewModel::setQuestionTextSize,
     )
 }
 
@@ -51,6 +53,7 @@ internal fun PreferencesScreen(
     onFollowSystemChange: (Boolean) -> Unit,
     onColorSchemeChange: (Boolean) -> Unit,
     onDynamicColorSchemeChange: (Boolean) -> Unit,
+    onQuestionTextSizeChange: (QuestionTextSize) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val uriHandler = LocalUriHandler.current
@@ -178,7 +181,7 @@ internal fun PreferencesScreen(
                 ) {
                     SectionHeader(title = stringResource(Res.string.pref_section_appearance))
 
-                    val appearanceCount = if (supportsDynamicColor) 3 else 2
+                    val appearanceCount = (if (supportsDynamicColor) 3 else 2) + 1
 
                     Column(
                         verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap)
@@ -231,6 +234,12 @@ internal fun PreferencesScreen(
                                 onCheckedChange = onDynamicColorSchemeChange
                             )
                         }
+                        TextSizePreferenceCard(
+                            selectedSize = uiState.questionTextSize,
+                            onSizeSelected = onQuestionTextSizeChange,
+                            index = if (supportsDynamicColor) 3 else 2,
+                            count = appearanceCount
+                        )
                     }
                 }
             }
@@ -309,6 +318,7 @@ private fun PreferencesScreenPreview() {
             onFollowSystemChange = {},
             onColorSchemeChange = {},
             onDynamicColorSchemeChange = {},
+            onQuestionTextSizeChange = {},
         )
     }
 }
@@ -325,6 +335,7 @@ private fun PreferencesScreenDarkPreview() {
             onFollowSystemChange = {},
             onColorSchemeChange = {},
             onDynamicColorSchemeChange = {},
+            onQuestionTextSizeChange = {},
         )
     }
 }

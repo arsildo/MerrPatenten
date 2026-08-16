@@ -3,6 +3,7 @@ package com.arsildo.merrpatenten.shared.feature.preferences
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.arsildo.merrpatenten.shared.core.datastore.PreferencesRepository
+import com.arsildo.merrpatenten.shared.core.designsystem.QuestionTextSize
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
@@ -14,24 +15,35 @@ data class PreferencesUiState(
     val followSystemColors: Boolean = true,
     val colorScheme: Boolean = false,
     val dynamicColorScheme: Boolean = true,
+    val questionTextSize: QuestionTextSize = QuestionTextSize.DEFAULT,
 )
 
 class PreferencesViewModel(
     private val preferencesRepository: PreferencesRepository
 ) : ViewModel() {
     val uiState = combine(
-        preferencesRepository.getImmersiveMode,
-        preferencesRepository.getSaveStats,
-        preferencesRepository.getSystemColorScheme,
-        preferencesRepository.getColorScheme,
-        preferencesRepository.getDynamicColorScheme
-    ) { immersive, saveStats, systemColorScheme, colorScheme, dynamicColors ->
+        combine(
+            preferencesRepository.getImmersiveMode,
+            preferencesRepository.getSaveStats,
+            preferencesRepository.getSystemColorScheme,
+        ) { immersive, saveStats, systemColorScheme ->
+            Triple(immersive, saveStats, systemColorScheme)
+        },
+        combine(
+            preferencesRepository.getColorScheme,
+            preferencesRepository.getDynamicColorScheme,
+            preferencesRepository.getQuestionTextSize,
+        ) { colorScheme, dynamicColors, questionTextSize ->
+            Triple(colorScheme, dynamicColors, questionTextSize)
+        }
+    ) { (immersive, saveStats, systemColorScheme), (colorScheme, dynamicColors, questionTextSize) ->
         PreferencesUiState(
             immersiveMode = immersive,
             saveStats = saveStats,
             followSystemColors = systemColorScheme,
             colorScheme = colorScheme,
             dynamicColorScheme = dynamicColors,
+            questionTextSize = questionTextSize,
         )
     }.stateIn(
         scope = viewModelScope,
@@ -66,6 +78,12 @@ class PreferencesViewModel(
     fun setDynamicColorScheme(dynamicColorScheme: Boolean) {
         viewModelScope.launch {
             preferencesRepository.setDynamicColorScheme(dynamicColorScheme)
+        }
+    }
+
+    fun setQuestionTextSize(textSize: QuestionTextSize) {
+        viewModelScope.launch {
+            preferencesRepository.setQuestionTextSize(textSize)
         }
     }
 }

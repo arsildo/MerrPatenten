@@ -4,6 +4,8 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.stringPreferencesKey
+import com.arsildo.merrpatenten.shared.core.designsystem.QuestionTextSize
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
@@ -14,6 +16,7 @@ class PreferencesRepository(private val dataStore: DataStore<Preferences>) {
         val AUTOMATIC_COLOR_SCHEME = booleanPreferencesKey("automatic_color_scheme")
         val COLOR_SCHEME = booleanPreferencesKey("color_scheme")
         val DYNAMIC_COLOR_SCHEME = booleanPreferencesKey("dynamic_color_scheme")
+        val QUESTION_TEXT_SIZE = stringPreferencesKey("question_text_size")
     }
 
     val getImmersiveMode: Flow<Boolean> = dataStore.data.map { preferences ->
@@ -54,5 +57,13 @@ class PreferencesRepository(private val dataStore: DataStore<Preferences>) {
 
     suspend fun setDynamicColorScheme(enabled: Boolean) {
         dataStore.edit { preferences -> preferences[PreferencesKeys.DYNAMIC_COLOR_SCHEME] = enabled }
+    }
+
+    val getQuestionTextSize: Flow<QuestionTextSize> = dataStore.data.map { preferences ->
+        QuestionTextSize.fromKey(preferences[PreferencesKeys.QUESTION_TEXT_SIZE])
+    }
+
+    suspend fun setQuestionTextSize(textSize: QuestionTextSize) {
+        dataStore.edit { preferences -> preferences[PreferencesKeys.QUESTION_TEXT_SIZE] = textSize.key }
     }
 }

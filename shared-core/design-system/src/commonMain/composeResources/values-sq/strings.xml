@@ -91,6 +91,11 @@
     <string name="preferences_dark_mode_desc">Pamje me ngjyra të errëta</string>
     <string name="preferences_material_you">Ngjyrat dinamike</string>
     <string name="preferences_material_you_desc">Ngjyra dinamike bazuar në sistemin e pajisjes suaj</string>
+    <string name="preferences_question_text_size">Madhësia e tekstit të pyetjeve</string>
+    <string name="preferences_question_text_size_desc">Përshtat madhësinë e shkrimit për pyetjet</string>
+    <string name="text_size_small">I vogël</string>
+    <string name="text_size_medium">Mesatar</string>
+    <string name="text_size_large">I madh</string>
 
     <!-- Language & Localization -->
     <string name="pref_section_localization">Gjuha dhe lokalizimi</string>
