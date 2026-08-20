@@ -52,19 +52,28 @@ internal fun ExpressiveOptionCard(
 ) {
     val hapticFeedback = LocalHapticFeedback.current
     val containerColor by animateColorAsState(
-        targetValue = if (isChecked) selectedContainerColor
-        else MaterialTheme.colorScheme.surfaceContainerHigh,
-        label = "OptionContainerColor"
+        targetValue = if (isChecked) {
+            selectedContainerColor
+        } else {
+            MaterialTheme.colorScheme.surfaceContainerHigh
+        },
+        label = "OptionContainerColor",
     )
 
     val contentColor by animateColorAsState(
-        targetValue = if (isChecked) selectedContentColor
-        else MaterialTheme.colorScheme.onSurface,
-        label = "OptionContentColor"
+        targetValue = if (isChecked) {
+            selectedContentColor
+        } else {
+            MaterialTheme.colorScheme.onSurface
+        },
+        label = "OptionContentColor",
     )
 
-    val borderColor = if (isChecked) selectedBorderColor
-    else MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f)
+    val borderColor = if (isChecked) {
+        selectedBorderColor
+    } else {
+        MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f)
+    }
 
     Button(
         onClick = {
@@ -74,33 +83,33 @@ internal fun ExpressiveOptionCard(
         enabled = enabled,
         shapes = ButtonShapes(
             shape = MaterialTheme.shapes.large,
-            pressedShape = MaterialTheme.shapes.small
+            pressedShape = MaterialTheme.shapes.small,
         ),
         colors = ButtonDefaults.buttonColors(
             containerColor = containerColor,
             contentColor = contentColor,
             disabledContainerColor = containerColor,
-            disabledContentColor = contentColor
+            disabledContentColor = contentColor,
         ),
         border = BorderStroke(if (isChecked) 2.dp else 1.dp, borderColor),
         contentPadding = PaddingValues(16.dp),
-        modifier = modifier
+        modifier = modifier,
     ) {
         Row(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Center
+            horizontalArrangement = Arrangement.Center,
         ) {
             AnimatedContent(
                 targetState = isChecked,
                 transitionSpec = { fadeIn() togetherWith fadeOut() },
-                label = "OptionIcon"
+                label = "OptionIcon",
             ) { checked ->
                 Icon(
                     imageVector = if (checked) iconSelected else iconUnselected,
                     contentDescription = null,
                     tint = if (checked) selectedBorderColor else MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier.size(22.dp)
+                    modifier = Modifier.size(22.dp),
                 )
             }
             Text(
@@ -108,7 +117,7 @@ internal fun ExpressiveOptionCard(
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = if (isChecked) FontWeight.Bold else FontWeight.SemiBold,
                 color = contentColor,
-                modifier = Modifier.padding(start = 8.dp)
+                modifier = Modifier.padding(start = 8.dp),
             )
         }
     }
@@ -120,7 +129,7 @@ private fun ExpressiveOptionCardCheckedPreview() {
     MerrPatentenTheme {
         Row(
             modifier = Modifier.padding(16.dp),
-            horizontalArrangement = Arrangement.spacedBy(12.dp)
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
         ) {
             ExpressiveOptionCard(
                 title = "Saktë",
@@ -132,7 +141,7 @@ private fun ExpressiveOptionCardCheckedPreview() {
                 selectedContentColor = MaterialTheme.semanticColors.onSuccessContainer,
                 selectedBorderColor = MaterialTheme.semanticColors.success,
                 onClick = {},
-                modifier = Modifier.weight(1f)
+                modifier = Modifier.weight(1f),
             )
             ExpressiveOptionCard(
                 title = "Gabuar",
@@ -144,7 +153,7 @@ private fun ExpressiveOptionCardCheckedPreview() {
                 selectedContentColor = MaterialTheme.colorScheme.onErrorContainer,
                 selectedBorderColor = MaterialTheme.colorScheme.error,
                 onClick = {},
-                modifier = Modifier.weight(1f)
+                modifier = Modifier.weight(1f),
             )
         }
     }
@@ -156,7 +165,7 @@ private fun ExpressiveOptionCardDarkPreview() {
     MerrPatentenTheme(darkTheme = true) {
         Row(
             modifier = Modifier.padding(16.dp),
-            horizontalArrangement = Arrangement.spacedBy(12.dp)
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
         ) {
             ExpressiveOptionCard(
                 title = "Saktë",
@@ -168,7 +177,7 @@ private fun ExpressiveOptionCardDarkPreview() {
                 selectedContentColor = MaterialTheme.semanticColors.onSuccessContainer,
                 selectedBorderColor = MaterialTheme.semanticColors.success,
                 onClick = {},
-                modifier = Modifier.weight(1f)
+                modifier = Modifier.weight(1f),
             )
             ExpressiveOptionCard(
                 title = "Gabuar",
@@ -180,7 +189,7 @@ private fun ExpressiveOptionCardDarkPreview() {
                 selectedContentColor = MaterialTheme.colorScheme.onErrorContainer,
                 selectedBorderColor = MaterialTheme.colorScheme.error,
                 onClick = {},
-                modifier = Modifier.weight(1f)
+                modifier = Modifier.weight(1f),
             )
         }
     }

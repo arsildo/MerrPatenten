@@ -9,16 +9,16 @@ import com.arsildo.merrpatenten.shared.core.data.QuestionnaireRepository
 import com.arsildo.merrpatenten.shared.core.datastore.PreferencesRepository
 import com.arsildo.merrpatenten.shared.core.designsystem.EXAM_DURATION_RELEASE
 import com.arsildo.merrpatenten.shared.core.designsystem.QUESTIONS_IN_EXAM
-import com.arsildo.merrpatenten.shared.core.designsystem.formatTimer
 import com.arsildo.merrpatenten.shared.core.designsystem.QuestionTextSize
+import com.arsildo.merrpatenten.shared.core.designsystem.formatTimer
 import com.arsildo.merrpatenten.shared.core.model.ExamResult
 import com.arsildo.merrpatenten.shared.core.model.Question
 import com.arsildo.merrpatenten.shared.feature.exam.navigation.Exam
+import kotlin.time.Duration.Companion.milliseconds
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
-import kotlin.time.Duration.Companion.milliseconds
 
 private const val ANSWER_TRUE = "Saktë"
 private const val ANSWER_FALSE = "Gabim"
@@ -67,7 +67,7 @@ internal class ExamViewModel(
             falseCheckedPositions = List(QUESTIONS_IN_EXAM) { false },
             responseList = List(QUESTIONS_IN_EXAM) { "" },
             mistakePositions = List(QUESTIONS_IN_EXAM) { 1 },
-        )
+        ),
     )
 
     val uiState: StateFlow<ExamUiState> = combine(
@@ -84,7 +84,7 @@ internal class ExamViewModel(
     }.stateIn(
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(stopTimeoutMillis = 5_000),
-        initialValue = _internalUiState.value
+        initialValue = _internalUiState.value,
     )
 
     init {
@@ -138,9 +138,7 @@ internal class ExamViewModel(
         }
     }
 
-    fun countCompletedQuestions(): Int {
-        return _internalUiState.value.responseList.count { it.isNotBlank() }
-    }
+    fun countCompletedQuestions(): Int = _internalUiState.value.responseList.count { it.isNotBlank() }
 
     fun completeExam() {
         concludeExam()
@@ -158,7 +156,7 @@ internal class ExamViewModel(
             it.copy(
                 isCompleted = true,
                 errors = errors,
-                mistakePositions = mistakePositions
+                mistakePositions = mistakePositions,
             )
         }
 
@@ -211,7 +209,7 @@ internal class ExamViewModel(
             current.copy(
                 trueCheckedPositions = newTrue,
                 falseCheckedPositions = newFalse,
-                responseList = newResponses
+                responseList = newResponses,
             )
         }
     }
@@ -235,7 +233,7 @@ internal class ExamViewModel(
                         errors = errors,
                         time = timeSpent,
                         category = _internalUiState.value.category,
-                    )
+                    ),
                 )
                 examResultsRepository.limitResults()
             }
@@ -244,4 +242,3 @@ internal class ExamViewModel(
         }
     }
 }
-

@@ -32,11 +32,7 @@ import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-internal fun QuestionImage(
-    image: DrawableResource,
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier,
-) {
+internal fun QuestionImage(image: DrawableResource, onClick: () -> Unit, modifier: Modifier = Modifier) {
     val hapticFeedback = LocalHapticFeedback.current
     Box(
         modifier = modifier
@@ -45,14 +41,14 @@ internal fun QuestionImage(
                 hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
                 onClick()
             },
-        contentAlignment = Alignment.BottomEnd
+        contentAlignment = Alignment.BottomEnd,
     ) {
         Image(
             painter = painterResource(image),
             contentDescription = null,
             modifier = Modifier
                 .fillMaxWidth()
-                .aspectRatio(1.5f)
+                .aspectRatio(1.5f),
         )
 
         // Zoom Hint Pill
@@ -60,22 +56,22 @@ internal fun QuestionImage(
             shape = CircleShape,
             color = MaterialTheme.colorScheme.surface.copy(alpha = 0.85f),
             contentColor = MaterialTheme.colorScheme.onSurface,
-            modifier = Modifier.padding(12.dp)
+            modifier = Modifier.padding(12.dp),
         ) {
             Row(
                 modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp),
                 horizontalArrangement = Arrangement.spacedBy(4.dp),
-                verticalAlignment = Alignment.CenterVertically
+                verticalAlignment = Alignment.CenterVertically,
             ) {
                 Icon(
                     imageVector = Icons.Outlined.ZoomIn,
                     contentDescription = stringResource(Res.string.zoom),
-                    modifier = Modifier.size(16.dp)
+                    modifier = Modifier.size(16.dp),
                 )
                 Text(
                     text = stringResource(Res.string.zoom),
                     style = MaterialTheme.typography.labelSmall,
-                    fontWeight = FontWeight.Medium
+                    fontWeight = FontWeight.Medium,
                 )
             }
         }
@@ -89,7 +85,7 @@ private fun QuestionImagePreview() {
         QuestionImage(
             image = getImageResource(1),
             onClick = {},
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier.padding(16.dp),
         )
     }
 }
@@ -101,7 +97,7 @@ private fun QuestionImageDarkPreview() {
         QuestionImage(
             image = getImageResource(1),
             onClick = {},
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier.padding(16.dp),
         )
     }
 }

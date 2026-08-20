@@ -101,11 +101,7 @@ val MaterialTheme.semanticColors: SemanticColors
 expect val supportsDynamicColor: Boolean
 
 @Composable
-fun MerrPatentenTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
-    hapticFeedback: Boolean = true,
-    content: @Composable () -> Unit
-) {
+fun MerrPatentenTheme(darkTheme: Boolean = isSystemInDarkTheme(), hapticFeedback: Boolean = true, content: @Composable () -> Unit) {
     val colorScheme = if (darkTheme) DarkColorScheme else LightColorScheme
     val semanticColors = if (darkTheme) DarkSemanticColors else LightSemanticColors
 
@@ -114,7 +110,7 @@ fun MerrPatentenTheme(
             colorScheme = colorScheme,
             typography = GoogleSansFlexTypography(),
             shapes = MerrPatentenShapes,
-            content = content
+            content = content,
         )
     }
 }
@@ -123,29 +119,29 @@ fun MerrPatentenTheme(
 fun AnimateColorSchemeTransition(content: @Composable () -> Unit) {
     val animation: AnimationSpec<Color> = spring(
         dampingRatio = Spring.DampingRatioLowBouncy,
-        stiffness = Spring.StiffnessLow
+        stiffness = Spring.StiffnessLow,
     )
     val colors = MaterialTheme.colorScheme.copy(
         background = animateColorAsState(
             targetValue = MaterialTheme.colorScheme.background,
             animationSpec = animation,
-            label = "Background Color Transition"
+            label = "Background Color Transition",
         ).value,
         primary = animateColorAsState(
             targetValue = MaterialTheme.colorScheme.primary,
             animationSpec = animation,
-            label = "Primary Color Transition"
+            label = "Primary Color Transition",
         ).value,
         secondary = animateColorAsState(
             targetValue = MaterialTheme.colorScheme.primary,
             animationSpec = animation,
-            label = "Secondary Color Transition"
+            label = "Secondary Color Transition",
         ).value,
     )
     MaterialExpressiveTheme(
         colorScheme = colors,
         typography = GoogleSansFlexTypography(),
         shapes = MerrPatentenShapes,
-        content = content
+        content = content,
     )
 }

@@ -23,7 +23,7 @@ actual object ApplicationLocaleManager : ApplicationLocaleManagerUseCase {
     actual override fun setLocale(locale: ApplicationLocale) {
         NSUserDefaults.standardUserDefaults.setObject(
             value = arrayListOf(locale.localeCode),
-            forKey = APPLE_LANGUAGES_KEY
+            forKey = APPLE_LANGUAGES_KEY,
         )
         NSUserDefaults.standardUserDefaults.synchronize()
     }

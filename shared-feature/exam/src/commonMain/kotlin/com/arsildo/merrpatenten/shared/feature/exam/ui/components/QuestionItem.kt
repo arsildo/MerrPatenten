@@ -42,10 +42,10 @@ internal fun QuestionItem(
     Card(
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surfaceContainerLow,
-            contentColor = MaterialTheme.colorScheme.onSurface
+            contentColor = MaterialTheme.colorScheme.onSurface,
         ),
         shape = MaterialTheme.shapes.extraLarge,
-        modifier = modifier.fillMaxSize()
+        modifier = modifier.fillMaxSize(),
     ) {
         Column(
             modifier = Modifier
@@ -53,11 +53,11 @@ internal fun QuestionItem(
                 .padding(16.dp)
                 .verticalScroll(rememberScrollState()),
             verticalArrangement = Arrangement.SpaceBetween,
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Column(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalAlignment = Alignment.CenterHorizontally
+                horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 // Question Image
                 QuestionImage(image = image, onClick = onImageClick)
@@ -73,7 +73,7 @@ internal fun QuestionItem(
                     color = MaterialTheme.colorScheme.onSurface,
                     modifier = Modifier
                         .padding(horizontal = 8.dp, vertical = 8.dp)
-                        .fillMaxWidth()
+                        .fillMaxWidth(),
                 )
             }
 
@@ -82,12 +82,12 @@ internal fun QuestionItem(
             // Expressive Option Cards & Feedback
             Column(
                 modifier = Modifier.fillMaxWidth(),
-                verticalArrangement = Arrangement.spacedBy(12.dp)
+                verticalArrangement = Arrangement.spacedBy(12.dp),
             ) {
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(12.dp),
-                    verticalAlignment = Alignment.CenterVertically
+                    verticalAlignment = Alignment.CenterVertically,
                 ) {
                     ExpressiveOptionCard(
                         title = stringResource(Res.string.false_checkbox),
@@ -99,7 +99,7 @@ internal fun QuestionItem(
                         selectedContentColor = MaterialTheme.colorScheme.onErrorContainer,
                         selectedBorderColor = MaterialTheme.colorScheme.error,
                         onClick = { onFalseCheckedChange(!falseChecked) },
-                        modifier = Modifier.weight(1f)
+                        modifier = Modifier.weight(1f),
                     )
 
                     ExpressiveOptionCard(
@@ -112,7 +112,7 @@ internal fun QuestionItem(
                         selectedContentColor = MaterialTheme.semanticColors.onSuccessContainer,
                         selectedBorderColor = MaterialTheme.semanticColors.success,
                         onClick = { onTrueCheckedChange(!trueChecked) },
-                        modifier = Modifier.weight(1f)
+                        modifier = Modifier.weight(1f),
                     )
                 }
 
@@ -138,7 +138,7 @@ private fun QuestionItemInProgressPreview() {
             trueChecked = true,
             onFalseCheckedChange = {},
             onTrueCheckedChange = {},
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier.padding(16.dp),
         )
     }
 }
@@ -157,7 +157,7 @@ private fun QuestionItemCompletedCorrectPreview() {
             trueChecked = true,
             onFalseCheckedChange = {},
             onTrueCheckedChange = {},
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier.padding(16.dp),
         )
     }
 }
@@ -176,7 +176,7 @@ private fun QuestionItemCompletedWrongPreview() {
             trueChecked = false,
             onFalseCheckedChange = {},
             onTrueCheckedChange = {},
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier.padding(16.dp),
         )
     }
 }
@@ -195,7 +195,7 @@ private fun QuestionItemDarkPreview() {
             trueChecked = false,
             onFalseCheckedChange = {},
             onTrueCheckedChange = {},
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier.padding(16.dp),
         )
     }
 }

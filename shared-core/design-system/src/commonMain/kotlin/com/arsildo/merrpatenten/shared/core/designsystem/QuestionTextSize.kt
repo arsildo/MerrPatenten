@@ -7,13 +7,11 @@ import androidx.compose.ui.text.TextStyle
 import merrpatenten.shared_core.design_system.generated.resources.*
 import org.jetbrains.compose.resources.StringResource
 
-enum class QuestionTextSize(
-    val key: String,
-    val labelRes: StringResource
-) {
+enum class QuestionTextSize(val key: String, val labelRes: StringResource) {
     Small(key = "small", labelRes = Res.string.text_size_small),
     Medium(key = "medium", labelRes = Res.string.text_size_medium),
-    Large(key = "large", labelRes = Res.string.text_size_large);
+    Large(key = "large", labelRes = Res.string.text_size_large),
+    ;
 
     val textStyle: TextStyle
         @Composable
@@ -27,8 +25,6 @@ enum class QuestionTextSize(
     companion object {
         val DEFAULT = Medium
 
-        fun fromKey(key: String?): QuestionTextSize {
-            return entries.firstOrNull { it.key == key } ?: DEFAULT
-        }
+        fun fromKey(key: String?): QuestionTextSize = entries.firstOrNull { it.key == key } ?: DEFAULT
     }
 }

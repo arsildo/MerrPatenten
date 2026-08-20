@@ -3,12 +3,12 @@ package com.arsildo.merrpatenten.shared.core.database.di
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.arsildo.merrpatenten.shared.core.database.MerrPatentenDatabase
+import java.io.File
 import kotlinx.coroutines.runBlocking
 import merrpatenten.shared_core.design_system.generated.resources.Res
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
-import java.io.File
 
 internal fun getDatabaseBuilder(): RoomDatabase.Builder<MerrPatentenDatabase> {
     val appData = File(System.getProperty("user.home"), ".merrpatenten")

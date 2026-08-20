@@ -24,11 +24,10 @@ internal fun getDatabaseBuilder(context: Context): RoomDatabase.Builder<MerrPate
     }
     return Room.databaseBuilder<MerrPatentenDatabase>(
         context = applicationContext,
-        name = dbFile.absolutePath
+        name = dbFile.absolutePath,
     )
 }
 
 actual val platformDatabaseModule: Module = module {
     singleOf(::getDatabaseBuilder)
 }
-

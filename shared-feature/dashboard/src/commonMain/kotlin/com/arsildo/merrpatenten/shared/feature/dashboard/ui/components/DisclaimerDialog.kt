@@ -30,9 +30,7 @@ import merrpatenten.shared_core.design_system.generated.resources.results_confir
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-internal fun DisclaimerDialog(
-    onDismissRequest: () -> Unit,
-) {
+internal fun DisclaimerDialog(onDismissRequest: () -> Unit) {
     val uriHandler = LocalUriHandler.current
     AlertDialog(
         onDismissRequest = onDismissRequest,
@@ -42,14 +40,14 @@ internal fun DisclaimerDialog(
             Surface(
                 shape = CircleShape,
                 color = MaterialTheme.colorScheme.errorContainer,
-                modifier = Modifier.size(56.dp)
+                modifier = Modifier.size(56.dp),
             ) {
                 Box(contentAlignment = Alignment.Center) {
                     Icon(
                         imageVector = Icons.Outlined.WarningAmber,
                         contentDescription = null,
                         tint = MaterialTheme.colorScheme.onErrorContainer,
-                        modifier = Modifier.size(28.dp)
+                        modifier = Modifier.size(28.dp),
                     )
                 }
             }
@@ -59,7 +57,7 @@ internal fun DisclaimerDialog(
                 text = stringResource(Res.string.disclaimer_title),
                 style = MaterialTheme.typography.headlineSmall,
                 fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colorScheme.onSurface
+                color = MaterialTheme.colorScheme.onSurface,
             )
         },
         text = {
@@ -69,7 +67,7 @@ internal fun DisclaimerDialog(
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.clickable {
                     uriHandler.openUri(DPSHTRR_HELP)
-                }
+                },
             )
         },
         confirmButton = {
@@ -77,18 +75,18 @@ internal fun DisclaimerDialog(
                 onClick = onDismissRequest,
                 shapes = ButtonShapes(
                     shape = MaterialTheme.shapes.medium,
-                    pressedShape = MaterialTheme.shapes.small
+                    pressedShape = MaterialTheme.shapes.small,
                 ),
                 contentPadding = PaddingValues(horizontal = 24.dp, vertical = 12.dp),
                 content = {
                     Text(
                         text = stringResource(Res.string.results_confirm),
                         style = MaterialTheme.typography.labelLarge,
-                        fontWeight = FontWeight.SemiBold
+                        fontWeight = FontWeight.SemiBold,
                     )
-                }
+                },
             )
-        }
+        },
     )
 }
 
@@ -97,7 +95,7 @@ internal fun DisclaimerDialog(
 private fun DisclaimerDialogPreview() {
     MerrPatentenTheme {
         DisclaimerDialog(
-            onDismissRequest = {}
+            onDismissRequest = {},
         )
     }
 }
@@ -107,7 +105,7 @@ private fun DisclaimerDialogPreview() {
 private fun DisclaimerDialogDarkPreview() {
     MerrPatentenTheme(darkTheme = true) {
         DisclaimerDialog(
-            onDismissRequest = {}
+            onDismissRequest = {},
         )
     }
 }

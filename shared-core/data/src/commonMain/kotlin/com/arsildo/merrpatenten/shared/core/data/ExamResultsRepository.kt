@@ -7,13 +7,9 @@ import com.arsildo.merrpatenten.shared.core.model.ExamResult
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-class ExamResultsRepository(
-    private val examResultsDAO: ExamResultsDAO
-) {
-    fun getAllResults(): Flow<List<ExamResult>> {
-        return examResultsDAO.getAllResults().map { list ->
-            list.map { it.toDomain() }
-        }
+class ExamResultsRepository(private val examResultsDAO: ExamResultsDAO) {
+    fun getAllResults(): Flow<List<ExamResult>> = examResultsDAO.getAllResults().map { list ->
+        list.map { it.toDomain() }
     }
 
     suspend fun insertResult(result: ExamResult) {

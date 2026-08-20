@@ -35,9 +35,9 @@ fun EndExamButton(
         onClick = onClick,
         colors = ButtonDefaults.buttonColors(
             containerColor = MaterialTheme.colorScheme.primary,
-            contentColor = MaterialTheme.colorScheme.onPrimary
+            contentColor = MaterialTheme.colorScheme.onPrimary,
         ),
-        modifier = modifier
+        modifier = modifier,
     )
 }
 
@@ -54,9 +54,9 @@ fun RestartExamButton(
         onClick = onClick,
         colors = ButtonDefaults.buttonColors(
             containerColor = MaterialTheme.colorScheme.secondary,
-            contentColor = MaterialTheme.colorScheme.onSecondary
+            contentColor = MaterialTheme.colorScheme.onSecondary,
         ),
-        modifier = modifier
+        modifier = modifier,
     )
 }
 
@@ -73,20 +73,14 @@ fun ExitExamButton(
         onClick = onClick,
         colors = ButtonDefaults.buttonColors(
             containerColor = MaterialTheme.colorScheme.error,
-            contentColor = MaterialTheme.colorScheme.onError
+            contentColor = MaterialTheme.colorScheme.onError,
         ),
-        modifier = modifier
+        modifier = modifier,
     )
 }
 
 @Composable
-private fun ActionButton(
-    modifier: Modifier = Modifier,
-    title: String,
-    icon: ImageVector,
-    onClick: () -> Unit,
-    colors: ButtonColors,
-) {
+private fun ActionButton(modifier: Modifier = Modifier, title: String, icon: ImageVector, onClick: () -> Unit, colors: ButtonColors) {
     val hapticFeedback = LocalHapticFeedback.current
     Button(
         onClick = {
@@ -95,7 +89,7 @@ private fun ActionButton(
         },
         shapes = ButtonShapes(
             shape = MaterialTheme.shapes.large,
-            pressedShape = MaterialTheme.shapes.small
+            pressedShape = MaterialTheme.shapes.small,
         ),
         contentPadding = PaddingValues(16.dp),
         colors = colors,
@@ -103,17 +97,17 @@ private fun ActionButton(
     ) {
         Row(
             horizontalArrangement = Arrangement.spacedBy(10.dp),
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
         ) {
             Icon(
                 imageVector = icon,
                 contentDescription = null,
-                modifier = Modifier.size(22.dp)
+                modifier = Modifier.size(22.dp),
             )
             Text(
                 text = title,
                 style = MaterialTheme.typography.titleMedium,
-                fontWeight = FontWeight.SemiBold
+                fontWeight = FontWeight.SemiBold,
             )
         }
     }
@@ -125,19 +119,19 @@ private fun ExamActionButtonsPreview() {
     MerrPatentenTheme {
         Column(
             modifier = Modifier.padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(12.dp)
+            verticalArrangement = Arrangement.spacedBy(12.dp),
         ) {
             EndExamButton(
                 icon = Icons.Rounded.DoneAll,
-                onClick = {}
+                onClick = {},
             )
             RestartExamButton(
                 icon = Icons.Rounded.RestartAlt,
-                onClick = {}
+                onClick = {},
             )
             ExitExamButton(
                 icon = Icons.AutoMirrored.Rounded.ExitToApp,
-                onClick = {}
+                onClick = {},
             )
         }
     }
@@ -149,19 +143,19 @@ private fun ExamActionButtonsDarkPreview() {
     MerrPatentenTheme(darkTheme = true) {
         Column(
             modifier = Modifier.padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(12.dp)
+            verticalArrangement = Arrangement.spacedBy(12.dp),
         ) {
             EndExamButton(
                 icon = Icons.Rounded.DoneAll,
-                onClick = {}
+                onClick = {},
             )
             RestartExamButton(
                 icon = Icons.Rounded.RestartAlt,
-                onClick = {}
+                onClick = {},
             )
             ExitExamButton(
                 icon = Icons.AutoMirrored.Rounded.ExitToApp,
-                onClick = {}
+                onClick = {},
             )
         }
     }

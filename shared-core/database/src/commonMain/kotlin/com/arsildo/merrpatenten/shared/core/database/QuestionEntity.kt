@@ -6,7 +6,7 @@ import com.arsildo.merrpatenten.shared.core.model.Question
 
 @Entity(
     tableName = "questionnaire",
-    primaryKeys = ["id", "category"]
+    primaryKeys = ["id", "category"],
 )
 data class QuestionEntity(
     @ColumnInfo(name = "id")

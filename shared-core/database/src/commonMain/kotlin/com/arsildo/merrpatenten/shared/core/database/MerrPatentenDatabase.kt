@@ -8,7 +8,7 @@ import androidx.room.RoomDatabaseConstructor
 @Database(
     entities = [QuestionEntity::class, ExamResultEntity::class],
     version = 1,
-    exportSchema = false
+    exportSchema = false,
 )
 @ConstructedBy(MerrPatentenDatabaseConstructor::class)
 abstract class MerrPatentenDatabase : RoomDatabase() {

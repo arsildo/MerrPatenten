@@ -24,10 +24,7 @@ import merrpatenten.shared_core.design_system.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-internal fun AnswerFeedbackIndicator(
-    correctAnswer: Boolean,
-    modifier: Modifier = Modifier,
-) {
+internal fun AnswerFeedbackIndicator(correctAnswer: Boolean, modifier: Modifier = Modifier) {
     val containerColor = if (correctAnswer) MaterialTheme.semanticColors.successContainer else MaterialTheme.colorScheme.errorContainer
     val contentColor = if (correctAnswer) MaterialTheme.semanticColors.onSuccessContainer else MaterialTheme.colorScheme.onErrorContainer
     val iconColor = if (correctAnswer) MaterialTheme.semanticColors.success else MaterialTheme.colorScheme.error
@@ -36,27 +33,27 @@ internal fun AnswerFeedbackIndicator(
         shape = MaterialTheme.shapes.medium,
         color = containerColor,
         contentColor = contentColor,
-        modifier = modifier.fillMaxWidth()
+        modifier = modifier.fillMaxWidth(),
     ) {
         Row(
             modifier = Modifier
                 .padding(vertical = 12.dp, horizontal = 16.dp)
                 .fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Center
+            horizontalArrangement = Arrangement.Center,
         ) {
             Icon(
                 imageVector = if (correctAnswer) Icons.Rounded.Check else Icons.Rounded.Clear,
                 contentDescription = null,
                 tint = iconColor,
-                modifier = Modifier.size(22.dp)
+                modifier = Modifier.size(22.dp),
             )
             Text(
                 text = stringResource(if (correctAnswer) Res.string.correct_answer_feedback else Res.string.wrong_answer_feedback),
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.Bold,
                 color = contentColor,
-                modifier = Modifier.padding(start = 8.dp)
+                modifier = Modifier.padding(start = 8.dp),
             )
         }
     }
@@ -68,7 +65,7 @@ private fun AnswerFeedbackIndicatorCorrectPreview() {
     MerrPatentenTheme {
         AnswerFeedbackIndicator(
             correctAnswer = true,
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier.padding(16.dp),
         )
     }
 }
@@ -79,7 +76,7 @@ private fun AnswerFeedbackIndicatorWrongPreview() {
     MerrPatentenTheme {
         AnswerFeedbackIndicator(
             correctAnswer = false,
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier.padding(16.dp),
         )
     }
 }
@@ -90,7 +87,7 @@ private fun AnswerFeedbackIndicatorDarkPreview() {
     MerrPatentenTheme(darkTheme = true) {
         AnswerFeedbackIndicator(
             correctAnswer = true,
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier.padding(16.dp),
         )
     }
 }

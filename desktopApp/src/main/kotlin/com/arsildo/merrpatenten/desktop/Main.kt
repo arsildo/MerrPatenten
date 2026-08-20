@@ -15,11 +15,11 @@ fun main() {
     application {
         Window(
             state = rememberWindowState(
-                size = DpSize(width = 440.dp, height = 900.dp)
+                size = DpSize(width = 440.dp, height = 900.dp),
             ),
             onCloseRequest = ::exitApplication,
             resizable = true,
-            title = "Merr Patenten"
+            title = "Merr Patenten",
         ) {
             MerrPatentenApp()
         }

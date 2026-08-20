@@ -22,33 +22,28 @@ import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
 import com.arsildo.merrpatenten.shared.core.designsystem.semanticColors
 
 @Composable
-internal fun ResultStatusIndicator(
-    title: String,
-    containerColor: Color,
-    contentColor: Color,
-    modifier: Modifier = Modifier,
-) {
+internal fun ResultStatusIndicator(title: String, containerColor: Color, contentColor: Color, modifier: Modifier = Modifier) {
     Surface(
         shape = CircleShape,
         color = containerColor,
         contentColor = contentColor,
-        modifier = modifier
+        modifier = modifier,
     ) {
         Row(
             modifier = Modifier.padding(horizontal = 14.dp, vertical = 6.dp),
             horizontalArrangement = Arrangement.spacedBy(6.dp),
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
         ) {
             Box(
                 modifier = Modifier
                     .size(8.dp)
                     .clip(CircleShape)
-                    .background(contentColor)
+                    .background(contentColor),
             )
             Text(
                 text = title,
                 style = MaterialTheme.typography.labelMedium,
-                fontWeight = FontWeight.SemiBold
+                fontWeight = FontWeight.SemiBold,
             )
         }
     }
@@ -60,17 +55,17 @@ private fun ResultStatusIndicatorPreview() {
     MerrPatentenTheme {
         Row(
             modifier = Modifier.padding(16.dp),
-            horizontalArrangement = Arrangement.spacedBy(8.dp)
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             ResultStatusIndicator(
                 title = "Saktë",
                 containerColor = MaterialTheme.semanticColors.successContainer,
-                contentColor = MaterialTheme.semanticColors.onSuccessContainer
+                contentColor = MaterialTheme.semanticColors.onSuccessContainer,
             )
             ResultStatusIndicator(
                 title = "Gabuar",
                 containerColor = MaterialTheme.colorScheme.errorContainer,
-                contentColor = MaterialTheme.colorScheme.onErrorContainer
+                contentColor = MaterialTheme.colorScheme.onErrorContainer,
             )
         }
     }

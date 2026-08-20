@@ -38,14 +38,14 @@ internal fun UncompletedExamDialog(
             Surface(
                 shape = CircleShape,
                 color = MaterialTheme.colorScheme.errorContainer,
-                modifier = Modifier.size(56.dp)
+                modifier = Modifier.size(56.dp),
             ) {
                 Box(contentAlignment = Alignment.Center) {
                     Icon(
                         imageVector = Icons.Rounded.DoneAll,
                         contentDescription = null,
                         tint = MaterialTheme.colorScheme.onErrorContainer,
-                        modifier = Modifier.size(28.dp)
+                        modifier = Modifier.size(28.dp),
                     )
                 }
             }
@@ -54,20 +54,20 @@ internal fun UncompletedExamDialog(
             Text(
                 text = stringResource(Res.string.uncompleted_dialog_title),
                 style = MaterialTheme.typography.headlineSmall,
-                fontWeight = FontWeight.Bold
+                fontWeight = FontWeight.Bold,
             )
         },
         text = {
             Text(
                 text = stringResource(Res.string.uncompleted_dialog_desc),
                 style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
         },
         confirmButton = {
             Column(
                 modifier = Modifier.fillMaxWidth(),
-                verticalArrangement = Arrangement.spacedBy(10.dp)
+                verticalArrangement = Arrangement.spacedBy(10.dp),
             ) {
                 Button(
                     onClick = {
@@ -76,7 +76,7 @@ internal fun UncompletedExamDialog(
                     },
                     shapes = ButtonShapes(
                         shape = MaterialTheme.shapes.medium,
-                        pressedShape = MaterialTheme.shapes.small
+                        pressedShape = MaterialTheme.shapes.small,
                     ),
                     modifier = Modifier.fillMaxWidth(),
                     contentPadding = PaddingValues(14.dp),
@@ -84,9 +84,9 @@ internal fun UncompletedExamDialog(
                         Text(
                             text = stringResource(Res.string.review_unanswered),
                             style = MaterialTheme.typography.labelLarge,
-                            fontWeight = FontWeight.SemiBold
+                            fontWeight = FontWeight.SemiBold,
                         )
-                    }
+                    },
                 )
                 FilledTonalButton(
                     onClick = {
@@ -95,7 +95,7 @@ internal fun UncompletedExamDialog(
                     },
                     shapes = ButtonShapes(
                         shape = MaterialTheme.shapes.medium,
-                        pressedShape = MaterialTheme.shapes.small
+                        pressedShape = MaterialTheme.shapes.small,
                     ),
                     modifier = Modifier.fillMaxWidth(),
                     contentPadding = PaddingValues(14.dp),
@@ -103,9 +103,9 @@ internal fun UncompletedExamDialog(
                         Text(
                             text = stringResource(Res.string.finish_anyway),
                             style = MaterialTheme.typography.labelLarge,
-                            fontWeight = FontWeight.SemiBold
+                            fontWeight = FontWeight.SemiBold,
                         )
-                    }
+                    },
                 )
                 Button(
                     onClick = {
@@ -114,24 +114,24 @@ internal fun UncompletedExamDialog(
                     },
                     shapes = ButtonShapes(
                         shape = MaterialTheme.shapes.medium,
-                        pressedShape = MaterialTheme.shapes.small
+                        pressedShape = MaterialTheme.shapes.small,
                     ),
                     modifier = Modifier.fillMaxWidth(),
                     contentPadding = PaddingValues(14.dp),
                     colors = ButtonDefaults.buttonColors(
                         containerColor = MaterialTheme.colorScheme.error,
-                        contentColor = MaterialTheme.colorScheme.onError
+                        contentColor = MaterialTheme.colorScheme.onError,
                     ),
                     content = {
                         Text(
                             text = stringResource(Res.string.exit_exam_button),
                             style = MaterialTheme.typography.labelLarge,
-                            fontWeight = FontWeight.SemiBold
+                            fontWeight = FontWeight.SemiBold,
                         )
-                    }
+                    },
                 )
             }
-        }
+        },
     )
 }
 
@@ -143,7 +143,7 @@ private fun UncompletedExamDialogPreview() {
             onDismissRequest = {},
             onReviewUnanswered = {},
             onFinishAnyway = {},
-            onExitExam = {}
+            onExitExam = {},
         )
     }
 }
@@ -156,7 +156,7 @@ private fun UncompletedExamDialogDarkPreview() {
             onDismissRequest = {},
             onReviewUnanswered = {},
             onFinishAnyway = {},
-            onExitExam = {}
+            onExitExam = {},
         )
     }
 }

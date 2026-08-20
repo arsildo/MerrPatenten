@@ -43,7 +43,7 @@ internal class BottomSheetScene<T : Any>(
         ModalBottomSheet(
             sheetState = rememberBottomSheetState(
                 initialValue = Hidden,
-                enabledValues = setOf(Hidden, Expanded)
+                enabledValues = setOf(Hidden, Expanded),
             ),
             dragHandle = { BottomSheetDefaults.DragHandle() },
             containerColor = MaterialTheme.colorScheme.surface,
@@ -86,7 +86,7 @@ class BottomSheetSceneStrategy<T : Any> : SceneStrategy<T> {
                 entry = lastEntry,
                 modalBottomSheetProperties = properties,
                 skipPartiallyExpanded = skipPartiallyExpanded,
-                onBack = onBack
+                onBack = onBack,
             )
         }
     }

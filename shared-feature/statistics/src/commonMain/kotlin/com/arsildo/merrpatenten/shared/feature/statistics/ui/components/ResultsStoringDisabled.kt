@@ -27,40 +27,36 @@ import androidx.compose.ui.unit.dp
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
 
 @Composable
-internal fun ResultStoringDisabled(
-    text: String,
-    icon: ImageVector,
-    changePreference: @Composable () -> Unit = {}
-) {
+internal fun ResultStoringDisabled(text: String, icon: ImageVector, changePreference: @Composable () -> Unit = {}) {
     Box(
         modifier = Modifier
             .fillMaxSize()
             .padding(24.dp),
-        contentAlignment = Alignment.Center
+        contentAlignment = Alignment.Center,
     ) {
         Surface(
             shape = MaterialTheme.shapes.extraLarge,
             color = MaterialTheme.colorScheme.surfaceContainerLow,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
         ) {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(32.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(18.dp)
+                verticalArrangement = Arrangement.spacedBy(18.dp),
             ) {
                 Surface(
                     shape = CircleShape,
                     color = MaterialTheme.colorScheme.surfaceContainerHighest,
-                    modifier = Modifier.size(72.dp)
+                    modifier = Modifier.size(72.dp),
                 ) {
                     Box(contentAlignment = Alignment.Center) {
                         Icon(
                             imageVector = icon,
                             contentDescription = null,
                             tint = MaterialTheme.colorScheme.primary,
-                            modifier = Modifier.size(36.dp)
+                            modifier = Modifier.size(36.dp),
                         )
                     }
                 }
@@ -69,7 +65,7 @@ internal fun ResultStoringDisabled(
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Medium,
                     textAlign = TextAlign.Center,
-                    color = MaterialTheme.colorScheme.onSurface
+                    color = MaterialTheme.colorScheme.onSurface,
                 )
                 changePreference()
             }
@@ -88,7 +84,7 @@ private fun ResultStoringDisabledPreview() {
                 Button(onClick = {}) {
                     Text(text = "Ndrysho cilësimin")
                 }
-            }
+            },
         )
     }
 }
@@ -99,7 +95,7 @@ private fun ResultsEmptyPreview() {
     MerrPatentenTheme {
         ResultStoringDisabled(
             text = "Nuk keni kryer asnjë provim ende.",
-            icon = Icons.Rounded.MultipleStop
+            icon = Icons.Rounded.MultipleStop,
         )
     }
 }
@@ -110,7 +106,7 @@ private fun ResultStoringDisabledDarkPreview() {
     MerrPatentenTheme(darkTheme = true) {
         ResultStoringDisabled(
             text = "Ruajtja e rezultateve të provimeve është e çaktivizuar.",
-            icon = Icons.Rounded.MobiledataOff
+            icon = Icons.Rounded.MobiledataOff,
         )
     }
 }

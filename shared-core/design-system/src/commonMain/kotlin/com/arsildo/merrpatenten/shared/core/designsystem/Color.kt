@@ -95,12 +95,7 @@ val GreenDark = Color(0xFF7DDA87)
 val GreenContainerDark = Color(0xFF005322)
 val OnGreenContainerDark = Color(0xFFC7F3C9)
 
-data class SemanticColors(
-    val success: Color,
-    val onSuccess: Color,
-    val successContainer: Color,
-    val onSuccessContainer: Color,
-)
+data class SemanticColors(val success: Color, val onSuccess: Color, val successContainer: Color, val onSuccessContainer: Color)
 
 val LightSemanticColors = SemanticColors(
     success = Green,
@@ -115,4 +110,3 @@ val DarkSemanticColors = SemanticColors(
     successContainer = GreenContainerDark,
     onSuccessContainer = OnGreenContainerDark,
 )
-

@@ -5,8 +5,6 @@ import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyGridScope
 import androidx.compose.foundation.lazy.grid.itemsIndexed
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.CheckCircle
-import androidx.compose.material.icons.rounded.HighlightOff
 import androidx.compose.material.icons.rounded.Schedule
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -22,30 +20,23 @@ import com.arsildo.merrpatenten.shared.core.model.ExamResult
 import merrpatenten.shared_core.design_system.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
 
-internal fun LazyGridScope.resultList(
-    results: List<ExamResult>,
-) {
+internal fun LazyGridScope.resultList(results: List<ExamResult>) {
     itemsIndexed(
         items = results,
         key = { _, item -> item.id },
-        span = { _, _ -> GridItemSpan(maxLineSpan) }
+        span = { _, _ -> GridItemSpan(maxLineSpan) },
     ) { index, result ->
         ResultItem(
             result = result,
             index = index,
-            count = results.size
+            count = results.size,
         )
     }
 }
 
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
-internal fun ResultItem(
-    result: ExamResult,
-    index: Int,
-    count: Int,
-    modifier: Modifier = Modifier,
-) {
+internal fun ResultItem(result: ExamResult, index: Int, count: Int, modifier: Modifier = Modifier) {
     val errors = result.errors
     val isPassed = errors <= ERRORS_ALLOWED
     val errorLabel = stringResource(if (errors == 1) Res.string.error_singular else Res.string.errors_plural)
@@ -65,42 +56,42 @@ internal fun ResultItem(
             Text(
                 text = "$errors $errorLabel",
                 style = MaterialTheme.typography.titleMedium,
-                fontWeight = FontWeight.SemiBold
+                fontWeight = FontWeight.SemiBold,
             )
         },
         supportingContent = {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(4.dp)
+                horizontalArrangement = Arrangement.spacedBy(4.dp),
             ) {
                 Icon(
                     imageVector = Icons.Rounded.Schedule,
                     contentDescription = null,
                     modifier = Modifier.size(14.dp),
-                    tint = MaterialTheme.colorScheme.onSurfaceVariant
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
                 Text(
                     text = "${result.time} ${stringResource(Res.string.minutes_abbreviation)}",
                     style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
             }
         },
         trailingContent = {
             Surface(
                 shape = MaterialTheme.shapes.small,
-                color = statusContainerColor
+                color = statusContainerColor,
             ) {
                 Text(
                     text = statusText,
                     style = MaterialTheme.typography.labelSmall,
                     fontWeight = FontWeight.Bold,
                     color = statusContentColor,
-                    modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
+                    modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
                 )
             }
         },
-        modifier = modifier.fillMaxWidth()
+        modifier = modifier.fillMaxWidth(),
     )
 }
 
@@ -111,17 +102,17 @@ private fun ResultItemPassedPreview() {
     MerrPatentenTheme {
         Column(
             modifier = Modifier.padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap)
+            verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap),
         ) {
             ResultItem(
                 result = ExamResult(id = 1, errors = 1, time = "34:20"),
                 index = 0,
-                count = 2
+                count = 2,
             )
             ResultItem(
                 result = ExamResult(id = 2, errors = 6, time = "28:10"),
                 index = 1,
-                count = 2
+                count = 2,
             )
         }
     }
@@ -134,12 +125,12 @@ private fun ResultItemDarkPreview() {
     MerrPatentenTheme(darkTheme = true) {
         Column(
             modifier = Modifier.padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap)
+            verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap),
         ) {
             ResultItem(
                 result = ExamResult(id = 1, errors = 0, time = "30:00"),
                 index = 0,
-                count = 1
+                count = 1,
             )
         }
     }

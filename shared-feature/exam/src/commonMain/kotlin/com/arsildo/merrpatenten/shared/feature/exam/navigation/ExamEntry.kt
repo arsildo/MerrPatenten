@@ -26,13 +26,13 @@ fun EntryProviderScope<NavKey>.examEntry(
     onRestartExam: (String) -> Unit,
 ) {
     entry<Exam>(
-        clazzContentKey = { key -> key.toContentKey() }
+        clazzContentKey = { key -> key.toContentKey() },
     ) { examKey ->
         ExamRoute(
             onImageDetailsClick = onImageDetailsClick,
             onOpenMap = { backStack.add(ExamResultBottomSheet(examKey.category)) },
             onExitExam = onExitExam,
-            onRestartExam = { onRestartExam(examKey.category) }
+            onRestartExam = { onRestartExam(examKey.category) },
         )
     }
 
@@ -40,9 +40,9 @@ fun EntryProviderScope<NavKey>.examEntry(
         clazzContentKey = { key -> key.toContentKey() },
         metadata = { key ->
             SharedViewModelStoreNavEntryDecorator.parent(
-                contentKey = Exam(key.category).toContentKey()
+                contentKey = Exam(key.category).toContentKey(),
             ) + BottomSheetSceneStrategy.bottomSheet(skipPartiallyExpanded = true)
-        }
+        },
     ) { sheetKey ->
         ExamResultBottomSheetRoute(
             onQuestionClicked = {
@@ -56,8 +56,7 @@ fun EntryProviderScope<NavKey>.examEntry(
                 backStack.removeLastOrNull()
                 onRestartExam(sheetKey.category)
             },
-            onDismiss = dropUnlessResumed(block = backStack::removeLastOrNull)
+            onDismiss = dropUnlessResumed(block = backStack::removeLastOrNull),
         )
     }
 }
-

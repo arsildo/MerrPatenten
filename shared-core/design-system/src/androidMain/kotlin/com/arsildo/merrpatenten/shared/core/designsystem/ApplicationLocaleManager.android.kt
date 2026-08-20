@@ -10,8 +10,7 @@ actual object ApplicationLocaleManager : ApplicationLocaleManagerUseCase {
         }
     }
 
-    actual override fun getLocale(): String =
-        AppCompatDelegate.getApplicationLocales().toLanguageTags()
+    actual override fun getLocale(): String = AppCompatDelegate.getApplicationLocales().toLanguageTags()
 
     actual override fun setLocale(locale: ApplicationLocale) {
         AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(locale.localeCode))

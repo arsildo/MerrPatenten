@@ -44,19 +44,19 @@ internal fun ExamLegend(
             .fillMaxWidth()
             .padding(horizontal = 12.dp, vertical = 8.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically,
     ) {
         // Question Counter Pill
         Surface(
             shape = CircleShape,
             color = MaterialTheme.colorScheme.primaryContainer,
-            contentColor = MaterialTheme.colorScheme.onPrimaryContainer
+            contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
         ) {
             Text(
                 text = "${pagerState.currentPage + 1}/$QUESTIONS_IN_EXAM",
                 style = MaterialTheme.typography.labelLarge,
                 fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp)
+                modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp),
             )
         }
 
@@ -68,41 +68,48 @@ internal fun ExamLegend(
             },
             shapes = ButtonShapes(
                 shape = MaterialTheme.shapes.medium,
-                pressedShape = MaterialTheme.shapes.small
+                pressedShape = MaterialTheme.shapes.small,
             ),
-            modifier = Modifier.padding(horizontal = 4.dp)
+            modifier = Modifier.padding(horizontal = 4.dp),
         ) {
             Icon(
                 imageVector = Icons.Rounded.GridView,
                 contentDescription = stringResource(Res.string.question_map),
-                modifier = Modifier.size(18.dp)
+                modifier = Modifier.size(18.dp),
             )
         }
 
         // Timer Badge
         val timerText = timer()
-        val isLowTime = timerText.startsWith("0") && (timerText.startsWith("00:") || timerText.startsWith("01:") || timerText.startsWith("02:"))
+        val isLowTime =
+            timerText.startsWith("0") && (timerText.startsWith("00:") || timerText.startsWith("01:") || timerText.startsWith("02:"))
         Surface(
             shape = CircleShape,
-            color = if (isLowTime) MaterialTheme.colorScheme.errorContainer
-            else MaterialTheme.colorScheme.tertiaryContainer,
-            contentColor = if (isLowTime) MaterialTheme.colorScheme.onErrorContainer
-            else MaterialTheme.colorScheme.onTertiaryContainer
+            color = if (isLowTime) {
+                MaterialTheme.colorScheme.errorContainer
+            } else {
+                MaterialTheme.colorScheme.tertiaryContainer
+            },
+            contentColor = if (isLowTime) {
+                MaterialTheme.colorScheme.onErrorContainer
+            } else {
+                MaterialTheme.colorScheme.onTertiaryContainer
+            },
         ) {
             Row(
                 modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp),
                 horizontalArrangement = Arrangement.spacedBy(4.dp),
-                verticalAlignment = Alignment.CenterVertically
+                verticalAlignment = Alignment.CenterVertically,
             ) {
                 Icon(
                     imageVector = Icons.Rounded.Timer,
                     contentDescription = null,
-                    modifier = Modifier.size(16.dp)
+                    modifier = Modifier.size(16.dp),
                 )
                 Text(
                     text = timerText,
                     style = MaterialTheme.typography.labelLarge,
-                    fontWeight = FontWeight.Bold
+                    fontWeight = FontWeight.Bold,
                 )
             }
         }
@@ -110,12 +117,12 @@ internal fun ExamLegend(
         val rotationState by animateFloatAsState(
             targetValue = if (endExamVisible) 180f else 0f,
             label = "EndExamRotation",
-            animationSpec = tween(durationMillis = 350)
+            animationSpec = tween(durationMillis = 350),
         )
 
         val actionColor by animateColorAsState(
             targetValue = if (endExamVisible) MaterialTheme.colorScheme.primary else Red,
-            label = "EndExamColor"
+            label = "EndExamColor",
         )
 
         FilledTonalIconButton(
@@ -125,17 +132,17 @@ internal fun ExamLegend(
             },
             colors = IconButtonDefaults.filledTonalIconButtonColors(
                 containerColor = actionColor.copy(alpha = 0.12f),
-                contentColor = actionColor
+                contentColor = actionColor,
             ),
             shape = CircleShape,
-            modifier = Modifier.size(40.dp)
+            modifier = Modifier.size(40.dp),
         ) {
             Icon(
                 imageVector = if (endExamVisible) Icons.Rounded.ArrowCircleUp else Icons.Outlined.Cancel,
                 contentDescription = stringResource(Res.string.toggle_end_exam),
                 modifier = Modifier
                     .size(22.dp)
-                    .rotate(rotationState)
+                    .rotate(rotationState),
             )
         }
     }
@@ -150,7 +157,7 @@ private fun ExamLegendPreview() {
             timer = { "39:42" },
             endExamVisible = false,
             onMapClick = {},
-            onShowEndExamButton = {}
+            onShowEndExamButton = {},
         )
     }
 }
@@ -164,7 +171,7 @@ private fun ExamLegendLowTimePreview() {
             timer = { "01:15" },
             endExamVisible = true,
             onMapClick = {},
-            onShowEndExamButton = {}
+            onShowEndExamButton = {},
         )
     }
 }
@@ -178,7 +185,7 @@ private fun ExamLegendDarkPreview() {
             timer = { "25:30" },
             endExamVisible = false,
             onMapClick = {},
-            onShowEndExamButton = {}
+            onShowEndExamButton = {},
         )
     }
 }

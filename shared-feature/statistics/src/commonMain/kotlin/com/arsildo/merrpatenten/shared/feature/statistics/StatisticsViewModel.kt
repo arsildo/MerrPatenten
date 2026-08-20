@@ -10,28 +10,23 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
-internal data class StatisticsUiState(
-    val results: List<ExamResult> = emptyList(),
-    val saveResults: Boolean = true
-)
+internal data class StatisticsUiState(val results: List<ExamResult> = emptyList(), val saveResults: Boolean = true)
 
-internal class StatisticsViewModel(
-    private val examResultsRepository: ExamResultsRepository,
-    preferencesRepository: PreferencesRepository
-) : ViewModel() {
+internal class StatisticsViewModel(private val examResultsRepository: ExamResultsRepository, preferencesRepository: PreferencesRepository) :
+    ViewModel() {
 
     val uiState = combine(
         preferencesRepository.getSaveStats,
-        examResultsRepository.getAllResults()
+        examResultsRepository.getAllResults(),
     ) { saveResults, results ->
         StatisticsUiState(
             results = results,
-            saveResults = saveResults
+            saveResults = saveResults,
         )
     }.stateIn(
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(5_000),
-        initialValue = StatisticsUiState()
+        initialValue = StatisticsUiState(),
     )
 
     fun deleteAllResults() {

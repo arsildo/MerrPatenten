@@ -31,7 +31,7 @@ fun SectionHeader(
         color = color,
         modifier = modifier
             .fillMaxWidth()
-            .padding(horizontal = 4.dp, vertical = 4.dp)
+            .padding(horizontal = 4.dp, vertical = 4.dp),
     )
 }
 
@@ -54,4 +54,3 @@ private fun SectionHeaderDarkPreview() {
         }
     }
 }
-

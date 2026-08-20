@@ -25,9 +25,7 @@ import merrpatenten.shared_core.design_system.generated.resources.language
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-internal fun LanguageSelectionDialog(
-    onDismissRequest: () -> Unit,
-) {
+internal fun LanguageSelectionDialog(onDismissRequest: () -> Unit) {
     val hapticFeedback = LocalHapticFeedback.current
     val currentLocale = rememberApplicationLocale()
 
@@ -37,13 +35,13 @@ internal fun LanguageSelectionDialog(
             Text(
                 text = stringResource(Res.string.language),
                 style = MaterialTheme.typography.headlineSmall,
-                fontWeight = FontWeight.Bold
+                fontWeight = FontWeight.Bold,
             )
         },
         text = {
             Column(
                 modifier = Modifier.fillMaxWidth(),
-                verticalArrangement = Arrangement.spacedBy(8.dp)
+                verticalArrangement = Arrangement.spacedBy(8.dp),
             ) {
                 ApplicationLocale.entries.forEach { locale ->
                     val onSelectLocale = {
@@ -53,27 +51,39 @@ internal fun LanguageSelectionDialog(
                     }
                     Surface(
                         shape = MaterialTheme.shapes.medium,
-                        color = if (currentLocale == locale) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surfaceContainerHigh,
+                        color = if (currentLocale ==
+                            locale
+                        ) {
+                            MaterialTheme.colorScheme.primaryContainer
+                        } else {
+                            MaterialTheme.colorScheme.surfaceContainerHigh
+                        },
                         modifier = Modifier
                             .fillMaxWidth()
-                            .clickable(onClick = onSelectLocale)
+                            .clickable(onClick = onSelectLocale),
                     ) {
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(horizontal = 16.dp, vertical = 14.dp),
                             horizontalArrangement = Arrangement.SpaceBetween,
-                            verticalAlignment = Alignment.CenterVertically
+                            verticalAlignment = Alignment.CenterVertically,
                         ) {
                             Text(
                                 text = stringResource(locale.res),
                                 style = MaterialTheme.typography.titleMedium,
                                 fontWeight = if (currentLocale == locale) FontWeight.Bold else FontWeight.Normal,
-                                color = if (currentLocale == locale) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.onSurface
+                                color = if (currentLocale ==
+                                    locale
+                                ) {
+                                    MaterialTheme.colorScheme.onPrimaryContainer
+                                } else {
+                                    MaterialTheme.colorScheme.onSurface
+                                },
                             )
                             RadioButton(
                                 selected = currentLocale == locale,
-                                onClick = onSelectLocale
+                                onClick = onSelectLocale,
                             )
                         }
                     }
@@ -85,11 +95,11 @@ internal fun LanguageSelectionDialog(
                 onClick = {
                     hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
                     onDismissRequest()
-                }
+                },
             ) {
                 Text(text = stringResource(Res.string.close))
             }
-        }
+        },
     )
 }
 
@@ -98,7 +108,7 @@ internal fun LanguageSelectionDialog(
 private fun LanguageSelectionDialogPreview() {
     MerrPatentenTheme {
         LanguageSelectionDialog(
-            onDismissRequest = {}
+            onDismissRequest = {},
         )
     }
 }
@@ -108,7 +118,7 @@ private fun LanguageSelectionDialogPreview() {
 private fun LanguageSelectionDialogDarkPreview() {
     MerrPatentenTheme(darkTheme = true) {
         LanguageSelectionDialog(
-            onDismissRequest = {}
+            onDismissRequest = {},
         )
     }
 }

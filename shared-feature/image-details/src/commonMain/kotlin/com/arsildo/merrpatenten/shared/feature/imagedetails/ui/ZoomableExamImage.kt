@@ -34,15 +34,10 @@ import merrpatenten.shared_core.design_system.generated.resources.*
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
-internal data class ImageDetailsUiState(
-    val imageId: Int = 0,
-)
+internal data class ImageDetailsUiState(val imageId: Int = 0)
 
 @Composable
-internal fun ZoomableExamImageRoute(
-    imageId: Int,
-    onDismiss: () -> Unit,
-) {
+internal fun ZoomableExamImageRoute(imageId: Int, onDismiss: () -> Unit) {
     val uiState = remember(imageId) { ImageDetailsUiState(imageId = imageId) }
     ZoomableExamImage(
         uiState = uiState,
@@ -51,11 +46,7 @@ internal fun ZoomableExamImageRoute(
 }
 
 @Composable
-internal fun ZoomableExamImage(
-    uiState: ImageDetailsUiState,
-    onDismiss: () -> Unit,
-    modifier: Modifier = Modifier,
-) {
+internal fun ZoomableExamImage(uiState: ImageDetailsUiState, onDismiss: () -> Unit, modifier: Modifier = Modifier) {
     val hapticFeedback = LocalHapticFeedback.current
     val handleDismiss = {
         hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
@@ -65,7 +56,7 @@ internal fun ZoomableExamImage(
         modifier = modifier
             .fillMaxSize()
             .clickable(onClick = handleDismiss),
-        contentAlignment = Alignment.Center
+        contentAlignment = Alignment.Center,
     ) {
         var scale by remember { mutableFloatStateOf(1f) }
         var rotation by remember { mutableFloatStateOf(0f) }
@@ -82,9 +73,9 @@ internal fun ZoomableExamImage(
                 .graphicsLayer(
                     scaleX = scale,
                     scaleY = scale,
-                    rotationZ = rotation
+                    rotationZ = rotation,
                 )
-                .transformable(state = state)
+                .transformable(state = state),
         )
         ExtendedFloatingActionButton(
             onClick = handleDismiss,
@@ -92,7 +83,7 @@ internal fun ZoomableExamImage(
                 Text(
                     text = stringResource(Res.string.back),
                     style = MaterialTheme.typography.labelLarge,
-                    fontWeight = FontWeight.Bold
+                    fontWeight = FontWeight.Bold,
                 )
             },
             icon = {
@@ -104,7 +95,7 @@ internal fun ZoomableExamImage(
             contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
             modifier = Modifier
                 .align(Alignment.BottomCenter)
-                .padding(bottom = 36.dp)
+                .padding(bottom = 36.dp),
         )
     }
 }
@@ -115,7 +106,7 @@ private fun ZoomableExamImagePreview() {
     MerrPatentenTheme {
         ZoomableExamImage(
             uiState = ImageDetailsUiState(imageId = 1),
-            onDismiss = {}
+            onDismiss = {},
         )
     }
 }
@@ -126,7 +117,7 @@ private fun ZoomableExamImageDarkPreview() {
     MerrPatentenTheme(darkTheme = true) {
         ZoomableExamImage(
             uiState = ImageDetailsUiState(imageId = 1),
-            onDismiss = {}
+            onDismiss = {},
         )
     }
 }

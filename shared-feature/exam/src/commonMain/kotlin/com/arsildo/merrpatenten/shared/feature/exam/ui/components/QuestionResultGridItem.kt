@@ -40,14 +40,14 @@ internal fun QuestionResultGridItem(
         contentColor = contentColor,
         modifier = modifier
             .aspectRatio(1f)
-            .semantics { this.contentDescription = contentDescription }
+            .semantics { this.contentDescription = contentDescription },
     ) {
         Box(contentAlignment = Alignment.Center) {
             Text(
                 text = "${title + 1}",
                 color = contentColor,
                 style = MaterialTheme.typography.titleMedium,
-                fontWeight = FontWeight.Bold
+                fontWeight = FontWeight.Bold,
             )
         }
     }
@@ -62,7 +62,7 @@ private fun QuestionResultGridItemCorrectPreview() {
             containerColor = MaterialTheme.semanticColors.successContainer,
             contentColor = MaterialTheme.semanticColors.onSuccessContainer,
             contentDescription = "Pyetja 1, Saktë",
-            onClick = {}
+            onClick = {},
         )
     }
 }
@@ -76,7 +76,7 @@ private fun QuestionResultGridItemWrongPreview() {
             containerColor = MaterialTheme.colorScheme.errorContainer,
             contentColor = MaterialTheme.colorScheme.onErrorContainer,
             contentDescription = "Pyetja 2, Gabuar",
-            onClick = {}
+            onClick = {},
         )
     }
 }
@@ -90,7 +90,7 @@ private fun QuestionResultGridItemUnansweredPreview() {
             containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
             contentColor = MaterialTheme.colorScheme.onSurfaceVariant,
             contentDescription = "Pyetja 3, Papërfunduar",
-            onClick = {}
+            onClick = {},
         )
     }
 }

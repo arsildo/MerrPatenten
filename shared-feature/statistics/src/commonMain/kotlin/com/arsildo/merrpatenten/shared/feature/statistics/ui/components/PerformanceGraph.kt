@@ -3,7 +3,6 @@ package com.arsildo.merrpatenten.shared.feature.statistics.ui.components
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -33,15 +32,12 @@ import com.arsildo.merrpatenten.shared.core.designsystem.ERRORS_ALLOWED
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
 import com.arsildo.merrpatenten.shared.core.designsystem.semanticColors
 import com.arsildo.merrpatenten.shared.core.model.ExamResult
+import kotlin.math.round
 import merrpatenten.shared_core.design_system.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
-import kotlin.math.round
 
 @Composable
-internal fun PerformanceGraph(
-    results: List<ExamResult>,
-    modifier: Modifier = Modifier,
-) {
+internal fun PerformanceGraph(results: List<ExamResult>, modifier: Modifier = Modifier) {
     if (results.isEmpty()) return
 
     val successColor = MaterialTheme.semanticColors.success
@@ -51,27 +47,27 @@ internal fun PerformanceGraph(
     Surface(
         shape = MaterialTheme.shapes.extraLarge,
         color = MaterialTheme.colorScheme.surfaceContainerHigh,
-        modifier = modifier.fillMaxWidth()
+        modifier = modifier.fillMaxWidth(),
     ) {
         Column(
             modifier = Modifier.padding(18.dp),
-            verticalArrangement = Arrangement.spacedBy(14.dp)
+            verticalArrangement = Arrangement.spacedBy(14.dp),
         ) {
             // Header with legend
             Column(
                 modifier = Modifier.fillMaxWidth(),
-                verticalArrangement = Arrangement.spacedBy(6.dp)
+                verticalArrangement = Arrangement.spacedBy(6.dp),
             ) {
                 Text(
                     text = stringResource(Res.string.performance_title),
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.onSurface
+                    color = MaterialTheme.colorScheme.onSurface,
                 )
 
                 Row(
                     horizontalArrangement = Arrangement.spacedBy(14.dp),
-                    verticalAlignment = Alignment.CenterVertically
+                    verticalAlignment = Alignment.CenterVertically,
                 ) {
                     LegendItem(color = successColor, label = stringResource(Res.string.performance_passed))
                     LegendItem(color = errorColor, label = stringResource(Res.string.performance_failed))
@@ -84,7 +80,7 @@ internal fun PerformanceGraph(
 
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.Center
+                horizontalArrangement = Arrangement.Center,
             ) {
                 // Y-Axis Labels
                 Column(
@@ -92,7 +88,7 @@ internal fun PerformanceGraph(
                         .height(graphHeight)
                         .padding(end = 8.dp),
                     verticalArrangement = Arrangement.SpaceBetween,
-                    horizontalAlignment = Alignment.End
+                    horizontalAlignment = Alignment.End,
                 ) {
                     GraphAxisText(text = "40")
                     GraphAxisText(text = "30")
@@ -102,21 +98,21 @@ internal fun PerformanceGraph(
                 }
 
                 Column(
-                    modifier = Modifier.weight(1f)
+                    modifier = Modifier.weight(1f),
                 ) {
                     Canvas(
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(graphHeight)
                             .clip(MaterialTheme.shapes.large)
-                            .background(MaterialTheme.colorScheme.surfaceContainerHigh)
+                            .background(MaterialTheme.colorScheme.surfaceContainerHigh),
                     ) {
                         // Passing Zone background highlight (Errors 0 to 4 is at the bottom 10% of height)
                         val passZoneHeight = size.height / 40f * ERRORS_ALLOWED.toFloat()
                         drawRect(
                             color = passingZoneColor,
                             topLeft = Offset(0f, size.height - passZoneHeight),
-                            size = Size(size.width, passZoneHeight)
+                            size = Size(size.width, passZoneHeight),
                         )
 
                         // Grid lines
@@ -126,7 +122,7 @@ internal fun PerformanceGraph(
                                 color = axisColor,
                                 start = Offset(0f, y),
                                 end = Offset(size.width, y),
-                                strokeWidth = 1.dp.toPx()
+                                strokeWidth = 1.dp.toPx(),
                             )
                         }
 
@@ -135,7 +131,9 @@ internal fun PerformanceGraph(
                             val timeStr = results[i].time
                             val minutes = if (timeStr.length >= 2) {
                                 "${timeStr[0]}${timeStr[1]}".toIntOrNull() ?: 0
-                            } else 0
+                            } else {
+                                0
+                            }
 
                             val xCoord = minutes.coerceIn(0, 40)
                             val yCoord = results[i].errors.coerceIn(0, 40)
@@ -150,13 +148,13 @@ internal fun PerformanceGraph(
                             drawCircle(
                                 color = dotColor.copy(alpha = 0.25f),
                                 radius = 10.dp.toPx(),
-                                center = Offset(xPos, yPos)
+                                center = Offset(xPos, yPos),
                             )
                             // Draw main point
                             drawCircle(
                                 color = dotColor,
                                 radius = 6.dp.toPx(),
-                                center = Offset(xPos, yPos)
+                                center = Offset(xPos, yPos),
                             )
                         }
                     }
@@ -166,7 +164,7 @@ internal fun PerformanceGraph(
                     // X-Axis Labels
                     Row(
                         modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween
+                        horizontalArrangement = Arrangement.SpaceBetween,
                     ) {
                         GraphAxisText(text = "0'")
                         GraphAxisText(text = "10'")
@@ -184,17 +182,17 @@ internal fun PerformanceGraph(
 private fun LegendItem(color: Color, label: String) {
     Row(
         horizontalArrangement = Arrangement.spacedBy(4.dp),
-        verticalAlignment = Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically,
     ) {
         Surface(
             shape = CircleShape,
             color = color,
-            modifier = Modifier.size(8.dp)
+            modifier = Modifier.size(8.dp),
         ) {}
         Text(
             text = label,
             style = MaterialTheme.typography.labelSmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
     }
 }
@@ -205,7 +203,7 @@ private fun GraphAxisText(text: String) {
         text = text,
         style = MaterialTheme.typography.labelSmall,
         fontWeight = FontWeight.Medium,
-        color = MaterialTheme.colorScheme.onSurfaceVariant
+        color = MaterialTheme.colorScheme.onSurfaceVariant,
     )
 }
 
@@ -213,7 +211,7 @@ private fun GraphAxisText(text: String) {
 internal fun AverageMistakes(previousExamResults: List<ExamResult>) {
     Row(
         modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.Center
+        horizontalArrangement = Arrangement.Center,
     ) {
         val average = calculateAverage(previousExamResults)
         val prefix = stringResource(Res.string.performance_average_prefix)
@@ -226,14 +224,17 @@ internal fun AverageMistakes(previousExamResults: List<ExamResult>) {
                     style = SpanStyle(
                         fontWeight = FontWeight.Bold,
                         fontSize = MaterialTheme.typography.titleMedium.fontSize,
-                        color = if (average > ERRORS_ALLOWED)
-                            MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.primary
-                    )
+                        color = if (average > ERRORS_ALLOWED) {
+                            MaterialTheme.colorScheme.error
+                        } else {
+                            MaterialTheme.colorScheme.primary
+                        },
+                    ),
                 ) { append("$average") }
                 append("$middle${previousExamResults.size}$suffix")
             },
             color = MaterialTheme.colorScheme.onSurfaceVariant,
-            style = MaterialTheme.typography.bodyMedium
+            style = MaterialTheme.typography.bodyMedium,
         )
     }
 }
@@ -258,7 +259,7 @@ private fun PerformanceGraphPreview() {
                 ExamResult(id = 4, errors = 3, time = "20:15"),
                 ExamResult(id = 5, errors = 8, time = "15:00"),
             ),
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier.padding(16.dp),
         )
     }
 }
@@ -273,7 +274,7 @@ private fun PerformanceGraphDarkPreview() {
                 ExamResult(id = 2, errors = 2, time = "28:10"),
                 ExamResult(id = 3, errors = 0, time = "31:45"),
             ),
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier.padding(16.dp),
         )
     }
 }

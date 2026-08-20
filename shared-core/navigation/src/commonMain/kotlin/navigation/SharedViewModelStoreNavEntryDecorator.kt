@@ -19,7 +19,6 @@ import androidx.lifecycle.viewmodel.MutableCreationExtras
 import androidx.lifecycle.viewmodel.compose.LocalViewModelStoreOwner
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
-import androidx.navigation3.runtime.NavEntry
 import androidx.navigation3.runtime.NavEntryDecorator
 import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.NavMetadataKey
@@ -45,16 +44,15 @@ fun <T : Any> rememberSharedViewModelStoreNavEntryDecorator(
     }
 }
 
-class SharedViewModelStoreNavEntryDecorator<T : Any>(
-    viewModelStore: ViewModelStore,
-    removeViewModelStoreOnPop: () -> Boolean,
-) :
+class SharedViewModelStoreNavEntryDecorator<T : Any>(viewModelStore: ViewModelStore, removeViewModelStoreOnPop: () -> Boolean) :
     NavEntryDecorator<T>(
-        onPop = ({ key ->
-            if (removeViewModelStoreOnPop()) {
-                viewModelStore.getEntryViewModel().clearViewModelStoreOwnerForKey(key)
+        onPop = (
+            { key ->
+                if (removeViewModelStoreOnPop()) {
+                    viewModelStore.getEntryViewModel().clearViewModelStoreOwnerForKey(key)
+                }
             }
-        }),
+            ),
         decorate = { entry ->
             val contentKey = entry.metadata[ParentKey] ?: entry.contentKey
             val viewModelStore =
@@ -82,9 +80,9 @@ class SharedViewModelStoreNavEntryDecorator<T : Any>(
                     init {
                         require(this.lifecycle.currentState == Lifecycle.State.INITIALIZED) {
                             "The Lifecycle state is already beyond INITIALIZED. The " +
-                                    "SharedViewModelStoreNavEntryDecorator requires adding the " +
-                                    "SavedStateNavEntryDecorator to ensure support for " +
-                                    "SavedStateHandles."
+                                "SharedViewModelStoreNavEntryDecorator requires adding the " +
+                                "SavedStateNavEntryDecorator to ensure support for " +
+                                "SavedStateHandles."
                         }
                         enableSavedStateHandles()
                     }

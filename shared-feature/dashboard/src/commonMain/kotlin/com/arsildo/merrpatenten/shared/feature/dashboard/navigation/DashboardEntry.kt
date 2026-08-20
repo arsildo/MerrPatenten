@@ -22,8 +22,7 @@ fun EntryProviderScope<NavKey>.dashboardEntry(
         DashboardRoute(
             onStartExamClick = onStartExamClick,
             onStatisticsClick = onStatisticsClick,
-            onPreferencesClick = onPreferencesClick
+            onPreferencesClick = onPreferencesClick,
         )
     }
 }
-

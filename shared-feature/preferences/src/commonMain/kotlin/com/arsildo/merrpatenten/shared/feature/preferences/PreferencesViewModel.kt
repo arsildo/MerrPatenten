@@ -26,9 +26,7 @@ private data class BehaviorPrefs(
     val systemColorScheme: Boolean,
 )
 
-class PreferencesViewModel(
-    private val preferencesRepository: PreferencesRepository
-) : ViewModel() {
+class PreferencesViewModel(private val preferencesRepository: PreferencesRepository) : ViewModel() {
     val uiState = combine(
         combine(
             preferencesRepository.getImmersiveMode,
@@ -44,7 +42,7 @@ class PreferencesViewModel(
             preferencesRepository.getQuestionTextSize,
         ) { colorScheme, dynamicColors, questionTextSize ->
             Triple(colorScheme, dynamicColors, questionTextSize)
-        }
+        },
     ) { behavior, (colorScheme, dynamicColors, questionTextSize) ->
         PreferencesUiState(
             immersiveMode = behavior.immersive,
@@ -58,7 +56,7 @@ class PreferencesViewModel(
     }.stateIn(
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(5_000),
-        initialValue = PreferencesUiState()
+        initialValue = PreferencesUiState(),
     )
 
     fun setHapticFeedback(enabled: Boolean) {

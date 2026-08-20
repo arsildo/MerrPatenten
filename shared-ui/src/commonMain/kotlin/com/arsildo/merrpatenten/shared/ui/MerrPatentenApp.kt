@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -18,7 +17,6 @@ import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
 import androidx.savedstate.serialization.SavedStateConfiguration
-import com.arsildo.merrpatenten.shared.core.datastore.PreferencesRepository
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
 import com.arsildo.merrpatenten.shared.feature.dashboard.navigation.Dashboard
 import com.arsildo.merrpatenten.shared.feature.dashboard.navigation.dashboardEntry
@@ -36,7 +34,6 @@ import kotlinx.serialization.modules.SerializersModule
 import kotlinx.serialization.modules.polymorphic
 import navigation.BottomSheetSceneStrategy
 import navigation.rememberSharedViewModelStoreNavEntryDecorator
-import org.koin.compose.koinInject
 import org.koin.compose.viewmodel.koinViewModel
 
 private val config = SavedStateConfiguration {
@@ -65,14 +62,14 @@ fun MerrPatentenApp() {
 
     MerrPatentenTheme(
         darkTheme = isDark,
-        hapticFeedback = uiState.hapticFeedback
+        hapticFeedback = uiState.hapticFeedback,
     ) {
         val backStack = rememberNavBackStack(configuration = config, Dashboard)
 
         NavDisplay(
             backStack = backStack,
             sceneStrategies = listOf(
-                remember { BottomSheetSceneStrategy() }
+                remember { BottomSheetSceneStrategy() },
             ),
             entryDecorators = listOf(
                 rememberSaveableStateHolderNavEntryDecorator(),
@@ -84,7 +81,7 @@ fun MerrPatentenApp() {
                     backStack = backStack,
                     onStartExamClick = { category -> backStack.add(Exam(category)) },
                     onStatisticsClick = { backStack.add(Statistics) },
-                    onPreferencesClick = { backStack.add(Preferences) }
+                    onPreferencesClick = { backStack.add(Preferences) },
                 )
                 examEntry(
                     backStack = backStack,
@@ -96,25 +93,25 @@ fun MerrPatentenApp() {
                     onRestartExam = { category ->
                         backStack.removeLastOrNull()
                         backStack.add(Exam(category))
-                    }
+                    },
                 )
                 imageDetailsEntry(
                     backStack = backStack,
-                    onDismiss = { backStack.removeLastOrNull() }
+                    onDismiss = { backStack.removeLastOrNull() },
                 )
                 statisticsEntry(
                     backStack = backStack,
                     onBackPress = { backStack.removeLastOrNull() },
-                    onChangePreferenceClick = { backStack.add(Preferences) }
+                    onChangePreferenceClick = { backStack.add(Preferences) },
                 )
                 preferencesEntry(
                     backStack = backStack,
-                    onBackPress = { backStack.removeLastOrNull() }
+                    onBackPress = { backStack.removeLastOrNull() },
                 )
             },
             modifier = Modifier
                 .fillMaxSize()
-                .background(MaterialTheme.colorScheme.background)
+                .background(MaterialTheme.colorScheme.background),
         )
     }
 }

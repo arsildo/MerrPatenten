@@ -29,10 +29,7 @@ import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
-internal fun PreferencesRoute(
-    viewModel: PreferencesViewModel = koinViewModel(),
-    onBackPress: () -> Unit,
-) {
+internal fun PreferencesRoute(viewModel: PreferencesViewModel = koinViewModel(), onBackPress: () -> Unit) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     PreferencesScreen(
         uiState = uiState,
@@ -81,12 +78,12 @@ internal fun PreferencesScreen(
                             },
                             colors = IconButtonDefaults.filledTonalIconButtonColors(
                                 containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
-                                contentColor = MaterialTheme.colorScheme.onSurface
-                            )
+                                contentColor = MaterialTheme.colorScheme.onSurface,
+                            ),
                         ) {
                             Icon(
                                 imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
-                                contentDescription = stringResource(Res.string.back)
+                                contentDescription = stringResource(Res.string.back),
                             )
                         }
                     },
@@ -98,15 +95,15 @@ internal fun PreferencesScreen(
                             },
                             colors = IconButtonDefaults.filledTonalIconButtonColors(
                                 containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
-                                contentColor = MaterialTheme.colorScheme.onSurface
-                            )
+                                contentColor = MaterialTheme.colorScheme.onSurface,
+                            ),
                         ) {
                             Icon(
                                 imageVector = Icons.Rounded.Language,
-                                contentDescription = stringResource(Res.string.language)
+                                contentDescription = stringResource(Res.string.language),
                             )
                         }
-                    }
+                    },
                 )
             },
             floatingActionButton = {
@@ -118,24 +115,24 @@ internal fun PreferencesScreen(
                     text = {
                         Text(
                             text = stringResource(Res.string.github),
-                            fontWeight = FontWeight.SemiBold
+                            fontWeight = FontWeight.SemiBold,
                         )
                     },
                     icon = {
                         Icon(
                             painter = painterResource(Res.drawable.github),
                             contentDescription = null,
-                            modifier = Modifier.size(28.dp)
+                            modifier = Modifier.size(28.dp),
                         )
                     },
                     elevation = FloatingActionButtonDefaults.loweredElevation(),
                     containerColor = MaterialTheme.colorScheme.secondaryContainer,
                     contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
-                    shape = MaterialTheme.shapes.large
+                    shape = MaterialTheme.shapes.large,
                 )
             },
             contentColor = MaterialTheme.colorScheme.onBackground,
-            contentWindowInsets = WindowInsets(bottom = 0)
+            contentWindowInsets = WindowInsets(bottom = 0),
         ) { contentPadding ->
             Column(
                 modifier = Modifier
@@ -143,16 +140,16 @@ internal fun PreferencesScreen(
                     .padding(contentPadding)
                     .verticalScroll(rememberScrollState())
                     .padding(horizontal = 16.dp),
-                verticalArrangement = Arrangement.spacedBy(24.dp)
+                verticalArrangement = Arrangement.spacedBy(24.dp),
             ) {
                 // Section 1: Behavior
                 Column(
-                    verticalArrangement = Arrangement.spacedBy(8.dp)
+                    verticalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
                     SectionHeader(title = stringResource(Res.string.pref_section_behavior))
 
                     Column(
-                        verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap)
+                        verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap),
                     ) {
                         PreferenceCard(
                             title = stringResource(Res.string.preferences_navigation_buttons),
@@ -164,10 +161,10 @@ internal fun PreferencesScreen(
                                 Icon(
                                     imageVector = Icons.Rounded.TouchApp,
                                     contentDescription = null,
-                                    tint = MaterialTheme.colorScheme.primary
+                                    tint = MaterialTheme.colorScheme.primary,
                                 )
                             },
-                            onCheckedChange = onImmersiveModeChange
+                            onCheckedChange = onImmersiveModeChange,
                         )
                         PreferenceCard(
                             title = stringResource(Res.string.preferences_store_stats),
@@ -179,10 +176,10 @@ internal fun PreferencesScreen(
                                 Icon(
                                     imageVector = Icons.Rounded.Insights,
                                     contentDescription = null,
-                                    tint = MaterialTheme.colorScheme.primary
+                                    tint = MaterialTheme.colorScheme.primary,
                                 )
                             },
-                            onCheckedChange = onSaveStatsChange
+                            onCheckedChange = onSaveStatsChange,
                         )
                         PreferenceCard(
                             title = stringResource(Res.string.preferences_haptic_feedback),
@@ -194,24 +191,24 @@ internal fun PreferencesScreen(
                                 Icon(
                                     imageVector = Icons.Rounded.Vibration,
                                     contentDescription = null,
-                                    tint = MaterialTheme.colorScheme.primary
+                                    tint = MaterialTheme.colorScheme.primary,
                                 )
                             },
-                            onCheckedChange = onHapticFeedbackChange
+                            onCheckedChange = onHapticFeedbackChange,
                         )
                     }
                 }
 
                 // Section 2: Appearance
                 Column(
-                    verticalArrangement = Arrangement.spacedBy(8.dp)
+                    verticalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
                     SectionHeader(title = stringResource(Res.string.pref_section_appearance))
 
                     val appearanceCount = (if (supportsDynamicColor) 3 else 2) + 1
 
                     Column(
-                        verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap)
+                        verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap),
                     ) {
                         PreferenceCard(
                             title = stringResource(Res.string.preferences_follow_system_theme),
@@ -223,10 +220,10 @@ internal fun PreferencesScreen(
                                 Icon(
                                     imageVector = Icons.Rounded.BrightnessAuto,
                                     contentDescription = null,
-                                    tint = MaterialTheme.colorScheme.primary
+                                    tint = MaterialTheme.colorScheme.primary,
                                 )
                             },
-                            onCheckedChange = onFollowSystemChange
+                            onCheckedChange = onFollowSystemChange,
                         )
                         PreferenceCard(
                             title = stringResource(Res.string.preferences_dark_mode),
@@ -239,10 +236,10 @@ internal fun PreferencesScreen(
                                 Icon(
                                     imageVector = Icons.Rounded.DarkMode,
                                     contentDescription = null,
-                                    tint = MaterialTheme.colorScheme.primary
+                                    tint = MaterialTheme.colorScheme.primary,
                                 )
                             },
-                            onCheckedChange = onColorSchemeChange
+                            onCheckedChange = onColorSchemeChange,
                         )
                         if (supportsDynamicColor) {
                             PreferenceCard(
@@ -255,17 +252,17 @@ internal fun PreferencesScreen(
                                     Icon(
                                         imageVector = Icons.Rounded.Palette,
                                         contentDescription = null,
-                                        tint = MaterialTheme.colorScheme.primary
+                                        tint = MaterialTheme.colorScheme.primary,
                                     )
                                 },
-                                onCheckedChange = onDynamicColorSchemeChange
+                                onCheckedChange = onDynamicColorSchemeChange,
                             )
                         }
                         TextSizePreferenceCard(
                             selectedSize = uiState.questionTextSize,
                             onSizeSelected = onQuestionTextSizeChange,
                             index = if (supportsDynamicColor) 3 else 2,
-                            count = appearanceCount
+                            count = appearanceCount,
                         )
                     }
                 }
@@ -275,7 +272,7 @@ internal fun PreferencesScreen(
 
             if (languageDialogVisible) {
                 LanguageSelectionDialog(
-                    onDismissRequest = { languageDialogVisible = false }
+                    onDismissRequest = { languageDialogVisible = false },
                 )
             }
         }

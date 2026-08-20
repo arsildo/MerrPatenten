@@ -12,13 +12,12 @@ object Statistics : NavKey
 fun EntryProviderScope<NavKey>.statisticsEntry(
     backStack: NavBackStack<NavKey>,
     onBackPress: () -> Unit = { backStack.removeLastOrNull() },
-    onChangePreferenceClick: () -> Unit
+    onChangePreferenceClick: () -> Unit,
 ) {
     entry<Statistics> {
         StatisticsRoute(
             onBackPress = onBackPress,
-            onChangePreferenceClick = onChangePreferenceClick
+            onChangePreferenceClick = onChangePreferenceClick,
         )
     }
 }
-

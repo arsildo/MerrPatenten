@@ -9,7 +9,6 @@ import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.rounded.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
@@ -29,10 +28,10 @@ import com.arsildo.merrpatenten.shared.feature.statistics.ui.components.Performa
 import com.arsildo.merrpatenten.shared.feature.statistics.ui.components.ResultStoringDisabled
 import com.arsildo.merrpatenten.shared.feature.statistics.ui.components.StatSummaryCard
 import com.arsildo.merrpatenten.shared.feature.statistics.ui.components.resultList
+import kotlin.math.roundToInt
 import merrpatenten.shared_core.design_system.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
-import kotlin.math.roundToInt
 
 @Composable
 internal fun StatisticsRoute(
@@ -74,13 +73,13 @@ internal fun StatisticsScreen(
                         },
                         colors = IconButtonDefaults.filledTonalIconButtonColors(
                             containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
-                            contentColor = MaterialTheme.colorScheme.onSurface
+                            contentColor = MaterialTheme.colorScheme.onSurface,
                         ),
-                        shape = MaterialTheme.shapes.medium
+                        shape = MaterialTheme.shapes.medium,
                     ) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
-                            contentDescription = stringResource(Res.string.back)
+                            contentDescription = stringResource(Res.string.back),
                         )
                     }
                 },
@@ -93,13 +92,13 @@ internal fun StatisticsScreen(
                             },
                             colors = IconButtonDefaults.filledTonalIconButtonColors(
                                 containerColor = MaterialTheme.colorScheme.errorContainer,
-                                contentColor = MaterialTheme.colorScheme.error
+                                contentColor = MaterialTheme.colorScheme.error,
                             ),
-                            shape = MaterialTheme.shapes.medium
+                            shape = MaterialTheme.shapes.medium,
                         ) {
                             Icon(
                                 imageVector = Icons.Rounded.DeleteSweep,
-                                contentDescription = stringResource(Res.string.results_delete)
+                                contentDescription = stringResource(Res.string.results_delete),
                             )
                         }
                     }
@@ -111,7 +110,7 @@ internal fun StatisticsScreen(
             )
         },
         contentColor = MaterialTheme.colorScheme.onBackground,
-        contentWindowInsets = WindowInsets(top = 0, bottom = 0)
+        contentWindowInsets = WindowInsets(top = 0, bottom = 0),
     ) { contentPadding ->
         Box(
             modifier = Modifier
@@ -130,17 +129,17 @@ internal fun StatisticsScreen(
                             },
                             shapes = ButtonShapes(
                                 shape = MaterialTheme.shapes.large,
-                                pressedShape = MaterialTheme.shapes.small
+                                pressedShape = MaterialTheme.shapes.small,
                             ),
-                            contentPadding = PaddingValues(horizontal = 28.dp, vertical = 12.dp)
+                            contentPadding = PaddingValues(horizontal = 28.dp, vertical = 12.dp),
                         ) {
                             Text(
                                 text = stringResource(Res.string.results_change),
                                 style = MaterialTheme.typography.labelLarge,
-                                fontWeight = FontWeight.Bold
+                                fontWeight = FontWeight.Bold,
                             )
                         }
-                    }
+                    },
                 )
 
                 else -> {
@@ -156,14 +155,14 @@ internal fun StatisticsScreen(
                             contentPadding = PaddingValues(start = 16.dp, top = 0.dp, end = 16.dp, bottom = 32.dp),
                             horizontalArrangement = Arrangement.spacedBy(16.dp),
                             verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap),
-                            modifier = Modifier.fillMaxSize()
+                            modifier = Modifier.fillMaxSize(),
                         ) {
                             item(span = { GridItemSpan(maxLineSpan) }) {
                                 Row(
                                     modifier = Modifier
                                         .fillMaxWidth()
                                         .padding(bottom = 16.dp),
-                                    horizontalArrangement = Arrangement.spacedBy(10.dp)
+                                    horizontalArrangement = Arrangement.spacedBy(10.dp),
                                 ) {
                                     StatSummaryCard(
                                         title = stringResource(Res.string.stat_exams),
@@ -171,15 +170,27 @@ internal fun StatisticsScreen(
                                         icon = Icons.Rounded.Quiz,
                                         containerColor = MaterialTheme.colorScheme.primaryContainer,
                                         contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
-                                        modifier = Modifier.weight(1f)
+                                        modifier = Modifier.weight(1f),
                                     )
                                     StatSummaryCard(
                                         title = stringResource(Res.string.stat_average),
                                         value = "$avgErrors",
                                         icon = Icons.Rounded.CheckCircle,
-                                        containerColor = if (avgErrors <= ERRORS_ALLOWED) MaterialTheme.semanticColors.successContainer else MaterialTheme.colorScheme.errorContainer,
-                                        contentColor = if (avgErrors <= ERRORS_ALLOWED) MaterialTheme.semanticColors.onSuccessContainer else MaterialTheme.colorScheme.onErrorContainer,
-                                        modifier = Modifier.weight(1f)
+                                        containerColor = if (avgErrors <=
+                                            ERRORS_ALLOWED
+                                        ) {
+                                            MaterialTheme.semanticColors.successContainer
+                                        } else {
+                                            MaterialTheme.colorScheme.errorContainer
+                                        },
+                                        contentColor = if (avgErrors <=
+                                            ERRORS_ALLOWED
+                                        ) {
+                                            MaterialTheme.semanticColors.onSuccessContainer
+                                        } else {
+                                            MaterialTheme.colorScheme.onErrorContainer
+                                        },
+                                        modifier = Modifier.weight(1f),
                                     )
                                     StatSummaryCard(
                                         title = stringResource(Res.string.stat_pass_rate),
@@ -187,7 +198,7 @@ internal fun StatisticsScreen(
                                         icon = Icons.Rounded.EmojiEvents,
                                         containerColor = MaterialTheme.colorScheme.tertiaryContainer,
                                         contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
-                                        modifier = Modifier.weight(1f)
+                                        modifier = Modifier.weight(1f),
                                     )
                                 }
                             }
@@ -195,14 +206,14 @@ internal fun StatisticsScreen(
                             item(span = { GridItemSpan(maxLineSpan) }) {
                                 PerformanceGraph(
                                     results = results,
-                                    modifier = Modifier.padding(bottom = 16.dp)
+                                    modifier = Modifier.padding(bottom = 16.dp),
                                 )
                             }
 
                             item(span = { GridItemSpan(maxLineSpan) }) {
                                 SectionHeader(
                                     title = stringResource(Res.string.exam_history),
-                                    modifier = Modifier.padding(top = 4.dp, bottom = 4.dp)
+                                    modifier = Modifier.padding(top = 4.dp, bottom = 4.dp),
                                 )
                             }
 
@@ -211,7 +222,7 @@ internal fun StatisticsScreen(
                     } else {
                         ResultStoringDisabled(
                             text = stringResource(Res.string.results_empty),
-                            icon = Icons.Rounded.MultipleStop
+                            icon = Icons.Rounded.MultipleStop,
                         )
                     }
                 }
@@ -225,7 +236,7 @@ internal fun StatisticsScreen(
                 onDeleteAllResults()
                 deleteResultsDialog = false
             },
-            onDismiss = { deleteResultsDialog = false }
+            onDismiss = { deleteResultsDialog = false },
         )
     }
 }
@@ -241,11 +252,11 @@ private fun StatisticsScreenWithDataPreview() {
                     ExamResult(id = 2, errors = 5, time = "28:10"),
                     ExamResult(id = 3, errors = 0, time = "31:45"),
                 ),
-                saveResults = true
+                saveResults = true,
             ),
             onChangePreferenceClick = {},
             onBackPress = {},
-            onDeleteAllResults = {}
+            onDeleteAllResults = {},
         )
     }
 }
@@ -258,7 +269,7 @@ private fun StatisticsScreenEmptyPreview() {
             uiState = StatisticsUiState(results = emptyList(), saveResults = true),
             onChangePreferenceClick = {},
             onBackPress = {},
-            onDeleteAllResults = {}
+            onDeleteAllResults = {},
         )
     }
 }
@@ -271,7 +282,7 @@ private fun StatisticsScreenDisabledPreview() {
             uiState = StatisticsUiState(results = emptyList(), saveResults = false),
             onChangePreferenceClick = {},
             onBackPress = {},
-            onDeleteAllResults = {}
+            onDeleteAllResults = {},
         )
     }
 }
@@ -286,11 +297,11 @@ private fun StatisticsScreenDarkPreview() {
                     ExamResult(id = 1, errors = 1, time = "34:20"),
                     ExamResult(id = 2, errors = 0, time = "28:10"),
                 ),
-                saveResults = true
+                saveResults = true,
             ),
             onChangePreferenceClick = {},
             onBackPress = {},
-            onDeleteAllResults = {}
+            onDeleteAllResults = {},
         )
     }
 }

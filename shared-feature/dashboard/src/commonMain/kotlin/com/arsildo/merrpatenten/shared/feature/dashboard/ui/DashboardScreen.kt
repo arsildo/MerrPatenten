@@ -25,11 +25,7 @@ import merrpatenten.shared_core.design_system.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-internal fun DashboardRoute(
-    onStartExamClick: (String) -> Unit,
-    onPreferencesClick: () -> Unit,
-    onStatisticsClick: () -> Unit,
-) {
+internal fun DashboardRoute(onStartExamClick: (String) -> Unit, onPreferencesClick: () -> Unit, onStatisticsClick: () -> Unit) {
     DashboardScreen(
         onStartExamClick = onStartExamClick,
         onPreferencesClick = onPreferencesClick,
@@ -53,21 +49,21 @@ internal fun DashboardScreen(
             TopAppBar(
                 title = {
                     Column(
-                        verticalArrangement = Arrangement.spacedBy(4.dp)
+                        verticalArrangement = Arrangement.spacedBy(4.dp),
                     ) {
                         Text(
                             text = stringResource(Res.string.app_name),
                             style = MaterialTheme.typography.headlineMedium,
                             fontWeight = FontWeight.Bold,
-                            color = MaterialTheme.colorScheme.onBackground
+                            color = MaterialTheme.colorScheme.onBackground,
                         )
                         Text(
                             text = stringResource(Res.string.app_tagline),
                             style = MaterialTheme.typography.bodyMedium,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
                         )
                     }
-                }
+                },
             )
         },
         modifier = modifier,
@@ -75,45 +71,45 @@ internal fun DashboardScreen(
             HorizontalFloatingToolbar(
                 expanded = true,
                 modifier = Modifier.navigationBarsPadding(),
-                colors = FloatingToolbarDefaults.vibrantFloatingToolbarColors()
+                colors = FloatingToolbarDefaults.vibrantFloatingToolbarColors(),
             ) {
                 IconButton(
                     onClick = {
                         hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
                         onStatisticsClick()
-                    }
+                    },
                 ) {
                     Icon(
                         imageVector = Icons.Rounded.AutoGraph,
-                        contentDescription = stringResource(Res.string.statistics)
+                        contentDescription = stringResource(Res.string.statistics),
                     )
                 }
                 IconButton(
                     onClick = {
                         hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
                         onPreferencesClick()
-                    }
+                    },
                 ) {
                     Icon(
                         imageVector = Icons.Rounded.Settings,
-                        contentDescription = stringResource(Res.string.preferences)
+                        contentDescription = stringResource(Res.string.preferences),
                     )
                 }
                 IconButton(
                     onClick = {
                         hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
                         showDisclaimerDialog = true
-                    }
+                    },
                 ) {
                     Icon(
                         imageVector = Icons.Outlined.Info,
-                        contentDescription = stringResource(Res.string.info)
+                        contentDescription = stringResource(Res.string.info),
                     )
                 }
             }
         },
         floatingActionButtonPosition = FabPosition.Center,
-        contentWindowInsets = WindowInsets(bottom = 0)
+        contentWindowInsets = WindowInsets(bottom = 0),
     ) { contentPadding ->
         Column(
             modifier = Modifier
@@ -122,9 +118,8 @@ internal fun DashboardScreen(
                 .verticalScroll(rememberScrollState())
                 .padding(horizontal = 20.dp)
                 .padding(top = 24.dp, bottom = 104.dp),
-            verticalArrangement = Arrangement.spacedBy(20.dp)
+            verticalArrangement = Arrangement.spacedBy(20.dp),
         ) {
-
             // Categories Section Title
             SectionHeader(title = stringResource(Res.string.select_category))
 
@@ -139,7 +134,7 @@ internal fun DashboardScreen(
                 },
                 colors = CardDefaults.elevatedCardColors(
                     containerColor = MaterialTheme.colorScheme.primaryContainer,
-                    contentColor = MaterialTheme.colorScheme.onPrimaryContainer
+                    contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
                 ),
             )
 
@@ -153,7 +148,7 @@ internal fun DashboardScreen(
                 },
                 colors = CardDefaults.elevatedCardColors(
                     containerColor = MaterialTheme.colorScheme.secondaryContainer,
-                    contentColor = MaterialTheme.colorScheme.onSecondaryContainer
+                    contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
                 ),
             )
 
@@ -167,7 +162,7 @@ internal fun DashboardScreen(
                 },
                 colors = CardDefaults.elevatedCardColors(
                     containerColor = MaterialTheme.colorScheme.tertiaryContainer,
-                    contentColor = MaterialTheme.colorScheme.onTertiaryContainer
+                    contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
                 ),
             )
 
@@ -179,7 +174,7 @@ internal fun DashboardScreen(
                 },
                 colors = CardDefaults.elevatedCardColors(
                     containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
-                    contentColor = MaterialTheme.colorScheme.onSurface
+                    contentColor = MaterialTheme.colorScheme.onSurface,
                 ),
             )
         }
@@ -187,7 +182,7 @@ internal fun DashboardScreen(
 
     if (showDisclaimerDialog) {
         DisclaimerDialog(
-            onDismissRequest = { showDisclaimerDialog = false }
+            onDismissRequest = { showDisclaimerDialog = false },
         )
     }
 }

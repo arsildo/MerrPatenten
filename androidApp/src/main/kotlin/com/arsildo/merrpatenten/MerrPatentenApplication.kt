@@ -10,12 +10,12 @@ import org.koin.dsl.KoinConfiguration
 import org.koin.dsl.koinConfiguration
 
 @OptIn(KoinExperimentalAPI::class)
-class MerrPatentenApplication : Application(), KoinStartup {
-    override fun onKoinStartup(): KoinConfiguration {
-        return koinConfiguration {
-            androidLogger()
-            androidContext(this@MerrPatentenApplication)
-            modules(appModules)
-        }
+class MerrPatentenApplication :
+    Application(),
+    KoinStartup {
+    override fun onKoinStartup(): KoinConfiguration = koinConfiguration {
+        androidLogger()
+        androidContext(this@MerrPatentenApplication)
+        modules(appModules)
     }
 }

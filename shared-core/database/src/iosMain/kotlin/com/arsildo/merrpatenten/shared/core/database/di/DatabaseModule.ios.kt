@@ -11,7 +11,12 @@ import merrpatenten.shared_core.design_system.generated.resources.Res
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
-import platform.Foundation.*
+import platform.Foundation.NSData
+import platform.Foundation.NSDocumentDirectory
+import platform.Foundation.NSFileManager
+import platform.Foundation.NSUserDomainMask
+import platform.Foundation.dataWithBytes
+import platform.Foundation.writeToFile
 
 @OptIn(ExperimentalForeignApi::class)
 internal fun getDatabaseBuilder(): RoomDatabase.Builder<MerrPatentenDatabase> {

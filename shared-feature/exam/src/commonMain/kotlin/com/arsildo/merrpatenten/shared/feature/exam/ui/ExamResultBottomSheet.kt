@@ -73,49 +73,59 @@ internal fun ExamResultBottomSheet(
     Column(
         modifier = modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.spacedBy(16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         LazyVerticalGrid(
             columns = GridCells.Fixed(5),
             contentPadding = PaddingValues(16.dp) + WindowInsets.navigationBars.asPaddingValues(),
             horizontalArrangement = Arrangement.spacedBy(8.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp),
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
         ) {
             if (uiState.isCompleted) {
                 item(span = { GridItemSpan(5) }) {
                     Row(
                         modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp),
                         horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.CenterVertically
+                        verticalAlignment = Alignment.CenterVertically,
                     ) {
                         Row(
                             horizontalArrangement = Arrangement.spacedBy(12.dp),
-                            verticalAlignment = Alignment.CenterVertically
+                            verticalAlignment = Alignment.CenterVertically,
                         ) {
                             Icon(
                                 imageVector = heroIcon,
                                 contentDescription = null,
                                 tint = heroIconColor,
-                                modifier = Modifier.size(32.dp)
+                                modifier = Modifier.size(32.dp),
                             )
                             Column {
-                                val errorLabel = stringResource(if (uiState.errors == 1) Res.string.error_singular else Res.string.errors_plural)
+                                val errorLabel = stringResource(
+                                    if (uiState.errors ==
+                                        1
+                                    ) {
+                                        Res.string.error_singular
+                                    } else {
+                                        Res.string.errors_plural
+                                    },
+                                )
                                 Text(
                                     text = "${uiState.errors} $errorLabel",
                                     style = MaterialTheme.typography.titleLarge,
                                     fontWeight = FontWeight.Bold,
-                                    color = heroIconColor
+                                    color = heroIconColor,
                                 )
                                 Text(
                                     text = stringResource(if (hasPassed) Res.string.passed else Res.string.failed),
                                     style = MaterialTheme.typography.titleLarge,
-                                    fontWeight = FontWeight.Bold
+                                    fontWeight = FontWeight.Bold,
                                 )
                                 Text(
-                                    text = stringResource(if (hasPassed) Res.string.exam_passed_subtitle else Res.string.exam_failed_subtitle),
+                                    text = stringResource(
+                                        if (hasPassed) Res.string.exam_passed_subtitle else Res.string.exam_failed_subtitle,
+                                    ),
                                     style = MaterialTheme.typography.bodySmall,
-                                    color = heroContent.copy(alpha = 0.8f)
+                                    color = heroContent.copy(alpha = 0.8f),
                                 )
                             }
                         }
@@ -151,18 +161,18 @@ internal fun ExamResultBottomSheet(
                     contentColor = content,
                     shape = if (hasResponse) MaterialShapes.Cookie6Sided.toShape() else MaterialShapes.Slanted.toShape(),
                     contentDescription = stringResource(Res.string.question_status_format, questionTitle, statusText),
-                    onClick = { onQuestionClicked(page) }
+                    onClick = { onQuestionClicked(page) },
                 )
             }
             item(
-                span = { GridItemSpan(5) }
+                span = { GridItemSpan(5) },
             ) {
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(vertical = 16.dp),
                     horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
+                    verticalAlignment = Alignment.CenterVertically,
                 ) {
                     if (!uiState.isCompleted) {
                         ResultStatusIndicator(
@@ -187,13 +197,13 @@ internal fun ExamResultBottomSheet(
                     IconButton(
                         onClick = onDismiss,
                         colors = IconButtonDefaults.iconButtonColors(
-                            contentColor = MaterialTheme.colorScheme.secondary
-                        )
+                            contentColor = MaterialTheme.colorScheme.secondary,
+                        ),
                     ) {
                         Icon(
                             imageVector = Icons.Rounded.KeyboardArrowDown,
                             contentDescription = stringResource(Res.string.close),
-                            modifier = Modifier.size(28.dp)
+                            modifier = Modifier.size(28.dp),
                         )
                     }
                 }
@@ -209,12 +219,12 @@ internal fun ExamResultBottomSheet(
                         RestartExamButton(
                             icon = Icons.Rounded.RestartAlt,
                             onClick = onRestartExam,
-                            modifier = Modifier.fillMaxWidth()
+                            modifier = Modifier.fillMaxWidth(),
                         )
                         ExitExamButton(
                             icon = Icons.AutoMirrored.Rounded.ExitToApp,
                             onClick = onExitExam,
-                            modifier = Modifier.fillMaxWidth()
+                            modifier = Modifier.fillMaxWidth(),
                         )
                     }
                 }
@@ -231,12 +241,12 @@ private fun ExamResultBottomSheetInProgressPreview() {
             uiState = ExamUiState(
                 isCompleted = false,
                 responseList = List(QUESTIONS_IN_EXAM) { if (it < 10) "Saktë" else "" },
-                mistakePositions = List(QUESTIONS_IN_EXAM) { 1 }
+                mistakePositions = List(QUESTIONS_IN_EXAM) { 1 },
             ),
             onQuestionClicked = {},
             onExitExam = {},
             onRestartExam = {},
-            onDismiss = {}
+            onDismiss = {},
         )
     }
 }
@@ -250,12 +260,12 @@ private fun ExamResultBottomSheetPassedPreview() {
                 isCompleted = true,
                 errors = 2,
                 responseList = List(QUESTIONS_IN_EXAM) { "Saktë" },
-                mistakePositions = List(QUESTIONS_IN_EXAM) { if (it < 2) 1 else 0 }
+                mistakePositions = List(QUESTIONS_IN_EXAM) { if (it < 2) 1 else 0 },
             ),
             onQuestionClicked = {},
             onExitExam = {},
             onRestartExam = {},
-            onDismiss = {}
+            onDismiss = {},
         )
     }
 }
@@ -269,12 +279,12 @@ private fun ExamResultBottomSheetFailedPreview() {
                 isCompleted = true,
                 errors = 8,
                 responseList = List(QUESTIONS_IN_EXAM) { "Saktë" },
-                mistakePositions = List(QUESTIONS_IN_EXAM) { if (it < 8) 1 else 0 }
+                mistakePositions = List(QUESTIONS_IN_EXAM) { if (it < 8) 1 else 0 },
             ),
             onQuestionClicked = {},
             onExitExam = {},
             onRestartExam = {},
-            onDismiss = {}
+            onDismiss = {},
         )
     }
 }
@@ -288,12 +298,12 @@ private fun ExamResultBottomSheetDarkPreview() {
                 isCompleted = true,
                 errors = 2,
                 responseList = List(QUESTIONS_IN_EXAM) { "Saktë" },
-                mistakePositions = List(QUESTIONS_IN_EXAM) { if (it < 2) 1 else 0 }
+                mistakePositions = List(QUESTIONS_IN_EXAM) { if (it < 2) 1 else 0 },
             ),
             onQuestionClicked = {},
             onExitExam = {},
             onRestartExam = {},
-            onDismiss = {}
+            onDismiss = {},
         )
     }
 }

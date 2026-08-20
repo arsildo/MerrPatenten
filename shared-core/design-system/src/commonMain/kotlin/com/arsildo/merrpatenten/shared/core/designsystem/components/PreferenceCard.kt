@@ -33,7 +33,7 @@ fun PreferenceCard(
     val hapticFeedback = LocalHapticFeedback.current
     val handleCheckedChange: (Boolean) -> Unit = { newChecked ->
         hapticFeedback.performHapticFeedback(
-            if (newChecked) HapticFeedbackType.ToggleOn else HapticFeedbackType.ToggleOff
+            if (newChecked) HapticFeedbackType.ToggleOn else HapticFeedbackType.ToggleOff,
         )
         onCheckedChange(newChecked)
     }
@@ -56,15 +56,17 @@ fun PreferenceCard(
             {
                 Text(text = subtitle)
             }
-        } else null,
+        } else {
+            null
+        },
         trailingContent = {
             Switch(
                 checked = checked,
                 enabled = enabled,
-                onCheckedChange = handleCheckedChange
+                onCheckedChange = handleCheckedChange,
             )
         },
-        modifier = modifier
+        modifier = modifier,
     )
 }
 
@@ -75,7 +77,7 @@ private fun PreferenceCardGroupPreview() {
     MerrPatentenTheme {
         Column(
             modifier = Modifier.padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap)
+            verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap),
         ) {
             PreferenceCard(
                 title = "Butonat e navigimit",
@@ -87,10 +89,10 @@ private fun PreferenceCardGroupPreview() {
                     Icon(
                         imageVector = Icons.Rounded.TouchApp,
                         contentDescription = null,
-                        tint = MaterialTheme.colorScheme.primary
+                        tint = MaterialTheme.colorScheme.primary,
                     )
                 },
-                onCheckedChange = {}
+                onCheckedChange = {},
             )
             PreferenceCard(
                 title = "Ruaj statistikat",
@@ -102,10 +104,10 @@ private fun PreferenceCardGroupPreview() {
                     Icon(
                         imageVector = Icons.Rounded.Insights,
                         contentDescription = null,
-                        tint = MaterialTheme.colorScheme.primary
+                        tint = MaterialTheme.colorScheme.primary,
                     )
                 },
-                onCheckedChange = {}
+                onCheckedChange = {},
             )
             PreferenceCard(
                 title = "Dridhje",
@@ -117,10 +119,10 @@ private fun PreferenceCardGroupPreview() {
                     Icon(
                         imageVector = Icons.Rounded.Vibration,
                         contentDescription = null,
-                        tint = MaterialTheme.colorScheme.primary
+                        tint = MaterialTheme.colorScheme.primary,
                     )
                 },
-                onCheckedChange = {}
+                onCheckedChange = {},
             )
         }
     }
@@ -133,7 +135,7 @@ private fun PreferenceCardDarkPreview() {
     MerrPatentenTheme(darkTheme = true) {
         Column(
             modifier = Modifier.padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap)
+            verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap),
         ) {
             PreferenceCard(
                 title = "Tema e errët",
@@ -145,10 +147,10 @@ private fun PreferenceCardDarkPreview() {
                     Icon(
                         imageVector = Icons.Rounded.DarkMode,
                         contentDescription = null,
-                        tint = MaterialTheme.colorScheme.primary
+                        tint = MaterialTheme.colorScheme.primary,
                     )
                 },
-                onCheckedChange = {}
+                onCheckedChange = {},
             )
             PreferenceCard(
                 title = "Opsion i çaktivizuar",
@@ -157,7 +159,7 @@ private fun PreferenceCardDarkPreview() {
                 enabled = false,
                 index = 1,
                 count = 2,
-                onCheckedChange = {}
+                onCheckedChange = {},
             )
         }
     }

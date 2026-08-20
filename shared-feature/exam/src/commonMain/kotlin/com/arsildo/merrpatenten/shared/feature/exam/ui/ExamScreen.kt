@@ -105,7 +105,7 @@ internal fun ExamScreen(
                     .animateContentSize()
                     .padding(16.dp)
                     .navigationBarsPadding(),
-                verticalArrangement = Arrangement.spacedBy(16.dp)
+                verticalArrangement = Arrangement.spacedBy(16.dp),
             ) {
                 if (!uiState.immersiveMode) {
                     PagerNavigation(
@@ -122,7 +122,7 @@ internal fun ExamScreen(
                                     pagerState.animateScrollToPage(page = pagerState.currentPage + 1)
                                 }
                             }
-                        }
+                        },
                     )
                 }
 
@@ -130,17 +130,17 @@ internal fun ExamScreen(
                     if (uiState.isCompleted) {
                         Column(
                             modifier = Modifier.fillMaxWidth(),
-                            verticalArrangement = Arrangement.spacedBy(16.dp)
+                            verticalArrangement = Arrangement.spacedBy(16.dp),
                         ) {
                             RestartExamButton(
                                 icon = Icons.Rounded.RestartAlt,
                                 modifier = Modifier.fillMaxWidth(),
-                                onClick = onRestartExam
+                                onClick = onRestartExam,
                             )
                             ExitExamButton(
                                 icon = Icons.AutoMirrored.Rounded.ExitToApp,
                                 onClick = onExitExam,
-                                modifier = Modifier.fillMaxWidth()
+                                modifier = Modifier.fillMaxWidth(),
                             )
                         }
                     } else {
@@ -155,24 +155,24 @@ internal fun ExamScreen(
                                 } else {
                                     onCompleteExam()
                                 }
-                            }
+                            },
                         )
                     }
                 }
             }
-        }
+        },
     ) { contentPadding ->
         Box(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(contentPadding),
-            contentAlignment = Alignment.Center
+            contentAlignment = Alignment.Center,
         ) {
             if (uiState.questions.isEmpty()) {
                 LoadingIndicator(
                     modifier = Modifier
                         .fillMaxSize()
-                        .wrapContentSize()
+                        .wrapContentSize(),
                 )
             } else {
                 Column(
@@ -180,17 +180,17 @@ internal fun ExamScreen(
                         .fillMaxSize()
                         .statusBarsPadding(),
                     verticalArrangement = Arrangement.SpaceBetween,
-                    horizontalAlignment = Alignment.CenterHorizontally
+                    horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
                     Column(
-                        modifier = Modifier.fillMaxWidth()
+                        modifier = Modifier.fillMaxWidth(),
                     ) {
                         ExamLegend(
                             pagerState = pagerState,
                             timer = { uiState.timer },
                             endExamVisible = endExamVisible,
                             onMapClick = onOpenMap,
-                            onShowEndExamButton = { endExamVisible = !endExamVisible }
+                            onShowEndExamButton = { endExamVisible = !endExamVisible },
                         )
 
                         val completedCount = remember(uiState.responseList) {
@@ -201,9 +201,9 @@ internal fun ExamScreen(
                             targetValue = progress,
                             animationSpec = spring(
                                 dampingRatio = Spring.DampingRatioNoBouncy,
-                                stiffness = Spring.StiffnessMediumLow
+                                stiffness = Spring.StiffnessMediumLow,
                             ),
-                            label = "ExamCompletionProgress"
+                            label = "ExamCompletionProgress",
                         )
 
                         LinearProgressIndicator(
@@ -212,7 +212,7 @@ internal fun ExamScreen(
                             drawStopIndicator = {},
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(16.dp)
+                                .padding(16.dp),
                         )
                     }
 
@@ -252,7 +252,7 @@ internal fun ExamScreen(
             onExitExam = {
                 questionsUnCompletedDialog = false
                 onExitExam()
-            }
+            },
         )
     }
 }
@@ -268,14 +268,14 @@ private fun ExamScreenPreview() {
                         id = 1,
                         question = "Sinjali i paraqitur në figurë tregon një kthesë të rrezikshme majtas.",
                         image = 1,
-                        answer = "Saktë"
-                    )
+                        answer = "Saktë",
+                    ),
                 ),
                 trueCheckedPositions = List(QUESTIONS_IN_EXAM) { false },
                 falseCheckedPositions = List(QUESTIONS_IN_EXAM) { false },
                 responseList = List(QUESTIONS_IN_EXAM) { "" },
                 mistakePositions = List(QUESTIONS_IN_EXAM) { 1 },
-                timer = "39:42"
+                timer = "39:42",
             ),
             onImageDetailsClick = {},
             onOpenMap = {},
@@ -316,14 +316,14 @@ private fun ExamScreenDarkPreview() {
                         id = 1,
                         question = "Sinjali i paraqitur në figurë tregon një kthesë të rrezikshme majtas.",
                         image = 1,
-                        answer = "Saktë"
-                    )
+                        answer = "Saktë",
+                    ),
                 ),
                 trueCheckedPositions = List(QUESTIONS_IN_EXAM) { false },
                 falseCheckedPositions = List(QUESTIONS_IN_EXAM) { false },
                 responseList = List(QUESTIONS_IN_EXAM) { "" },
                 mistakePositions = List(QUESTIONS_IN_EXAM) { 1 },
-                timer = "39:42"
+                timer = "39:42",
             ),
             onImageDetailsClick = {},
             onOpenMap = {},
@@ -347,15 +347,15 @@ private fun ExamScreenCompletedPreview() {
                         id = 1,
                         question = "Sinjali i paraqitur në figurë tregon një kthesë të rrezikshme majtas.",
                         image = 1,
-                        answer = "Saktë"
-                    )
+                        answer = "Saktë",
+                    ),
                 ),
                 trueCheckedPositions = List(QUESTIONS_IN_EXAM) { true },
                 falseCheckedPositions = List(QUESTIONS_IN_EXAM) { false },
                 responseList = List(QUESTIONS_IN_EXAM) { "Saktë" },
                 mistakePositions = List(QUESTIONS_IN_EXAM) { 0 },
                 isCompleted = true,
-                timer = "24:10"
+                timer = "24:10",
             ),
             onImageDetailsClick = {},
             onOpenMap = {},

@@ -29,40 +29,40 @@ fun TextSizePreferenceCard(
     Surface(
         shape = ListItemDefaults.segmentedShapes(index = index, count = count).shape,
         color = MaterialTheme.colorScheme.surfaceContainerLow,
-        modifier = modifier.fillMaxWidth()
+        modifier = modifier.fillMaxWidth(),
     ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(12.dp)
+            verticalArrangement = Arrangement.spacedBy(12.dp),
         ) {
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(16.dp)
+                horizontalArrangement = Arrangement.spacedBy(16.dp),
             ) {
                 Icon(
                     imageVector = Icons.Rounded.FormatSize,
                     contentDescription = null,
-                    tint = MaterialTheme.colorScheme.primary
+                    tint = MaterialTheme.colorScheme.primary,
                 )
                 Column(modifier = Modifier.weight(1f)) {
                     Text(
                         text = stringResource(Res.string.preferences_question_text_size),
                         style = MaterialTheme.typography.bodyLarge,
-                        color = MaterialTheme.colorScheme.onSurface
+                        color = MaterialTheme.colorScheme.onSurface,
                     )
                     Text(
                         text = stringResource(Res.string.preferences_question_text_size_desc),
                         style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
                 }
             }
 
             SingleChoiceSegmentedButtonRow(
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
             ) {
                 QuestionTextSize.entries.forEachIndexed { idx, size ->
                     SegmentedButton(
@@ -73,16 +73,16 @@ fun TextSizePreferenceCard(
                         },
                         shape = SegmentedButtonDefaults.itemShape(
                             index = idx,
-                            count = QuestionTextSize.entries.size
+                            count = QuestionTextSize.entries.size,
                         ),
                         icon = {
                             SegmentedButtonDefaults.Icon(active = selectedSize == size)
                         },
                         label = {
                             Text(
-                                text = stringResource(size.labelRes)
+                                text = stringResource(size.labelRes),
                             )
-                        }
+                        },
                     )
                 }
             }
@@ -98,7 +98,7 @@ private fun TextSizePreferenceCardDefaultPreview() {
         Column(modifier = Modifier.padding(16.dp)) {
             TextSizePreferenceCard(
                 selectedSize = QuestionTextSize.DEFAULT,
-                onSizeSelected = {}
+                onSizeSelected = {},
             )
         }
     }
@@ -112,7 +112,7 @@ private fun TextSizePreferenceCardLargeDarkPreview() {
         Column(modifier = Modifier.padding(16.dp)) {
             TextSizePreferenceCard(
                 selectedSize = QuestionTextSize.Large,
-                onSizeSelected = {}
+                onSizeSelected = {},
             )
         }
     }

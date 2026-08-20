@@ -16,9 +16,9 @@ fun GoogleSansFlexTypography(): Typography {
             resource = Res.font.GoogleSansFlex,
             variationSettings = FontVariation.Settings(
                 FontVariation.grade(value = 20),
-                FontVariation.Setting(name = "ROND", value = 100f)
-            )
-        )
+                FontVariation.Setting(name = "ROND", value = 100f),
+            ),
+        ),
     )
 
     return with(MaterialTheme.typography) {

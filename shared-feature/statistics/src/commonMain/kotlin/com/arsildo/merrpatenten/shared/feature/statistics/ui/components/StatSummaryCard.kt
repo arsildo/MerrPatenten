@@ -37,27 +37,27 @@ internal fun StatSummaryCard(
         shape = MaterialTheme.shapes.large,
         color = containerColor,
         contentColor = contentColor,
-        modifier = modifier
+        modifier = modifier,
     ) {
         Column(
             modifier = Modifier.padding(horizontal = 12.dp, vertical = 14.dp),
             verticalArrangement = Arrangement.spacedBy(6.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Icon(
                 imageVector = icon,
                 contentDescription = null,
-                modifier = Modifier.size(22.dp)
+                modifier = Modifier.size(22.dp),
             )
             Text(
                 text = value,
                 style = MaterialTheme.typography.titleLarge,
-                fontWeight = FontWeight.Bold
+                fontWeight = FontWeight.Bold,
             )
             Text(
                 text = title,
                 style = MaterialTheme.typography.labelSmall,
-                color = contentColor.copy(alpha = 0.8f)
+                color = contentColor.copy(alpha = 0.8f),
             )
         }
     }
@@ -69,7 +69,7 @@ private fun StatSummaryCardsRowPreview() {
     MerrPatentenTheme {
         Row(
             modifier = Modifier.padding(16.dp),
-            horizontalArrangement = Arrangement.spacedBy(10.dp)
+            horizontalArrangement = Arrangement.spacedBy(10.dp),
         ) {
             StatSummaryCard(
                 title = "Provime",
@@ -77,7 +77,7 @@ private fun StatSummaryCardsRowPreview() {
                 icon = Icons.Rounded.Quiz,
                 containerColor = MaterialTheme.colorScheme.primaryContainer,
                 contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
-                modifier = Modifier.weight(1f)
+                modifier = Modifier.weight(1f),
             )
             StatSummaryCard(
                 title = "Mesatarja",
@@ -85,7 +85,7 @@ private fun StatSummaryCardsRowPreview() {
                 icon = Icons.Rounded.CheckCircle,
                 containerColor = MaterialTheme.semanticColors.successContainer,
                 contentColor = MaterialTheme.semanticColors.onSuccessContainer,
-                modifier = Modifier.weight(1f)
+                modifier = Modifier.weight(1f),
             )
             StatSummaryCard(
                 title = "Suksesi",
@@ -93,7 +93,7 @@ private fun StatSummaryCardsRowPreview() {
                 icon = Icons.Rounded.EmojiEvents,
                 containerColor = MaterialTheme.colorScheme.tertiaryContainer,
                 contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
-                modifier = Modifier.weight(1f)
+                modifier = Modifier.weight(1f),
             )
         }
     }
@@ -105,7 +105,7 @@ private fun StatSummaryCardsRowDarkPreview() {
     MerrPatentenTheme(darkTheme = true) {
         Row(
             modifier = Modifier.padding(16.dp),
-            horizontalArrangement = Arrangement.spacedBy(10.dp)
+            horizontalArrangement = Arrangement.spacedBy(10.dp),
         ) {
             StatSummaryCard(
                 title = "Provime",
@@ -113,7 +113,7 @@ private fun StatSummaryCardsRowDarkPreview() {
                 icon = Icons.Rounded.Quiz,
                 containerColor = MaterialTheme.colorScheme.primaryContainer,
                 contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
-                modifier = Modifier.weight(1f)
+                modifier = Modifier.weight(1f),
             )
             StatSummaryCard(
                 title = "Mesatarja",
@@ -121,7 +121,7 @@ private fun StatSummaryCardsRowDarkPreview() {
                 icon = Icons.Rounded.CheckCircle,
                 containerColor = MaterialTheme.colorScheme.errorContainer,
                 contentColor = MaterialTheme.colorScheme.onErrorContainer,
-                modifier = Modifier.weight(1f)
+                modifier = Modifier.weight(1f),
             )
             StatSummaryCard(
                 title = "Suksesi",
@@ -129,7 +129,7 @@ private fun StatSummaryCardsRowDarkPreview() {
                 icon = Icons.Rounded.EmojiEvents,
                 containerColor = MaterialTheme.colorScheme.tertiaryContainer,
                 contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
-                modifier = Modifier.weight(1f)
+                modifier = Modifier.weight(1f),
             )
         }
     }

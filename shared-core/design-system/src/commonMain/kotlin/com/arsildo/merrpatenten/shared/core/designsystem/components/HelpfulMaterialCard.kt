@@ -32,56 +32,52 @@ import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-fun HelpfulMaterialCard(
-    onClick: () -> Unit,
-    colors: CardColors,
-    modifier: Modifier = Modifier,
-) {
+fun HelpfulMaterialCard(onClick: () -> Unit, colors: CardColors, modifier: Modifier = Modifier) {
     Card(
         colors = colors,
         shape = MaterialTheme.shapes.extraLarge,
         onClick = onClick,
-        modifier = modifier.fillMaxWidth()
+        modifier = modifier.fillMaxWidth(),
     ) {
         Row(
             modifier = Modifier
                 .padding(20.dp)
                 .fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween
+            horizontalArrangement = Arrangement.SpaceBetween,
         ) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(16.dp),
-                modifier = Modifier.weight(1f)
+                modifier = Modifier.weight(1f),
             ) {
                 Surface(
                     shape = CircleShape,
                     color = colors.contentColor.copy(alpha = 0.10f),
-                    modifier = Modifier.size(48.dp)
+                    modifier = Modifier.size(48.dp),
                 ) {
                     Box(contentAlignment = Alignment.Center) {
                         Icon(
                             painter = painterResource(Res.drawable.dpshtrr),
                             contentDescription = null,
                             tint = colors.contentColor,
-                            modifier = Modifier.size(32.dp)
+                            modifier = Modifier.size(32.dp),
                         )
                     }
                 }
                 Column(
-                    verticalArrangement = Arrangement.spacedBy(2.dp)
+                    verticalArrangement = Arrangement.spacedBy(2.dp),
                 ) {
                     Text(
                         text = stringResource(Res.string.help),
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.Bold,
-                        color = colors.contentColor
+                        color = colors.contentColor,
                     )
                     Text(
                         text = stringResource(Res.string.help_official),
                         style = MaterialTheme.typography.bodySmall,
-                        color = colors.contentColor.copy(alpha = 0.75f)
+                        color = colors.contentColor.copy(alpha = 0.75f),
                     )
                 }
             }
@@ -90,13 +86,13 @@ fun HelpfulMaterialCard(
                 shape = CircleShape,
                 color = colors.contentColor.copy(alpha = 0.14f),
                 contentColor = colors.contentColor,
-                modifier = Modifier.size(38.dp)
+                modifier = Modifier.size(38.dp),
             ) {
                 Box(contentAlignment = Alignment.Center) {
                     Icon(
                         imageVector = Icons.AutoMirrored.Rounded.OpenInNew,
                         contentDescription = null,
-                        modifier = Modifier.size(18.dp)
+                        modifier = Modifier.size(18.dp),
                     )
                 }
             }
@@ -112,9 +108,9 @@ private fun HelpfulMaterialCardPreview() {
             onClick = {},
             colors = CardDefaults.elevatedCardColors(
                 containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
-                contentColor = MaterialTheme.colorScheme.onSurface
+                contentColor = MaterialTheme.colorScheme.onSurface,
             ),
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier.padding(16.dp),
         )
     }
 }
@@ -127,9 +123,9 @@ private fun HelpfulMaterialCardDarkPreview() {
             onClick = {},
             colors = CardDefaults.elevatedCardColors(
                 containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
-                contentColor = MaterialTheme.colorScheme.onSurface
+                contentColor = MaterialTheme.colorScheme.onSurface,
             ),
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier.padding(16.dp),
         )
     }
 }

@@ -11,12 +11,11 @@ object Preferences : NavKey
 
 fun EntryProviderScope<NavKey>.preferencesEntry(
     backStack: NavBackStack<NavKey>,
-    onBackPress: () -> Unit = { backStack.removeLastOrNull() }
+    onBackPress: () -> Unit = { backStack.removeLastOrNull() },
 ) {
     entry<Preferences> {
         PreferencesRoute(
-            onBackPress = onBackPress
+            onBackPress = onBackPress,
         )
     }
 }
-

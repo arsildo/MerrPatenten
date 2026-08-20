@@ -33,7 +33,7 @@ internal fun ExamPager(
         contentPadding = PaddingValues(horizontal = 16.dp),
         pageSpacing = 16.dp,
         key = { index -> if (index < questions.size) questions[index].id else index },
-        modifier = modifier.fillMaxSize()
+        modifier = modifier.fillMaxSize(),
     ) { page ->
         if (page < questions.size) {
             QuestionItem(
@@ -46,7 +46,7 @@ internal fun ExamPager(
                 trueChecked = page < trueCheckedPages.size && trueCheckedPages[page],
                 questionTextSize = questionTextSize,
                 onFalseCheckedChange = { onCheckFalseAtPage(page) },
-                onTrueCheckedChange = { onCheckTrueAtPage(page) }
+                onTrueCheckedChange = { onCheckTrueAtPage(page) },
             )
         }
     }
@@ -62,8 +62,8 @@ private fun ExamPagerPreview() {
                     id = 1,
                     question = "Sinjali i paraqitur në figurë tregon një kthesë të rrezikshme majtas.",
                     image = 1,
-                    answer = "Saktë"
-                )
+                    answer = "Saktë",
+                ),
             ),
             pagerState = rememberPagerState(pageCount = { 1 }),
             falseCheckedPages = listOf(false),
@@ -72,7 +72,7 @@ private fun ExamPagerPreview() {
             onCheckFalseAtPage = {},
             onCheckTrueAtPage = {},
             isCompleted = false,
-            responses = listOf(0)
+            responses = listOf(0),
         )
     }
 }
@@ -87,8 +87,8 @@ private fun ExamPagerCompletedPreview() {
                     id = 1,
                     question = "Sinjali i paraqitur në figurë tregon një kthesë të rrezikshme majtas.",
                     image = 1,
-                    answer = "Saktë"
-                )
+                    answer = "Saktë",
+                ),
             ),
             pagerState = rememberPagerState(pageCount = { 1 }),
             falseCheckedPages = listOf(false),
@@ -97,7 +97,7 @@ private fun ExamPagerCompletedPreview() {
             onCheckFalseAtPage = {},
             onCheckTrueAtPage = {},
             isCompleted = true,
-            responses = listOf(0)
+            responses = listOf(0),
         )
     }
 }
@@ -112,8 +112,8 @@ private fun ExamPagerDarkPreview() {
                     id = 1,
                     question = "Sinjali i paraqitur në figurë tregon një kthesë të rrezikshme majtas.",
                     image = 1,
-                    answer = "Saktë"
-                )
+                    answer = "Saktë",
+                ),
             ),
             pagerState = rememberPagerState(pageCount = { 1 }),
             falseCheckedPages = listOf(true),
@@ -122,7 +122,7 @@ private fun ExamPagerDarkPreview() {
             onCheckFalseAtPage = {},
             onCheckTrueAtPage = {},
             isCompleted = false,
-            responses = listOf(1)
+            responses = listOf(1),
         )
     }
 }

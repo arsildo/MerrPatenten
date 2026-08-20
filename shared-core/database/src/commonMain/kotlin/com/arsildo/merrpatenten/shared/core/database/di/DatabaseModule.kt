@@ -20,10 +20,8 @@ val databaseModule = module {
     single<ExamResultsDAO> { get<MerrPatentenDatabase>().examResultsDAO() }
 }
 
-internal fun getRoomDatabase(builder: RoomDatabase.Builder<MerrPatentenDatabase>): MerrPatentenDatabase {
-    return builder
-        .fallbackToDestructiveMigrationOnDowngrade(true)
-        .setDriver(BundledSQLiteDriver())
-        .setQueryCoroutineContext(Dispatchers.IO)
-        .build()
-}
+internal fun getRoomDatabase(builder: RoomDatabase.Builder<MerrPatentenDatabase>): MerrPatentenDatabase = builder
+    .fallbackToDestructiveMigrationOnDowngrade(true)
+    .setDriver(BundledSQLiteDriver())
+    .setQueryCoroutineContext(Dispatchers.IO)
+    .build()

@@ -17,16 +17,12 @@ import merrpatenten.shared_core.design_system.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-internal fun PagerNavigation(
-    onPreviousPageClick: () -> Unit,
-    onNextPageClick: () -> Unit,
-    modifier: Modifier = Modifier,
-) {
+internal fun PagerNavigation(onPreviousPageClick: () -> Unit, onNextPageClick: () -> Unit, modifier: Modifier = Modifier) {
     val hapticFeedback = LocalHapticFeedback.current
     Row(
         modifier = modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.spacedBy(8.dp),
-        verticalAlignment = Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically,
     ) {
         FilledTonalButton(
             onClick = {
@@ -35,22 +31,22 @@ internal fun PagerNavigation(
             },
             shapes = ButtonShapes(
                 shape = MaterialTheme.shapes.large,
-                pressedShape = MaterialTheme.shapes.small
+                pressedShape = MaterialTheme.shapes.small,
             ),
             colors = ButtonDefaults.filledTonalButtonColors(
                 containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
-                contentColor = MaterialTheme.colorScheme.onSurface
+                contentColor = MaterialTheme.colorScheme.onSurface,
             ),
             modifier = Modifier.weight(1f),
-            contentPadding = PaddingValues(16.dp)
+            contentPadding = PaddingValues(16.dp),
         ) {
             Row(
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalAlignment = Alignment.CenterVertically
+                verticalAlignment = Alignment.CenterVertically,
             ) {
                 Icon(
                     imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
-                    contentDescription = stringResource(Res.string.previous_page)
+                    contentDescription = stringResource(Res.string.previous_page),
                 )
             }
         }
@@ -62,22 +58,22 @@ internal fun PagerNavigation(
             },
             shapes = ButtonShapes(
                 shape = MaterialTheme.shapes.large,
-                pressedShape = MaterialTheme.shapes.small
+                pressedShape = MaterialTheme.shapes.small,
             ),
             colors = ButtonDefaults.elevatedButtonColors(
                 containerColor = MaterialTheme.colorScheme.primary,
-                contentColor = MaterialTheme.colorScheme.onPrimary
+                contentColor = MaterialTheme.colorScheme.onPrimary,
             ),
             modifier = Modifier.weight(1f),
-            contentPadding = PaddingValues(16.dp)
+            contentPadding = PaddingValues(16.dp),
         ) {
             Row(
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalAlignment = Alignment.CenterVertically
+                verticalAlignment = Alignment.CenterVertically,
             ) {
                 Icon(
                     imageVector = Icons.AutoMirrored.Rounded.ArrowForward,
-                    contentDescription = stringResource(Res.string.next_page)
+                    contentDescription = stringResource(Res.string.next_page),
                 )
             }
         }
@@ -91,7 +87,7 @@ private fun PagerNavigationPreview() {
         PagerNavigation(
             onPreviousPageClick = {},
             onNextPageClick = {},
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier.padding(16.dp),
         )
     }
 }
@@ -103,7 +99,7 @@ private fun PagerNavigationDarkPreview() {
         PagerNavigation(
             onPreviousPageClick = {},
             onNextPageClick = {},
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier.padding(16.dp),
         )
     }
 }

@@ -35,8 +35,11 @@ android {
             val keyAlias = System.getenv("KEY_ALIAS")
             val keyPassword = System.getenv("KEY_PASSWORD")
 
-            if (!keystorePath.isNullOrEmpty() && file(keystorePath).exists() &&
-                !keystorePassword.isNullOrBlank() && !keyAlias.isNullOrBlank() && !keyPassword.isNullOrBlank()
+            if (!keystorePath.isNullOrEmpty() &&
+                file(keystorePath).exists() &&
+                !keystorePassword.isNullOrBlank() &&
+                !keyAlias.isNullOrBlank() &&
+                !keyPassword.isNullOrBlank()
             ) {
                 storeFile = file(keystorePath)
                 storePassword = keystorePassword
@@ -59,7 +62,7 @@ android {
             }
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
             signingConfig = signingConfigs.getByName("debug")
         }

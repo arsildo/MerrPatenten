@@ -11,13 +11,12 @@ data class ZoomableImage(val imageId: Int) : NavKey
 
 fun EntryProviderScope<NavKey>.imageDetailsEntry(
     backStack: NavBackStack<NavKey>,
-    onDismiss: () -> Unit = { backStack.removeLastOrNull() }
+    onDismiss: () -> Unit = { backStack.removeLastOrNull() },
 ) {
     entry<ZoomableImage> { key ->
         ZoomableExamImageRoute(
             imageId = key.imageId,
-            onDismiss = onDismiss
+            onDismiss = onDismiss,
         )
     }
 }
-

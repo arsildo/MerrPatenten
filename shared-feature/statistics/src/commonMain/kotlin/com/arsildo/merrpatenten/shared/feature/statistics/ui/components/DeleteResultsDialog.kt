@@ -23,10 +23,7 @@ import merrpatenten.shared_core.design_system.generated.resources.results_dismis
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-internal fun DeleteResultsDialog(
-    onConfirm: () -> Unit,
-    onDismiss: () -> Unit,
-) {
+internal fun DeleteResultsDialog(onConfirm: () -> Unit, onDismiss: () -> Unit) {
     val hapticFeedback = LocalHapticFeedback.current
     AlertDialog(
         onDismissRequest = onDismiss,
@@ -36,14 +33,14 @@ internal fun DeleteResultsDialog(
             Surface(
                 shape = CircleShape,
                 color = MaterialTheme.colorScheme.errorContainer,
-                modifier = Modifier.size(56.dp)
+                modifier = Modifier.size(56.dp),
             ) {
                 Box(contentAlignment = Alignment.Center) {
                     Icon(
                         imageVector = Icons.Rounded.Delete,
                         contentDescription = null,
                         tint = MaterialTheme.colorScheme.onErrorContainer,
-                        modifier = Modifier.size(28.dp)
+                        modifier = Modifier.size(28.dp),
                     )
                 }
             }
@@ -53,14 +50,14 @@ internal fun DeleteResultsDialog(
                 text = stringResource(Res.string.results_delete),
                 style = MaterialTheme.typography.headlineSmall,
                 fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colorScheme.onSurface
+                color = MaterialTheme.colorScheme.onSurface,
             )
         },
         text = {
             Text(
                 text = stringResource(Res.string.results_delete_description),
                 style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
         },
         confirmButton = {
@@ -71,18 +68,18 @@ internal fun DeleteResultsDialog(
                 },
                 shapes = ButtonShapes(
                     shape = MaterialTheme.shapes.medium,
-                    pressedShape = MaterialTheme.shapes.small
+                    pressedShape = MaterialTheme.shapes.small,
                 ),
                 contentPadding = PaddingValues(horizontal = 20.dp, vertical = 12.dp),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = MaterialTheme.colorScheme.error,
-                    contentColor = MaterialTheme.colorScheme.onError
-                )
+                    contentColor = MaterialTheme.colorScheme.onError,
+                ),
             ) {
                 Text(
                     text = stringResource(Res.string.results_delete),
                     style = MaterialTheme.typography.labelLarge,
-                    fontWeight = FontWeight.Bold
+                    fontWeight = FontWeight.Bold,
                 )
             }
         },
@@ -94,17 +91,17 @@ internal fun DeleteResultsDialog(
                 },
                 shapes = ButtonShapes(
                     shape = MaterialTheme.shapes.medium,
-                    pressedShape = MaterialTheme.shapes.small
+                    pressedShape = MaterialTheme.shapes.small,
                 ),
-                contentPadding = PaddingValues(horizontal = 16.dp, vertical = 12.dp)
+                contentPadding = PaddingValues(horizontal = 16.dp, vertical = 12.dp),
             ) {
                 Text(
                     text = stringResource(Res.string.results_dismiss),
                     style = MaterialTheme.typography.labelLarge,
-                    fontWeight = FontWeight.SemiBold
+                    fontWeight = FontWeight.SemiBold,
                 )
             }
-        }
+        },
     )
 }
 
@@ -114,7 +111,7 @@ private fun DeleteResultsDialogPreview() {
     MerrPatentenTheme {
         DeleteResultsDialog(
             onConfirm = {},
-            onDismiss = {}
+            onDismiss = {},
         )
     }
 }
@@ -125,7 +122,7 @@ private fun DeleteResultsDialogDarkPreview() {
     MerrPatentenTheme(darkTheme = true) {
         DeleteResultsDialog(
             onConfirm = {},
-            onDismiss = {}
+            onDismiss = {},
         )
     }
 }

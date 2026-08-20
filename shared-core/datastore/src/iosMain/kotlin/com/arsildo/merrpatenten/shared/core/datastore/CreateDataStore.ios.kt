@@ -19,5 +19,5 @@ fun createDataStoreIOS(): DataStore<Preferences> = createDataStore(
             error = null,
         )
         requireNotNull(documentDirectory).path + "/$DATA_STORE_FILE_NAME"
-    }
+    },
 )

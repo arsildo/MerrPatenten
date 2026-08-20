@@ -13,7 +13,7 @@ val appModules = listOf(
     dashboardModule,
     examModule,
     statisticsModule,
-    preferencesModule
+    preferencesModule,
 )
 
 fun initKoin() {
@@ -23,4 +23,3 @@ fun initKoin() {
         }
     }
 }
-
