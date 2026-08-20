@@ -18,6 +18,9 @@ import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
 import androidx.savedstate.serialization.SavedStateConfiguration
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
+import com.arsildo.merrpatenten.shared.feature.catalog.navigation.Catalog
+import com.arsildo.merrpatenten.shared.feature.catalog.navigation.SignDetail
+import com.arsildo.merrpatenten.shared.feature.catalog.navigation.catalogEntry
 import com.arsildo.merrpatenten.shared.feature.dashboard.navigation.Dashboard
 import com.arsildo.merrpatenten.shared.feature.dashboard.navigation.dashboardEntry
 import com.arsildo.merrpatenten.shared.feature.exam.navigation.Exam
@@ -45,6 +48,8 @@ private val config = SavedStateConfiguration {
             subclass(ZoomableImage::class, ZoomableImage.serializer())
             subclass(Statistics::class, Statistics.serializer())
             subclass(Preferences::class, Preferences.serializer())
+            subclass(Catalog::class, Catalog.serializer())
+            subclass(SignDetail::class, SignDetail.serializer())
         }
     }
 }
@@ -82,6 +87,12 @@ fun MerrPatentenApp() {
                     onStartExamClick = { category -> backStack.add(Exam(category)) },
                     onStatisticsClick = { backStack.add(Statistics) },
                     onPreferencesClick = { backStack.add(Preferences) },
+                    onCatalogClick = { backStack.add(Catalog) },
+                )
+                catalogEntry(
+                    backStack = backStack,
+                    onBackPress = { backStack.removeLastOrNull() },
+                    onImageDetailsClick = { imageId -> backStack.add(ZoomableImage(imageId)) },
                 )
                 examEntry(
                     backStack = backStack,

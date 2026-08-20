@@ -38,6 +38,7 @@ kotlin {
             implementation(projects.sharedFeature.imageDetails)
             implementation(projects.sharedFeature.statistics)
             implementation(projects.sharedFeature.preferences)
+            implementation(projects.sharedFeature.catalog)
 
             implementation(libs.compose.runtime)
             implementation(libs.compose.foundation)

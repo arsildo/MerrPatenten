@@ -14,4 +14,8 @@ class QuestionnaireRepository(private val questionnaireDAO: QuestionnaireDAO) {
     fun getAll(): Flow<List<Question>> = questionnaireDAO.getAll().map { list ->
         list.map { it.toDomain() }
     }
+
+    fun getByImage(imageId: Int): Flow<List<Question>> = questionnaireDAO.getByImage(imageId).map { list ->
+        list.map { it.toDomain() }
+    }
 }

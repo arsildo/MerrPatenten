@@ -17,12 +17,14 @@ fun EntryProviderScope<NavKey>.dashboardEntry(
     onStartExamClick: (String) -> Unit,
     onStatisticsClick: () -> Unit,
     onPreferencesClick: () -> Unit,
+    onCatalogClick: () -> Unit,
 ) {
     entry<Dashboard> {
         DashboardRoute(
             onStartExamClick = onStartExamClick,
             onStatisticsClick = onStatisticsClick,
             onPreferencesClick = onPreferencesClick,
+            onCatalogClick = onCatalogClick,
         )
     }
 }
