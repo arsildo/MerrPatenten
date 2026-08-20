@@ -11,4 +11,7 @@ interface QuestionnaireDAO {
 
     @Query("SELECT * FROM questionnaire")
     fun getAll(): Flow<List<QuestionEntity>>
+
+    @Query("SELECT * FROM questionnaire WHERE image = :imageId")
+    fun getByImage(imageId: Int): Flow<List<QuestionEntity>>
 }

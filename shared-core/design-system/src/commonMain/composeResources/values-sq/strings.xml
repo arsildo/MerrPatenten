@@ -13,6 +13,8 @@
     <string name="disclaimer_description">Ky aplikacion NUK është një aplikacion zyrtar i aprovuar nga DPSHTRR apo nga qeveria shqiptare, aplikacioni është bazuar në materialet udhëzuese që mund ti gjeni në faqen e parë të aplikacionit ose duke klikuar këtë tekst.</string>
 
     <!-- Dashboard -->
+    <string name="dashboard_section_exams">Simulimi i Provimit</string>
+    <string name="dashboard_section_learning">Këndi i Mësimit</string>
     <string name="select_category">Zgjidh kategorinë</string>
     <string name="questionnaire_category_one">A1, A2, B1, B</string>
     <string name="questionnaire_category_two">C1, C</string>
@@ -111,4 +113,21 @@
     <string name="albanian">Shqip</string>
     <string name="language_restart_title">Gjuha u Ndryshua</string>
     <string name="language_restart_desc">Ju lutem rinisni aplikacionin për të aplikuar ndryshimin e gjuhës.</string>
+
+    <!-- Catalog & Encyclopedia -->
+    <string name="catalog_title">Sinjalet &amp; Kryqëzimet</string>
+    <string name="catalog_dashboard_title">Katalogu i Sinjaleve &amp; Kryqëzimet</string>
+    <string name="catalog_dashboard_desc">Mëso sinjalistikën zyrtare dhe rregullat e përparësisë në kryqëzime</string>
+    <string name="catalog_search_placeholder">Kërko sinjale, fjalë kyçe, rregulla...</string>
+    <string name="catalog_category_all">Të gjitha</string>
+    <string name="catalog_category_warning">Sinjale Rreziku</string>
+    <string name="catalog_category_prohibitory">Ndaluese &amp; Urdhëruese</string>
+    <string name="catalog_category_informative">Treguese &amp; Udhëzuese</string>
+    <string name="catalog_category_markings">Sinjalistika Horizontale</string>
+    <string name="catalog_category_police">Polici i Trafikut</string>
+    <string name="catalog_category_intersections">Kryqëzimet</string>
+    <string name="catalog_related_questions">Pyetje nga Provimi Zyrtar</string>
+    <string name="catalog_right_of_way_order">Radha e Përparësisë</string>
+    <string name="catalog_empty_results">Nuk u gjet asnjë sinjal apo rregull</string>
+    <string name="catalog_item_count">%1$d elemente</string>
 </resources>

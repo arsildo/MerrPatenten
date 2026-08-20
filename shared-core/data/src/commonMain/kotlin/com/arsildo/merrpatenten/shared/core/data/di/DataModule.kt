@@ -1,5 +1,6 @@
 package com.arsildo.merrpatenten.shared.core.data.di
 
+import com.arsildo.merrpatenten.shared.core.data.CatalogRepository
 import com.arsildo.merrpatenten.shared.core.data.ExamResultsRepository
 import com.arsildo.merrpatenten.shared.core.data.QuestionnaireRepository
 import com.arsildo.merrpatenten.shared.core.database.di.databaseModule
@@ -13,4 +14,5 @@ val dataModule = module {
     singleOf(::QuestionnaireRepository)
     singleOf(::ExamResultsRepository)
     singleOf(::PreferencesRepository)
+    singleOf(::CatalogRepository)
 }

@@ -13,6 +13,8 @@
     <string name="disclaimer_description">This application is NOT an official app approved by DPSHTRR or the Albanian government. The application is based on guidance materials that can be found on the main page of the app or by clicking this text.</string>
 
     <!-- Dashboard -->
+    <string name="dashboard_section_exams">Official Exam Simulations</string>
+    <string name="dashboard_section_learning">Learning Corner</string>
     <string name="select_category">Choose Category</string>
     <string name="questionnaire_category_one">A1, A2, B1, B</string>
     <string name="questionnaire_category_two">C1, C</string>
@@ -111,4 +113,21 @@
     <string name="albanian">Shqip</string>
     <string name="language_restart_title">Language Changed</string>
     <string name="language_restart_desc">Please restart the app to apply the language change.</string>
+
+    <!-- Catalog & Encyclopedia -->
+    <string name="catalog_title">Signs &amp; Intersections</string>
+    <string name="catalog_dashboard_title">Road Signs &amp; Intersections</string>
+    <string name="catalog_dashboard_desc">Explore official road signs and right-of-way rules at intersections</string>
+    <string name="catalog_search_placeholder">Search signs, keywords, rules...</string>
+    <string name="catalog_category_all">All</string>
+    <string name="catalog_category_warning">Warning Signs</string>
+    <string name="catalog_category_prohibitory">Prohibitory &amp; Mandatory</string>
+    <string name="catalog_category_informative">Informative &amp; Direction</string>
+    <string name="catalog_category_markings">Road Markings</string>
+    <string name="catalog_category_police">Traffic Police</string>
+    <string name="catalog_category_intersections">Intersections</string>
+    <string name="catalog_related_questions">Official Exam Questions</string>
+    <string name="catalog_right_of_way_order">Right-of-Way Priority</string>
+    <string name="catalog_empty_results">No signs or rules found</string>
+    <string name="catalog_item_count">%1$d items</string>
 </resources>

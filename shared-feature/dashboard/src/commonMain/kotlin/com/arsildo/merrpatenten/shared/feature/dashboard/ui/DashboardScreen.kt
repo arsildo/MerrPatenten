@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.rounded.MenuBook
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.rounded.*
 import androidx.compose.material3.*
@@ -25,11 +26,17 @@ import merrpatenten.shared_core.design_system.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-internal fun DashboardRoute(onStartExamClick: (String) -> Unit, onPreferencesClick: () -> Unit, onStatisticsClick: () -> Unit) {
+internal fun DashboardRoute(
+    onStartExamClick: (String) -> Unit,
+    onPreferencesClick: () -> Unit,
+    onStatisticsClick: () -> Unit,
+    onCatalogClick: () -> Unit,
+) {
     DashboardScreen(
         onStartExamClick = onStartExamClick,
         onPreferencesClick = onPreferencesClick,
         onStatisticsClick = onStatisticsClick,
+        onCatalogClick = onCatalogClick,
     )
 }
 
@@ -38,6 +45,7 @@ internal fun DashboardScreen(
     onStartExamClick: (String) -> Unit,
     onPreferencesClick: () -> Unit,
     onStatisticsClick: () -> Unit,
+    onCatalogClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val hapticFeedback = LocalHapticFeedback.current
@@ -73,6 +81,17 @@ internal fun DashboardScreen(
                 modifier = Modifier.navigationBarsPadding(),
                 colors = FloatingToolbarDefaults.vibrantFloatingToolbarColors(),
             ) {
+                IconButton(
+                    onClick = {
+                        hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+                        onCatalogClick()
+                    },
+                ) {
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Rounded.MenuBook,
+                        contentDescription = stringResource(Res.string.catalog_title),
+                    )
+                }
                 IconButton(
                     onClick = {
                         hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
@@ -120,8 +139,8 @@ internal fun DashboardScreen(
                 .padding(top = 24.dp, bottom = 104.dp),
             verticalArrangement = Arrangement.spacedBy(20.dp),
         ) {
-            // Categories Section Title
-            SectionHeader(title = stringResource(Res.string.select_category))
+            // 1. First Major Category: Official Exam Simulations
+            SectionHeader(title = stringResource(Res.string.dashboard_section_exams))
 
             // Exam Category Cards
             ExamTypeCard(
@@ -166,6 +185,27 @@ internal fun DashboardScreen(
                 ),
             )
 
+            // 2. Second Major Category: Study & Learning Materials
+            SectionHeader(title = stringResource(Res.string.dashboard_section_learning))
+
+            // Road Signs & Intersections Encyclopedia Card
+            ExamTypeCard(
+                title = stringResource(Res.string.catalog_dashboard_title),
+                description =
+                stringResource(Res.string.catalog_category_warning) + " | " + stringResource(Res.string.catalog_category_prohibitory) +
+                    " | " +
+                    stringResource(Res.string.catalog_category_intersections),
+                icon = Icons.AutoMirrored.Rounded.MenuBook,
+                onClick = {
+                    hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
+                    onCatalogClick()
+                },
+                colors = CardDefaults.elevatedCardColors(
+                    containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
+                    contentColor = MaterialTheme.colorScheme.onSurface,
+                ),
+            )
+
             // Helpful Material Card
             HelpfulMaterialCard(
                 onClick = {
@@ -194,6 +234,7 @@ private fun DashboardScreenPreview() = MerrPatentenTheme {
         onStartExamClick = {},
         onPreferencesClick = {},
         onStatisticsClick = {},
+        onCatalogClick = {},
     )
 }
 
@@ -204,5 +245,6 @@ private fun DashboardScreenDarkPreview() = MerrPatentenTheme(darkTheme = true) {
         onStartExamClick = {},
         onPreferencesClick = {},
         onStatisticsClick = {},
+        onCatalogClick = {},
     )
 }
