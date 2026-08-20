@@ -1,4 +1,4 @@
-package com.arsildo.merrpatenten.shared.feature.statistics
+package com.arsildo.merrpatenten.shared.feature.statistics.ui.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -8,6 +8,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.MobiledataOff
+import androidx.compose.material.icons.rounded.MultipleStop
+import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -18,10 +22,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
 
 @Composable
-fun ResultStoringDisabled(
+internal fun ResultStoringDisabled(
     text: String,
     icon: ImageVector,
     changePreference: @Composable () -> Unit = {}
@@ -68,5 +74,43 @@ fun ResultStoringDisabled(
                 changePreference()
             }
         }
+    }
+}
+
+@Preview
+@Composable
+private fun ResultStoringDisabledPreview() {
+    MerrPatentenTheme {
+        ResultStoringDisabled(
+            text = "Ruajtja e rezultateve të provimeve është e çaktivizuar.",
+            icon = Icons.Rounded.MobiledataOff,
+            changePreference = {
+                Button(onClick = {}) {
+                    Text(text = "Ndrysho cilësimin")
+                }
+            }
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun ResultsEmptyPreview() {
+    MerrPatentenTheme {
+        ResultStoringDisabled(
+            text = "Nuk keni kryer asnjë provim ende.",
+            icon = Icons.Rounded.MultipleStop
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun ResultStoringDisabledDarkPreview() {
+    MerrPatentenTheme(darkTheme = true) {
+        ResultStoringDisabled(
+            text = "Ruajtja e rezultateve të provimeve është e çaktivizuar.",
+            icon = Icons.Rounded.MobiledataOff
+        )
     }
 }

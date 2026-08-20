@@ -1,4 +1,4 @@
-package com.arsildo.merrpatenten.shared.feature.statistics
+package com.arsildo.merrpatenten.shared.feature.statistics.ui.components
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -21,7 +20,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
@@ -29,8 +27,10 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.arsildo.merrpatenten.shared.core.designsystem.ERRORS_ALLOWED
+import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
 import com.arsildo.merrpatenten.shared.core.designsystem.semanticColors
 import com.arsildo.merrpatenten.shared.core.model.ExamResult
 import merrpatenten.shared_core.design_system.generated.resources.*
@@ -38,7 +38,7 @@ import org.jetbrains.compose.resources.stringResource
 import kotlin.math.round
 
 @Composable
-fun PerformanceGraph(
+internal fun PerformanceGraph(
     results: List<ExamResult>,
     modifier: Modifier = Modifier,
 ) {
@@ -210,7 +210,7 @@ private fun GraphAxisText(text: String) {
 }
 
 @Composable
-fun AverageMistakes(previousExamResults: List<ExamResult>) {
+internal fun AverageMistakes(previousExamResults: List<ExamResult>) {
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.Center
@@ -244,4 +244,36 @@ private fun calculateAverage(data: List<ExamResult>): Double {
     data.forEach { sum += it.errors }
     val avg = sum / data.size
     return round(avg * 100) / 100.0
+}
+
+@Preview
+@Composable
+private fun PerformanceGraphPreview() {
+    MerrPatentenTheme {
+        PerformanceGraph(
+            results = listOf(
+                ExamResult(id = 1, errors = 2, time = "34:20"),
+                ExamResult(id = 2, errors = 6, time = "28:10"),
+                ExamResult(id = 3, errors = 0, time = "31:45"),
+                ExamResult(id = 4, errors = 3, time = "20:15"),
+                ExamResult(id = 5, errors = 8, time = "15:00"),
+            ),
+            modifier = Modifier.padding(16.dp)
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun PerformanceGraphDarkPreview() {
+    MerrPatentenTheme(darkTheme = true) {
+        PerformanceGraph(
+            results = listOf(
+                ExamResult(id = 1, errors = 1, time = "34:20"),
+                ExamResult(id = 2, errors = 2, time = "28:10"),
+                ExamResult(id = 3, errors = 0, time = "31:45"),
+            ),
+            modifier = Modifier.padding(16.dp)
+        )
+    }
 }

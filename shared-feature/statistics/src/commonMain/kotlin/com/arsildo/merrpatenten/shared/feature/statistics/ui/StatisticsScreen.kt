@@ -1,4 +1,4 @@
-package com.arsildo.merrpatenten.shared.feature.statistics
+package com.arsildo.merrpatenten.shared.feature.statistics.ui
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -11,8 +11,6 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontWeight
@@ -24,12 +22,18 @@ import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
 import com.arsildo.merrpatenten.shared.core.designsystem.components.SectionHeader
 import com.arsildo.merrpatenten.shared.core.designsystem.semanticColors
 import com.arsildo.merrpatenten.shared.core.model.ExamResult
+import com.arsildo.merrpatenten.shared.feature.statistics.StatisticsUiState
+import com.arsildo.merrpatenten.shared.feature.statistics.StatisticsViewModel
+import com.arsildo.merrpatenten.shared.feature.statistics.ui.components.DeleteResultsDialog
+import com.arsildo.merrpatenten.shared.feature.statistics.ui.components.PerformanceGraph
+import com.arsildo.merrpatenten.shared.feature.statistics.ui.components.ResultStoringDisabled
+import com.arsildo.merrpatenten.shared.feature.statistics.ui.components.StatSummaryCard
+import com.arsildo.merrpatenten.shared.feature.statistics.ui.components.resultList
 import merrpatenten.shared_core.design_system.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 import kotlin.math.roundToInt
 
-@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 internal fun StatisticsRoute(
     viewModel: StatisticsViewModel = koinViewModel(),
@@ -226,45 +230,6 @@ internal fun StatisticsScreen(
     }
 }
 
-@Composable
-private fun StatSummaryCard(
-    title: String,
-    value: String,
-    icon: ImageVector,
-    containerColor: Color,
-    contentColor: Color,
-    modifier: Modifier = Modifier,
-) {
-    Surface(
-        shape = MaterialTheme.shapes.large,
-        color = containerColor,
-        contentColor = contentColor,
-        modifier = modifier
-    ) {
-        Column(
-            modifier = Modifier.padding(horizontal = 12.dp, vertical = 14.dp),
-            verticalArrangement = Arrangement.spacedBy(6.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Icon(
-                imageVector = icon,
-                contentDescription = null,
-                modifier = Modifier.size(22.dp)
-            )
-            Text(
-                text = value,
-                style = MaterialTheme.typography.titleLarge,
-                fontWeight = FontWeight.Bold
-            )
-            Text(
-                text = title,
-                style = MaterialTheme.typography.labelSmall,
-                color = contentColor.copy(alpha = 0.8f)
-            )
-        }
-    }
-}
-
 @Preview
 @Composable
 private fun StatisticsScreenWithDataPreview() {
@@ -304,6 +269,25 @@ private fun StatisticsScreenDisabledPreview() {
     MerrPatentenTheme {
         StatisticsScreen(
             uiState = StatisticsUiState(results = emptyList(), saveResults = false),
+            onChangePreferenceClick = {},
+            onBackPress = {},
+            onDeleteAllResults = {}
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun StatisticsScreenDarkPreview() {
+    MerrPatentenTheme(darkTheme = true) {
+        StatisticsScreen(
+            uiState = StatisticsUiState(
+                results = listOf(
+                    ExamResult(id = 1, errors = 1, time = "34:20"),
+                    ExamResult(id = 2, errors = 0, time = "28:10"),
+                ),
+                saveResults = true
+            ),
             onChangePreferenceClick = {},
             onBackPress = {},
             onDeleteAllResults = {}

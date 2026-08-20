@@ -1,4 +1,4 @@
-package com.arsildo.merrpatenten.shared.feature.statistics
+package com.arsildo.merrpatenten.shared.feature.statistics.ui.components
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
@@ -23,7 +23,7 @@ import merrpatenten.shared_core.design_system.generated.resources.results_dismis
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-fun DeleteResultsDialog(
+internal fun DeleteResultsDialog(
     onConfirm: () -> Unit,
     onDismiss: () -> Unit,
 ) {
@@ -112,6 +112,17 @@ fun DeleteResultsDialog(
 @Composable
 private fun DeleteResultsDialogPreview() {
     MerrPatentenTheme {
+        DeleteResultsDialog(
+            onConfirm = {},
+            onDismiss = {}
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun DeleteResultsDialogDarkPreview() {
+    MerrPatentenTheme(darkTheme = true) {
         DeleteResultsDialog(
             onConfirm = {},
             onDismiss = {}

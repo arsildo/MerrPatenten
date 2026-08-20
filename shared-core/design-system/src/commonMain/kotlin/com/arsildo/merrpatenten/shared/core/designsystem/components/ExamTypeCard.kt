@@ -4,6 +4,9 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowForward
+import androidx.compose.material.icons.rounded.DirectionsBus
+import androidx.compose.material.icons.rounded.DirectionsCar
+import androidx.compose.material.icons.rounded.LocalShipping
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -12,7 +15,9 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
 
 @Composable
 fun ExamTypeCard(
@@ -110,5 +115,59 @@ fun ExamTypeCard(
                 }
             }
         }
+    }
+}
+
+@Preview
+@Composable
+private fun ExamTypeCardCategoryBPreview() {
+    MerrPatentenTheme {
+        ExamTypeCard(
+            title = "Kategoria B",
+            description = "B1 | B | BE",
+            icon = Icons.Rounded.DirectionsCar,
+            onClick = {},
+            colors = CardDefaults.elevatedCardColors(
+                containerColor = MaterialTheme.colorScheme.primaryContainer,
+                contentColor = MaterialTheme.colorScheme.onPrimaryContainer
+            ),
+            modifier = Modifier.padding(16.dp)
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun ExamTypeCardCategoryCPreview() {
+    MerrPatentenTheme {
+        ExamTypeCard(
+            title = "Kategoria C",
+            description = "C1 | C | C1E | CE",
+            icon = Icons.Rounded.LocalShipping,
+            onClick = {},
+            colors = CardDefaults.elevatedCardColors(
+                containerColor = MaterialTheme.colorScheme.secondaryContainer,
+                contentColor = MaterialTheme.colorScheme.onSecondaryContainer
+            ),
+            modifier = Modifier.padding(16.dp)
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun ExamTypeCardDarkPreview() {
+    MerrPatentenTheme(darkTheme = true) {
+        ExamTypeCard(
+            title = "Kategoria D",
+            description = "D1 | D | D1E | DE",
+            icon = Icons.Rounded.DirectionsBus,
+            onClick = {},
+            colors = CardDefaults.elevatedCardColors(
+                containerColor = MaterialTheme.colorScheme.tertiaryContainer,
+                contentColor = MaterialTheme.colorScheme.onTertiaryContainer
+            ),
+            modifier = Modifier.padding(16.dp)
+        )
     }
 }

@@ -1,4 +1,4 @@
-package com.arsildo.merrpatenten.shared.feature.dashboard
+package com.arsildo.merrpatenten.shared.feature.dashboard.ui
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -20,6 +20,7 @@ import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
 import com.arsildo.merrpatenten.shared.core.designsystem.components.ExamTypeCard
 import com.arsildo.merrpatenten.shared.core.designsystem.components.HelpfulMaterialCard
 import com.arsildo.merrpatenten.shared.core.designsystem.components.SectionHeader
+import com.arsildo.merrpatenten.shared.feature.dashboard.ui.components.DisclaimerDialog
 import merrpatenten.shared_core.design_system.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
 
@@ -194,6 +195,16 @@ internal fun DashboardScreen(
 @Preview
 @Composable
 private fun DashboardScreenPreview() = MerrPatentenTheme {
+    DashboardScreen(
+        onStartExamClick = {},
+        onPreferencesClick = {},
+        onStatisticsClick = {},
+    )
+}
+
+@Preview
+@Composable
+private fun DashboardScreenDarkPreview() = MerrPatentenTheme(darkTheme = true) {
     DashboardScreen(
         onStartExamClick = {},
         onPreferencesClick = {},

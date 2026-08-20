@@ -1,4 +1,4 @@
-package com.arsildo.merrpatenten.shared.feature.exam
+package com.arsildo.merrpatenten.shared.feature.exam.ui
 
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.Spring
@@ -6,7 +6,6 @@ import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.pager.rememberPagerState
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ExitToApp
 import androidx.compose.material.icons.rounded.DoneAll
@@ -15,19 +14,11 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.DEFAULT_ARGS_KEY
-import androidx.lifecycle.HasDefaultViewModelProviderFactory
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.CreationExtras
-import androidx.lifecycle.viewmodel.MutableCreationExtras
-import androidx.lifecycle.viewmodel.compose.LocalViewModelStoreOwner
-import androidx.savedstate.savedState
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
 import com.arsildo.merrpatenten.shared.core.designsystem.QUESTIONS_IN_EXAM
 import com.arsildo.merrpatenten.shared.core.designsystem.components.EndExamButton
@@ -35,9 +26,13 @@ import com.arsildo.merrpatenten.shared.core.designsystem.components.ExitExamButt
 import com.arsildo.merrpatenten.shared.core.designsystem.components.RestartExamButton
 import com.arsildo.merrpatenten.shared.core.designsystem.semanticColors
 import com.arsildo.merrpatenten.shared.core.model.Question
+import com.arsildo.merrpatenten.shared.feature.exam.ExamUiState
+import com.arsildo.merrpatenten.shared.feature.exam.ExamViewModel
+import com.arsildo.merrpatenten.shared.feature.exam.ui.components.ExamLegend
+import com.arsildo.merrpatenten.shared.feature.exam.ui.components.ExamPager
+import com.arsildo.merrpatenten.shared.feature.exam.ui.components.PagerNavigation
+import com.arsildo.merrpatenten.shared.feature.exam.ui.components.UncompletedExamDialog
 import kotlinx.coroutines.launch
-import merrpatenten.shared_core.design_system.generated.resources.*
-import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -74,7 +69,6 @@ internal fun ExamRoute(
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 internal fun ExamScreen(
-    modifier: Modifier = Modifier,
     uiState: ExamUiState,
     targetPage: Int? = null,
     onPageNavigated: () -> Unit = {},
@@ -85,6 +79,7 @@ internal fun ExamScreen(
     onCheckTrueAtPage: (Int) -> Unit,
     onCheckFalseAtPage: (Int) -> Unit,
     onCompleteExam: () -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     val hapticFeedback = LocalHapticFeedback.current
     val coroutineScope = rememberCoroutineScope()
@@ -190,7 +185,7 @@ internal fun ExamScreen(
                     Column(
                         modifier = Modifier.fillMaxWidth()
                     ) {
-                        Legend(
+                        ExamLegend(
                             pagerState = pagerState,
                             timer = { uiState.timer },
                             endExamVisible = endExamVisible,
@@ -221,7 +216,7 @@ internal fun ExamScreen(
                         )
                     }
 
-                    Pager(
+                    ExamPager(
                         questions = uiState.questions,
                         pagerState = pagerState,
                         falseCheckedPages = uiState.falseCheckedPositions,
@@ -243,111 +238,20 @@ internal fun ExamScreen(
     }
 
     if (questionsUnCompletedDialog) {
-        AlertDialog(
+        UncompletedExamDialog(
             onDismissRequest = { questionsUnCompletedDialog = false },
-            shape = MaterialTheme.shapes.extraLarge,
-            containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
-            icon = {
-                Surface(
-                    shape = CircleShape,
-                    color = MaterialTheme.colorScheme.errorContainer,
-                    modifier = Modifier.size(56.dp)
-                ) {
-                    Box(contentAlignment = Alignment.Center) {
-                        Icon(
-                            imageVector = Icons.Rounded.DoneAll,
-                            contentDescription = null,
-                            tint = MaterialTheme.colorScheme.onErrorContainer,
-                            modifier = Modifier.size(28.dp)
-                        )
-                    }
-                }
+            onReviewUnanswered = {
+                questionsUnCompletedDialog = false
+                onOpenMap()
             },
-            title = {
-                Text(
-                    text = stringResource(Res.string.uncompleted_dialog_title),
-                    style = MaterialTheme.typography.headlineSmall,
-                    fontWeight = androidx.compose.ui.text.font.FontWeight.Bold
-                )
+            onFinishAnyway = {
+                questionsUnCompletedDialog = false
+                onCompleteExam()
+                onOpenMap()
             },
-            text = {
-                Text(
-                    text = stringResource(Res.string.uncompleted_dialog_desc),
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-            },
-            confirmButton = {
-                Column(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalArrangement = Arrangement.spacedBy(10.dp)
-                ) {
-                    Button(
-                        onClick = {
-                            hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                            questionsUnCompletedDialog = false
-                            onOpenMap()
-                        },
-                        shapes = ButtonShapes(
-                            shape = MaterialTheme.shapes.medium,
-                            pressedShape = MaterialTheme.shapes.small
-                        ),
-                        modifier = Modifier.fillMaxWidth(),
-                        contentPadding = PaddingValues(14.dp),
-                        content = {
-                            Text(
-                                text = stringResource(Res.string.review_unanswered),
-                                style = MaterialTheme.typography.labelLarge,
-                                fontWeight = androidx.compose.ui.text.font.FontWeight.SemiBold
-                            )
-                        }
-                    )
-                    FilledTonalButton(
-                        onClick = {
-                            hapticFeedback.performHapticFeedback(HapticFeedbackType.GestureThresholdActivate)
-                            questionsUnCompletedDialog = false
-                            onCompleteExam()
-                            onOpenMap()
-                        },
-                        shapes = ButtonShapes(
-                            shape = MaterialTheme.shapes.medium,
-                            pressedShape = MaterialTheme.shapes.small
-                        ),
-                        modifier = Modifier.fillMaxWidth(),
-                        contentPadding = PaddingValues(14.dp),
-                        content = {
-                            Text(
-                                text = stringResource(Res.string.finish_anyway),
-                                style = MaterialTheme.typography.labelLarge,
-                                fontWeight = androidx.compose.ui.text.font.FontWeight.SemiBold
-                            )
-                        }
-                    )
-                    Button(
-                        onClick = {
-                            hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
-                            questionsUnCompletedDialog = false
-                            onExitExam()
-                        },
-                        shapes = ButtonShapes(
-                            shape = MaterialTheme.shapes.medium,
-                            pressedShape = MaterialTheme.shapes.small
-                        ),
-                        modifier = Modifier.fillMaxWidth(),
-                        contentPadding = PaddingValues(14.dp),
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = MaterialTheme.colorScheme.error,
-                            contentColor = MaterialTheme.colorScheme.onError
-                        ),
-                        content = {
-                            Text(
-                                text = stringResource(Res.string.exit_exam_button),
-                                style = MaterialTheme.typography.labelLarge,
-                                fontWeight = androidx.compose.ui.text.font.FontWeight.SemiBold
-                            )
-                        }
-                    )
-                }
+            onExitExam = {
+                questionsUnCompletedDialog = false
+                onExitExam()
             }
         )
     }
@@ -463,4 +367,3 @@ private fun ExamScreenCompletedPreview() {
         )
     }
 }
-

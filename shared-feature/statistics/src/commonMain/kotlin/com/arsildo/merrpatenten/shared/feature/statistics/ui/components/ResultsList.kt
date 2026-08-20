@@ -1,10 +1,9 @@
-package com.arsildo.merrpatenten.shared.feature.statistics
+package com.arsildo.merrpatenten.shared.feature.statistics.ui.components
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyGridScope
 import androidx.compose.foundation.lazy.grid.itemsIndexed
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.CheckCircle
 import androidx.compose.material.icons.rounded.HighlightOff
@@ -14,8 +13,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.arsildo.merrpatenten.shared.core.designsystem.ERRORS_ALLOWED
+import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
 import com.arsildo.merrpatenten.shared.core.designsystem.semanticColors
 import com.arsildo.merrpatenten.shared.core.model.ExamResult
 import merrpatenten.shared_core.design_system.generated.resources.*
@@ -49,10 +50,8 @@ internal fun ResultItem(
     val isPassed = errors <= ERRORS_ALLOWED
     val errorLabel = stringResource(if (errors == 1) Res.string.error_singular else Res.string.errors_plural)
     val statusText = stringResource(if (isPassed) Res.string.performance_passed else Res.string.performance_failed)
-    val icon = if (isPassed) Icons.Rounded.CheckCircle else Icons.Rounded.HighlightOff
     val statusContainerColor = if (isPassed) MaterialTheme.semanticColors.successContainer else MaterialTheme.colorScheme.errorContainer
     val statusContentColor = if (isPassed) MaterialTheme.semanticColors.onSuccessContainer else MaterialTheme.colorScheme.onErrorContainer
-    val statusIconTint = if (isPassed) MaterialTheme.semanticColors.success else MaterialTheme.colorScheme.error
 
     SegmentedListItem(
         selected = false,
@@ -103,4 +102,45 @@ internal fun ResultItem(
         },
         modifier = modifier.fillMaxWidth()
     )
+}
+
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
+@Preview
+@Composable
+private fun ResultItemPassedPreview() {
+    MerrPatentenTheme {
+        Column(
+            modifier = Modifier.padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap)
+        ) {
+            ResultItem(
+                result = ExamResult(id = 1, errors = 1, time = "34:20"),
+                index = 0,
+                count = 2
+            )
+            ResultItem(
+                result = ExamResult(id = 2, errors = 6, time = "28:10"),
+                index = 1,
+                count = 2
+            )
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
+@Preview
+@Composable
+private fun ResultItemDarkPreview() {
+    MerrPatentenTheme(darkTheme = true) {
+        Column(
+            modifier = Modifier.padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap)
+        ) {
+            ResultItem(
+                result = ExamResult(id = 1, errors = 0, time = "30:00"),
+                index = 0,
+                count = 1
+            )
+        }
+    }
 }

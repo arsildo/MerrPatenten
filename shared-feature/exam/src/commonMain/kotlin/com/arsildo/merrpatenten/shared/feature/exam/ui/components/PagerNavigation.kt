@@ -1,4 +1,4 @@
-package com.arsildo.merrpatenten.shared.feature.exam
+package com.arsildo.merrpatenten.shared.feature.exam.ui.components
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
@@ -10,11 +10,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
-
 import merrpatenten.shared_core.design_system.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
 
@@ -92,7 +90,20 @@ private fun PagerNavigationPreview() {
     MerrPatentenTheme {
         PagerNavigation(
             onPreviousPageClick = {},
-            onNextPageClick = {}
+            onNextPageClick = {},
+            modifier = Modifier.padding(16.dp)
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun PagerNavigationDarkPreview() {
+    MerrPatentenTheme(darkTheme = true) {
+        PagerNavigation(
+            onPreviousPageClick = {},
+            onNextPageClick = {},
+            modifier = Modifier.padding(16.dp)
         )
     }
 }

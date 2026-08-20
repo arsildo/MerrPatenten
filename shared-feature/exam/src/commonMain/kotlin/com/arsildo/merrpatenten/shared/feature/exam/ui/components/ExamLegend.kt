@@ -1,4 +1,4 @@
-package com.arsildo.merrpatenten.shared.feature.exam
+package com.arsildo.merrpatenten.shared.feature.exam.ui.components
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.animateFloatAsState
@@ -26,12 +26,11 @@ import androidx.compose.ui.unit.dp
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
 import com.arsildo.merrpatenten.shared.core.designsystem.QUESTIONS_IN_EXAM
 import com.arsildo.merrpatenten.shared.core.designsystem.Red
-
 import merrpatenten.shared_core.design_system.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-internal fun Legend(
+internal fun ExamLegend(
     pagerState: PagerState,
     timer: () -> String,
     endExamVisible: Boolean,
@@ -144,9 +143,9 @@ internal fun Legend(
 
 @Preview
 @Composable
-private fun LegendPreview() {
+private fun ExamLegendPreview() {
     MerrPatentenTheme {
-        Legend(
+        ExamLegend(
             pagerState = rememberPagerState(initialPage = 0, pageCount = { QUESTIONS_IN_EXAM }),
             timer = { "39:42" },
             endExamVisible = false,
@@ -158,12 +157,26 @@ private fun LegendPreview() {
 
 @Preview
 @Composable
-private fun LegendDarkPreview() {
-    MerrPatentenTheme(darkTheme = true) {
-        Legend(
-            pagerState = rememberPagerState(initialPage = 39, pageCount = { QUESTIONS_IN_EXAM }),
-            timer = { "01:23" },
+private fun ExamLegendLowTimePreview() {
+    MerrPatentenTheme {
+        ExamLegend(
+            pagerState = rememberPagerState(initialPage = 38, pageCount = { QUESTIONS_IN_EXAM }),
+            timer = { "01:15" },
             endExamVisible = true,
+            onMapClick = {},
+            onShowEndExamButton = {}
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun ExamLegendDarkPreview() {
+    MerrPatentenTheme(darkTheme = true) {
+        ExamLegend(
+            pagerState = rememberPagerState(initialPage = 15, pageCount = { QUESTIONS_IN_EXAM }),
+            timer = { "25:30" },
+            endExamVisible = false,
             onMapClick = {},
             onShowEndExamButton = {}
         )

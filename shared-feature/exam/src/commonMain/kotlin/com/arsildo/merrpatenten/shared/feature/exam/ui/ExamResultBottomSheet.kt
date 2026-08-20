@@ -1,11 +1,9 @@
-package com.arsildo.merrpatenten.shared.feature.exam
+package com.arsildo.merrpatenten.shared.feature.exam.ui
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ExitToApp
 import androidx.compose.material.icons.rounded.CheckCircle
@@ -17,11 +15,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.semantics.contentDescription
-import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -32,17 +25,21 @@ import com.arsildo.merrpatenten.shared.core.designsystem.QUESTIONS_IN_EXAM
 import com.arsildo.merrpatenten.shared.core.designsystem.components.ExitExamButton
 import com.arsildo.merrpatenten.shared.core.designsystem.components.RestartExamButton
 import com.arsildo.merrpatenten.shared.core.designsystem.semanticColors
+import com.arsildo.merrpatenten.shared.feature.exam.ExamUiState
+import com.arsildo.merrpatenten.shared.feature.exam.ExamViewModel
+import com.arsildo.merrpatenten.shared.feature.exam.ui.components.QuestionResultGridItem
+import com.arsildo.merrpatenten.shared.feature.exam.ui.components.ResultStatusIndicator
 import merrpatenten.shared_core.design_system.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 internal fun ExamResultBottomSheetRoute(
+    viewModel: ExamViewModel = koinViewModel(),
     onQuestionClicked: (Int) -> Unit,
     onExitExam: () -> Unit,
     onRestartExam: () -> Unit,
     onDismiss: () -> Unit,
-    viewModel: ExamViewModel = koinViewModel(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
@@ -74,17 +71,13 @@ internal fun ExamResultBottomSheet(
     val heroIconColor = if (hasPassed) MaterialTheme.semanticColors.success else MaterialTheme.colorScheme.error
 
     Column(
-        modifier = modifier
-            .fillMaxWidth()
-            .statusBarsPadding()
-            .navigationBarsPadding()
-            .padding(bottom = 16.dp),
+        modifier = modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.spacedBy(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         LazyVerticalGrid(
             columns = GridCells.Fixed(5),
-            contentPadding = PaddingValues(16.dp),
+            contentPadding = PaddingValues(16.dp) + WindowInsets.navigationBars.asPaddingValues(),
             horizontalArrangement = Arrangement.spacedBy(8.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp),
             modifier = Modifier.fillMaxWidth()
@@ -126,7 +119,6 @@ internal fun ExamResultBottomSheet(
                                 )
                             }
                         }
-
                     }
                 }
             }
@@ -227,67 +219,6 @@ internal fun ExamResultBottomSheet(
                     }
                 }
             }
-        }
-
-    }
-}
-
-@Composable
-private fun QuestionResultGridItem(
-    title: Int,
-    containerColor: Color,
-    contentColor: Color,
-    contentDescription: String,
-    shape: Shape = MaterialTheme.shapes.medium,
-    onClick: () -> Unit,
-) {
-    Surface(
-        onClick = onClick,
-        shape = shape,
-        color = containerColor,
-        contentColor = contentColor,
-        modifier = Modifier
-            .aspectRatio(1f)
-            .semantics { this.contentDescription = contentDescription }
-    ) {
-        Box(contentAlignment = Alignment.Center) {
-            Text(
-                text = "${title + 1}",
-                color = contentColor,
-                style = MaterialTheme.typography.titleMedium,
-                fontWeight = FontWeight.Bold
-            )
-        }
-    }
-}
-
-@Composable
-private fun ResultStatusIndicator(
-    title: String,
-    containerColor: Color,
-    contentColor: Color,
-) {
-    Surface(
-        shape = CircleShape,
-        color = containerColor,
-        contentColor = contentColor
-    ) {
-        Row(
-            modifier = Modifier.padding(horizontal = 14.dp, vertical = 6.dp),
-            horizontalArrangement = Arrangement.spacedBy(6.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Box(
-                modifier = Modifier
-                    .size(8.dp)
-                    .clip(CircleShape)
-                    .background(contentColor)
-            )
-            Text(
-                text = title,
-                style = MaterialTheme.typography.labelMedium,
-                fontWeight = FontWeight.SemiBold
-            )
         }
     }
 }

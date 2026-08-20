@@ -5,8 +5,8 @@ import androidx.lifecycle.compose.dropUnlessResumed
 import androidx.navigation3.runtime.EntryProviderScope
 import androidx.navigation3.runtime.NavBackStack
 import androidx.navigation3.runtime.NavKey
-import com.arsildo.merrpatenten.shared.feature.exam.ExamResultBottomSheetRoute
-import com.arsildo.merrpatenten.shared.feature.exam.ExamRoute
+import com.arsildo.merrpatenten.shared.feature.exam.ui.ExamResultBottomSheetRoute
+import com.arsildo.merrpatenten.shared.feature.exam.ui.ExamRoute
 import kotlinx.serialization.Serializable
 import navigation.BottomSheetSceneStrategy
 import navigation.SharedViewModelStoreNavEntryDecorator

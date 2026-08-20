@@ -20,7 +20,6 @@ import androidx.navigation3.ui.NavDisplay
 import androidx.savedstate.serialization.SavedStateConfiguration
 import com.arsildo.merrpatenten.shared.core.datastore.PreferencesRepository
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
-import com.arsildo.merrpatenten.shared.feature.dashboard.DisclaimerDialog
 import com.arsildo.merrpatenten.shared.feature.dashboard.navigation.Dashboard
 import com.arsildo.merrpatenten.shared.feature.dashboard.navigation.dashboardEntry
 import com.arsildo.merrpatenten.shared.feature.exam.navigation.Exam
@@ -69,7 +68,6 @@ fun MerrPatentenApp() {
         hapticFeedback = uiState.hapticFeedback
     ) {
         val backStack = rememberNavBackStack(configuration = config, Dashboard)
-        var showDisclaimer by remember { mutableStateOf(false) }
 
         NavDisplay(
             backStack = backStack,
@@ -118,11 +116,5 @@ fun MerrPatentenApp() {
                 .fillMaxSize()
                 .background(MaterialTheme.colorScheme.background)
         )
-
-        if (showDisclaimer) {
-            DisclaimerDialog(
-                onDismissRequest = { showDisclaimer = false }
-            )
-        }
     }
 }

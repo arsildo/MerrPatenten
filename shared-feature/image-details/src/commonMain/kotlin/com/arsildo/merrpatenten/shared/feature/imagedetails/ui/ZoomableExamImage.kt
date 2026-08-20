@@ -1,4 +1,4 @@
-package com.arsildo.merrpatenten.shared.feature.imagedetails
+package com.arsildo.merrpatenten.shared.feature.imagedetails.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -34,12 +34,12 @@ import merrpatenten.shared_core.design_system.generated.resources.*
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
-data class ImageDetailsUiState(
+internal data class ImageDetailsUiState(
     val imageId: Int = 0,
 )
 
 @Composable
-fun ZoomableExamImageRoute(
+internal fun ZoomableExamImageRoute(
     imageId: Int,
     onDismiss: () -> Unit,
 ) {
@@ -51,7 +51,7 @@ fun ZoomableExamImageRoute(
 }
 
 @Composable
-fun ZoomableExamImage(
+internal fun ZoomableExamImage(
     uiState: ImageDetailsUiState,
     onDismiss: () -> Unit,
     modifier: Modifier = Modifier,
@@ -113,6 +113,17 @@ fun ZoomableExamImage(
 @Composable
 private fun ZoomableExamImagePreview() {
     MerrPatentenTheme {
+        ZoomableExamImage(
+            uiState = ImageDetailsUiState(imageId = 1),
+            onDismiss = {}
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun ZoomableExamImageDarkPreview() {
+    MerrPatentenTheme(darkTheme = true) {
         ZoomableExamImage(
             uiState = ImageDetailsUiState(imageId = 1),
             onDismiss = {}

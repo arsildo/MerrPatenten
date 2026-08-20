@@ -3,7 +3,7 @@ package com.arsildo.merrpatenten.shared.feature.imagedetails.navigation
 import androidx.navigation3.runtime.EntryProviderScope
 import androidx.navigation3.runtime.NavBackStack
 import androidx.navigation3.runtime.NavKey
-import com.arsildo.merrpatenten.shared.feature.imagedetails.ZoomableExamImageRoute
+import com.arsildo.merrpatenten.shared.feature.imagedetails.ui.ZoomableExamImageRoute
 import kotlinx.serialization.Serializable
 
 @Serializable

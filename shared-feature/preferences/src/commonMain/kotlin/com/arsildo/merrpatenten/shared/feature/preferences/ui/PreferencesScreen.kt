@@ -1,6 +1,5 @@
-package com.arsildo.merrpatenten.shared.feature.preferences
+package com.arsildo.merrpatenten.shared.feature.preferences.ui
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -9,7 +8,6 @@ import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.rounded.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
@@ -22,6 +20,9 @@ import com.arsildo.merrpatenten.shared.core.designsystem.*
 import com.arsildo.merrpatenten.shared.core.designsystem.components.PreferenceCard
 import com.arsildo.merrpatenten.shared.core.designsystem.components.SectionHeader
 import com.arsildo.merrpatenten.shared.core.designsystem.components.TextSizePreferenceCard
+import com.arsildo.merrpatenten.shared.feature.preferences.PreferencesUiState
+import com.arsildo.merrpatenten.shared.feature.preferences.PreferencesViewModel
+import com.arsildo.merrpatenten.shared.feature.preferences.ui.components.LanguageSelectionDialog
 import merrpatenten.shared_core.design_system.generated.resources.*
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -62,7 +63,6 @@ internal fun PreferencesScreen(
 ) {
     val hapticFeedback = LocalHapticFeedback.current
     val uriHandler = LocalUriHandler.current
-    val currentLocale = rememberApplicationLocale()
     var languageDialogVisible by remember { mutableStateOf(false) }
 
     AnimateColorSchemeTransition {
@@ -274,65 +274,8 @@ internal fun PreferencesScreen(
             }
 
             if (languageDialogVisible) {
-                AlertDialog(
-                    onDismissRequest = { languageDialogVisible = false },
-                    title = {
-                        Text(
-                            text = stringResource(Res.string.language),
-                            style = MaterialTheme.typography.headlineSmall,
-                            fontWeight = FontWeight.Bold
-                        )
-                    },
-                    text = {
-                        Column(
-                            modifier = Modifier.fillMaxWidth(),
-                            verticalArrangement = Arrangement.spacedBy(8.dp)
-                        ) {
-                            ApplicationLocale.entries.forEach { locale ->
-                                val onSelectLocale = {
-                                    hapticFeedback.performHapticFeedback(HapticFeedbackType.SegmentTick)
-                                    ApplicationLocaleManager.setLocale(locale)
-                                    languageDialogVisible = false
-                                }
-                                Surface(
-                                    shape = MaterialTheme.shapes.medium,
-                                    color = if (currentLocale == locale) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surfaceContainerHigh,
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .clickable(onClick = onSelectLocale)
-                                ) {
-                                    Row(
-                                        modifier = Modifier
-                                            .fillMaxWidth()
-                                            .padding(horizontal = 16.dp, vertical = 14.dp),
-                                        horizontalArrangement = Arrangement.SpaceBetween,
-                                        verticalAlignment = Alignment.CenterVertically
-                                    ) {
-                                        Text(
-                                            text = stringResource(locale.res),
-                                            style = MaterialTheme.typography.titleMedium,
-                                            fontWeight = if (currentLocale == locale) FontWeight.Bold else FontWeight.Normal,
-                                            color = if (currentLocale == locale) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.onSurface
-                                        )
-                                        RadioButton(
-                                            selected = currentLocale == locale,
-                                            onClick = onSelectLocale
-                                        )
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    confirmButton = {
-                        TextButton(
-                            onClick = {
-                                hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                                languageDialogVisible = false
-                            }
-                        ) {
-                            Text(text = stringResource(Res.string.close))
-                        }
-                    }
+                LanguageSelectionDialog(
+                    onDismissRequest = { languageDialogVisible = false }
                 )
             }
         }

@@ -97,7 +97,7 @@ class SharedViewModelStoreNavEntryDecorator<T : Any>(
     ) {
 
     companion object {
-        object ParentKey : NavMetadataKey<Any>
+        private object ParentKey : NavMetadataKey<Any>
 
         fun parent(contentKey: Any): Map<String, Any> = metadata {
             put(ParentKey, contentKey)

@@ -9,7 +9,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
 import com.arsildo.merrpatenten.shared.core.designsystem.QuestionTextSize
 import merrpatenten.shared_core.design_system.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
@@ -84,6 +86,34 @@ fun TextSizePreferenceCard(
                     )
                 }
             }
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
+@Preview
+@Composable
+private fun TextSizePreferenceCardDefaultPreview() {
+    MerrPatentenTheme {
+        Column(modifier = Modifier.padding(16.dp)) {
+            TextSizePreferenceCard(
+                selectedSize = QuestionTextSize.DEFAULT,
+                onSizeSelected = {}
+            )
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
+@Preview
+@Composable
+private fun TextSizePreferenceCardLargeDarkPreview() {
+    MerrPatentenTheme(darkTheme = true) {
+        Column(modifier = Modifier.padding(16.dp)) {
+            TextSizePreferenceCard(
+                selectedSize = QuestionTextSize.Large,
+                onSizeSelected = {}
+            )
         }
     }
 }

@@ -10,12 +10,12 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
-data class StatisticsUiState(
+internal data class StatisticsUiState(
     val results: List<ExamResult> = emptyList(),
     val saveResults: Boolean = true
 )
 
-class StatisticsViewModel(
+internal class StatisticsViewModel(
     private val examResultsRepository: ExamResultsRepository,
     preferencesRepository: PreferencesRepository
 ) : ViewModel() {

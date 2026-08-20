@@ -1,9 +1,8 @@
-package com.arsildo.merrpatenten.shared.feature.dashboard
+package com.arsildo.merrpatenten.shared.feature.dashboard.ui.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
@@ -11,7 +10,6 @@ import androidx.compose.material.icons.outlined.WarningAmber
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonShapes
-import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -32,7 +30,7 @@ import merrpatenten.shared_core.design_system.generated.resources.results_confir
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-fun DisclaimerDialog(
+internal fun DisclaimerDialog(
     onDismissRequest: () -> Unit,
 ) {
     val uriHandler = LocalUriHandler.current
@@ -98,6 +96,16 @@ fun DisclaimerDialog(
 @Composable
 private fun DisclaimerDialogPreview() {
     MerrPatentenTheme {
+        DisclaimerDialog(
+            onDismissRequest = {}
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun DisclaimerDialogDarkPreview() {
+    MerrPatentenTheme(darkTheme = true) {
         DisclaimerDialog(
             onDismissRequest = {}
         )

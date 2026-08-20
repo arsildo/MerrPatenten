@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
 class PreferencesRepository(private val dataStore: DataStore<Preferences>) {
-    object PreferencesKeys {
+    private object PreferencesKeys {
         val IMMERSIVE_MODE = booleanPreferencesKey("immersive_mode")
         val SAVE_STATS = booleanPreferencesKey("save_stats")
         val HAPTIC_FEEDBACK = booleanPreferencesKey("haptic_feedback")

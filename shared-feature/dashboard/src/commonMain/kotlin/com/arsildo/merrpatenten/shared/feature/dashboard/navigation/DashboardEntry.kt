@@ -3,7 +3,7 @@ package com.arsildo.merrpatenten.shared.feature.dashboard.navigation
 import androidx.navigation3.runtime.EntryProviderScope
 import androidx.navigation3.runtime.NavBackStack
 import androidx.navigation3.runtime.NavKey
-import com.arsildo.merrpatenten.shared.feature.dashboard.DashboardRoute
+import com.arsildo.merrpatenten.shared.feature.dashboard.ui.DashboardRoute
 import kotlinx.serialization.Serializable
 
 @Serializable

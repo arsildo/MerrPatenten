@@ -101,8 +101,8 @@ class BottomSheetSceneStrategy<T : Any> : SceneStrategy<T> {
             put(SkipPartiallyExpandedKey, skipPartiallyExpanded)
         }
 
-        object BottomSheetKey : NavMetadataKey<ModalBottomSheetProperties>
-        object SkipPartiallyExpandedKey : NavMetadataKey<Boolean>
+        private object BottomSheetKey : NavMetadataKey<ModalBottomSheetProperties>
+        private object SkipPartiallyExpandedKey : NavMetadataKey<Boolean>
     }
 }
 
