@@ -111,7 +111,10 @@ internal fun SignDetailScreen(
             Box(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(contentPadding),
+                    .padding(
+                        top = contentPadding.calculateTopPadding(),
+                        bottom = contentPadding.calculateBottomPadding(),
+                    ),
                 contentAlignment = Alignment.Center,
             ) {
                 Text(
@@ -124,10 +127,10 @@ internal fun SignDetailScreen(
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(contentPadding)
+                    .padding(top = contentPadding.calculateTopPadding())
                     .verticalScroll(rememberScrollState())
                     .padding(horizontal = 20.dp)
-                    .padding(top = 12.dp, bottom = 48.dp),
+                    .padding(top = 12.dp, bottom = contentPadding.calculateBottomPadding() + 32.dp),
                 verticalArrangement = Arrangement.spacedBy(20.dp),
             ) {
                 // Large Image Preview Card
