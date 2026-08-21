@@ -38,10 +38,12 @@ import com.arsildo.merrpatenten.shared.feature.exam.ui.components.ResultStatusIn
 import merrpatenten.shared_core.design_system.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
+import org.koin.core.parameter.parametersOf
 
 @Composable
 internal fun ExamResultBottomSheetRoute(
-    viewModel: ExamViewModel = koinViewModel(),
+    category: String,
+    viewModel: ExamViewModel = koinViewModel(parameters = { parametersOf(category) }),
     onQuestionClicked: (Int) -> Unit,
     onExitExam: () -> Unit,
     onRestartExam: () -> Unit,

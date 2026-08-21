@@ -29,6 +29,7 @@ fun EntryProviderScope<NavKey>.examEntry(
         clazzContentKey = { key -> key.toContentKey() },
     ) { examKey ->
         ExamRoute(
+            category = examKey.category,
             onImageDetailsClick = onImageDetailsClick,
             onOpenMap = { backStack.add(ExamResultBottomSheet(examKey.category)) },
             onExitExam = onExitExam,
@@ -45,6 +46,7 @@ fun EntryProviderScope<NavKey>.examEntry(
         },
     ) { sheetKey ->
         ExamResultBottomSheetRoute(
+            category = sheetKey.category,
             onQuestionClicked = {
                 backStack.removeLastOrNull()
             },

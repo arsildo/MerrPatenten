@@ -25,7 +25,6 @@ kotlin {
             implementation(libs.compose.material3)
 
             implementation(libs.androidx.navigation3Ui)
-            api(libs.androidx.navigationCommon)
             implementation(libs.androidx.lifecycleRuntimeCompose)
             implementation(libs.androidx.lifecycleViewmodelCompose)
             implementation(libs.androidx.savedstate.compose)

@@ -1,9 +1,7 @@
 package com.arsildo.merrpatenten.shared.feature.exam
 
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.navigation.toRoute
 import com.arsildo.merrpatenten.shared.core.data.ExamResultsRepository
 import com.arsildo.merrpatenten.shared.core.data.QuestionnaireRepository
 import com.arsildo.merrpatenten.shared.core.datastore.PreferencesRepository
@@ -13,7 +11,6 @@ import com.arsildo.merrpatenten.shared.core.designsystem.QuestionTextSize
 import com.arsildo.merrpatenten.shared.core.designsystem.formatTimer
 import com.arsildo.merrpatenten.shared.core.model.ExamResult
 import com.arsildo.merrpatenten.shared.core.model.Question
-import com.arsildo.merrpatenten.shared.feature.exam.navigation.Exam
 import kotlin.time.Duration.Companion.milliseconds
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -40,13 +37,11 @@ internal data class ExamUiState(
 )
 
 internal class ExamViewModel(
-    savedStateHandle: SavedStateHandle,
+    private val category: String,
     private val preferencesRepository: PreferencesRepository,
     private val questionnaireRepository: QuestionnaireRepository,
     private val examResultsRepository: ExamResultsRepository,
 ) : ViewModel() {
-
-    private val category: String = savedStateHandle.toRoute<Exam>().category
 
     private var timerJob: Job? = null
 

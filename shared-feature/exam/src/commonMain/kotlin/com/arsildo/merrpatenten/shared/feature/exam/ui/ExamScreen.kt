@@ -38,10 +38,12 @@ import com.arsildo.merrpatenten.shared.feature.exam.ui.components.PagerNavigatio
 import com.arsildo.merrpatenten.shared.feature.exam.ui.components.UncompletedExamDialog
 import kotlinx.coroutines.launch
 import org.koin.compose.viewmodel.koinViewModel
+import org.koin.core.parameter.parametersOf
 
 @Composable
 internal fun ExamRoute(
-    viewModel: ExamViewModel = koinViewModel(),
+    category: String,
+    viewModel: ExamViewModel = koinViewModel(parameters = { parametersOf(category) }),
     onImageDetailsClick: (Int) -> Unit,
     onOpenMap: () -> Unit,
     onExitExam: () -> Unit,
