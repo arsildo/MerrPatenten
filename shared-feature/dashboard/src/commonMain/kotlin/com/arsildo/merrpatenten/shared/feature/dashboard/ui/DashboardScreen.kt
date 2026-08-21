@@ -192,9 +192,9 @@ internal fun DashboardScreen(
             ExamTypeCard(
                 title = stringResource(Res.string.catalog_dashboard_title),
                 description =
-                stringResource(Res.string.catalog_category_warning) + " | " + stringResource(Res.string.catalog_category_prohibitory) +
-                    " | " +
-                    stringResource(Res.string.catalog_category_intersections),
+                    stringResource(Res.string.catalog_category_warning) + " | " + stringResource(Res.string.catalog_category_prohibitory) +
+                        " | " +
+                        stringResource(Res.string.catalog_category_intersections),
                 icon = Icons.AutoMirrored.Rounded.MenuBook,
                 onClick = {
                     hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)

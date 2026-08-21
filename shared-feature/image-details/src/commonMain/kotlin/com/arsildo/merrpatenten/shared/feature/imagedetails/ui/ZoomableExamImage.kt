@@ -2,6 +2,7 @@ package com.arsildo.merrpatenten.shared.feature.imagedetails.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.focusable
 import androidx.compose.foundation.gestures.rememberTransformableState
 import androidx.compose.foundation.gestures.transformable
 import androidx.compose.foundation.layout.Box
@@ -17,14 +18,18 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.input.key.*
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -49,6 +54,12 @@ internal fun ZoomableExamImageRoute(imageId: Int, onDismiss: () -> Unit) {
 @Composable
 internal fun ZoomableExamImage(uiState: ImageDetailsUiState, onDismiss: () -> Unit, modifier: Modifier = Modifier) {
     val hapticFeedback = LocalHapticFeedback.current
+    val focusRequester = remember { FocusRequester() }
+
+    LaunchedEffect(Unit) {
+        focusRequester.requestFocus()
+    }
+
     val handleDismiss = {
         hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
         onDismiss()
@@ -56,6 +67,19 @@ internal fun ZoomableExamImage(uiState: ImageDetailsUiState, onDismiss: () -> Un
     Box(
         modifier = modifier
             .fillMaxSize()
+            .focusRequester(focusRequester)
+            .focusable()
+            .onPreviewKeyEvent { event ->
+                if (event.type != KeyEventType.KeyDown) return@onPreviewKeyEvent false
+                when (event.key) {
+                    Key.Escape, Key.Back, Key.Z -> {
+                        handleDismiss()
+                        true
+                    }
+
+                    else -> false
+                }
+            }
             .clickable(onClick = handleDismiss),
         contentAlignment = Alignment.Center,
     ) {

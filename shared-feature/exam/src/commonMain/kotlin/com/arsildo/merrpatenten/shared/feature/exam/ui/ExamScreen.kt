@@ -4,6 +4,7 @@ import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
+import androidx.compose.foundation.focusable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material.icons.Icons
@@ -14,7 +15,10 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.input.key.*
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -86,6 +90,11 @@ internal fun ExamScreen(
     val pagerState = rememberPagerState(pageCount = { QUESTIONS_IN_EXAM })
     var questionsUnCompletedDialog by remember { mutableStateOf(false) }
     var endExamVisible by remember { mutableStateOf(false) }
+    val focusRequester = remember { FocusRequester() }
+
+    LaunchedEffect(Unit) {
+        focusRequester.requestFocus()
+    }
 
     LaunchedEffect(targetPage) {
         targetPage?.let { page ->
@@ -95,7 +104,109 @@ internal fun ExamScreen(
     }
 
     Scaffold(
-        modifier = modifier,
+        modifier = modifier
+            .focusRequester(focusRequester)
+            .focusable()
+            .onPreviewKeyEvent { event ->
+                if (event.type != KeyEventType.KeyDown) return@onPreviewKeyEvent false
+                when (event.key) {
+                    Key.S, Key.One, Key.NumPad1 -> {
+                        if (!uiState.isCompleted && pagerState.currentPage < uiState.questions.size) {
+                            hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
+                            onCheckTrueAtPage(pagerState.currentPage)
+                            true
+                        } else {
+                            false
+                        }
+                    }
+
+                    Key.G, Key.Two, Key.NumPad2 -> {
+                        if (!uiState.isCompleted && pagerState.currentPage < uiState.questions.size) {
+                            hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
+                            onCheckFalseAtPage(pagerState.currentPage)
+                            true
+                        } else {
+                            false
+                        }
+                    }
+
+                    Key.DirectionLeft, Key.A, Key.PageUp -> {
+                        if (pagerState.canScrollBackward) {
+                            coroutineScope.launch {
+                                pagerState.animateScrollToPage(page = pagerState.currentPage - 1)
+                            }
+                            true
+                        } else {
+                            false
+                        }
+                    }
+
+                    Key.DirectionRight, Key.D, Key.PageDown -> {
+                        if (pagerState.canScrollForward) {
+                            coroutineScope.launch {
+                                pagerState.animateScrollToPage(page = pagerState.currentPage + 1)
+                            }
+                            true
+                        } else {
+                            false
+                        }
+                    }
+
+                    Key.Spacebar, Key.M -> {
+                        hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+                        onOpenMap()
+                        true
+                    }
+
+                    Key.Z -> {
+                        val currentQuestion = uiState.questions.getOrNull(pagerState.currentPage)
+                        if (currentQuestion != null && currentQuestion.image > 0) {
+                            hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+                            onImageDetailsClick(currentQuestion.image)
+                            true
+                        } else {
+                            false
+                        }
+                    }
+
+                    Key.Enter, Key.NumPadEnter -> {
+                        if (questionsUnCompletedDialog) {
+                            questionsUnCompletedDialog = false
+                            onCompleteExam()
+                            onOpenMap()
+                            true
+                        } else if (!uiState.isCompleted) {
+                            val completedCount = uiState.responseList.count { it.isNotBlank() }
+                            if (completedCount != QUESTIONS_IN_EXAM) {
+                                hapticFeedback.performHapticFeedback(HapticFeedbackType.GestureThresholdActivate)
+                                questionsUnCompletedDialog = true
+                            } else {
+                                onCompleteExam()
+                            }
+                            true
+                        } else if (endExamVisible) {
+                            onRestartExam()
+                            true
+                        } else {
+                            false
+                        }
+                    }
+
+                    Key.Escape, Key.Back -> {
+                        if (questionsUnCompletedDialog) {
+                            questionsUnCompletedDialog = false
+                            true
+                        } else if (endExamVisible) {
+                            endExamVisible = false
+                            true
+                        } else {
+                            false
+                        }
+                    }
+
+                    else -> false
+                }
+            },
         contentWindowInsets = WindowInsets(bottom = 0),
         contentColor = MaterialTheme.colorScheme.primary,
         bottomBar = {

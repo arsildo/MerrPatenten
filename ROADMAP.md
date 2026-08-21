@@ -9,7 +9,7 @@ This document outlines the planned feature additions, technical considerations, 
 - [ ] **Phase 1: Study & Training Modes**
 - [x] **Phase 2: Road Sign & Intersection Encyclopedia** *(Core Catalog & Navigation implemented)*
 - [ ] **Phase 3: Advanced Analytics & Exam Readiness**
-- [ ] **Phase 4: Examination & UX Enhancements**
+- [ ] **Phase 4: Examination & UX Enhancements** *(Desktop Keyboard Shortcuts implemented)*
 - [ ] **Phase 5: Export & Driving School Tools**
 
 ---
@@ -70,14 +70,15 @@ This document outlines the planned feature additions, technical considerations, 
 
 ### 4. ⌨️ Examination & UX Enhancements
 
-- [ ] **Desktop Keyboard Shortcuts (Për JVM Desktop Target)**
-  - Fast keyboard shortcuts for desktop study:
-    - `S` / `1` → **Saktë** (True)
-    - `G` / `2` → **Gabim** (False)
-    - `←` / `→` → Previous / Next Question
-    - `M` / `Space` → Open Question Map
-    - `Z` → Zoom Sign Image
-    - `Enter` → Confirm / Finish Exam
+- [x] **Desktop Keyboard Shortcuts (Për JVM Desktop Target & Hardware Keyboards)**
+  - Fast keyboard shortcuts for desktop and tablet study:
+    - `S` / `1` / `NumPad 1` → **Saktë** (True)
+    - `G` / `2` / `NumPad 2` → **Gabim** (False)
+    - `←` / `→`, `A` / `D`, `PageUp` / `PageDown` → Previous / Next Question
+    - `M` / `Space` → Open / Toggle Question Map
+    - `Z` → Zoom / Inspect Sign Image & Dismiss Image Zoom
+    - `Enter` / `NumPad Enter` → Confirm / Finish Exam
+    - `Escape` / `Back` → Dismiss Dialogs, Question Map & Image Zoom
 - [ ] **Answer Explanations (Pse është e saktë / e gabuar?)**
   - Short legal/Highway Code (*Kodi Rrugor*) explanation accompanying each question during the review phase.
 - [ ] **Audio Text-to-Speech (Leximi me Zë i Pyetjes)**

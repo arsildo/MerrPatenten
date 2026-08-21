@@ -14,10 +14,13 @@ plugins {
     alias(libs.plugins.ktlint) apply false
 }
 
+val ktlintVersion = libs.versions.ktlint.asProvider().get()
+
 allprojects {
     apply(plugin = "org.jlleitschuh.gradle.ktlint")
 
     configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {
+        version.set(ktlintVersion)
         android.set(true)
         outputToConsole.set(true)
         ignoreFailures.set(false)
