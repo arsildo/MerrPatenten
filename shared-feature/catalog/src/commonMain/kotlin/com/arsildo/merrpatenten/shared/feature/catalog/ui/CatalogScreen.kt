@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -50,7 +51,7 @@ import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
-fun CatalogRoute(onBackPress: () -> Unit, onSignClick: (Int) -> Unit, viewModel: CatalogViewModel = koinViewModel()) {
+fun CatalogRoute(onBackPress: () -> Unit, onSignClick: (id: Int) -> Unit, viewModel: CatalogViewModel = koinViewModel()) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     CatalogScreen(
@@ -68,15 +69,16 @@ fun CatalogRoute(onBackPress: () -> Unit, onSignClick: (Int) -> Unit, viewModel:
 fun CatalogScreen(
     uiState: CatalogUiState,
     onBackPress: () -> Unit,
-    onSignClick: (Int) -> Unit,
-    onCategorySelected: (SignCategory) -> Unit,
-    onSearchQueryChanged: (String) -> Unit,
-    onToggleSearch: (Boolean) -> Unit,
+    onSignClick: (id: Int) -> Unit,
+    onCategorySelected: (category: SignCategory) -> Unit,
+    onSearchQueryChanged: (query: String) -> Unit,
+    onToggleSearch: (isSearching: Boolean) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val hapticFeedback = LocalHapticFeedback.current
 
     Scaffold(
+        contentWindowInsets = WindowInsets(bottom = 0),
         topBar = {
             TopAppBar(
                 title = {

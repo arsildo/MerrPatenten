@@ -35,7 +35,7 @@ import org.koin.compose.viewmodel.koinViewModel
 @Composable
 internal fun DashboardRoute(
     viewModel: DashboardViewModel = koinViewModel(),
-    onStartExamClick: (String) -> Unit,
+    onStartExamClick: (category: String) -> Unit,
     onPreferencesClick: () -> Unit,
     onStatisticsClick: () -> Unit,
     onCatalogClick: () -> Unit,
@@ -55,7 +55,7 @@ internal fun DashboardRoute(
 @Composable
 internal fun DashboardScreen(
     uiState: DashboardUiState,
-    onStartExamClick: (String) -> Unit,
+    onStartExamClick: (category: String) -> Unit,
     onPreferencesClick: () -> Unit,
     onStatisticsClick: () -> Unit,
     onCatalogClick: () -> Unit,

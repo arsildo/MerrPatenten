@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -59,7 +60,7 @@ internal fun SignDetailRoute(
     signId: Int,
     viewModel: SignDetailViewModel = koinViewModel(parameters = { parametersOf(signId) }),
     onBackPress: () -> Unit,
-    onImageDetailsClick: (Int) -> Unit,
+    onImageDetailsClick: (index: Int) -> Unit,
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     SignDetailScreen(
@@ -74,13 +75,14 @@ internal fun SignDetailRoute(
 internal fun SignDetailScreen(
     uiState: SignDetailUiState,
     onBackPress: () -> Unit,
-    onImageDetailsClick: (Int) -> Unit,
+    onImageDetailsClick: (index: Int) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val sign = uiState.sign
 
     Scaffold(
         modifier = modifier.fillMaxSize(),
+        contentWindowInsets = WindowInsets(bottom = 0),
         topBar = {
             TopAppBar(
                 title = {

@@ -16,7 +16,7 @@ data class SignDetail(val signId: Int) : NavKey
 fun EntryProviderScope<NavKey>.catalogEntry(
     backStack: NavBackStack<NavKey>,
     onBackPress: () -> Unit = { backStack.removeLastOrNull() },
-    onImageDetailsClick: (Int) -> Unit = {},
+    onImageDetailsClick: (index: Int) -> Unit = {},
 ) {
     entry<Catalog> {
         CatalogRoute(

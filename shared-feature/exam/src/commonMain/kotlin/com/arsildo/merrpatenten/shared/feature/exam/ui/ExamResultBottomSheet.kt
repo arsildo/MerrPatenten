@@ -44,7 +44,7 @@ import org.koin.core.parameter.parametersOf
 internal fun ExamResultBottomSheetRoute(
     category: String,
     viewModel: ExamViewModel = koinViewModel(parameters = { parametersOf(category) }),
-    onQuestionClicked: (Int) -> Unit,
+    onQuestionClicked: (page: Int) -> Unit,
     onExitExam: () -> Unit,
     onRestartExam: () -> Unit,
     onDismiss: () -> Unit,
@@ -67,7 +67,7 @@ internal fun ExamResultBottomSheetRoute(
 @Composable
 internal fun ExamResultBottomSheet(
     uiState: ExamUiState,
-    onQuestionClicked: (Int) -> Unit,
+    onQuestionClicked: (page: Int) -> Unit,
     onExitExam: () -> Unit,
     onRestartExam: () -> Unit,
     onDismiss: () -> Unit,

@@ -115,7 +115,7 @@ internal fun StatisticsScreen(
             )
         },
         contentColor = MaterialTheme.colorScheme.onBackground,
-        contentWindowInsets = WindowInsets(top = 0, bottom = 0),
+        contentWindowInsets = WindowInsets(bottom = 0),
     ) { contentPadding ->
         Box(
             modifier = Modifier

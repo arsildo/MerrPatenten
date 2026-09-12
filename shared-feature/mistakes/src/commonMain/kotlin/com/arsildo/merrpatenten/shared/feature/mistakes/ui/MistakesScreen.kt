@@ -36,8 +36,8 @@ import org.koin.compose.viewmodel.koinViewModel
 @Composable
 fun MistakesRoute(
     onBackPress: () -> Unit,
-    onStartPractice: (String) -> Unit,
-    onImageDetailsClick: (Int) -> Unit,
+    onStartPractice: (category: String) -> Unit,
+    onImageDetailsClick: (index: Int) -> Unit,
     viewModel: MistakesViewModel = koinViewModel(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
@@ -54,16 +54,15 @@ fun MistakesRoute(
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MistakesScreen(
     uiState: MistakesUiState,
     onBackPress: () -> Unit,
     onStartPractice: () -> Unit,
-    onImageDetailsClick: (Int) -> Unit,
-    onSelectCategory: (String) -> Unit,
-    onSearchQueryChange: (String) -> Unit,
-    onDeleteMistake: (Int, String) -> Unit,
+    onImageDetailsClick: (index: Int) -> Unit,
+    onSelectCategory: (category: String) -> Unit,
+    onSearchQueryChange: (query: String) -> Unit,
+    onDeleteMistake: (questionId: Int, category: String) -> Unit,
     onClearCategory: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -140,10 +139,12 @@ fun MistakesScreen(
                     containerColor = MaterialTheme.colorScheme.primary,
                     contentColor = MaterialTheme.colorScheme.onPrimary,
                     modifier = Modifier.navigationBarsPadding(),
+                    elevation = FloatingActionButtonDefaults.loweredElevation(),
                 )
             }
         },
         modifier = modifier,
+        contentWindowInsets = WindowInsets(bottom = 0),
     ) { contentPadding ->
         Column(
             modifier = Modifier
@@ -258,7 +259,7 @@ fun MistakesScreen(
 }
 
 @Composable
-private fun CategoryTabs(selectedCategory: String, onCategorySelected: (String) -> Unit, modifier: Modifier = Modifier) {
+private fun CategoryTabs(selectedCategory: String, onCategorySelected: (category: String) -> Unit, modifier: Modifier = Modifier) {
     val categories = listOf(
         "B" to stringResource(Res.string.questionnaire_category_one),
         "C" to stringResource(Res.string.questionnaire_category_two),

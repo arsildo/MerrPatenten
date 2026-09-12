@@ -45,7 +45,7 @@ import org.koin.core.parameter.parametersOf
 fun MistakesPracticeRoute(
     category: String,
     onBackPress: () -> Unit,
-    onImageDetailsClick: (Int) -> Unit,
+    onImageDetailsClick: (index: Int) -> Unit,
     viewModel: MistakesPracticeViewModel = koinViewModel(parameters = { parametersOf(category) }),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
@@ -64,14 +64,15 @@ fun MistakesPracticeRoute(
 fun MistakesPracticeScreen(
     uiState: MistakesPracticeUiState,
     onBackPress: () -> Unit,
-    onSubmitAnswer: (String) -> Unit,
+    onSubmitAnswer: (answer: String) -> Unit,
     onNextQuestion: () -> Unit,
-    onImageDetailsClick: (Int) -> Unit,
+    onImageDetailsClick: (index: Int) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val hapticFeedback = LocalHapticFeedback.current
 
     Scaffold(
+        contentWindowInsets = WindowInsets(bottom = 0),
         topBar = {
             TopAppBar(
                 title = {

@@ -16,7 +16,7 @@ data class MistakesPractice(val category: String = "B") : NavKey
 fun EntryProviderScope<NavKey>.mistakesEntry(
     backStack: NavBackStack<NavKey>,
     onBackPress: () -> Unit = { backStack.removeLastOrNull() },
-    onImageDetailsClick: (Int) -> Unit = {},
+    onImageDetailsClick: (index: Int) -> Unit = {},
 ) {
     entry<Mistakes> {
         MistakesRoute(

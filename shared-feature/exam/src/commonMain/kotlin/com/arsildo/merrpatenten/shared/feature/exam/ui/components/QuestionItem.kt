@@ -35,8 +35,8 @@ internal fun QuestionItem(
     falseChecked: Boolean,
     trueChecked: Boolean,
     questionTextSize: QuestionTextSize = QuestionTextSize.DEFAULT,
-    onFalseCheckedChange: (Boolean) -> Unit,
-    onTrueCheckedChange: (Boolean) -> Unit,
+    onFalseCheckedChange: (checked: Boolean) -> Unit,
+    onTrueCheckedChange: (checked: Boolean) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Card(

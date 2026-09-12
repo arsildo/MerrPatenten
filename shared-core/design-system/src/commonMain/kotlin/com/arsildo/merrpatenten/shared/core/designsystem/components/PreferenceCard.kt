@@ -28,10 +28,10 @@ fun PreferenceCard(
     index: Int = 0,
     count: Int = 1,
     leadingIcon: (@Composable () -> Unit)? = null,
-    onCheckedChange: (Boolean) -> Unit,
+    onCheckedChange: (checked: Boolean) -> Unit,
 ) {
     val hapticFeedback = LocalHapticFeedback.current
-    val handleCheckedChange: (Boolean) -> Unit = { newChecked ->
+    val handleCheckedChange: (checked: Boolean) -> Unit = { newChecked ->
         hapticFeedback.performHapticFeedback(
             if (newChecked) HapticFeedbackType.ToggleOn else HapticFeedbackType.ToggleOff,
         )

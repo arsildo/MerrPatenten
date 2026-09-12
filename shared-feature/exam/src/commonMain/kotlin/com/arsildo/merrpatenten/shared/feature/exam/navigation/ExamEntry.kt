@@ -21,9 +21,9 @@ data class ExamResultBottomSheet(val category: String = "B") : NavKey
 @OptIn(ExperimentalMaterial3Api::class)
 fun EntryProviderScope<NavKey>.examEntry(
     backStack: NavBackStack<NavKey>,
-    onImageDetailsClick: (Int) -> Unit,
+    onImageDetailsClick: (index: Int) -> Unit,
     onExitExam: () -> Unit,
-    onRestartExam: (String) -> Unit,
+    onRestartExam: (category: String) -> Unit,
 ) {
     entry<Exam>(
         clazzContentKey = { key -> key.toContentKey() },

@@ -21,7 +21,7 @@ import org.jetbrains.compose.resources.stringResource
 fun TextSizePreferenceCard(
     modifier: Modifier = Modifier,
     selectedSize: QuestionTextSize,
-    onSizeSelected: (QuestionTextSize) -> Unit,
+    onSizeSelected: (size: QuestionTextSize) -> Unit,
     index: Int = 0,
     count: Int = 1,
 ) {

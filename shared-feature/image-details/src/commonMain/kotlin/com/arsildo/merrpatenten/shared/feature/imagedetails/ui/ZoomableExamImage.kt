@@ -114,7 +114,7 @@ internal fun ZoomableExamImage(uiState: ImageDetailsUiState, onDismiss: () -> Un
             icon = {
                 Icon(imageVector = Icons.AutoMirrored.Rounded.ArrowBack, contentDescription = null)
             },
-            elevation = FloatingActionButtonDefaults.elevation(defaultElevation = 3.dp),
+            elevation = FloatingActionButtonDefaults.loweredElevation(),
             shape = MaterialTheme.shapes.large,
             containerColor = MaterialTheme.colorScheme.primaryContainer,
             contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
