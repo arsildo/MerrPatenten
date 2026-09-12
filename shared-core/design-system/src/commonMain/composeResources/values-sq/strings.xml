@@ -130,4 +130,38 @@
     <string name="catalog_right_of_way_order">Radha e Përparësisë</string>
     <string name="catalog_empty_results">Nuk u gjet asnjë sinjal apo rregull</string>
     <string name="catalog_item_count">%1$d elemente</string>
+
+    <!-- Readiness Score -->
+    <string name="readiness_title">Gatishmëria për Provim</string>
+    <string name="readiness_status_ready">Gati për Provimin Zyrtar!</string>
+    <string name="readiness_status_in_progress">Në Përparim të Mirë</string>
+    <string name="readiness_status_needs_practice">Kërkohet Më Shumë Praktikë</string>
+    <string name="readiness_status_not_enough_data">Përfundo Më Shumë Provime</string>
+    <string name="readiness_subtitle_format">Bazuar në %1$d provimet e fundit (%2$d% kalueshmëri)</string>
+    <string name="readiness_initial_hint">Bëj të paktën 3 provime për të llogaritur nivelin tënd.</string>
+
+    <!-- Mistake Notebook -->
+    <string name="mistakes_title">Blloku i Gabimeve</string>
+    <string name="mistakes_dashboard_title">Gabimet e Mia</string>
+    <string name="mistakes_dashboard_desc">Praktiko pyetjet ku keni gabuar gjatë provimeve</string>
+    <string name="mistakes_badge_count">%1$d gabime</string>
+    <string name="mistakes_badge_count_singular">1 gabim</string>
+    <string name="mistakes_empty_title">Nuk keni asnjë gabim!</string>
+    <string name="mistakes_empty_desc">Përfundoni simulime provimesh për të zbuluar dhe përsëritur pyetjet me gabime.</string>
+    <string name="mistakes_start_practice">Fillo Praktikën (%1$d)</string>
+    <string name="mistakes_practice_title">Praktika e Gabimeve</string>
+    <string name="mistakes_error_count">Gabuar %1$d herë</string>
+    <string name="mistakes_error_count_singular">Gabuar 1 herë</string>
+    <string name="mistakes_mastery_progress">Përvetësimi: %1$d/%2$d</string>
+    <string name="mistakes_mastered_badge">U Zgjidh!</string>
+    <string name="mistakes_clear_category">Pastro gabimet e kategorisë</string>
+    <string name="mistakes_clear_category_desc">Të gjitha pyetjet e gabuara për këtë kategori do të fshihen.</string>
+    <string name="mistakes_delete_item">Hiq nga lista e gabimeve</string>
+    <string name="mistakes_practice_complete_title">Praktika Përfundoi!</string>
+    <string name="mistakes_practice_complete_desc">Ju praktikuat %1$d pyetje. %2$d pyetje u përvetësuan dhe u hoqën nga blloku i gabimeve!</string>
+    <string name="mistakes_practice_next">Pyetja Tjetër</string>
+    <string name="mistakes_practice_finish">Përfundo Praktikën</string>
+    <string name="mistakes_practice_correct_streak">Saktë! %1$d/%2$d radhazi për t&apos;u hequr nga lista.</string>
+    <string name="mistakes_practice_graduated">Shkëlqyer! Ju e përvetësuat këtë pyetje.</string>
+    <string name="mistakes_practice_wrong">Gabim. Gabimi u regjistrua dhe ecuria u rivendos.</string>
 </resources>

@@ -1,5 +1,6 @@
 package com.arsildo.merrpatenten.shared.core.designsystem.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
@@ -11,6 +12,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
@@ -54,19 +56,19 @@ fun ExamTypeCard(
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier.weight(1f),
                 ) {
-                    Surface(
-                        shape = CircleShape,
-                        color = colors.contentColor.copy(alpha = 0.12f),
-                        modifier = Modifier.size(48.dp),
+                    Box(
+                        modifier = Modifier
+                            .size(48.dp)
+                            .clip(CircleShape)
+                            .background(colors.contentColor.copy(alpha = 0.12f)),
+                        contentAlignment = Alignment.Center,
                     ) {
-                        Box(contentAlignment = Alignment.Center) {
-                            Icon(
-                                imageVector = icon,
-                                contentDescription = null,
-                                tint = colors.contentColor,
-                                modifier = Modifier.size(28.dp),
-                            )
-                        }
+                        Icon(
+                            imageVector = icon,
+                            contentDescription = null,
+                            tint = colors.contentColor,
+                            modifier = Modifier.size(28.dp),
+                        )
                     }
                     Text(
                         text = title,
@@ -76,42 +78,51 @@ fun ExamTypeCard(
                     )
                 }
 
-                Surface(
-                    shape = CircleShape,
-                    color = colors.contentColor.copy(alpha = 0.14f),
-                    contentColor = colors.contentColor,
-                    modifier = Modifier.size(38.dp),
+                Box(
+                    modifier = Modifier
+                        .size(38.dp)
+                        .clip(CircleShape)
+                        .background(colors.contentColor.copy(alpha = 0.14f)),
+                    contentAlignment = Alignment.Center,
                 ) {
-                    Box(contentAlignment = Alignment.Center) {
-                        Icon(
-                            imageVector = Icons.AutoMirrored.Rounded.ArrowForward,
-                            contentDescription = null,
-                            modifier = Modifier.size(18.dp),
-                        )
-                    }
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Rounded.ArrowForward,
+                        contentDescription = null,
+                        tint = colors.contentColor,
+                        modifier = Modifier.size(18.dp),
+                    )
                 }
             }
 
             if (description.isNotEmpty()) {
-                val tags = description.split("|").map { it.trim() }.filter { it.isNotEmpty() }
-                FlowRow(
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                    verticalArrangement = Arrangement.spacedBy(6.dp),
-                ) {
-                    tags.forEach { tag ->
-                        Surface(
-                            shape = CircleShape,
-                            color = colors.contentColor.copy(alpha = 0.12f),
-                            contentColor = colors.contentColor,
-                        ) {
-                            Text(
-                                text = tag,
-                                style = MaterialTheme.typography.labelMedium,
-                                fontWeight = FontWeight.SemiBold,
-                                modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
-                            )
+                if (description.contains("|")) {
+                    val tags = description.split("|").map { it.trim() }.filter { it.isNotEmpty() }
+                    FlowRow(
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        verticalArrangement = Arrangement.spacedBy(6.dp),
+                    ) {
+                        tags.forEach { tag ->
+                            Box(
+                                modifier = Modifier
+                                    .clip(CircleShape)
+                                    .background(colors.contentColor.copy(alpha = 0.12f))
+                                    .padding(horizontal = 16.dp, vertical = 8.dp),
+                            ) {
+                                Text(
+                                    text = tag,
+                                    style = MaterialTheme.typography.labelMedium,
+                                    fontWeight = FontWeight.SemiBold,
+                                    color = colors.contentColor,
+                                )
+                            }
                         }
                     }
+                } else {
+                    Text(
+                        text = description,
+                        style = MaterialTheme.typography.bodySmall,
+                        color = colors.contentColor.copy(alpha = 0.8f),
+                    )
                 }
             }
         }

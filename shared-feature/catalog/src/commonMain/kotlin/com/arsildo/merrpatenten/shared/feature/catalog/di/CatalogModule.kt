@@ -2,10 +2,10 @@ package com.arsildo.merrpatenten.shared.feature.catalog.di
 
 import com.arsildo.merrpatenten.shared.feature.catalog.CatalogViewModel
 import com.arsildo.merrpatenten.shared.feature.catalog.SignDetailViewModel
-import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.module
+import org.koin.plugin.module.dsl.viewModel
 
 val catalogModule = module {
-    viewModelOf(::CatalogViewModel)
-    viewModelOf(::SignDetailViewModel)
+    viewModel<CatalogViewModel>()
+    viewModel<SignDetailViewModel>()
 }

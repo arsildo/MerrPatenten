@@ -6,14 +6,15 @@ import androidx.room.RoomDatabase
 import androidx.room.RoomDatabaseConstructor
 
 @Database(
-    entities = [QuestionEntity::class, ExamResultEntity::class],
-    version = 1,
+    entities = [QuestionEntity::class, ExamResultEntity::class, MistakeRecordEntity::class],
+    version = 2,
     exportSchema = false,
 )
 @ConstructedBy(MerrPatentenDatabaseConstructor::class)
 abstract class MerrPatentenDatabase : RoomDatabase() {
     abstract fun questionnaireDAO(): QuestionnaireDAO
     abstract fun examResultsDAO(): ExamResultsDAO
+    abstract fun mistakesDAO(): MistakesDAO
 }
 
 @Suppress("NO_ACTUAL_FOR_EXPECT")

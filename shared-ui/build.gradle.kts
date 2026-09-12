@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.koinCompiler)
 }
 
 kotlin {
@@ -39,6 +40,7 @@ kotlin {
             implementation(projects.sharedFeature.statistics)
             implementation(projects.sharedFeature.preferences)
             implementation(projects.sharedFeature.catalog)
+            implementation(projects.sharedFeature.mistakes)
 
             implementation(libs.compose.runtime)
             implementation(libs.compose.foundation)

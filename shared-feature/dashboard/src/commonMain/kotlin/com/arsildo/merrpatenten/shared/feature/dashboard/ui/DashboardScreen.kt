@@ -16,36 +16,50 @@ import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.arsildo.merrpatenten.shared.core.data.ReadinessLevel
+import com.arsildo.merrpatenten.shared.core.data.ReadinessScore
 import com.arsildo.merrpatenten.shared.core.designsystem.DPSHTRR_HELP
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
 import com.arsildo.merrpatenten.shared.core.designsystem.components.ExamTypeCard
 import com.arsildo.merrpatenten.shared.core.designsystem.components.HelpfulMaterialCard
 import com.arsildo.merrpatenten.shared.core.designsystem.components.SectionHeader
+import com.arsildo.merrpatenten.shared.feature.dashboard.DashboardUiState
+import com.arsildo.merrpatenten.shared.feature.dashboard.DashboardViewModel
 import com.arsildo.merrpatenten.shared.feature.dashboard.ui.components.DisclaimerDialog
+import com.arsildo.merrpatenten.shared.feature.dashboard.ui.components.ReadinessCard
 import merrpatenten.shared_core.design_system.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
+import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 internal fun DashboardRoute(
+    viewModel: DashboardViewModel = koinViewModel(),
     onStartExamClick: (String) -> Unit,
     onPreferencesClick: () -> Unit,
     onStatisticsClick: () -> Unit,
     onCatalogClick: () -> Unit,
+    onMistakesClick: () -> Unit,
 ) {
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     DashboardScreen(
+        uiState = uiState,
         onStartExamClick = onStartExamClick,
         onPreferencesClick = onPreferencesClick,
         onStatisticsClick = onStatisticsClick,
         onCatalogClick = onCatalogClick,
+        onMistakesClick = onMistakesClick,
     )
 }
 
 @Composable
 internal fun DashboardScreen(
+    uiState: DashboardUiState,
     onStartExamClick: (String) -> Unit,
     onPreferencesClick: () -> Unit,
     onStatisticsClick: () -> Unit,
     onCatalogClick: () -> Unit,
+    onMistakesClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val hapticFeedback = LocalHapticFeedback.current
@@ -151,7 +165,7 @@ internal fun DashboardScreen(
                     hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
                     onStartExamClick("B")
                 },
-                colors = CardDefaults.elevatedCardColors(
+                colors = CardDefaults.cardColors(
                     containerColor = MaterialTheme.colorScheme.primaryContainer,
                     contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
                 ),
@@ -165,7 +179,7 @@ internal fun DashboardScreen(
                     hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
                     onStartExamClick("C")
                 },
-                colors = CardDefaults.elevatedCardColors(
+                colors = CardDefaults.cardColors(
                     containerColor = MaterialTheme.colorScheme.secondaryContainer,
                     contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
                 ),
@@ -179,7 +193,7 @@ internal fun DashboardScreen(
                     hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
                     onStartExamClick("D")
                 },
-                colors = CardDefaults.elevatedCardColors(
+                colors = CardDefaults.cardColors(
                     containerColor = MaterialTheme.colorScheme.tertiaryContainer,
                     contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
                 ),
@@ -187,6 +201,44 @@ internal fun DashboardScreen(
 
             // 2. Second Major Category: Study & Learning Materials
             SectionHeader(title = stringResource(Res.string.dashboard_section_learning))
+
+            // Readiness Score Banner
+            ReadinessCard(
+                readinessScore = uiState.readinessScore,
+                onClick = {
+                    hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+                    onStatisticsClick()
+                },
+            )
+
+            // Mistake Notebook Card ("Gabimet e Mia")
+            val mistakeDesc = if (uiState.mistakesCount > 0) {
+                if (uiState.mistakesCount == 1) {
+                    stringResource(Res.string.mistakes_badge_count_singular)
+                } else {
+                    stringResource(Res.string.mistakes_badge_count, uiState.mistakesCount)
+                } + " • " + stringResource(Res.string.mistakes_dashboard_desc)
+            } else {
+                stringResource(Res.string.mistakes_dashboard_desc)
+            }
+
+            ExamTypeCard(
+                title = stringResource(Res.string.mistakes_dashboard_title),
+                description = mistakeDesc,
+                icon = Icons.Rounded.EditNote,
+                onClick = {
+                    hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
+                    onMistakesClick()
+                },
+                colors = CardDefaults.cardColors(
+                    containerColor = if (uiState.mistakesCount > 0) {
+                        MaterialTheme.colorScheme.errorContainer.copy(alpha = 0.45f)
+                    } else {
+                        MaterialTheme.colorScheme.surfaceContainerHigh
+                    },
+                    contentColor = MaterialTheme.colorScheme.onSurface,
+                ),
+            )
 
             // Road Signs & Intersections Encyclopedia Card
             ExamTypeCard(
@@ -200,7 +252,7 @@ internal fun DashboardScreen(
                     hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
                     onCatalogClick()
                 },
-                colors = CardDefaults.elevatedCardColors(
+                colors = CardDefaults.cardColors(
                     containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
                     contentColor = MaterialTheme.colorScheme.onSurface,
                 ),
@@ -212,7 +264,7 @@ internal fun DashboardScreen(
                     hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
                     uriHandler.openUri(DPSHTRR_HELP)
                 },
-                colors = CardDefaults.elevatedCardColors(
+                colors = CardDefaults.cardColors(
                     containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
                     contentColor = MaterialTheme.colorScheme.onSurface,
                 ),
@@ -231,10 +283,22 @@ internal fun DashboardScreen(
 @Composable
 private fun DashboardScreenPreview() = MerrPatentenTheme {
     DashboardScreen(
+        uiState = DashboardUiState(
+            readinessScore = ReadinessScore(
+                percentage = 85,
+                level = ReadinessLevel.READY,
+                completedExams = 8,
+                passedExams = 7,
+                passRate = 88,
+                averageErrors = 2.1,
+            ),
+            mistakesCount = 5,
+        ),
         onStartExamClick = {},
         onPreferencesClick = {},
         onStatisticsClick = {},
         onCatalogClick = {},
+        onMistakesClick = {},
     )
 }
 
@@ -242,9 +306,21 @@ private fun DashboardScreenPreview() = MerrPatentenTheme {
 @Composable
 private fun DashboardScreenDarkPreview() = MerrPatentenTheme(darkTheme = true) {
     DashboardScreen(
+        uiState = DashboardUiState(
+            readinessScore = ReadinessScore(
+                percentage = 40,
+                level = ReadinessLevel.NEEDS_PRACTICE,
+                completedExams = 4,
+                passedExams = 1,
+                passRate = 25,
+                averageErrors = 6.0,
+            ),
+            mistakesCount = 0,
+        ),
         onStartExamClick = {},
         onPreferencesClick = {},
         onStatisticsClick = {},
         onCatalogClick = {},
+        onMistakesClick = {},
     )
 }

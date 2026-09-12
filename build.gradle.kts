@@ -12,6 +12,7 @@ plugins {
     alias(libs.plugins.kotlinSerialization) apply false
     alias(libs.plugins.androidxRoom) apply false
     alias(libs.plugins.ktlint) apply false
+    alias(libs.plugins.koinCompiler) apply false
 }
 
 val ktlintVersion = libs.versions.ktlint.asProvider().get()

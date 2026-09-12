@@ -1,8 +1,8 @@
 [versions]
 agp = "9.1.1"
-kotlin = "2.4.20-RC"
-compose-multiplatform = "1.12.10-alpha01+dev4668"
-ksp = "2.3.6"
+kotlin = "2.4.20"
+compose-multiplatform = "1.13.0-alpha01"
+ksp = "2.3.12"
 ktlint = "1.8.0"
 ktlint-plugin = "14.2.0"
 
@@ -12,22 +12,22 @@ androidx-appcompat = "1.8.0"
 androidx-core = "1.19.0"
 androidx-core-splashscreen = "1.2.0"
 androidx-datastore = "1.2.1"
-androidx-room = "2.8.4"
-androidx-sqlite = "2.7.0"
+androidx-room = "2.8.5"
+androidx-sqlite = "2.7.1"
 
 # JetBrains Lifecycle & Navigation 3
-androidx-lifecycle = "2.11.10-alpha01+dev4668"
-androidx-navigation3 = "1.2.0-alpha03+dev4668"
+androidx-lifecycle = "2.11.0"
+androidx-navigation3 = "1.2.0-beta01"
 androidx-savedstate = "1.4.0"
 kotlinx-coroutines = "1.11.0"
 kotlinx-serialization = "1.11.0"
 kotlinx-datetime = "0.8.0"
 
 koin-bom = "4.2.2"
-koin-plugin = "1.1.0"
+koin-plugin = "1.2.1"
 
-coil-bom = "3.5.0"
-filekit = "0.15.0"
+coil-bom = "3.6.2"
+filekit = "0.16.0"
 
 [libraries]
 ## Android
@@ -46,7 +46,7 @@ compose-runtime = { group = "org.jetbrains.compose.runtime", name = "runtime", v
 compose-foundation = { group = "org.jetbrains.compose.foundation", name = "foundation", version.ref = "compose-multiplatform" }
 compose-components-resources = { group = "org.jetbrains.compose.components", name = "components-resources", version.ref = "compose-multiplatform" }
 compose-ui = { group = "org.jetbrains.compose.ui", name = "ui", version.ref = "compose-multiplatform" }
-compose-uiTooling = { group = "org.jetbrains.compose.ui", name = "ui-tooling", version = "1.11.1" }
+compose-uiTooling = { group = "org.jetbrains.compose.ui", name = "ui-tooling", version = "1.12.0" }
 compose-uiToolingPreview = { group = "org.jetbrains.compose.ui", name = "ui-tooling-preview", version.ref = "compose-multiplatform" }
 compose-material3 = { group = "org.jetbrains.compose.material3", name = "material3", version.ref = "compose-multiplatform" }
 
@@ -68,6 +68,7 @@ sqlite-bundled = { group = "androidx.sqlite", name = "sqlite-bundled", version.r
 kotlinx-serializationJson = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 kotlinx-coroutinesCore = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
 kotlinx-coroutinesSwing = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-swing", version.ref = "kotlinx-coroutines" }
+kotlinx-coroutinesTest = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinx-coroutines" }
 kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version.ref = "kotlinx-datetime" }
 
 # Multiplatform - Dependency Injection (Koin)
@@ -103,3 +104,4 @@ kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", versio
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 androidxRoom = { id = "androidx.room", version.ref = "androidx-room" }
 ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint-plugin" }
+koinCompiler = { id = "io.insert-koin.compiler.plugin", version.ref = "koin-plugin" }

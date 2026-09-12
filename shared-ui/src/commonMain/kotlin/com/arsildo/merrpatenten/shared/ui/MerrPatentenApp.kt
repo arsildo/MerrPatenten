@@ -28,6 +28,9 @@ import com.arsildo.merrpatenten.shared.feature.exam.navigation.ExamResultBottomS
 import com.arsildo.merrpatenten.shared.feature.exam.navigation.examEntry
 import com.arsildo.merrpatenten.shared.feature.imagedetails.navigation.ZoomableImage
 import com.arsildo.merrpatenten.shared.feature.imagedetails.navigation.imageDetailsEntry
+import com.arsildo.merrpatenten.shared.feature.mistakes.navigation.Mistakes
+import com.arsildo.merrpatenten.shared.feature.mistakes.navigation.MistakesPractice
+import com.arsildo.merrpatenten.shared.feature.mistakes.navigation.mistakesEntry
 import com.arsildo.merrpatenten.shared.feature.preferences.PreferencesViewModel
 import com.arsildo.merrpatenten.shared.feature.preferences.navigation.Preferences
 import com.arsildo.merrpatenten.shared.feature.preferences.navigation.preferencesEntry
@@ -50,6 +53,8 @@ private val config = SavedStateConfiguration {
             subclass(Preferences::class, Preferences.serializer())
             subclass(Catalog::class, Catalog.serializer())
             subclass(SignDetail::class, SignDetail.serializer())
+            subclass(Mistakes::class, Mistakes.serializer())
+            subclass(MistakesPractice::class, MistakesPractice.serializer())
         }
     }
 }
@@ -88,8 +93,14 @@ fun MerrPatentenApp() {
                     onStatisticsClick = { backStack.add(Statistics) },
                     onPreferencesClick = { backStack.add(Preferences) },
                     onCatalogClick = { backStack.add(Catalog) },
+                    onMistakesClick = { backStack.add(Mistakes) },
                 )
                 catalogEntry(
+                    backStack = backStack,
+                    onBackPress = { backStack.removeLastOrNull() },
+                    onImageDetailsClick = { imageId -> backStack.add(ZoomableImage(imageId)) },
+                )
+                mistakesEntry(
                     backStack = backStack,
                     onBackPress = { backStack.removeLastOrNull() },
                     onImageDetailsClick = { imageId -> backStack.add(ZoomableImage(imageId)) },

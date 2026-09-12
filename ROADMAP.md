@@ -6,9 +6,9 @@ This document outlines the planned feature additions, technical considerations, 
 
 ## 📌 Status Overview
 
-- [ ] **Phase 1: Study & Training Modes**
+- [ ] **Phase 1: Study & Training Modes** *(Mistake Notebook implemented)*
 - [x] **Phase 2: Road Sign & Intersection Encyclopedia** *(Core Catalog & Navigation implemented)*
-- [ ] **Phase 3: Advanced Analytics & Exam Readiness**
+- [ ] **Phase 3: Advanced Analytics & Exam Readiness** *(DPSHTRR Readiness Score implemented)*
 - [ ] **Phase 4: Examination & UX Enhancements** *(Desktop Keyboard Shortcuts implemented)*
 - [ ] **Phase 5: Export & Driving School Tools**
 
@@ -18,7 +18,7 @@ This document outlines the planned feature additions, technical considerations, 
 
 ### 1. 📚 Study & Training Modes (Beyond Simulation)
 
-- [ ] **Mistake Notebook ("Gabimet e Mia" / Weak Spot Practice)**
+- [x] **Mistake Notebook ("Gabimet e Mia" / Weak Spot Practice)**
   - Automatically persist incorrectly answered questions in the local Room database.
   - Dedicated screen/quiz mode that loads *only* past mistakes.
   - Automatically remove questions from the mistake bank once answered correctly 2 or 3 consecutive times.
@@ -57,12 +57,13 @@ This document outlines the planned feature additions, technical considerations, 
 
 ### 3. 📊 Advanced Analytics & Exam Readiness
 
-- [ ] **DPSHTRR Readiness Score (% Gatishmëria për Provim)**
+- [x] **DPSHTRR Readiness Score (% Gatishmëria për Provim)**
   - Smart readiness metric calculated from:
-    - Pass rate over the last 10–20 exams
-    - Topic coverage percentage
-    - Mistake resolution rate
-  - Visual gauge on the dashboard: *"Gatishmëria: 85% — Gati për provim zyrtar!"*
+    - Pass rate over the last 10–20 exams (55% weight)
+    - Error rate & mistake penalty curve (35% weight)
+    - Experience volume & consistency confidence (10% weight)
+  - Visual gauge and animated progress card on dashboard *Këndi i Mësimit* and *Statistika* screen: *"Gatishmëria: 85% — Gati për provim zyrtar!"*
+  - Contextual color tiers (Success Green, Tertiary, Error, SurfaceVariant) and tap-to-inspect statistics navigation.
 - [ ] **Topic Accuracy Breakdown (Analizë sipas Temave)**
   - Visual breakdown (progress bars / heatmaps) showing strengths and weaknesses per category (e.g., *95% Sinjale, 60% Kryqëzime*).
 

@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
+    alias(libs.plugins.koinCompiler)
 }
 
 kotlin {
@@ -21,8 +22,14 @@ kotlin {
             implementation(projects.sharedCore.datastore)
 
             implementation(libs.kotlinx.coroutinesCore)
+            implementation(libs.kotlinx.datetime)
             implementation(project.dependencies.platform(libs.koin.bom))
             implementation(libs.koin.core)
+        }
+
+        commonTest.dependencies {
+            implementation(kotlin("test"))
+            implementation(libs.kotlinx.coroutinesTest)
         }
     }
 }

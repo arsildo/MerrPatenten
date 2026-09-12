@@ -3,6 +3,7 @@ package com.arsildo.merrpatenten.shared.feature.exam
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.arsildo.merrpatenten.shared.core.data.ExamResultsRepository
+import com.arsildo.merrpatenten.shared.core.data.MistakesRepository
 import com.arsildo.merrpatenten.shared.core.data.QuestionnaireRepository
 import com.arsildo.merrpatenten.shared.core.datastore.PreferencesRepository
 import com.arsildo.merrpatenten.shared.core.designsystem.EXAM_DURATION_RELEASE
@@ -41,6 +42,7 @@ internal class ExamViewModel(
     private val preferencesRepository: PreferencesRepository,
     private val questionnaireRepository: QuestionnaireRepository,
     private val examResultsRepository: ExamResultsRepository,
+    private val mistakesRepository: MistakesRepository,
 ) : ViewModel() {
 
     private var timerJob: Job? = null
@@ -155,7 +157,7 @@ internal class ExamViewModel(
             )
         }
 
-        saveExamResult(errors = errors, timeSpent = currentState.timer)
+        saveExamResult(errors = errors, timeSpent = currentState.timer, mistakePositions = mistakePositions)
     }
 
     fun checkTrueAtPosition(position: Int) {
@@ -219,7 +221,17 @@ internal class ExamViewModel(
         return Pair(totalErrors, mistakePositions)
     }
 
-    private fun saveExamResult(errors: Int, timeSpent: String) = viewModelScope.launch {
+    private fun saveExamResult(errors: Int, timeSpent: String, mistakePositions: List<Int>) = viewModelScope.launch {
+        val currentState = _internalUiState.value
+        currentState.questions.forEachIndexed { index, question ->
+            if (mistakePositions.getOrElse(index) { 0 } == 1) {
+                try {
+                    mistakesRepository.recordMistake(question.id, question.category)
+                } catch (_: Exception) {
+                    // Failure to record mistake is non-blocking
+                }
+            }
+        }
         try {
             val shouldSave = preferencesRepository.getSaveStats.first()
             if (shouldSave) {
@@ -227,7 +239,7 @@ internal class ExamViewModel(
                     ExamResult(
                         errors = errors,
                         time = timeSpent,
-                        category = _internalUiState.value.category,
+                        category = currentState.category,
                     ),
                 )
                 examResultsRepository.limitResults()

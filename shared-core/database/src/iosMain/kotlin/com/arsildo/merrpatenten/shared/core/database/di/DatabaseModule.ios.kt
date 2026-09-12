@@ -9,8 +9,9 @@ import kotlinx.cinterop.usePinned
 import kotlinx.coroutines.runBlocking
 import merrpatenten.shared_core.design_system.generated.resources.Res
 import org.koin.core.module.Module
-import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
+import org.koin.plugin.module.dsl.create
+import org.koin.plugin.module.dsl.single
 import platform.Foundation.NSData
 import platform.Foundation.NSDocumentDirectory
 import platform.Foundation.NSFileManager
@@ -49,5 +50,5 @@ private fun documentDirectory(): String {
 }
 
 actual val platformDatabaseModule: Module = module {
-    singleOf(::getDatabaseBuilder)
+    single { create(::getDatabaseBuilder) }
 }

@@ -1,5 +1,6 @@
 package com.arsildo.merrpatenten.shared.core.designsystem.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -15,11 +16,11 @@ import androidx.compose.material3.CardColors
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -51,19 +52,19 @@ fun HelpfulMaterialCard(onClick: () -> Unit, colors: CardColors, modifier: Modif
                 horizontalArrangement = Arrangement.spacedBy(16.dp),
                 modifier = Modifier.weight(1f),
             ) {
-                Surface(
-                    shape = CircleShape,
-                    color = colors.contentColor.copy(alpha = 0.10f),
-                    modifier = Modifier.size(48.dp),
+                Box(
+                    modifier = Modifier
+                        .size(48.dp)
+                        .clip(CircleShape)
+                        .background(colors.contentColor.copy(alpha = 0.10f)),
+                    contentAlignment = Alignment.Center,
                 ) {
-                    Box(contentAlignment = Alignment.Center) {
-                        Icon(
-                            painter = painterResource(Res.drawable.dpshtrr),
-                            contentDescription = null,
-                            tint = colors.contentColor,
-                            modifier = Modifier.size(32.dp),
-                        )
-                    }
+                    Icon(
+                        painter = painterResource(Res.drawable.dpshtrr),
+                        contentDescription = null,
+                        tint = colors.contentColor,
+                        modifier = Modifier.size(32.dp),
+                    )
                 }
                 Column(
                     verticalArrangement = Arrangement.spacedBy(2.dp),
@@ -82,19 +83,19 @@ fun HelpfulMaterialCard(onClick: () -> Unit, colors: CardColors, modifier: Modif
                 }
             }
 
-            Surface(
-                shape = CircleShape,
-                color = colors.contentColor.copy(alpha = 0.14f),
-                contentColor = colors.contentColor,
-                modifier = Modifier.size(38.dp),
+            Box(
+                modifier = Modifier
+                    .size(38.dp)
+                    .clip(CircleShape)
+                    .background(colors.contentColor.copy(alpha = 0.14f)),
+                contentAlignment = Alignment.Center,
             ) {
-                Box(contentAlignment = Alignment.Center) {
-                    Icon(
-                        imageVector = Icons.AutoMirrored.Rounded.OpenInNew,
-                        contentDescription = null,
-                        modifier = Modifier.size(18.dp),
-                    )
-                }
+                Icon(
+                    imageVector = Icons.AutoMirrored.Rounded.OpenInNew,
+                    contentDescription = null,
+                    tint = colors.contentColor,
+                    modifier = Modifier.size(18.dp),
+                )
             }
         }
     }

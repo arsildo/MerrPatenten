@@ -4,6 +4,7 @@ import com.arsildo.merrpatenten.shared.core.data.di.dataModule
 import com.arsildo.merrpatenten.shared.feature.catalog.di.catalogModule
 import com.arsildo.merrpatenten.shared.feature.dashboard.di.dashboardModule
 import com.arsildo.merrpatenten.shared.feature.exam.di.examModule
+import com.arsildo.merrpatenten.shared.feature.mistakes.di.mistakesModule
 import com.arsildo.merrpatenten.shared.feature.preferences.di.preferencesModule
 import com.arsildo.merrpatenten.shared.feature.statistics.di.statisticsModule
 import org.koin.core.context.startKoin
@@ -16,6 +17,7 @@ val appModules = listOf(
     statisticsModule,
     preferencesModule,
     catalogModule,
+    mistakesModule,
 )
 
 fun initKoin() {

@@ -4,11 +4,14 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
+import androidx.compose.material.icons.automirrored.rounded.TrendingUp
 import androidx.compose.material.icons.rounded.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
@@ -16,6 +19,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.arsildo.merrpatenten.shared.core.data.ReadinessLevel
+import com.arsildo.merrpatenten.shared.core.data.ReadinessScore
 import com.arsildo.merrpatenten.shared.core.designsystem.ERRORS_ALLOWED
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
 import com.arsildo.merrpatenten.shared.core.designsystem.components.SectionHeader
@@ -150,6 +155,37 @@ internal fun StatisticsScreen(
                         val totalErrors = results.sumOf { it.errors }
                         val avgErrors = ((totalErrors.toDouble() / results.size) * 10).roundToInt() / 10.0
 
+                        val readiness = uiState.readinessScore
+                        val (readinessColor, onReadinessColor, readinessText, readinessIcon) = when (readiness.level) {
+                            ReadinessLevel.READY -> Quadruple(
+                                MaterialTheme.semanticColors.successContainer,
+                                MaterialTheme.semanticColors.onSuccessContainer,
+                                stringResource(Res.string.readiness_status_ready),
+                                Icons.Rounded.Verified,
+                            )
+
+                            ReadinessLevel.IN_PROGRESS -> Quadruple(
+                                MaterialTheme.colorScheme.tertiaryContainer,
+                                MaterialTheme.colorScheme.onTertiaryContainer,
+                                stringResource(Res.string.readiness_status_in_progress),
+                                Icons.AutoMirrored.Rounded.TrendingUp,
+                            )
+
+                            ReadinessLevel.NEEDS_PRACTICE -> Quadruple(
+                                MaterialTheme.colorScheme.errorContainer,
+                                MaterialTheme.colorScheme.onErrorContainer,
+                                stringResource(Res.string.readiness_status_needs_practice),
+                                Icons.Rounded.WarningAmber,
+                            )
+
+                            ReadinessLevel.NOT_ENOUGH_DATA -> Quadruple(
+                                MaterialTheme.colorScheme.surfaceContainerHighest,
+                                MaterialTheme.colorScheme.onSurfaceVariant,
+                                stringResource(Res.string.readiness_status_not_enough_data),
+                                Icons.Rounded.Insights,
+                            )
+                        }
+
                         LazyVerticalGrid(
                             columns = GridCells.Fixed(2),
                             contentPadding = PaddingValues(start = 16.dp, top = 0.dp, end = 16.dp, bottom = 32.dp),
@@ -157,6 +193,72 @@ internal fun StatisticsScreen(
                             verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap),
                             modifier = Modifier.fillMaxSize(),
                         ) {
+                            // Readiness Banner
+                            item(span = { GridItemSpan(maxLineSpan) }) {
+                                Surface(
+                                    shape = MaterialTheme.shapes.extraLarge,
+                                    color = MaterialTheme.colorScheme.surfaceContainerHigh,
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(bottom = 12.dp),
+                                ) {
+                                    Row(
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .padding(16.dp),
+                                        verticalAlignment = Alignment.CenterVertically,
+                                        horizontalArrangement = Arrangement.spacedBy(14.dp),
+                                    ) {
+                                        Surface(
+                                            shape = CircleShape,
+                                            color = readinessColor,
+                                            modifier = Modifier.size(46.dp),
+                                        ) {
+                                            Box(contentAlignment = Alignment.Center) {
+                                                Icon(
+                                                    imageVector = readinessIcon,
+                                                    contentDescription = null,
+                                                    tint = onReadinessColor,
+                                                    modifier = Modifier.size(24.dp),
+                                                )
+                                            }
+                                        }
+                                        Column(
+                                            modifier = Modifier.weight(1f),
+                                            verticalArrangement = Arrangement.spacedBy(2.dp),
+                                        ) {
+                                            Row(
+                                                modifier = Modifier.fillMaxWidth(),
+                                                horizontalArrangement = Arrangement.SpaceBetween,
+                                                verticalAlignment = Alignment.CenterVertically,
+                                            ) {
+                                                Text(
+                                                    text = stringResource(Res.string.readiness_title),
+                                                    style = MaterialTheme.typography.titleMedium,
+                                                    fontWeight = FontWeight.Bold,
+                                                )
+                                                Text(
+                                                    text = "${readiness.percentage}%",
+                                                    style = MaterialTheme.typography.titleLarge,
+                                                    fontWeight = FontWeight.ExtraBold,
+                                                    color = if (readiness.level == ReadinessLevel.READY) {
+                                                        MaterialTheme.semanticColors.success
+                                                    } else {
+                                                        MaterialTheme.colorScheme.primary
+                                                    },
+                                                )
+                                            }
+                                            Text(
+                                                text = readinessText,
+                                                style = MaterialTheme.typography.bodySmall,
+                                                fontWeight = FontWeight.Medium,
+                                                color = onReadinessColor,
+                                            )
+                                        }
+                                    }
+                                }
+                            }
+
                             item(span = { GridItemSpan(maxLineSpan) }) {
                                 Row(
                                     modifier = Modifier
@@ -253,6 +355,14 @@ private fun StatisticsScreenWithDataPreview() {
                     ExamResult(id = 3, errors = 0, time = "31:45"),
                 ),
                 saveResults = true,
+                readinessScore = ReadinessScore(
+                    percentage = 78,
+                    level = ReadinessLevel.IN_PROGRESS,
+                    completedExams = 3,
+                    passedExams = 2,
+                    passRate = 67,
+                    averageErrors = 2.3,
+                ),
             ),
             onChangePreferenceClick = {},
             onBackPress = {},
@@ -298,6 +408,14 @@ private fun StatisticsScreenDarkPreview() {
                     ExamResult(id = 2, errors = 0, time = "28:10"),
                 ),
                 saveResults = true,
+                readinessScore = ReadinessScore(
+                    percentage = 92,
+                    level = ReadinessLevel.READY,
+                    completedExams = 2,
+                    passedExams = 2,
+                    passRate = 100,
+                    averageErrors = 0.5,
+                ),
             ),
             onChangePreferenceClick = {},
             onBackPress = {},
@@ -305,3 +423,5 @@ private fun StatisticsScreenDarkPreview() {
         )
     }
 }
+
+private data class Quadruple<A, B, C, D>(val first: A, val second: B, val third: C, val fourth: D)

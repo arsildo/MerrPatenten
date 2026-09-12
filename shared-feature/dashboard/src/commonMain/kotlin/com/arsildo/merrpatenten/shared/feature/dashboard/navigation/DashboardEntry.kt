@@ -18,6 +18,7 @@ fun EntryProviderScope<NavKey>.dashboardEntry(
     onStatisticsClick: () -> Unit,
     onPreferencesClick: () -> Unit,
     onCatalogClick: () -> Unit,
+    onMistakesClick: () -> Unit,
 ) {
     entry<Dashboard> {
         DashboardRoute(
@@ -25,6 +26,7 @@ fun EntryProviderScope<NavKey>.dashboardEntry(
             onStatisticsClick = onStatisticsClick,
             onPreferencesClick = onPreferencesClick,
             onCatalogClick = onCatalogClick,
+            onMistakesClick = onMistakesClick,
         )
     }
 }

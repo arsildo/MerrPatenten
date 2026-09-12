@@ -130,4 +130,38 @@
     <string name="catalog_right_of_way_order">Right-of-Way Priority</string>
     <string name="catalog_empty_results">No signs or rules found</string>
     <string name="catalog_item_count">%1$d items</string>
+
+    <!-- Readiness Score -->
+    <string name="readiness_title">Exam Readiness</string>
+    <string name="readiness_status_ready">Ready for Official Exam!</string>
+    <string name="readiness_status_in_progress">Making Good Progress</string>
+    <string name="readiness_status_needs_practice">Needs More Practice</string>
+    <string name="readiness_status_not_enough_data">Complete More Exams</string>
+    <string name="readiness_subtitle_format">Based on last %1$d exams (%2$d% pass rate)</string>
+    <string name="readiness_initial_hint">Take at least 3 exams to calculate your readiness.</string>
+
+    <!-- Mistake Notebook -->
+    <string name="mistakes_title">Mistake Notebook</string>
+    <string name="mistakes_dashboard_title">Mistake Notebook</string>
+    <string name="mistakes_dashboard_desc">Targeted practice for previously missed questions</string>
+    <string name="mistakes_badge_count">%1$d mistakes</string>
+    <string name="mistakes_badge_count_singular">1 mistake</string>
+    <string name="mistakes_empty_title">No Mistakes Recorded!</string>
+    <string name="mistakes_empty_desc">Complete exam simulations to discover and track questions that need extra practice.</string>
+    <string name="mistakes_start_practice">Start Practice (%1$d)</string>
+    <string name="mistakes_practice_title">Mistake Practice</string>
+    <string name="mistakes_error_count">Failed %1$d times</string>
+    <string name="mistakes_error_count_singular">Failed 1 time</string>
+    <string name="mistakes_mastery_progress">Mastery: %1$d/%2$d</string>
+    <string name="mistakes_mastered_badge">Mastered!</string>
+    <string name="mistakes_clear_category">Clear category mistakes</string>
+    <string name="mistakes_clear_category_desc">All recorded mistakes for this category will be deleted.</string>
+    <string name="mistakes_delete_item">Remove from notebook</string>
+    <string name="mistakes_practice_complete_title">Practice Finished!</string>
+    <string name="mistakes_practice_complete_desc">You practiced %1$d questions. %2$d questions graduated and were removed from your notebook!</string>
+    <string name="mistakes_practice_next">Next Question</string>
+    <string name="mistakes_practice_finish">Finish Practice</string>
+    <string name="mistakes_practice_correct_streak">Correct! %1$d/%2$d consecutive needed to graduate.</string>
+    <string name="mistakes_practice_graduated">Awesome! You mastered this question.</string>
+    <string name="mistakes_practice_wrong">Incorrect. Error recorded and streak reset.</string>
 </resources>

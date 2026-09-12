@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.kotlinSerialization)
+    alias(libs.plugins.koinCompiler)
 }
 
 kotlin {
@@ -21,6 +22,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(projects.sharedCore.model)
+            implementation(projects.sharedCore.data)
             implementation(projects.sharedCore.designSystem)
             implementation(projects.sharedCore.navigation)
             implementation(projects.sharedCore.datastore)

@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.androidxRoom)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.koinCompiler)
 }
 
 kotlin {
