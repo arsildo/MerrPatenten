@@ -8,8 +8,6 @@ import kotlinx.coroutines.runBlocking
 import merrpatenten.shared_core.design_system.generated.resources.Res
 import org.koin.core.module.Module
 import org.koin.dsl.module
-import org.koin.plugin.module.dsl.create
-import org.koin.plugin.module.dsl.single
 
 internal fun getDatabaseBuilder(context: Context): RoomDatabase.Builder<MerrPatentenDatabase> {
     val applicationContext = context.applicationContext
@@ -30,5 +28,5 @@ internal fun getDatabaseBuilder(context: Context): RoomDatabase.Builder<MerrPate
 }
 
 actual val platformDatabaseModule: Module = module {
-    single { create(::getDatabaseBuilder) }
+    single { getDatabaseBuilder(get()) }
 }

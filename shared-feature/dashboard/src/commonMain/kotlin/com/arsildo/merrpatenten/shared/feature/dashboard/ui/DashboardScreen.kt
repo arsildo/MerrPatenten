@@ -21,6 +21,7 @@ import com.arsildo.merrpatenten.shared.core.data.ReadinessLevel
 import com.arsildo.merrpatenten.shared.core.data.ReadinessScore
 import com.arsildo.merrpatenten.shared.core.designsystem.DPSHTRR_HELP
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
+import com.arsildo.merrpatenten.shared.core.designsystem.adaptive.rememberWindowAdaptiveInfo
 import com.arsildo.merrpatenten.shared.core.designsystem.components.ExamTypeCard
 import com.arsildo.merrpatenten.shared.core.designsystem.components.HelpfulMaterialCard
 import com.arsildo.merrpatenten.shared.core.designsystem.components.SectionHeader
@@ -63,8 +64,9 @@ internal fun DashboardScreen(
     modifier: Modifier = Modifier,
 ) {
     val hapticFeedback = LocalHapticFeedback.current
-    val uriHandler = LocalUriHandler.current
     var showDisclaimerDialog by remember { mutableStateOf(false) }
+    val adaptiveInfo = rememberWindowAdaptiveInfo()
+    val isMultiColumn = adaptiveInfo.isDualPane
 
     Scaffold(
         topBar = {
@@ -141,140 +143,191 @@ internal fun DashboardScreen(
                 }
             }
         },
-        floatingActionButtonPosition = FabPosition.Center,
+        floatingActionButtonPosition = if (isMultiColumn) FabPosition.End else FabPosition.Center,
         contentWindowInsets = WindowInsets(bottom = 0),
     ) { contentPadding ->
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(contentPadding)
-                .verticalScroll(rememberScrollState())
-                .padding(horizontal = 20.dp)
-                .padding(top = 24.dp, bottom = 104.dp),
-            verticalArrangement = Arrangement.spacedBy(20.dp),
-        ) {
-            // 1. First Major Category: Official Exam Simulations
-            SectionHeader(title = stringResource(Res.string.dashboard_section_exams))
-
-            // Exam Category Cards
-            ExamTypeCard(
-                title = stringResource(Res.string.questionnaire_category_one),
-                description = stringResource(Res.string.category_b_desc),
-                icon = Icons.Rounded.DirectionsCar,
-                onClick = {
-                    hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
-                    onStartExamClick("B")
-                },
-                colors = CardDefaults.cardColors(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer,
-                    contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
-                ),
-            )
-
-            ExamTypeCard(
-                title = stringResource(Res.string.questionnaire_category_two),
-                description = stringResource(Res.string.category_cd_desc),
-                icon = Icons.Rounded.LocalShipping,
-                onClick = {
-                    hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
-                    onStartExamClick("C")
-                },
-                colors = CardDefaults.cardColors(
-                    containerColor = MaterialTheme.colorScheme.secondaryContainer,
-                    contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
-                ),
-            )
-
-            ExamTypeCard(
-                title = stringResource(Res.string.questionnaire_category_three),
-                description = stringResource(Res.string.category_cd_desc),
-                icon = Icons.Rounded.DirectionsBus,
-                onClick = {
-                    hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
-                    onStartExamClick("D")
-                },
-                colors = CardDefaults.cardColors(
-                    containerColor = MaterialTheme.colorScheme.tertiaryContainer,
-                    contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
-                ),
-            )
-
-            // 2. Second Major Category: Study & Learning Materials
-            SectionHeader(title = stringResource(Res.string.dashboard_section_learning))
-
-            // Readiness Score Banner
-            ReadinessCard(
-                readinessScore = uiState.readinessScore,
-                onClick = {
-                    hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                    onStatisticsClick()
-                },
-            )
-
-            // Mistake Notebook Card ("Gabimet e Mia")
-            val mistakeDesc = if (uiState.mistakesCount > 0) {
-                if (uiState.mistakesCount == 1) {
-                    stringResource(Res.string.mistakes_badge_count_singular)
-                } else {
-                    stringResource(Res.string.mistakes_badge_count, uiState.mistakesCount)
-                } + " • " + stringResource(Res.string.mistakes_dashboard_desc)
-            } else {
-                stringResource(Res.string.mistakes_dashboard_desc)
+        if (isMultiColumn) {
+            Row(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(contentPadding)
+                    .verticalScroll(rememberScrollState())
+                    .padding(horizontal = 24.dp)
+                    .padding(top = 20.dp, bottom = 104.dp),
+                horizontalArrangement = Arrangement.spacedBy(24.dp),
+            ) {
+                ExamSection(
+                    onStartExamClick = onStartExamClick,
+                    modifier = Modifier.weight(1f),
+                )
+                LearningSection(
+                    uiState = uiState,
+                    onStatisticsClick = onStatisticsClick,
+                    onMistakesClick = onMistakesClick,
+                    onCatalogClick = onCatalogClick,
+                    modifier = Modifier.weight(1f),
+                )
             }
-
-            ExamTypeCard(
-                title = stringResource(Res.string.mistakes_dashboard_title),
-                description = mistakeDesc,
-                icon = Icons.Rounded.EditNote,
-                onClick = {
-                    hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
-                    onMistakesClick()
-                },
-                colors = CardDefaults.cardColors(
-                    containerColor = if (uiState.mistakesCount > 0) {
-                        MaterialTheme.colorScheme.errorContainer.copy(alpha = 0.45f)
-                    } else {
-                        MaterialTheme.colorScheme.surfaceContainerHigh
-                    },
-                    contentColor = MaterialTheme.colorScheme.onSurface,
-                ),
-            )
-
-            // Road Signs & Intersections Encyclopedia Card
-            ExamTypeCard(
-                title = stringResource(Res.string.catalog_dashboard_title),
-                description =
-                    stringResource(Res.string.catalog_category_warning) + " | " + stringResource(Res.string.catalog_category_prohibitory) +
-                        " | " +
-                        stringResource(Res.string.catalog_category_intersections),
-                icon = Icons.AutoMirrored.Rounded.MenuBook,
-                onClick = {
-                    hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
-                    onCatalogClick()
-                },
-                colors = CardDefaults.cardColors(
-                    containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
-                    contentColor = MaterialTheme.colorScheme.onSurface,
-                ),
-            )
-
-            // Helpful Material Card
-            HelpfulMaterialCard(
-                onClick = {
-                    hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                    uriHandler.openUri(DPSHTRR_HELP)
-                },
-                colors = CardDefaults.cardColors(
-                    containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
-                    contentColor = MaterialTheme.colorScheme.onSurface,
-                ),
-            )
+        } else {
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(contentPadding)
+                    .verticalScroll(rememberScrollState())
+                    .padding(horizontal = 20.dp)
+                    .padding(top = 24.dp, bottom = 104.dp),
+                verticalArrangement = Arrangement.spacedBy(20.dp),
+            ) {
+                ExamSection(onStartExamClick = onStartExamClick)
+                LearningSection(
+                    uiState = uiState,
+                    onStatisticsClick = onStatisticsClick,
+                    onMistakesClick = onMistakesClick,
+                    onCatalogClick = onCatalogClick,
+                )
+            }
         }
     }
 
     if (showDisclaimerDialog) {
         DisclaimerDialog(
             onDismissRequest = { showDisclaimerDialog = false },
+        )
+    }
+}
+
+@Composable
+private fun ExamSection(onStartExamClick: (category: String) -> Unit, modifier: Modifier = Modifier) {
+    val hapticFeedback = LocalHapticFeedback.current
+    Column(
+        modifier = modifier,
+        verticalArrangement = Arrangement.spacedBy(16.dp),
+    ) {
+        SectionHeader(title = stringResource(Res.string.dashboard_section_exams))
+
+        ExamTypeCard(
+            title = stringResource(Res.string.questionnaire_category_one),
+            description = stringResource(Res.string.category_b_desc),
+            icon = Icons.Rounded.DirectionsCar,
+            onClick = {
+                hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
+                onStartExamClick("B")
+            },
+            colors = CardDefaults.cardColors(
+                containerColor = MaterialTheme.colorScheme.primaryContainer,
+                contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+            ),
+        )
+
+        ExamTypeCard(
+            title = stringResource(Res.string.questionnaire_category_two),
+            description = stringResource(Res.string.category_cd_desc),
+            icon = Icons.Rounded.LocalShipping,
+            onClick = {
+                hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
+                onStartExamClick("C")
+            },
+            colors = CardDefaults.cardColors(
+                containerColor = MaterialTheme.colorScheme.secondaryContainer,
+                contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
+            ),
+        )
+
+        ExamTypeCard(
+            title = stringResource(Res.string.questionnaire_category_three),
+            description = stringResource(Res.string.category_cd_desc),
+            icon = Icons.Rounded.DirectionsBus,
+            onClick = {
+                hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
+                onStartExamClick("D")
+            },
+            colors = CardDefaults.cardColors(
+                containerColor = MaterialTheme.colorScheme.tertiaryContainer,
+                contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
+            ),
+        )
+    }
+}
+
+@Composable
+private fun LearningSection(
+    uiState: DashboardUiState,
+    onStatisticsClick: () -> Unit,
+    onMistakesClick: () -> Unit,
+    onCatalogClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val hapticFeedback = LocalHapticFeedback.current
+    val uriHandler = LocalUriHandler.current
+
+    Column(
+        modifier = modifier,
+        verticalArrangement = Arrangement.spacedBy(16.dp),
+    ) {
+        SectionHeader(title = stringResource(Res.string.dashboard_section_learning))
+
+        ReadinessCard(
+            readinessScore = uiState.readinessScore,
+            onClick = {
+                hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+                onStatisticsClick()
+            },
+        )
+
+        val mistakeDesc = if (uiState.mistakesCount > 0) {
+            if (uiState.mistakesCount == 1) {
+                stringResource(Res.string.mistakes_badge_count_singular)
+            } else {
+                stringResource(Res.string.mistakes_badge_count, uiState.mistakesCount)
+            } + " • " + stringResource(Res.string.mistakes_dashboard_desc)
+        } else {
+            stringResource(Res.string.mistakes_dashboard_desc)
+        }
+
+        ExamTypeCard(
+            title = stringResource(Res.string.mistakes_dashboard_title),
+            description = mistakeDesc,
+            icon = Icons.Rounded.EditNote,
+            onClick = {
+                hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
+                onMistakesClick()
+            },
+            colors = CardDefaults.cardColors(
+                containerColor = if (uiState.mistakesCount > 0) {
+                    MaterialTheme.colorScheme.errorContainer.copy(alpha = 0.45f)
+                } else {
+                    MaterialTheme.colorScheme.surfaceContainerHigh
+                },
+                contentColor = MaterialTheme.colorScheme.onSurface,
+            ),
+        )
+
+        ExamTypeCard(
+            title = stringResource(Res.string.catalog_dashboard_title),
+            description =
+                stringResource(Res.string.catalog_category_warning) + " | " + stringResource(Res.string.catalog_category_prohibitory) +
+                    " | " +
+                    stringResource(Res.string.catalog_category_intersections),
+            icon = Icons.AutoMirrored.Rounded.MenuBook,
+            onClick = {
+                hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
+                onCatalogClick()
+            },
+            colors = CardDefaults.cardColors(
+                containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
+                contentColor = MaterialTheme.colorScheme.onSurface,
+            ),
+        )
+
+        HelpfulMaterialCard(
+            onClick = {
+                hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+                uriHandler.openUri(DPSHTRR_HELP)
+            },
+            colors = CardDefaults.cardColors(
+                containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
+                contentColor = MaterialTheme.colorScheme.onSurface,
+            ),
         )
     }
 }

@@ -1,3 +1,8 @@
+@file:OptIn(
+    org.jetbrains.kotlin.gradle.export.ExperimentalExportDsl::class,
+    org.jetbrains.kotlin.gradle.swiftexport.ExperimentalSwiftExportDsl::class,
+)
+
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
@@ -11,13 +16,13 @@ kotlin {
         minSdk = 31
     }
 
-    listOf(
-        iosArm64(),
-        iosSimulatorArm64(),
-    ).forEach { iosTarget ->
-        iosTarget.binaries.framework {
-            baseName = "Datastore"
-            isStatic = true
+    iosArm64()
+    iosSimulatorArm64()
+    export {
+        swift {
+            moduleName = "Datastore"
+            rootPackage = "com.arsildo.merrpatenten.shared.core.datastore"
+            xcodeIntegration()
         }
     }
 

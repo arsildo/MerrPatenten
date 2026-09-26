@@ -1,3 +1,8 @@
+@file:OptIn(
+    org.jetbrains.kotlin.gradle.export.ExperimentalExportDsl::class,
+    org.jetbrains.kotlin.gradle.swiftexport.ExperimentalSwiftExportDsl::class,
+)
+
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
@@ -19,6 +24,13 @@ kotlin {
 
     iosArm64()
     iosSimulatorArm64()
+    export {
+        swift {
+            moduleName = "DesignSystem"
+            rootPackage = "com.arsildo.merrpatenten.shared.core.designsystem"
+            xcodeIntegration()
+        }
+    }
     jvm()
 
     sourceSets {
@@ -29,6 +41,8 @@ kotlin {
             implementation(libs.compose.components.resources)
             implementation(libs.compose.uiToolingPreview)
             implementation(libs.compose.material3)
+            api(libs.compose.material3.adaptive)
+            api(libs.compose.material3.adaptive.layout)
             implementation(compose.materialIconsExtended)
 
             implementation(libs.androidx.annotation)

@@ -30,13 +30,20 @@ import com.arsildo.merrpatenten.shared.core.model.SignCategory
 import org.jetbrains.compose.resources.painterResource
 
 @Composable
-fun RoadSignCard(sign: RoadSign, onClick: () -> Unit, modifier: Modifier = Modifier) {
+fun RoadSignCard(sign: RoadSign, onClick: () -> Unit, modifier: Modifier = Modifier, selected: Boolean = false) {
     Card(
         onClick = onClick,
         modifier = modifier.fillMaxWidth(),
         shape = MaterialTheme.shapes.medium,
+        border = if (selected) androidx.compose.foundation.BorderStroke(2.dp, MaterialTheme.colorScheme.primary) else null,
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceContainer,
+            containerColor = if (selected) {
+                MaterialTheme.colorScheme.primaryContainer.copy(
+                    alpha = 0.35f,
+                )
+            } else {
+                MaterialTheme.colorScheme.surfaceContainer
+            },
         ),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
     ) {

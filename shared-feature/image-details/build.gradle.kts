@@ -1,3 +1,8 @@
+@file:OptIn(
+    org.jetbrains.kotlin.gradle.export.ExperimentalExportDsl::class,
+    org.jetbrains.kotlin.gradle.swiftexport.ExperimentalSwiftExportDsl::class,
+)
+
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
@@ -16,6 +21,13 @@ kotlin {
 
     iosArm64()
     iosSimulatorArm64()
+    export {
+        swift {
+            moduleName = "ImageDetails"
+            rootPackage = "com.arsildo.merrpatenten.shared.feature.imagedetails"
+            xcodeIntegration()
+        }
+    }
     jvm()
 
     sourceSets {

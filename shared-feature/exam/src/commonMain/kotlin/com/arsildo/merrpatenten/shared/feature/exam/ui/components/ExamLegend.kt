@@ -37,6 +37,7 @@ internal fun ExamLegend(
     onMapClick: () -> Unit,
     onShowEndExamButton: () -> Unit,
     modifier: Modifier = Modifier,
+    showMapButton: Boolean = true,
 ) {
     val hapticFeedback = LocalHapticFeedback.current
     Row(
@@ -61,22 +62,24 @@ internal fun ExamLegend(
         }
 
         // Map / Grid Action
-        FilledTonalButton(
-            onClick = {
-                hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                onMapClick()
-            },
-            shapes = ButtonShapes(
-                shape = MaterialTheme.shapes.medium,
-                pressedShape = MaterialTheme.shapes.small,
-            ),
-            modifier = Modifier.padding(horizontal = 4.dp),
-        ) {
-            Icon(
-                imageVector = Icons.Rounded.GridView,
-                contentDescription = stringResource(Res.string.question_map),
-                modifier = Modifier.size(18.dp),
-            )
+        if (showMapButton) {
+            FilledTonalButton(
+                onClick = {
+                    hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+                    onMapClick()
+                },
+                shapes = ButtonShapes(
+                    shape = MaterialTheme.shapes.medium,
+                    pressedShape = MaterialTheme.shapes.small,
+                ),
+                modifier = Modifier.padding(horizontal = 4.dp),
+            ) {
+                Icon(
+                    imageVector = Icons.Rounded.GridView,
+                    contentDescription = stringResource(Res.string.question_map),
+                    modifier = Modifier.size(18.dp),
+                )
+            }
         }
 
         // Timer Badge

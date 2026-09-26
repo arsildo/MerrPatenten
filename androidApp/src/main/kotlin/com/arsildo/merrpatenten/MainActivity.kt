@@ -10,7 +10,7 @@ import com.arsildo.merrpatenten.shared.ui.MerrPatentenApp
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        val splashScreen = installSplashScreen()
+        installSplashScreen()
         super.onCreate(savedInstanceState)
         ApplicationLocaleManager.setDefaultLocale()
         enableEdgeToEdge()

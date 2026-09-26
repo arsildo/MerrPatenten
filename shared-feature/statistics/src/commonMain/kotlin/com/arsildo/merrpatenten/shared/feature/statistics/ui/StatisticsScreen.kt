@@ -1,10 +1,14 @@
 package com.arsildo.merrpatenten.shared.feature.statistics.ui
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.automirrored.rounded.TrendingUp
@@ -23,6 +27,7 @@ import com.arsildo.merrpatenten.shared.core.data.ReadinessLevel
 import com.arsildo.merrpatenten.shared.core.data.ReadinessScore
 import com.arsildo.merrpatenten.shared.core.designsystem.ERRORS_ALLOWED
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
+import com.arsildo.merrpatenten.shared.core.designsystem.adaptive.rememberWindowAdaptiveInfo
 import com.arsildo.merrpatenten.shared.core.designsystem.components.SectionHeader
 import com.arsildo.merrpatenten.shared.core.designsystem.semanticColors
 import com.arsildo.merrpatenten.shared.core.model.ExamResult
@@ -30,6 +35,7 @@ import com.arsildo.merrpatenten.shared.feature.statistics.StatisticsUiState
 import com.arsildo.merrpatenten.shared.feature.statistics.StatisticsViewModel
 import com.arsildo.merrpatenten.shared.feature.statistics.ui.components.DeleteResultsDialog
 import com.arsildo.merrpatenten.shared.feature.statistics.ui.components.PerformanceGraph
+import com.arsildo.merrpatenten.shared.feature.statistics.ui.components.ResultItem
 import com.arsildo.merrpatenten.shared.feature.statistics.ui.components.ResultStoringDisabled
 import com.arsildo.merrpatenten.shared.feature.statistics.ui.components.StatSummaryCard
 import com.arsildo.merrpatenten.shared.feature.statistics.ui.components.resultList
@@ -186,140 +192,89 @@ internal fun StatisticsScreen(
                             )
                         }
 
-                        LazyVerticalGrid(
-                            columns = GridCells.Fixed(2),
-                            contentPadding = PaddingValues(start = 16.dp, top = 0.dp, end = 16.dp, bottom = 32.dp),
-                            horizontalArrangement = Arrangement.spacedBy(16.dp),
-                            verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap),
-                            modifier = Modifier.fillMaxSize(),
-                        ) {
-                            // Readiness Banner
-                            item(span = { GridItemSpan(maxLineSpan) }) {
-                                Surface(
-                                    shape = MaterialTheme.shapes.extraLarge,
-                                    color = MaterialTheme.colorScheme.surfaceContainerHigh,
+                        val adaptiveInfo = rememberWindowAdaptiveInfo()
+
+                        if (adaptiveInfo.isDualPane) {
+                            Row(
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .padding(horizontal = 24.dp)
+                                    .padding(bottom = 32.dp),
+                                horizontalArrangement = Arrangement.spacedBy(24.dp),
+                            ) {
+                                Column(
                                     modifier = Modifier
-                                        .fillMaxWidth()
-                                        .padding(bottom = 12.dp),
+                                        .weight(1f)
+                                        .verticalScroll(rememberScrollState()),
+                                    verticalArrangement = Arrangement.spacedBy(16.dp),
                                 ) {
-                                    Row(
-                                        modifier = Modifier
-                                            .fillMaxWidth()
-                                            .padding(16.dp),
-                                        verticalAlignment = Alignment.CenterVertically,
-                                        horizontalArrangement = Arrangement.spacedBy(14.dp),
+                                    AnalyticsOverview(
+                                        readiness = readiness,
+                                        readinessColor = readinessColor,
+                                        onReadinessColor = onReadinessColor,
+                                        readinessText = readinessText,
+                                        readinessIcon = readinessIcon,
+                                        results = results,
+                                        avgErrors = avgErrors,
+                                        passRate = passRate,
+                                    )
+                                }
+
+                                Column(
+                                    modifier = Modifier.weight(1f),
+                                    verticalArrangement = Arrangement.spacedBy(8.dp),
+                                ) {
+                                    SectionHeader(
+                                        title = stringResource(Res.string.exam_history),
+                                        modifier = Modifier.padding(bottom = 4.dp),
+                                    )
+                                    LazyColumn(
+                                        modifier = Modifier.fillMaxSize(),
+                                        verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap),
                                     ) {
-                                        Surface(
-                                            shape = CircleShape,
-                                            color = readinessColor,
-                                            modifier = Modifier.size(46.dp),
-                                        ) {
-                                            Box(contentAlignment = Alignment.Center) {
-                                                Icon(
-                                                    imageVector = readinessIcon,
-                                                    contentDescription = null,
-                                                    tint = onReadinessColor,
-                                                    modifier = Modifier.size(24.dp),
-                                                )
-                                            }
-                                        }
-                                        Column(
-                                            modifier = Modifier.weight(1f),
-                                            verticalArrangement = Arrangement.spacedBy(2.dp),
-                                        ) {
-                                            Row(
-                                                modifier = Modifier.fillMaxWidth(),
-                                                horizontalArrangement = Arrangement.SpaceBetween,
-                                                verticalAlignment = Alignment.CenterVertically,
-                                            ) {
-                                                Text(
-                                                    text = stringResource(Res.string.readiness_title),
-                                                    style = MaterialTheme.typography.titleMedium,
-                                                    fontWeight = FontWeight.Bold,
-                                                )
-                                                Text(
-                                                    text = "${readiness.percentage}%",
-                                                    style = MaterialTheme.typography.titleLarge,
-                                                    fontWeight = FontWeight.ExtraBold,
-                                                    color = if (readiness.level == ReadinessLevel.READY) {
-                                                        MaterialTheme.semanticColors.success
-                                                    } else {
-                                                        MaterialTheme.colorScheme.primary
-                                                    },
-                                                )
-                                            }
-                                            Text(
-                                                text = readinessText,
-                                                style = MaterialTheme.typography.bodySmall,
-                                                fontWeight = FontWeight.Medium,
-                                                color = onReadinessColor,
+                                        itemsIndexed(
+                                            items = results,
+                                            key = { _, item -> item.id },
+                                        ) { index, result ->
+                                            ResultItem(
+                                                result = result,
+                                                index = index,
+                                                count = results.size,
                                             )
                                         }
                                     }
                                 }
                             }
-
-                            item(span = { GridItemSpan(maxLineSpan) }) {
-                                Row(
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .padding(bottom = 16.dp),
-                                    horizontalArrangement = Arrangement.spacedBy(10.dp),
-                                ) {
-                                    StatSummaryCard(
-                                        title = stringResource(Res.string.stat_exams),
-                                        value = "${results.size}",
-                                        icon = Icons.Rounded.Quiz,
-                                        containerColor = MaterialTheme.colorScheme.primaryContainer,
-                                        contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
-                                        modifier = Modifier.weight(1f),
-                                    )
-                                    StatSummaryCard(
-                                        title = stringResource(Res.string.stat_average),
-                                        value = "$avgErrors",
-                                        icon = Icons.Rounded.CheckCircle,
-                                        containerColor = if (avgErrors <=
-                                            ERRORS_ALLOWED
-                                        ) {
-                                            MaterialTheme.semanticColors.successContainer
-                                        } else {
-                                            MaterialTheme.colorScheme.errorContainer
-                                        },
-                                        contentColor = if (avgErrors <=
-                                            ERRORS_ALLOWED
-                                        ) {
-                                            MaterialTheme.semanticColors.onSuccessContainer
-                                        } else {
-                                            MaterialTheme.colorScheme.onErrorContainer
-                                        },
-                                        modifier = Modifier.weight(1f),
-                                    )
-                                    StatSummaryCard(
-                                        title = stringResource(Res.string.stat_pass_rate),
-                                        value = "$passRate%",
-                                        icon = Icons.Rounded.EmojiEvents,
-                                        containerColor = MaterialTheme.colorScheme.tertiaryContainer,
-                                        contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
-                                        modifier = Modifier.weight(1f),
+                        } else {
+                            LazyVerticalGrid(
+                                columns = GridCells.Fixed(2),
+                                contentPadding = PaddingValues(start = 16.dp, top = 0.dp, end = 16.dp, bottom = 32.dp),
+                                horizontalArrangement = Arrangement.spacedBy(16.dp),
+                                verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap),
+                                modifier = Modifier.fillMaxSize(),
+                            ) {
+                                item(span = { GridItemSpan(maxLineSpan) }) {
+                                    AnalyticsOverview(
+                                        readiness = readiness,
+                                        readinessColor = readinessColor,
+                                        onReadinessColor = onReadinessColor,
+                                        readinessText = readinessText,
+                                        readinessIcon = readinessIcon,
+                                        results = results,
+                                        avgErrors = avgErrors,
+                                        passRate = passRate,
                                     )
                                 }
-                            }
 
-                            item(span = { GridItemSpan(maxLineSpan) }) {
-                                PerformanceGraph(
-                                    results = results,
-                                    modifier = Modifier.padding(bottom = 16.dp),
-                                )
-                            }
+                                item(span = { GridItemSpan(maxLineSpan) }) {
+                                    SectionHeader(
+                                        title = stringResource(Res.string.exam_history),
+                                        modifier = Modifier.padding(top = 4.dp, bottom = 4.dp),
+                                    )
+                                }
 
-                            item(span = { GridItemSpan(maxLineSpan) }) {
-                                SectionHeader(
-                                    title = stringResource(Res.string.exam_history),
-                                    modifier = Modifier.padding(top = 4.dp, bottom = 4.dp),
-                                )
+                                resultList(results = results)
                             }
-
-                            resultList(results = results)
                         }
                     } else {
                         ResultStoringDisabled(
@@ -339,6 +294,131 @@ internal fun StatisticsScreen(
                 deleteResultsDialog = false
             },
             onDismiss = { deleteResultsDialog = false },
+        )
+    }
+}
+
+@Composable
+private fun AnalyticsOverview(
+    readiness: ReadinessScore,
+    readinessColor: androidx.compose.ui.graphics.Color,
+    onReadinessColor: androidx.compose.ui.graphics.Color,
+    readinessText: String,
+    readinessIcon: androidx.compose.ui.graphics.vector.ImageVector,
+    results: List<ExamResult>,
+    avgErrors: Double,
+    passRate: Int,
+    modifier: Modifier = Modifier,
+) {
+    Column(
+        modifier = modifier,
+        verticalArrangement = Arrangement.spacedBy(12.dp),
+    ) {
+        // Readiness Banner
+        Surface(
+            shape = MaterialTheme.shapes.extraLarge,
+            color = MaterialTheme.colorScheme.surfaceContainerHigh,
+            modifier = Modifier.fillMaxWidth(),
+        ) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(14.dp),
+            ) {
+                Surface(
+                    shape = CircleShape,
+                    color = readinessColor,
+                    modifier = Modifier.size(46.dp),
+                ) {
+                    Box(contentAlignment = Alignment.Center) {
+                        Icon(
+                            imageVector = readinessIcon,
+                            contentDescription = null,
+                            tint = onReadinessColor,
+                            modifier = Modifier.size(24.dp),
+                        )
+                    }
+                }
+                Column(
+                    modifier = Modifier.weight(1f),
+                    verticalArrangement = Arrangement.spacedBy(2.dp),
+                ) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        Text(
+                            text = stringResource(Res.string.readiness_title),
+                            style = MaterialTheme.typography.titleMedium,
+                            fontWeight = FontWeight.Bold,
+                        )
+                        Text(
+                            text = "${readiness.percentage}%",
+                            style = MaterialTheme.typography.titleLarge,
+                            fontWeight = FontWeight.ExtraBold,
+                            color = if (readiness.level == ReadinessLevel.READY) {
+                                MaterialTheme.semanticColors.success
+                            } else {
+                                MaterialTheme.colorScheme.primary
+                            },
+                        )
+                    }
+                    Text(
+                        text = readinessText,
+                        style = MaterialTheme.typography.bodySmall,
+                        fontWeight = FontWeight.Medium,
+                        color = onReadinessColor,
+                    )
+                }
+            }
+        }
+
+        // Summary Cards
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(10.dp),
+        ) {
+            StatSummaryCard(
+                title = stringResource(Res.string.stat_exams),
+                value = "${results.size}",
+                icon = Icons.Rounded.Quiz,
+                containerColor = MaterialTheme.colorScheme.primaryContainer,
+                contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                modifier = Modifier.weight(1f),
+            )
+            StatSummaryCard(
+                title = stringResource(Res.string.stat_average),
+                value = "$avgErrors",
+                icon = Icons.Rounded.CheckCircle,
+                containerColor = if (avgErrors <= ERRORS_ALLOWED) {
+                    MaterialTheme.semanticColors.successContainer
+                } else {
+                    MaterialTheme.colorScheme.errorContainer
+                },
+                contentColor = if (avgErrors <= ERRORS_ALLOWED) {
+                    MaterialTheme.semanticColors.onSuccessContainer
+                } else {
+                    MaterialTheme.colorScheme.onErrorContainer
+                },
+                modifier = Modifier.weight(1f),
+            )
+            StatSummaryCard(
+                title = stringResource(Res.string.stat_pass_rate),
+                value = "$passRate%",
+                icon = Icons.Rounded.EmojiEvents,
+                containerColor = MaterialTheme.colorScheme.tertiaryContainer,
+                contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
+                modifier = Modifier.weight(1f),
+            )
+        }
+
+        // Performance Graph
+        PerformanceGraph(
+            results = results,
+            modifier = Modifier.padding(top = 4.dp),
         )
     }
 }

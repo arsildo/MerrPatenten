@@ -13,14 +13,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import org.koin.core.module.Module
 import org.koin.dsl.module
-import org.koin.plugin.module.dsl.create
-import org.koin.plugin.module.dsl.single
 
 expect val platformDatabaseModule: Module
 
 val databaseModule = module {
     includes(platformDatabaseModule)
-    single { create(::getRoomDatabase) }
+    single { getRoomDatabase(get()) }
     single<QuestionnaireDAO> { get<MerrPatentenDatabase>().questionnaireDAO() }
     single<ExamResultsDAO> { get<MerrPatentenDatabase>().examResultsDAO() }
     single<MistakesDAO> { get<MerrPatentenDatabase>().mistakesDAO() }

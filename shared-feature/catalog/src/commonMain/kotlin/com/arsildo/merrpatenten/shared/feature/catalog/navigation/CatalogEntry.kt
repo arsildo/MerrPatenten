@@ -22,6 +22,7 @@ fun EntryProviderScope<NavKey>.catalogEntry(
         CatalogRoute(
             onBackPress = onBackPress,
             onSignClick = { signId -> backStack.add(SignDetail(signId)) },
+            onImageDetailsClick = onImageDetailsClick,
         )
     }
 

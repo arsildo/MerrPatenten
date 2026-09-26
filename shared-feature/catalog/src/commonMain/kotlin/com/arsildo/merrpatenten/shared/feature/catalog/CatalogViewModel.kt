@@ -3,9 +3,11 @@ package com.arsildo.merrpatenten.shared.feature.catalog
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.arsildo.merrpatenten.shared.core.data.CatalogRepository
+import com.arsildo.merrpatenten.shared.core.model.Question
 import com.arsildo.merrpatenten.shared.core.model.RoadSign
 import com.arsildo.merrpatenten.shared.core.model.SignCategory
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -81,4 +83,6 @@ class CatalogViewModel(private val catalogRepository: CatalogRepository) : ViewM
             _searchQuery.update { "" }
         }
     }
+
+    fun getQuestionsForSign(imageId: Int): Flow<List<Question>> = catalogRepository.getQuestionsForSign(imageId)
 }

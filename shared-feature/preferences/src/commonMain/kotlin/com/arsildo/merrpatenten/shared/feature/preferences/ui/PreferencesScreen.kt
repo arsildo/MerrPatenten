@@ -17,6 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.arsildo.merrpatenten.shared.core.designsystem.*
+import com.arsildo.merrpatenten.shared.core.designsystem.adaptive.rememberWindowAdaptiveInfo
 import com.arsildo.merrpatenten.shared.core.designsystem.components.PreferenceCard
 import com.arsildo.merrpatenten.shared.core.designsystem.components.SectionHeader
 import com.arsildo.merrpatenten.shared.core.designsystem.components.TextSizePreferenceCard
@@ -134,140 +135,62 @@ internal fun PreferencesScreen(
             contentColor = MaterialTheme.colorScheme.onBackground,
             contentWindowInsets = WindowInsets(bottom = 0),
         ) { contentPadding ->
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(contentPadding)
-                    .verticalScroll(rememberScrollState())
-                    .padding(horizontal = 16.dp),
-                verticalArrangement = Arrangement.spacedBy(24.dp),
-            ) {
-                // Section 1: Behavior
-                Column(
-                    verticalArrangement = Arrangement.spacedBy(8.dp),
+            val adaptiveInfo = rememberWindowAdaptiveInfo()
+            val isDualPane = adaptiveInfo.isDualPane
+
+            if (isDualPane) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(contentPadding)
+                        .verticalScroll(rememberScrollState())
+                        .padding(horizontal = 24.dp)
+                        .padding(top = 16.dp, bottom = 32.dp),
+                    horizontalArrangement = Arrangement.spacedBy(24.dp),
                 ) {
-                    SectionHeader(title = stringResource(Res.string.pref_section_behavior))
+                    BehaviorSection(
+                        uiState = uiState,
+                        onImmersiveModeChange = onImmersiveModeChange,
+                        onSaveStatsChange = onSaveStatsChange,
+                        onHapticFeedbackChange = onHapticFeedbackChange,
+                        modifier = Modifier.weight(1f),
+                    )
 
-                    Column(
-                        verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap),
-                    ) {
-                        PreferenceCard(
-                            title = stringResource(Res.string.preferences_navigation_buttons),
-                            subtitle = stringResource(Res.string.preferences_navigation_buttons_desc),
-                            checked = uiState.immersiveMode,
-                            index = 0,
-                            count = 3,
-                            leadingIcon = {
-                                Icon(
-                                    imageVector = Icons.Rounded.TouchApp,
-                                    contentDescription = null,
-                                    tint = MaterialTheme.colorScheme.primary,
-                                )
-                            },
-                            onCheckedChange = onImmersiveModeChange,
-                        )
-                        PreferenceCard(
-                            title = stringResource(Res.string.preferences_store_stats),
-                            subtitle = stringResource(Res.string.preferences_store_stats_desc),
-                            checked = uiState.saveStats,
-                            index = 1,
-                            count = 3,
-                            leadingIcon = {
-                                Icon(
-                                    imageVector = Icons.Rounded.Insights,
-                                    contentDescription = null,
-                                    tint = MaterialTheme.colorScheme.primary,
-                                )
-                            },
-                            onCheckedChange = onSaveStatsChange,
-                        )
-                        PreferenceCard(
-                            title = stringResource(Res.string.preferences_haptic_feedback),
-                            subtitle = stringResource(Res.string.preferences_haptic_feedback_desc),
-                            checked = uiState.hapticFeedback,
-                            index = 2,
-                            count = 3,
-                            leadingIcon = {
-                                Icon(
-                                    imageVector = Icons.Rounded.Vibration,
-                                    contentDescription = null,
-                                    tint = MaterialTheme.colorScheme.primary,
-                                )
-                            },
-                            onCheckedChange = onHapticFeedbackChange,
-                        )
-                    }
+                    AppearanceSection(
+                        uiState = uiState,
+                        onFollowSystemChange = onFollowSystemChange,
+                        onColorSchemeChange = onColorSchemeChange,
+                        onDynamicColorSchemeChange = onDynamicColorSchemeChange,
+                        onQuestionTextSizeChange = onQuestionTextSizeChange,
+                        modifier = Modifier.weight(1f),
+                    )
                 }
-
-                // Section 2: Appearance
+            } else {
                 Column(
-                    verticalArrangement = Arrangement.spacedBy(8.dp),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(contentPadding)
+                        .verticalScroll(rememberScrollState())
+                        .padding(horizontal = 16.dp),
+                    verticalArrangement = Arrangement.spacedBy(24.dp),
                 ) {
-                    SectionHeader(title = stringResource(Res.string.pref_section_appearance))
+                    BehaviorSection(
+                        uiState = uiState,
+                        onImmersiveModeChange = onImmersiveModeChange,
+                        onSaveStatsChange = onSaveStatsChange,
+                        onHapticFeedbackChange = onHapticFeedbackChange,
+                    )
 
-                    val appearanceCount = (if (supportsDynamicColor) 3 else 2) + 1
+                    AppearanceSection(
+                        uiState = uiState,
+                        onFollowSystemChange = onFollowSystemChange,
+                        onColorSchemeChange = onColorSchemeChange,
+                        onDynamicColorSchemeChange = onDynamicColorSchemeChange,
+                        onQuestionTextSizeChange = onQuestionTextSizeChange,
+                    )
 
-                    Column(
-                        verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap),
-                    ) {
-                        PreferenceCard(
-                            title = stringResource(Res.string.preferences_follow_system_theme),
-                            subtitle = stringResource(Res.string.preferences_follow_system_theme_desc),
-                            checked = uiState.followSystemColors,
-                            index = 0,
-                            count = appearanceCount,
-                            leadingIcon = {
-                                Icon(
-                                    imageVector = Icons.Rounded.BrightnessAuto,
-                                    contentDescription = null,
-                                    tint = MaterialTheme.colorScheme.primary,
-                                )
-                            },
-                            onCheckedChange = onFollowSystemChange,
-                        )
-                        PreferenceCard(
-                            title = stringResource(Res.string.preferences_dark_mode),
-                            subtitle = stringResource(Res.string.preferences_dark_mode_desc),
-                            checked = uiState.colorScheme,
-                            enabled = !uiState.followSystemColors,
-                            index = 1,
-                            count = appearanceCount,
-                            leadingIcon = {
-                                Icon(
-                                    imageVector = Icons.Rounded.DarkMode,
-                                    contentDescription = null,
-                                    tint = MaterialTheme.colorScheme.primary,
-                                )
-                            },
-                            onCheckedChange = onColorSchemeChange,
-                        )
-                        if (supportsDynamicColor) {
-                            PreferenceCard(
-                                title = stringResource(Res.string.preferences_material_you),
-                                subtitle = stringResource(Res.string.preferences_material_you_desc),
-                                checked = uiState.dynamicColorScheme,
-                                index = 2,
-                                count = appearanceCount,
-                                leadingIcon = {
-                                    Icon(
-                                        imageVector = Icons.Rounded.Palette,
-                                        contentDescription = null,
-                                        tint = MaterialTheme.colorScheme.primary,
-                                    )
-                                },
-                                onCheckedChange = onDynamicColorSchemeChange,
-                            )
-                        }
-                        TextSizePreferenceCard(
-                            selectedSize = uiState.questionTextSize,
-                            onSizeSelected = onQuestionTextSizeChange,
-                            index = if (supportsDynamicColor) 3 else 2,
-                            count = appearanceCount,
-                        )
-                    }
+                    Spacer(modifier = Modifier.height(32.dp).navigationBarsPadding())
                 }
-
-                Spacer(modifier = Modifier.height(32.dp).navigationBarsPadding())
             }
 
             if (languageDialogVisible) {
@@ -275,6 +198,150 @@ internal fun PreferencesScreen(
                     onDismissRequest = { languageDialogVisible = false },
                 )
             }
+        }
+    }
+}
+
+@Composable
+private fun BehaviorSection(
+    uiState: PreferencesUiState,
+    onImmersiveModeChange: (enabled: Boolean) -> Unit,
+    onSaveStatsChange: (enabled: Boolean) -> Unit,
+    onHapticFeedbackChange: (enabled: Boolean) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Column(
+        modifier = modifier,
+        verticalArrangement = Arrangement.spacedBy(8.dp),
+    ) {
+        SectionHeader(title = stringResource(Res.string.pref_section_behavior))
+
+        Column(
+            verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap),
+        ) {
+            PreferenceCard(
+                title = stringResource(Res.string.preferences_navigation_buttons),
+                subtitle = stringResource(Res.string.preferences_navigation_buttons_desc),
+                checked = uiState.immersiveMode,
+                index = 0,
+                count = 3,
+                leadingIcon = {
+                    Icon(
+                        imageVector = Icons.Rounded.TouchApp,
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.primary,
+                    )
+                },
+                onCheckedChange = onImmersiveModeChange,
+            )
+            PreferenceCard(
+                title = stringResource(Res.string.preferences_store_stats),
+                subtitle = stringResource(Res.string.preferences_store_stats_desc),
+                checked = uiState.saveStats,
+                index = 1,
+                count = 3,
+                leadingIcon = {
+                    Icon(
+                        imageVector = Icons.Rounded.Insights,
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.primary,
+                    )
+                },
+                onCheckedChange = onSaveStatsChange,
+            )
+            PreferenceCard(
+                title = stringResource(Res.string.preferences_haptic_feedback),
+                subtitle = stringResource(Res.string.preferences_haptic_feedback_desc),
+                checked = uiState.hapticFeedback,
+                index = 2,
+                count = 3,
+                leadingIcon = {
+                    Icon(
+                        imageVector = Icons.Rounded.Vibration,
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.primary,
+                    )
+                },
+                onCheckedChange = onHapticFeedbackChange,
+            )
+        }
+    }
+}
+
+@Composable
+private fun AppearanceSection(
+    uiState: PreferencesUiState,
+    onFollowSystemChange: (enabled: Boolean) -> Unit,
+    onColorSchemeChange: (isDark: Boolean) -> Unit,
+    onDynamicColorSchemeChange: (enabled: Boolean) -> Unit,
+    onQuestionTextSizeChange: (textSize: QuestionTextSize) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val appearanceCount = (if (supportsDynamicColor) 3 else 2) + 1
+
+    Column(
+        modifier = modifier,
+        verticalArrangement = Arrangement.spacedBy(8.dp),
+    ) {
+        SectionHeader(title = stringResource(Res.string.pref_section_appearance))
+
+        Column(
+            verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap),
+        ) {
+            PreferenceCard(
+                title = stringResource(Res.string.preferences_follow_system_theme),
+                subtitle = stringResource(Res.string.preferences_follow_system_theme_desc),
+                checked = uiState.followSystemColors,
+                index = 0,
+                count = appearanceCount,
+                leadingIcon = {
+                    Icon(
+                        imageVector = Icons.Rounded.BrightnessAuto,
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.primary,
+                    )
+                },
+                onCheckedChange = onFollowSystemChange,
+            )
+            PreferenceCard(
+                title = stringResource(Res.string.preferences_dark_mode),
+                subtitle = stringResource(Res.string.preferences_dark_mode_desc),
+                checked = uiState.colorScheme,
+                enabled = !uiState.followSystemColors,
+                index = 1,
+                count = appearanceCount,
+                leadingIcon = {
+                    Icon(
+                        imageVector = Icons.Rounded.DarkMode,
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.primary,
+                    )
+                },
+                onCheckedChange = onColorSchemeChange,
+            )
+            if (supportsDynamicColor) {
+                PreferenceCard(
+                    title = stringResource(Res.string.preferences_material_you),
+                    subtitle = stringResource(Res.string.preferences_material_you_desc),
+                    checked = uiState.dynamicColorScheme,
+                    index = 2,
+                    count = appearanceCount,
+                    leadingIcon = {
+                        Icon(
+                            imageVector = Icons.Rounded.Palette,
+                            contentDescription = null,
+                            tint = MaterialTheme.colorScheme.primary,
+                        )
+                    },
+                    onCheckedChange = onDynamicColorSchemeChange,
+                )
+            }
+            TextSizePreferenceCard(
+                selectedSize = uiState.questionTextSize,
+                onSizeSelected = onQuestionTextSizeChange,
+                index = if (supportsDynamicColor) 3 else 2,
+                count = appearanceCount,
+            )
         }
     }
 }

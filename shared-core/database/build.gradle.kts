@@ -1,3 +1,8 @@
+@file:OptIn(
+    org.jetbrains.kotlin.gradle.export.ExperimentalExportDsl::class,
+    org.jetbrains.kotlin.gradle.swiftexport.ExperimentalSwiftExportDsl::class,
+)
+
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
@@ -13,14 +18,13 @@ kotlin {
         minSdk = 31
     }
 
-    listOf(
-        iosArm64(),
-        iosSimulatorArm64(),
-    ).forEach { iosTarget ->
-        iosTarget.binaries.framework {
-            baseName = "Database"
-            isStatic = true
-            linkerOpts.add("-lsqlite3")
+    iosArm64()
+    iosSimulatorArm64()
+    export {
+        swift {
+            moduleName = "Database"
+            rootPackage = "com.arsildo.merrpatenten.shared.core.database"
+            xcodeIntegration()
         }
     }
 

@@ -6,14 +6,17 @@ import androidx.compose.foundation.focusable
 import androidx.compose.foundation.gestures.rememberTransformableState
 import androidx.compose.foundation.gestures.transformable
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.FloatingActionButtonDefaults
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -35,6 +38,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
+import com.arsildo.merrpatenten.shared.core.designsystem.adaptive.rememberWindowAdaptiveInfo
 import com.arsildo.merrpatenten.shared.core.designsystem.getImageResource
 import merrpatenten.shared_core.design_system.generated.resources.*
 import org.jetbrains.compose.resources.painterResource
@@ -64,65 +68,140 @@ internal fun ZoomableExamImage(uiState: ImageDetailsUiState, onDismiss: () -> Un
         hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
         onDismiss()
     }
-    Box(
-        modifier = modifier
-            .fillMaxSize()
-            .focusRequester(focusRequester)
-            .focusable()
-            .onPreviewKeyEvent { event ->
-                if (event.type != KeyEventType.KeyDown) return@onPreviewKeyEvent false
-                when (event.key) {
-                    Key.Escape, Key.Back, Key.Z -> {
-                        handleDismiss()
-                        true
-                    }
+    var scale by remember { mutableFloatStateOf(1f) }
+    var rotation by remember { mutableFloatStateOf(0f) }
+    val state = rememberTransformableState { zoomChange, panChange, rotationChange ->
+        scale = (scale * zoomChange).coerceIn(0.5f, 5f)
+        rotation += rotationChange
+    }
 
-                    else -> false
+    val adaptiveInfo = rememberWindowAdaptiveInfo()
+
+    if (adaptiveInfo.isTabletop) {
+        Column(
+            modifier = modifier
+                .fillMaxSize()
+                .focusRequester(focusRequester)
+                .focusable()
+                .onPreviewKeyEvent { event ->
+                    if (event.type != KeyEventType.KeyDown) return@onPreviewKeyEvent false
+                    when (event.key) {
+                        Key.Escape, Key.Back, Key.Z -> {
+                            handleDismiss()
+                            true
+                        }
+
+                        else -> false
+                    }
                 }
+                .clickable(onClick = handleDismiss),
+        ) {
+            // Upper Display Half: Upright Screen
+            Box(
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxWidth(),
+                contentAlignment = Alignment.Center,
+            ) {
+                Image(
+                    painter = painterResource(getImageResource(uiState.imageId)),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .padding(16.dp)
+                        .aspectRatio(ratio = 1f)
+                        .graphicsLayer(
+                            scaleX = scale,
+                            scaleY = scale,
+                            rotationZ = rotation,
+                        )
+                        .transformable(state = state),
+                )
             }
-            .clickable(onClick = handleDismiss),
-        contentAlignment = Alignment.Center,
-    ) {
-        var scale by remember { mutableFloatStateOf(1f) }
-        var rotation by remember { mutableFloatStateOf(0f) }
-        val state = rememberTransformableState { zoomChange, panChange, rotationChange ->
-            scale = (scale * zoomChange).coerceIn(0.5f, 5f)
-            rotation += rotationChange
+
+            HorizontalDivider(thickness = 2.dp, color = MaterialTheme.colorScheme.outlineVariant)
+
+            // Lower Base Half: Controls
+            Box(
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxWidth()
+                    .navigationBarsPadding(),
+                contentAlignment = Alignment.Center,
+            ) {
+                ExtendedFloatingActionButton(
+                    onClick = handleDismiss,
+                    text = {
+                        Text(
+                            text = stringResource(Res.string.back),
+                            style = MaterialTheme.typography.labelLarge,
+                            fontWeight = FontWeight.Bold,
+                        )
+                    },
+                    icon = {
+                        Icon(imageVector = Icons.AutoMirrored.Rounded.ArrowBack, contentDescription = null)
+                    },
+                    elevation = FloatingActionButtonDefaults.loweredElevation(),
+                    shape = MaterialTheme.shapes.large,
+                    containerColor = MaterialTheme.colorScheme.primaryContainer,
+                    contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                )
+            }
         }
-        Image(
-            painter = painterResource(getImageResource(uiState.imageId)),
-            contentDescription = null,
-            modifier = Modifier
-                .padding(24.dp)
-                .aspectRatio(ratio = 1f)
-                .graphicsLayer(
-                    scaleX = scale,
-                    scaleY = scale,
-                    rotationZ = rotation,
-                )
-                .transformable(state = state),
-        )
-        ExtendedFloatingActionButton(
-            onClick = handleDismiss,
-            text = {
-                Text(
-                    text = stringResource(Res.string.back),
-                    style = MaterialTheme.typography.labelLarge,
-                    fontWeight = FontWeight.Bold,
-                )
-            },
-            icon = {
-                Icon(imageVector = Icons.AutoMirrored.Rounded.ArrowBack, contentDescription = null)
-            },
-            elevation = FloatingActionButtonDefaults.loweredElevation(),
-            shape = MaterialTheme.shapes.large,
-            containerColor = MaterialTheme.colorScheme.primaryContainer,
-            contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
-            modifier = Modifier
-                .align(Alignment.BottomCenter)
-                .navigationBarsPadding()
-                .padding(bottom = 24.dp),
-        )
+    } else {
+        Box(
+            modifier = modifier
+                .fillMaxSize()
+                .focusRequester(focusRequester)
+                .focusable()
+                .onPreviewKeyEvent { event ->
+                    if (event.type != KeyEventType.KeyDown) return@onPreviewKeyEvent false
+                    when (event.key) {
+                        Key.Escape, Key.Back, Key.Z -> {
+                            handleDismiss()
+                            true
+                        }
+
+                        else -> false
+                    }
+                }
+                .clickable(onClick = handleDismiss),
+            contentAlignment = Alignment.Center,
+        ) {
+            Image(
+                painter = painterResource(getImageResource(uiState.imageId)),
+                contentDescription = null,
+                modifier = Modifier
+                    .padding(24.dp)
+                    .aspectRatio(ratio = 1f)
+                    .graphicsLayer(
+                        scaleX = scale,
+                        scaleY = scale,
+                        rotationZ = rotation,
+                    )
+                    .transformable(state = state),
+            )
+            ExtendedFloatingActionButton(
+                onClick = handleDismiss,
+                text = {
+                    Text(
+                        text = stringResource(Res.string.back),
+                        style = MaterialTheme.typography.labelLarge,
+                        fontWeight = FontWeight.Bold,
+                    )
+                },
+                icon = {
+                    Icon(imageVector = Icons.AutoMirrored.Rounded.ArrowBack, contentDescription = null)
+                },
+                elevation = FloatingActionButtonDefaults.loweredElevation(),
+                shape = MaterialTheme.shapes.large,
+                containerColor = MaterialTheme.colorScheme.primaryContainer,
+                contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                modifier = Modifier
+                    .align(Alignment.BottomCenter)
+                    .navigationBarsPadding()
+                    .padding(bottom = 24.dp),
+            )
+        }
     }
 }
 

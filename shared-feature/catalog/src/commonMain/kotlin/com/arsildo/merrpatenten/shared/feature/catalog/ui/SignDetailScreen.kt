@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
@@ -126,304 +127,326 @@ internal fun SignDetailScreen(
                 )
             }
         } else {
-            Column(
+            SignDetailBody(
+                sign = sign,
+                relatedQuestions = uiState.relatedQuestions,
+                onImageDetailsClick = onImageDetailsClick,
                 modifier = Modifier
-                    .fillMaxSize()
                     .padding(top = contentPadding.calculateTopPadding())
-                    .verticalScroll(rememberScrollState())
-                    .padding(horizontal = 20.dp)
-                    .padding(top = 12.dp, bottom = contentPadding.calculateBottomPadding() + 32.dp),
-                verticalArrangement = Arrangement.spacedBy(20.dp),
+                    .padding(bottom = contentPadding.calculateBottomPadding()),
+            )
+        }
+    }
+}
+
+@Composable
+internal fun SignDetailBody(
+    sign: RoadSign,
+    relatedQuestions: List<Question> = emptyList(),
+    onImageDetailsClick: (index: Int) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Box(
+        modifier = modifier.fillMaxSize(),
+        contentAlignment = Alignment.TopCenter,
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .widthIn(max = 720.dp)
+                .verticalScroll(rememberScrollState())
+                .padding(horizontal = 20.dp)
+                .padding(top = 12.dp, bottom = 32.dp),
+            verticalArrangement = Arrangement.spacedBy(20.dp),
+        ) {
+            // Large Image Preview Card
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(MaterialTheme.shapes.large)
+                    .clickable { onImageDetailsClick(sign.imageResNumber) },
+                colors = CardDefaults.cardColors(
+                    containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
+                ),
+                shape = MaterialTheme.shapes.large,
             ) {
-                // Large Image Preview Card
-                Card(
+                Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clip(MaterialTheme.shapes.large)
-                        .clickable { onImageDetailsClick(sign.imageResNumber) },
-                    colors = CardDefaults.cardColors(
-                        containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
-                    ),
-                    shape = MaterialTheme.shapes.large,
+                        .aspectRatio(1.35f),
+                    contentAlignment = Alignment.Center,
                 ) {
-                    Box(
+                    Image(
+                        painter = painterResource(getImageResource(sign.imageResNumber)),
+                        contentDescription = sign.title,
                         modifier = Modifier
-                            .fillMaxWidth()
-                            .aspectRatio(1.35f),
-                        contentAlignment = Alignment.Center,
-                    ) {
-                        Image(
-                            painter = painterResource(getImageResource(sign.imageResNumber)),
-                            contentDescription = sign.title,
-                            modifier = Modifier
-                                .fillMaxWidth(0.85f)
-                                .aspectRatio(1f),
-                        )
+                            .fillMaxWidth(0.85f)
+                            .aspectRatio(1f),
+                    )
 
-                        // Zoom Prompt Pill
+                    // Zoom Prompt Pill
+                    Surface(
+                        shape = MaterialTheme.shapes.small,
+                        color = MaterialTheme.colorScheme.surface.copy(alpha = 0.85f),
+                        modifier = Modifier
+                            .align(Alignment.BottomEnd)
+                            .padding(12.dp),
+                    ) {
+                        Row(
+                            modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.spacedBy(4.dp),
+                        ) {
+                            Icon(
+                                imageVector = Icons.Rounded.ZoomIn,
+                                contentDescription = stringResource(Res.string.zoom),
+                                modifier = Modifier.size(16.dp),
+                                tint = MaterialTheme.colorScheme.primary,
+                            )
+                            Text(
+                                text = stringResource(Res.string.zoom),
+                                style = MaterialTheme.typography.labelSmall,
+                                fontWeight = FontWeight.SemiBold,
+                                color = MaterialTheme.colorScheme.onSurface,
+                            )
+                        }
+                    }
+                }
+            }
+
+            // Header Info: Code & Categories
+            Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    if (sign.code.isNotEmpty()) {
                         Surface(
                             shape = MaterialTheme.shapes.small,
-                            color = MaterialTheme.colorScheme.surface.copy(alpha = 0.85f),
-                            modifier = Modifier
-                                .align(Alignment.BottomEnd)
-                                .padding(12.dp),
-                        ) {
-                            Row(
-                                modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
-                                verticalAlignment = Alignment.CenterVertically,
-                                horizontalArrangement = Arrangement.spacedBy(4.dp),
-                            ) {
-                                Icon(
-                                    imageVector = Icons.Rounded.ZoomIn,
-                                    contentDescription = stringResource(Res.string.zoom),
-                                    modifier = Modifier.size(16.dp),
-                                    tint = MaterialTheme.colorScheme.primary,
-                                )
-                                Text(
-                                    text = stringResource(Res.string.zoom),
-                                    style = MaterialTheme.typography.labelSmall,
-                                    fontWeight = FontWeight.SemiBold,
-                                    color = MaterialTheme.colorScheme.onSurface,
-                                )
-                            }
-                        }
-                    }
-                }
-
-                // Header Info: Code & Categories
-                Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                    Row(
-                        horizontalArrangement = Arrangement.spacedBy(8.dp),
-                        verticalAlignment = Alignment.CenterVertically,
-                    ) {
-                        if (sign.code.isNotEmpty()) {
-                            Surface(
-                                shape = MaterialTheme.shapes.small,
-                                color = MaterialTheme.colorScheme.primaryContainer,
-                            ) {
-                                Text(
-                                    text = sign.code,
-                                    style = MaterialTheme.typography.labelMedium,
-                                    fontWeight = FontWeight.Bold,
-                                    color = MaterialTheme.colorScheme.onPrimaryContainer,
-                                    modifier = Modifier.padding(horizontal = 10.dp, vertical = 5.dp),
-                                )
-                            }
-                        }
-
-                        val categoryName = when (sign.category) {
-                            SignCategory.WARNING -> stringResource(Res.string.catalog_category_warning)
-                            SignCategory.PROHIBITORY -> stringResource(Res.string.catalog_category_prohibitory)
-                            SignCategory.INFORMATIVE -> stringResource(Res.string.catalog_category_informative)
-                            SignCategory.ROAD_MARKINGS -> stringResource(Res.string.catalog_category_markings)
-                            SignCategory.POLICE_SIGNALS -> stringResource(Res.string.catalog_category_police)
-                            SignCategory.INTERSECTIONS -> stringResource(Res.string.catalog_category_intersections)
-                            SignCategory.ALL -> ""
-                        }
-                        if (categoryName.isNotEmpty()) {
-                            Surface(
-                                shape = MaterialTheme.shapes.small,
-                                color = MaterialTheme.colorScheme.surfaceContainerHigh,
-                            ) {
-                                Text(
-                                    text = categoryName,
-                                    style = MaterialTheme.typography.labelMedium,
-                                    fontWeight = FontWeight.SemiBold,
-                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                    modifier = Modifier.padding(horizontal = 10.dp, vertical = 5.dp),
-                                )
-                            }
-                        }
-                    }
-
-                    Text(
-                        text = sign.title,
-                        style = MaterialTheme.typography.headlineSmall,
-                        fontWeight = FontWeight.Bold,
-                        color = MaterialTheme.colorScheme.onSurface,
-                    )
-                }
-
-                // Intersection Right-of-Way Sequence Banner
-                val rightOfWay = sign.rightOfWayOrder
-                if (sign.category == SignCategory.INTERSECTIONS && rightOfWay != null) {
-                    Card(
-                        modifier = Modifier.fillMaxWidth(),
-                        colors = CardDefaults.cardColors(
-                            containerColor = MaterialTheme.colorScheme.primaryContainer,
-                        ),
-                        shape = MaterialTheme.shapes.medium,
-                    ) {
-                        Row(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(16.dp),
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.spacedBy(12.dp),
-                        ) {
-                            Surface(
-                                shape = MaterialTheme.shapes.small,
-                                color = MaterialTheme.colorScheme.primary,
-                                modifier = Modifier.size(36.dp),
-                            ) {
-                                Box(contentAlignment = Alignment.Center) {
-                                    Icon(
-                                        imageVector = Icons.AutoMirrored.Rounded.CallSplit,
-                                        contentDescription = null,
-                                        tint = MaterialTheme.colorScheme.onPrimary,
-                                        modifier = Modifier.size(20.dp),
-                                    )
-                                }
-                            }
-                            Column {
-                                Text(
-                                    text = stringResource(Res.string.catalog_right_of_way_order),
-                                    style = MaterialTheme.typography.labelMedium,
-                                    color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.8f),
-                                )
-                                Text(
-                                    text = rightOfWay,
-                                    style = MaterialTheme.typography.titleMedium,
-                                    fontWeight = FontWeight.Bold,
-                                    color = MaterialTheme.colorScheme.onPrimaryContainer,
-                                )
-                            }
-                        }
-                    }
-                }
-
-                // Highway Code Legal Description Card
-                if (sign.description.isNotEmpty()) {
-                    Card(
-                        modifier = Modifier.fillMaxWidth(),
-                        colors = CardDefaults.cardColors(
-                            containerColor = MaterialTheme.colorScheme.surfaceContainer,
-                        ),
-                        shape = MaterialTheme.shapes.medium,
-                    ) {
-                        Column(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(16.dp),
-                            verticalArrangement = Arrangement.spacedBy(6.dp),
+                            color = MaterialTheme.colorScheme.primaryContainer,
                         ) {
                             Text(
-                                text = stringResource(Res.string.info),
+                                text = sign.code,
                                 style = MaterialTheme.typography.labelMedium,
                                 fontWeight = FontWeight.Bold,
-                                color = MaterialTheme.colorScheme.primary,
+                                color = MaterialTheme.colorScheme.onPrimaryContainer,
+                                modifier = Modifier.padding(horizontal = 10.dp, vertical = 5.dp),
                             )
+                        }
+                    }
+
+                    val categoryName = when (sign.category) {
+                        SignCategory.WARNING -> stringResource(Res.string.catalog_category_warning)
+                        SignCategory.PROHIBITORY -> stringResource(Res.string.catalog_category_prohibitory)
+                        SignCategory.INFORMATIVE -> stringResource(Res.string.catalog_category_informative)
+                        SignCategory.ROAD_MARKINGS -> stringResource(Res.string.catalog_category_markings)
+                        SignCategory.POLICE_SIGNALS -> stringResource(Res.string.catalog_category_police)
+                        SignCategory.INTERSECTIONS -> stringResource(Res.string.catalog_category_intersections)
+                        SignCategory.ALL -> ""
+                    }
+                    if (categoryName.isNotEmpty()) {
+                        Surface(
+                            shape = MaterialTheme.shapes.small,
+                            color = MaterialTheme.colorScheme.surfaceContainerHigh,
+                        ) {
                             Text(
-                                text = sign.description,
-                                style = MaterialTheme.typography.bodyMedium,
-                                color = MaterialTheme.colorScheme.onSurface,
-                                lineHeight = MaterialTheme.typography.bodyMedium.lineHeight,
+                                text = categoryName,
+                                style = MaterialTheme.typography.labelMedium,
+                                fontWeight = FontWeight.SemiBold,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                modifier = Modifier.padding(horizontal = 10.dp, vertical = 5.dp),
                             )
                         }
                     }
                 }
 
-                // Official Exam Questions Section
-                if (uiState.relatedQuestions.isNotEmpty()) {
-                    Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                        Row(
-                            modifier = Modifier.fillMaxWidth(),
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.SpaceBetween,
+                Text(
+                    text = sign.title,
+                    style = MaterialTheme.typography.headlineSmall,
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.onSurface,
+                )
+            }
+
+            // Intersection Right-of-Way Sequence Banner
+            val rightOfWay = sign.rightOfWayOrder
+            if (sign.category == SignCategory.INTERSECTIONS && rightOfWay != null) {
+                Card(
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = CardDefaults.cardColors(
+                        containerColor = MaterialTheme.colorScheme.primaryContainer,
+                    ),
+                    shape = MaterialTheme.shapes.medium,
+                ) {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(16.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(12.dp),
+                    ) {
+                        Surface(
+                            shape = MaterialTheme.shapes.small,
+                            color = MaterialTheme.colorScheme.primary,
+                            modifier = Modifier.size(36.dp),
                         ) {
-                            Text(
-                                text = stringResource(Res.string.catalog_related_questions),
-                                style = MaterialTheme.typography.titleMedium,
-                                fontWeight = FontWeight.Bold,
-                                color = MaterialTheme.colorScheme.onSurface,
-                            )
-                            Surface(
-                                shape = MaterialTheme.shapes.extraSmall,
-                                color = MaterialTheme.colorScheme.surfaceContainerHigh,
-                            ) {
-                                Text(
-                                    text = "${uiState.relatedQuestions.size}",
-                                    style = MaterialTheme.typography.labelSmall,
-                                    fontWeight = FontWeight.Bold,
-                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                    modifier = Modifier.padding(horizontal = 8.dp, vertical = 2.dp),
+                            Box(contentAlignment = Alignment.Center) {
+                                Icon(
+                                    imageVector = Icons.AutoMirrored.Rounded.CallSplit,
+                                    contentDescription = null,
+                                    tint = MaterialTheme.colorScheme.onPrimary,
+                                    modifier = Modifier.size(20.dp),
                                 )
                             }
                         }
+                        Column {
+                            Text(
+                                text = stringResource(Res.string.catalog_right_of_way_order),
+                                style = MaterialTheme.typography.labelMedium,
+                                color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.8f),
+                            )
+                            Text(
+                                text = rightOfWay,
+                                style = MaterialTheme.typography.titleMedium,
+                                fontWeight = FontWeight.Bold,
+                                color = MaterialTheme.colorScheme.onPrimaryContainer,
+                            )
+                        }
+                    }
+                }
+            }
 
-                        Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                            uiState.relatedQuestions.forEach { question ->
-                                val isCorrectAnswer =
-                                    question.answer.equals("Saktë", ignoreCase = true) || question.answer.equals("True", ignoreCase = true)
-                                Card(
-                                    modifier = Modifier.fillMaxWidth(),
-                                    colors = CardDefaults.cardColors(
-                                        containerColor = MaterialTheme.colorScheme.surfaceContainerLow,
-                                    ),
-                                    shape = MaterialTheme.shapes.medium,
+            // Highway Code Legal Description Card
+            if (sign.description.isNotEmpty()) {
+                Card(
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = CardDefaults.cardColors(
+                        containerColor = MaterialTheme.colorScheme.surfaceContainer,
+                    ),
+                    shape = MaterialTheme.shapes.medium,
+                ) {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(16.dp),
+                        verticalArrangement = Arrangement.spacedBy(6.dp),
+                    ) {
+                        Text(
+                            text = stringResource(Res.string.info),
+                            style = MaterialTheme.typography.labelMedium,
+                            fontWeight = FontWeight.Bold,
+                            color = MaterialTheme.colorScheme.primary,
+                        )
+                        Text(
+                            text = sign.description,
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.onSurface,
+                            lineHeight = MaterialTheme.typography.bodyMedium.lineHeight,
+                        )
+                    }
+                }
+            }
+
+            // Official Exam Questions Section
+            if (relatedQuestions.isNotEmpty()) {
+                Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                    ) {
+                        Text(
+                            text = stringResource(Res.string.catalog_related_questions),
+                            style = MaterialTheme.typography.titleMedium,
+                            fontWeight = FontWeight.Bold,
+                            color = MaterialTheme.colorScheme.onSurface,
+                        )
+                        Surface(
+                            shape = MaterialTheme.shapes.extraSmall,
+                            color = MaterialTheme.colorScheme.surfaceContainerHigh,
+                        ) {
+                            Text(
+                                text = "${relatedQuestions.size}",
+                                style = MaterialTheme.typography.labelSmall,
+                                fontWeight = FontWeight.Bold,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                modifier = Modifier.padding(horizontal = 8.dp, vertical = 2.dp),
+                            )
+                        }
+                    }
+
+                    Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                        relatedQuestions.forEach { question ->
+                            val isCorrectAnswer =
+                                question.answer.equals("Saktë", ignoreCase = true) || question.answer.equals("True", ignoreCase = true)
+                            Card(
+                                modifier = Modifier.fillMaxWidth(),
+                                colors = CardDefaults.cardColors(
+                                    containerColor = MaterialTheme.colorScheme.surfaceContainerLow,
+                                ),
+                                shape = MaterialTheme.shapes.medium,
+                            ) {
+                                Row(
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(14.dp),
+                                    verticalAlignment = Alignment.Top,
+                                    horizontalArrangement = Arrangement.spacedBy(12.dp),
                                 ) {
-                                    Row(
+                                    Icon(
+                                        imageVector = if (isCorrectAnswer) Icons.Rounded.CheckCircle else Icons.Rounded.HighlightOff,
+                                        contentDescription = if (isCorrectAnswer) {
+                                            stringResource(
+                                                Res.string.true_checkbox,
+                                            )
+                                        } else {
+                                            stringResource(Res.string.false_checkbox)
+                                        },
+                                        tint = if (isCorrectAnswer) {
+                                            MaterialTheme.colorScheme.primary
+                                        } else {
+                                            MaterialTheme.colorScheme.error
+                                        },
                                         modifier = Modifier
-                                            .fillMaxWidth()
-                                            .padding(14.dp),
-                                        verticalAlignment = Alignment.Top,
-                                        horizontalArrangement = Arrangement.spacedBy(12.dp),
+                                            .padding(top = 2.dp)
+                                            .size(22.dp),
+                                    )
+
+                                    Column(
+                                        modifier = Modifier.weight(1f),
+                                        verticalArrangement = Arrangement.spacedBy(6.dp),
                                     ) {
-                                        Icon(
-                                            imageVector = if (isCorrectAnswer) Icons.Rounded.CheckCircle else Icons.Rounded.HighlightOff,
-                                            contentDescription = if (isCorrectAnswer) {
-                                                stringResource(
-                                                    Res.string.true_checkbox,
-                                                )
-                                            } else {
-                                                stringResource(Res.string.false_checkbox)
-                                            },
-                                            tint = if (isCorrectAnswer) {
-                                                MaterialTheme.colorScheme.primary
-                                            } else {
-                                                MaterialTheme.colorScheme.error
-                                            },
-                                            modifier = Modifier
-                                                .padding(top = 2.dp)
-                                                .size(22.dp),
+                                        Text(
+                                            text = question.question,
+                                            style = MaterialTheme.typography.bodyMedium,
+                                            color = MaterialTheme.colorScheme.onSurface,
                                         )
 
-                                        Column(
-                                            modifier = Modifier.weight(1f),
-                                            verticalArrangement = Arrangement.spacedBy(6.dp),
+                                        Surface(
+                                            shape = MaterialTheme.shapes.small,
+                                            color = if (isCorrectAnswer) {
+                                                MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.7f)
+                                            } else {
+                                                MaterialTheme.colorScheme.errorContainer.copy(alpha = 0.7f)
+                                            },
                                         ) {
                                             Text(
-                                                text = question.question,
-                                                style = MaterialTheme.typography.bodyMedium,
-                                                color = MaterialTheme.colorScheme.onSurface,
-                                            )
-
-                                            Surface(
-                                                shape = MaterialTheme.shapes.small,
-                                                color = if (isCorrectAnswer) {
-                                                    MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.7f)
+                                                text = if (isCorrectAnswer) {
+                                                    stringResource(
+                                                        Res.string.true_checkbox,
+                                                    )
                                                 } else {
-                                                    MaterialTheme.colorScheme.errorContainer.copy(alpha = 0.7f)
+                                                    stringResource(Res.string.false_checkbox)
                                                 },
-                                            ) {
-                                                Text(
-                                                    text = if (isCorrectAnswer) {
-                                                        stringResource(
-                                                            Res.string.true_checkbox,
-                                                        )
-                                                    } else {
-                                                        stringResource(Res.string.false_checkbox)
-                                                    },
-                                                    style = MaterialTheme.typography.labelMedium,
-                                                    fontWeight = FontWeight.Bold,
-                                                    color = if (isCorrectAnswer) {
-                                                        MaterialTheme.colorScheme.primary
-                                                    } else {
-                                                        MaterialTheme.colorScheme.error
-                                                    },
-                                                    modifier = Modifier.padding(horizontal = 8.dp, vertical = 3.dp),
-                                                )
-                                            }
+                                                style = MaterialTheme.typography.labelMedium,
+                                                fontWeight = FontWeight.Bold,
+                                                color = if (isCorrectAnswer) {
+                                                    MaterialTheme.colorScheme.primary
+                                                } else {
+                                                    MaterialTheme.colorScheme.error
+                                                },
+                                                modifier = Modifier.padding(horizontal = 8.dp, vertical = 3.dp),
+                                            )
                                         }
                                     }
                                 }
