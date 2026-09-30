@@ -11,6 +11,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.font.FontWeight
@@ -53,6 +54,7 @@ internal fun DashboardRoute(
     )
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun DashboardScreen(
     uiState: DashboardUiState,
@@ -67,10 +69,13 @@ internal fun DashboardScreen(
     var showDisclaimerDialog by remember { mutableStateOf(false) }
     val adaptiveInfo = rememberWindowAdaptiveInfo()
     val isMultiColumn = adaptiveInfo.isDualPane
+    val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
 
     Scaffold(
+        modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             TopAppBar(
+                scrollBehavior = scrollBehavior,
                 title = {
                     Column(
                         verticalArrangement = Arrangement.spacedBy(4.dp),
@@ -88,62 +93,21 @@ internal fun DashboardScreen(
                         )
                     }
                 },
+                actions = {
+                    IconButton(
+                        onClick = {
+                            hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+                            showDisclaimerDialog = true
+                        },
+                    ) {
+                        Icon(
+                            imageVector = Icons.Outlined.Info,
+                            contentDescription = stringResource(Res.string.info),
+                        )
+                    }
+                },
             )
         },
-        modifier = modifier,
-        floatingActionButton = {
-            HorizontalFloatingToolbar(
-                expanded = true,
-                modifier = Modifier.navigationBarsPadding(),
-                colors = FloatingToolbarDefaults.vibrantFloatingToolbarColors(),
-            ) {
-                IconButton(
-                    onClick = {
-                        hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                        onCatalogClick()
-                    },
-                ) {
-                    Icon(
-                        imageVector = Icons.AutoMirrored.Rounded.MenuBook,
-                        contentDescription = stringResource(Res.string.catalog_title),
-                    )
-                }
-                IconButton(
-                    onClick = {
-                        hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                        onStatisticsClick()
-                    },
-                ) {
-                    Icon(
-                        imageVector = Icons.Rounded.AutoGraph,
-                        contentDescription = stringResource(Res.string.statistics),
-                    )
-                }
-                IconButton(
-                    onClick = {
-                        hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                        onPreferencesClick()
-                    },
-                ) {
-                    Icon(
-                        imageVector = Icons.Rounded.Settings,
-                        contentDescription = stringResource(Res.string.preferences),
-                    )
-                }
-                IconButton(
-                    onClick = {
-                        hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                        showDisclaimerDialog = true
-                    },
-                ) {
-                    Icon(
-                        imageVector = Icons.Outlined.Info,
-                        contentDescription = stringResource(Res.string.info),
-                    )
-                }
-            }
-        },
-        floatingActionButtonPosition = if (isMultiColumn) FabPosition.End else FabPosition.Center,
         contentWindowInsets = WindowInsets(bottom = 0),
     ) { contentPadding ->
         if (isMultiColumn) {
@@ -153,7 +117,7 @@ internal fun DashboardScreen(
                     .padding(contentPadding)
                     .verticalScroll(rememberScrollState())
                     .padding(horizontal = 24.dp)
-                    .padding(top = 20.dp, bottom = 104.dp),
+                    .padding(top = 20.dp, bottom = 24.dp),
                 horizontalArrangement = Arrangement.spacedBy(24.dp),
             ) {
                 ExamSection(
@@ -175,7 +139,7 @@ internal fun DashboardScreen(
                     .padding(contentPadding)
                     .verticalScroll(rememberScrollState())
                     .padding(horizontal = 20.dp)
-                    .padding(top = 24.dp, bottom = 104.dp),
+                    .padding(top = 24.dp, bottom = 24.dp),
                 verticalArrangement = Arrangement.spacedBy(20.dp),
             ) {
                 ExamSection(onStartExamClick = onStartExamClick)

@@ -7,6 +7,11 @@
     <string name="info">Info</string>
     <string name="github">Github</string>
     <string name="warning">Warning!</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_catalog">Catalog</string>
+    <string name="nav_mistakes">Mistakes</string>
+    <string name="nav_statistics">Statistics</string>
+    <string name="nav_preferences">Settings</string>
 
     <!-- Disclaimer Dialog -->
     <string name="disclaimer_title">Warning!</string>

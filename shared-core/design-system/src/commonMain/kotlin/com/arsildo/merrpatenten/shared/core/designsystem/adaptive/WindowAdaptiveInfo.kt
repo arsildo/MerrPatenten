@@ -15,9 +15,9 @@ val LocalFoldPosture = compositionLocalOf<DevicePosture?> { null }
 
 /**
  * Convenience accessors wrapping the official Material3 adaptive [WindowSizeClass].
- * Consumers call `rememberWindowAdaptiveInfo()` inside any composable.
+ * Consumers call `rememberAppAdaptiveInfo()` or `rememberWindowAdaptiveInfo()` inside any composable.
  */
-data class WindowAdaptiveInfo(val windowSizeClass: WindowSizeClass, val posture: DevicePosture = DevicePosture.FLAT) {
+data class AppAdaptiveInfo(val windowSizeClass: WindowSizeClass, val posture: DevicePosture = DevicePosture.FLAT) {
     val isCompact: Boolean
         get() = !windowSizeClass.isWidthAtLeastBreakpoint(WindowSizeClass.WIDTH_DP_MEDIUM_LOWER_BOUND)
     val isAtLeastMedium: Boolean
@@ -28,14 +28,26 @@ data class WindowAdaptiveInfo(val windowSizeClass: WindowSizeClass, val posture:
         get() = posture == DevicePosture.BOOK
     val isDualPane: Boolean
         get() = isAtLeastMedium || isBook
+
+    /**
+     * Symmetrical (50/50) split on vertical fold (BOOK posture) to prevent the hinge/crease
+     * from splitting through content. Tablets / desktops use [defaultPrimaryWeight].
+     */
+    fun dualPaneSplitWeights(defaultPrimaryWeight: Float = 0.58f): Pair<Float, Float> = if (isBook) {
+        0.5f to 0.5f
+    } else {
+        defaultPrimaryWeight to (1f - defaultPrimaryWeight)
+    }
 }
 
+typealias WindowAdaptiveInfo = AppAdaptiveInfo
+
 /**
- * Returns a [WindowAdaptiveInfo] combining the official Material3 adaptive window size class
+ * Returns an [AppAdaptiveInfo] combining the official Material3 adaptive window size class
  * with the fold posture from [m3Info.windowPosture] (or overridden via [LocalFoldPosture]).
  */
 @Composable
-fun rememberWindowAdaptiveInfo(): WindowAdaptiveInfo {
+fun rememberAppAdaptiveInfo(): AppAdaptiveInfo {
     val m3Info = currentWindowAdaptiveInfoV2()
     val localPosture = LocalFoldPosture.current
     val posture = localPosture ?: when {
@@ -43,8 +55,11 @@ fun rememberWindowAdaptiveInfo(): WindowAdaptiveInfo {
         m3Info.windowPosture.hingeList.any { it.isVertical && !it.isFlat } -> DevicePosture.BOOK
         else -> DevicePosture.FLAT
     }
-    return WindowAdaptiveInfo(
+    return AppAdaptiveInfo(
         windowSizeClass = m3Info.windowSizeClass,
         posture = posture,
     )
 }
+
+@Composable
+fun rememberWindowAdaptiveInfo(): WindowAdaptiveInfo = rememberAppAdaptiveInfo()

@@ -9,9 +9,6 @@ import kotlinx.serialization.Serializable
 @Serializable
 object Dashboard : NavKey
 
-@Serializable
-object Disclaimer : NavKey
-
 fun EntryProviderScope<NavKey>.dashboardEntry(
     backStack: NavBackStack<NavKey>,
     onStartExamClick: (category: String) -> Unit,

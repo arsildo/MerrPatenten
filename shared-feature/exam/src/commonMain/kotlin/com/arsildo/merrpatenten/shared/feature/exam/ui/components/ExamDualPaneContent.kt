@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.arsildo.merrpatenten.shared.core.designsystem.adaptive.rememberAppAdaptiveInfo
 import com.arsildo.merrpatenten.shared.core.designsystem.components.EndExamButton
 import com.arsildo.merrpatenten.shared.core.designsystem.components.ExitExamButton
 import com.arsildo.merrpatenten.shared.core.designsystem.components.RestartExamButton
@@ -39,6 +40,9 @@ internal fun ExamDualPaneContent(
     onNextPageClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    val adaptiveInfo = rememberAppAdaptiveInfo()
+    val (primaryWeight, secondaryWeight) = adaptiveInfo.dualPaneSplitWeights(defaultPrimaryWeight = 0.58f)
+
     Row(
         modifier = modifier
             .fillMaxSize()
@@ -47,10 +51,10 @@ internal fun ExamDualPaneContent(
             .padding(horizontal = 16.dp, vertical = 8.dp),
         horizontalArrangement = Arrangement.spacedBy(16.dp),
     ) {
-        // Left Workstation Pane: Question Pager & Controls (58% width)
+        // Left Workstation Pane: Question Pager & Controls (58% width or 50% in BOOK posture)
         Surface(
             modifier = Modifier
-                .weight(0.58f)
+                .weight(primaryWeight)
                 .fillMaxHeight(),
             shape = MaterialTheme.shapes.extraLarge,
             color = MaterialTheme.colorScheme.surface,
@@ -144,10 +148,10 @@ internal fun ExamDualPaneContent(
             }
         }
 
-        // Right Workstation Pane: Interactive 40-Question Map (42% width)
+        // Right Workstation Pane: Interactive 40-Question Map (42% width or 50% in BOOK posture)
         Surface(
             modifier = Modifier
-                .weight(0.42f)
+                .weight(secondaryWeight)
                 .fillMaxHeight(),
             shape = MaterialTheme.shapes.extraLarge,
             color = MaterialTheme.colorScheme.surfaceContainerLow,

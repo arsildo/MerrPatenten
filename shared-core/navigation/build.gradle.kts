@@ -41,6 +41,7 @@ kotlin {
             implementation(libs.androidx.lifecycleViewmodelCompose)
             implementation(libs.androidx.savedstate.compose)
             implementation(libs.kotlinx.serializationJson)
+            implementation(libs.kotlinx.coroutinesCore)
         }
     }
 }

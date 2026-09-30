@@ -10,6 +10,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.font.FontWeight
@@ -45,7 +46,7 @@ internal fun PreferencesRoute(viewModel: PreferencesViewModel = koinViewModel(),
     )
 }
 
-@OptIn(ExperimentalMaterial3ExpressiveApi::class)
+@OptIn(ExperimentalMaterial3ExpressiveApi::class, ExperimentalMaterial3Api::class)
 @Composable
 internal fun PreferencesScreen(
     uiState: PreferencesUiState,
@@ -62,12 +63,14 @@ internal fun PreferencesScreen(
     val hapticFeedback = LocalHapticFeedback.current
     val uriHandler = LocalUriHandler.current
     var languageDialogVisible by remember { mutableStateOf(false) }
+    val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
 
     AnimateColorSchemeTransition {
         Scaffold(
-            modifier = modifier,
+            modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
             topBar = {
                 TopAppBar(
+                    scrollBehavior = scrollBehavior,
                     title = {
                         Text(text = stringResource(Res.string.preferences))
                     },

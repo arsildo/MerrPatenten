@@ -19,6 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontWeight
@@ -55,6 +56,7 @@ fun MistakesRoute(
     )
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MistakesScreen(
     uiState: MistakesUiState,
@@ -69,10 +71,13 @@ fun MistakesScreen(
 ) {
     val hapticFeedback = LocalHapticFeedback.current
     var showClearDialog by remember { mutableStateOf(false) }
+    val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
 
     Scaffold(
+        modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             TopAppBar(
+                scrollBehavior = scrollBehavior,
                 title = {
                     Text(
                         text = stringResource(Res.string.mistakes_title),
@@ -144,7 +149,6 @@ fun MistakesScreen(
                 )
             }
         },
-        modifier = modifier,
         contentWindowInsets = WindowInsets(bottom = 0),
     ) { contentPadding ->
         Column(

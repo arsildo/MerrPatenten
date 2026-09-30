@@ -33,33 +33,26 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.VerticalDivider
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.produceState
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
-import com.arsildo.merrpatenten.shared.core.designsystem.adaptive.rememberWindowAdaptiveInfo
-import com.arsildo.merrpatenten.shared.core.model.Question
 import com.arsildo.merrpatenten.shared.core.model.RoadSign
 import com.arsildo.merrpatenten.shared.core.model.SignCategory
 import com.arsildo.merrpatenten.shared.feature.catalog.CatalogUiState
 import com.arsildo.merrpatenten.shared.feature.catalog.CatalogViewModel
 import com.arsildo.merrpatenten.shared.feature.catalog.ui.components.RoadSignCard
-import kotlinx.coroutines.flow.Flow
 import merrpatenten.shared_core.design_system.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
@@ -69,19 +62,20 @@ fun CatalogRoute(
     onBackPress: () -> Unit,
     onSignClick: (id: Int) -> Unit,
     onImageDetailsClick: (index: Int) -> Unit = {},
+    selectedSignId: Int? = null,
     viewModel: CatalogViewModel = koinViewModel(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     CatalogScreen(
         uiState = uiState,
+        selectedSignId = selectedSignId,
         onBackPress = onBackPress,
         onSignClick = onSignClick,
         onImageDetailsClick = onImageDetailsClick,
         onCategorySelected = viewModel::onCategorySelected,
         onSearchQueryChanged = viewModel::onSearchQueryChanged,
         onToggleSearch = viewModel::toggleSearch,
-        onGetQuestionsForSign = viewModel::getQuestionsForSign,
     )
 }
 
@@ -95,15 +89,18 @@ fun CatalogScreen(
     onSearchQueryChanged: (query: String) -> Unit,
     onToggleSearch: (isSearching: Boolean) -> Unit,
     modifier: Modifier = Modifier,
+    selectedSignId: Int? = null,
     onImageDetailsClick: (index: Int) -> Unit = {},
-    onGetQuestionsForSign: ((imageId: Int) -> Flow<List<Question>>)? = null,
 ) {
     val hapticFeedback = LocalHapticFeedback.current
+    val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
 
     Scaffold(
+        modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         contentWindowInsets = WindowInsets(bottom = 0),
         topBar = {
             TopAppBar(
+                scrollBehavior = scrollBehavior,
                 title = {
                     if (uiState.isSearching) {
                         OutlinedTextField(
@@ -174,99 +171,21 @@ fun CatalogScreen(
                 },
             )
         },
-        modifier = modifier,
     ) { contentPadding ->
-        val adaptiveInfo = rememberWindowAdaptiveInfo()
-        val isDualPane = adaptiveInfo.isDualPane
-
-        var selectedSignId by rememberSaveable { mutableStateOf<Int?>(null) }
-        val selectedSign = uiState.items.find { it.id == selectedSignId } ?: uiState.items.firstOrNull()
-
-        if (isDualPane) {
-            Row(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(top = contentPadding.calculateTopPadding()),
-            ) {
-                CatalogListPane(
-                    uiState = uiState,
-                    selectedSignId = selectedSign?.id,
-                    onCategorySelected = onCategorySelected,
-                    onSignClick = { id ->
-                        hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                        selectedSignId = id
-                    },
-                    contentPadding = PaddingValues(
-                        bottom = contentPadding.calculateBottomPadding() + 24.dp,
-                    ),
-                    modifier = Modifier
-                        .weight(0.42f)
-                        .fillMaxHeight(),
-                    adaptiveMinSize = 130.dp,
-                )
-
-                VerticalDivider(
-                    color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f),
-                )
-
-                Surface(
-                    modifier = Modifier
-                        .weight(0.58f)
-                        .fillMaxHeight(),
-                    color = MaterialTheme.colorScheme.surface,
-                ) {
-                    if (selectedSign != null) {
-                        val relatedQuestions by produceState(
-                            initialValue = emptyList<Question>(),
-                            key1 = selectedSign.imageResNumber,
-                        ) {
-                            if (onGetQuestionsForSign != null) {
-                                onGetQuestionsForSign(selectedSign.imageResNumber).collect {
-                                    value = it
-                                }
-                            } else {
-                                value = emptyList()
-                            }
-                        }
-                        SignDetailBody(
-                            sign = selectedSign,
-                            relatedQuestions = relatedQuestions,
-                            onImageDetailsClick = onImageDetailsClick,
-                            modifier = Modifier.padding(
-                                bottom = contentPadding.calculateBottomPadding(),
-                            ),
-                        )
-                    } else {
-                        Box(
-                            modifier = Modifier.fillMaxSize(),
-                            contentAlignment = Alignment.Center,
-                        ) {
-                            Text(
-                                text = stringResource(Res.string.catalog_empty_results),
-                                style = MaterialTheme.typography.bodyLarge,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                            )
-                        }
-                    }
-                }
-            }
-        } else {
-            CatalogListPane(
-                uiState = uiState,
-                selectedSignId = null,
-                onCategorySelected = onCategorySelected,
-                onSignClick = { id ->
-                    hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                    onSignClick(id)
-                },
-                contentPadding = PaddingValues(
-                    top = contentPadding.calculateTopPadding(),
-                    bottom = contentPadding.calculateBottomPadding() + 24.dp,
-                ),
-                modifier = Modifier.fillMaxSize(),
-                adaptiveMinSize = 160.dp,
-            )
-        }
+        CatalogListPane(
+            uiState = uiState,
+            selectedSignId = selectedSignId,
+            onCategorySelected = onCategorySelected,
+            onSignClick = { id ->
+                hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+                onSignClick(id)
+            },
+            contentPadding = PaddingValues(
+                top = contentPadding.calculateTopPadding(),
+                bottom = contentPadding.calculateBottomPadding() + 24.dp,
+            ),
+            modifier = Modifier.fillMaxSize(),
+        )
     }
 }
 
@@ -278,7 +197,6 @@ private fun CatalogListPane(
     onSignClick: (id: Int) -> Unit,
     contentPadding: PaddingValues,
     modifier: Modifier = Modifier,
-    adaptiveMinSize: androidx.compose.ui.unit.Dp = 160.dp,
 ) {
     val hapticFeedback = LocalHapticFeedback.current
     Column(
@@ -352,7 +270,7 @@ private fun CatalogListPane(
             }
         } else {
             LazyVerticalGrid(
-                columns = GridCells.Adaptive(minSize = adaptiveMinSize),
+                columns = GridCells.Adaptive(minSize = 140.dp),
                 contentPadding = PaddingValues(
                     start = 16.dp,
                     top = 8.dp,

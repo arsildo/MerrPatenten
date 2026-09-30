@@ -21,6 +21,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
@@ -38,6 +39,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
+import com.arsildo.merrpatenten.shared.core.designsystem.adaptive.DevicePosture
+import com.arsildo.merrpatenten.shared.core.designsystem.adaptive.LocalFoldPosture
 import com.arsildo.merrpatenten.shared.core.designsystem.adaptive.rememberWindowAdaptiveInfo
 import com.arsildo.merrpatenten.shared.core.designsystem.getImageResource
 import merrpatenten.shared_core.design_system.generated.resources.*
@@ -224,5 +227,18 @@ private fun ZoomableExamImageDarkPreview() {
             uiState = ImageDetailsUiState(imageId = 1),
             onDismiss = {},
         )
+    }
+}
+
+@Preview
+@Composable
+private fun ZoomableExamImageTabletopPreview() {
+    CompositionLocalProvider(LocalFoldPosture provides DevicePosture.TABLETOP) {
+        MerrPatentenTheme {
+            ZoomableExamImage(
+                uiState = ImageDetailsUiState(imageId = 1),
+                onDismiss = {},
+            )
+        }
     }
 }

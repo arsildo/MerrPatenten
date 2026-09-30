@@ -13,6 +13,7 @@ import androidx.compose.material.icons.rounded.DoneAll
 import androidx.compose.material.icons.rounded.RestartAlt
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
@@ -25,6 +26,8 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
 import com.arsildo.merrpatenten.shared.core.designsystem.QUESTIONS_IN_EXAM
+import com.arsildo.merrpatenten.shared.core.designsystem.adaptive.DevicePosture
+import com.arsildo.merrpatenten.shared.core.designsystem.adaptive.LocalFoldPosture
 import com.arsildo.merrpatenten.shared.core.designsystem.adaptive.rememberWindowAdaptiveInfo
 import com.arsildo.merrpatenten.shared.core.designsystem.components.EndExamButton
 import com.arsildo.merrpatenten.shared.core.designsystem.components.ExitExamButton
@@ -562,5 +565,71 @@ private fun ExamScreenCompletedPreview() {
             onCheckFalseAtPage = {},
             onCompleteExam = {},
         )
+    }
+}
+
+@Preview
+@Composable
+private fun ExamScreenTabletopPreview() {
+    CompositionLocalProvider(LocalFoldPosture provides DevicePosture.TABLETOP) {
+        MerrPatentenTheme {
+            ExamScreen(
+                uiState = ExamUiState(
+                    questions = listOf(
+                        Question(
+                            id = 1,
+                            question = "Sinjali i paraqitur në figurë tregon një kthesë të rrezikshme majtas.",
+                            image = 1,
+                            answer = "Saktë",
+                        ),
+                    ),
+                    trueCheckedPositions = List(QUESTIONS_IN_EXAM) { false },
+                    falseCheckedPositions = List(QUESTIONS_IN_EXAM) { false },
+                    responseList = List(QUESTIONS_IN_EXAM) { "" },
+                    mistakePositions = List(QUESTIONS_IN_EXAM) { 1 },
+                    timer = "39:42",
+                ),
+                onImageDetailsClick = {},
+                onOpenMap = {},
+                onExitExam = {},
+                onRestartExam = {},
+                onCheckTrueAtPage = {},
+                onCheckFalseAtPage = {},
+                onCompleteExam = {},
+            )
+        }
+    }
+}
+
+@Preview
+@Composable
+private fun ExamScreenBookPreview() {
+    CompositionLocalProvider(LocalFoldPosture provides DevicePosture.BOOK) {
+        MerrPatentenTheme {
+            ExamScreen(
+                uiState = ExamUiState(
+                    questions = listOf(
+                        Question(
+                            id = 1,
+                            question = "Sinjali i paraqitur në figurë tregon një kthesë të rrezikshme majtas.",
+                            image = 1,
+                            answer = "Saktë",
+                        ),
+                    ),
+                    trueCheckedPositions = List(QUESTIONS_IN_EXAM) { false },
+                    falseCheckedPositions = List(QUESTIONS_IN_EXAM) { false },
+                    responseList = List(QUESTIONS_IN_EXAM) { "" },
+                    mistakePositions = List(QUESTIONS_IN_EXAM) { 1 },
+                    timer = "39:42",
+                ),
+                onImageDetailsClick = {},
+                onOpenMap = {},
+                onExitExam = {},
+                onRestartExam = {},
+                onCheckTrueAtPage = {},
+                onCheckFalseAtPage = {},
+                onCompleteExam = {},
+            )
+        }
     }
 }

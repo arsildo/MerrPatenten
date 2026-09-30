@@ -7,6 +7,11 @@
     <string name="info">Informacion</string>
     <string name="github">Github</string>
     <string name="warning">Kujdes!</string>
+    <string name="nav_home">Kryesore</string>
+    <string name="nav_catalog">Katalogu</string>
+    <string name="nav_mistakes">Gabimet</string>
+    <string name="nav_statistics">Statistika</string>
+    <string name="nav_preferences">Cilësimet</string>
 
     <!-- Disclaimer Dialog -->
     <string name="disclaimer_title">Kujdes!</string>
