@@ -1,5 +1,9 @@
 package navigation
 
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -19,13 +23,13 @@ import androidx.navigation3.scene.SceneStrategyScope
 /**
  * A [Scene] that renders a list pane and a detail pane side-by-side in an adaptive two-pane layout.
  */
-class TwoPaneScene<T : Any>(
+data class TwoPaneScene<T : Any>(
     override val key: Any,
     override val previousEntries: List<NavEntry<T>>,
     val listEntry: NavEntry<T>,
     val detailEntry: NavEntry<T>?,
-    val detailPlaceholder: (@Composable () -> Unit)?,
-    val splitWeights: Pair<Float, Float>,
+    val detailPlaceholder: (@Composable () -> Unit)? = null,
+    val splitWeights: Pair<Float, Float> = 0.42f to 0.58f,
 ) : Scene<T> {
 
     override val entries: List<NavEntry<T>> = listOfNotNull(listEntry, detailEntry)
@@ -49,10 +53,16 @@ class TwoPaneScene<T : Any>(
                     .weight(splitWeights.second)
                     .fillMaxHeight(),
             ) {
-                if (detailEntry != null) {
-                    detailEntry.Content()
-                } else if (detailPlaceholder != null) {
-                    detailPlaceholder.invoke()
+                AnimatedContent(
+                    targetState = detailEntry,
+                    contentKey = { it?.contentKey },
+                    transitionSpec = { fadeIn() togetherWith fadeOut() },
+                ) { entry ->
+                    if (entry != null) {
+                        entry.Content()
+                    } else if (detailPlaceholder != null) {
+                        detailPlaceholder.invoke()
+                    }
                 }
             }
         }
@@ -76,11 +86,11 @@ class ListDetailSceneStrategy<T : Any>(
         // Case 1: Last entry is detailPane and predecessor is listPane
         val isLastDetail = lastEntry.metadata[DetailPaneKey] == true
         if (isLastDetail && entries.size >= 2) {
-            val listEntry = entries[entries.size - 2]
-            if (listEntry.metadata[ListPaneKey] == true) {
+            val listEntry = entries.dropLast(1).findLast { it.metadata[ListPaneKey] == true }
+            if (listEntry != null) {
                 return TwoPaneScene(
-                    key = "TwoPane_${listEntry.contentKey}_${lastEntry.contentKey}",
-                    previousEntries = entries.dropLast(2),
+                    key = "TwoPane_${listEntry.contentKey}",
+                    previousEntries = entries.dropLast(1),
                     listEntry = listEntry,
                     detailEntry = lastEntry,
                     detailPlaceholder = listEntry.metadata[DetailPlaceholderKey],
@@ -94,7 +104,7 @@ class ListDetailSceneStrategy<T : Any>(
             val placeholder = lastEntry.metadata[DetailPlaceholderKey]
             if (placeholder != null) {
                 return TwoPaneScene(
-                    key = "TwoPane_${lastEntry.contentKey}_placeholder",
+                    key = "TwoPane_${lastEntry.contentKey}",
                     previousEntries = entries.dropLast(1),
                     listEntry = lastEntry,
                     detailEntry = null,
