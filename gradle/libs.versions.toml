@@ -1,8 +1,8 @@
 [versions]
 agp = "9.3.3"
-kotlin = "2.5.0-Beta1"
-compose-multiplatform = "1.13.0-alpha02"
-compose-material3-adaptive = "1.3.0"
+kotlin = "2.5.0-Beta2"
+compose-multiplatform = "1.13.10-alpha01+dev5041"
+compose-material3-adaptive = "1.3.10-alpha01+dev5041"
 ksp = "2.3.12"
 ktlint = "1.8.0"
 ktlint-plugin = "14.2.0"
@@ -12,16 +12,16 @@ androidx-activity = "1.13.0"
 androidx-appcompat = "1.8.0"
 androidx-core = "1.19.1"
 androidx-core-splashscreen = "1.2.0"
-androidx-datastore = "1.2.1"
+androidx-datastore = "1.3.0"
 androidx-room = "2.8.5"
 androidx-sqlite = "2.7.1"
 
 # JetBrains Lifecycle & Navigation 3
 androidx-lifecycle = "2.11.0"
-androidx-navigation3 = "1.2.0-rc01"
+androidx-navigation3 = "1.2.0"
 androidx-savedstate = "1.4.0"
 kotlinx-coroutines = "1.11.0"
-kotlinx-serialization = "1.11.0"
+kotlinx-serialization = "1.12.0"
 kotlinx-datetime = "0.8.0"
 
 koin-bom = "4.2.2"
@@ -47,9 +47,10 @@ compose-runtime = { group = "org.jetbrains.compose.runtime", name = "runtime", v
 compose-foundation = { group = "org.jetbrains.compose.foundation", name = "foundation", version.ref = "compose-multiplatform" }
 compose-components-resources = { group = "org.jetbrains.compose.components", name = "components-resources", version.ref = "compose-multiplatform" }
 compose-ui = { group = "org.jetbrains.compose.ui", name = "ui", version.ref = "compose-multiplatform" }
-compose-uiTooling = { group = "org.jetbrains.compose.ui", name = "ui-tooling", version = "1.12.1" }
+compose-uiTooling = { group = "org.jetbrains.compose.ui", name = "ui-tooling", version = "1.12.2" }
 compose-uiToolingPreview = { group = "org.jetbrains.compose.ui", name = "ui-tooling-preview", version.ref = "compose-multiplatform" }
 compose-material3 = { group = "org.jetbrains.compose.material3", name = "material3", version.ref = "compose-multiplatform" }
+compose-materialIconsExtended = { group = "org.jetbrains.compose.material", name = "material-icons-extended", version = "1.7.3" }
 compose-material3-adaptive = { group = "org.jetbrains.compose.material3.adaptive", name = "adaptive", version.ref = "compose-material3-adaptive" }
 compose-material3-adaptive-layout = { group = "org.jetbrains.compose.material3.adaptive", name = "adaptive-layout", version.ref = "compose-material3-adaptive" }
 

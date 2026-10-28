@@ -1,5 +1,6 @@
 package com.arsildo.merrpatenten.shared.feature.exam.ui
 
+import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateFloatAsState
@@ -83,6 +84,7 @@ internal fun ExamRoute(
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 internal fun ExamScreen(
+    modifier: Modifier = Modifier,
     uiState: ExamUiState,
     targetPage: Int? = null,
     onPageNavigated: () -> Unit = {},
@@ -93,7 +95,6 @@ internal fun ExamScreen(
     onCheckTrueAtPage: (page: Int) -> Unit,
     onCheckFalseAtPage: (page: Int) -> Unit,
     onCompleteExam: () -> Unit,
-    modifier: Modifier = Modifier,
 ) {
     val hapticFeedback = LocalHapticFeedback.current
     val coroutineScope = rememberCoroutineScope()
@@ -263,35 +264,37 @@ internal fun ExamScreen(
                     }
 
                     if (endExamVisible) {
-                        if (uiState.isCompleted) {
-                            Column(
-                                modifier = Modifier.fillMaxWidth(),
-                                verticalArrangement = Arrangement.spacedBy(16.dp),
-                            ) {
-                                RestartExamButton(
-                                    icon = Icons.Rounded.RestartAlt,
+                        AnimatedContent(uiState.isCompleted) { isExamCompleted ->
+                            if (isExamCompleted) {
+                                Column(
                                     modifier = Modifier.fillMaxWidth(),
-                                    onClick = onRestartExam,
-                                )
-                                ExitExamButton(
-                                    icon = Icons.AutoMirrored.Rounded.ExitToApp,
-                                    onClick = onExitExam,
+                                    verticalArrangement = Arrangement.spacedBy(16.dp),
+                                ) {
+                                    RestartExamButton(
+                                        icon = Icons.Rounded.RestartAlt,
+                                        modifier = Modifier.fillMaxWidth(),
+                                        onClick = onRestartExam,
+                                    )
+                                    ExitExamButton(
+                                        icon = Icons.AutoMirrored.Rounded.ExitToApp,
+                                        onClick = onExitExam,
+                                        modifier = Modifier.fillMaxWidth(),
+                                    )
+                                }
+                            } else {
+                                EndExamButton(
+                                    icon = Icons.Rounded.DoneAll,
                                     modifier = Modifier.fillMaxWidth(),
+                                    onClick = {
+                                        if (completedCount != QUESTIONS_IN_EXAM) {
+                                            hapticFeedback.performHapticFeedback(HapticFeedbackType.GestureThresholdActivate)
+                                            questionsUnCompletedDialog = true
+                                        } else {
+                                            onCompleteExam()
+                                        }
+                                    },
                                 )
                             }
-                        } else {
-                            EndExamButton(
-                                icon = Icons.Rounded.DoneAll,
-                                modifier = Modifier.fillMaxWidth(),
-                                onClick = {
-                                    if (completedCount != QUESTIONS_IN_EXAM) {
-                                        hapticFeedback.performHapticFeedback(HapticFeedbackType.GestureThresholdActivate)
-                                        questionsUnCompletedDialog = true
-                                    } else {
-                                        onCompleteExam()
-                                    }
-                                },
-                            )
                         }
                     }
                 }
@@ -304,133 +307,141 @@ internal fun ExamScreen(
                 .padding(contentPadding),
             contentAlignment = Alignment.Center,
         ) {
-            if (uiState.questions.isEmpty()) {
-                LoadingIndicator(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .wrapContentSize(),
-                )
-            } else if (adaptiveInfo.isTabletop) {
-                ExamTabletopContent(
-                    uiState = uiState,
-                    pagerState = pagerState,
-                    animatedProgress = animatedProgress,
-                    endExamVisible = endExamVisible,
-                    onShowEndExam = { endExamVisible = !endExamVisible },
-                    onOpenMap = onOpenMap,
-                    onImageDetailsClick = onImageDetailsClick,
-                    onCheckFalseAtPage = onCheckFalseAtPage,
-                    onCheckTrueAtPage = onCheckTrueAtPage,
-                    onCompleteExam = {
-                        if (completedCount != QUESTIONS_IN_EXAM) {
-                            hapticFeedback.performHapticFeedback(HapticFeedbackType.GestureThresholdActivate)
-                            questionsUnCompletedDialog = true
-                        } else {
-                            onCompleteExam()
-                        }
-                    },
-                    onRestartExam = onRestartExam,
-                    onExitExam = onExitExam,
-                    onPreviousPageClick = {
-                        if (pagerState.canScrollBackward) {
-                            coroutineScope.launch {
-                                pagerState.animateScrollToPage(page = pagerState.currentPage - 1)
-                            }
-                        }
-                    },
-                    onNextPageClick = {
-                        if (pagerState.canScrollForward) {
-                            coroutineScope.launch {
-                                pagerState.animateScrollToPage(page = pagerState.currentPage + 1)
-                            }
-                        }
-                    },
-                )
-            } else if (adaptiveInfo.isDualPane) {
-                ExamDualPaneContent(
-                    uiState = uiState,
-                    pagerState = pagerState,
-                    animatedProgress = animatedProgress,
-                    endExamVisible = endExamVisible,
-                    onShowEndExam = { endExamVisible = !endExamVisible },
-                    onOpenMap = onOpenMap,
-                    onImageDetailsClick = onImageDetailsClick,
-                    onCheckFalseAtPage = onCheckFalseAtPage,
-                    onCheckTrueAtPage = onCheckTrueAtPage,
-                    onCompleteExam = {
-                        if (completedCount != QUESTIONS_IN_EXAM) {
-                            hapticFeedback.performHapticFeedback(HapticFeedbackType.GestureThresholdActivate)
-                            questionsUnCompletedDialog = true
-                        } else {
-                            onCompleteExam()
-                        }
-                    },
-                    onRestartExam = onRestartExam,
-                    onExitExam = onExitExam,
-                    onPageSelected = { page ->
-                        coroutineScope.launch {
-                            pagerState.animateScrollToPage(page)
-                        }
-                    },
-                    onPreviousPageClick = {
-                        if (pagerState.canScrollBackward) {
-                            coroutineScope.launch {
-                                pagerState.animateScrollToPage(page = pagerState.currentPage - 1)
-                            }
-                        }
-                    },
-                    onNextPageClick = {
-                        if (pagerState.canScrollForward) {
-                            coroutineScope.launch {
-                                pagerState.animateScrollToPage(page = pagerState.currentPage + 1)
-                            }
-                        }
-                    },
-                )
-            } else {
-                Column(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .statusBarsPadding(),
-                    verticalArrangement = Arrangement.SpaceBetween,
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                ) {
-                    Column(
-                        modifier = Modifier.fillMaxWidth(),
-                    ) {
-                        ExamLegend(
-                            pagerState = pagerState,
-                            timer = { uiState.timer },
-                            endExamVisible = endExamVisible,
-                            onMapClick = onOpenMap,
-                            onShowEndExamButton = { endExamVisible = !endExamVisible },
-                        )
+            when {
+                uiState.questions.isEmpty() -> {
+                    LoadingIndicator(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .wrapContentSize(),
+                    )
+                }
 
-                        LinearProgressIndicator(
-                            progress = { animatedProgress },
-                            color = MaterialTheme.semanticColors.successContainer,
-                            drawStopIndicator = {},
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(16.dp),
-                        )
-                    }
-
-                    ExamPager(
-                        questions = uiState.questions,
+                adaptiveInfo.isTabletop -> {
+                    ExamTabletopContent(
+                        uiState = uiState,
                         pagerState = pagerState,
-                        falseCheckedPages = uiState.falseCheckedPositions,
-                        trueCheckedPages = uiState.trueCheckedPositions,
-                        onImageClick = onImageDetailsClick,
+                        animatedProgress = animatedProgress,
+                        endExamVisible = endExamVisible,
+                        onShowEndExam = { endExamVisible = !endExamVisible },
+                        onOpenMap = onOpenMap,
+                        onImageDetailsClick = onImageDetailsClick,
                         onCheckFalseAtPage = onCheckFalseAtPage,
                         onCheckTrueAtPage = onCheckTrueAtPage,
-                        isCompleted = uiState.isCompleted,
-                        responses = uiState.mistakePositions,
-                        questionTextSize = uiState.questionTextSize,
+                        onCompleteExam = {
+                            if (completedCount != QUESTIONS_IN_EXAM) {
+                                hapticFeedback.performHapticFeedback(HapticFeedbackType.GestureThresholdActivate)
+                                questionsUnCompletedDialog = true
+                            } else {
+                                onCompleteExam()
+                            }
+                        },
+                        onRestartExam = onRestartExam,
+                        onExitExam = onExitExam,
+                        onPreviousPageClick = {
+                            if (pagerState.canScrollBackward) {
+                                coroutineScope.launch {
+                                    pagerState.animateScrollToPage(page = pagerState.currentPage - 1)
+                                }
+                            }
+                        },
+                        onNextPageClick = {
+                            if (pagerState.canScrollForward) {
+                                coroutineScope.launch {
+                                    pagerState.animateScrollToPage(page = pagerState.currentPage + 1)
+                                }
+                            }
+                        },
                     )
+                }
 
-                    LaunchedEffect(pagerState.settledPage) {
-                        endExamVisible = pagerState.settledPage == QUESTIONS_IN_EXAM - 1
+                adaptiveInfo.isDualPane -> {
+                    ExamDualPaneContent(
+                        uiState = uiState,
+                        pagerState = pagerState,
+                        animatedProgress = animatedProgress,
+                        endExamVisible = endExamVisible,
+                        onShowEndExam = { endExamVisible = !endExamVisible },
+                        onOpenMap = onOpenMap,
+                        onImageDetailsClick = onImageDetailsClick,
+                        onCheckFalseAtPage = onCheckFalseAtPage,
+                        onCheckTrueAtPage = onCheckTrueAtPage,
+                        onCompleteExam = {
+                            if (completedCount != QUESTIONS_IN_EXAM) {
+                                hapticFeedback.performHapticFeedback(HapticFeedbackType.GestureThresholdActivate)
+                                questionsUnCompletedDialog = true
+                            } else {
+                                onCompleteExam()
+                            }
+                        },
+                        onRestartExam = onRestartExam,
+                        onExitExam = onExitExam,
+                        onPageSelected = { page ->
+                            coroutineScope.launch {
+                                pagerState.animateScrollToPage(page)
+                            }
+                        },
+                        onPreviousPageClick = {
+                            if (pagerState.canScrollBackward) {
+                                coroutineScope.launch {
+                                    pagerState.animateScrollToPage(page = pagerState.currentPage - 1)
+                                }
+                            }
+                        },
+                        onNextPageClick = {
+                            if (pagerState.canScrollForward) {
+                                coroutineScope.launch {
+                                    pagerState.animateScrollToPage(page = pagerState.currentPage + 1)
+                                }
+                            }
+                        },
+                    )
+                }
+
+                else -> {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .statusBarsPadding(),
+                        verticalArrangement = Arrangement.SpaceBetween,
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                    ) {
+                        Column(
+                            modifier = Modifier.fillMaxWidth(),
+                        ) {
+                            ExamLegend(
+                                pagerState = pagerState,
+                                timer = { uiState.timer },
+                                endExamVisible = endExamVisible,
+                                onMapClick = onOpenMap,
+                                onShowEndExamButton = { endExamVisible = !endExamVisible },
+                            )
+
+                            LinearProgressIndicator(
+                                progress = { animatedProgress },
+                                color = MaterialTheme.semanticColors.successContainer,
+                                drawStopIndicator = {},
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(16.dp),
+                            )
+                        }
+
+                        ExamPager(
+                            questions = uiState.questions,
+                            pagerState = pagerState,
+                            falseCheckedPages = uiState.falseCheckedPositions,
+                            trueCheckedPages = uiState.trueCheckedPositions,
+                            onImageClick = onImageDetailsClick,
+                            onCheckFalseAtPage = onCheckFalseAtPage,
+                            onCheckTrueAtPage = onCheckTrueAtPage,
+                            isCompleted = uiState.isCompleted,
+                            responses = uiState.mistakePositions,
+                            questionTextSize = uiState.questionTextSize,
+                        )
+
+                        LaunchedEffect(pagerState.settledPage) {
+                            endExamVisible = pagerState.settledPage == QUESTIONS_IN_EXAM - 1
+                        }
                     }
                 }
             }

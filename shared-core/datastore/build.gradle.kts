@@ -1,5 +1,4 @@
 @file:OptIn(
-    org.jetbrains.kotlin.gradle.export.ExperimentalExportDsl::class,
     org.jetbrains.kotlin.gradle.swiftexport.ExperimentalSwiftExportDsl::class,
 )
 
@@ -12,7 +11,11 @@ plugins {
 kotlin {
     android {
         namespace = "com.arsildo.merrpatenten.shared.core.datastore"
-        compileSdk = 37
+        compileSdk {
+            version = release(37) {
+                minorApiLevel = 1
+            }
+        }
         minSdk = 31
     }
 

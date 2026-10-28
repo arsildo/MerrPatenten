@@ -1,12 +1,16 @@
 package com.arsildo.merrpatenten.shared.feature.exam.ui.components
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ExitToApp
 import androidx.compose.material.icons.rounded.DoneAll
 import androidx.compose.material.icons.rounded.RestartAlt
-import androidx.compose.material3.*
+import androidx.compose.material3.LinearProgressIndicator
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
@@ -17,10 +21,10 @@ import com.arsildo.merrpatenten.shared.core.designsystem.components.ExitExamButt
 import com.arsildo.merrpatenten.shared.core.designsystem.components.RestartExamButton
 import com.arsildo.merrpatenten.shared.core.designsystem.semanticColors
 import com.arsildo.merrpatenten.shared.feature.exam.ExamUiState
-import merrpatenten.shared_core.design_system.generated.resources.*
+import merrpatenten.shared_core.design_system.generated.resources.Res
+import merrpatenten.shared_core.design_system.generated.resources.question_map
 import org.jetbrains.compose.resources.stringResource
 
-@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 internal fun ExamDualPaneContent(
     uiState: ExamUiState,
@@ -41,7 +45,7 @@ internal fun ExamDualPaneContent(
     modifier: Modifier = Modifier,
 ) {
     val adaptiveInfo = rememberAppAdaptiveInfo()
-    val (primaryWeight, secondaryWeight) = adaptiveInfo.dualPaneSplitWeights(defaultPrimaryWeight = 0.58f)
+    val (primaryWeight, secondaryWeight) = adaptiveInfo.dualPaneSplitWeights(defaultPrimaryWeight = .6f)
 
     Row(
         modifier = modifier
@@ -119,7 +123,7 @@ internal fun ExamDualPaneContent(
                         )
                     }
 
-                    if (endExamVisible || uiState.isCompleted) {
+                    AnimatedVisibility(endExamVisible || uiState.isCompleted) {
                         if (uiState.isCompleted) {
                             Row(
                                 modifier = Modifier.fillMaxWidth(),

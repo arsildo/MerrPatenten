@@ -1,5 +1,4 @@
 @file:OptIn(
-    org.jetbrains.kotlin.gradle.export.ExperimentalExportDsl::class,
     org.jetbrains.kotlin.gradle.swiftexport.ExperimentalSwiftExportDsl::class,
 )
 
@@ -15,7 +14,11 @@ plugins {
 kotlin {
     android {
         namespace = "com.arsildo.merrpatenten.shared.feature.catalog"
-        compileSdk = 37
+        compileSdk {
+            version = release(37) {
+                minorApiLevel = 1
+            }
+        }
         minSdk = 31
         androidResources.enable = true
     }
@@ -45,7 +48,7 @@ kotlin {
             implementation(libs.compose.uiToolingPreview)
             implementation(libs.compose.components.resources)
             implementation(libs.compose.material3)
-            implementation(compose.materialIconsExtended)
+            implementation(libs.compose.materialIconsExtended)
 
             implementation(libs.androidx.lifecycleRuntimeCompose)
             implementation(libs.androidx.lifecycleViewmodelNavigation3)

@@ -16,6 +16,7 @@ import com.arsildo.merrpatenten.shared.core.model.Question
 
 @Composable
 internal fun ExamPager(
+    modifier: Modifier = Modifier,
     questions: List<Question>,
     pagerState: PagerState,
     falseCheckedPages: List<Boolean>,
@@ -26,7 +27,6 @@ internal fun ExamPager(
     isCompleted: Boolean,
     responses: List<Int>,
     questionTextSize: QuestionTextSize = QuestionTextSize.DEFAULT,
-    modifier: Modifier = Modifier,
 ) {
     HorizontalPager(
         state = pagerState,

@@ -27,6 +27,7 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 internal fun QuestionItem(
+    modifier: Modifier = Modifier,
     isCompleted: Boolean,
     correct: Boolean,
     image: DrawableResource,
@@ -37,7 +38,6 @@ internal fun QuestionItem(
     questionTextSize: QuestionTextSize = QuestionTextSize.DEFAULT,
     onFalseCheckedChange: (checked: Boolean) -> Unit,
     onTrueCheckedChange: (checked: Boolean) -> Unit,
-    modifier: Modifier = Modifier,
 ) {
     Card(
         colors = CardDefaults.cardColors(

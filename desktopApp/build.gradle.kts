@@ -13,7 +13,6 @@ dependencies {
     implementation(libs.compose.runtime)
     implementation(libs.compose.ui)
     implementation(libs.compose.material3)
-    implementation(compose.desktop.currentOs)
 
     implementation(project.dependencies.platform(libs.koin.bom))
     implementation(libs.koin.core)

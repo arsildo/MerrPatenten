@@ -1,5 +1,6 @@
 package com.arsildo.merrpatenten.shared.feature.exam.ui.components
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PagerState
@@ -27,10 +28,11 @@ import com.arsildo.merrpatenten.shared.core.designsystem.formatQuestion
 import com.arsildo.merrpatenten.shared.core.designsystem.getImageResource
 import com.arsildo.merrpatenten.shared.core.designsystem.semanticColors
 import com.arsildo.merrpatenten.shared.feature.exam.ExamUiState
-import merrpatenten.shared_core.design_system.generated.resources.*
+import merrpatenten.shared_core.design_system.generated.resources.Res
+import merrpatenten.shared_core.design_system.generated.resources.false_checkbox
+import merrpatenten.shared_core.design_system.generated.resources.true_checkbox
 import org.jetbrains.compose.resources.stringResource
 
-@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 internal fun ExamTabletopContent(
     uiState: ExamUiState,
@@ -192,7 +194,7 @@ internal fun ExamTabletopContent(
                         )
                     }
 
-                    if (endExamVisible || uiState.isCompleted) {
+                    AnimatedVisibility(endExamVisible || uiState.isCompleted) {
                         if (uiState.isCompleted) {
                             Row(
                                 modifier = Modifier.fillMaxWidth(),

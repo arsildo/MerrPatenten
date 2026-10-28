@@ -6,7 +6,11 @@ plugins {
 kotlin {
     android {
         namespace = "com.arsildo.merrpatenten.shared"
-        compileSdk = 37
+        compileSdk {
+            version = release(37) {
+                minorApiLevel = 1
+            }
+        }
         minSdk = 31
     }
 

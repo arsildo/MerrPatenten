@@ -1,5 +1,4 @@
 @file:OptIn(
-    org.jetbrains.kotlin.gradle.export.ExperimentalExportDsl::class,
     org.jetbrains.kotlin.gradle.swiftexport.ExperimentalSwiftExportDsl::class,
 )
 
@@ -17,7 +16,11 @@ compose.resources {
 kotlin {
     android {
         namespace = "com.arsildo.merrpatenten.shared.core.designsystem"
-        compileSdk = 37
+        compileSdk {
+            version = release(37) {
+                minorApiLevel = 1
+            }
+        }
         minSdk = 31
         androidResources.enable = true
     }
@@ -43,7 +46,7 @@ kotlin {
             implementation(libs.compose.material3)
             api(libs.compose.material3.adaptive)
             api(libs.compose.material3.adaptive.layout)
-            implementation(compose.materialIconsExtended)
+            implementation(libs.compose.materialIconsExtended)
 
             implementation(libs.androidx.annotation)
             api(libs.kotlinx.datetime)

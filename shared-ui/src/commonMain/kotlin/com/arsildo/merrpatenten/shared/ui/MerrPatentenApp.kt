@@ -226,22 +226,22 @@ fun MerrPatentenApp() {
                     containerColor = MaterialTheme.colorScheme.surfaceContainer,
                 ) {
                     Spacer(Modifier.height(16.dp))
-                    topLevelDestinations.forEach { dest ->
+                    topLevelDestinations.forEach { (key, icon, labelRes) ->
                         NavigationRailItem(
-                            selected = currentTopLevel == dest.key,
+                            selected = currentTopLevel == key,
                             onClick = {
                                 hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                                navigator.navigate(dest.key)
+                                navigator.navigate(key)
                             },
                             icon = {
                                 Icon(
-                                    imageVector = dest.icon,
-                                    contentDescription = stringResource(dest.labelRes),
+                                    imageVector = icon,
+                                    contentDescription = stringResource(labelRes),
                                 )
                             },
                             label = {
                                 Text(
-                                    text = stringResource(dest.labelRes),
+                                    text = stringResource(labelRes),
                                     style = MaterialTheme.typography.labelMedium,
                                 )
                             },

@@ -1,5 +1,4 @@
 @file:OptIn(
-    org.jetbrains.kotlin.gradle.export.ExperimentalExportDsl::class,
     org.jetbrains.kotlin.gradle.swiftexport.ExperimentalSwiftExportDsl::class,
 )
 
@@ -14,7 +13,11 @@ plugins {
 kotlin {
     android {
         namespace = "com.arsildo.merrpatenten.shared.ui"
-        compileSdk = 37
+        compileSdk {
+            version = release(37) {
+                minorApiLevel = 1
+            }
+        }
         minSdk = 31
     }
     iosArm64()
@@ -54,7 +57,7 @@ kotlin {
             implementation(libs.compose.runtime)
             implementation(libs.compose.foundation)
             implementation(libs.compose.material3)
-            implementation(compose.materialIconsExtended)
+            implementation(libs.compose.materialIconsExtended)
             implementation(libs.compose.ui)
             implementation(libs.compose.components.resources)
 
@@ -79,7 +82,6 @@ kotlin {
             implementation(libs.filekit.dialogs.compose)
         }
         jvmMain.dependencies {
-            implementation(compose.desktop.currentOs)
             implementation(libs.kotlinx.coroutinesSwing)
         }
     }

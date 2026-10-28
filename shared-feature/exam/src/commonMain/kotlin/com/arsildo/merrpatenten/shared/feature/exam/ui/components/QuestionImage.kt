@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.ZoomIn
@@ -47,8 +48,10 @@ internal fun QuestionImage(image: DrawableResource, onClick: () -> Unit, modifie
             painter = painterResource(image),
             contentDescription = null,
             modifier = Modifier
+                .widthIn(max = 360.dp)
                 .fillMaxWidth()
-                .aspectRatio(1.5f),
+                .aspectRatio(1.5f)
+                .align(Alignment.Center),
         )
 
         // Zoom Hint Pill
