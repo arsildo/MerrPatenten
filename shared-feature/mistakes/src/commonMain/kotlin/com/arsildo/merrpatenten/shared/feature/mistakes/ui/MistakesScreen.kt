@@ -11,7 +11,6 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.rounded.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -37,7 +36,6 @@ import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun MistakesRoute(
-    onBackPress: () -> Unit,
     onStartPractice: (category: String) -> Unit,
     onImageDetailsClick: (index: Int) -> Unit,
     viewModel: MistakesViewModel = koinViewModel(),
@@ -46,7 +44,6 @@ fun MistakesRoute(
 
     MistakesScreen(
         uiState = uiState,
-        onBackPress = onBackPress,
         onStartPractice = { onStartPractice(uiState.selectedCategory) },
         onImageDetailsClick = onImageDetailsClick,
         onSelectCategory = viewModel::onSelectCategory,
@@ -60,7 +57,6 @@ fun MistakesRoute(
 @Composable
 fun MistakesScreen(
     uiState: MistakesUiState,
-    onBackPress: () -> Unit,
     onStartPractice: () -> Unit,
     onImageDetailsClick: (index: Int) -> Unit,
     onSelectCategory: (category: String) -> Unit,
@@ -84,19 +80,6 @@ fun MistakesScreen(
                         style = MaterialTheme.typography.titleLarge,
                         fontWeight = FontWeight.Bold,
                     )
-                },
-                navigationIcon = {
-                    IconButton(
-                        onClick = {
-                            hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                            onBackPress()
-                        },
-                    ) {
-                        Icon(
-                            imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
-                            contentDescription = stringResource(Res.string.back),
-                        )
-                    }
                 },
                 actions = {
                     if (uiState.totalCount > 0) {

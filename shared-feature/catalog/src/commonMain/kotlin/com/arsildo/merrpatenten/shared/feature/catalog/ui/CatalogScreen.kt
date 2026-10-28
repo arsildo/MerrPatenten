@@ -59,7 +59,6 @@ import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun CatalogRoute(
-    onBackPress: () -> Unit,
     onSignClick: (id: Int) -> Unit,
     onImageDetailsClick: (index: Int) -> Unit = {},
     selectedSignId: Int? = null,
@@ -70,7 +69,6 @@ fun CatalogRoute(
     CatalogScreen(
         uiState = uiState,
         selectedSignId = selectedSignId,
-        onBackPress = onBackPress,
         onSignClick = onSignClick,
         onImageDetailsClick = onImageDetailsClick,
         onCategorySelected = viewModel::onCategorySelected,
@@ -83,7 +81,6 @@ fun CatalogRoute(
 @Composable
 fun CatalogScreen(
     uiState: CatalogUiState,
-    onBackPress: () -> Unit,
     onSignClick: (id: Int) -> Unit,
     onCategorySelected: (category: SignCategory) -> Unit,
     onSearchQueryChanged: (query: String) -> Unit,
@@ -138,20 +135,15 @@ fun CatalogScreen(
                     }
                 },
                 navigationIcon = {
-                    IconButton(
-                        onClick = {
-                            if (uiState.isSearching) {
-                                onToggleSearch(false)
-                            } else {
-                                hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                                onBackPress()
-                            }
-                        },
-                    ) {
-                        Icon(
-                            imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
-                            contentDescription = stringResource(Res.string.back),
-                        )
+                    if (uiState.isSearching) {
+                        IconButton(
+                            onClick = { onToggleSearch(false) },
+                        ) {
+                            Icon(
+                                imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
+                                contentDescription = stringResource(Res.string.back),
+                            )
+                        }
                     }
                 },
                 actions = {
@@ -310,7 +302,6 @@ private fun CatalogScreenPreview() {
                     ),
                 ),
             ),
-            onBackPress = {},
             onSignClick = {},
             onCategorySelected = {},
             onSearchQueryChanged = {},

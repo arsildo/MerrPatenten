@@ -20,7 +20,6 @@ fun EntryProviderScope<NavKey>.mistakesEntry(
 ) {
     entry<Mistakes> {
         MistakesRoute(
-            onBackPress = onBackPress,
             onStartPractice = { category -> backStack.add(MistakesPractice(category)) },
             onImageDetailsClick = onImageDetailsClick,
         )

@@ -164,8 +164,6 @@ fun MerrPatentenApp() {
         val dashboardSubStack = navigator.state.subStacks[Dashboard] ?: error("Dashboard stack missing")
         val catalogSubStack = navigator.state.subStacks[Catalog] ?: error("Catalog stack missing")
         val mistakesSubStack = navigator.state.subStacks[Mistakes] ?: error("Mistakes stack missing")
-        val statisticsSubStack = navigator.state.subStacks[Statistics] ?: error("Statistics stack missing")
-        val preferencesSubStack = navigator.state.subStacks[Preferences] ?: error("Preferences stack missing")
 
         val entries = navigator.state.toEntries(
             entryProvider = entryProvider {
@@ -200,14 +198,9 @@ fun MerrPatentenApp() {
                     onDismiss = { navigator.goBack() },
                 )
                 statisticsEntry(
-                    backStack = statisticsSubStack,
-                    onBackPress = { navigator.goBack() },
                     onChangePreferenceClick = { navigator.navigate(Preferences) },
                 )
-                preferencesEntry(
-                    backStack = preferencesSubStack,
-                    onBackPress = { navigator.goBack() },
-                )
+                preferencesEntry()
             },
         )
 

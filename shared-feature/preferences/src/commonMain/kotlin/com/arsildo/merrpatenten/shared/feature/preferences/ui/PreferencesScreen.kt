@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.rounded.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -31,11 +30,10 @@ import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
-internal fun PreferencesRoute(viewModel: PreferencesViewModel = koinViewModel(), onBackPress: () -> Unit) {
+internal fun PreferencesRoute(viewModel: PreferencesViewModel = koinViewModel()) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     PreferencesScreen(
         uiState = uiState,
-        onBackPress = onBackPress,
         onImmersiveModeChange = viewModel::setImmersiveMode,
         onSaveStatsChange = viewModel::setSaveStats,
         onHapticFeedbackChange = viewModel::setHapticFeedback,
@@ -50,7 +48,6 @@ internal fun PreferencesRoute(viewModel: PreferencesViewModel = koinViewModel(),
 @Composable
 internal fun PreferencesScreen(
     uiState: PreferencesUiState,
-    onBackPress: () -> Unit,
     onImmersiveModeChange: (enabled: Boolean) -> Unit,
     onSaveStatsChange: (enabled: Boolean) -> Unit,
     onHapticFeedbackChange: (enabled: Boolean) -> Unit,
@@ -73,23 +70,6 @@ internal fun PreferencesScreen(
                     scrollBehavior = scrollBehavior,
                     title = {
                         Text(text = stringResource(Res.string.preferences))
-                    },
-                    navigationIcon = {
-                        FilledTonalIconButton(
-                            onClick = {
-                                hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                                onBackPress()
-                            },
-                            colors = IconButtonDefaults.filledTonalIconButtonColors(
-                                containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
-                                contentColor = MaterialTheme.colorScheme.onSurface,
-                            ),
-                        ) {
-                            Icon(
-                                imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
-                                contentDescription = stringResource(Res.string.back),
-                            )
-                        }
                     },
                     actions = {
                         FilledTonalIconButton(
@@ -355,7 +335,6 @@ private fun PreferencesScreenPreview() {
     MerrPatentenTheme {
         PreferencesScreen(
             uiState = PreferencesUiState(),
-            onBackPress = {},
             onImmersiveModeChange = {},
             onSaveStatsChange = {},
             onHapticFeedbackChange = {},
@@ -373,7 +352,6 @@ private fun PreferencesScreenDarkPreview() {
     MerrPatentenTheme(darkTheme = true) {
         PreferencesScreen(
             uiState = PreferencesUiState(followSystemColors = false, colorScheme = true),
-            onBackPress = {},
             onImmersiveModeChange = {},
             onSaveStatsChange = {},
             onHapticFeedbackChange = {},

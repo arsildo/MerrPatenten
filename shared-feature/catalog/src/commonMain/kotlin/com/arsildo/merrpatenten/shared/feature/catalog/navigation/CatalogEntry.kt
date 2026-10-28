@@ -46,7 +46,6 @@ fun EntryProviderScope<NavKey>.catalogEntry(
         val selectedSignId = (backStack.lastOrNull() as? SignDetail)?.signId
         CatalogRoute(
             selectedSignId = selectedSignId,
-            onBackPress = onBackPress,
             onSignClick = { signId ->
                 if (backStack.lastOrNull() is SignDetail) {
                     backStack.removeLastOrNull()

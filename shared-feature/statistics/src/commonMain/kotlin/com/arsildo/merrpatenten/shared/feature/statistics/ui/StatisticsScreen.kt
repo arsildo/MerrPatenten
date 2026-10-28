@@ -10,7 +10,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.automirrored.rounded.TrendingUp
 import androidx.compose.material.icons.rounded.*
 import androidx.compose.material3.*
@@ -46,16 +45,11 @@ import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
-internal fun StatisticsRoute(
-    viewModel: StatisticsViewModel = koinViewModel(),
-    onChangePreferenceClick: () -> Unit,
-    onBackPress: () -> Unit,
-) {
+internal fun StatisticsRoute(viewModel: StatisticsViewModel = koinViewModel(), onChangePreferenceClick: () -> Unit) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     StatisticsScreen(
         uiState = uiState,
         onChangePreferenceClick = onChangePreferenceClick,
-        onBackPress = onBackPress,
         onDeleteAllResults = viewModel::deleteAllResults,
     )
 }
@@ -65,7 +59,6 @@ internal fun StatisticsRoute(
 internal fun StatisticsScreen(
     uiState: StatisticsUiState,
     onChangePreferenceClick: () -> Unit,
-    onBackPress: () -> Unit,
     onDeleteAllResults: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -79,24 +72,6 @@ internal fun StatisticsScreen(
             TopAppBar(
                 scrollBehavior = scrollBehavior,
                 title = { Text(text = stringResource(Res.string.statistics)) },
-                navigationIcon = {
-                    FilledTonalIconButton(
-                        onClick = {
-                            hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                            onBackPress()
-                        },
-                        colors = IconButtonDefaults.filledTonalIconButtonColors(
-                            containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
-                            contentColor = MaterialTheme.colorScheme.onSurface,
-                        ),
-                        shape = MaterialTheme.shapes.medium,
-                    ) {
-                        Icon(
-                            imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
-                            contentDescription = stringResource(Res.string.back),
-                        )
-                    }
-                },
                 actions = {
                     if (uiState.saveResults && uiState.results.isNotEmpty()) {
                         FilledTonalIconButton(
@@ -448,7 +423,6 @@ private fun StatisticsScreenWithDataPreview() {
                 ),
             ),
             onChangePreferenceClick = {},
-            onBackPress = {},
             onDeleteAllResults = {},
         )
     }
@@ -461,7 +435,6 @@ private fun StatisticsScreenEmptyPreview() {
         StatisticsScreen(
             uiState = StatisticsUiState(results = emptyList(), saveResults = true),
             onChangePreferenceClick = {},
-            onBackPress = {},
             onDeleteAllResults = {},
         )
     }
@@ -474,7 +447,6 @@ private fun StatisticsScreenDisabledPreview() {
         StatisticsScreen(
             uiState = StatisticsUiState(results = emptyList(), saveResults = false),
             onChangePreferenceClick = {},
-            onBackPress = {},
             onDeleteAllResults = {},
         )
     }
@@ -501,7 +473,6 @@ private fun StatisticsScreenDarkPreview() {
                 ),
             ),
             onChangePreferenceClick = {},
-            onBackPress = {},
             onDeleteAllResults = {},
         )
     }
