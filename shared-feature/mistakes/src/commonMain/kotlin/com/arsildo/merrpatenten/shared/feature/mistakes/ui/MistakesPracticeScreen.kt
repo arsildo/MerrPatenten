@@ -147,7 +147,9 @@ fun MistakesPracticeScreen(
                         .fillMaxSize()
                         .padding(contentPadding)
                         .verticalScroll(rememberScrollState())
-                        .padding(horizontal = 20.dp, vertical = 12.dp),
+                        .padding(horizontal = 20.dp)
+                        .padding(top = 12.dp, bottom = 104.dp)
+                        .navigationBarsPadding(),
                     verticalArrangement = Arrangement.spacedBy(16.dp),
                 ) {
                     // Progress Bar & Step Info

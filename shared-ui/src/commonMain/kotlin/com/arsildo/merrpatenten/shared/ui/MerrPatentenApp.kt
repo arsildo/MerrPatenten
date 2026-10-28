@@ -1,48 +1,44 @@
 package com.arsildo.merrpatenten.shared.ui
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.slideInHorizontally
-import androidx.compose.animation.slideInVertically
-import androidx.compose.animation.slideOutHorizontally
-import androidx.compose.animation.slideOutVertically
+import androidx.compose.animation.*
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.selection.selectableGroup
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.MenuBook
 import androidx.compose.material.icons.rounded.AutoGraph
 import androidx.compose.material.icons.rounded.EditNote
 import androidx.compose.material.icons.rounded.Home
 import androidx.compose.material.icons.rounded.Settings
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationBarItem
-import androidx.compose.material3.NavigationRail
-import androidx.compose.material3.NavigationRailItem
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.selected
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.zIndex
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.compose.dropUnlessResumed
 import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.ui.NavDisplay
+import androidx.navigation3.ui.defaultPopTransitionSpec
+import androidx.navigation3.ui.defaultTransitionSpec
 import androidx.savedstate.serialization.SavedStateConfiguration
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
 import com.arsildo.merrpatenten.shared.core.designsystem.adaptive.rememberAppAdaptiveInfo
@@ -149,6 +145,11 @@ fun MerrPatentenApp() {
         }
 
         val topLevelKeys = remember { topLevelDestinations.map { it.key }.toSet() }
+        val topLevelIndexByContentKey = remember {
+            topLevelDestinations.mapIndexed { index, dest ->
+                "${dest.key}:${dest.key::class}" to index
+            }.toMap()
+        }
 
         val navigator = rememberNavigator(
             startKey = Dashboard,
@@ -242,69 +243,154 @@ fun MerrPatentenApp() {
                     }
                 }
             }
-            Scaffold(
-                bottomBar = {
-                    AnimatedVisibility(
-                        visible = adaptiveInfo.isCompact && showNavigation,
-                        enter = slideInVertically { it },
-                        exit = slideOutVertically { it },
-                    ) {
-                        NavigationBar(
-                            modifier = Modifier.fillMaxWidth(),
-                            containerColor = MaterialTheme.colorScheme.surfaceContainer,
-                        ) {
-                            topLevelDestinations.forEach { dest ->
-                                NavigationBarItem(
-                                    selected = currentTopLevel == dest.key,
-                                    onClick = {
-                                        hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                                        navigator.navigate(dest.key)
-                                    },
-                                    icon = {
-                                        Icon(
-                                            imageVector = dest.icon,
-                                            contentDescription = stringResource(dest.labelRes),
-                                        )
-                                    },
-                                    label = {
-                                        Text(
-                                            text = stringResource(dest.labelRes),
-                                            style = MaterialTheme.typography.labelSmall,
-                                        )
-                                    },
-                                )
-                            }
-                        }
-                    }
-                },
-                contentWindowInsets = WindowInsets(0, 0, 0, 0),
+            Box(
                 modifier = Modifier
                     .weight(1f)
                     .fillMaxHeight(),
-            ) { innerPadding ->
-                Box(
+            ) {
+                NavDisplay(
+                    entries = entries,
+                    sceneStrategies = listOf(
+                        remember { BottomSheetSceneStrategy() },
+                        listDetailStrategy,
+                    ),
+                    transitionSpec = {
+                        val initialIndex = topLevelIndexByContentKey[initialState.entries.lastOrNull()?.contentKey]
+                        val targetIndex = topLevelIndexByContentKey[targetState.entries.lastOrNull()?.contentKey]
+                        if (initialIndex != null && targetIndex != null && initialIndex != targetIndex) {
+                            if (targetIndex > initialIndex) {
+                                slideInHorizontally { it } togetherWith slideOutHorizontally { -it }
+                            } else {
+                                slideInHorizontally { -it } togetherWith slideOutHorizontally { it }
+                            }
+                        } else {
+                            defaultTransitionSpec<NavKey>()(this)
+                        }
+                    },
+                    popTransitionSpec = {
+                        val initialIndex = topLevelIndexByContentKey[initialState.entries.lastOrNull()?.contentKey]
+                        val targetIndex = topLevelIndexByContentKey[targetState.entries.lastOrNull()?.contentKey]
+                        if (initialIndex != null && targetIndex != null && initialIndex != targetIndex) {
+                            if (targetIndex > initialIndex) {
+                                slideInHorizontally { it } togetherWith slideOutHorizontally { -it }
+                            } else {
+                                slideInHorizontally { -it } togetherWith slideOutHorizontally { it }
+                            }
+                        } else {
+                            defaultPopTransitionSpec<NavKey>()(this)
+                        }
+                    },
+                    onBack = dropUnlessResumed {
+                        if (navigator.canGoBack) {
+                            navigator.goBack()
+                        } else {
+                            navigator.popRoot()
+                        }
+                    },
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(innerPadding),
+                        .background(MaterialTheme.colorScheme.background),
+                )
+
+                androidx.compose.animation.AnimatedVisibility(
+                    visible = adaptiveInfo.isCompact && showNavigation,
+                    enter = slideInVertically { it },
+                    exit = slideOutVertically { it },
+                    modifier = Modifier
+                        .align(Alignment.BottomCenter)
+                        .zIndex(1f),
                 ) {
-                    NavDisplay(
-                        entries = entries,
-                        sceneStrategies = listOf(
-                            remember { BottomSheetSceneStrategy() },
-                            listDetailStrategy,
+                    HorizontalFloatingToolbar(
+                        expanded = true,
+                        colors = FloatingToolbarDefaults.standardFloatingToolbarColors(
+                            toolbarContainerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
+                            toolbarContentColor = MaterialTheme.colorScheme.onSurfaceVariant,
                         ),
-                        onBack = dropUnlessResumed {
-                            if (navigator.canGoBack) {
-                                navigator.goBack()
-                            } else {
-                                navigator.popRoot()
-                            }
-                        },
+                        expandedShadowElevation = 6.dp,
                         modifier = Modifier
-                            .fillMaxSize()
-                            .background(MaterialTheme.colorScheme.background),
-                    )
+                            .navigationBarsPadding()
+                            .selectableGroup(),
+                    ) {
+                        topLevelDestinations.forEach { (key, icon, labelRes) ->
+                            val selected = currentTopLevel == key
+                            val label = stringResource(labelRes)
+                            FloatingToolbarNavItem(
+                                selected = selected,
+                                icon = icon,
+                                label = label,
+                                onClick = {
+                                    hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+                                    navigator.navigate(key)
+                                },
+                            )
+                        }
+                    }
                 }
+            }
+        }
+    }
+}
+
+@Composable
+private fun FloatingToolbarNavItem(
+    selected: Boolean,
+    icon: ImageVector,
+    label: String,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val containerColor by animateColorAsState(
+        targetValue = if (selected) {
+            MaterialTheme.colorScheme.secondaryContainer
+        } else {
+            Color.Transparent
+        },
+        label = "FloatingToolbarItemContainer",
+    )
+    val contentColor by animateColorAsState(
+        targetValue = if (selected) {
+            MaterialTheme.colorScheme.onSecondaryContainer
+        } else {
+            MaterialTheme.colorScheme.onSurfaceVariant
+        },
+        label = "FloatingToolbarItemContent",
+    )
+
+    Row(
+        modifier = modifier
+            .height(48.dp)
+            .clip(CircleShape)
+            .background(containerColor)
+            .clickable(onClick = onClick)
+            .semantics {
+                role = Role.Tab
+                this.selected = selected
+            }
+            .padding(horizontal = if (selected) 16.dp else 12.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Center,
+    ) {
+        Icon(
+            imageVector = icon,
+            contentDescription = label,
+            tint = contentColor,
+            modifier = Modifier.size(24.dp),
+        )
+        AnimatedVisibility(
+            visible = selected,
+            enter = expandHorizontally(expandFrom = Alignment.Start) + fadeIn(),
+            exit = shrinkHorizontally(shrinkTowards = Alignment.Start) + fadeOut(),
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Spacer(Modifier.width(8.dp))
+                Text(
+                    text = label,
+                    style = MaterialTheme.typography.labelLarge,
+                    fontWeight = FontWeight.SemiBold,
+                    color = contentColor,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                )
             }
         }
     }

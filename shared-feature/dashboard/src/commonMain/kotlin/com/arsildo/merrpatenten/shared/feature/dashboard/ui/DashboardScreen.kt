@@ -117,7 +117,8 @@ internal fun DashboardScreen(
                     .padding(contentPadding)
                     .verticalScroll(rememberScrollState())
                     .padding(horizontal = 24.dp)
-                    .padding(top = 20.dp, bottom = 24.dp),
+                    .padding(top = 20.dp, bottom = 24.dp)
+                    .navigationBarsPadding(),
                 horizontalArrangement = Arrangement.spacedBy(24.dp),
             ) {
                 ExamSection(
@@ -139,7 +140,8 @@ internal fun DashboardScreen(
                     .padding(contentPadding)
                     .verticalScroll(rememberScrollState())
                     .padding(horizontal = 20.dp)
-                    .padding(top = 24.dp, bottom = 24.dp),
+                    .padding(top = 24.dp, bottom = 104.dp)
+                    .navigationBarsPadding(),
                 verticalArrangement = Arrangement.spacedBy(20.dp),
             ) {
                 ExamSection(onStartExamClick = onStartExamClick)

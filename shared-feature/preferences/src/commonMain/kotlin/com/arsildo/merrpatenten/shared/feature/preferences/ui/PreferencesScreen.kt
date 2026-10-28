@@ -61,6 +61,9 @@ internal fun PreferencesScreen(
     val uriHandler = LocalUriHandler.current
     var languageDialogVisible by remember { mutableStateOf(false) }
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
+    val adaptiveInfo = rememberWindowAdaptiveInfo()
+    val isDualPane = adaptiveInfo.isDualPane
+    val floatingToolbarClearance = if (adaptiveInfo.isCompact) 88.dp else 0.dp
 
     AnimateColorSchemeTransition {
         Scaffold(
@@ -113,14 +116,14 @@ internal fun PreferencesScreen(
                     containerColor = MaterialTheme.colorScheme.secondaryContainer,
                     contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
                     shape = MaterialTheme.shapes.large,
+                    modifier = Modifier
+                        .navigationBarsPadding()
+                        .padding(bottom = floatingToolbarClearance),
                 )
             },
             contentColor = MaterialTheme.colorScheme.onBackground,
             contentWindowInsets = WindowInsets(bottom = 0),
         ) { contentPadding ->
-            val adaptiveInfo = rememberWindowAdaptiveInfo()
-            val isDualPane = adaptiveInfo.isDualPane
-
             if (isDualPane) {
                 Row(
                     modifier = Modifier
@@ -172,7 +175,7 @@ internal fun PreferencesScreen(
                         onQuestionTextSizeChange = onQuestionTextSizeChange,
                     )
 
-                    Spacer(modifier = Modifier.height(32.dp).navigationBarsPadding())
+                    Spacer(modifier = Modifier.height(104.dp).navigationBarsPadding())
                 }
             }
 

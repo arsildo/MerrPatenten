@@ -224,9 +224,15 @@ internal fun StatisticsScreen(
                                 }
                             }
                         } else {
+                            val navBarBottom = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
                             LazyVerticalGrid(
                                 columns = GridCells.Adaptive(minSize = 160.dp),
-                                contentPadding = PaddingValues(start = 16.dp, top = 0.dp, end = 16.dp, bottom = 32.dp),
+                                contentPadding = PaddingValues(
+                                    start = 16.dp,
+                                    top = 0.dp,
+                                    end = 16.dp,
+                                    bottom = 104.dp + navBarBottom,
+                                ),
                                 horizontalArrangement = Arrangement.spacedBy(16.dp),
                                 verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap),
                                 modifier = Modifier.fillMaxSize(),
