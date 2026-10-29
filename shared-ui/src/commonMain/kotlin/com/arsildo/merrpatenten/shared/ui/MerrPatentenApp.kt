@@ -215,29 +215,23 @@ fun MerrPatentenApp() {
                 enter = slideInHorizontally { -it },
                 exit = slideOutHorizontally { -it },
             ) {
-                NavigationRail(
-                    modifier = Modifier.fillMaxHeight(),
-                    containerColor = MaterialTheme.colorScheme.surfaceContainer,
+                VerticalFloatingToolbar(
+                    expanded = true,
+                    modifier = Modifier
+                        .systemBarsPadding()
+                        .padding(16.dp)
+                        .selectableGroup(),
                 ) {
-                    Spacer(Modifier.height(16.dp))
                     topLevelDestinations.forEach { (key, icon, labelRes) ->
-                        NavigationRailItem(
-                            selected = currentTopLevel == key,
+                        val selected = currentTopLevel == key
+                        val label = stringResource(labelRes)
+                        VerticalFloatingToolbarNavItem(
+                            selected = selected,
+                            icon = icon,
+                            label = label,
                             onClick = {
                                 hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
                                 navigator.navigate(key)
-                            },
-                            icon = {
-                                Icon(
-                                    imageVector = icon,
-                                    contentDescription = stringResource(labelRes),
-                                )
-                            },
-                            label = {
-                                Text(
-                                    text = stringResource(labelRes),
-                                    style = MaterialTheme.typography.labelMedium,
-                                )
                             },
                         )
                     }
@@ -258,10 +252,14 @@ fun MerrPatentenApp() {
                         val initialIndex = topLevelIndexByContentKey[initialState.entries.lastOrNull()?.contentKey]
                         val targetIndex = topLevelIndexByContentKey[targetState.entries.lastOrNull()?.contentKey]
                         if (initialIndex != null && targetIndex != null && initialIndex != targetIndex) {
-                            if (targetIndex > initialIndex) {
-                                slideInHorizontally { it } togetherWith slideOutHorizontally { -it }
+                            if (adaptiveInfo.isCompact) {
+                                if (targetIndex > initialIndex) {
+                                    slideInHorizontally { it } togetherWith slideOutHorizontally { -it }
+                                } else {
+                                    slideInHorizontally { -it } togetherWith slideOutHorizontally { it }
+                                }
                             } else {
-                                slideInHorizontally { -it } togetherWith slideOutHorizontally { it }
+                                fadeIn() togetherWith fadeOut()
                             }
                         } else {
                             defaultTransitionSpec<NavKey>()(this)
@@ -271,10 +269,14 @@ fun MerrPatentenApp() {
                         val initialIndex = topLevelIndexByContentKey[initialState.entries.lastOrNull()?.contentKey]
                         val targetIndex = topLevelIndexByContentKey[targetState.entries.lastOrNull()?.contentKey]
                         if (initialIndex != null && targetIndex != null && initialIndex != targetIndex) {
-                            if (targetIndex > initialIndex) {
-                                slideInHorizontally { it } togetherWith slideOutHorizontally { -it }
+                            if (adaptiveInfo.isCompact) {
+                                if (targetIndex > initialIndex) {
+                                    slideInHorizontally { it } togetherWith slideOutHorizontally { -it }
+                                } else {
+                                    slideInHorizontally { -it } togetherWith slideOutHorizontally { it }
+                                }
                             } else {
-                                slideInHorizontally { -it } togetherWith slideOutHorizontally { it }
+                                fadeIn() togetherWith fadeOut()
                             }
                         } else {
                             defaultPopTransitionSpec<NavKey>()(this)
@@ -302,13 +304,9 @@ fun MerrPatentenApp() {
                 ) {
                     HorizontalFloatingToolbar(
                         expanded = true,
-                        colors = FloatingToolbarDefaults.standardFloatingToolbarColors(
-                            toolbarContainerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
-                            toolbarContentColor = MaterialTheme.colorScheme.onSurfaceVariant,
-                        ),
-                        expandedShadowElevation = 6.dp,
                         modifier = Modifier
                             .navigationBarsPadding()
+                            .padding(bottom = 16.dp)
                             .selectableGroup(),
                     ) {
                         topLevelDestinations.forEach { (key, icon, labelRes) ->
@@ -393,5 +391,51 @@ private fun FloatingToolbarNavItem(
                 )
             }
         }
+    }
+}
+
+@Composable
+private fun VerticalFloatingToolbarNavItem(
+    selected: Boolean,
+    icon: ImageVector,
+    label: String,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val containerColor by animateColorAsState(
+        targetValue = if (selected) {
+            MaterialTheme.colorScheme.secondaryContainer
+        } else {
+            Color.Transparent
+        },
+        label = "VerticalFloatingToolbarItemContainer",
+    )
+    val contentColor by animateColorAsState(
+        targetValue = if (selected) {
+            MaterialTheme.colorScheme.onSecondaryContainer
+        } else {
+            MaterialTheme.colorScheme.onSurfaceVariant
+        },
+        label = "VerticalFloatingToolbarItemContent",
+    )
+
+    Box(
+        modifier = modifier
+            .size(48.dp)
+            .clip(CircleShape)
+            .background(containerColor)
+            .clickable(onClick = onClick)
+            .semantics {
+                role = Role.Tab
+                this.selected = selected
+            },
+        contentAlignment = Alignment.Center,
+    ) {
+        Icon(
+            imageVector = icon,
+            contentDescription = label,
+            tint = contentColor,
+            modifier = Modifier.size(24.dp),
+        )
     }
 }
