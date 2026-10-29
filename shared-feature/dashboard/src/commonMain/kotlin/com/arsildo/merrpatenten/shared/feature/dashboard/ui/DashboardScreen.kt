@@ -54,28 +54,24 @@ internal fun DashboardRoute(
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun DashboardScreen(
+    modifier: Modifier = Modifier,
+    onMistakesClick: () -> Unit,
     uiState: DashboardUiState,
     onStartExamClick: (category: String) -> Unit,
     onPreferencesClick: () -> Unit,
     onStatisticsClick: () -> Unit,
     onCatalogClick: () -> Unit,
-    onMistakesClick: () -> Unit,
-    modifier: Modifier = Modifier,
 ) {
     val hapticFeedback = LocalHapticFeedback.current
     var showDisclaimerDialog by remember { mutableStateOf(false) }
     val adaptiveInfo = rememberWindowAdaptiveInfo()
     val isMultiColumn = adaptiveInfo.isDualPane
-    val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
 
     Scaffold(
-        modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             TopAppBar(
-                scrollBehavior = scrollBehavior,
                 title = {
                     Column(
                         verticalArrangement = Arrangement.spacedBy(4.dp),
@@ -163,7 +159,7 @@ internal fun DashboardScreen(
 }
 
 @Composable
-private fun ExamSection(onStartExamClick: (category: String) -> Unit, modifier: Modifier = Modifier) {
+private fun ExamSection(modifier: Modifier = Modifier, onStartExamClick: (category: String) -> Unit) {
     val hapticFeedback = LocalHapticFeedback.current
     Column(
         modifier = modifier,
@@ -217,11 +213,11 @@ private fun ExamSection(onStartExamClick: (category: String) -> Unit, modifier: 
 
 @Composable
 private fun LearningSection(
+    modifier: Modifier = Modifier,
     uiState: DashboardUiState,
     onStatisticsClick: () -> Unit,
     onMistakesClick: () -> Unit,
     onCatalogClick: () -> Unit,
-    modifier: Modifier = Modifier,
 ) {
     val hapticFeedback = LocalHapticFeedback.current
     val uriHandler = LocalUriHandler.current

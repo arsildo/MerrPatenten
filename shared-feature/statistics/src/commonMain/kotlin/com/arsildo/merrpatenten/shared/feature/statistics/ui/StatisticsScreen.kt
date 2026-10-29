@@ -17,7 +17,6 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
-import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -33,12 +32,7 @@ import com.arsildo.merrpatenten.shared.core.designsystem.semanticColors
 import com.arsildo.merrpatenten.shared.core.model.ExamResult
 import com.arsildo.merrpatenten.shared.feature.statistics.StatisticsUiState
 import com.arsildo.merrpatenten.shared.feature.statistics.StatisticsViewModel
-import com.arsildo.merrpatenten.shared.feature.statistics.ui.components.DeleteResultsDialog
-import com.arsildo.merrpatenten.shared.feature.statistics.ui.components.PerformanceGraph
-import com.arsildo.merrpatenten.shared.feature.statistics.ui.components.ResultItem
-import com.arsildo.merrpatenten.shared.feature.statistics.ui.components.ResultStoringDisabled
-import com.arsildo.merrpatenten.shared.feature.statistics.ui.components.StatSummaryCard
-import com.arsildo.merrpatenten.shared.feature.statistics.ui.components.resultList
+import com.arsildo.merrpatenten.shared.feature.statistics.ui.components.*
 import kotlin.math.roundToInt
 import merrpatenten.shared_core.design_system.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
@@ -54,23 +48,20 @@ internal fun StatisticsRoute(viewModel: StatisticsViewModel = koinViewModel(), o
     )
 }
 
-@OptIn(ExperimentalMaterial3ExpressiveApi::class, ExperimentalMaterial3Api::class)
 @Composable
 internal fun StatisticsScreen(
+    modifier: Modifier = Modifier,
     uiState: StatisticsUiState,
     onChangePreferenceClick: () -> Unit,
     onDeleteAllResults: () -> Unit,
-    modifier: Modifier = Modifier,
 ) {
     val hapticFeedback = LocalHapticFeedback.current
     var deleteResultsDialog by remember { mutableStateOf(false) }
-    val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
 
     Scaffold(
-        modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+        modifier = modifier,
         topBar = {
             TopAppBar(
-                scrollBehavior = scrollBehavior,
                 title = { Text(text = stringResource(Res.string.statistics)) },
                 actions = {
                     if (uiState.saveResults && uiState.results.isNotEmpty()) {
@@ -99,7 +90,7 @@ internal fun StatisticsScreen(
             )
         },
         contentColor = MaterialTheme.colorScheme.onBackground,
-        contentWindowInsets = WindowInsets(bottom = 0),
+        contentWindowInsets = WindowInsets(top = 0, bottom = 0),
     ) { contentPadding ->
         Box(
             modifier = Modifier
@@ -140,7 +131,7 @@ internal fun StatisticsScreen(
                         val avgErrors = ((totalErrors.toDouble() / results.size) * 10).roundToInt() / 10.0
 
                         val readiness = uiState.readinessScore
-                        val (readinessColor, onReadinessColor, readinessText, readinessIcon) = when (readiness.level) {
+                        val (first, second, third, fourth) = when (readiness.level) {
                             ReadinessLevel.READY -> Quadruple(
                                 MaterialTheme.semanticColors.successContainer,
                                 MaterialTheme.semanticColors.onSuccessContainer,
@@ -175,9 +166,7 @@ internal fun StatisticsScreen(
                         if (adaptiveInfo.isDualPane) {
                             Row(
                                 modifier = Modifier
-                                    .fillMaxSize()
-                                    .padding(horizontal = 24.dp)
-                                    .padding(bottom = 32.dp),
+                                    .fillMaxSize(),
                                 horizontalArrangement = Arrangement.spacedBy(24.dp),
                             ) {
                                 Column(
@@ -188,10 +177,10 @@ internal fun StatisticsScreen(
                                 ) {
                                     AnalyticsOverview(
                                         readiness = readiness,
-                                        readinessColor = readinessColor,
-                                        onReadinessColor = onReadinessColor,
-                                        readinessText = readinessText,
-                                        readinessIcon = readinessIcon,
+                                        readinessColor = first,
+                                        onReadinessColor = second,
+                                        readinessText = third,
+                                        readinessIcon = fourth,
                                         results = results,
                                         avgErrors = avgErrors,
                                         passRate = passRate,
@@ -220,6 +209,9 @@ internal fun StatisticsScreen(
                                                 count = results.size,
                                             )
                                         }
+                                        item {
+                                            Spacer(modifier = Modifier.height(32.dp))
+                                        }
                                     }
                                 }
                             }
@@ -240,10 +232,10 @@ internal fun StatisticsScreen(
                                 item(span = { GridItemSpan(maxLineSpan) }) {
                                     AnalyticsOverview(
                                         readiness = readiness,
-                                        readinessColor = readinessColor,
-                                        onReadinessColor = onReadinessColor,
-                                        readinessText = readinessText,
-                                        readinessIcon = readinessIcon,
+                                        readinessColor = first,
+                                        onReadinessColor = second,
+                                        readinessText = third,
+                                        readinessIcon = fourth,
                                         results = results,
                                         avgErrors = avgErrors,
                                         passRate = passRate,
@@ -284,6 +276,7 @@ internal fun StatisticsScreen(
 
 @Composable
 private fun AnalyticsOverview(
+    modifier: Modifier = Modifier,
     readiness: ReadinessScore,
     readinessColor: androidx.compose.ui.graphics.Color,
     onReadinessColor: androidx.compose.ui.graphics.Color,
@@ -292,7 +285,6 @@ private fun AnalyticsOverview(
     results: List<ExamResult>,
     avgErrors: Double,
     passRate: Int,
-    modifier: Modifier = Modifier,
 ) {
     Column(
         modifier = modifier,
@@ -404,6 +396,7 @@ private fun AnalyticsOverview(
             results = results,
             modifier = Modifier.padding(top = 4.dp),
         )
+        Spacer(modifier = Modifier.height(64.dp))
     }
 }
 

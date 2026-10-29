@@ -79,27 +79,24 @@ fun CatalogRoute(
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CatalogScreen(
+    modifier: Modifier = Modifier,
     uiState: CatalogUiState,
     onSignClick: (id: Int) -> Unit,
     onCategorySelected: (category: SignCategory) -> Unit,
     onSearchQueryChanged: (query: String) -> Unit,
     onToggleSearch: (isSearching: Boolean) -> Unit,
-    modifier: Modifier = Modifier,
     selectedSignId: Int? = null,
     onImageDetailsClick: (index: Int) -> Unit = {},
 ) {
     val hapticFeedback = LocalHapticFeedback.current
-    val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
 
     Scaffold(
-        modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
-        contentWindowInsets = WindowInsets(bottom = 0),
+        modifier = modifier,
+        contentWindowInsets = WindowInsets(top = 0, bottom = 0),
         topBar = {
             TopAppBar(
-                scrollBehavior = scrollBehavior,
                 title = {
                     if (uiState.isSearching) {
                         OutlinedTextField(
@@ -215,7 +212,7 @@ private fun CatalogListPane(
             horizontalArrangement = Arrangement.spacedBy(8.dp),
             modifier = Modifier.padding(vertical = 8.dp),
         ) {
-            items(categories) { (category, stringRes) ->
+            items(categories) { [category, stringRes] ->
                 val selected = uiState.selectedCategory == category
                 FilterChip(
                     selected = selected,
@@ -229,10 +226,6 @@ private fun CatalogListPane(
                             fontWeight = if (selected) FontWeight.Bold else FontWeight.Normal,
                         )
                     },
-                    colors = FilterChipDefaults.filterChipColors(
-                        selectedContainerColor = MaterialTheme.colorScheme.primaryContainer,
-                        selectedLabelColor = MaterialTheme.colorScheme.onPrimaryContainer,
-                    ),
                 )
             }
         }
@@ -242,7 +235,6 @@ private fun CatalogListPane(
             Box(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(horizontal = 24.dp)
                     .padding(bottom = contentPadding.calculateBottomPadding()),
                 contentAlignment = Alignment.Center,
             ) {
@@ -281,6 +273,7 @@ private fun CatalogListPane(
                         sign = sign,
                         selected = sign.id == selectedSignId,
                         onClick = { onSignClick(sign.id) },
+                        modifier = Modifier.animateItem(),
                     )
                 }
             }
@@ -290,25 +283,23 @@ private fun CatalogListPane(
 
 @Preview
 @Composable
-private fun CatalogScreenPreview() {
-    MerrPatentenTheme {
-        CatalogScreen(
-            uiState = CatalogUiState(
-                items = listOf(
-                    RoadSign(
-                        id = 1,
-                        imageResNumber = 1,
-                        title = "Rrugë e deformuar",
-                        category = SignCategory.WARNING,
-                        code = "Fig. 1",
-                        description = "Paralajmëron një pjesë rruge të deformuar, me gropa apo me sipërfaqe të dëmtuar.",
-                    ),
+private fun CatalogScreenPreview() = MerrPatentenTheme {
+    CatalogScreen(
+        uiState = CatalogUiState(
+            items = listOf(
+                RoadSign(
+                    id = 1,
+                    imageResNumber = 1,
+                    title = "Rrugë e deformuar",
+                    category = SignCategory.WARNING,
+                    code = "Fig. 1",
+                    description = "Paralajmëron një pjesë rruge të deformuar, me gropa apo me sipërfaqe të dëmtuar.",
                 ),
             ),
-            onSignClick = {},
-            onCategorySelected = {},
-            onSearchQueryChanged = {},
-            onToggleSearch = {},
-        )
-    }
+        ),
+        onSignClick = {},
+        onCategorySelected = {},
+        onSearchQueryChanged = {},
+        onToggleSearch = {},
+    )
 }
