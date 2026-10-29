@@ -175,7 +175,6 @@ internal fun ExamDualPaneContent(
                     onQuestionClicked = onPageSelected,
                     onRestartExam = null,
                     onExitExam = null,
-                    columns = 5,
                     modifier = Modifier.fillMaxSize(),
                 )
             }

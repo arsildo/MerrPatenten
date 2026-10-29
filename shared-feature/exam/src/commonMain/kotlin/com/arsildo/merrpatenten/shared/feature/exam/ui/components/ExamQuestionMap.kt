@@ -14,6 +14,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.arsildo.merrpatenten.shared.core.designsystem.ERRORS_ALLOWED
 import com.arsildo.merrpatenten.shared.core.designsystem.QUESTIONS_IN_EXAM
@@ -24,16 +25,15 @@ import com.arsildo.merrpatenten.shared.feature.exam.ExamUiState
 import merrpatenten.shared_core.design_system.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
 
-@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 internal fun ExamQuestionMap(
+    modifier: Modifier = Modifier,
     uiState: ExamUiState,
     currentPage: Int? = null,
     onQuestionClicked: (page: Int) -> Unit,
     onExitExam: (() -> Unit)? = null,
     onRestartExam: (() -> Unit)? = null,
-    modifier: Modifier = Modifier,
-    columns: Int = 5,
+    minItemSize: Dp = 48.dp,
 ) {
     val hasPassed = uiState.errors <= ERRORS_ALLOWED
     val heroContent = if (hasPassed) MaterialTheme.semanticColors.onSuccessContainer else MaterialTheme.colorScheme.onErrorContainer
@@ -45,14 +45,14 @@ internal fun ExamQuestionMap(
     }
 
     LazyVerticalGrid(
-        columns = GridCells.Fixed(columns),
+        columns = GridCells.Adaptive(minSize = minItemSize),
         contentPadding = PaddingValues(16.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp),
         modifier = modifier.fillMaxSize(),
     ) {
         // Status or Overview Header
-        item(span = { GridItemSpan(columns) }) {
+        item(span = { GridItemSpan(maxLineSpan) }) {
             if (uiState.isCompleted) {
                 Card(
                     shape = MaterialTheme.shapes.large,
@@ -184,7 +184,7 @@ internal fun ExamQuestionMap(
 
         // Action Buttons if available and completed
         if (uiState.isCompleted && (onRestartExam != null || onExitExam != null)) {
-            item(span = { GridItemSpan(columns) }) {
+            item(span = { GridItemSpan(maxLineSpan) }) {
                 Column(
                     modifier = Modifier.fillMaxWidth().padding(top = 16.dp),
                     verticalArrangement = Arrangement.spacedBy(10.dp),

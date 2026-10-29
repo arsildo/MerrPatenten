@@ -104,14 +104,14 @@ internal fun ExamResultBottomSheet(
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         LazyVerticalGrid(
-            columns = GridCells.Fixed(5),
+            columns = GridCells.Adaptive(minSize = 56.dp),
             contentPadding = PaddingValues(16.dp) + WindowInsets.navigationBars.asPaddingValues(),
             horizontalArrangement = Arrangement.spacedBy(8.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp),
             modifier = Modifier.fillMaxWidth(),
         ) {
             if (uiState.isCompleted) {
-                item(span = { GridItemSpan(5) }) {
+                item(span = { GridItemSpan(maxLineSpan) }) {
                     Row(
                         modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp),
                         horizontalArrangement = Arrangement.SpaceBetween,
@@ -193,7 +193,7 @@ internal fun ExamResultBottomSheet(
                 )
             }
             item(
-                span = { GridItemSpan(5) },
+                span = { GridItemSpan(maxLineSpan) },
             ) {
                 Row(
                     modifier = Modifier
@@ -238,7 +238,7 @@ internal fun ExamResultBottomSheet(
             }
             if (uiState.isCompleted) {
                 item(
-                    span = { GridItemSpan(5) },
+                    span = { GridItemSpan(maxLineSpan) },
                 ) {
                     Column(
                         modifier = Modifier.fillMaxWidth(),
