@@ -20,7 +20,7 @@ Technical modernization plan for Navigation 3 and Adaptive layouts across all pl
   - Migrate `ExamResultBottomSheet` grid from `GridCells.Fixed(5)` to `GridCells.Adaptive(minSize = 56.dp)`.
   - Evaluate supporting pane for `Mistakes` on tablet/desktop.
   - Add `@FormFactorPreviews` for multi-window, tablet, and foldable validation.
-- [ ] **Milestone 4: Anti-Patterns & Codebase Hygiene**
+- [x] **Milestone 4: Anti-Patterns & Codebase Hygiene** [COMPLETED]
   - Fix deprecated `rememberTransformableState` in `ZoomableExamImage`.
   - Delete dead `Disclaimer : NavKey` in `DashboardEntry.kt`.
   - Remove or wire unused `onImageDetailsClick` in `CatalogRoute`.
