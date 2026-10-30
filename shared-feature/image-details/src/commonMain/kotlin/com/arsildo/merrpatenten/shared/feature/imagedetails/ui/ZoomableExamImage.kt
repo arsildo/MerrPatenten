@@ -3,8 +3,7 @@ package com.arsildo.merrpatenten.shared.feature.imagedetails.ui
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.focusable
-import androidx.compose.foundation.gestures.rememberTransformableState
-import androidx.compose.foundation.gestures.transformable
+import androidx.compose.foundation.gestures.detectTransformGestures
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.aspectRatio
@@ -34,6 +33,7 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.input.key.*
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -73,10 +73,6 @@ internal fun ZoomableExamImage(uiState: ImageDetailsUiState, onDismiss: () -> Un
     }
     var scale by remember { mutableFloatStateOf(1f) }
     var rotation by remember { mutableFloatStateOf(0f) }
-    val state = rememberTransformableState { zoomChange, panChange, rotationChange ->
-        scale = (scale * zoomChange).coerceIn(0.5f, 5f)
-        rotation += rotationChange
-    }
 
     val adaptiveInfo = rememberWindowAdaptiveInfo()
 
@@ -117,7 +113,12 @@ internal fun ZoomableExamImage(uiState: ImageDetailsUiState, onDismiss: () -> Un
                             scaleY = scale,
                             rotationZ = rotation,
                         )
-                        .transformable(state = state),
+                        .pointerInput(Unit) {
+                            detectTransformGestures { _, _, zoom, rotationChange ->
+                                scale = (scale * zoom).coerceIn(0.5f, 5f)
+                                rotation += rotationChange
+                            }
+                        },
                 )
             }
 
@@ -181,7 +182,12 @@ internal fun ZoomableExamImage(uiState: ImageDetailsUiState, onDismiss: () -> Un
                         scaleY = scale,
                         rotationZ = rotation,
                     )
-                    .transformable(state = state),
+                    .pointerInput(Unit) {
+                        detectTransformGestures { _, _, zoom, rotationChange ->
+                            scale = (scale * zoom).coerceIn(0.5f, 5f)
+                            rotation += rotationChange
+                        }
+                    },
             )
             ExtendedFloatingActionButton(
                 onClick = handleDismiss,

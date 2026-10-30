@@ -52,7 +52,6 @@ fun EntryProviderScope<NavKey>.catalogEntry(
                 }
                 backStack.add(SignDetail(signId))
             },
-            onImageDetailsClick = onImageDetailsClick,
         )
     }
 

@@ -4,17 +4,14 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBars
-import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -60,19 +57,13 @@ import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
-fun CatalogRoute(
-    onSignClick: (id: Int) -> Unit,
-    onImageDetailsClick: (index: Int) -> Unit = {},
-    selectedSignId: Int? = null,
-    viewModel: CatalogViewModel = koinViewModel(),
-) {
+fun CatalogRoute(onSignClick: (id: Int) -> Unit, selectedSignId: Int? = null, viewModel: CatalogViewModel = koinViewModel()) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     CatalogScreen(
         uiState = uiState,
         selectedSignId = selectedSignId,
         onSignClick = onSignClick,
-        onImageDetailsClick = onImageDetailsClick,
         onCategorySelected = viewModel::onCategorySelected,
         onSearchQueryChanged = viewModel::onSearchQueryChanged,
         onToggleSearch = viewModel::toggleSearch,
@@ -88,7 +79,6 @@ fun CatalogScreen(
     onSearchQueryChanged: (query: String) -> Unit,
     onToggleSearch: (isSearching: Boolean) -> Unit,
     selectedSignId: Int? = null,
-    onImageDetailsClick: (index: Int) -> Unit = {},
 ) {
     val hapticFeedback = LocalHapticFeedback.current
 
@@ -212,7 +202,7 @@ private fun CatalogListPane(
             horizontalArrangement = Arrangement.spacedBy(8.dp),
             modifier = Modifier.padding(vertical = 8.dp),
         ) {
-            items(categories) { [category, stringRes] ->
+            items(categories) { (category, stringRes) ->
                 val selected = uiState.selectedCategory == category
                 FilterChip(
                     selected = selected,
