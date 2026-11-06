@@ -96,4 +96,5 @@ dependencies {
     implementation(libs.koin.androidx.startup)
     implementation(projects.sharedCore.designSystem)
     implementation(projects.sharedUi)
+    debugImplementation(libs.compose.uiTooling)
 }

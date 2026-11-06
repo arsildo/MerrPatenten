@@ -59,6 +59,7 @@ kotlin {
             implementation(libs.compose.material3)
             implementation(libs.compose.materialIconsExtended)
             implementation(libs.compose.ui)
+            implementation(libs.compose.uiToolingPreview)
             implementation(libs.compose.components.resources)
 
             implementation(libs.androidx.navigation3Ui)
@@ -85,4 +86,8 @@ kotlin {
             implementation(libs.kotlinx.coroutinesSwing)
         }
     }
+}
+
+dependencies {
+    androidRuntimeClasspath(libs.compose.uiTooling)
 }

@@ -51,3 +51,7 @@ kotlin {
         }
     }
 }
+
+dependencies {
+    androidRuntimeClasspath(libs.compose.uiTooling)
+}

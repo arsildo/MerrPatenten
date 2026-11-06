@@ -10,16 +10,21 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.MenuBook
 import androidx.compose.material.icons.outlined.Info
-import androidx.compose.material.icons.rounded.*
+import androidx.compose.material.icons.rounded.DirectionsBus
+import androidx.compose.material.icons.rounded.DirectionsCar
+import androidx.compose.material.icons.rounded.EditNote
+import androidx.compose.material.icons.rounded.LocalShipping
 import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
-import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewLightDark
+import androidx.compose.ui.tooling.preview.PreviewScreenSizes
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -304,7 +309,8 @@ private fun LearningSection(
     }
 }
 
-@Preview
+@PreviewScreenSizes
+@PreviewLightDark
 @Composable
 private fun DashboardScreenPreview() = MerrPatentenTheme {
     DashboardScreen(
@@ -318,30 +324,6 @@ private fun DashboardScreenPreview() = MerrPatentenTheme {
                 averageErrors = 2.1,
             ),
             mistakesCount = 5,
-        ),
-        onStartExamClick = {},
-        onPreferencesClick = {},
-        onStatisticsClick = {},
-        onCatalogClick = {},
-        onMistakesClick = {},
-        onDisclaimerClick = {},
-    )
-}
-
-@Preview
-@Composable
-private fun DashboardScreenDarkPreview() = MerrPatentenTheme(darkTheme = true) {
-    DashboardScreen(
-        uiState = DashboardUiState(
-            readinessScore = ReadinessScore(
-                percentage = 40,
-                level = ReadinessLevel.NEEDS_PRACTICE,
-                completedExams = 4,
-                passedExams = 1,
-                passRate = 25,
-                averageErrors = 6.0,
-            ),
-            mistakesCount = 0,
         ),
         onStartExamClick = {},
         onPreferencesClick = {},
