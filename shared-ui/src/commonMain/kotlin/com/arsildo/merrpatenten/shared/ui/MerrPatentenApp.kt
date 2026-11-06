@@ -36,6 +36,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.compose.dropUnlessResumed
 import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.entryProvider
+import androidx.navigation3.scene.DialogSceneStrategy
 import androidx.navigation3.ui.NavDisplay
 import androidx.navigation3.ui.defaultPopTransitionSpec
 import androidx.navigation3.ui.defaultTransitionSpec
@@ -46,6 +47,7 @@ import com.arsildo.merrpatenten.shared.feature.catalog.navigation.Catalog
 import com.arsildo.merrpatenten.shared.feature.catalog.navigation.SignDetail
 import com.arsildo.merrpatenten.shared.feature.catalog.navigation.catalogEntry
 import com.arsildo.merrpatenten.shared.feature.dashboard.navigation.Dashboard
+import com.arsildo.merrpatenten.shared.feature.dashboard.navigation.Disclaimer
 import com.arsildo.merrpatenten.shared.feature.dashboard.navigation.dashboardEntry
 import com.arsildo.merrpatenten.shared.feature.exam.navigation.Exam
 import com.arsildo.merrpatenten.shared.feature.exam.navigation.ExamResultBottomSheet
@@ -77,6 +79,7 @@ private val config = SavedStateConfiguration {
     serializersModule = SerializersModule {
         polymorphic(NavKey::class) {
             subclass(Dashboard::class, Dashboard.serializer())
+            subclass(Disclaimer::class, Disclaimer.serializer())
             subclass(Exam::class, Exam.serializer())
             subclass(ExamResultBottomSheet::class, ExamResultBottomSheet.serializer())
             subclass(ZoomableImage::class, ZoomableImage.serializer())
@@ -211,6 +214,7 @@ fun MerrPatentenApp() {
             NavDisplay(
                 entries = entries,
                 sceneStrategies = listOf(
+                    remember { DialogSceneStrategy() },
                     remember { BottomSheetSceneStrategy() },
                     listDetailStrategy,
                 ),

@@ -33,7 +33,6 @@ import com.arsildo.merrpatenten.shared.core.designsystem.components.HelpfulMater
 import com.arsildo.merrpatenten.shared.core.designsystem.components.SectionHeader
 import com.arsildo.merrpatenten.shared.feature.dashboard.DashboardUiState
 import com.arsildo.merrpatenten.shared.feature.dashboard.DashboardViewModel
-import com.arsildo.merrpatenten.shared.feature.dashboard.ui.components.DisclaimerDialog
 import com.arsildo.merrpatenten.shared.feature.dashboard.ui.components.ReadinessCard
 import merrpatenten.shared_core.design_system.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
@@ -47,6 +46,7 @@ internal fun DashboardRoute(
     onStatisticsClick: () -> Unit,
     onCatalogClick: () -> Unit,
     onMistakesClick: () -> Unit,
+    onDisclaimerClick: () -> Unit,
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     DashboardScreen(
@@ -56,6 +56,7 @@ internal fun DashboardRoute(
         onStatisticsClick = onStatisticsClick,
         onCatalogClick = onCatalogClick,
         onMistakesClick = onMistakesClick,
+        onDisclaimerClick = onDisclaimerClick,
     )
 }
 
@@ -68,9 +69,9 @@ internal fun DashboardScreen(
     onPreferencesClick: () -> Unit,
     onStatisticsClick: () -> Unit,
     onCatalogClick: () -> Unit,
+    onDisclaimerClick: () -> Unit,
 ) {
     val hapticFeedback = LocalHapticFeedback.current
-    var showDisclaimerDialog by remember { mutableStateOf(false) }
     val adaptiveInfo = rememberWindowAdaptiveInfo()
     val isMultiColumn = adaptiveInfo.isDualPane
     val startToolbarClearance by animateDpAsState(
@@ -108,7 +109,7 @@ internal fun DashboardScreen(
                     IconButton(
                         onClick = {
                             hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                            showDisclaimerDialog = true
+                            onDisclaimerClick()
                         },
                     ) {
                         Icon(
@@ -164,12 +165,6 @@ internal fun DashboardScreen(
                 )
             }
         }
-    }
-
-    if (showDisclaimerDialog) {
-        DisclaimerDialog(
-            onDismissRequest = { showDisclaimerDialog = false },
-        )
     }
 }
 
@@ -329,6 +324,7 @@ private fun DashboardScreenPreview() = MerrPatentenTheme {
         onStatisticsClick = {},
         onCatalogClick = {},
         onMistakesClick = {},
+        onDisclaimerClick = {},
     )
 }
 
@@ -352,5 +348,6 @@ private fun DashboardScreenDarkPreview() = MerrPatentenTheme(darkTheme = true) {
         onStatisticsClick = {},
         onCatalogClick = {},
         onMistakesClick = {},
+        onDisclaimerClick = {},
     )
 }
