@@ -205,15 +205,65 @@ fun MerrPatentenApp() {
             },
         )
 
-        Row(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(MaterialTheme.colorScheme.background),
+        Box(
+            modifier = Modifier.fillMaxHeight(),
         ) {
+            NavDisplay(
+                entries = entries,
+                sceneStrategies = listOf(
+                    remember { BottomSheetSceneStrategy() },
+                    listDetailStrategy,
+                ),
+                transitionSpec = {
+                    val initialIndex = topLevelIndexByContentKey[initialState.entries.lastOrNull()?.contentKey]
+                    val targetIndex = topLevelIndexByContentKey[targetState.entries.lastOrNull()?.contentKey]
+                    if (initialIndex != null && targetIndex != null && initialIndex != targetIndex) {
+                        if (adaptiveInfo.isCompact) {
+                            if (targetIndex > initialIndex) {
+                                slideInHorizontally { it } togetherWith slideOutHorizontally { -it }
+                            } else {
+                                slideInHorizontally { -it } togetherWith slideOutHorizontally { it }
+                            }
+                        } else {
+                            fadeIn() togetherWith fadeOut()
+                        }
+                    } else {
+                        defaultTransitionSpec<NavKey>()(this)
+                    }
+                },
+                popTransitionSpec = {
+                    val initialIndex = topLevelIndexByContentKey[initialState.entries.lastOrNull()?.contentKey]
+                    val targetIndex = topLevelIndexByContentKey[targetState.entries.lastOrNull()?.contentKey]
+                    if (initialIndex != null && targetIndex != null && initialIndex != targetIndex) {
+                        if (adaptiveInfo.isCompact) {
+                            if (targetIndex > initialIndex) {
+                                slideInHorizontally { it } togetherWith slideOutHorizontally { -it }
+                            } else {
+                                slideInHorizontally { -it } togetherWith slideOutHorizontally { it }
+                            }
+                        } else {
+                            fadeIn() togetherWith fadeOut()
+                        }
+                    } else {
+                        defaultPopTransitionSpec<NavKey>()(this)
+                    }
+                },
+                onBack = dropUnlessResumed {
+                    if (navigator.canGoBack) {
+                        navigator.goBack()
+                    } else {
+                        navigator.popRoot()
+                    }
+                },
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(MaterialTheme.colorScheme.background),
+            )
             AnimatedVisibility(
                 visible = !adaptiveInfo.isCompact && showNavigation,
                 enter = slideInHorizontally { -it },
                 exit = slideOutHorizontally { -it },
+                modifier = Modifier.align(Alignment.CenterStart),
             ) {
                 VerticalFloatingToolbar(
                     expanded = true,
@@ -237,91 +287,33 @@ fun MerrPatentenApp() {
                     }
                 }
             }
-            Box(
+            AnimatedVisibility(
+                visible = adaptiveInfo.isCompact && showNavigation,
+                enter = slideInVertically { it },
+                exit = slideOutVertically { it },
                 modifier = Modifier
-                    .weight(1f)
-                    .fillMaxHeight(),
+                    .align(Alignment.BottomCenter)
+                    .zIndex(1f),
             ) {
-                NavDisplay(
-                    entries = entries,
-                    sceneStrategies = listOf(
-                        remember { BottomSheetSceneStrategy() },
-                        listDetailStrategy,
-                    ),
-                    transitionSpec = {
-                        val initialIndex = topLevelIndexByContentKey[initialState.entries.lastOrNull()?.contentKey]
-                        val targetIndex = topLevelIndexByContentKey[targetState.entries.lastOrNull()?.contentKey]
-                        if (initialIndex != null && targetIndex != null && initialIndex != targetIndex) {
-                            if (adaptiveInfo.isCompact) {
-                                if (targetIndex > initialIndex) {
-                                    slideInHorizontally { it } togetherWith slideOutHorizontally { -it }
-                                } else {
-                                    slideInHorizontally { -it } togetherWith slideOutHorizontally { it }
-                                }
-                            } else {
-                                fadeIn() togetherWith fadeOut()
-                            }
-                        } else {
-                            defaultTransitionSpec<NavKey>()(this)
-                        }
-                    },
-                    popTransitionSpec = {
-                        val initialIndex = topLevelIndexByContentKey[initialState.entries.lastOrNull()?.contentKey]
-                        val targetIndex = topLevelIndexByContentKey[targetState.entries.lastOrNull()?.contentKey]
-                        if (initialIndex != null && targetIndex != null && initialIndex != targetIndex) {
-                            if (adaptiveInfo.isCompact) {
-                                if (targetIndex > initialIndex) {
-                                    slideInHorizontally { it } togetherWith slideOutHorizontally { -it }
-                                } else {
-                                    slideInHorizontally { -it } togetherWith slideOutHorizontally { it }
-                                }
-                            } else {
-                                fadeIn() togetherWith fadeOut()
-                            }
-                        } else {
-                            defaultPopTransitionSpec<NavKey>()(this)
-                        }
-                    },
-                    onBack = dropUnlessResumed {
-                        if (navigator.canGoBack) {
-                            navigator.goBack()
-                        } else {
-                            navigator.popRoot()
-                        }
-                    },
+                HorizontalFloatingToolbar(
+                    expanded = true,
                     modifier = Modifier
-                        .fillMaxSize()
-                        .background(MaterialTheme.colorScheme.background),
-                )
-
-                androidx.compose.animation.AnimatedVisibility(
-                    visible = adaptiveInfo.isCompact && showNavigation,
-                    enter = slideInVertically { it },
-                    exit = slideOutVertically { it },
-                    modifier = Modifier
-                        .align(Alignment.BottomCenter)
-                        .zIndex(1f),
+                        .navigationBarsPadding()
+                        .padding(bottom = 16.dp)
+                        .selectableGroup(),
                 ) {
-                    HorizontalFloatingToolbar(
-                        expanded = true,
-                        modifier = Modifier
-                            .navigationBarsPadding()
-                            .padding(bottom = 16.dp)
-                            .selectableGroup(),
-                    ) {
-                        topLevelDestinations.forEach { (key, icon, labelRes) ->
-                            val selected = currentTopLevel == key
-                            val label = stringResource(labelRes)
-                            FloatingToolbarNavItem(
-                                selected = selected,
-                                icon = icon,
-                                label = label,
-                                onClick = {
-                                    hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                                    navigator.navigate(key)
-                                },
-                            )
-                        }
+                    topLevelDestinations.forEach { (key, icon, labelRes) ->
+                        val selected = currentTopLevel == key
+                        val label = stringResource(labelRes)
+                        FloatingToolbarNavItem(
+                            selected = selected,
+                            icon = icon,
+                            label = label,
+                            onClick = {
+                                hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+                                navigator.navigate(key)
+                            },
+                        )
                     }
                 }
             }

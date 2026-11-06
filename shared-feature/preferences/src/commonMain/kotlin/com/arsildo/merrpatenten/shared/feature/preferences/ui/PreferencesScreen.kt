@@ -1,5 +1,9 @@
 package com.arsildo.merrpatenten.shared.feature.preferences.ui
 
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.VisibilityThreshold
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.spring
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -14,6 +18,7 @@ import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.arsildo.merrpatenten.shared.core.designsystem.*
@@ -64,10 +69,20 @@ internal fun PreferencesScreen(
     val adaptiveInfo = rememberWindowAdaptiveInfo()
     val isDualPane = adaptiveInfo.isDualPane
     val floatingToolbarClearance = if (adaptiveInfo.isCompact) 88.dp else 0.dp
+    val startToolbarClearance by animateDpAsState(
+        targetValue = if (!adaptiveInfo.isCompact) 88.dp else 0.dp,
+        animationSpec = spring(
+            stiffness = Spring.StiffnessMediumLow,
+            visibilityThreshold = Dp.VisibilityThreshold,
+        ),
+        label = "StartToolbarClearance",
+    )
 
     AnimateColorSchemeTransition {
         Scaffold(
-            modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+            modifier = modifier
+                .padding(start = startToolbarClearance)
+                .nestedScroll(scrollBehavior.nestedScrollConnection),
             topBar = {
                 TopAppBar(
                     scrollBehavior = scrollBehavior,

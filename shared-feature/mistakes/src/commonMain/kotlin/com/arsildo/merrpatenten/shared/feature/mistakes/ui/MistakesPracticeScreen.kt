@@ -3,6 +3,10 @@ package com.arsildo.merrpatenten.shared.feature.mistakes.ui
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.VisibilityThreshold
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.spring
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.togetherWith
@@ -30,8 +34,10 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.arsildo.merrpatenten.shared.core.designsystem.adaptive.rememberWindowAdaptiveInfo
 import com.arsildo.merrpatenten.shared.core.designsystem.getImageResource
 import com.arsildo.merrpatenten.shared.core.designsystem.semanticColors
 import com.arsildo.merrpatenten.shared.feature.mistakes.MistakesPracticeUiState
@@ -72,9 +78,21 @@ fun MistakesPracticeScreen(
 ) {
     val hapticFeedback = LocalHapticFeedback.current
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
+    val adaptiveInfo = rememberWindowAdaptiveInfo()
+    val startToolbarClearance by animateDpAsState(
+        targetValue = if (!adaptiveInfo.isCompact) 88.dp else 0.dp,
+        animationSpec = spring(
+            stiffness = Spring.StiffnessMediumLow,
+            visibilityThreshold = Dp.VisibilityThreshold,
+        ),
+        label = "StartToolbarClearance",
+    )
+    val bottomToolbarClearance = if (adaptiveInfo.isCompact) 104.dp else 24.dp
 
     Scaffold(
-        modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+        modifier = modifier
+            .padding(start = startToolbarClearance)
+            .nestedScroll(scrollBehavior.nestedScrollConnection),
         contentWindowInsets = WindowInsets(bottom = 0),
         topBar = {
             TopAppBar(
@@ -148,7 +166,7 @@ fun MistakesPracticeScreen(
                         .padding(contentPadding)
                         .verticalScroll(rememberScrollState())
                         .padding(horizontal = 20.dp)
-                        .padding(top = 12.dp, bottom = 104.dp)
+                        .padding(top = 12.dp, bottom = bottomToolbarClearance)
                         .navigationBarsPadding(),
                     verticalArrangement = Arrangement.spacedBy(16.dp),
                 ) {

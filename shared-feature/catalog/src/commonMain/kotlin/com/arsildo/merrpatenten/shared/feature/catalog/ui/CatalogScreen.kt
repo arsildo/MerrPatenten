@@ -1,5 +1,9 @@
 package com.arsildo.merrpatenten.shared.feature.catalog.ui
 
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.VisibilityThreshold
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.spring
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -44,9 +48,11 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
+import com.arsildo.merrpatenten.shared.core.designsystem.adaptive.rememberWindowAdaptiveInfo
 import com.arsildo.merrpatenten.shared.core.model.RoadSign
 import com.arsildo.merrpatenten.shared.core.model.SignCategory
 import com.arsildo.merrpatenten.shared.feature.catalog.CatalogUiState
@@ -81,9 +87,19 @@ fun CatalogScreen(
     selectedSignId: Int? = null,
 ) {
     val hapticFeedback = LocalHapticFeedback.current
+    val adaptiveInfo = rememberWindowAdaptiveInfo()
+    val startToolbarClearance by animateDpAsState(
+        targetValue = if (!adaptiveInfo.isCompact) 88.dp else 0.dp,
+        animationSpec = spring(
+            stiffness = Spring.StiffnessMediumLow,
+            visibilityThreshold = Dp.VisibilityThreshold,
+        ),
+        label = "StartToolbarClearance",
+    )
+    val bottomToolbarClearance = if (adaptiveInfo.isCompact) 96.dp else 24.dp
 
     Scaffold(
-        modifier = modifier,
+        modifier = modifier.padding(start = startToolbarClearance),
         contentWindowInsets = WindowInsets(top = 0, bottom = 0),
         topBar = {
             TopAppBar(
@@ -164,7 +180,7 @@ fun CatalogScreen(
             contentPadding = PaddingValues(
                 top = contentPadding.calculateTopPadding(),
                 bottom = contentPadding.calculateBottomPadding() +
-                    WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding() + 96.dp,
+                    WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding() + bottomToolbarClearance,
             ),
             modifier = Modifier.fillMaxSize(),
         )
