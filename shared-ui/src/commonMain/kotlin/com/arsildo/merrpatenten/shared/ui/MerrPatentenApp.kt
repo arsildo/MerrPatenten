@@ -2,6 +2,7 @@ package com.arsildo.merrpatenten.shared.ui
 
 import androidx.compose.animation.*
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
@@ -60,6 +61,8 @@ import com.arsildo.merrpatenten.shared.feature.preferences.navigation.Preference
 import com.arsildo.merrpatenten.shared.feature.preferences.navigation.preferencesEntry
 import com.arsildo.merrpatenten.shared.feature.statistics.navigation.Statistics
 import com.arsildo.merrpatenten.shared.feature.statistics.navigation.statisticsEntry
+import dev.chrisbanes.haze.hazeSource
+import dev.chrisbanes.haze.rememberHazeState
 import kotlinx.serialization.modules.SerializersModule
 import kotlinx.serialization.modules.polymorphic
 import merrpatenten.shared_core.design_system.generated.resources.*
@@ -206,6 +209,8 @@ fun MerrPatentenApp() {
             },
         )
 
+        val hazeState = rememberHazeState()
+
         Box(
             modifier = Modifier.fillMaxHeight(),
         ) {
@@ -259,7 +264,8 @@ fun MerrPatentenApp() {
                 },
                 modifier = Modifier
                     .fillMaxSize()
-                    .background(MaterialTheme.colorScheme.background),
+                    .background(MaterialTheme.colorScheme.background)
+                    .hazeSource(state = hazeState),
             )
             AnimatedVisibility(
                 visible = !adaptiveInfo.isCompact && showNavigation,
@@ -270,8 +276,15 @@ fun MerrPatentenApp() {
                 VerticalFloatingToolbar(
                     expanded = true,
                     modifier = Modifier
-                        .systemBarsPadding()
+                        .windowInsetsPadding(
+                            WindowInsets.safeDrawing.only(WindowInsetsSides.Start + WindowInsetsSides.Vertical),
+                        )
                         .padding(16.dp)
+                        .border(
+                            width = 1.dp,
+                            color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f),
+                            shape = FloatingToolbarDefaults.ContainerShape,
+                        )
                         .selectableGroup(),
                 ) {
                     topLevelDestinations.forEach { (key, icon, labelRes) ->
@@ -297,18 +310,18 @@ fun MerrPatentenApp() {
                     .align(Alignment.BottomCenter)
                     .zIndex(1f),
             ) {
-                MerrPatentenHorizontalFloatingToolbar {
+                MerrPatentenHorizontalFloatingToolbar(
+                    hazeState = hazeState,
+                ) {
                     topLevelDestinations.forEach { (key, icon, labelRes) ->
                         val selected = currentTopLevel == key
                         val label = stringResource(labelRes)
                         FloatingToolbarNavItem(
                             selected = selected,
+                            hazeState = hazeState,
                             icon = icon,
                             label = label,
-                            onClick = {
-                                hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                                navigator.navigate(key)
-                            },
+                            onClick = { navigator.navigate(key) },
                         )
                     }
                 }

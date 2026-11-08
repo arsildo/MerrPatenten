@@ -29,6 +29,7 @@ koin-plugin = "1.2.2"
 
 coil-bom = "3.6.3"
 filekit = "0.17.0"
+haze = "2.1.0"
 
 [libraries]
 ## Android
@@ -93,6 +94,13 @@ coil-compose = { group = "io.coil-kt.coil3", name = "coil-compose" }
 # Multiplatform - File System
 filekit-core = { group = "io.github.vinceglb", name = "filekit-core", version.ref = "filekit" }
 filekit-dialogs-compose = { group = "io.github.vinceglb", name = "filekit-dialogs-compose", version.ref = "filekit" }
+
+# Multiplatform - Haze
+haze = { module = "dev.chrisbanes.haze:haze", version.ref = "haze" }
+haze-materials = { module = "dev.chrisbanes.haze:haze-blur-materials", version.ref = "haze" }
+haze-blur = { module = "dev.chrisbanes.haze:haze-blur", version.ref = "haze" }
+haze-glass = { module = "dev.chrisbanes.haze:haze-glass", version.ref = "haze" }
+haze-glass-material3 = { module = "dev.chrisbanes.haze:haze-glass-material3", version.ref = "haze" }
 
 [plugins]
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }

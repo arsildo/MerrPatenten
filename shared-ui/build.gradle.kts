@@ -81,6 +81,12 @@ kotlin {
 
             implementation(libs.filekit.core)
             implementation(libs.filekit.dialogs.compose)
+
+            implementation(libs.haze)
+            implementation(libs.haze.materials)
+            implementation(libs.haze.blur)
+            implementation(libs.haze.glass)
+            implementation(libs.haze.glass.material3)
         }
         jvmMain.dependencies {
             implementation(libs.kotlinx.coroutinesSwing)
