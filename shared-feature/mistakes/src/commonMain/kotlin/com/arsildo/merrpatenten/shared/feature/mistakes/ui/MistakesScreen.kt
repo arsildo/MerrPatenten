@@ -86,12 +86,15 @@ fun MistakesScreen(
         label = "StartToolbarClearance",
     )
 
+    val windowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal + WindowInsetsSides.Top)
+
     Scaffold(
         modifier = modifier
             .padding(start = startToolbarClearance)
             .nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             TopAppBar(
+                windowInsets = windowInsets,
                 scrollBehavior = scrollBehavior,
                 title = {
                     Text(
@@ -153,12 +156,13 @@ fun MistakesScreen(
                 )
             }
         },
-        contentWindowInsets = WindowInsets(bottom = 0),
+        contentWindowInsets = windowInsets,
     ) { contentPadding ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(contentPadding),
+                .padding(contentPadding)
+                .consumeWindowInsets(contentPadding),
         ) {
             // Category Tabs
             CategoryTabs(

@@ -72,10 +72,13 @@ internal fun StatisticsScreen(
         label = "StartToolbarClearance",
     )
 
+    val windowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal + WindowInsetsSides.Top)
+
     Scaffold(
         modifier = modifier.padding(start = startToolbarClearance),
         topBar = {
             TopAppBar(
+                windowInsets = windowInsets,
                 title = { Text(text = stringResource(Res.string.statistics)) },
                 actions = {
                     if (uiState.saveResults && uiState.results.isNotEmpty()) {
@@ -104,11 +107,12 @@ internal fun StatisticsScreen(
             )
         },
         contentColor = MaterialTheme.colorScheme.onBackground,
-        contentWindowInsets = WindowInsets(top = 0, bottom = 0),
+        contentWindowInsets = windowInsets,
     ) { contentPadding ->
         Box(
             modifier = Modifier
                 .padding(contentPadding)
+                .consumeWindowInsets(contentPadding)
                 .fillMaxSize(),
         ) {
             when {

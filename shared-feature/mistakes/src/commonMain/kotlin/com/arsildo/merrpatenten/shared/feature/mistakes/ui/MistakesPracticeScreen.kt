@@ -88,14 +88,16 @@ fun MistakesPracticeScreen(
         label = "StartToolbarClearance",
     )
     val bottomToolbarClearance = if (adaptiveInfo.isCompact) 104.dp else 24.dp
+    val windowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal + WindowInsetsSides.Top)
 
     Scaffold(
         modifier = modifier
             .padding(start = startToolbarClearance)
             .nestedScroll(scrollBehavior.nestedScrollConnection),
-        contentWindowInsets = WindowInsets(bottom = 0),
+        contentWindowInsets = windowInsets,
         topBar = {
             TopAppBar(
+                windowInsets = windowInsets,
                 scrollBehavior = scrollBehavior,
                 title = {
                     Text(
@@ -124,7 +126,8 @@ fun MistakesPracticeScreen(
             Box(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(contentPadding),
+                    .padding(contentPadding)
+                    .consumeWindowInsets(contentPadding),
                 contentAlignment = Alignment.Center,
             ) {
                 CircularProgressIndicator()
@@ -134,6 +137,7 @@ fun MistakesPracticeScreen(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(contentPadding)
+                    .consumeWindowInsets(contentPadding)
                     .padding(24.dp),
                 contentAlignment = Alignment.Center,
             ) {
@@ -164,6 +168,7 @@ fun MistakesPracticeScreen(
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(contentPadding)
+                        .consumeWindowInsets(contentPadding)
                         .verticalScroll(rememberScrollState())
                         .padding(horizontal = 20.dp)
                         .padding(top = 12.dp, bottom = bottomToolbarClearance)

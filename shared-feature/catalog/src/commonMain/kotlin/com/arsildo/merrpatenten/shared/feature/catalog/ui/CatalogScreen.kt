@@ -9,12 +9,16 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBars
+import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -97,12 +101,18 @@ fun CatalogScreen(
         label = "StartToolbarClearance",
     )
     val bottomToolbarClearance = if (adaptiveInfo.isCompact) 96.dp else 24.dp
+    val windowInsets = if (adaptiveInfo.isDualPane) {
+        WindowInsets.safeDrawing.only(WindowInsetsSides.Start + WindowInsetsSides.Top)
+    } else {
+        WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal + WindowInsetsSides.Top)
+    }
 
     Scaffold(
         modifier = modifier.padding(start = startToolbarClearance),
-        contentWindowInsets = WindowInsets(top = 0, bottom = 0),
+        contentWindowInsets = windowInsets,
         topBar = {
             TopAppBar(
+                windowInsets = windowInsets,
                 title = {
                     if (uiState.isSearching) {
                         OutlinedTextField(
@@ -178,11 +188,13 @@ fun CatalogScreen(
                 onSignClick(id)
             },
             contentPadding = PaddingValues(
-                top = contentPadding.calculateTopPadding(),
                 bottom = contentPadding.calculateBottomPadding() +
                     WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding() + bottomToolbarClearance,
             ),
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(contentPadding)
+                .consumeWindowInsets(contentPadding),
         )
     }
 }
@@ -198,9 +210,7 @@ private fun CatalogListPane(
 ) {
     val hapticFeedback = LocalHapticFeedback.current
     Column(
-        modifier = modifier
-            .fillMaxHeight()
-            .padding(top = contentPadding.calculateTopPadding()),
+        modifier = modifier.fillMaxHeight(),
     ) {
         // Category Filter Chips
         val categories = listOf(

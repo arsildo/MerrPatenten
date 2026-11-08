@@ -232,7 +232,7 @@ internal fun ExamScreen(
                     else -> false
                 }
             },
-        contentWindowInsets = WindowInsets(bottom = 0),
+        contentWindowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal + WindowInsetsSides.Top),
         contentColor = MaterialTheme.colorScheme.primary,
         bottomBar = {
             if (adaptiveInfo.isCompact && !adaptiveInfo.isTabletop) {
@@ -304,7 +304,8 @@ internal fun ExamScreen(
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(contentPadding),
+                .padding(contentPadding)
+                .consumeWindowInsets(contentPadding),
             contentAlignment = Alignment.Center,
         ) {
             when {

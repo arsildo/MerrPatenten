@@ -88,11 +88,13 @@ internal fun DashboardScreen(
         label = "StartToolbarClearance",
     )
 
+    val windowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal + WindowInsetsSides.Top)
+
     Scaffold(
-        modifier = modifier
-            .padding(start = startToolbarClearance),
+        modifier = modifier.padding(start = startToolbarClearance),
         topBar = {
             TopAppBar(
+                windowInsets = windowInsets,
                 title = {
                     Column(
                         verticalArrangement = Arrangement.spacedBy(4.dp),
@@ -125,13 +127,14 @@ internal fun DashboardScreen(
                 },
             )
         },
-        contentWindowInsets = WindowInsets(bottom = 0),
+        contentWindowInsets = windowInsets,
     ) { contentPadding ->
         if (isMultiColumn) {
             Row(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(contentPadding)
+                    .consumeWindowInsets(contentPadding)
                     .verticalScroll(rememberScrollState())
                     .padding(horizontal = 24.dp)
                     .padding(top = 20.dp, bottom = 24.dp)
@@ -155,6 +158,7 @@ internal fun DashboardScreen(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(contentPadding)
+                    .consumeWindowInsets(contentPadding)
                     .verticalScroll(rememberScrollState())
                     .padding(horizontal = 20.dp)
                     .padding(top = 24.dp, bottom = 104.dp)

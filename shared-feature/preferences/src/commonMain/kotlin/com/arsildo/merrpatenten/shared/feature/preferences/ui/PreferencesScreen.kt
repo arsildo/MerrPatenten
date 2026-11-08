@@ -78,6 +78,8 @@ internal fun PreferencesScreen(
         label = "StartToolbarClearance",
     )
 
+    val windowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal + WindowInsetsSides.Top)
+
     AnimateColorSchemeTransition {
         Scaffold(
             modifier = modifier
@@ -85,6 +87,7 @@ internal fun PreferencesScreen(
                 .nestedScroll(scrollBehavior.nestedScrollConnection),
             topBar = {
                 TopAppBar(
+                    windowInsets = windowInsets,
                     scrollBehavior = scrollBehavior,
                     title = {
                         Text(text = stringResource(Res.string.preferences))
@@ -137,16 +140,18 @@ internal fun PreferencesScreen(
                 )
             },
             contentColor = MaterialTheme.colorScheme.onBackground,
-            contentWindowInsets = WindowInsets(bottom = 0),
+            contentWindowInsets = windowInsets,
         ) { contentPadding ->
             if (isDualPane) {
                 Row(
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(contentPadding)
+                        .consumeWindowInsets(contentPadding)
                         .verticalScroll(rememberScrollState())
                         .padding(horizontal = 24.dp)
-                        .padding(top = 16.dp, bottom = 32.dp),
+                        .padding(top = 16.dp, bottom = 32.dp)
+                        .navigationBarsPadding(),
                     horizontalArrangement = Arrangement.spacedBy(24.dp),
                 ) {
                     BehaviorSection(
@@ -171,6 +176,7 @@ internal fun PreferencesScreen(
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(contentPadding)
+                        .consumeWindowInsets(contentPadding)
                         .verticalScroll(rememberScrollState())
                         .padding(horizontal = 16.dp),
                     verticalArrangement = Arrangement.spacedBy(24.dp),

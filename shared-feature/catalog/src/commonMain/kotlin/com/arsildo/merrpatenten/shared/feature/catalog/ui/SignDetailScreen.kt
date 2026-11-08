@@ -8,11 +8,15 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
@@ -85,12 +89,18 @@ internal fun SignDetailScreen(
     val sign = uiState.sign
     val adaptiveInfo = rememberAppAdaptiveInfo()
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
+    val windowInsets = if (adaptiveInfo.isDualPane) {
+        WindowInsets.safeDrawing.only(WindowInsetsSides.End + WindowInsetsSides.Top)
+    } else {
+        WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal + WindowInsetsSides.Top)
+    }
 
     Scaffold(
         modifier = modifier.fillMaxSize().nestedScroll(scrollBehavior.nestedScrollConnection),
-        contentWindowInsets = WindowInsets(bottom = 0),
+        contentWindowInsets = windowInsets,
         topBar = {
             TopAppBar(
+                windowInsets = windowInsets,
                 scrollBehavior = scrollBehavior,
                 title = {
                     Text(
@@ -122,10 +132,8 @@ internal fun SignDetailScreen(
             Box(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(
-                        top = contentPadding.calculateTopPadding(),
-                        bottom = contentPadding.calculateBottomPadding(),
-                    ),
+                    .padding(contentPadding)
+                    .consumeWindowInsets(contentPadding),
                 contentAlignment = Alignment.Center,
             ) {
                 Text(
@@ -140,8 +148,8 @@ internal fun SignDetailScreen(
                 relatedQuestions = uiState.relatedQuestions,
                 onImageDetailsClick = onImageDetailsClick,
                 modifier = Modifier
-                    .padding(top = contentPadding.calculateTopPadding())
-                    .padding(bottom = contentPadding.calculateBottomPadding()),
+                    .padding(contentPadding)
+                    .consumeWindowInsets(contentPadding),
             )
         }
     }
