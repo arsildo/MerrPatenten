@@ -28,8 +28,6 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.selected
 import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -299,13 +297,7 @@ fun MerrPatentenApp() {
                     .align(Alignment.BottomCenter)
                     .zIndex(1f),
             ) {
-                HorizontalFloatingToolbar(
-                    expanded = true,
-                    modifier = Modifier
-                        .navigationBarsPadding()
-                        .padding(bottom = 16.dp)
-                        .selectableGroup(),
-                ) {
+                MerrPatentenHorizontalFloatingToolbar {
                     topLevelDestinations.forEach { (key, icon, labelRes) ->
                         val selected = currentTopLevel == key
                         val label = stringResource(labelRes)
@@ -320,71 +312,6 @@ fun MerrPatentenApp() {
                         )
                     }
                 }
-            }
-        }
-    }
-}
-
-@Composable
-private fun FloatingToolbarNavItem(
-    selected: Boolean,
-    icon: ImageVector,
-    label: String,
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    val containerColor by animateColorAsState(
-        targetValue = if (selected) {
-            MaterialTheme.colorScheme.secondaryContainer
-        } else {
-            Color.Transparent
-        },
-        label = "FloatingToolbarItemContainer",
-    )
-    val contentColor by animateColorAsState(
-        targetValue = if (selected) {
-            MaterialTheme.colorScheme.onSecondaryContainer
-        } else {
-            MaterialTheme.colorScheme.onSurfaceVariant
-        },
-        label = "FloatingToolbarItemContent",
-    )
-
-    Row(
-        modifier = modifier
-            .height(48.dp)
-            .clip(CircleShape)
-            .background(containerColor)
-            .clickable(onClick = onClick)
-            .semantics {
-                role = Role.Tab
-                this.selected = selected
-            }
-            .padding(horizontal = if (selected) 16.dp else 12.dp),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.Center,
-    ) {
-        Icon(
-            imageVector = icon,
-            contentDescription = label,
-            tint = contentColor,
-            modifier = Modifier.size(24.dp),
-        )
-        AnimatedVisibility(
-            visible = selected,
-            enter = expandHorizontally(expandFrom = Alignment.Start) + fadeIn(),
-            exit = shrinkHorizontally(shrinkTowards = Alignment.Start) + fadeOut(),
-        ) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Spacer(Modifier.width(8.dp))
-                Text(
-                    text = label,
-                    style = MaterialTheme.typography.labelLarge,
-                    fontWeight = FontWeight.SemiBold,
-                    color = contentColor,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis,
-                )
             }
         }
     }
