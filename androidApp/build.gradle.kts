@@ -15,8 +15,8 @@ android {
     defaultConfig {
         applicationId = "com.arsildo.merrpatenten"
         minSdk = 31
-        versionCode = 41
-        versionName = "3.1.1"
+        versionCode = 42
+        versionName = "3.1.2"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
