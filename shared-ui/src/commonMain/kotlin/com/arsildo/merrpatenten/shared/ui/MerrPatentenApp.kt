@@ -262,15 +262,12 @@ fun MerrPatentenApp() {
                     .align(Alignment.CenterStart)
                     .zIndex(1f),
             ) {
-                MerrPatentenVerticalFloatingToolbar(
-                    hazeState = hazeState,
-                ) {
+                MerrPatentenVerticalFloatingToolbar {
                     topLevelDestinations.forEach { (key, icon, labelRes) ->
                         val selected = currentTopLevel == key
                         val label = stringResource(labelRes)
                         VerticalFloatingToolbarNavItem(
                             selected = selected,
-                            hazeState = hazeState,
                             icon = icon,
                             label = label,
                             onClick = { navigator.navigate(key) },
