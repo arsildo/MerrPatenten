@@ -2,34 +2,23 @@ package com.arsildo.merrpatenten.shared.ui
 
 import androidx.compose.animation.*
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.selection.selectableGroup
-import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.MenuBook
 import androidx.compose.material.icons.rounded.AutoGraph
 import androidx.compose.material.icons.rounded.EditNote
 import androidx.compose.material.icons.rounded.Home
 import androidx.compose.material.icons.rounded.Settings
-import androidx.compose.material3.*
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.hapticfeedback.HapticFeedbackType
-import androidx.compose.ui.platform.LocalHapticFeedback
-import androidx.compose.ui.semantics.Role
-import androidx.compose.ui.semantics.role
-import androidx.compose.ui.semantics.selected
-import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.compose.dropUnlessResumed
@@ -98,7 +87,6 @@ private val config = SavedStateConfiguration {
 fun MerrPatentenApp() {
     val preferencesViewModel = koinViewModel<PreferencesViewModel>()
     val uiState by preferencesViewModel.uiState.collectAsStateWithLifecycle()
-    val hapticFeedback = LocalHapticFeedback.current
 
     val isDark = if (uiState.followSystemColors) {
         isSystemInDarkTheme()
@@ -150,9 +138,7 @@ fun MerrPatentenApp() {
 
         val topLevelKeys = remember { topLevelDestinations.map { it.key }.toSet() }
         val topLevelIndexByContentKey = remember {
-            topLevelDestinations.mapIndexed { index, dest ->
-                "${dest.key}:${dest.key::class}" to index
-            }.toMap()
+            topLevelDestinations.mapIndexed { index, dest -> "${dest.key}:${dest.key::class}" to index }.toMap()
         }
 
         val navigator = rememberNavigator(
@@ -162,9 +148,10 @@ fun MerrPatentenApp() {
         )
 
         val currentTopLevel = navigator.currentTab ?: Dashboard
-        val isFullscreen = navigator.state.currentSubStack?.any { it is Exam || it is ZoomableImage } == true ||
-            navigator.currentKey is Exam || navigator.currentKey is ExamResultBottomSheet || navigator.currentKey is ZoomableImage
-        val showNavigation = !isFullscreen
+        val showFloatingToolbar = when (navigator.currentKey) {
+            is Exam, is ExamResultBottomSheet, is ZoomableImage -> false
+            else -> navigator.state.currentSubStack?.none { it is Exam || it is ZoomableImage } != false
+        }
 
         val dashboardSubStack = navigator.state.subStacks[Dashboard] ?: error("Dashboard stack missing")
         val catalogSubStack = navigator.state.subStacks[Catalog] ?: error("Catalog stack missing")
@@ -268,42 +255,31 @@ fun MerrPatentenApp() {
                     .hazeSource(state = hazeState),
             )
             AnimatedVisibility(
-                visible = !adaptiveInfo.isCompact && showNavigation,
+                visible = !adaptiveInfo.isCompact && showFloatingToolbar,
                 enter = slideInHorizontally { -it },
                 exit = slideOutHorizontally { -it },
-                modifier = Modifier.align(Alignment.CenterStart),
+                modifier = Modifier
+                    .align(Alignment.CenterStart)
+                    .zIndex(1f),
             ) {
-                VerticalFloatingToolbar(
-                    expanded = true,
-                    modifier = Modifier
-                        .windowInsetsPadding(
-                            WindowInsets.safeDrawing.only(WindowInsetsSides.Start + WindowInsetsSides.Vertical),
-                        )
-                        .padding(16.dp)
-                        .border(
-                            width = 1.dp,
-                            color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f),
-                            shape = FloatingToolbarDefaults.ContainerShape,
-                        )
-                        .selectableGroup(),
+                MerrPatentenVerticalFloatingToolbar(
+                    hazeState = hazeState,
                 ) {
                     topLevelDestinations.forEach { (key, icon, labelRes) ->
                         val selected = currentTopLevel == key
                         val label = stringResource(labelRes)
                         VerticalFloatingToolbarNavItem(
                             selected = selected,
+                            hazeState = hazeState,
                             icon = icon,
                             label = label,
-                            onClick = {
-                                hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                                navigator.navigate(key)
-                            },
+                            onClick = { navigator.navigate(key) },
                         )
                     }
                 }
             }
             AnimatedVisibility(
-                visible = adaptiveInfo.isCompact && showNavigation,
+                visible = adaptiveInfo.isCompact && showFloatingToolbar,
                 enter = slideInVertically { it },
                 exit = slideOutVertically { it },
                 modifier = Modifier
@@ -327,51 +303,5 @@ fun MerrPatentenApp() {
                 }
             }
         }
-    }
-}
-
-@Composable
-private fun VerticalFloatingToolbarNavItem(
-    selected: Boolean,
-    icon: ImageVector,
-    label: String,
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    val containerColor by animateColorAsState(
-        targetValue = if (selected) {
-            MaterialTheme.colorScheme.secondaryContainer
-        } else {
-            Color.Transparent
-        },
-        label = "VerticalFloatingToolbarItemContainer",
-    )
-    val contentColor by animateColorAsState(
-        targetValue = if (selected) {
-            MaterialTheme.colorScheme.onSecondaryContainer
-        } else {
-            MaterialTheme.colorScheme.onSurfaceVariant
-        },
-        label = "VerticalFloatingToolbarItemContent",
-    )
-
-    Box(
-        modifier = modifier
-            .size(48.dp)
-            .clip(CircleShape)
-            .background(containerColor)
-            .clickable(onClick = onClick)
-            .semantics {
-                role = Role.Tab
-                this.selected = selected
-            },
-        contentAlignment = Alignment.Center,
-    ) {
-        Icon(
-            imageVector = icon,
-            contentDescription = label,
-            tint = contentColor,
-            modifier = Modifier.size(24.dp),
-        )
     }
 }
