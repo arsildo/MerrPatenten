@@ -5,9 +5,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Check
-import androidx.compose.material.icons.rounded.Clear
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -19,6 +16,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.Check
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.X
 import com.arsildo.merrpatenten.shared.core.designsystem.semanticColors
 import merrpatenten.shared_core.design_system.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
@@ -43,7 +42,7 @@ internal fun AnswerFeedbackIndicator(correctAnswer: Boolean, modifier: Modifier 
             horizontalArrangement = Arrangement.Center,
         ) {
             Icon(
-                imageVector = if (correctAnswer) Icons.Rounded.Check else Icons.Rounded.Clear,
+                imageVector = if (correctAnswer) Check else X,
                 contentDescription = null,
                 tint = iconColor,
                 modifier = Modifier.size(22.dp),

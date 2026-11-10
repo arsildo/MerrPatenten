@@ -51,7 +51,6 @@ compose-ui = { group = "org.jetbrains.compose.ui", name = "ui", version.ref = "c
 compose-uiTooling = { group = "org.jetbrains.compose.ui", name = "ui-tooling", version.ref = "compose-multiplatform" }
 compose-uiToolingPreview = { group = "org.jetbrains.compose.ui", name = "ui-tooling-preview", version.ref = "compose-multiplatform" }
 compose-material3 = { group = "org.jetbrains.compose.material3", name = "material3", version.ref = "compose-multiplatform" }
-compose-materialIconsExtended = { group = "org.jetbrains.compose.material", name = "material-icons-extended", version = "1.7.3" }
 compose-material3-adaptive = { group = "org.jetbrains.compose.material3.adaptive", name = "adaptive", version.ref = "compose-material3-adaptive" }
 compose-material3-adaptive-layout = { group = "org.jetbrains.compose.material3.adaptive", name = "adaptive-layout", version.ref = "compose-material3-adaptive" }
 

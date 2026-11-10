@@ -7,11 +7,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Cancel
-import androidx.compose.material.icons.rounded.ArrowCircleUp
-import androidx.compose.material.icons.rounded.GridView
-import androidx.compose.material.icons.rounded.Timer
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -26,6 +21,10 @@ import androidx.compose.ui.unit.dp
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
 import com.arsildo.merrpatenten.shared.core.designsystem.QUESTIONS_IN_EXAM
 import com.arsildo.merrpatenten.shared.core.designsystem.Red
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.ArrowUp
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleX
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.LayoutGrid
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.Timer
 import merrpatenten.shared_core.design_system.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
 
@@ -75,7 +74,7 @@ internal fun ExamLegend(
                 modifier = Modifier.padding(horizontal = 4.dp),
             ) {
                 Icon(
-                    imageVector = Icons.Rounded.GridView,
+                    imageVector = LayoutGrid,
                     contentDescription = stringResource(Res.string.question_map),
                     modifier = Modifier.size(18.dp),
                 )
@@ -105,7 +104,7 @@ internal fun ExamLegend(
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Icon(
-                    imageVector = Icons.Rounded.Timer,
+                    imageVector = Timer,
                     contentDescription = null,
                     modifier = Modifier.size(16.dp),
                 )
@@ -141,7 +140,7 @@ internal fun ExamLegend(
             modifier = Modifier.size(40.dp),
         ) {
             Icon(
-                imageVector = if (endExamVisible) Icons.Rounded.ArrowCircleUp else Icons.Outlined.Cancel,
+                imageVector = if (endExamVisible) ArrowUp else CircleX,
                 contentDescription = stringResource(Res.string.toggle_end_exam),
                 modifier = Modifier
                     .size(22.dp)

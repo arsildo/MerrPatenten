@@ -9,8 +9,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.rounded.OpenInNew
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardColors
 import androidx.compose.material3.CardDefaults
@@ -25,6 +23,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.Link
 import merrpatenten.shared_core.design_system.generated.resources.Res
 import merrpatenten.shared_core.design_system.generated.resources.dpshtrr
 import merrpatenten.shared_core.design_system.generated.resources.help
@@ -91,7 +90,7 @@ fun HelpfulMaterialCard(onClick: () -> Unit, colors: CardColors, modifier: Modif
                 contentAlignment = Alignment.Center,
             ) {
                 Icon(
-                    imageVector = Icons.AutoMirrored.Rounded.OpenInNew,
+                    imageVector = Link,
                     contentDescription = null,
                     tint = colors.contentColor,
                     modifier = Modifier.size(18.dp),

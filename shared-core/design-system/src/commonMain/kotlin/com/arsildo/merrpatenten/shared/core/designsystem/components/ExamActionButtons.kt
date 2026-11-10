@@ -1,10 +1,6 @@
 package com.arsildo.merrpatenten.shared.core.designsystem.components
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.rounded.ExitToApp
-import androidx.compose.material.icons.rounded.DoneAll
-import androidx.compose.material.icons.rounded.RestartAlt
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -16,6 +12,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.CheckCheck
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.LogOut
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.RotateCcw
 import merrpatenten.shared_core.design_system.generated.resources.Res
 import merrpatenten.shared_core.design_system.generated.resources.end_exam
 import merrpatenten.shared_core.design_system.generated.resources.exit_exam
@@ -122,15 +121,15 @@ private fun ExamActionButtonsPreview() {
             verticalArrangement = Arrangement.spacedBy(12.dp),
         ) {
             EndExamButton(
-                icon = Icons.Rounded.DoneAll,
+                icon = CheckCheck,
                 onClick = {},
             )
             RestartExamButton(
-                icon = Icons.Rounded.RestartAlt,
+                icon = RotateCcw,
                 onClick = {},
             )
             ExitExamButton(
-                icon = Icons.AutoMirrored.Rounded.ExitToApp,
+                icon = LogOut,
                 onClick = {},
             )
         }
@@ -146,15 +145,15 @@ private fun ExamActionButtonsDarkPreview() {
             verticalArrangement = Arrangement.spacedBy(12.dp),
         ) {
             EndExamButton(
-                icon = Icons.Rounded.DoneAll,
+                icon = CheckCheck,
                 onClick = {},
             )
             RestartExamButton(
-                icon = Icons.Rounded.RestartAlt,
+                icon = RotateCcw,
                 onClick = {},
             )
             ExitExamButton(
-                icon = Icons.AutoMirrored.Rounded.ExitToApp,
+                icon = LogOut,
                 onClick = {},
             )
         }

@@ -7,17 +7,11 @@ import androidx.compose.animation.core.spring
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.rounded.MenuBook
-import androidx.compose.material.icons.outlined.Info
-import androidx.compose.material.icons.rounded.DirectionsBus
-import androidx.compose.material.icons.rounded.DirectionsCar
-import androidx.compose.material.icons.rounded.EditNote
-import androidx.compose.material.icons.rounded.LocalShipping
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.compositeOver
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.platform.LocalUriHandler
@@ -36,6 +30,12 @@ import com.arsildo.merrpatenten.shared.core.designsystem.adaptive.rememberWindow
 import com.arsildo.merrpatenten.shared.core.designsystem.components.ExamTypeCard
 import com.arsildo.merrpatenten.shared.core.designsystem.components.HelpfulMaterialCard
 import com.arsildo.merrpatenten.shared.core.designsystem.components.SectionHeader
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.BookBookmark
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.BookOpen
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.Bus
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.Car
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.Info
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.Truck
 import com.arsildo.merrpatenten.shared.feature.dashboard.DashboardUiState
 import com.arsildo.merrpatenten.shared.feature.dashboard.DashboardViewModel
 import com.arsildo.merrpatenten.shared.feature.dashboard.ui.components.ReadinessCard
@@ -120,7 +120,7 @@ internal fun DashboardScreen(
                         },
                     ) {
                         Icon(
-                            imageVector = Icons.Outlined.Info,
+                            imageVector = Info,
                             contentDescription = stringResource(Res.string.info),
                         )
                     }
@@ -179,7 +179,6 @@ internal fun DashboardScreen(
 
 @Composable
 private fun ExamSection(modifier: Modifier = Modifier, onStartExamClick: (category: String) -> Unit) {
-    val hapticFeedback = LocalHapticFeedback.current
     Column(
         modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(16.dp),
@@ -189,11 +188,8 @@ private fun ExamSection(modifier: Modifier = Modifier, onStartExamClick: (catego
         ExamTypeCard(
             title = stringResource(Res.string.questionnaire_category_one),
             description = stringResource(Res.string.category_b_desc),
-            icon = Icons.Rounded.DirectionsCar,
-            onClick = {
-                hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
-                onStartExamClick("B")
-            },
+            icon = Car,
+            onClick = { onStartExamClick("B") },
             colors = CardDefaults.cardColors(
                 containerColor = MaterialTheme.colorScheme.primaryContainer,
                 contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
@@ -203,11 +199,8 @@ private fun ExamSection(modifier: Modifier = Modifier, onStartExamClick: (catego
         ExamTypeCard(
             title = stringResource(Res.string.questionnaire_category_two),
             description = stringResource(Res.string.category_cd_desc),
-            icon = Icons.Rounded.LocalShipping,
-            onClick = {
-                hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
-                onStartExamClick("C")
-            },
+            icon = Truck,
+            onClick = { onStartExamClick("C") },
             colors = CardDefaults.cardColors(
                 containerColor = MaterialTheme.colorScheme.secondaryContainer,
                 contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
@@ -217,11 +210,8 @@ private fun ExamSection(modifier: Modifier = Modifier, onStartExamClick: (catego
         ExamTypeCard(
             title = stringResource(Res.string.questionnaire_category_three),
             description = stringResource(Res.string.category_cd_desc),
-            icon = Icons.Rounded.DirectionsBus,
-            onClick = {
-                hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
-                onStartExamClick("D")
-            },
+            icon = Bus,
+            onClick = { onStartExamClick("D") },
             colors = CardDefaults.cardColors(
                 containerColor = MaterialTheme.colorScheme.tertiaryContainer,
                 contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
@@ -249,10 +239,7 @@ private fun LearningSection(
 
         ReadinessCard(
             readinessScore = uiState.readinessScore,
-            onClick = {
-                hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                onStatisticsClick()
-            },
+            onClick = onStatisticsClick,
         )
 
         val mistakeDesc = if (uiState.mistakesCount > 0) {
@@ -268,14 +255,13 @@ private fun LearningSection(
         ExamTypeCard(
             title = stringResource(Res.string.mistakes_dashboard_title),
             description = mistakeDesc,
-            icon = Icons.Rounded.EditNote,
-            onClick = {
-                hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
-                onMistakesClick()
-            },
+            icon = BookBookmark,
+            onClick = onMistakesClick,
             colors = CardDefaults.cardColors(
                 containerColor = if (uiState.mistakesCount > 0) {
-                    MaterialTheme.colorScheme.errorContainer.copy(alpha = 0.45f)
+                    MaterialTheme.colorScheme.errorContainer
+                        .copy(alpha = 0.45f)
+                        .compositeOver(MaterialTheme.colorScheme.surfaceContainerHigh)
                 } else {
                     MaterialTheme.colorScheme.surfaceContainerHigh
                 },
@@ -289,11 +275,8 @@ private fun LearningSection(
                 stringResource(Res.string.catalog_category_warning) + " | " + stringResource(Res.string.catalog_category_prohibitory) +
                     " | " +
                     stringResource(Res.string.catalog_category_intersections),
-            icon = Icons.AutoMirrored.Rounded.MenuBook,
-            onClick = {
-                hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
-                onCatalogClick()
-            },
+            icon = BookOpen,
+            onClick = onCatalogClick,
             colors = CardDefaults.cardColors(
                 containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
                 contentColor = MaterialTheme.colorScheme.onSurface,

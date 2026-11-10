@@ -6,14 +6,6 @@ import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.rounded.ExitToApp
-import androidx.compose.material.icons.outlined.Cancel
-import androidx.compose.material.icons.outlined.CheckCircle
-import androidx.compose.material.icons.rounded.Cancel
-import androidx.compose.material.icons.rounded.CheckCircle
-import androidx.compose.material.icons.rounded.DoneAll
-import androidx.compose.material.icons.rounded.RestartAlt
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -26,6 +18,11 @@ import com.arsildo.merrpatenten.shared.core.designsystem.components.ExitExamButt
 import com.arsildo.merrpatenten.shared.core.designsystem.components.RestartExamButton
 import com.arsildo.merrpatenten.shared.core.designsystem.formatQuestion
 import com.arsildo.merrpatenten.shared.core.designsystem.getImageResource
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.CheckCheck
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleCheck
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleX
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.LogOut
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.RotateCcw
 import com.arsildo.merrpatenten.shared.core.designsystem.semanticColors
 import com.arsildo.merrpatenten.shared.feature.exam.ExamUiState
 import merrpatenten.shared_core.design_system.generated.resources.Res
@@ -152,8 +149,8 @@ internal fun ExamTabletopContent(
                     ) {
                         ExpressiveOptionCard(
                             title = stringResource(Res.string.false_checkbox),
-                            iconSelected = Icons.Rounded.Cancel,
-                            iconUnselected = Icons.Outlined.Cancel,
+                            iconSelected = CircleX,
+                            iconUnselected = CircleX,
                             isChecked = falseChecked,
                             enabled = !uiState.isCompleted,
                             selectedContainerColor = MaterialTheme.colorScheme.errorContainer,
@@ -165,8 +162,8 @@ internal fun ExamTabletopContent(
 
                         ExpressiveOptionCard(
                             title = stringResource(Res.string.true_checkbox),
-                            iconSelected = Icons.Rounded.CheckCircle,
-                            iconUnselected = Icons.Outlined.CheckCircle,
+                            iconSelected = CircleCheck,
+                            iconUnselected = CircleCheck,
                             isChecked = trueChecked,
                             enabled = !uiState.isCompleted,
                             selectedContainerColor = MaterialTheme.semanticColors.successContainer,
@@ -201,19 +198,19 @@ internal fun ExamTabletopContent(
                                 horizontalArrangement = Arrangement.spacedBy(8.dp),
                             ) {
                                 RestartExamButton(
-                                    icon = Icons.Rounded.RestartAlt,
+                                    icon = RotateCcw,
                                     modifier = Modifier.weight(1f),
                                     onClick = onRestartExam,
                                 )
                                 ExitExamButton(
-                                    icon = Icons.AutoMirrored.Rounded.ExitToApp,
+                                    icon = LogOut,
                                     modifier = Modifier.weight(1f),
                                     onClick = onExitExam,
                                 )
                             }
                         } else {
                             EndExamButton(
-                                icon = Icons.Rounded.DoneAll,
+                                icon = CheckCheck,
                                 modifier = Modifier.fillMaxWidth(),
                                 onClick = onCompleteExam,
                             )

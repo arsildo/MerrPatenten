@@ -5,10 +5,6 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.rounded.ArrowForward
-import androidx.compose.material.icons.automirrored.rounded.TrendingUp
-import androidx.compose.material.icons.rounded.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -23,6 +19,11 @@ import androidx.compose.ui.unit.dp
 import com.arsildo.merrpatenten.shared.core.data.ReadinessLevel
 import com.arsildo.merrpatenten.shared.core.data.ReadinessScore
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.ArrowRight
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.BadgeCheck
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.GraphStar
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.TrendingUp
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.TriangleExclamationPoint
 import com.arsildo.merrpatenten.shared.core.designsystem.semanticColors
 import merrpatenten.shared_core.design_system.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
@@ -32,7 +33,7 @@ fun ReadinessCard(
     readinessScore: ReadinessScore,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
-    colors: CardColors = CardDefaults.elevatedCardColors(
+    colors: CardColors = CardDefaults.cardColors(
         containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
         contentColor = MaterialTheme.colorScheme.onSurface,
     ),
@@ -44,28 +45,28 @@ fun ReadinessCard(
             MaterialTheme.semanticColors.successContainer,
             MaterialTheme.semanticColors.onSuccessContainer,
             stringResource(Res.string.readiness_status_ready),
-            Icons.Rounded.Verified,
+            BadgeCheck,
         )
 
         ReadinessLevel.IN_PROGRESS -> Quadruple(
             MaterialTheme.colorScheme.tertiaryContainer,
             MaterialTheme.colorScheme.onTertiaryContainer,
             stringResource(Res.string.readiness_status_in_progress),
-            Icons.AutoMirrored.Rounded.TrendingUp,
+            TrendingUp,
         )
 
         ReadinessLevel.NEEDS_PRACTICE -> Quadruple(
             MaterialTheme.colorScheme.errorContainer,
             MaterialTheme.colorScheme.onErrorContainer,
             stringResource(Res.string.readiness_status_needs_practice),
-            Icons.Rounded.WarningAmber,
+            TriangleExclamationPoint,
         )
 
         ReadinessLevel.NOT_ENOUGH_DATA -> Quadruple(
             MaterialTheme.colorScheme.surfaceContainerHighest,
             MaterialTheme.colorScheme.onSurfaceVariant,
             stringResource(Res.string.readiness_status_not_enough_data),
-            Icons.Rounded.Insights,
+            GraphStar,
         )
     }
 
@@ -139,7 +140,7 @@ fun ReadinessCard(
                     contentAlignment = Alignment.Center,
                 ) {
                     Icon(
-                        imageVector = Icons.AutoMirrored.Rounded.ArrowForward,
+                        imageVector = ArrowRight,
                         contentDescription = null,
                         tint = MaterialTheme.colorScheme.onSurface,
                         modifier = Modifier.size(16.dp),

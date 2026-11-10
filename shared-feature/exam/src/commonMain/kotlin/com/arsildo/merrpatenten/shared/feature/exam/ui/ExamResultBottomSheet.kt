@@ -5,12 +5,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.rounded.ExitToApp
-import androidx.compose.material.icons.rounded.CheckCircle
-import androidx.compose.material.icons.rounded.HighlightOff
-import androidx.compose.material.icons.rounded.KeyboardArrowDown
-import androidx.compose.material.icons.rounded.RestartAlt
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -30,6 +24,11 @@ import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
 import com.arsildo.merrpatenten.shared.core.designsystem.QUESTIONS_IN_EXAM
 import com.arsildo.merrpatenten.shared.core.designsystem.components.ExitExamButton
 import com.arsildo.merrpatenten.shared.core.designsystem.components.RestartExamButton
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.ArrowDown
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleCheck
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleX
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.LogOut
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.RotateCcw
 import com.arsildo.merrpatenten.shared.core.designsystem.semanticColors
 import com.arsildo.merrpatenten.shared.feature.exam.ExamUiState
 import com.arsildo.merrpatenten.shared.feature.exam.ExamViewModel
@@ -75,7 +74,7 @@ internal fun ExamResultBottomSheet(
 ) {
     val hasPassed = uiState.errors <= ERRORS_ALLOWED
     val heroContent = if (hasPassed) MaterialTheme.semanticColors.onSuccessContainer else MaterialTheme.colorScheme.onErrorContainer
-    val heroIcon = if (hasPassed) Icons.Rounded.CheckCircle else Icons.Rounded.HighlightOff
+    val heroIcon = if (hasPassed) CircleCheck else CircleX
     val heroIconColor = if (hasPassed) MaterialTheme.semanticColors.success else MaterialTheme.colorScheme.error
 
     val focusRequester = remember { FocusRequester() }
@@ -229,7 +228,7 @@ internal fun ExamResultBottomSheet(
                         ),
                     ) {
                         Icon(
-                            imageVector = Icons.Rounded.KeyboardArrowDown,
+                            imageVector = ArrowDown,
                             contentDescription = stringResource(Res.string.close),
                             modifier = Modifier.size(28.dp),
                         )
@@ -245,12 +244,12 @@ internal fun ExamResultBottomSheet(
                         verticalArrangement = Arrangement.spacedBy(16.dp),
                     ) {
                         RestartExamButton(
-                            icon = Icons.Rounded.RestartAlt,
+                            icon = RotateCcw,
                             onClick = onRestartExam,
                             modifier = Modifier.fillMaxWidth(),
                         )
                         ExitExamButton(
-                            icon = Icons.AutoMirrored.Rounded.ExitToApp,
+                            icon = LogOut,
                             onClick = onExitExam,
                             modifier = Modifier.fillMaxWidth(),
                         )

@@ -1,8 +1,6 @@
 package com.arsildo.merrpatenten.shared.core.designsystem.components
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.FormatSize
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -13,6 +11,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
 import com.arsildo.merrpatenten.shared.core.designsystem.QuestionTextSize
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.ALargeSmall
 import merrpatenten.shared_core.design_system.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
 
@@ -43,7 +42,7 @@ fun TextSizePreferenceCard(
                 horizontalArrangement = Arrangement.spacedBy(16.dp),
             ) {
                 Icon(
-                    imageVector = Icons.Rounded.FormatSize,
+                    imageVector = ALargeSmall,
                     contentDescription = null,
                     tint = MaterialTheme.colorScheme.primary,
                 )

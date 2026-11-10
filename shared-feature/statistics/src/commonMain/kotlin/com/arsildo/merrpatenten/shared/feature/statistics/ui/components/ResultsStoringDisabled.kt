@@ -8,9 +8,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.MobiledataOff
-import androidx.compose.material.icons.rounded.MultipleStop
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -25,6 +22,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.ArrowLeftRight
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.CloudExclamationPoint
 
 @Composable
 internal fun ResultStoringDisabled(text: String, icon: ImageVector, changePreference: @Composable () -> Unit = {}) {
@@ -79,7 +78,7 @@ private fun ResultStoringDisabledPreview() {
     MerrPatentenTheme {
         ResultStoringDisabled(
             text = "Ruajtja e rezultateve të provimeve është e çaktivizuar.",
-            icon = Icons.Rounded.MobiledataOff,
+            icon = CloudExclamationPoint,
             changePreference = {
                 Button(onClick = {}) {
                     Text(text = "Ndrysho cilësimin")
@@ -95,7 +94,7 @@ private fun ResultsEmptyPreview() {
     MerrPatentenTheme {
         ResultStoringDisabled(
             text = "Nuk keni kryer asnjë provim ende.",
-            icon = Icons.Rounded.MultipleStop,
+            icon = ArrowLeftRight,
         )
     }
 }
@@ -106,7 +105,7 @@ private fun ResultStoringDisabledDarkPreview() {
     MerrPatentenTheme(darkTheme = true) {
         ResultStoringDisabled(
             text = "Ruajtja e rezultateve të provimeve është e çaktivizuar.",
-            icon = Icons.Rounded.MobiledataOff,
+            icon = CloudExclamationPoint,
         )
     }
 }

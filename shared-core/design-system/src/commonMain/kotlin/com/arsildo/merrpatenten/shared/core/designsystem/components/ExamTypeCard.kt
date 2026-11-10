@@ -3,11 +3,6 @@ package com.arsildo.merrpatenten.shared.core.designsystem.components
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.rounded.ArrowForward
-import androidx.compose.material.icons.rounded.DirectionsBus
-import androidx.compose.material.icons.rounded.DirectionsCar
-import androidx.compose.material.icons.rounded.LocalShipping
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -20,6 +15,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.ArrowRight
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.Bus
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.Car
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.Truck
 
 @Composable
 fun ExamTypeCard(
@@ -86,7 +85,7 @@ fun ExamTypeCard(
                     contentAlignment = Alignment.Center,
                 ) {
                     Icon(
-                        imageVector = Icons.AutoMirrored.Rounded.ArrowForward,
+                        imageVector = ArrowRight,
                         contentDescription = null,
                         tint = colors.contentColor,
                         modifier = Modifier.size(18.dp),
@@ -136,7 +135,7 @@ private fun ExamTypeCardCategoryBPreview() {
         ExamTypeCard(
             title = "Kategoria B",
             description = "B1 | B | BE",
-            icon = Icons.Rounded.DirectionsCar,
+            icon = Car,
             onClick = {},
             colors = CardDefaults.elevatedCardColors(
                 containerColor = MaterialTheme.colorScheme.primaryContainer,
@@ -154,7 +153,7 @@ private fun ExamTypeCardCategoryCPreview() {
         ExamTypeCard(
             title = "Kategoria C",
             description = "C1 | C | C1E | CE",
-            icon = Icons.Rounded.LocalShipping,
+            icon = Truck,
             onClick = {},
             colors = CardDefaults.elevatedCardColors(
                 containerColor = MaterialTheme.colorScheme.secondaryContainer,
@@ -172,7 +171,7 @@ private fun ExamTypeCardDarkPreview() {
         ExamTypeCard(
             title = "Kategoria D",
             description = "D1 | D | D1E | DE",
-            icon = Icons.Rounded.DirectionsBus,
+            icon = Bus,
             onClick = {},
             colors = CardDefaults.elevatedCardColors(
                 containerColor = MaterialTheme.colorScheme.tertiaryContainer,

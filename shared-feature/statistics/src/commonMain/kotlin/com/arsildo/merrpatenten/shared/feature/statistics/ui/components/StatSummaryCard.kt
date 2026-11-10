@@ -5,10 +5,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.CheckCircle
-import androidx.compose.material.icons.rounded.EmojiEvents
-import androidx.compose.material.icons.rounded.Quiz
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -22,6 +18,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleCheck
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleQuestionMark
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleX
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.Trophy
 import com.arsildo.merrpatenten.shared.core.designsystem.semanticColors
 
 @Composable
@@ -74,7 +74,7 @@ private fun StatSummaryCardsRowPreview() {
             StatSummaryCard(
                 title = "Provime",
                 value = "12",
-                icon = Icons.Rounded.Quiz,
+                icon = CircleQuestionMark,
                 containerColor = MaterialTheme.colorScheme.primaryContainer,
                 contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
                 modifier = Modifier.weight(1f),
@@ -82,7 +82,7 @@ private fun StatSummaryCardsRowPreview() {
             StatSummaryCard(
                 title = "Mesatarja",
                 value = "2.4",
-                icon = Icons.Rounded.CheckCircle,
+                icon = CircleCheck,
                 containerColor = MaterialTheme.semanticColors.successContainer,
                 contentColor = MaterialTheme.semanticColors.onSuccessContainer,
                 modifier = Modifier.weight(1f),
@@ -90,7 +90,7 @@ private fun StatSummaryCardsRowPreview() {
             StatSummaryCard(
                 title = "Suksesi",
                 value = "85%",
-                icon = Icons.Rounded.EmojiEvents,
+                icon = Trophy,
                 containerColor = MaterialTheme.colorScheme.tertiaryContainer,
                 contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
                 modifier = Modifier.weight(1f),
@@ -110,7 +110,7 @@ private fun StatSummaryCardsRowDarkPreview() {
             StatSummaryCard(
                 title = "Provime",
                 value = "5",
-                icon = Icons.Rounded.Quiz,
+                icon = CircleQuestionMark,
                 containerColor = MaterialTheme.colorScheme.primaryContainer,
                 contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
                 modifier = Modifier.weight(1f),
@@ -118,7 +118,7 @@ private fun StatSummaryCardsRowDarkPreview() {
             StatSummaryCard(
                 title = "Mesatarja",
                 value = "6.2",
-                icon = Icons.Rounded.CheckCircle,
+                icon = CircleX,
                 containerColor = MaterialTheme.colorScheme.errorContainer,
                 contentColor = MaterialTheme.colorScheme.onErrorContainer,
                 modifier = Modifier.weight(1f),
@@ -126,7 +126,7 @@ private fun StatSummaryCardsRowDarkPreview() {
             StatSummaryCard(
                 title = "Suksesi",
                 value = "40%",
-                icon = Icons.Rounded.EmojiEvents,
+                icon = Trophy,
                 containerColor = MaterialTheme.colorScheme.tertiaryContainer,
                 contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
                 modifier = Modifier.weight(1f),

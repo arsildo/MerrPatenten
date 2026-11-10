@@ -5,9 +5,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.rounded.ExitToApp
-import androidx.compose.material.icons.rounded.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -20,6 +17,10 @@ import com.arsildo.merrpatenten.shared.core.designsystem.ERRORS_ALLOWED
 import com.arsildo.merrpatenten.shared.core.designsystem.QUESTIONS_IN_EXAM
 import com.arsildo.merrpatenten.shared.core.designsystem.components.ExitExamButton
 import com.arsildo.merrpatenten.shared.core.designsystem.components.RestartExamButton
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleCheck
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleX
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.LogOut
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.RotateCcw
 import com.arsildo.merrpatenten.shared.core.designsystem.semanticColors
 import com.arsildo.merrpatenten.shared.feature.exam.ExamUiState
 import merrpatenten.shared_core.design_system.generated.resources.*
@@ -37,7 +38,7 @@ internal fun ExamQuestionMap(
 ) {
     val hasPassed = uiState.errors <= ERRORS_ALLOWED
     val heroContent = if (hasPassed) MaterialTheme.semanticColors.onSuccessContainer else MaterialTheme.colorScheme.onErrorContainer
-    val heroIcon = if (hasPassed) Icons.Rounded.CheckCircle else Icons.Rounded.HighlightOff
+    val heroIcon = if (hasPassed) CircleCheck else CircleX
     val heroIconColor = if (hasPassed) MaterialTheme.semanticColors.success else MaterialTheme.colorScheme.error
 
     val completedCount = remember(uiState.responseList) {
@@ -191,14 +192,14 @@ internal fun ExamQuestionMap(
                 ) {
                     if (onRestartExam != null) {
                         RestartExamButton(
-                            icon = Icons.Rounded.RestartAlt,
+                            icon = RotateCcw,
                             modifier = Modifier.fillMaxWidth(),
                             onClick = onRestartExam,
                         )
                     }
                     if (onExitExam != null) {
                         ExitExamButton(
-                            icon = Icons.AutoMirrored.Rounded.ExitToApp,
+                            icon = LogOut,
                             onClick = onExitExam,
                             modifier = Modifier.fillMaxWidth(),
                         )

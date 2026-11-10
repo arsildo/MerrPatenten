@@ -10,8 +10,6 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.rounded.CallSplit
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
@@ -25,6 +23,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.arsildo.merrpatenten.shared.core.designsystem.getImageResource
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.Split
 import com.arsildo.merrpatenten.shared.core.model.RoadSign
 import com.arsildo.merrpatenten.shared.core.model.SignCategory
 import org.jetbrains.compose.resources.painterResource
@@ -112,7 +111,7 @@ fun RoadSignCard(sign: RoadSign, onClick: () -> Unit, modifier: Modifier = Modif
                     horizontalArrangement = Arrangement.spacedBy(4.dp),
                 ) {
                     Icon(
-                        imageVector = Icons.AutoMirrored.Rounded.CallSplit,
+                        imageVector = Split,
                         contentDescription = null,
                         modifier = Modifier.size(14.dp),
                         tint = MaterialTheme.colorScheme.onPrimaryContainer,

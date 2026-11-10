@@ -46,7 +46,6 @@ kotlin {
             implementation(libs.compose.material3)
             api(libs.compose.material3.adaptive)
             api(libs.compose.material3.adaptive.layout)
-            implementation(libs.compose.materialIconsExtended)
 
             implementation(libs.androidx.annotation)
             api(libs.kotlinx.datetime)

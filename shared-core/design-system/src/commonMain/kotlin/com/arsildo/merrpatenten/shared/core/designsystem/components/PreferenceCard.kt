@@ -3,11 +3,6 @@ package com.arsildo.merrpatenten.shared.core.designsystem.components
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.DarkMode
-import androidx.compose.material.icons.rounded.Insights
-import androidx.compose.material.icons.rounded.TouchApp
-import androidx.compose.material.icons.rounded.Vibration
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -16,6 +11,10 @@ import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.Cloud
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.Moon
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.Pointer
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.VibrateOff
 
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
@@ -87,7 +86,7 @@ private fun PreferenceCardGroupPreview() {
                 count = 3,
                 leadingIcon = {
                     Icon(
-                        imageVector = Icons.Rounded.TouchApp,
+                        imageVector = Pointer,
                         contentDescription = null,
                         tint = MaterialTheme.colorScheme.primary,
                     )
@@ -102,7 +101,7 @@ private fun PreferenceCardGroupPreview() {
                 count = 3,
                 leadingIcon = {
                     Icon(
-                        imageVector = Icons.Rounded.Insights,
+                        imageVector = Cloud,
                         contentDescription = null,
                         tint = MaterialTheme.colorScheme.primary,
                     )
@@ -117,7 +116,7 @@ private fun PreferenceCardGroupPreview() {
                 count = 3,
                 leadingIcon = {
                     Icon(
-                        imageVector = Icons.Rounded.Vibration,
+                        imageVector = VibrateOff,
                         contentDescription = null,
                         tint = MaterialTheme.colorScheme.primary,
                     )
@@ -145,7 +144,7 @@ private fun PreferenceCardDarkPreview() {
                 count = 2,
                 leadingIcon = {
                     Icon(
-                        imageVector = Icons.Rounded.DarkMode,
+                        imageVector = Moon,
                         contentDescription = null,
                         tint = MaterialTheme.colorScheme.primary,
                     )

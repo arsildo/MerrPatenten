@@ -12,11 +12,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Cancel
-import androidx.compose.material.icons.outlined.CheckCircle
-import androidx.compose.material.icons.rounded.Cancel
-import androidx.compose.material.icons.rounded.CheckCircle
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ButtonShapes
@@ -35,6 +30,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleCheck
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleX
 import com.arsildo.merrpatenten.shared.core.designsystem.semanticColors
 
 @Composable
@@ -133,8 +130,8 @@ private fun ExpressiveOptionCardCheckedPreview() {
         ) {
             ExpressiveOptionCard(
                 title = "Saktë",
-                iconSelected = Icons.Rounded.CheckCircle,
-                iconUnselected = Icons.Outlined.CheckCircle,
+                iconSelected = CircleCheck,
+                iconUnselected = CircleCheck,
                 isChecked = true,
                 enabled = true,
                 selectedContainerColor = MaterialTheme.semanticColors.successContainer,
@@ -145,8 +142,8 @@ private fun ExpressiveOptionCardCheckedPreview() {
             )
             ExpressiveOptionCard(
                 title = "Gabuar",
-                iconSelected = Icons.Rounded.Cancel,
-                iconUnselected = Icons.Outlined.Cancel,
+                iconSelected = CircleX,
+                iconUnselected = CircleX,
                 isChecked = false,
                 enabled = true,
                 selectedContainerColor = MaterialTheme.colorScheme.errorContainer,
@@ -169,8 +166,8 @@ private fun ExpressiveOptionCardDarkPreview() {
         ) {
             ExpressiveOptionCard(
                 title = "Saktë",
-                iconSelected = Icons.Rounded.CheckCircle,
-                iconUnselected = Icons.Outlined.CheckCircle,
+                iconSelected = CircleCheck,
+                iconUnselected = CircleCheck,
                 isChecked = false,
                 enabled = true,
                 selectedContainerColor = MaterialTheme.semanticColors.successContainer,
@@ -181,8 +178,8 @@ private fun ExpressiveOptionCardDarkPreview() {
             )
             ExpressiveOptionCard(
                 title = "Gabuar",
-                iconSelected = Icons.Rounded.Cancel,
-                iconUnselected = Icons.Outlined.Cancel,
+                iconSelected = CircleX,
+                iconUnselected = CircleX,
                 isChecked = true,
                 enabled = true,
                 selectedContainerColor = MaterialTheme.colorScheme.errorContainer,

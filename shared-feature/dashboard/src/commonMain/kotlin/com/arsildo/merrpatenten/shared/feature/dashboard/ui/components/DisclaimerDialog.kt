@@ -5,8 +5,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.WarningAmber
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonShapes
@@ -23,6 +21,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.arsildo.merrpatenten.shared.core.designsystem.DPSHTRR_HELP
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.TriangleExclamationPoint
 import merrpatenten.shared_core.design_system.generated.resources.Res
 import merrpatenten.shared_core.design_system.generated.resources.disclaimer_description
 import merrpatenten.shared_core.design_system.generated.resources.disclaimer_title
@@ -44,7 +43,7 @@ internal fun DisclaimerDialog(onDismissRequest: () -> Unit) {
             ) {
                 Box(contentAlignment = Alignment.Center) {
                     Icon(
-                        imageVector = Icons.Outlined.WarningAmber,
+                        imageVector = TriangleExclamationPoint,
                         contentDescription = null,
                         tint = MaterialTheme.colorScheme.onErrorContainer,
                         modifier = Modifier.size(28.dp),

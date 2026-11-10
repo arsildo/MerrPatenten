@@ -17,12 +17,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.rounded.ArrowBack
-import androidx.compose.material.icons.automirrored.rounded.ArrowForward
-import androidx.compose.material.icons.outlined.Cancel
-import androidx.compose.material.icons.outlined.CheckCircle
-import androidx.compose.material.icons.rounded.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -39,6 +33,12 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.arsildo.merrpatenten.shared.core.designsystem.adaptive.rememberWindowAdaptiveInfo
 import com.arsildo.merrpatenten.shared.core.designsystem.getImageResource
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.ArrowLeft
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.ArrowRight
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleCheck
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleX
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.PartyPopper
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.Trophy
 import com.arsildo.merrpatenten.shared.core.designsystem.semanticColors
 import com.arsildo.merrpatenten.shared.feature.mistakes.MistakesPracticeUiState
 import com.arsildo.merrpatenten.shared.feature.mistakes.MistakesPracticeViewModel
@@ -114,7 +114,7 @@ fun MistakesPracticeScreen(
                         },
                     ) {
                         Icon(
-                            imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
+                            imageVector = ArrowLeft,
                             contentDescription = stringResource(Res.string.back),
                         )
                     }
@@ -146,7 +146,7 @@ fun MistakesPracticeScreen(
                     verticalArrangement = Arrangement.spacedBy(16.dp),
                 ) {
                     Icon(
-                        imageVector = Icons.Rounded.Celebration,
+                        imageVector = PartyPopper,
                         contentDescription = null,
                         tint = MaterialTheme.colorScheme.primary,
                         modifier = Modifier.size(64.dp),
@@ -295,8 +295,8 @@ fun MistakesPracticeScreen(
                     ) {
                         PracticeOptionButton(
                             title = stringResource(Res.string.false_checkbox),
-                            iconSelected = Icons.Rounded.Cancel,
-                            iconUnselected = Icons.Outlined.Cancel,
+                            iconSelected = CircleX,
+                            iconUnselected = CircleX,
                             isSelected = uiState.selectedAnswer == "Gabim",
                             isRevealed = uiState.isAnswerRevealed,
                             isCorrectOption = currentItem.question.answer.trim().equals("Gabim", ignoreCase = true),
@@ -311,8 +311,8 @@ fun MistakesPracticeScreen(
 
                         PracticeOptionButton(
                             title = stringResource(Res.string.true_checkbox),
-                            iconSelected = Icons.Rounded.CheckCircle,
-                            iconUnselected = Icons.Outlined.CheckCircle,
+                            iconSelected = CircleCheck,
+                            iconUnselected = CircleCheck,
                             isSelected = uiState.selectedAnswer == "Saktë",
                             isRevealed = uiState.isAnswerRevealed,
                             isCorrectOption = currentItem.question.answer.trim().equals("Saktë", ignoreCase = true),
@@ -349,9 +349,9 @@ fun MistakesPracticeScreen(
                                 ) {
                                     Icon(
                                         imageVector = if (uiState.isAnswerCorrect) {
-                                            Icons.Rounded.CheckCircle
+                                            CircleCheck
                                         } else {
-                                            Icons.Rounded.Cancel
+                                            CircleX
                                         },
                                         contentDescription = null,
                                         tint = if (uiState.isAnswerCorrect) {
@@ -404,7 +404,7 @@ fun MistakesPracticeScreen(
                                 )
                                 Spacer(modifier = Modifier.width(8.dp))
                                 Icon(
-                                    imageVector = Icons.AutoMirrored.Rounded.ArrowForward,
+                                    imageVector = ArrowRight,
                                     contentDescription = null,
                                 )
                             }
@@ -420,7 +420,7 @@ fun MistakesPracticeScreen(
             onDismissRequest = onBackPress,
             icon = {
                 Icon(
-                    imageVector = Icons.Rounded.EmojiEvents,
+                    imageVector = Trophy,
                     contentDescription = null,
                     tint = MaterialTheme.semanticColors.success,
                     modifier = Modifier.size(48.dp),
@@ -500,8 +500,8 @@ private fun PracticeOptionButton(
     }
 
     val iconVector = when {
-        isHighlightedAsCorrect -> Icons.Rounded.CheckCircle
-        isHighlightedAsWrong -> Icons.Rounded.Cancel
+        isHighlightedAsCorrect -> CircleCheck
+        isHighlightedAsWrong -> CircleX
         isSelected -> iconSelected
         else -> iconUnselected
     }

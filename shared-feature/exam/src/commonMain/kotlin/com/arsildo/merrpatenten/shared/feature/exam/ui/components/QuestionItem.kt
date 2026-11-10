@@ -3,11 +3,6 @@ package com.arsildo.merrpatenten.shared.feature.exam.ui.components
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Cancel
-import androidx.compose.material.icons.outlined.CheckCircle
-import androidx.compose.material.icons.rounded.Cancel
-import androidx.compose.material.icons.rounded.CheckCircle
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -20,6 +15,8 @@ import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
 import com.arsildo.merrpatenten.shared.core.designsystem.QuestionTextSize
 import com.arsildo.merrpatenten.shared.core.designsystem.formatQuestion
 import com.arsildo.merrpatenten.shared.core.designsystem.getImageResource
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleCheck
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleX
 import com.arsildo.merrpatenten.shared.core.designsystem.semanticColors
 import merrpatenten.shared_core.design_system.generated.resources.*
 import org.jetbrains.compose.resources.DrawableResource
@@ -91,8 +88,8 @@ internal fun QuestionItem(
                 ) {
                     ExpressiveOptionCard(
                         title = stringResource(Res.string.false_checkbox),
-                        iconSelected = Icons.Rounded.Cancel,
-                        iconUnselected = Icons.Outlined.Cancel,
+                        iconSelected = CircleX,
+                        iconUnselected = CircleX,
                         isChecked = falseChecked,
                         enabled = !isCompleted,
                         selectedContainerColor = MaterialTheme.colorScheme.errorContainer,
@@ -104,8 +101,8 @@ internal fun QuestionItem(
 
                     ExpressiveOptionCard(
                         title = stringResource(Res.string.true_checkbox),
-                        iconSelected = Icons.Rounded.CheckCircle,
-                        iconUnselected = Icons.Outlined.CheckCircle,
+                        iconSelected = CircleCheck,
+                        iconUnselected = CircleCheck,
                         isChecked = trueChecked,
                         enabled = !isCompleted,
                         selectedContainerColor = MaterialTheme.semanticColors.successContainer,

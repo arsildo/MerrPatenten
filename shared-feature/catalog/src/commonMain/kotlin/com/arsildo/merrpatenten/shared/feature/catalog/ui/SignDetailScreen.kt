@@ -21,12 +21,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.rounded.ArrowBack
-import androidx.compose.material.icons.automirrored.rounded.CallSplit
-import androidx.compose.material.icons.rounded.CheckCircle
-import androidx.compose.material.icons.rounded.HighlightOff
-import androidx.compose.material.icons.rounded.ZoomIn
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -52,6 +46,11 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
 import com.arsildo.merrpatenten.shared.core.designsystem.adaptive.rememberAppAdaptiveInfo
 import com.arsildo.merrpatenten.shared.core.designsystem.getImageResource
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.ArrowLeft
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleCheck
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleX
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.Split
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.ZoomIn
 import com.arsildo.merrpatenten.shared.core.model.Question
 import com.arsildo.merrpatenten.shared.core.model.RoadSign
 import com.arsildo.merrpatenten.shared.core.model.SignCategory
@@ -115,7 +114,7 @@ internal fun SignDetailScreen(
                     if (!adaptiveInfo.isDualPane) {
                         IconButton(onClick = onBackPress) {
                             Icon(
-                                imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
+                                imageVector = ArrowLeft,
                                 contentDescription = stringResource(Res.string.back),
                             )
                         }
@@ -215,7 +214,7 @@ internal fun SignDetailBody(
                             horizontalArrangement = Arrangement.spacedBy(4.dp),
                         ) {
                             Icon(
-                                imageVector = Icons.Rounded.ZoomIn,
+                                imageVector = ZoomIn,
                                 contentDescription = stringResource(Res.string.zoom),
                                 modifier = Modifier.size(16.dp),
                                 tint = MaterialTheme.colorScheme.primary,
@@ -309,7 +308,7 @@ internal fun SignDetailBody(
                         ) {
                             Box(contentAlignment = Alignment.Center) {
                                 Icon(
-                                    imageVector = Icons.AutoMirrored.Rounded.CallSplit,
+                                    imageVector = Split,
                                     contentDescription = null,
                                     tint = MaterialTheme.colorScheme.onPrimary,
                                     modifier = Modifier.size(20.dp),
@@ -411,7 +410,7 @@ internal fun SignDetailBody(
                                     horizontalArrangement = Arrangement.spacedBy(12.dp),
                                 ) {
                                     Icon(
-                                        imageVector = if (isCorrectAnswer) Icons.Rounded.CheckCircle else Icons.Rounded.HighlightOff,
+                                        imageVector = if (isCorrectAnswer) CircleCheck else CircleX,
                                         contentDescription = if (isCorrectAnswer) {
                                             stringResource(
                                                 Res.string.true_checkbox,

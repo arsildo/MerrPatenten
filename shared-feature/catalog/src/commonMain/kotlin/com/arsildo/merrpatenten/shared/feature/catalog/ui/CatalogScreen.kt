@@ -25,12 +25,6 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.rounded.ArrowBack
-import androidx.compose.material.icons.automirrored.rounded.MenuBook
-import androidx.compose.material.icons.rounded.Close
-import androidx.compose.material.icons.rounded.Search
-import androidx.compose.material.icons.rounded.SearchOff
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.FilterChipDefaults
@@ -57,6 +51,10 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
 import com.arsildo.merrpatenten.shared.core.designsystem.adaptive.rememberWindowAdaptiveInfo
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.ArrowLeft
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.Search
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.SearchX
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.X
 import com.arsildo.merrpatenten.shared.core.model.RoadSign
 import com.arsildo.merrpatenten.shared.core.model.SignCategory
 import com.arsildo.merrpatenten.shared.feature.catalog.CatalogUiState
@@ -134,7 +132,7 @@ fun CatalogScreen(
                                 if (uiState.searchQuery.isNotEmpty()) {
                                     IconButton(onClick = { onSearchQueryChanged("") }) {
                                         Icon(
-                                            imageVector = Icons.Rounded.Close,
+                                            imageVector = X,
                                             contentDescription = stringResource(Res.string.close),
                                         )
                                     }
@@ -155,7 +153,7 @@ fun CatalogScreen(
                             onClick = { onToggleSearch(false) },
                         ) {
                             Icon(
-                                imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
+                                imageVector = ArrowLeft,
                                 contentDescription = stringResource(Res.string.back),
                             )
                         }
@@ -170,7 +168,7 @@ fun CatalogScreen(
                             },
                         ) {
                             Icon(
-                                imageVector = Icons.Rounded.Search,
+                                imageVector = Search,
                                 contentDescription = stringResource(Res.string.catalog_search_placeholder),
                             )
                         }
@@ -259,7 +257,7 @@ private fun CatalogListPane(
                     verticalArrangement = Arrangement.spacedBy(12.dp),
                 ) {
                     Icon(
-                        imageVector = Icons.Rounded.SearchOff,
+                        imageVector = SearchX,
                         contentDescription = null,
                         modifier = Modifier.size(48.dp),
                         tint = MaterialTheme.colorScheme.outline,

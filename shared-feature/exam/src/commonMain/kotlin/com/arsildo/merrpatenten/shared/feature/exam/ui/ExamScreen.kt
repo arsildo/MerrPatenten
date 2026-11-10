@@ -8,10 +8,6 @@ import androidx.compose.animation.core.spring
 import androidx.compose.foundation.focusable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.pager.rememberPagerState
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.rounded.ExitToApp
-import androidx.compose.material.icons.rounded.DoneAll
-import androidx.compose.material.icons.rounded.RestartAlt
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.CompositionLocalProvider
@@ -33,6 +29,9 @@ import com.arsildo.merrpatenten.shared.core.designsystem.adaptive.rememberWindow
 import com.arsildo.merrpatenten.shared.core.designsystem.components.EndExamButton
 import com.arsildo.merrpatenten.shared.core.designsystem.components.ExitExamButton
 import com.arsildo.merrpatenten.shared.core.designsystem.components.RestartExamButton
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.CheckCheck
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.LogOut
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.RotateCcw
 import com.arsildo.merrpatenten.shared.core.designsystem.semanticColors
 import com.arsildo.merrpatenten.shared.core.model.Question
 import com.arsildo.merrpatenten.shared.feature.exam.ExamUiState
@@ -271,19 +270,19 @@ internal fun ExamScreen(
                                     verticalArrangement = Arrangement.spacedBy(16.dp),
                                 ) {
                                     RestartExamButton(
-                                        icon = Icons.Rounded.RestartAlt,
+                                        icon = RotateCcw,
                                         modifier = Modifier.fillMaxWidth(),
                                         onClick = onRestartExam,
                                     )
                                     ExitExamButton(
-                                        icon = Icons.AutoMirrored.Rounded.ExitToApp,
+                                        icon = LogOut,
                                         onClick = onExitExam,
                                         modifier = Modifier.fillMaxWidth(),
                                     )
                                 }
                             } else {
                                 EndExamButton(
-                                    icon = Icons.Rounded.DoneAll,
+                                    icon = CheckCheck,
                                     modifier = Modifier.fillMaxWidth(),
                                     onClick = {
                                         if (completedCount != QUESTIONS_IN_EXAM) {

@@ -13,9 +13,6 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.rounded.TrendingUp
-import androidx.compose.material.icons.rounded.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -33,6 +30,17 @@ import com.arsildo.merrpatenten.shared.core.designsystem.ERRORS_ALLOWED
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
 import com.arsildo.merrpatenten.shared.core.designsystem.adaptive.rememberWindowAdaptiveInfo
 import com.arsildo.merrpatenten.shared.core.designsystem.components.SectionHeader
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.ArrowLeftRight
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.BadgeCheck
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleCheck
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleQuestionMark
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleX
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.CloudExclamationPoint
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.GraphStar
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.Trash
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.TrendingUp
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.TriangleExclamationPoint
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.Trophy
 import com.arsildo.merrpatenten.shared.core.designsystem.semanticColors
 import com.arsildo.merrpatenten.shared.core.model.ExamResult
 import com.arsildo.merrpatenten.shared.feature.statistics.StatisticsUiState
@@ -94,7 +102,7 @@ internal fun StatisticsScreen(
                             shape = MaterialTheme.shapes.medium,
                         ) {
                             Icon(
-                                imageVector = Icons.Rounded.DeleteSweep,
+                                imageVector = Trash,
                                 contentDescription = stringResource(Res.string.results_delete),
                             )
                         }
@@ -118,7 +126,7 @@ internal fun StatisticsScreen(
             when {
                 !uiState.saveResults -> ResultStoringDisabled(
                     text = stringResource(Res.string.results_storing_disabled),
-                    icon = Icons.Rounded.MobiledataOff,
+                    icon = CloudExclamationPoint,
                     changePreference = {
                         Button(
                             onClick = {
@@ -154,28 +162,28 @@ internal fun StatisticsScreen(
                                 MaterialTheme.semanticColors.successContainer,
                                 MaterialTheme.semanticColors.onSuccessContainer,
                                 stringResource(Res.string.readiness_status_ready),
-                                Icons.Rounded.Verified,
+                                BadgeCheck,
                             )
 
                             ReadinessLevel.IN_PROGRESS -> Quadruple(
                                 MaterialTheme.colorScheme.tertiaryContainer,
                                 MaterialTheme.colorScheme.onTertiaryContainer,
                                 stringResource(Res.string.readiness_status_in_progress),
-                                Icons.AutoMirrored.Rounded.TrendingUp,
+                                TrendingUp,
                             )
 
                             ReadinessLevel.NEEDS_PRACTICE -> Quadruple(
                                 MaterialTheme.colorScheme.errorContainer,
                                 MaterialTheme.colorScheme.onErrorContainer,
                                 stringResource(Res.string.readiness_status_needs_practice),
-                                Icons.Rounded.WarningAmber,
+                                TriangleExclamationPoint,
                             )
 
                             ReadinessLevel.NOT_ENOUGH_DATA -> Quadruple(
                                 MaterialTheme.colorScheme.surfaceContainerHighest,
                                 MaterialTheme.colorScheme.onSurfaceVariant,
                                 stringResource(Res.string.readiness_status_not_enough_data),
-                                Icons.Rounded.Insights,
+                                GraphStar,
                             )
                         }
 
@@ -272,7 +280,7 @@ internal fun StatisticsScreen(
                     } else {
                         ResultStoringDisabled(
                             text = stringResource(Res.string.results_empty),
-                            icon = Icons.Rounded.MultipleStop,
+                            icon = ArrowLeftRight,
                         )
                     }
                 }
@@ -377,7 +385,7 @@ private fun AnalyticsOverview(
             StatSummaryCard(
                 title = stringResource(Res.string.stat_exams),
                 value = "${results.size}",
-                icon = Icons.Rounded.Quiz,
+                icon = CircleQuestionMark,
                 containerColor = MaterialTheme.colorScheme.primaryContainer,
                 contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
                 modifier = Modifier.weight(1f),
@@ -385,7 +393,7 @@ private fun AnalyticsOverview(
             StatSummaryCard(
                 title = stringResource(Res.string.stat_average),
                 value = "$avgErrors",
-                icon = Icons.Rounded.CheckCircle,
+                icon = if (avgErrors <= ERRORS_ALLOWED) CircleCheck else CircleX,
                 containerColor = if (avgErrors <= ERRORS_ALLOWED) {
                     MaterialTheme.semanticColors.successContainer
                 } else {
@@ -401,7 +409,7 @@ private fun AnalyticsOverview(
             StatSummaryCard(
                 title = stringResource(Res.string.stat_pass_rate),
                 value = "$passRate%",
-                icon = Icons.Rounded.EmojiEvents,
+                icon = Trophy,
                 containerColor = MaterialTheme.colorScheme.tertiaryContainer,
                 contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
                 modifier = Modifier.weight(1f),

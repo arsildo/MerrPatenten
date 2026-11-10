@@ -11,8 +11,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.HorizontalDivider
@@ -43,6 +41,7 @@ import com.arsildo.merrpatenten.shared.core.designsystem.adaptive.DevicePosture
 import com.arsildo.merrpatenten.shared.core.designsystem.adaptive.LocalFoldPosture
 import com.arsildo.merrpatenten.shared.core.designsystem.adaptive.rememberWindowAdaptiveInfo
 import com.arsildo.merrpatenten.shared.core.designsystem.getImageResource
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.ArrowLeft
 import merrpatenten.shared_core.design_system.generated.resources.*
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -142,7 +141,7 @@ internal fun ZoomableExamImage(uiState: ImageDetailsUiState, onDismiss: () -> Un
                         )
                     },
                     icon = {
-                        Icon(imageVector = Icons.AutoMirrored.Rounded.ArrowBack, contentDescription = null)
+                        Icon(imageVector = ArrowLeft, contentDescription = null)
                     },
                     elevation = FloatingActionButtonDefaults.loweredElevation(),
                     shape = MaterialTheme.shapes.large,
@@ -199,7 +198,7 @@ internal fun ZoomableExamImage(uiState: ImageDetailsUiState, onDismiss: () -> Un
                     )
                 },
                 icon = {
-                    Icon(imageVector = Icons.AutoMirrored.Rounded.ArrowBack, contentDescription = null)
+                    Icon(imageVector = ArrowLeft, contentDescription = null)
                 },
                 elevation = FloatingActionButtonDefaults.loweredElevation(),
                 shape = MaterialTheme.shapes.large,

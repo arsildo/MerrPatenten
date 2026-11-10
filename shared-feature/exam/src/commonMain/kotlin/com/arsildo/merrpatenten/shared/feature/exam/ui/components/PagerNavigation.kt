@@ -1,9 +1,6 @@
 package com.arsildo.merrpatenten.shared.feature.exam.ui.components
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.rounded.ArrowBack
-import androidx.compose.material.icons.automirrored.rounded.ArrowForward
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -13,6 +10,8 @@ import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.ArrowLeft
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.ArrowRight
 import merrpatenten.shared_core.design_system.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
 
@@ -45,7 +44,7 @@ internal fun PagerNavigation(onPreviousPageClick: () -> Unit, onNextPageClick: (
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Icon(
-                    imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
+                    imageVector = ArrowLeft,
                     contentDescription = stringResource(Res.string.previous_page),
                 )
             }
@@ -72,7 +71,7 @@ internal fun PagerNavigation(onPreviousPageClick: () -> Unit, onNextPageClick: (
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Icon(
-                    imageVector = Icons.AutoMirrored.Rounded.ArrowForward,
+                    imageVector = ArrowRight,
                     contentDescription = stringResource(Res.string.next_page),
                 )
             }

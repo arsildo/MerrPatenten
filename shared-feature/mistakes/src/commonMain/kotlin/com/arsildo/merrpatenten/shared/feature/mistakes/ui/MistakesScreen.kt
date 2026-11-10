@@ -14,8 +14,6 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -31,6 +29,13 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.arsildo.merrpatenten.shared.core.designsystem.adaptive.rememberWindowAdaptiveInfo
 import com.arsildo.merrpatenten.shared.core.designsystem.getImageResource
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleCheck
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleX
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.Play
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.Search
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.SearchX
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.Trash
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.X
 import com.arsildo.merrpatenten.shared.core.designsystem.semanticColors
 import com.arsildo.merrpatenten.shared.core.model.MistakeQuestion
 import com.arsildo.merrpatenten.shared.feature.mistakes.MistakesUiState
@@ -112,7 +117,7 @@ fun MistakesScreen(
                             },
                         ) {
                             Icon(
-                                imageVector = Icons.Rounded.DeleteSweep,
+                                imageVector = Trash,
                                 contentDescription = stringResource(Res.string.mistakes_clear_category),
                                 tint = MaterialTheme.colorScheme.error,
                             )
@@ -134,7 +139,7 @@ fun MistakesScreen(
                     },
                     icon = {
                         Icon(
-                            imageVector = Icons.Rounded.PlayArrow,
+                            imageVector = Play,
                             contentDescription = null,
                         )
                     },
@@ -190,7 +195,7 @@ fun MistakesScreen(
                 },
                 leadingIcon = {
                     Icon(
-                        imageVector = Icons.Rounded.Search,
+                        imageVector = Search,
                         contentDescription = null,
                     )
                 },
@@ -198,7 +203,7 @@ fun MistakesScreen(
                     if (uiState.searchQuery.isNotEmpty()) {
                         IconButton(onClick = { onSearchQueryChange("") }) {
                             Icon(
-                                imageVector = Icons.Rounded.Close,
+                                imageVector = X,
                                 contentDescription = stringResource(Res.string.close),
                             )
                         }
@@ -377,7 +382,7 @@ private fun MistakeQuestionCard(
                     modifier = Modifier.size(32.dp),
                 ) {
                     Icon(
-                        imageVector = Icons.Rounded.Close,
+                        imageVector = X,
                         contentDescription = stringResource(Res.string.mistakes_delete_item),
                         tint = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
@@ -428,7 +433,7 @@ private fun MistakeQuestionCard(
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     Icon(
-                        imageVector = if (isTrue) Icons.Rounded.CheckCircle else Icons.Rounded.Cancel,
+                        imageVector = if (isTrue) CircleCheck else CircleX,
                         contentDescription = null,
                         tint = if (isTrue) MaterialTheme.semanticColors.success else MaterialTheme.colorScheme.error,
                         modifier = Modifier.size(18.dp),
@@ -460,7 +465,7 @@ private fun MistakesEmptyView(isFiltered: Boolean, modifier: Modifier = Modifier
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
             Icon(
-                imageVector = if (isFiltered) Icons.Rounded.SearchOff else Icons.Rounded.CheckCircleOutline,
+                imageVector = if (isFiltered) SearchX else CircleCheck,
                 contentDescription = null,
                 tint = MaterialTheme.colorScheme.primary,
                 modifier = Modifier.size(72.dp),
