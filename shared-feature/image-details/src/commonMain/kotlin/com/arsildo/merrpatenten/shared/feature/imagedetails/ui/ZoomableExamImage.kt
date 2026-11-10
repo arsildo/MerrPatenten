@@ -1,9 +1,9 @@
 package com.arsildo.merrpatenten.shared.feature.imagedetails.ui
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.focusable
 import androidx.compose.foundation.gestures.detectTransformGestures
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.aspectRatio
@@ -91,8 +91,7 @@ internal fun ZoomableExamImage(uiState: ImageDetailsUiState, onDismiss: () -> Un
 
                         else -> false
                     }
-                }
-                .clickable(onClick = handleDismiss),
+                },
         ) {
             // Upper Display Half: Upright Screen
             Box(
@@ -128,7 +127,8 @@ internal fun ZoomableExamImage(uiState: ImageDetailsUiState, onDismiss: () -> Un
                 modifier = Modifier
                     .weight(1f)
                     .fillMaxWidth()
-                    .navigationBarsPadding(),
+                    .navigationBarsPadding()
+                    .padding(horizontal = 20.dp),
                 contentAlignment = Alignment.Center,
             ) {
                 ExtendedFloatingActionButton(
@@ -147,13 +147,14 @@ internal fun ZoomableExamImage(uiState: ImageDetailsUiState, onDismiss: () -> Un
                     shape = MaterialTheme.shapes.large,
                     containerColor = MaterialTheme.colorScheme.primaryContainer,
                     contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                    modifier = Modifier.fillMaxWidth(),
                 )
             }
         }
     } else {
-        Box(
+        Column(
             modifier = modifier
-                .fillMaxSize()
+                .fillMaxWidth()
                 .focusRequester(focusRequester)
                 .focusable()
                 .onPreviewKeyEvent { event ->
@@ -167,27 +168,37 @@ internal fun ZoomableExamImage(uiState: ImageDetailsUiState, onDismiss: () -> Un
                         else -> false
                     }
                 }
-                .clickable(onClick = handleDismiss),
-            contentAlignment = Alignment.Center,
+                .navigationBarsPadding()
+                .padding(horizontal = 20.dp)
+                .padding(bottom = 24.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(20.dp),
         ) {
-            Image(
-                painter = painterResource(getImageResource(uiState.imageId)),
-                contentDescription = null,
+            Box(
                 modifier = Modifier
-                    .padding(24.dp)
-                    .aspectRatio(ratio = 1f)
-                    .graphicsLayer(
-                        scaleX = scale,
-                        scaleY = scale,
-                        rotationZ = rotation,
-                    )
-                    .pointerInput(Unit) {
-                        detectTransformGestures { _, _, zoom, rotationChange ->
-                            scale = (scale * zoom).coerceIn(0.5f, 5f)
-                            rotation += rotationChange
-                        }
-                    },
-            )
+                    .fillMaxWidth()
+                    .aspectRatio(1f),
+                contentAlignment = Alignment.Center,
+            ) {
+                Image(
+                    painter = painterResource(getImageResource(uiState.imageId)),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .padding(16.dp)
+                        .fillMaxSize()
+                        .graphicsLayer(
+                            scaleX = scale,
+                            scaleY = scale,
+                            rotationZ = rotation,
+                        )
+                        .pointerInput(Unit) {
+                            detectTransformGestures { _, _, zoom, rotationChange ->
+                                scale = (scale * zoom).coerceIn(0.5f, 5f)
+                                rotation += rotationChange
+                            }
+                        },
+                )
+            }
             ExtendedFloatingActionButton(
                 onClick = handleDismiss,
                 text = {
@@ -204,10 +215,7 @@ internal fun ZoomableExamImage(uiState: ImageDetailsUiState, onDismiss: () -> Un
                 shape = MaterialTheme.shapes.large,
                 containerColor = MaterialTheme.colorScheme.primaryContainer,
                 contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
-                modifier = Modifier
-                    .align(Alignment.BottomCenter)
-                    .navigationBarsPadding()
-                    .padding(bottom = 24.dp),
+                modifier = Modifier.fillMaxWidth(),
             )
         }
     }
