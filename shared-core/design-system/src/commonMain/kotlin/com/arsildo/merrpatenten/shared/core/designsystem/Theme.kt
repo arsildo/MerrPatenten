@@ -5,6 +5,7 @@ import androidx.compose.animation.core.AnimationSpec
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialExpressiveTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
@@ -14,7 +15,7 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 
-private val LightColorScheme = lightColorScheme(
+internal val LightColorScheme = lightColorScheme(
     primary = md_theme_light_primary,
     onPrimary = md_theme_light_onPrimary,
     primaryContainer = md_theme_light_primaryContainer,
@@ -53,7 +54,7 @@ private val LightColorScheme = lightColorScheme(
     surfaceContainerHighest = md_theme_light_surfaceContainerHighest,
 )
 
-private val DarkColorScheme = darkColorScheme(
+internal val DarkColorScheme = darkColorScheme(
     primary = md_theme_dark_primary,
     onPrimary = md_theme_dark_onPrimary,
     primaryContainer = md_theme_dark_primaryContainer,
@@ -101,8 +102,16 @@ val MaterialTheme.semanticColors: SemanticColors
 expect val supportsDynamicColor: Boolean
 
 @Composable
-fun MerrPatentenTheme(darkTheme: Boolean = isSystemInDarkTheme(), hapticFeedback: Boolean = true, content: @Composable () -> Unit) {
-    val colorScheme = if (darkTheme) DarkColorScheme else LightColorScheme
+expect fun getColorScheme(darkTheme: Boolean, dynamicColor: Boolean): ColorScheme
+
+@Composable
+fun MerrPatentenTheme(
+    darkTheme: Boolean = isSystemInDarkTheme(),
+    dynamicColor: Boolean = true,
+    hapticFeedback: Boolean = true,
+    content: @Composable () -> Unit,
+) {
+    val colorScheme = getColorScheme(darkTheme = darkTheme, dynamicColor = dynamicColor)
     val semanticColors = if (darkTheme) DarkSemanticColors else LightSemanticColors
 
     CompositionLocalProvider(LocalSemanticColors provides semanticColors) {

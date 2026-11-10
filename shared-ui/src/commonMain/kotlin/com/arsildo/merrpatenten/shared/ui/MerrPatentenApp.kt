@@ -100,6 +100,7 @@ fun MerrPatentenApp() {
 
     MerrPatentenTheme(
         darkTheme = isDark,
+        dynamicColor = uiState.dynamicColorScheme,
         hapticFeedback = uiState.hapticFeedback,
     ) {
         val adaptiveInfo = rememberAppAdaptiveInfo()
