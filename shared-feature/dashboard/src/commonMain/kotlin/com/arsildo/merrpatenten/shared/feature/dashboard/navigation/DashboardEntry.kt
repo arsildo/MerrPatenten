@@ -1,13 +1,14 @@
 package com.arsildo.merrpatenten.shared.feature.dashboard.navigation
 
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.lifecycle.compose.dropUnlessResumed
 import androidx.navigation3.runtime.EntryProviderScope
 import androidx.navigation3.runtime.NavBackStack
 import androidx.navigation3.runtime.NavKey
-import androidx.navigation3.scene.DialogSceneStrategy
 import com.arsildo.merrpatenten.shared.feature.dashboard.ui.DashboardRoute
-import com.arsildo.merrpatenten.shared.feature.dashboard.ui.components.DisclaimerDialog
+import com.arsildo.merrpatenten.shared.feature.dashboard.ui.components.DisclaimerBottomSheet
 import kotlinx.serialization.Serializable
+import navigation.BottomSheetSceneStrategy
 
 @Serializable
 object Dashboard : NavKey
@@ -15,6 +16,7 @@ object Dashboard : NavKey
 @Serializable
 object Disclaimer : NavKey
 
+@OptIn(ExperimentalMaterial3Api::class)
 fun EntryProviderScope<NavKey>.dashboardEntry(
     backStack: NavBackStack<NavKey>,
     onStartExamClick: (category: String) -> Unit,
@@ -37,10 +39,10 @@ fun EntryProviderScope<NavKey>.dashboardEntry(
     }
 
     entry<Disclaimer>(
-        metadata = DialogSceneStrategy.dialog(),
+        metadata = BottomSheetSceneStrategy.bottomSheet(skipPartiallyExpanded = true),
     ) {
-        DisclaimerDialog(
-            onDismissRequest = dropUnlessResumed(block = backStack::removeLastOrNull),
+        DisclaimerBottomSheet(
+            onDismiss = dropUnlessResumed(block = backStack::removeLastOrNull),
         )
     }
 }
