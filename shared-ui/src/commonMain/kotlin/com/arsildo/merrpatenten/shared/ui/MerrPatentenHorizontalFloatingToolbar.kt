@@ -26,12 +26,20 @@ import androidx.compose.ui.semantics.selected
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.BookBookmark
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.BookOpen
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.GraphStar
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.House
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.Settings
 import dev.chrisbanes.haze.HazeInput
 import dev.chrisbanes.haze.HazeState
 import dev.chrisbanes.haze.blur.HazeBlurStyle
 import dev.chrisbanes.haze.blur.hazeBlur
 import dev.chrisbanes.haze.blur.materials.HazeMaterials
+import dev.chrisbanes.haze.rememberHazeState
 
 @Composable
 internal fun MerrPatentenHorizontalFloatingToolbar(
@@ -154,6 +162,124 @@ internal fun FloatingToolbarNavItem(
                     overflow = TextOverflow.Ellipsis,
                 )
             }
+        }
+    }
+}
+
+@Preview
+@Composable
+private fun FloatingToolbarNavItemSelectedPreview() {
+    MerrPatentenTheme {
+        FloatingToolbarNavItem(
+            selected = true,
+            hazeState = rememberHazeState(),
+            icon = House,
+            label = "Ballina",
+            onClick = {},
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun FloatingToolbarNavItemUnselectedPreview() {
+    MerrPatentenTheme {
+        FloatingToolbarNavItem(
+            selected = false,
+            hazeState = rememberHazeState(),
+            icon = BookOpen,
+            label = "Sinjalistika",
+            onClick = {},
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun MerrPatentenHorizontalFloatingToolbarPreview() {
+    MerrPatentenTheme {
+        val hazeState = rememberHazeState()
+        MerrPatentenHorizontalFloatingToolbar(hazeState = hazeState) {
+            FloatingToolbarNavItem(
+                selected = true,
+                hazeState = hazeState,
+                icon = House,
+                label = "Ballina",
+                onClick = {},
+            )
+            FloatingToolbarNavItem(
+                selected = false,
+                hazeState = hazeState,
+                icon = BookOpen,
+                label = "Sinjalistika",
+                onClick = {},
+            )
+            FloatingToolbarNavItem(
+                selected = false,
+                hazeState = hazeState,
+                icon = BookBookmark,
+                label = "Gabimet",
+                onClick = {},
+            )
+            FloatingToolbarNavItem(
+                selected = false,
+                hazeState = hazeState,
+                icon = GraphStar,
+                label = "Statistikat",
+                onClick = {},
+            )
+            FloatingToolbarNavItem(
+                selected = false,
+                hazeState = hazeState,
+                icon = Settings,
+                label = "Cilësimet",
+                onClick = {},
+            )
+        }
+    }
+}
+
+@Preview
+@Composable
+private fun MerrPatentenHorizontalFloatingToolbarDarkPreview() {
+    MerrPatentenTheme(darkTheme = true) {
+        val hazeState = rememberHazeState()
+        MerrPatentenHorizontalFloatingToolbar(hazeState = hazeState) {
+            FloatingToolbarNavItem(
+                selected = true,
+                hazeState = hazeState,
+                icon = House,
+                label = "Ballina",
+                onClick = {},
+            )
+            FloatingToolbarNavItem(
+                selected = false,
+                hazeState = hazeState,
+                icon = BookOpen,
+                label = "Sinjalistika",
+                onClick = {},
+            )
+            FloatingToolbarNavItem(
+                selected = false,
+                hazeState = hazeState,
+                icon = BookBookmark,
+                label = "Gabimet",
+                onClick = {},
+            )
+            FloatingToolbarNavItem(
+                selected = false,
+                hazeState = hazeState,
+                icon = GraphStar,
+                label = "Statistikat",
+                onClick = {},
+            )
+            FloatingToolbarNavItem(
+                selected = false,
+                hazeState = hazeState,
+                icon = Settings,
+                label = "Cilësimet",
+                onClick = {},
+            )
         }
     }
 }
