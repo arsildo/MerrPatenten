@@ -6,12 +6,6 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.rounded.MenuBook
-import androidx.compose.material.icons.rounded.AutoGraph
-import androidx.compose.material.icons.rounded.EditNote
-import androidx.compose.material.icons.rounded.Home
-import androidx.compose.material.icons.rounded.Settings
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -31,6 +25,11 @@ import androidx.navigation3.ui.defaultTransitionSpec
 import androidx.savedstate.serialization.SavedStateConfiguration
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
 import com.arsildo.merrpatenten.shared.core.designsystem.adaptive.rememberAppAdaptiveInfo
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.BookBookmark
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.BookOpen
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.GraphStar
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.House
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.Settings
 import com.arsildo.merrpatenten.shared.feature.catalog.navigation.Catalog
 import com.arsildo.merrpatenten.shared.feature.catalog.navigation.SignDetail
 import com.arsildo.merrpatenten.shared.feature.catalog.navigation.catalogEntry
@@ -46,6 +45,7 @@ import com.arsildo.merrpatenten.shared.feature.mistakes.navigation.Mistakes
 import com.arsildo.merrpatenten.shared.feature.mistakes.navigation.MistakesPractice
 import com.arsildo.merrpatenten.shared.feature.mistakes.navigation.mistakesEntry
 import com.arsildo.merrpatenten.shared.feature.preferences.PreferencesViewModel
+import com.arsildo.merrpatenten.shared.feature.preferences.navigation.LanguageSelection
 import com.arsildo.merrpatenten.shared.feature.preferences.navigation.Preferences
 import com.arsildo.merrpatenten.shared.feature.preferences.navigation.preferencesEntry
 import com.arsildo.merrpatenten.shared.feature.statistics.navigation.Statistics
@@ -75,6 +75,7 @@ private val config = SavedStateConfiguration {
             subclass(ZoomableImage::class, ZoomableImage.serializer())
             subclass(Statistics::class, Statistics.serializer())
             subclass(Preferences::class, Preferences.serializer())
+            subclass(LanguageSelection::class, LanguageSelection.serializer())
             subclass(Catalog::class, Catalog.serializer())
             subclass(SignDetail::class, SignDetail.serializer())
             subclass(Mistakes::class, Mistakes.serializer())
@@ -110,27 +111,27 @@ fun MerrPatentenApp() {
             listOf(
                 TopLevelDestination(
                     key = Dashboard,
-                    icon = Icons.Rounded.Home,
+                    icon = House,
                     labelRes = Res.string.nav_home,
                 ),
                 TopLevelDestination(
                     key = Catalog,
-                    icon = Icons.AutoMirrored.Rounded.MenuBook,
+                    icon = BookOpen,
                     labelRes = Res.string.nav_catalog,
                 ),
                 TopLevelDestination(
                     key = Mistakes,
-                    icon = Icons.Rounded.EditNote,
+                    icon = BookBookmark,
                     labelRes = Res.string.nav_mistakes,
                 ),
                 TopLevelDestination(
                     key = Statistics,
-                    icon = Icons.Rounded.AutoGraph,
+                    icon = GraphStar,
                     labelRes = Res.string.nav_statistics,
                 ),
                 TopLevelDestination(
                     key = Preferences,
-                    icon = Icons.Rounded.Settings,
+                    icon = Settings,
                     labelRes = Res.string.nav_preferences,
                 ),
             )
@@ -156,6 +157,7 @@ fun MerrPatentenApp() {
         val dashboardSubStack = navigator.state.subStacks[Dashboard] ?: error("Dashboard stack missing")
         val catalogSubStack = navigator.state.subStacks[Catalog] ?: error("Catalog stack missing")
         val mistakesSubStack = navigator.state.subStacks[Mistakes] ?: error("Mistakes stack missing")
+        val preferencesSubStack = navigator.state.subStacks[Preferences] ?: error("Preferences stack missing")
 
         val entries = navigator.state.toEntries(
             entryProvider = entryProvider {
@@ -192,7 +194,9 @@ fun MerrPatentenApp() {
                 statisticsEntry(
                     onChangePreferenceClick = { navigator.navigate(Preferences) },
                 )
-                preferencesEntry()
+                preferencesEntry(
+                    backStack = preferencesSubStack,
+                )
             },
         )
 
@@ -254,6 +258,7 @@ fun MerrPatentenApp() {
                     .background(MaterialTheme.colorScheme.background)
                     .hazeSource(state = hazeState),
             )
+            // floating vertical toolbar
             AnimatedVisibility(
                 visible = !adaptiveInfo.isCompact && showFloatingToolbar,
                 enter = slideInHorizontally { -it },
@@ -275,6 +280,7 @@ fun MerrPatentenApp() {
                     }
                 }
             }
+            // floating horizontal toolbar
             AnimatedVisibility(
                 visible = adaptiveInfo.isCompact && showFloatingToolbar,
                 enter = slideInVertically { it },

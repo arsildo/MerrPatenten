@@ -7,8 +7,6 @@ import androidx.compose.animation.core.spring
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -26,19 +24,30 @@ import com.arsildo.merrpatenten.shared.core.designsystem.adaptive.rememberWindow
 import com.arsildo.merrpatenten.shared.core.designsystem.components.PreferenceCard
 import com.arsildo.merrpatenten.shared.core.designsystem.components.SectionHeader
 import com.arsildo.merrpatenten.shared.core.designsystem.components.TextSizePreferenceCard
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.Cloud
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.CloudExclamationPoint
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.Globe
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.Moon
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.Palette
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.Pointer
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.PointerOff
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.Sun
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.SunMoon
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.Vibrate
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.VibrateOff
 import com.arsildo.merrpatenten.shared.feature.preferences.PreferencesUiState
 import com.arsildo.merrpatenten.shared.feature.preferences.PreferencesViewModel
-import com.arsildo.merrpatenten.shared.feature.preferences.ui.components.LanguageSelectionDialog
 import merrpatenten.shared_core.design_system.generated.resources.*
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
-internal fun PreferencesRoute(viewModel: PreferencesViewModel = koinViewModel()) {
+internal fun PreferencesRoute(viewModel: PreferencesViewModel = koinViewModel(), onLanguageClick: () -> Unit) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     PreferencesScreen(
         uiState = uiState,
+        onLanguageClick = onLanguageClick,
         onImmersiveModeChange = viewModel::setImmersiveMode,
         onSaveStatsChange = viewModel::setSaveStats,
         onHapticFeedbackChange = viewModel::setHapticFeedback,
@@ -53,6 +62,7 @@ internal fun PreferencesRoute(viewModel: PreferencesViewModel = koinViewModel())
 @Composable
 internal fun PreferencesScreen(
     uiState: PreferencesUiState,
+    onLanguageClick: () -> Unit,
     onImmersiveModeChange: (enabled: Boolean) -> Unit,
     onSaveStatsChange: (enabled: Boolean) -> Unit,
     onHapticFeedbackChange: (enabled: Boolean) -> Unit,
@@ -64,7 +74,6 @@ internal fun PreferencesScreen(
 ) {
     val hapticFeedback = LocalHapticFeedback.current
     val uriHandler = LocalUriHandler.current
-    var languageDialogVisible by remember { mutableStateOf(false) }
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
     val adaptiveInfo = rememberWindowAdaptiveInfo()
     val isDualPane = adaptiveInfo.isDualPane
@@ -96,7 +105,7 @@ internal fun PreferencesScreen(
                         FilledTonalIconButton(
                             onClick = {
                                 hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                                languageDialogVisible = true
+                                onLanguageClick()
                             },
                             colors = IconButtonDefaults.filledTonalIconButtonColors(
                                 containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
@@ -104,7 +113,7 @@ internal fun PreferencesScreen(
                             ),
                         ) {
                             Icon(
-                                imageVector = Icons.Rounded.Language,
+                                imageVector = Globe,
                                 contentDescription = stringResource(Res.string.language),
                             )
                         }
@@ -199,12 +208,6 @@ internal fun PreferencesScreen(
                     Spacer(modifier = Modifier.height(104.dp).navigationBarsPadding())
                 }
             }
-
-            if (languageDialogVisible) {
-                LanguageSelectionDialog(
-                    onDismissRequest = { languageDialogVisible = false },
-                )
-            }
         }
     }
 }
@@ -234,7 +237,7 @@ private fun BehaviorSection(
                 count = 3,
                 leadingIcon = {
                     Icon(
-                        imageVector = Icons.Rounded.TouchApp,
+                        imageVector = if (uiState.immersiveMode) Pointer else PointerOff,
                         contentDescription = null,
                         tint = MaterialTheme.colorScheme.primary,
                     )
@@ -249,7 +252,7 @@ private fun BehaviorSection(
                 count = 3,
                 leadingIcon = {
                     Icon(
-                        imageVector = Icons.Rounded.Insights,
+                        imageVector = if (uiState.saveStats) Cloud else CloudExclamationPoint,
                         contentDescription = null,
                         tint = MaterialTheme.colorScheme.primary,
                     )
@@ -264,7 +267,7 @@ private fun BehaviorSection(
                 count = 3,
                 leadingIcon = {
                     Icon(
-                        imageVector = Icons.Rounded.Vibration,
+                        imageVector = if (uiState.hapticFeedback) Vibrate else VibrateOff,
                         contentDescription = null,
                         tint = MaterialTheme.colorScheme.primary,
                     )
@@ -303,7 +306,7 @@ private fun AppearanceSection(
                 count = appearanceCount,
                 leadingIcon = {
                     Icon(
-                        imageVector = Icons.Rounded.BrightnessAuto,
+                        imageVector = SunMoon,
                         contentDescription = null,
                         tint = MaterialTheme.colorScheme.primary,
                     )
@@ -319,7 +322,7 @@ private fun AppearanceSection(
                 count = appearanceCount,
                 leadingIcon = {
                     Icon(
-                        imageVector = Icons.Rounded.DarkMode,
+                        imageVector = if (uiState.colorScheme) Moon else Sun,
                         contentDescription = null,
                         tint = MaterialTheme.colorScheme.primary,
                     )
@@ -335,7 +338,7 @@ private fun AppearanceSection(
                     count = appearanceCount,
                     leadingIcon = {
                         Icon(
-                            imageVector = Icons.Rounded.Palette,
+                            imageVector = Palette,
                             contentDescription = null,
                             tint = MaterialTheme.colorScheme.primary,
                         )
@@ -359,6 +362,7 @@ private fun PreferencesScreenPreview() {
     MerrPatentenTheme {
         PreferencesScreen(
             uiState = PreferencesUiState(),
+            onLanguageClick = {},
             onImmersiveModeChange = {},
             onSaveStatsChange = {},
             onHapticFeedbackChange = {},
@@ -376,6 +380,7 @@ private fun PreferencesScreenDarkPreview() {
     MerrPatentenTheme(darkTheme = true) {
         PreferencesScreen(
             uiState = PreferencesUiState(followSystemColors = false, colorScheme = true),
+            onLanguageClick = {},
             onImmersiveModeChange = {},
             onSaveStatsChange = {},
             onHapticFeedbackChange = {},
