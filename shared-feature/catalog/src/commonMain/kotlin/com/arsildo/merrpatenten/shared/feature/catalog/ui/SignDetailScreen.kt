@@ -37,7 +37,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -87,7 +86,6 @@ internal fun SignDetailScreen(
 ) {
     val sign = uiState.sign
     val adaptiveInfo = rememberAppAdaptiveInfo()
-    val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
     val windowInsets = if (adaptiveInfo.isDualPane) {
         WindowInsets.safeDrawing.only(WindowInsetsSides.End + WindowInsetsSides.Top)
     } else {
@@ -95,12 +93,11 @@ internal fun SignDetailScreen(
     }
 
     Scaffold(
-        modifier = modifier.fillMaxSize().nestedScroll(scrollBehavior.nestedScrollConnection),
+        modifier = modifier.fillMaxSize(),
         contentWindowInsets = windowInsets,
         topBar = {
             TopAppBar(
                 windowInsets = windowInsets,
-                scrollBehavior = scrollBehavior,
                 title = {
                     Text(
                         text = sign?.title ?: stringResource(Res.string.catalog_title),

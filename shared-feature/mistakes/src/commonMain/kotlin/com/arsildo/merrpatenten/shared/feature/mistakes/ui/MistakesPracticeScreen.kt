@@ -24,7 +24,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
-import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontWeight
@@ -77,7 +76,6 @@ fun MistakesPracticeScreen(
     modifier: Modifier = Modifier,
 ) {
     val hapticFeedback = LocalHapticFeedback.current
-    val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
     val adaptiveInfo = rememberWindowAdaptiveInfo()
     val startToolbarClearance by animateDpAsState(
         targetValue = if (!adaptiveInfo.isCompact) 88.dp else 0.dp,
@@ -92,13 +90,11 @@ fun MistakesPracticeScreen(
 
     Scaffold(
         modifier = modifier
-            .padding(start = startToolbarClearance)
-            .nestedScroll(scrollBehavior.nestedScrollConnection),
+            .padding(start = startToolbarClearance),
         contentWindowInsets = windowInsets,
         topBar = {
             TopAppBar(
                 windowInsets = windowInsets,
-                scrollBehavior = scrollBehavior,
                 title = {
                     Text(
                         text = stringResource(Res.string.mistakes_practice_title),

@@ -20,7 +20,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
-import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontWeight
@@ -78,7 +77,6 @@ fun MistakesScreen(
 ) {
     val hapticFeedback = LocalHapticFeedback.current
     var showClearDialog by remember { mutableStateOf(false) }
-    val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
     val adaptiveInfo = rememberWindowAdaptiveInfo()
     val navBarBottomPadding = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
     val floatingToolbarClearance = if (adaptiveInfo.isCompact) 88.dp else 0.dp
@@ -95,12 +93,10 @@ fun MistakesScreen(
 
     Scaffold(
         modifier = modifier
-            .padding(start = startToolbarClearance)
-            .nestedScroll(scrollBehavior.nestedScrollConnection),
+            .padding(start = startToolbarClearance),
         topBar = {
             TopAppBar(
                 windowInsets = windowInsets,
-                scrollBehavior = scrollBehavior,
                 title = {
                     Text(
                         text = stringResource(Res.string.mistakes_title),

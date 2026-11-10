@@ -8,14 +8,13 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
-import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewScreenSizes
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -25,17 +24,7 @@ import com.arsildo.merrpatenten.shared.core.designsystem.adaptive.rememberWindow
 import com.arsildo.merrpatenten.shared.core.designsystem.components.PreferenceCard
 import com.arsildo.merrpatenten.shared.core.designsystem.components.SectionHeader
 import com.arsildo.merrpatenten.shared.core.designsystem.components.TextSizePreferenceCard
-import com.arsildo.merrpatenten.shared.core.designsystem.icons.Cloud
-import com.arsildo.merrpatenten.shared.core.designsystem.icons.CloudExclamationPoint
-import com.arsildo.merrpatenten.shared.core.designsystem.icons.Globe
-import com.arsildo.merrpatenten.shared.core.designsystem.icons.Moon
-import com.arsildo.merrpatenten.shared.core.designsystem.icons.Palette
-import com.arsildo.merrpatenten.shared.core.designsystem.icons.Pointer
-import com.arsildo.merrpatenten.shared.core.designsystem.icons.PointerOff
-import com.arsildo.merrpatenten.shared.core.designsystem.icons.Sun
-import com.arsildo.merrpatenten.shared.core.designsystem.icons.SunMoon
-import com.arsildo.merrpatenten.shared.core.designsystem.icons.Vibrate
-import com.arsildo.merrpatenten.shared.core.designsystem.icons.VibrateOff
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.*
 import com.arsildo.merrpatenten.shared.feature.preferences.PreferencesUiState
 import com.arsildo.merrpatenten.shared.feature.preferences.PreferencesViewModel
 import merrpatenten.shared_core.design_system.generated.resources.*
@@ -61,6 +50,7 @@ internal fun PreferencesRoute(viewModel: PreferencesViewModel = koinViewModel(),
 
 @Composable
 internal fun PreferencesScreen(
+    modifier: Modifier = Modifier,
     uiState: PreferencesUiState,
     onLanguageClick: () -> Unit,
     onImmersiveModeChange: (enabled: Boolean) -> Unit,
@@ -70,11 +60,9 @@ internal fun PreferencesScreen(
     onColorSchemeChange: (isDark: Boolean) -> Unit,
     onDynamicColorSchemeChange: (enabled: Boolean) -> Unit,
     onQuestionTextSizeChange: (textSize: QuestionTextSize) -> Unit,
-    modifier: Modifier = Modifier,
 ) {
     val hapticFeedback = LocalHapticFeedback.current
     val uriHandler = LocalUriHandler.current
-    val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
     val adaptiveInfo = rememberWindowAdaptiveInfo()
     val isDualPane = adaptiveInfo.isDualPane
     val floatingToolbarClearance = if (adaptiveInfo.isCompact) 88.dp else 0.dp
@@ -91,13 +79,9 @@ internal fun PreferencesScreen(
 
     AnimateColorSchemeTransition {
         Scaffold(
-            modifier = modifier
-                .padding(start = startToolbarClearance)
-                .nestedScroll(scrollBehavior.nestedScrollConnection),
             topBar = {
                 TopAppBar(
                     windowInsets = windowInsets,
-                    scrollBehavior = scrollBehavior,
                     title = {
                         Text(text = stringResource(Res.string.preferences))
                     },
@@ -150,6 +134,7 @@ internal fun PreferencesScreen(
             },
             contentColor = MaterialTheme.colorScheme.onBackground,
             contentWindowInsets = windowInsets,
+            modifier = modifier.padding(start = startToolbarClearance),
         ) { contentPadding ->
             when (isDualPane) {
                 true -> {
@@ -210,7 +195,7 @@ internal fun PreferencesScreen(
 
                         Spacer(
                             modifier = Modifier
-                                .height(128.dp)
+                                .height(200.dp)
                                 .navigationBarsPadding(),
                         )
                     }
