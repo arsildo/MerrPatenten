@@ -6,7 +6,7 @@ This document outlines the planned feature additions, technical considerations, 
 
 ## 📌 Status Overview
 
-- [ ] **Phase 1: Study & Training Modes** *(Mistake Notebook implemented)*
+- [ ] **Phase 1: Study & Training Modes** *(Mistake Notebook & Quick Blitz implemented)*
 - [x] **Phase 2: Road Sign & Intersection Encyclopedia** *(Core Catalog & Navigation implemented)*
 - [ ] **Phase 3: Advanced Analytics & Exam Readiness** *(DPSHTRR Readiness Score implemented)*
 - [ ] **Phase 4: Examination & UX Enhancements** *(Desktop Keyboard Shortcuts implemented)*
@@ -31,8 +31,10 @@ This document outlines the planned feature additions, technical considerations, 
     - *Ndihma e Parë & Rreziqet* (First Aid & Road Safety)
     - *Sinjalet e Policit & Dritat* (Traffic Police & Lights)
   - Allow users to practice individual chapters before attempting full 40-question simulations.
-- [ ] **Quick Blitz Mode (10 Pyetje të Shpejta)**
+- [x] **Quick Blitz Mode (10 Pyetje të Shpejta)**
   - Rapid, bite-sized 10-question practice mode designed for quick daily commutes or warm-ups.
+  - 10-minute timer with 1 allowed error pass threshold.
+  - Mistake answers feed directly to Mistake Notebook.
 - [ ] **Bookmarked Questions (Pyetje të Ruajtura / Favorite)**
   - Star / save tricky or ambiguous questions during an exam or review for quick revision.
 
