@@ -12,11 +12,13 @@ import androidx.compose.ui.unit.dp
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.ArrowLeft
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.ArrowRight
-import merrpatenten.shared_core.design_system.generated.resources.*
+import merrpatenten.shared_core.design_system.generated.resources.Res
+import merrpatenten.shared_core.design_system.generated.resources.next_page
+import merrpatenten.shared_core.design_system.generated.resources.previous_page
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-internal fun PagerNavigation(onPreviousPageClick: () -> Unit, onNextPageClick: () -> Unit, modifier: Modifier = Modifier) {
+internal fun PagerNavigation(modifier: Modifier = Modifier, onPreviousPageClick: () -> Unit, onNextPageClick: () -> Unit) {
     val hapticFeedback = LocalHapticFeedback.current
     Row(
         modifier = modifier.fillMaxWidth(),

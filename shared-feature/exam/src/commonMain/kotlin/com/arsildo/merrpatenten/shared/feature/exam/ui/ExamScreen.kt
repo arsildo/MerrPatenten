@@ -36,12 +36,12 @@ import com.arsildo.merrpatenten.shared.core.designsystem.semanticColors
 import com.arsildo.merrpatenten.shared.core.model.Question
 import com.arsildo.merrpatenten.shared.feature.exam.ExamUiState
 import com.arsildo.merrpatenten.shared.feature.exam.ExamViewModel
+import com.arsildo.merrpatenten.shared.feature.exam.navigation.ExamType
 import com.arsildo.merrpatenten.shared.feature.exam.ui.components.ExamDualPaneContent
 import com.arsildo.merrpatenten.shared.feature.exam.ui.components.ExamLegend
 import com.arsildo.merrpatenten.shared.feature.exam.ui.components.ExamPager
 import com.arsildo.merrpatenten.shared.feature.exam.ui.components.ExamTabletopContent
 import com.arsildo.merrpatenten.shared.feature.exam.ui.components.PagerNavigation
-import com.arsildo.merrpatenten.shared.feature.exam.ui.components.UncompletedExamDialog
 import kotlinx.coroutines.launch
 import org.koin.compose.viewmodel.koinViewModel
 import org.koin.core.parameter.parametersOf
@@ -49,9 +49,11 @@ import org.koin.core.parameter.parametersOf
 @Composable
 internal fun ExamRoute(
     category: String,
-    viewModel: ExamViewModel = koinViewModel(parameters = { parametersOf(category) }),
+    type: ExamType,
+    viewModel: ExamViewModel = koinViewModel(parameters = { parametersOf(category, type) }),
     onImageDetailsClick: (index: Int) -> Unit,
     onOpenMap: () -> Unit,
+    onOpenExitExam: () -> Unit,
     onExitExam: () -> Unit,
     onRestartExam: () -> Unit,
 ) {
@@ -64,6 +66,7 @@ internal fun ExamRoute(
         onPageNavigated = viewModel::onPageNavigated,
         onImageDetailsClick = onImageDetailsClick,
         onOpenMap = onOpenMap,
+        onOpenExitExam = onOpenExitExam,
         onExitExam = onExitExam,
         onRestartExam = onRestartExam,
         onCheckTrueAtPage = viewModel::checkTrueAtPosition,
@@ -89,6 +92,7 @@ internal fun ExamScreen(
     onPageNavigated: () -> Unit = {},
     onImageDetailsClick: (index: Int) -> Unit,
     onOpenMap: () -> Unit,
+    onOpenExitExam: () -> Unit,
     onExitExam: () -> Unit,
     onRestartExam: () -> Unit,
     onCheckTrueAtPage: (page: Int) -> Unit,
@@ -98,15 +102,15 @@ internal fun ExamScreen(
     val hapticFeedback = LocalHapticFeedback.current
     val coroutineScope = rememberCoroutineScope()
     val adaptiveInfo = rememberWindowAdaptiveInfo()
-    val pagerState = rememberPagerState(pageCount = { QUESTIONS_IN_EXAM })
-    var questionsUnCompletedDialog by remember { mutableStateOf(false) }
+    val questionCount = uiState.questionCount
+    val pagerState = rememberPagerState(pageCount = { questionCount })
     var endExamVisible by remember { mutableStateOf(false) }
     val focusRequester = remember { FocusRequester() }
 
     val completedCount = remember(uiState.responseList) {
         uiState.responseList.count { it.isNotBlank() }
     }
-    val progress = (completedCount.toFloat() / QUESTIONS_IN_EXAM.toFloat()).coerceIn(0f, 1f)
+    val progress = (completedCount.toFloat() / questionCount.toFloat()).coerceIn(0f, 1f)
     val animatedProgress by animateFloatAsState(
         targetValue = progress,
         animationSpec = spring(
@@ -194,16 +198,11 @@ internal fun ExamScreen(
                     }
 
                     Key.Enter, Key.NumPadEnter -> {
-                        if (questionsUnCompletedDialog) {
-                            questionsUnCompletedDialog = false
-                            onCompleteExam()
-                            onOpenMap()
-                            true
-                        } else if (!uiState.isCompleted) {
+                        if (!uiState.isCompleted) {
                             val completedCount = uiState.responseList.count { it.isNotBlank() }
-                            if (completedCount != QUESTIONS_IN_EXAM) {
+                            if (completedCount != questionCount) {
                                 hapticFeedback.performHapticFeedback(HapticFeedbackType.GestureThresholdActivate)
-                                questionsUnCompletedDialog = true
+                                onOpenExitExam()
                             } else {
                                 onCompleteExam()
                             }
@@ -217,10 +216,7 @@ internal fun ExamScreen(
                     }
 
                     Key.Escape, Key.Back -> {
-                        if (questionsUnCompletedDialog) {
-                            questionsUnCompletedDialog = false
-                            true
-                        } else if (endExamVisible) {
+                        if (endExamVisible) {
                             endExamVisible = false
                             true
                         } else {
@@ -285,9 +281,9 @@ internal fun ExamScreen(
                                     icon = CheckCheck,
                                     modifier = Modifier.fillMaxWidth(),
                                     onClick = {
-                                        if (completedCount != QUESTIONS_IN_EXAM) {
+                                        if (completedCount != questionCount) {
                                             hapticFeedback.performHapticFeedback(HapticFeedbackType.GestureThresholdActivate)
-                                            questionsUnCompletedDialog = true
+                                            onOpenExitExam()
                                         } else {
                                             onCompleteExam()
                                         }
@@ -328,9 +324,9 @@ internal fun ExamScreen(
                         onCheckFalseAtPage = onCheckFalseAtPage,
                         onCheckTrueAtPage = onCheckTrueAtPage,
                         onCompleteExam = {
-                            if (completedCount != QUESTIONS_IN_EXAM) {
+                            if (completedCount != questionCount) {
                                 hapticFeedback.performHapticFeedback(HapticFeedbackType.GestureThresholdActivate)
-                                questionsUnCompletedDialog = true
+                                onOpenExitExam()
                             } else {
                                 onCompleteExam()
                             }
@@ -366,9 +362,9 @@ internal fun ExamScreen(
                         onCheckFalseAtPage = onCheckFalseAtPage,
                         onCheckTrueAtPage = onCheckTrueAtPage,
                         onCompleteExam = {
-                            if (completedCount != QUESTIONS_IN_EXAM) {
+                            if (completedCount != questionCount) {
                                 hapticFeedback.performHapticFeedback(HapticFeedbackType.GestureThresholdActivate)
-                                questionsUnCompletedDialog = true
+                                onOpenExitExam()
                             } else {
                                 onCompleteExam()
                             }
@@ -440,31 +436,12 @@ internal fun ExamScreen(
                         )
 
                         LaunchedEffect(pagerState.settledPage) {
-                            endExamVisible = pagerState.settledPage == QUESTIONS_IN_EXAM - 1
+                            endExamVisible = pagerState.settledPage == pagerState.pageCount - 1
                         }
                     }
                 }
             }
         }
-    }
-
-    if (questionsUnCompletedDialog) {
-        UncompletedExamDialog(
-            onDismissRequest = { questionsUnCompletedDialog = false },
-            onReviewUnanswered = {
-                questionsUnCompletedDialog = false
-                onOpenMap()
-            },
-            onFinishAnyway = {
-                questionsUnCompletedDialog = false
-                onCompleteExam()
-                onOpenMap()
-            },
-            onExitExam = {
-                questionsUnCompletedDialog = false
-                onExitExam()
-            },
-        )
     }
 }
 
@@ -490,6 +467,7 @@ private fun ExamScreenPreview() {
             ),
             onImageDetailsClick = {},
             onOpenMap = {},
+            onOpenExitExam = {},
             onExitExam = {},
             onRestartExam = {},
             onCheckTrueAtPage = {},
@@ -507,6 +485,7 @@ private fun ExamScreenLoadingPreview() {
             uiState = ExamUiState(questions = emptyList()),
             onImageDetailsClick = {},
             onOpenMap = {},
+            onOpenExitExam = {},
             onExitExam = {},
             onRestartExam = {},
             onCheckTrueAtPage = {},
@@ -538,6 +517,7 @@ private fun ExamScreenDarkPreview() {
             ),
             onImageDetailsClick = {},
             onOpenMap = {},
+            onOpenExitExam = {},
             onExitExam = {},
             onRestartExam = {},
             onCheckTrueAtPage = {},
@@ -570,6 +550,7 @@ private fun ExamScreenCompletedPreview() {
             ),
             onImageDetailsClick = {},
             onOpenMap = {},
+            onOpenExitExam = {},
             onExitExam = {},
             onRestartExam = {},
             onCheckTrueAtPage = {},
@@ -602,6 +583,7 @@ private fun ExamScreenTabletopPreview() {
                 ),
                 onImageDetailsClick = {},
                 onOpenMap = {},
+                onOpenExitExam = {},
                 onExitExam = {},
                 onRestartExam = {},
                 onCheckTrueAtPage = {},
@@ -635,6 +617,7 @@ private fun ExamScreenBookPreview() {
                 ),
                 onImageDetailsClick = {},
                 onOpenMap = {},
+                onOpenExitExam = {},
                 onExitExam = {},
                 onRestartExam = {},
                 onCheckTrueAtPage = {},

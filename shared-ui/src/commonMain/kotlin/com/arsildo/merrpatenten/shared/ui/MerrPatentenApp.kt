@@ -38,6 +38,8 @@ import com.arsildo.merrpatenten.shared.feature.dashboard.navigation.Disclaimer
 import com.arsildo.merrpatenten.shared.feature.dashboard.navigation.dashboardEntry
 import com.arsildo.merrpatenten.shared.feature.exam.navigation.Exam
 import com.arsildo.merrpatenten.shared.feature.exam.navigation.ExamResultBottomSheet
+import com.arsildo.merrpatenten.shared.feature.exam.navigation.ExamType
+import com.arsildo.merrpatenten.shared.feature.exam.navigation.ExitExamBottomSheet
 import com.arsildo.merrpatenten.shared.feature.exam.navigation.examEntry
 import com.arsildo.merrpatenten.shared.feature.imagedetails.navigation.ZoomableImage
 import com.arsildo.merrpatenten.shared.feature.imagedetails.navigation.imageDetailsEntry
@@ -72,6 +74,7 @@ private val config = SavedStateConfiguration {
             subclass(Disclaimer::class, Disclaimer.serializer())
             subclass(Exam::class, Exam.serializer())
             subclass(ExamResultBottomSheet::class, ExamResultBottomSheet.serializer())
+            subclass(ExitExamBottomSheet::class, ExitExamBottomSheet.serializer())
             subclass(ZoomableImage::class, ZoomableImage.serializer())
             subclass(Statistics::class, Statistics.serializer())
             subclass(Preferences::class, Preferences.serializer())
@@ -150,7 +153,7 @@ fun MerrPatentenApp() {
 
         val currentTopLevel = navigator.currentTab ?: Dashboard
         val showFloatingToolbar = when (navigator.currentKey) {
-            is Exam, is ExamResultBottomSheet, is ZoomableImage -> false
+            is Exam, is ExamResultBottomSheet, is ExitExamBottomSheet, is ZoomableImage -> false
             else -> navigator.state.currentSubStack?.none { it is Exam || it is ZoomableImage } != false
         }
 
@@ -164,6 +167,7 @@ fun MerrPatentenApp() {
                 dashboardEntry(
                     backStack = dashboardSubStack,
                     onStartExamClick = { category -> navigator.navigate(Exam(category)) },
+                    onStartBlitzExamClick = { category -> navigator.navigate(Exam(category = category, type = ExamType.BLITZ)) },
                     onStatisticsClick = { navigator.navigate(Statistics) },
                     onPreferencesClick = { navigator.navigate(Preferences) },
                     onCatalogClick = { navigator.navigate(Catalog) },
@@ -183,8 +187,8 @@ fun MerrPatentenApp() {
                     backStack = dashboardSubStack,
                     onImageDetailsClick = { imageId -> navigator.navigate(ZoomableImage(imageId)) },
                     onExitExam = { navigator.popToRoot(Dashboard) },
-                    onRestartExam = { category ->
-                        navigator.navigate(Exam(category), popCurrent = true)
+                    onRestartExam = { category, type ->
+                        navigator.navigate(Exam(category = category, type = type), popCurrent = true)
                     },
                 )
                 imageDetailsEntry(

@@ -114,7 +114,7 @@ internal fun ExamQuestionMap(
                                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                             )
                             Text(
-                                text = "$completedCount / $QUESTIONS_IN_EXAM",
+                                text = "$completedCount / ${uiState.questionCount}",
                                 style = MaterialTheme.typography.titleMedium,
                                 fontWeight = FontWeight.Bold,
                                 color = MaterialTheme.colorScheme.primary,
@@ -138,8 +138,8 @@ internal fun ExamQuestionMap(
             }
         }
 
-        // 40 Question Grid Items
-        items(count = QUESTIONS_IN_EXAM) { page ->
+        // Question Grid Items
+        items(count = uiState.questionCount) { page ->
             val hasResponse = page < uiState.responseList.size && uiState.responseList[page].isNotEmpty()
             val isCorrect = page < uiState.mistakePositions.size && uiState.mistakePositions[page] == 0
             val isCurrent = currentPage != null && currentPage == page

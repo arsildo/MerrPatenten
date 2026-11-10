@@ -28,6 +28,8 @@
     <string name="category_b_desc">40 MINUTA | 40 PYETJE | 4 GABIME MAX</string>
     <string name="category_a_desc">30 MINUTA | 30 PYETJE | 3 GABIME MAX</string>
     <string name="category_cd_desc">40 MINUTA | 40 PYETJE | 4 GABIME MAX</string>
+    <string name="blitz_exam_title">Test i Shpejtë (10 Pyetje)</string>
+    <string name="blitz_exam_desc">10 MINUTA | 10 PYETJE | 1 GABIM MAX</string>
     <string name="category_a_in_progress">Kategoria A është në përpunim e sipër.</string>
     <string name="category_cd_in_progress">Kategoria C/D është në përpunim e sipër.</string>
     <string name="start_exam">FILLO PROVIMIN</string>
@@ -63,6 +65,7 @@
     <string name="failed">Provo përseri!</string>
     <string name="exam_passed_subtitle">Provimi u kalua me sukses!</string>
     <string name="exam_failed_subtitle">Më shumë se 4 gabime të lejuara</string>
+    <string name="exam_failed_subtitle_blitz">Më shumë se 1 gabim i lejuar</string>
     <string name="correct_answer_feedback">Përgjigje e Saktë</string>
     <string name="wrong_answer_feedback">Përgjigje e Gabuar</string>
     <string name="error_singular">Gabim</string>

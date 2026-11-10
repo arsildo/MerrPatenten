@@ -28,6 +28,8 @@
     <string name="category_b_desc">40 MINUTES | 40 QUESTIONS | 4 ERRORS MAX</string>
     <string name="category_a_desc">30 MINUTES | 30 QUESTIONS | 3 ERRORS MAX</string>
     <string name="category_cd_desc">40 MINUTES | 40 QUESTIONS | 4 ERRORS MAX</string>
+    <string name="blitz_exam_title">Quick Blitz (10 Questions)</string>
+    <string name="blitz_exam_desc">10 MINUTES | 10 QUESTIONS | 1 ERROR MAX</string>
     <string name="category_a_in_progress">Category A is under development.</string>
     <string name="category_cd_in_progress">Category C/D is under development.</string>
     <string name="start_exam">START EXAM</string>
@@ -63,6 +65,7 @@
     <string name="failed">Try again!</string>
     <string name="exam_passed_subtitle">Exam completed successfully!</string>
     <string name="exam_failed_subtitle">More than 4 allowed errors</string>
+    <string name="exam_failed_subtitle_blitz">More than 1 allowed error</string>
     <string name="correct_answer_feedback">Correct Answer</string>
     <string name="wrong_answer_feedback">Incorrect Answer</string>
     <string name="error_singular">Error</string>

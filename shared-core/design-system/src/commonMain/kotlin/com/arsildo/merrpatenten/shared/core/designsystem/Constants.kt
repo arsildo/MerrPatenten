@@ -8,5 +8,9 @@ const val EXAM_DURATION_DEBUG: Long = 150000L
 const val QUESTIONS_IN_EXAM = 40
 const val ERRORS_ALLOWED = 4
 
+const val BLITZ_QUESTIONS_COUNT = 10
+const val BLITZ_ERRORS_ALLOWED = 1
+const val BLITZ_DURATION_RELEASE: Long = 601000L
+
 const val GITHUB_URL = "https://github.com/arsildo"
 const val DPSHTRR_HELP = "https://www.dpshtrr.al/leje-drejtimi/materiale-udhezuese"

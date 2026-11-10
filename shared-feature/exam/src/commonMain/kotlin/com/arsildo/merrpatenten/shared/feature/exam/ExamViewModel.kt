@@ -6,12 +6,17 @@ import com.arsildo.merrpatenten.shared.core.data.ExamResultsRepository
 import com.arsildo.merrpatenten.shared.core.data.MistakesRepository
 import com.arsildo.merrpatenten.shared.core.data.QuestionnaireRepository
 import com.arsildo.merrpatenten.shared.core.datastore.PreferencesRepository
+import com.arsildo.merrpatenten.shared.core.designsystem.BLITZ_DURATION_RELEASE
+import com.arsildo.merrpatenten.shared.core.designsystem.BLITZ_ERRORS_ALLOWED
+import com.arsildo.merrpatenten.shared.core.designsystem.BLITZ_QUESTIONS_COUNT
+import com.arsildo.merrpatenten.shared.core.designsystem.ERRORS_ALLOWED
 import com.arsildo.merrpatenten.shared.core.designsystem.EXAM_DURATION_RELEASE
 import com.arsildo.merrpatenten.shared.core.designsystem.QUESTIONS_IN_EXAM
 import com.arsildo.merrpatenten.shared.core.designsystem.QuestionTextSize
 import com.arsildo.merrpatenten.shared.core.designsystem.formatTimer
 import com.arsildo.merrpatenten.shared.core.model.ExamResult
 import com.arsildo.merrpatenten.shared.core.model.Question
+import com.arsildo.merrpatenten.shared.feature.exam.navigation.ExamType
 import kotlin.time.Duration.Companion.milliseconds
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -20,25 +25,53 @@ import kotlinx.coroutines.launch
 
 private const val ANSWER_TRUE = "Saktë"
 private const val ANSWER_FALSE = "Gabim"
-private const val INITIAL_TIMER = "40:00"
+
+internal val ExamType.questionCount: Int
+    get() = when (this) {
+        ExamType.STANDARD -> QUESTIONS_IN_EXAM
+        ExamType.BLITZ -> BLITZ_QUESTIONS_COUNT
+    }
+
+internal val ExamType.errorsAllowed: Int
+    get() = when (this) {
+        ExamType.STANDARD -> ERRORS_ALLOWED
+        ExamType.BLITZ -> BLITZ_ERRORS_ALLOWED
+    }
+
+private val ExamType.durationMillis: Long
+    get() = when (this) {
+        ExamType.STANDARD -> EXAM_DURATION_RELEASE
+        ExamType.BLITZ -> BLITZ_DURATION_RELEASE
+    }
+
+private val ExamType.initialTimer: String
+    get() = when (this) {
+        ExamType.STANDARD -> "40:00"
+        ExamType.BLITZ -> "10:00"
+    }
 
 internal data class ExamUiState(
     val category: String = "B",
+    val examType: ExamType = ExamType.STANDARD,
     val isCompleted: Boolean = false,
     val saveStats: Boolean = false,
     val errors: Int = 0,
     val questions: List<Question> = emptyList(),
     val immersiveMode: Boolean = false,
     val questionTextSize: QuestionTextSize = QuestionTextSize.DEFAULT,
-    val timer: String = INITIAL_TIMER,
+    val timer: String = ExamType.STANDARD.initialTimer,
     val trueCheckedPositions: List<Boolean> = emptyList(),
     val falseCheckedPositions: List<Boolean> = emptyList(),
     val responseList: List<String> = emptyList(),
     val mistakePositions: List<Int> = emptyList(),
-)
+) {
+    val questionCount: Int get() = examType.questionCount
+    val isPassed: Boolean get() = errors <= examType.errorsAllowed
+}
 
 internal class ExamViewModel(
     private val category: String,
+    private val examType: ExamType,
     private val preferencesRepository: PreferencesRepository,
     private val questionnaireRepository: QuestionnaireRepository,
     private val examResultsRepository: ExamResultsRepository,
@@ -60,10 +93,13 @@ internal class ExamViewModel(
 
     private val _internalUiState = MutableStateFlow(
         ExamUiState(
-            trueCheckedPositions = List(QUESTIONS_IN_EXAM) { false },
-            falseCheckedPositions = List(QUESTIONS_IN_EXAM) { false },
-            responseList = List(QUESTIONS_IN_EXAM) { "" },
-            mistakePositions = List(QUESTIONS_IN_EXAM) { 1 },
+            category = category,
+            examType = examType,
+            timer = examType.initialTimer,
+            trueCheckedPositions = List(examType.questionCount) { false },
+            falseCheckedPositions = List(examType.questionCount) { false },
+            responseList = List(examType.questionCount) { "" },
+            mistakePositions = List(examType.questionCount) { 1 },
         ),
     )
 
@@ -92,18 +128,19 @@ internal class ExamViewModel(
         timerJob?.cancel()
         try {
             val allQuestions = questionnaireRepository.getByCategory(category).first { it.isNotEmpty() }
-            val selectedQuestions = allQuestions.shuffled().take(QUESTIONS_IN_EXAM)
+            val selectedQuestions = allQuestions.shuffled().take(examType.questionCount)
             val questionCount = selectedQuestions.size
 
             _internalUiState.update {
                 ExamUiState(
                     category = category,
+                    examType = examType,
                     questions = selectedQuestions,
                     trueCheckedPositions = List(questionCount) { false },
                     falseCheckedPositions = List(questionCount) { false },
                     responseList = List(questionCount) { "" },
                     mistakePositions = List(questionCount) { 1 },
-                    timer = INITIAL_TIMER,
+                    timer = examType.initialTimer,
                     isCompleted = false,
                     errors = 0,
                 )
@@ -118,7 +155,7 @@ internal class ExamViewModel(
     private fun startCountdown() {
         timerJob?.cancel()
         timerJob = viewModelScope.launch {
-            var remainingMillis = EXAM_DURATION_RELEASE
+            var remainingMillis = examType.durationMillis
             while (remainingMillis > 0) {
                 if (_internalUiState.value.isCompleted) {
                     return@launch
@@ -234,7 +271,7 @@ internal class ExamViewModel(
         }
         try {
             val shouldSave = preferencesRepository.getSaveStats.first()
-            if (shouldSave) {
+            if (shouldSave && currentState.examType == ExamType.STANDARD) {
                 examResultsRepository.insertResult(
                     ExamResult(
                         errors = errors,

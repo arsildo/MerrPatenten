@@ -53,7 +53,7 @@ internal fun ExamLegend(
             contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
         ) {
             Text(
-                text = "${pagerState.currentPage + 1}/$QUESTIONS_IN_EXAM",
+                text = "${pagerState.currentPage + 1}/${pagerState.pageCount}",
                 style = MaterialTheme.typography.labelLarge,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp),

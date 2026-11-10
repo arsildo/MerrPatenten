@@ -18,6 +18,7 @@ object Disclaimer : NavKey
 fun EntryProviderScope<NavKey>.dashboardEntry(
     backStack: NavBackStack<NavKey>,
     onStartExamClick: (category: String) -> Unit,
+    onStartBlitzExamClick: (category: String) -> Unit,
     onStatisticsClick: () -> Unit,
     onPreferencesClick: () -> Unit,
     onCatalogClick: () -> Unit,
@@ -26,6 +27,7 @@ fun EntryProviderScope<NavKey>.dashboardEntry(
     entry<Dashboard> {
         DashboardRoute(
             onStartExamClick = onStartExamClick,
+            onStartBlitzExamClick = onStartBlitzExamClick,
             onStatisticsClick = onStatisticsClick,
             onPreferencesClick = onPreferencesClick,
             onCatalogClick = onCatalogClick,

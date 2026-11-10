@@ -35,6 +35,7 @@ import com.arsildo.merrpatenten.shared.core.designsystem.icons.BookOpen
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.Bus
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.Car
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.Info
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.Timer
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.Truck
 import com.arsildo.merrpatenten.shared.feature.dashboard.DashboardUiState
 import com.arsildo.merrpatenten.shared.feature.dashboard.DashboardViewModel
@@ -47,6 +48,7 @@ import org.koin.compose.viewmodel.koinViewModel
 internal fun DashboardRoute(
     viewModel: DashboardViewModel = koinViewModel(),
     onStartExamClick: (category: String) -> Unit,
+    onStartBlitzExamClick: (category: String) -> Unit,
     onPreferencesClick: () -> Unit,
     onStatisticsClick: () -> Unit,
     onCatalogClick: () -> Unit,
@@ -57,6 +59,7 @@ internal fun DashboardRoute(
     DashboardScreen(
         uiState = uiState,
         onStartExamClick = onStartExamClick,
+        onStartBlitzExamClick = onStartBlitzExamClick,
         onPreferencesClick = onPreferencesClick,
         onStatisticsClick = onStatisticsClick,
         onCatalogClick = onCatalogClick,
@@ -71,6 +74,7 @@ internal fun DashboardScreen(
     onMistakesClick: () -> Unit,
     uiState: DashboardUiState,
     onStartExamClick: (category: String) -> Unit,
+    onStartBlitzExamClick: (category: String) -> Unit,
     onPreferencesClick: () -> Unit,
     onStatisticsClick: () -> Unit,
     onCatalogClick: () -> Unit,
@@ -150,6 +154,7 @@ internal fun DashboardScreen(
                     onStatisticsClick = onStatisticsClick,
                     onMistakesClick = onMistakesClick,
                     onCatalogClick = onCatalogClick,
+                    onStartBlitzExamClick = onStartBlitzExamClick,
                     modifier = Modifier.weight(1f),
                 )
             }
@@ -171,6 +176,7 @@ internal fun DashboardScreen(
                     onStatisticsClick = onStatisticsClick,
                     onMistakesClick = onMistakesClick,
                     onCatalogClick = onCatalogClick,
+                    onStartBlitzExamClick = onStartBlitzExamClick,
                 )
             }
         }
@@ -227,6 +233,7 @@ private fun LearningSection(
     onStatisticsClick: () -> Unit,
     onMistakesClick: () -> Unit,
     onCatalogClick: () -> Unit,
+    onStartBlitzExamClick: (category: String) -> Unit,
 ) {
     val hapticFeedback = LocalHapticFeedback.current
     val uriHandler = LocalUriHandler.current
@@ -240,6 +247,19 @@ private fun LearningSection(
         ReadinessCard(
             readinessScore = uiState.readinessScore,
             onClick = onStatisticsClick,
+        )
+
+        ExamTypeCard(
+            title = stringResource(Res.string.blitz_exam_title),
+            description = stringResource(Res.string.blitz_exam_desc),
+            icon = Timer,
+            onClick = { onStartBlitzExamClick("B") },
+            colors = CardDefaults.cardColors(
+                containerColor = MaterialTheme.colorScheme.tertiaryContainer
+                    .copy(alpha = 0.35f)
+                    .compositeOver(MaterialTheme.colorScheme.surfaceContainerHigh),
+                contentColor = MaterialTheme.colorScheme.onSurface,
+            ),
         )
 
         val mistakeDesc = if (uiState.mistakesCount > 0) {
@@ -313,6 +333,7 @@ private fun DashboardScreenPreview() = MerrPatentenTheme {
             mistakesCount = 5,
         ),
         onStartExamClick = {},
+        onStartBlitzExamClick = {},
         onPreferencesClick = {},
         onStatisticsClick = {},
         onCatalogClick = {},

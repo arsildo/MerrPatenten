@@ -19,7 +19,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.arsildo.merrpatenten.shared.core.designsystem.ERRORS_ALLOWED
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
 import com.arsildo.merrpatenten.shared.core.designsystem.QUESTIONS_IN_EXAM
 import com.arsildo.merrpatenten.shared.core.designsystem.components.ExitExamButton
@@ -32,6 +31,7 @@ import com.arsildo.merrpatenten.shared.core.designsystem.icons.RotateCcw
 import com.arsildo.merrpatenten.shared.core.designsystem.semanticColors
 import com.arsildo.merrpatenten.shared.feature.exam.ExamUiState
 import com.arsildo.merrpatenten.shared.feature.exam.ExamViewModel
+import com.arsildo.merrpatenten.shared.feature.exam.navigation.ExamType
 import com.arsildo.merrpatenten.shared.feature.exam.ui.components.QuestionResultGridItem
 import com.arsildo.merrpatenten.shared.feature.exam.ui.components.ResultStatusIndicator
 import merrpatenten.shared_core.design_system.generated.resources.*
@@ -42,7 +42,8 @@ import org.koin.core.parameter.parametersOf
 @Composable
 internal fun ExamResultBottomSheetRoute(
     category: String,
-    viewModel: ExamViewModel = koinViewModel(parameters = { parametersOf(category) }),
+    type: ExamType,
+    viewModel: ExamViewModel = koinViewModel(parameters = { parametersOf(category, type) }),
     onQuestionClicked: (page: Int) -> Unit,
     onExitExam: () -> Unit,
     onRestartExam: () -> Unit,
@@ -72,7 +73,7 @@ internal fun ExamResultBottomSheet(
     onDismiss: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val hasPassed = uiState.errors <= ERRORS_ALLOWED
+    val hasPassed = uiState.isPassed
     val heroContent = if (hasPassed) MaterialTheme.semanticColors.onSuccessContainer else MaterialTheme.colorScheme.onErrorContainer
     val heroIcon = if (hasPassed) CircleCheck else CircleX
     val heroIconColor = if (hasPassed) MaterialTheme.semanticColors.success else MaterialTheme.colorScheme.error
@@ -147,9 +148,14 @@ internal fun ExamResultBottomSheet(
                                     style = MaterialTheme.typography.titleLarge,
                                     fontWeight = FontWeight.Bold,
                                 )
+                                val failedSubtitle = if (uiState.examType == ExamType.BLITZ) {
+                                    Res.string.exam_failed_subtitle_blitz
+                                } else {
+                                    Res.string.exam_failed_subtitle
+                                }
                                 Text(
                                     text = stringResource(
-                                        if (hasPassed) Res.string.exam_passed_subtitle else Res.string.exam_failed_subtitle,
+                                        if (hasPassed) Res.string.exam_passed_subtitle else failedSubtitle,
                                     ),
                                     style = MaterialTheme.typography.bodySmall,
                                     color = heroContent.copy(alpha = 0.8f),
@@ -159,7 +165,7 @@ internal fun ExamResultBottomSheet(
                     }
                 }
             }
-            items(count = QUESTIONS_IN_EXAM) { page ->
+            items(count = uiState.questionCount) { page ->
                 val hasResponse = page < uiState.responseList.size && uiState.responseList[page].isNotEmpty()
                 val isCorrect = page < uiState.mistakePositions.size && uiState.mistakePositions[page] == 0
 
