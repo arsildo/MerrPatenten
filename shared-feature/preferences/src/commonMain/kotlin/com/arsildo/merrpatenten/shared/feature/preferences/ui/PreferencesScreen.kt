@@ -16,6 +16,7 @@ import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewScreenSizes
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -58,7 +59,6 @@ internal fun PreferencesRoute(viewModel: PreferencesViewModel = koinViewModel(),
     )
 }
 
-@OptIn(ExperimentalMaterial3ExpressiveApi::class, ExperimentalMaterial3Api::class)
 @Composable
 internal fun PreferencesScreen(
     uiState: PreferencesUiState,
@@ -151,61 +151,69 @@ internal fun PreferencesScreen(
             contentColor = MaterialTheme.colorScheme.onBackground,
             contentWindowInsets = windowInsets,
         ) { contentPadding ->
-            if (isDualPane) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(contentPadding)
-                        .consumeWindowInsets(contentPadding)
-                        .verticalScroll(rememberScrollState())
-                        .padding(horizontal = 24.dp)
-                        .padding(top = 16.dp, bottom = 32.dp)
-                        .navigationBarsPadding(),
-                    horizontalArrangement = Arrangement.spacedBy(24.dp),
-                ) {
-                    BehaviorSection(
-                        uiState = uiState,
-                        onImmersiveModeChange = onImmersiveModeChange,
-                        onSaveStatsChange = onSaveStatsChange,
-                        onHapticFeedbackChange = onHapticFeedbackChange,
-                        modifier = Modifier.weight(1f),
-                    )
+            when (isDualPane) {
+                true -> {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(contentPadding)
+                            .consumeWindowInsets(contentPadding)
+                            .verticalScroll(rememberScrollState())
+                            .padding(horizontal = 24.dp)
+                            .padding(top = 16.dp, bottom = 32.dp)
+                            .navigationBarsPadding(),
+                        horizontalArrangement = Arrangement.spacedBy(24.dp),
+                    ) {
+                        BehaviorSection(
+                            uiState = uiState,
+                            onImmersiveModeChange = onImmersiveModeChange,
+                            onSaveStatsChange = onSaveStatsChange,
+                            onHapticFeedbackChange = onHapticFeedbackChange,
+                            modifier = Modifier.weight(1f),
+                        )
 
-                    AppearanceSection(
-                        uiState = uiState,
-                        onFollowSystemChange = onFollowSystemChange,
-                        onColorSchemeChange = onColorSchemeChange,
-                        onDynamicColorSchemeChange = onDynamicColorSchemeChange,
-                        onQuestionTextSizeChange = onQuestionTextSizeChange,
-                        modifier = Modifier.weight(1f),
-                    )
+                        AppearanceSection(
+                            uiState = uiState,
+                            onFollowSystemChange = onFollowSystemChange,
+                            onColorSchemeChange = onColorSchemeChange,
+                            onDynamicColorSchemeChange = onDynamicColorSchemeChange,
+                            onQuestionTextSizeChange = onQuestionTextSizeChange,
+                            modifier = Modifier.weight(1f),
+                        )
+                    }
                 }
-            } else {
-                Column(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(contentPadding)
-                        .consumeWindowInsets(contentPadding)
-                        .verticalScroll(rememberScrollState())
-                        .padding(horizontal = 16.dp),
-                    verticalArrangement = Arrangement.spacedBy(24.dp),
-                ) {
-                    BehaviorSection(
-                        uiState = uiState,
-                        onImmersiveModeChange = onImmersiveModeChange,
-                        onSaveStatsChange = onSaveStatsChange,
-                        onHapticFeedbackChange = onHapticFeedbackChange,
-                    )
 
-                    AppearanceSection(
-                        uiState = uiState,
-                        onFollowSystemChange = onFollowSystemChange,
-                        onColorSchemeChange = onColorSchemeChange,
-                        onDynamicColorSchemeChange = onDynamicColorSchemeChange,
-                        onQuestionTextSizeChange = onQuestionTextSizeChange,
-                    )
+                false -> {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(contentPadding)
+                            .consumeWindowInsets(contentPadding)
+                            .verticalScroll(rememberScrollState())
+                            .padding(horizontal = 16.dp),
+                        verticalArrangement = Arrangement.spacedBy(24.dp),
+                    ) {
+                        BehaviorSection(
+                            uiState = uiState,
+                            onImmersiveModeChange = onImmersiveModeChange,
+                            onSaveStatsChange = onSaveStatsChange,
+                            onHapticFeedbackChange = onHapticFeedbackChange,
+                        )
 
-                    Spacer(modifier = Modifier.height(104.dp).navigationBarsPadding())
+                        AppearanceSection(
+                            uiState = uiState,
+                            onFollowSystemChange = onFollowSystemChange,
+                            onColorSchemeChange = onColorSchemeChange,
+                            onDynamicColorSchemeChange = onDynamicColorSchemeChange,
+                            onQuestionTextSizeChange = onQuestionTextSizeChange,
+                        )
+
+                        Spacer(
+                            modifier = Modifier
+                                .height(128.dp)
+                                .navigationBarsPadding(),
+                        )
+                    }
                 }
             }
         }
@@ -356,7 +364,7 @@ private fun AppearanceSection(
     }
 }
 
-@Preview
+@PreviewScreenSizes
 @Composable
 private fun PreferencesScreenPreview() {
     MerrPatentenTheme {
@@ -374,7 +382,7 @@ private fun PreferencesScreenPreview() {
     }
 }
 
-@Preview
+@PreviewScreenSizes
 @Composable
 private fun PreferencesScreenDarkPreview() {
     MerrPatentenTheme(darkTheme = true) {
