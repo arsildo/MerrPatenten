@@ -115,6 +115,7 @@ fun CatalogScreen(
                         OutlinedTextField(
                             value = uiState.searchQuery,
                             onValueChange = onSearchQueryChanged,
+                            textStyle = MaterialTheme.typography.bodyMedium,
                             placeholder = {
                                 Text(
                                     text = stringResource(Res.string.catalog_search_placeholder),
@@ -129,10 +130,14 @@ fun CatalogScreen(
                             ),
                             trailingIcon = {
                                 if (uiState.searchQuery.isNotEmpty()) {
-                                    IconButton(onClick = { onSearchQueryChanged("") }) {
+                                    IconButton(
+                                        onClick = { onSearchQueryChanged("") },
+                                        modifier = Modifier.size(24.dp),
+                                    ) {
                                         Icon(
                                             imageVector = X,
                                             contentDescription = stringResource(Res.string.close),
+                                            modifier = Modifier.size(24.dp),
                                         )
                                     }
                                 }

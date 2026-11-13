@@ -145,7 +145,7 @@ fun MistakesPracticeScreen(
                         imageVector = PartyPopper,
                         contentDescription = null,
                         tint = MaterialTheme.colorScheme.primary,
-                        modifier = Modifier.size(64.dp),
+                        modifier = Modifier.size(48.dp),
                     )
                     Text(
                         text = stringResource(Res.string.mistakes_empty_title),

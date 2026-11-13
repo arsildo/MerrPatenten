@@ -183,6 +183,7 @@ fun MistakesScreen(
             OutlinedTextField(
                 value = uiState.searchQuery,
                 onValueChange = onSearchQueryChange,
+                textStyle = MaterialTheme.typography.bodyMedium,
                 placeholder = {
                     Text(
                         text = stringResource(Res.string.catalog_search_placeholder),
@@ -193,14 +194,19 @@ fun MistakesScreen(
                     Icon(
                         imageVector = Search,
                         contentDescription = null,
+                        modifier = Modifier.size(24.dp),
                     )
                 },
                 trailingIcon = {
                     if (uiState.searchQuery.isNotEmpty()) {
-                        IconButton(onClick = { onSearchQueryChange("") }) {
+                        IconButton(
+                            onClick = { onSearchQueryChange("") },
+                            modifier = Modifier.size(24.dp),
+                        ) {
                             Icon(
                                 imageVector = X,
                                 contentDescription = stringResource(Res.string.close),
+                                modifier = Modifier.size(24.dp),
                             )
                         }
                     }
@@ -464,7 +470,7 @@ private fun MistakesEmptyView(isFiltered: Boolean, modifier: Modifier = Modifier
                 imageVector = if (isFiltered) SearchX else CircleCheck,
                 contentDescription = null,
                 tint = MaterialTheme.colorScheme.primary,
-                modifier = Modifier.size(72.dp),
+                modifier = Modifier.size(48.dp),
             )
             Text(
                 text = if (isFiltered) {
