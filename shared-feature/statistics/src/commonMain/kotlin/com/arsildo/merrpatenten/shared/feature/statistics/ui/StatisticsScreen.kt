@@ -52,12 +52,16 @@ import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
-internal fun StatisticsRoute(viewModel: StatisticsViewModel = koinViewModel(), onChangePreferenceClick: () -> Unit) {
+internal fun StatisticsRoute(
+    viewModel: StatisticsViewModel = koinViewModel(),
+    onChangePreferenceClick: () -> Unit,
+    onDeleteResultsClick: () -> Unit,
+) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     StatisticsScreen(
         uiState = uiState,
         onChangePreferenceClick = onChangePreferenceClick,
-        onDeleteAllResults = viewModel::deleteAllResults,
+        onDeleteResultsClick = onDeleteResultsClick,
     )
 }
 
@@ -66,10 +70,9 @@ internal fun StatisticsScreen(
     modifier: Modifier = Modifier,
     uiState: StatisticsUiState,
     onChangePreferenceClick: () -> Unit,
-    onDeleteAllResults: () -> Unit,
+    onDeleteResultsClick: () -> Unit,
 ) {
     val hapticFeedback = LocalHapticFeedback.current
-    var deleteResultsDialog by remember { mutableStateOf(false) }
     val adaptiveInfo = rememberWindowAdaptiveInfo()
     val startToolbarClearance by animateDpAsState(
         targetValue = if (!adaptiveInfo.isCompact) 88.dp else 0.dp,
@@ -93,7 +96,7 @@ internal fun StatisticsScreen(
                         FilledTonalIconButton(
                             onClick = {
                                 hapticFeedback.performHapticFeedback(HapticFeedbackType.GestureThresholdActivate)
-                                deleteResultsDialog = true
+                                onDeleteResultsClick()
                             },
                             colors = IconButtonDefaults.filledTonalIconButtonColors(
                                 containerColor = MaterialTheme.colorScheme.errorContainer,
@@ -287,16 +290,6 @@ internal fun StatisticsScreen(
             }
         }
     }
-
-    if (deleteResultsDialog) {
-        DeleteResultsDialog(
-            onConfirm = {
-                onDeleteAllResults()
-                deleteResultsDialog = false
-            },
-            onDismiss = { deleteResultsDialog = false },
-        )
-    }
 }
 
 @Composable
@@ -447,7 +440,7 @@ private fun StatisticsScreenWithDataPreview() {
                 ),
             ),
             onChangePreferenceClick = {},
-            onDeleteAllResults = {},
+            onDeleteResultsClick = {},
         )
     }
 }
@@ -459,7 +452,7 @@ private fun StatisticsScreenEmptyPreview() {
         StatisticsScreen(
             uiState = StatisticsUiState(results = emptyList(), saveResults = true),
             onChangePreferenceClick = {},
-            onDeleteAllResults = {},
+            onDeleteResultsClick = {},
         )
     }
 }
@@ -471,7 +464,7 @@ private fun StatisticsScreenDisabledPreview() {
         StatisticsScreen(
             uiState = StatisticsUiState(results = emptyList(), saveResults = false),
             onChangePreferenceClick = {},
-            onDeleteAllResults = {},
+            onDeleteResultsClick = {},
         )
     }
 }
@@ -497,7 +490,7 @@ private fun StatisticsScreenDarkPreview() {
                 ),
             ),
             onChangePreferenceClick = {},
-            onDeleteAllResults = {},
+            onDeleteResultsClick = {},
         )
     }
 }
