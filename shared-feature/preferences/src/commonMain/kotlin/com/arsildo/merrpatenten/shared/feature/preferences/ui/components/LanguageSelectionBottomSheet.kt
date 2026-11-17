@@ -32,7 +32,6 @@ import merrpatenten.shared_core.design_system.generated.resources.Res
 import merrpatenten.shared_core.design_system.generated.resources.language
 import org.jetbrains.compose.resources.stringResource
 
-@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 internal fun LanguageSelectionBottomSheet(modifier: Modifier = Modifier) {
     val hapticFeedback = LocalHapticFeedback.current
@@ -44,14 +43,13 @@ internal fun LanguageSelectionBottomSheet(modifier: Modifier = Modifier) {
         modifier = modifier
             .fillMaxWidth()
             .navigationBarsPadding()
-            .padding(horizontal = 20.dp)
-            .padding(bottom = 24.dp),
+            .padding(horizontal = 16.dp)
+            .padding(bottom = 16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         Text(
             text = stringResource(Res.string.language),
             style = MaterialTheme.typography.headlineSmall,
-            fontWeight = FontWeight.Bold,
             color = MaterialTheme.colorScheme.onSurface,
         )
 
@@ -90,7 +88,6 @@ internal fun LanguageSelectionBottomSheet(modifier: Modifier = Modifier) {
                     content = {
                         Text(
                             text = stringResource(locale.res),
-                            fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal,
                         )
                     },
                 )
@@ -101,20 +98,16 @@ internal fun LanguageSelectionBottomSheet(modifier: Modifier = Modifier) {
 
 @Preview
 @Composable
-private fun LanguageSelectionBottomSheetPreview() {
-    MerrPatentenTheme {
-        Surface {
-            LanguageSelectionBottomSheet()
-        }
+private fun LanguageSelectionBottomSheetPreview() = MerrPatentenTheme {
+    Surface {
+        LanguageSelectionBottomSheet()
     }
 }
 
 @Preview
 @Composable
-private fun LanguageSelectionBottomSheetDarkPreview() {
-    MerrPatentenTheme(darkTheme = true) {
-        Surface {
-            LanguageSelectionBottomSheet()
-        }
+private fun LanguageSelectionBottomSheetDarkPreview() = MerrPatentenTheme(darkTheme = true) {
+    Surface {
+        LanguageSelectionBottomSheet()
     }
 }
