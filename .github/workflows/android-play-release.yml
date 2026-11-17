@@ -1,0 +1,76 @@
+name: Google Play Production Release
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  release:
+    name: Build & Publish Production AAB
+    runs-on: ubuntu-latest
+
+    env:
+      GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx4096m -XX:MaxMetaspaceSize=512m" -Dkotlin.compiler.execution.strategy="in-process" -Dorg.gradle.workers.max=2
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          cache-read-only: false
+          cache-encryption-key: ${{ secrets.GRADLE_ENCRYPTION_KEY }}
+
+      - name: Make Gradle Wrapper Executable
+        run: chmod +x gradlew
+
+      - name: Decode Release Keystore
+        env:
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+        run: |
+          if [ -z "$KEYSTORE_BASE64" ]; then
+            echo "Missing KEYSTORE_BASE64 secret" >&2
+            exit 1
+          fi
+          echo "$KEYSTORE_BASE64" | base64 --decode > "${{ runner.temp }}/release.jks"
+
+      - name: Build Signed Release AAB
+        env:
+          KEYSTORE_FILE: ${{ runner.temp }}/release.jks
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+        run: ./gradlew :androidApp:bundleRelease
+
+      - name: Upload AAB & Mapping Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: androidApp-release
+          path: |
+            androidApp/build/outputs/bundle/release/androidApp-release.aab
+            androidApp/build/outputs/mapping/release/mapping.txt
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Publish to Google Play (Production)
+        uses: r0adkll/upload-google-play@v1
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
+          packageName: com.arsildo.merrpatenten
+          releaseFiles: androidApp/build/outputs/bundle/release/androidApp-release.aab
+          mappingFile: androidApp/build/outputs/mapping/release/mapping.txt
+          track: production
+          status: completed
+
+      - name: Cleanup Keystore
+        if: always()
+        run: rm -f "${{ runner.temp }}/release.jks"
