@@ -56,7 +56,6 @@ fun MerrPatentenApp() {
     val (
         immersiveMode,
         saveStats,
-        hapticFeedback,
         followSystemColors,
         colorScheme,
         dynamicColorScheme,
@@ -71,7 +70,6 @@ fun MerrPatentenApp() {
     MerrPatentenTheme(
         darkTheme = isDark,
         dynamicColor = dynamicColorScheme,
-        hapticFeedback = hapticFeedback,
     ) {
         val adaptiveInfo = rememberAppAdaptiveInfo()
         val listDetailStrategy = remember(adaptiveInfo.isDualPane, adaptiveInfo.isBook) {

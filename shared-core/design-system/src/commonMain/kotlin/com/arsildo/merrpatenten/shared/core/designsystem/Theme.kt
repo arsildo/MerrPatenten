@@ -105,12 +105,7 @@ expect val supportsDynamicColor: Boolean
 expect fun getColorScheme(darkTheme: Boolean, dynamicColor: Boolean): ColorScheme
 
 @Composable
-fun MerrPatentenTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
-    dynamicColor: Boolean = true,
-    hapticFeedback: Boolean = true,
-    content: @Composable () -> Unit,
-) {
+fun MerrPatentenTheme(darkTheme: Boolean = isSystemInDarkTheme(), dynamicColor: Boolean = true, content: @Composable () -> Unit) {
     val colorScheme = getColorScheme(darkTheme = darkTheme, dynamicColor = dynamicColor)
     val semanticColors = if (darkTheme) DarkSemanticColors else LightSemanticColors
 

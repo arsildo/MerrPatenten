@@ -40,7 +40,6 @@ internal fun PreferencesRoute(viewModel: PreferencesViewModel = koinViewModel(),
         onLanguageClick = onLanguageClick,
         onImmersiveModeChange = viewModel::setImmersiveMode,
         onSaveStatsChange = viewModel::setSaveStats,
-        onHapticFeedbackChange = viewModel::setHapticFeedback,
         onFollowSystemChange = viewModel::setFollowSystem,
         onColorSchemeChange = viewModel::setColorScheme,
         onDynamicColorSchemeChange = viewModel::setDynamicColorScheme,
@@ -55,7 +54,6 @@ internal fun PreferencesScreen(
     onLanguageClick: () -> Unit,
     onImmersiveModeChange: (enabled: Boolean) -> Unit,
     onSaveStatsChange: (enabled: Boolean) -> Unit,
-    onHapticFeedbackChange: (enabled: Boolean) -> Unit,
     onFollowSystemChange: (enabled: Boolean) -> Unit,
     onColorSchemeChange: (isDark: Boolean) -> Unit,
     onDynamicColorSchemeChange: (enabled: Boolean) -> Unit,
@@ -153,7 +151,6 @@ internal fun PreferencesScreen(
                             uiState = uiState,
                             onImmersiveModeChange = onImmersiveModeChange,
                             onSaveStatsChange = onSaveStatsChange,
-                            onHapticFeedbackChange = onHapticFeedbackChange,
                             modifier = Modifier.weight(1f),
                         )
 
@@ -182,7 +179,6 @@ internal fun PreferencesScreen(
                             uiState = uiState,
                             onImmersiveModeChange = onImmersiveModeChange,
                             onSaveStatsChange = onSaveStatsChange,
-                            onHapticFeedbackChange = onHapticFeedbackChange,
                         )
 
                         AppearanceSection(
@@ -210,7 +206,6 @@ private fun BehaviorSection(
     uiState: PreferencesUiState,
     onImmersiveModeChange: (enabled: Boolean) -> Unit,
     onSaveStatsChange: (enabled: Boolean) -> Unit,
-    onHapticFeedbackChange: (enabled: Boolean) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(
@@ -227,7 +222,7 @@ private fun BehaviorSection(
                 subtitle = stringResource(Res.string.preferences_navigation_buttons_desc),
                 checked = uiState.immersiveMode,
                 index = 0,
-                count = 3,
+                count = 2,
                 leadingIcon = {
                     Icon(
                         imageVector = if (uiState.immersiveMode) Pointer else PointerOff,
@@ -242,7 +237,7 @@ private fun BehaviorSection(
                 subtitle = stringResource(Res.string.preferences_store_stats_desc),
                 checked = uiState.saveStats,
                 index = 1,
-                count = 3,
+                count = 2,
                 leadingIcon = {
                     Icon(
                         imageVector = if (uiState.saveStats) Cloud else CloudExclamationPoint,
@@ -251,21 +246,6 @@ private fun BehaviorSection(
                     )
                 },
                 onCheckedChange = onSaveStatsChange,
-            )
-            PreferenceCard(
-                title = stringResource(Res.string.preferences_haptic_feedback),
-                subtitle = stringResource(Res.string.preferences_haptic_feedback_desc),
-                checked = uiState.hapticFeedback,
-                index = 2,
-                count = 3,
-                leadingIcon = {
-                    Icon(
-                        imageVector = if (uiState.hapticFeedback) Vibrate else VibrateOff,
-                        contentDescription = null,
-                        tint = MaterialTheme.colorScheme.primary,
-                    )
-                },
-                onCheckedChange = onHapticFeedbackChange,
             )
         }
     }
@@ -358,7 +338,6 @@ private fun PreferencesScreenPreview() {
             onLanguageClick = {},
             onImmersiveModeChange = {},
             onSaveStatsChange = {},
-            onHapticFeedbackChange = {},
             onFollowSystemChange = {},
             onColorSchemeChange = {},
             onDynamicColorSchemeChange = {},
@@ -376,7 +355,6 @@ private fun PreferencesScreenDarkPreview() {
             onLanguageClick = {},
             onImmersiveModeChange = {},
             onSaveStatsChange = {},
-            onHapticFeedbackChange = {},
             onFollowSystemChange = {},
             onColorSchemeChange = {},
             onDynamicColorSchemeChange = {},

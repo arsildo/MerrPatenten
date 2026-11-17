@@ -12,18 +12,10 @@ import kotlinx.coroutines.launch
 data class PreferencesUiState(
     val immersiveMode: Boolean = false,
     val saveStats: Boolean = true,
-    val hapticFeedback: Boolean = true,
     val followSystemColors: Boolean = true,
     val colorScheme: Boolean = false,
     val dynamicColorScheme: Boolean = true,
     val questionTextSize: QuestionTextSize = QuestionTextSize.DEFAULT,
-)
-
-private data class BehaviorPrefs(
-    val immersive: Boolean,
-    val saveStats: Boolean,
-    val hapticFeedback: Boolean,
-    val systemColorScheme: Boolean,
 )
 
 class PreferencesViewModel(private val preferencesRepository: PreferencesRepository) : ViewModel() {
@@ -31,10 +23,9 @@ class PreferencesViewModel(private val preferencesRepository: PreferencesReposit
         combine(
             preferencesRepository.getImmersiveMode,
             preferencesRepository.getSaveStats,
-            preferencesRepository.getHapticFeedback,
             preferencesRepository.getSystemColorScheme,
-        ) { immersive, saveStats, hapticFeedback, systemColorScheme ->
-            BehaviorPrefs(immersive, saveStats, hapticFeedback, systemColorScheme)
+        ) { immersive, saveStats, systemColorScheme ->
+            Triple(immersive, saveStats, systemColorScheme)
         },
         combine(
             preferencesRepository.getColorScheme,
@@ -43,12 +34,11 @@ class PreferencesViewModel(private val preferencesRepository: PreferencesReposit
         ) { colorScheme, dynamicColors, questionTextSize ->
             Triple(colorScheme, dynamicColors, questionTextSize)
         },
-    ) { behavior, (colorScheme, dynamicColors, questionTextSize) ->
+    ) { (immersive, saveStats, systemColorScheme), (colorScheme, dynamicColors, questionTextSize) ->
         PreferencesUiState(
-            immersiveMode = behavior.immersive,
-            saveStats = behavior.saveStats,
-            hapticFeedback = behavior.hapticFeedback,
-            followSystemColors = behavior.systemColorScheme,
+            immersiveMode = immersive,
+            saveStats = saveStats,
+            followSystemColors = systemColorScheme,
             colorScheme = colorScheme,
             dynamicColorScheme = dynamicColors,
             questionTextSize = questionTextSize,
@@ -58,12 +48,6 @@ class PreferencesViewModel(private val preferencesRepository: PreferencesReposit
         started = SharingStarted.WhileSubscribed(5_000),
         initialValue = PreferencesUiState(),
     )
-
-    fun setHapticFeedback(enabled: Boolean) {
-        viewModelScope.launch {
-            preferencesRepository.setHapticFeedback(enabled)
-        }
-    }
 
     fun setImmersiveMode(immersiveMode: Boolean) {
         viewModelScope.launch {
