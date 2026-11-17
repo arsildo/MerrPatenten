@@ -39,7 +39,7 @@ internal fun MerrPatentenVerticalFloatingToolbar(modifier: Modifier = Modifier, 
         expanded = true,
         modifier = modifier
             .windowInsetsPadding(
-                WindowInsets.safeDrawing.only(WindowInsetsSides.Start + WindowInsetsSides.Vertical),
+                WindowInsets.safeDrawing.only(WindowInsetsSides.Start + WindowInsetsSides.Top),
             )
             .padding(16.dp)
             .clip(FloatingToolbarDefaults.ContainerShape)
