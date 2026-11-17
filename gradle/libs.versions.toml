@@ -1,9 +1,9 @@
 [versions]
 agp = "9.3.3"
 kotlin = "2.5.0-RC"
-compose-multiplatform = "1.13.10-alpha01+dev5175"
-compose-material3-adaptive = "1.4.0-alpha02+dev5175"
-ksp = "2.3.13"
+compose-multiplatform = "1.13.10-alpha01+dev5176"
+compose-material3-adaptive = "1.4.0-alpha02+dev5176"
+ksp = "2.3.14"
 ktlint = "1.8.0"
 ktlint-plugin = "14.2.0"
 
@@ -18,7 +18,7 @@ androidx-sqlite = "2.7.1"
 
 # JetBrains Lifecycle & Navigation 3
 androidx-lifecycle = "2.11.0"
-androidx-navigation3 = "1.2.10-alpha01+dev5175"
+androidx-navigation3 = "1.2.10-alpha01+dev5176"
 androidx-savedstate = "1.4.0"
 kotlinx-coroutines = "1.11.0"
 kotlinx-serialization = "1.13.0"
@@ -80,7 +80,6 @@ koin-bom = { group = "io.insert-koin", name = "koin-bom", version.ref = "koin-bo
 koin-core = { group = "io.insert-koin", name = "koin-core" } # KMP
 koin-android = { group = "io.insert-koin", name = "koin-android" }
 koin-compose = { group = "io.insert-koin", name = "koin-compose" } # KMP
-koin-compose-navigation3 = { group = "io.insert-koin", name = "koin-compose-navigation3" } # KMP
 koin-compose-viewmodel = { group = "io.insert-koin", name = "koin-compose-viewmodel", version.ref = "koin-bom" } # KMP
 koin-androidx-compose = { group = "io.insert-koin", name = "koin-androidx-compose" } # Android Specific for Koin
 koin-androidx-startup = { group = "io.insert-koin", name = "koin-androidx-startup" } # Android Specific for Koin
