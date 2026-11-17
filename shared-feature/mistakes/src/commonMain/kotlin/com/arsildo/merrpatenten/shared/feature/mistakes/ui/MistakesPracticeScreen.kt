@@ -37,7 +37,6 @@ import com.arsildo.merrpatenten.shared.core.designsystem.icons.ArrowRight
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleCheck
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleX
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.PartyPopper
-import com.arsildo.merrpatenten.shared.core.designsystem.icons.Trophy
 import com.arsildo.merrpatenten.shared.core.designsystem.semanticColors
 import com.arsildo.merrpatenten.shared.feature.mistakes.MistakesPracticeUiState
 import com.arsildo.merrpatenten.shared.feature.mistakes.MistakesPracticeViewModel
@@ -51,6 +50,7 @@ import org.koin.core.parameter.parametersOf
 fun MistakesPracticeRoute(
     category: String,
     onBackPress: () -> Unit,
+    onPracticeFinished: () -> Unit,
     onImageDetailsClick: (index: Int) -> Unit,
     viewModel: MistakesPracticeViewModel = koinViewModel(parameters = { parametersOf(category) }),
 ) {
@@ -60,7 +60,14 @@ fun MistakesPracticeRoute(
         uiState = uiState,
         onBackPress = onBackPress,
         onSubmitAnswer = viewModel::submitAnswer,
-        onNextQuestion = viewModel::nextQuestion,
+        onNextQuestion = {
+            if (uiState.currentIndex + 1 >= uiState.questions.size) {
+                viewModel.nextQuestion()
+                onPracticeFinished()
+            } else {
+                viewModel.nextQuestion()
+            }
+        },
         onImageDetailsClick = onImageDetailsClick,
     )
 }
@@ -409,44 +416,6 @@ fun MistakesPracticeScreen(
                 }
             }
         }
-    }
-
-    if (uiState.isPracticeFinished && uiState.questions.isNotEmpty()) {
-        AlertDialog(
-            onDismissRequest = onBackPress,
-            icon = {
-                Icon(
-                    imageVector = Trophy,
-                    contentDescription = null,
-                    tint = MaterialTheme.semanticColors.success,
-                    modifier = Modifier.size(48.dp),
-                )
-            },
-            title = {
-                Text(
-                    text = stringResource(Res.string.mistakes_practice_complete_title),
-                    fontWeight = FontWeight.Bold,
-                )
-            },
-            text = {
-                Text(
-                    text = stringResource(
-                        Res.string.mistakes_practice_complete_desc,
-                        uiState.totalAnsweredCount,
-                        uiState.masteredQuestionsCount,
-                    ),
-                    style = MaterialTheme.typography.bodyMedium,
-                )
-            },
-            confirmButton = {
-                Button(
-                    onClick = onBackPress,
-                    shape = RoundedCornerShape(12.dp),
-                ) {
-                    Text(stringResource(Res.string.results_confirm))
-                }
-            },
-        )
     }
 }
 

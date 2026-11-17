@@ -18,7 +18,6 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.compose.dropUnlessResumed
 import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.entryProvider
-import androidx.navigation3.scene.DialogSceneStrategy
 import androidx.navigation3.ui.NavDisplay
 import androidx.navigation3.ui.defaultPopTransitionSpec
 import androidx.navigation3.ui.defaultTransitionSpec
@@ -43,13 +42,16 @@ import com.arsildo.merrpatenten.shared.feature.exam.navigation.ExitExamBottomShe
 import com.arsildo.merrpatenten.shared.feature.exam.navigation.examEntry
 import com.arsildo.merrpatenten.shared.feature.imagedetails.navigation.ZoomableImage
 import com.arsildo.merrpatenten.shared.feature.imagedetails.navigation.imageDetailsEntry
+import com.arsildo.merrpatenten.shared.feature.mistakes.navigation.ClearMistakesBottomSheet
 import com.arsildo.merrpatenten.shared.feature.mistakes.navigation.Mistakes
 import com.arsildo.merrpatenten.shared.feature.mistakes.navigation.MistakesPractice
+import com.arsildo.merrpatenten.shared.feature.mistakes.navigation.MistakesPracticeResultBottomSheet
 import com.arsildo.merrpatenten.shared.feature.mistakes.navigation.mistakesEntry
 import com.arsildo.merrpatenten.shared.feature.preferences.PreferencesViewModel
 import com.arsildo.merrpatenten.shared.feature.preferences.navigation.LanguageSelection
 import com.arsildo.merrpatenten.shared.feature.preferences.navigation.Preferences
 import com.arsildo.merrpatenten.shared.feature.preferences.navigation.preferencesEntry
+import com.arsildo.merrpatenten.shared.feature.statistics.navigation.DeleteResultsBottomSheet
 import com.arsildo.merrpatenten.shared.feature.statistics.navigation.Statistics
 import com.arsildo.merrpatenten.shared.feature.statistics.navigation.statisticsEntry
 import dev.chrisbanes.haze.hazeSource
@@ -77,12 +79,15 @@ private val config = SavedStateConfiguration {
             subclass(ExitExamBottomSheet::class, ExitExamBottomSheet.serializer())
             subclass(ZoomableImage::class, ZoomableImage.serializer())
             subclass(Statistics::class, Statistics.serializer())
+            subclass(DeleteResultsBottomSheet::class, DeleteResultsBottomSheet.serializer())
             subclass(Preferences::class, Preferences.serializer())
             subclass(LanguageSelection::class, LanguageSelection.serializer())
             subclass(Catalog::class, Catalog.serializer())
             subclass(SignDetail::class, SignDetail.serializer())
             subclass(Mistakes::class, Mistakes.serializer())
+            subclass(ClearMistakesBottomSheet::class, ClearMistakesBottomSheet.serializer())
             subclass(MistakesPractice::class, MistakesPractice.serializer())
+            subclass(MistakesPracticeResultBottomSheet::class, MistakesPracticeResultBottomSheet.serializer())
         }
     }
 }
@@ -161,6 +166,7 @@ fun MerrPatentenApp() {
         val dashboardSubStack = navigator.state.subStacks[Dashboard] ?: error("Dashboard stack missing")
         val catalogSubStack = navigator.state.subStacks[Catalog] ?: error("Catalog stack missing")
         val mistakesSubStack = navigator.state.subStacks[Mistakes] ?: error("Mistakes stack missing")
+        val statisticsSubStack = navigator.state.subStacks[Statistics] ?: error("Statistics stack missing")
         val preferencesSubStack = navigator.state.subStacks[Preferences] ?: error("Preferences stack missing")
 
         val entries = navigator.state.toEntries(
@@ -197,6 +203,7 @@ fun MerrPatentenApp() {
                     onDismiss = { navigator.goBack() },
                 )
                 statisticsEntry(
+                    backStack = statisticsSubStack,
                     onChangePreferenceClick = { navigator.navigate(Preferences) },
                 )
                 preferencesEntry(
@@ -213,7 +220,6 @@ fun MerrPatentenApp() {
             NavDisplay(
                 entries = entries,
                 sceneStrategies = listOf(
-                    remember { DialogSceneStrategy() },
                     remember { BottomSheetSceneStrategy() },
                     listDetailStrategy,
                 ),

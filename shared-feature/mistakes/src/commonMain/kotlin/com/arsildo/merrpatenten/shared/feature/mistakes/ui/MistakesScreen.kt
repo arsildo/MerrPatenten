@@ -48,6 +48,7 @@ import org.koin.compose.viewmodel.koinViewModel
 fun MistakesRoute(
     onStartPractice: (category: String) -> Unit,
     onImageDetailsClick: (index: Int) -> Unit,
+    onClearCategoryClick: () -> Unit,
     viewModel: MistakesViewModel = koinViewModel(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
@@ -59,7 +60,7 @@ fun MistakesRoute(
         onSelectCategory = viewModel::onSelectCategory,
         onSearchQueryChange = viewModel::onSearchQueryChange,
         onDeleteMistake = viewModel::deleteMistake,
-        onClearCategory = viewModel::clearCategoryMistakes,
+        onClearCategoryClick = onClearCategoryClick,
     )
 }
 
@@ -72,11 +73,10 @@ fun MistakesScreen(
     onSelectCategory: (category: String) -> Unit,
     onSearchQueryChange: (query: String) -> Unit,
     onDeleteMistake: (questionId: Int, category: String) -> Unit,
-    onClearCategory: () -> Unit,
+    onClearCategoryClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val hapticFeedback = LocalHapticFeedback.current
-    var showClearDialog by remember { mutableStateOf(false) }
     val adaptiveInfo = rememberWindowAdaptiveInfo()
     val navBarBottomPadding = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
     val floatingToolbarClearance = if (adaptiveInfo.isCompact) 88.dp else 0.dp
@@ -109,7 +109,7 @@ fun MistakesScreen(
                         IconButton(
                             onClick = {
                                 hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                                showClearDialog = true
+                                onClearCategoryClick()
                             },
                         ) {
                             Icon(
@@ -254,33 +254,6 @@ fun MistakesScreen(
                 }
             }
         }
-    }
-
-    if (showClearDialog) {
-        AlertDialog(
-            onDismissRequest = { showClearDialog = false },
-            title = { Text(stringResource(Res.string.mistakes_clear_category)) },
-            text = { Text(stringResource(Res.string.mistakes_clear_category_desc)) },
-            confirmButton = {
-                TextButton(
-                    onClick = {
-                        hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
-                        onClearCategory()
-                        showClearDialog = false
-                    },
-                ) {
-                    Text(
-                        text = stringResource(Res.string.results_confirm),
-                        color = MaterialTheme.colorScheme.error,
-                    )
-                }
-            },
-            dismissButton = {
-                TextButton(onClick = { showClearDialog = false }) {
-                    Text(stringResource(Res.string.results_dismiss))
-                }
-            },
-        )
     }
 }
 
