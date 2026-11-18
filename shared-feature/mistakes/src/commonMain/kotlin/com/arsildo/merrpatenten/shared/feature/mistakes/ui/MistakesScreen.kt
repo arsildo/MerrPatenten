@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.arsildo.merrpatenten.shared.core.designsystem.adaptive.rememberWindowAdaptiveInfo
+import com.arsildo.merrpatenten.shared.core.designsystem.components.CategoryTabs
 import com.arsildo.merrpatenten.shared.core.designsystem.getImageResource
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleCheck
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleX
@@ -252,30 +253,6 @@ fun MistakesScreen(
                         )
                     }
                 }
-            }
-        }
-    }
-}
-
-@Composable
-private fun CategoryTabs(selectedCategory: String, onCategorySelected: (category: String) -> Unit, modifier: Modifier = Modifier) {
-    val categories = listOf(
-        "B" to stringResource(Res.string.questionnaire_category_one),
-        "C" to stringResource(Res.string.questionnaire_category_two),
-        "D" to stringResource(Res.string.questionnaire_category_three),
-    )
-
-    SingleChoiceSegmentedButtonRow(modifier = modifier) {
-        categories.forEachIndexed { index, (catKey, catLabel) ->
-            SegmentedButton(
-                selected = selectedCategory == catKey,
-                onClick = { onCategorySelected(catKey) },
-                shape = SegmentedButtonDefaults.itemShape(index = index, count = categories.size),
-            ) {
-                Text(
-                    text = catKey,
-                    fontWeight = if (selectedCategory == catKey) FontWeight.Bold else FontWeight.Normal,
-                )
             }
         }
     }

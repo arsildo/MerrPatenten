@@ -30,6 +30,7 @@ import merrpatenten.shared_core.design_system.generated.resources.false_checkbox
 import merrpatenten.shared_core.design_system.generated.resources.true_checkbox
 import org.jetbrains.compose.resources.stringResource
 
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 internal fun ExamTabletopContent(
     uiState: ExamUiState,
@@ -39,6 +40,7 @@ internal fun ExamTabletopContent(
     onShowEndExam: () -> Unit,
     onOpenMap: () -> Unit,
     onImageDetailsClick: (index: Int) -> Unit,
+    onToggleBookmark: (questionId: Int) -> Unit,
     onCheckFalseAtPage: (page: Int) -> Unit,
     onCheckTrueAtPage: (page: Int) -> Unit,
     onCompleteExam: () -> Unit,
@@ -92,6 +94,7 @@ internal fun ExamTabletopContent(
                 ) { pageIndex ->
                     val question = uiState.questions.getOrNull(pageIndex)
                     if (question != null) {
+                        val isBookmarked = question.id in uiState.bookmarkedQuestionIds
                         Column(
                             modifier = Modifier
                                 .fillMaxSize()
@@ -100,11 +103,20 @@ internal fun ExamTabletopContent(
                             horizontalAlignment = Alignment.CenterHorizontally,
                             verticalArrangement = Arrangement.Center,
                         ) {
-                            QuestionImage(
-                                image = getImageResource(question.image),
-                                onClick = { onImageDetailsClick(question.image) },
-                                modifier = Modifier.heightIn(max = 180.dp),
-                            )
+                            Box(modifier = Modifier.fillMaxWidth()) {
+                                QuestionImage(
+                                    image = getImageResource(question.image),
+                                    onClick = { onImageDetailsClick(question.image) },
+                                    modifier = Modifier
+                                        .heightIn(max = 180.dp)
+                                        .align(Alignment.Center),
+                                )
+                                BookmarkToggleButton(
+                                    isBookmarked = isBookmarked,
+                                    onToggle = { onToggleBookmark(question.id) },
+                                    modifier = Modifier.align(Alignment.TopEnd),
+                                )
+                            }
 
                             Spacer(modifier = Modifier.height(12.dp))
 

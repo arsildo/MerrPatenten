@@ -35,6 +35,7 @@ import com.arsildo.merrpatenten.shared.core.designsystem.icons.BookOpen
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.Bus
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.Car
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.Info
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.Star
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.Timer
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.Truck
 import com.arsildo.merrpatenten.shared.feature.dashboard.DashboardUiState
@@ -53,6 +54,7 @@ internal fun DashboardRoute(
     onStatisticsClick: () -> Unit,
     onCatalogClick: () -> Unit,
     onMistakesClick: () -> Unit,
+    onBookmarksClick: () -> Unit = {},
     onDisclaimerClick: () -> Unit,
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
@@ -64,6 +66,7 @@ internal fun DashboardRoute(
         onStatisticsClick = onStatisticsClick,
         onCatalogClick = onCatalogClick,
         onMistakesClick = onMistakesClick,
+        onBookmarksClick = onBookmarksClick,
         onDisclaimerClick = onDisclaimerClick,
     )
 }
@@ -72,6 +75,7 @@ internal fun DashboardRoute(
 internal fun DashboardScreen(
     modifier: Modifier = Modifier,
     onMistakesClick: () -> Unit,
+    onBookmarksClick: () -> Unit = {},
     uiState: DashboardUiState,
     onStartExamClick: (category: String) -> Unit,
     onStartBlitzExamClick: (category: String) -> Unit,
@@ -153,6 +157,7 @@ internal fun DashboardScreen(
                     uiState = uiState,
                     onStatisticsClick = onStatisticsClick,
                     onMistakesClick = onMistakesClick,
+                    onBookmarksClick = onBookmarksClick,
                     onCatalogClick = onCatalogClick,
                     onStartBlitzExamClick = onStartBlitzExamClick,
                     modifier = Modifier.weight(1f),
@@ -175,6 +180,7 @@ internal fun DashboardScreen(
                     uiState = uiState,
                     onStatisticsClick = onStatisticsClick,
                     onMistakesClick = onMistakesClick,
+                    onBookmarksClick = onBookmarksClick,
                     onCatalogClick = onCatalogClick,
                     onStartBlitzExamClick = onStartBlitzExamClick,
                 )
@@ -232,6 +238,7 @@ private fun LearningSection(
     uiState: DashboardUiState,
     onStatisticsClick: () -> Unit,
     onMistakesClick: () -> Unit,
+    onBookmarksClick: () -> Unit,
     onCatalogClick: () -> Unit,
     onStartBlitzExamClick: (category: String) -> Unit,
 ) {
@@ -280,6 +287,33 @@ private fun LearningSection(
             colors = CardDefaults.cardColors(
                 containerColor = if (uiState.mistakesCount > 0) {
                     MaterialTheme.colorScheme.errorContainer
+                        .copy(alpha = 0.45f)
+                        .compositeOver(MaterialTheme.colorScheme.surfaceContainerHigh)
+                } else {
+                    MaterialTheme.colorScheme.surfaceContainerHigh
+                },
+                contentColor = MaterialTheme.colorScheme.onSurface,
+            ),
+        )
+
+        val bookmarkDesc = if (uiState.bookmarksCount > 0) {
+            if (uiState.bookmarksCount == 1) {
+                stringResource(Res.string.bookmarks_badge_count_singular)
+            } else {
+                stringResource(Res.string.bookmarks_badge_count, uiState.bookmarksCount)
+            } + " • " + stringResource(Res.string.bookmarks_dashboard_desc)
+        } else {
+            stringResource(Res.string.bookmarks_dashboard_desc)
+        }
+
+        ExamTypeCard(
+            title = stringResource(Res.string.bookmarks_dashboard_title),
+            description = bookmarkDesc,
+            icon = Star,
+            onClick = onBookmarksClick,
+            colors = CardDefaults.cardColors(
+                containerColor = if (uiState.bookmarksCount > 0) {
+                    MaterialTheme.colorScheme.primaryContainer
                         .copy(alpha = 0.45f)
                         .compositeOver(MaterialTheme.colorScheme.surfaceContainerHigh)
                 } else {

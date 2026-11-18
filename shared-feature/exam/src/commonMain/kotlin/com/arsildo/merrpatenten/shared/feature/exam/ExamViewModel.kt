@@ -2,6 +2,7 @@ package com.arsildo.merrpatenten.shared.feature.exam
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.arsildo.merrpatenten.shared.core.data.BookmarksRepository
 import com.arsildo.merrpatenten.shared.core.data.ExamResultsRepository
 import com.arsildo.merrpatenten.shared.core.data.MistakesRepository
 import com.arsildo.merrpatenten.shared.core.data.QuestionnaireRepository
@@ -64,6 +65,7 @@ internal data class ExamUiState(
     val falseCheckedPositions: List<Boolean> = emptyList(),
     val responseList: List<String> = emptyList(),
     val mistakePositions: List<Int> = emptyList(),
+    val bookmarkedQuestionIds: Set<Int> = emptySet(),
 ) {
     val questionCount: Int get() = examType.questionCount
     val isPassed: Boolean get() = errors <= examType.errorsAllowed
@@ -76,6 +78,7 @@ internal class ExamViewModel(
     private val questionnaireRepository: QuestionnaireRepository,
     private val examResultsRepository: ExamResultsRepository,
     private val mistakesRepository: MistakesRepository,
+    private val bookmarksRepository: BookmarksRepository,
 ) : ViewModel() {
 
     private var timerJob: Job? = null
@@ -108,17 +111,23 @@ internal class ExamViewModel(
         preferencesRepository.getSaveStats,
         preferencesRepository.getImmersiveMode,
         preferencesRepository.getQuestionTextSize,
-    ) { state, saveStats, immersiveMode, questionTextSize ->
+        bookmarksRepository.getBookmarkedQuestionIds(category),
+    ) { state, saveStats, immersiveMode, questionTextSize, bookmarkedIds ->
         state.copy(
             saveStats = saveStats,
             immersiveMode = immersiveMode,
             questionTextSize = questionTextSize,
+            bookmarkedQuestionIds = bookmarkedIds,
         )
     }.stateIn(
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(stopTimeoutMillis = 5_000),
         initialValue = _internalUiState.value,
     )
+
+    fun toggleBookmark(questionId: Int) = viewModelScope.launch {
+        bookmarksRepository.toggleBookmark(questionId = questionId, category = category)
+    }
 
     init {
         startExam()

@@ -2,6 +2,10 @@ package com.arsildo.merrpatenten.shared.ui.navigation
 
 import androidx.navigation3.runtime.NavKey
 import androidx.savedstate.serialization.SavedStateConfiguration
+import com.arsildo.merrpatenten.shared.feature.bookmarks.navigation.Bookmarks
+import com.arsildo.merrpatenten.shared.feature.bookmarks.navigation.BookmarksPractice
+import com.arsildo.merrpatenten.shared.feature.bookmarks.navigation.BookmarksPracticeResultBottomSheet
+import com.arsildo.merrpatenten.shared.feature.bookmarks.navigation.ClearBookmarksBottomSheet
 import com.arsildo.merrpatenten.shared.feature.catalog.navigation.Catalog
 import com.arsildo.merrpatenten.shared.feature.catalog.navigation.SignDetail
 import com.arsildo.merrpatenten.shared.feature.dashboard.navigation.Dashboard
@@ -40,6 +44,10 @@ internal val appSavedStateConfig = SavedStateConfiguration {
             subclass(ClearMistakesBottomSheet::class, ClearMistakesBottomSheet.serializer())
             subclass(MistakesPractice::class, MistakesPractice.serializer())
             subclass(MistakesPracticeResultBottomSheet::class, MistakesPracticeResultBottomSheet.serializer())
+            subclass(Bookmarks::class, Bookmarks.serializer())
+            subclass(ClearBookmarksBottomSheet::class, ClearBookmarksBottomSheet.serializer())
+            subclass(BookmarksPractice::class, BookmarksPractice.serializer())
+            subclass(BookmarksPracticeResultBottomSheet::class, BookmarksPracticeResultBottomSheet.serializer())
         }
     }
 }

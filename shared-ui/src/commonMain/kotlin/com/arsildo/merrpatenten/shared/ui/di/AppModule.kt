@@ -1,6 +1,7 @@
 package com.arsildo.merrpatenten.shared.ui.di
 
 import com.arsildo.merrpatenten.shared.core.data.di.dataModule
+import com.arsildo.merrpatenten.shared.feature.bookmarks.di.bookmarksModule
 import com.arsildo.merrpatenten.shared.feature.catalog.di.catalogModule
 import com.arsildo.merrpatenten.shared.feature.dashboard.di.dashboardModule
 import com.arsildo.merrpatenten.shared.feature.exam.di.examModule
@@ -18,6 +19,7 @@ val appModules = listOf(
     preferencesModule,
     catalogModule,
     mistakesModule,
+    bookmarksModule,
 )
 
 fun initKoin() {

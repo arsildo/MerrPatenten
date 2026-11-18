@@ -71,6 +71,7 @@ internal fun ExamRoute(
         onRestartExam = onRestartExam,
         onCheckTrueAtPage = viewModel::checkTrueAtPosition,
         onCheckFalseAtPage = viewModel::checkFalseAtPosition,
+        onToggleBookmark = viewModel::toggleBookmark,
         onCompleteExam = viewModel::completeExam,
     )
 
@@ -97,6 +98,7 @@ internal fun ExamScreen(
     onRestartExam: () -> Unit,
     onCheckTrueAtPage: (page: Int) -> Unit,
     onCheckFalseAtPage: (page: Int) -> Unit,
+    onToggleBookmark: (questionId: Int) -> Unit = {},
     onCompleteExam: () -> Unit,
 ) {
     val hapticFeedback = LocalHapticFeedback.current
@@ -321,6 +323,7 @@ internal fun ExamScreen(
                         onShowEndExam = { endExamVisible = !endExamVisible },
                         onOpenMap = onOpenMap,
                         onImageDetailsClick = onImageDetailsClick,
+                        onToggleBookmark = onToggleBookmark,
                         onCheckFalseAtPage = onCheckFalseAtPage,
                         onCheckTrueAtPage = onCheckTrueAtPage,
                         onCompleteExam = {
@@ -359,6 +362,7 @@ internal fun ExamScreen(
                         onShowEndExam = { endExamVisible = !endExamVisible },
                         onOpenMap = onOpenMap,
                         onImageDetailsClick = onImageDetailsClick,
+                        onToggleBookmark = onToggleBookmark,
                         onCheckFalseAtPage = onCheckFalseAtPage,
                         onCheckTrueAtPage = onCheckTrueAtPage,
                         onCompleteExam = {
@@ -433,6 +437,8 @@ internal fun ExamScreen(
                             isCompleted = uiState.isCompleted,
                             responses = uiState.mistakePositions,
                             questionTextSize = uiState.questionTextSize,
+                            bookmarkedQuestionIds = uiState.bookmarkedQuestionIds,
+                            onToggleBookmark = onToggleBookmark,
                         )
 
                         LaunchedEffect(pagerState.settledPage) {

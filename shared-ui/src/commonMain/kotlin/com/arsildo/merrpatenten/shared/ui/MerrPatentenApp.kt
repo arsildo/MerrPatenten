@@ -21,6 +21,11 @@ import androidx.navigation3.ui.defaultPopTransitionSpec
 import androidx.navigation3.ui.defaultTransitionSpec
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
 import com.arsildo.merrpatenten.shared.core.designsystem.adaptive.rememberAppAdaptiveInfo
+import com.arsildo.merrpatenten.shared.feature.bookmarks.navigation.Bookmarks
+import com.arsildo.merrpatenten.shared.feature.bookmarks.navigation.BookmarksPractice
+import com.arsildo.merrpatenten.shared.feature.bookmarks.navigation.BookmarksPracticeResultBottomSheet
+import com.arsildo.merrpatenten.shared.feature.bookmarks.navigation.ClearBookmarksBottomSheet
+import com.arsildo.merrpatenten.shared.feature.bookmarks.navigation.bookmarksEntry
 import com.arsildo.merrpatenten.shared.feature.catalog.navigation.Catalog
 import com.arsildo.merrpatenten.shared.feature.catalog.navigation.catalogEntry
 import com.arsildo.merrpatenten.shared.feature.dashboard.navigation.Dashboard
@@ -92,8 +97,13 @@ fun MerrPatentenApp() {
 
         val currentTopLevel = navigator.currentTab ?: Dashboard
         val showFloatingToolbar = when (navigator.currentKey) {
-            is Exam, is ExamResultBottomSheet, is ExitExamBottomSheet, is ZoomableImage -> false
-            else -> navigator.state.currentSubStack?.none { it is Exam || it is ZoomableImage } != false
+            is Exam, is ExamResultBottomSheet, is ExitExamBottomSheet, is ZoomableImage,
+            is Bookmarks, is ClearBookmarksBottomSheet, is BookmarksPractice, is BookmarksPracticeResultBottomSheet,
+            -> false
+
+            else -> navigator.state.currentSubStack?.none {
+                it is Exam || it is ZoomableImage || it is Bookmarks || it is BookmarksPractice
+            } != false
         }
 
         val dashboardSubStack = navigator.state.subStacks[Dashboard] ?: error("Dashboard stack missing")
@@ -112,6 +122,12 @@ fun MerrPatentenApp() {
                     onPreferencesClick = { navigator.navigate(Preferences) },
                     onCatalogClick = { navigator.navigate(Catalog) },
                     onMistakesClick = { navigator.navigate(Mistakes) },
+                    onBookmarksClick = { navigator.navigate(Bookmarks) },
+                )
+                bookmarksEntry(
+                    backStack = dashboardSubStack,
+                    onBackPress = { navigator.goBack() },
+                    onImageDetailsClick = { imageId -> navigator.navigate(ZoomableImage(imageId)) },
                 )
                 catalogEntry(
                     backStack = catalogSubStack,

@@ -25,6 +25,7 @@ fun EntryProviderScope<NavKey>.dashboardEntry(
     onPreferencesClick: () -> Unit,
     onCatalogClick: () -> Unit,
     onMistakesClick: () -> Unit,
+    onBookmarksClick: () -> Unit = {},
 ) {
     entry<Dashboard> {
         DashboardRoute(
@@ -34,6 +35,7 @@ fun EntryProviderScope<NavKey>.dashboardEntry(
             onPreferencesClick = onPreferencesClick,
             onCatalogClick = onCatalogClick,
             onMistakesClick = onMistakesClick,
+            onBookmarksClick = onBookmarksClick,
             onDisclaimerClick = { backStack.add(Disclaimer) },
         )
     }
