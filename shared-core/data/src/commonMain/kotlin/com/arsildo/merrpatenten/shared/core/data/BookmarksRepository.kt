@@ -1,9 +1,10 @@
 package com.arsildo.merrpatenten.shared.core.data
 
-import com.arsildo.merrpatenten.shared.core.database.BookmarkedQuestionEntity
 import com.arsildo.merrpatenten.shared.core.database.BookmarksDAO
 import com.arsildo.merrpatenten.shared.core.database.QuestionnaireDAO
 import com.arsildo.merrpatenten.shared.core.database.toDomain
+import com.arsildo.merrpatenten.shared.core.database.toEntity
+import com.arsildo.merrpatenten.shared.core.model.BookmarkRecord
 import com.arsildo.merrpatenten.shared.core.model.BookmarkedQuestion
 import kotlin.time.Clock
 import kotlin.time.ExperimentalTime
@@ -57,11 +58,11 @@ class BookmarksRepository(private val questionnaireDAO: QuestionnaireDAO, privat
         } else {
             val now = Clock.System.now().toEpochMilliseconds()
             bookmarksDAO.insert(
-                BookmarkedQuestionEntity(
+                BookmarkRecord(
                     questionId = questionId,
                     category = category,
                     createdAt = now,
-                ),
+                ).toEntity(),
             )
             true
         }
