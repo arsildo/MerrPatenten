@@ -203,7 +203,7 @@ fun BookmarksScreen(
                 textStyle = MaterialTheme.typography.bodyMedium,
                 placeholder = {
                     Text(
-                        text = stringResource(Res.string.catalog_search_placeholder),
+                        text = stringResource(Res.string.bookmarks_search_placeholder),
                         style = MaterialTheme.typography.bodyMedium,
                     )
                 },
@@ -238,12 +238,12 @@ fun BookmarksScreen(
                     .padding(horizontal = 16.dp, vertical = 4.dp),
             )
 
-            if (uiState.bookmarks.isEmpty()) {
+            if (uiState.bookmarks.isEmpty() && !uiState.isLoading) {
                 BookmarksEmptyView(
                     isFiltered = uiState.searchQuery.isNotBlank(),
                     modifier = Modifier.fillMaxSize(),
                 )
-            } else {
+            } else if (uiState.bookmarks.isNotEmpty()) {
                 LazyVerticalGrid(
                     columns = GridCells.Adaptive(minSize = 340.dp),
                     contentPadding = PaddingValues(
@@ -440,7 +440,7 @@ private fun BookmarksEmptyView(isFiltered: Boolean, modifier: Modifier = Modifie
 
             Text(
                 text = stringResource(
-                    if (isFiltered) Res.string.catalog_empty_results else Res.string.bookmarks_empty_title,
+                    if (isFiltered) Res.string.bookmarks_empty_results else Res.string.bookmarks_empty_title,
                 ),
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.Bold,

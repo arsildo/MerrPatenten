@@ -179,6 +179,8 @@
     <string name="bookmarks_badge_count_singular">1 saved</string>
     <string name="bookmarks_empty_title">No Saved Questions</string>
     <string name="bookmarks_empty_desc">Tap the star icon on any exam question to save it here for quick review.</string>
+    <string name="bookmarks_search_placeholder">Search questions or ID...</string>
+    <string name="bookmarks_empty_results">No matching questions found</string>
     <string name="bookmarks_start_practice">Practice Saved (%1$d)</string>
     <string name="bookmarks_practice_title">Saved Practice</string>
     <string name="bookmarks_clear_category">Clear category bookmarks</string>
