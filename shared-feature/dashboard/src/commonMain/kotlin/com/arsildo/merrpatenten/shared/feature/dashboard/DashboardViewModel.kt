@@ -2,6 +2,7 @@ package com.arsildo.merrpatenten.shared.feature.dashboard
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.arsildo.merrpatenten.shared.core.data.BookmarksRepository
 import com.arsildo.merrpatenten.shared.core.data.ExamResultsRepository
 import com.arsildo.merrpatenten.shared.core.data.MistakesRepository
 import com.arsildo.merrpatenten.shared.core.data.ReadinessScore
@@ -11,17 +12,27 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 
-internal data class DashboardUiState(val readinessScore: ReadinessScore = ReadinessScore.EMPTY, val mistakesCount: Int = 0)
+internal data class DashboardUiState(
+    val readinessScore: ReadinessScore = ReadinessScore.EMPTY,
+    val mistakesCount: Int = 0,
+    val bookmarksCount: Int = 0,
+)
 
-internal class DashboardViewModel(examResultsRepository: ExamResultsRepository, mistakesRepository: MistakesRepository) : ViewModel() {
+internal class DashboardViewModel(
+    examResultsRepository: ExamResultsRepository,
+    mistakesRepository: MistakesRepository,
+    bookmarksRepository: BookmarksRepository,
+) : ViewModel() {
 
     val uiState: StateFlow<DashboardUiState> = combine(
         examResultsRepository.getAllResults(),
         mistakesRepository.getTotalMistakesCount(),
-    ) { results, mistakesCount ->
+        bookmarksRepository.getTotalBookmarksCount(),
+    ) { results, mistakesCount, bookmarksCount ->
         DashboardUiState(
             readinessScore = calculateReadinessScore(results),
             mistakesCount = mistakesCount,
+            bookmarksCount = bookmarksCount,
         )
     }.stateIn(
         scope = viewModelScope,
