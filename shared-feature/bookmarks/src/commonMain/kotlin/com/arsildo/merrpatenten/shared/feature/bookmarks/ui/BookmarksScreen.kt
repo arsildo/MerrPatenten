@@ -23,6 +23,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.arsildo.merrpatenten.shared.core.designsystem.components.CategoryTabs
 import com.arsildo.merrpatenten.shared.core.designsystem.formatQuestion
 import com.arsildo.merrpatenten.shared.core.designsystem.getImageResource
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.ArrowLeft
@@ -259,7 +260,8 @@ fun BookmarksScreen(
                 ) {
                     items(
                         items = uiState.bookmarks,
-                        key = { "${it.question.id}_${it.question.category}" },
+                        key = { it.question.id },
+                        contentType = { "bookmark" },
                     ) { item ->
                         BookmarkedQuestionCard(
                             item = item,
@@ -272,26 +274,6 @@ fun BookmarksScreen(
                         )
                     }
                 }
-            }
-        }
-    }
-}
-
-@Composable
-private fun CategoryTabs(selectedCategory: String, onCategorySelected: (category: String) -> Unit, modifier: Modifier = Modifier) {
-    val categories = listOf("B", "C", "D")
-
-    SingleChoiceSegmentedButtonRow(modifier = modifier) {
-        categories.forEachIndexed { index, catKey ->
-            SegmentedButton(
-                selected = selectedCategory == catKey,
-                onClick = { onCategorySelected(catKey) },
-                shape = SegmentedButtonDefaults.itemShape(index = index, count = categories.size),
-            ) {
-                Text(
-                    text = catKey,
-                    fontWeight = if (selectedCategory == catKey) FontWeight.Bold else FontWeight.Normal,
-                )
             }
         }
     }
