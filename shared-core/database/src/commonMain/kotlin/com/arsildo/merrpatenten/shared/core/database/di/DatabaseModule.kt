@@ -5,6 +5,7 @@ import androidx.room.migration.Migration
 import androidx.sqlite.SQLiteConnection
 import androidx.sqlite.driver.bundled.BundledSQLiteDriver
 import androidx.sqlite.execSQL
+import com.arsildo.merrpatenten.shared.core.database.BookmarksDAO
 import com.arsildo.merrpatenten.shared.core.database.ExamResultsDAO
 import com.arsildo.merrpatenten.shared.core.database.MerrPatentenDatabase
 import com.arsildo.merrpatenten.shared.core.database.MistakesDAO
@@ -22,6 +23,7 @@ val databaseModule = module {
     single<QuestionnaireDAO> { get<MerrPatentenDatabase>().questionnaireDAO() }
     single<ExamResultsDAO> { get<MerrPatentenDatabase>().examResultsDAO() }
     single<MistakesDAO> { get<MerrPatentenDatabase>().mistakesDAO() }
+    single<BookmarksDAO> { get<MerrPatentenDatabase>().bookmarksDAO() }
 }
 
 val MIGRATION_1_2 = object : Migration(1, 2) {
@@ -41,8 +43,23 @@ val MIGRATION_1_2 = object : Migration(1, 2) {
     }
 }
 
+val MIGRATION_2_3 = object : Migration(2, 3) {
+    override fun migrate(connection: SQLiteConnection) {
+        connection.execSQL(
+            """
+            CREATE TABLE IF NOT EXISTS bookmarked_questions (
+                question_id INTEGER NOT NULL,
+                category TEXT NOT NULL DEFAULT 'B',
+                created_at INTEGER NOT NULL DEFAULT 0,
+                PRIMARY KEY(question_id, category)
+            );
+            """.trimIndent(),
+        )
+    }
+}
+
 internal fun getRoomDatabase(builder: RoomDatabase.Builder<MerrPatentenDatabase>): MerrPatentenDatabase = builder
-    .addMigrations(MIGRATION_1_2)
+    .addMigrations(MIGRATION_1_2, MIGRATION_2_3)
     .fallbackToDestructiveMigration(true)
     .fallbackToDestructiveMigrationOnDowngrade(true)
     .addCallback(
@@ -56,6 +73,16 @@ internal fun getRoomDatabase(builder: RoomDatabase.Builder<MerrPatentenDatabase>
                         error_count INTEGER NOT NULL DEFAULT 1,
                         consecutive_correct INTEGER NOT NULL DEFAULT 0,
                         last_tested_at INTEGER NOT NULL DEFAULT 0,
+                        PRIMARY KEY(question_id, category)
+                    );
+                    """.trimIndent(),
+                )
+                connection.execSQL(
+                    """
+                    CREATE TABLE IF NOT EXISTS bookmarked_questions (
+                        question_id INTEGER NOT NULL,
+                        category TEXT NOT NULL DEFAULT 'B',
+                        created_at INTEGER NOT NULL DEFAULT 0,
                         PRIMARY KEY(question_id, category)
                     );
                     """.trimIndent(),
