@@ -23,6 +23,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.arsildo.merrpatenten.shared.core.designsystem.formatQuestion
 import com.arsildo.merrpatenten.shared.core.designsystem.getImageResource
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.ArrowLeft
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleCheck
@@ -340,7 +341,7 @@ private fun BookmarkedQuestionCard(
                         ),
                     )
 
-                    val isTrue = item.question.answer.equals("Saktë", ignoreCase = true)
+                    val isTrue = item.question.answer.trim().equals("Saktë", ignoreCase = true)
                     Badge(
                         containerColor = if (isTrue) {
                             MaterialTheme.semanticColors.successContainer
@@ -405,7 +406,7 @@ private fun BookmarkedQuestionCard(
             }
 
             Text(
-                text = item.question.question,
+                text = formatQuestion(item.question.question),
                 style = MaterialTheme.typography.bodyLarge,
                 color = MaterialTheme.colorScheme.onSurface,
             )

@@ -26,6 +26,7 @@ import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.arsildo.merrpatenten.shared.core.designsystem.formatQuestion
 import com.arsildo.merrpatenten.shared.core.designsystem.getImageResource
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.ArrowLeft
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.ArrowRight
@@ -233,7 +234,7 @@ fun BookmarksPracticeScreen(
                             }
 
                             Text(
-                                text = currentItem.question.question,
+                                text = formatQuestion(currentItem.question.question),
                                 style = MaterialTheme.typography.titleMedium,
                                 fontWeight = FontWeight.SemiBold,
                                 color = MaterialTheme.colorScheme.onSurface,
@@ -246,27 +247,27 @@ fun BookmarksPracticeScreen(
                         horizontalArrangement = Arrangement.spacedBy(12.dp),
                     ) {
                         PracticeAnswerButton(
-                            label = stringResource(Res.string.true_checkbox),
-                            icon = CircleCheck,
-                            isSelected = uiState.selectedAnswer == "Saktë",
-                            isCorrectTarget = currentItem.question.answer.equals("Saktë", ignoreCase = true),
+                            label = stringResource(Res.string.false_checkbox),
+                            icon = CircleX,
+                            isSelected = uiState.selectedAnswer == "Gabim",
+                            isCorrectTarget = currentItem.question.answer.trim().equals("Gabim", ignoreCase = true),
                             isRevealed = uiState.isAnswerRevealed,
                             onClick = {
                                 hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                                onSubmitAnswer("Saktë")
+                                onSubmitAnswer("Gabim")
                             },
                             modifier = Modifier.weight(1f),
                         )
 
                         PracticeAnswerButton(
-                            label = stringResource(Res.string.false_checkbox),
-                            icon = CircleX,
-                            isSelected = uiState.selectedAnswer == "Gabim",
-                            isCorrectTarget = currentItem.question.answer.equals("Gabim", ignoreCase = true),
+                            label = stringResource(Res.string.true_checkbox),
+                            icon = CircleCheck,
+                            isSelected = uiState.selectedAnswer == "Saktë",
+                            isCorrectTarget = currentItem.question.answer.trim().equals("Saktë", ignoreCase = true),
                             isRevealed = uiState.isAnswerRevealed,
                             onClick = {
                                 hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                                onSubmitAnswer("Gabim")
+                                onSubmitAnswer("Saktë")
                             },
                             modifier = Modifier.weight(1f),
                         )
