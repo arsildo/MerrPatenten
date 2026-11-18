@@ -16,3 +16,7 @@ data class MistakeRecord(
 
 @Serializable
 data class MistakeQuestion(val question: Question, val record: MistakeRecord)
+
+data class BookmarkRecord(val questionId: Int, val category: String = "B", val createdAt: Long = 0L)
+
+data class BookmarkedQuestion(val question: Question, val record: BookmarkRecord)
