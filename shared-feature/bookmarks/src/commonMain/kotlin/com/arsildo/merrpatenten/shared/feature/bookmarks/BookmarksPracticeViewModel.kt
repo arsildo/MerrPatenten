@@ -20,7 +20,6 @@ data class BookmarksPracticeUiState(
     val isAnswerCorrect: Boolean = false,
     val correctCount: Int = 0,
     val totalAnsweredCount: Int = 0,
-    val isPracticeFinished: Boolean = false,
     val isLoading: Boolean = true,
 ) {
     val currentQuestion: BookmarkedQuestion?
@@ -48,7 +47,6 @@ class BookmarksPracticeViewModel(private val category: String, private val bookm
                 isAnswerCorrect = false,
                 correctCount = 0,
                 totalAnsweredCount = 0,
-                isPracticeFinished = list.isEmpty(),
                 isLoading = false,
             )
         }
@@ -74,9 +72,7 @@ class BookmarksPracticeViewModel(private val category: String, private val bookm
     fun nextQuestion() {
         val state = _uiState.value
         val nextIdx = state.currentIndex + 1
-        if (nextIdx >= state.questions.size) {
-            _uiState.update { it.copy(isPracticeFinished = true) }
-        } else {
+        if (nextIdx < state.questions.size) {
             _uiState.update {
                 it.copy(
                     currentIndex = nextIdx,

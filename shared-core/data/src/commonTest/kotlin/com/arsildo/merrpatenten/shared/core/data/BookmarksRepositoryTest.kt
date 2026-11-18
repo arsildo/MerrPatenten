@@ -33,8 +33,6 @@ private class FakeBookmarksDAO : BookmarksDAO {
 
     private fun key(id: Int, cat: String) = "${id}_$cat"
 
-    override fun getAllBookmarks(): Flow<List<BookmarkedQuestionEntity>> = records.map { it.values.toList() }
-
     override fun getBookmarksByCategory(category: String): Flow<List<BookmarkedQuestionEntity>> =
         records.map { it.values.filter { r -> r.category == category } }
 
@@ -61,12 +59,6 @@ private class FakeBookmarksDAO : BookmarksDAO {
         current.entries.removeAll { it.value.category == category }
         records.value = current
     }
-
-    override suspend fun deleteAll() {
-        records.value = emptyMap()
-    }
-
-    override fun getBookmarksCountByCategory(category: String): Flow<Int> = records.map { it.values.count { r -> r.category == category } }
 
     override fun getTotalBookmarksCount(): Flow<Int> = records.map { it.size }
 }
@@ -110,8 +102,9 @@ class BookmarksRepositoryTest {
         assertEquals(1, bBookmarks.size)
         assertEquals("Q1", bBookmarks.first().question.question)
 
-        val allBookmarks = repo.getAllBookmarkedQuestions().first()
-        assertEquals(2, allBookmarks.size)
+        val cBookmarks = repo.getBookmarkedQuestions("C").first()
+        assertEquals(1, cBookmarks.size)
+        assertEquals("Q2", cBookmarks.first().question.question)
     }
 
     @Test
@@ -125,8 +118,8 @@ class BookmarksRepositoryTest {
 
         repo.clearBookmarksByCategory("B")
 
-        assertEquals(0, repo.getBookmarksCount("B").first())
-        assertEquals(1, repo.getBookmarksCount("C").first())
+        assertEquals(emptySet(), repo.getBookmarkedQuestionIds("B").first())
+        assertEquals(setOf(2), repo.getBookmarkedQuestionIds("C").first())
         assertEquals(1, repo.getTotalBookmarksCount().first())
     }
 }

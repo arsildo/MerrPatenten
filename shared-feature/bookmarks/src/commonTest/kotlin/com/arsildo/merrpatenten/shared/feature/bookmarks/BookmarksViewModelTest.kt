@@ -42,8 +42,6 @@ private class FakeBookmarksDAO : BookmarksDAO {
     private val records = MutableStateFlow<Map<String, BookmarkedQuestionEntity>>(emptyMap())
     private fun key(id: Int, cat: String) = "${id}_$cat"
 
-    override fun getAllBookmarks(): Flow<List<BookmarkedQuestionEntity>> = records.map { it.values.toList() }
-
     override fun getBookmarksByCategory(category: String): Flow<List<BookmarkedQuestionEntity>> =
         records.map { it.values.filter { r -> r.category == category } }
 
@@ -64,12 +62,6 @@ private class FakeBookmarksDAO : BookmarksDAO {
     override suspend fun deleteAllByCategory(category: String) {
         records.value = records.value.filterValues { it.category != category }
     }
-
-    override suspend fun deleteAll() {
-        records.value = emptyMap()
-    }
-
-    override fun getBookmarksCountByCategory(category: String): Flow<Int> = records.map { it.values.count { r -> r.category == category } }
 
     override fun getTotalBookmarksCount(): Flow<Int> = records.map { it.size }
 }
@@ -125,7 +117,7 @@ class BookmarksViewModelTest {
         val vm = BookmarksPracticeViewModel(category = "B", bookmarksRepository = repo)
         val state0 = vm.uiState.value
         assertEquals(2, state0.questions.size)
-        assertFalse(state0.isPracticeFinished)
+        assertEquals(0, state0.currentIndex)
 
         val firstCorrectAnswer = state0.currentQuestion!!.question.answer
         vm.submitAnswer(firstCorrectAnswer)
@@ -146,6 +138,6 @@ class BookmarksViewModelTest {
         assertEquals(2, vm.uiState.value.totalAnsweredCount)
 
         vm.nextQuestion()
-        assertTrue(vm.uiState.value.isPracticeFinished)
+        assertEquals(1, vm.uiState.value.currentIndex)
     }
 }

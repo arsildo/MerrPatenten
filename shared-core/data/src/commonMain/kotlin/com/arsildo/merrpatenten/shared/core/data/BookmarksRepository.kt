@@ -28,24 +28,7 @@ class BookmarksRepository(private val questionnaireDAO: QuestionnaireDAO, privat
         }
     }
 
-    fun getAllBookmarkedQuestions(): Flow<List<BookmarkedQuestion>> = combine(
-        questionnaireDAO.getAll(),
-        bookmarksDAO.getAllBookmarks(),
-    ) { questions, records ->
-        val questionMap = questions.associateBy { "${it.id}_${it.category}" }
-        records.mapNotNull { record ->
-            questionMap["${record.questionId}_${record.category}"]?.let { questionEntity ->
-                BookmarkedQuestion(
-                    question = questionEntity.toDomain(),
-                    record = record.toDomain(),
-                )
-            }
-        }
-    }
-
     fun getBookmarkedQuestionIds(category: String): Flow<Set<Int>> = bookmarksDAO.getBookmarkedQuestionIds(category).map { it.toSet() }
-
-    fun getBookmarksCount(category: String): Flow<Int> = bookmarksDAO.getBookmarksCountByCategory(category)
 
     fun getTotalBookmarksCount(): Flow<Int> = bookmarksDAO.getTotalBookmarksCount()
 
@@ -74,9 +57,5 @@ class BookmarksRepository(private val questionnaireDAO: QuestionnaireDAO, privat
 
     suspend fun clearBookmarksByCategory(category: String) {
         bookmarksDAO.deleteAllByCategory(category)
-    }
-
-    suspend fun clearAllBookmarks() {
-        bookmarksDAO.deleteAll()
     }
 }
