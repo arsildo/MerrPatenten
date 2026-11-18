@@ -23,13 +23,17 @@ import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleCheck
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleX
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.LogOut
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.RotateCcw
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.Star
 import com.arsildo.merrpatenten.shared.core.designsystem.semanticColors
 import com.arsildo.merrpatenten.shared.feature.exam.ExamUiState
 import merrpatenten.shared_core.design_system.generated.resources.Res
+import merrpatenten.shared_core.design_system.generated.resources.bookmarks_toggle_add
+import merrpatenten.shared_core.design_system.generated.resources.bookmarks_toggle_remove
 import merrpatenten.shared_core.design_system.generated.resources.false_checkbox
 import merrpatenten.shared_core.design_system.generated.resources.true_checkbox
 import org.jetbrains.compose.resources.stringResource
 
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 internal fun ExamTabletopContent(
     uiState: ExamUiState,
@@ -39,6 +43,7 @@ internal fun ExamTabletopContent(
     onShowEndExam: () -> Unit,
     onOpenMap: () -> Unit,
     onImageDetailsClick: (index: Int) -> Unit,
+    onToggleBookmark: (questionId: Int) -> Unit,
     onCheckFalseAtPage: (page: Int) -> Unit,
     onCheckTrueAtPage: (page: Int) -> Unit,
     onCompleteExam: () -> Unit,
@@ -92,6 +97,7 @@ internal fun ExamTabletopContent(
                 ) { pageIndex ->
                     val question = uiState.questions.getOrNull(pageIndex)
                     if (question != null) {
+                        val isBookmarked = question.id in uiState.bookmarkedQuestionIds
                         Column(
                             modifier = Modifier
                                 .fillMaxSize()
@@ -100,11 +106,38 @@ internal fun ExamTabletopContent(
                             horizontalAlignment = Alignment.CenterHorizontally,
                             verticalArrangement = Arrangement.Center,
                         ) {
-                            QuestionImage(
-                                image = getImageResource(question.image),
-                                onClick = { onImageDetailsClick(question.image) },
-                                modifier = Modifier.heightIn(max = 180.dp),
-                            )
+                            Box(modifier = Modifier.fillMaxWidth()) {
+                                QuestionImage(
+                                    image = getImageResource(question.image),
+                                    onClick = { onImageDetailsClick(question.image) },
+                                    modifier = Modifier
+                                        .heightIn(max = 180.dp)
+                                        .align(Alignment.Center),
+                                )
+                                FilledTonalIconToggleButton(
+                                    checked = isBookmarked,
+                                    onCheckedChange = { onToggleBookmark(question.id) },
+                                    shapes = IconButtonDefaults.toggleableShapes(),
+                                    colors = IconButtonDefaults.filledTonalIconToggleButtonColors(
+                                        containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
+                                        contentColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                                        checkedContainerColor = MaterialTheme.colorScheme.primaryContainer,
+                                        checkedContentColor = MaterialTheme.colorScheme.primary,
+                                    ),
+                                    modifier = Modifier.align(Alignment.TopEnd),
+                                ) {
+                                    Icon(
+                                        imageVector = Star,
+                                        contentDescription = stringResource(
+                                            if (isBookmarked) {
+                                                Res.string.bookmarks_toggle_remove
+                                            } else {
+                                                Res.string.bookmarks_toggle_add
+                                            },
+                                        ),
+                                    )
+                                }
+                            }
 
                             Spacer(modifier = Modifier.height(12.dp))
 

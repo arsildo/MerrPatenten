@@ -33,6 +33,7 @@ internal fun ExamDualPaneContent(
     onShowEndExam: () -> Unit,
     onOpenMap: () -> Unit,
     onImageDetailsClick: (index: Int) -> Unit,
+    onToggleBookmark: (questionId: Int) -> Unit,
     onCheckFalseAtPage: (page: Int) -> Unit,
     onCheckTrueAtPage: (page: Int) -> Unit,
     onCompleteExam: () -> Unit,
@@ -105,6 +106,8 @@ internal fun ExamDualPaneContent(
                         isCompleted = uiState.isCompleted,
                         responses = uiState.mistakePositions,
                         questionTextSize = uiState.questionTextSize,
+                        bookmarkedQuestionIds = uiState.bookmarkedQuestionIds,
+                        onToggleBookmark = onToggleBookmark,
                     )
                 }
 

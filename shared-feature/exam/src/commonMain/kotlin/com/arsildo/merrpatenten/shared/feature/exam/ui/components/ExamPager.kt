@@ -27,6 +27,8 @@ internal fun ExamPager(
     isCompleted: Boolean,
     responses: List<Int>,
     questionTextSize: QuestionTextSize = QuestionTextSize.DEFAULT,
+    bookmarkedQuestionIds: Set<Int> = emptySet(),
+    onToggleBookmark: (questionId: Int) -> Unit = {},
 ) {
     HorizontalPager(
         state = pagerState,
@@ -36,15 +38,18 @@ internal fun ExamPager(
         modifier = modifier.fillMaxSize(),
     ) { page ->
         if (page < questions.size) {
+            val question = questions[page]
             QuestionItem(
                 isCompleted = isCompleted,
                 correct = page < responses.size && responses[page] == 0,
-                image = getImageResource(id = questions[page].image),
-                onImageClick = { onImageClick(questions[page].image) },
-                question = questions[page].question,
+                image = getImageResource(id = question.image),
+                onImageClick = { onImageClick(question.image) },
+                question = question.question,
                 falseChecked = page < falseCheckedPages.size && falseCheckedPages[page],
                 trueChecked = page < trueCheckedPages.size && trueCheckedPages[page],
                 questionTextSize = questionTextSize,
+                isBookmarked = question.id in bookmarkedQuestionIds,
+                onToggleBookmark = { onToggleBookmark(question.id) },
                 onFalseCheckedChange = { onCheckFalseAtPage(page) },
                 onTrueCheckedChange = { onCheckTrueAtPage(page) },
             )

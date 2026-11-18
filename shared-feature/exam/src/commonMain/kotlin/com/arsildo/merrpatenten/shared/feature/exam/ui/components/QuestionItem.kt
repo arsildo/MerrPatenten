@@ -7,6 +7,8 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -17,11 +19,13 @@ import com.arsildo.merrpatenten.shared.core.designsystem.formatQuestion
 import com.arsildo.merrpatenten.shared.core.designsystem.getImageResource
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleCheck
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleX
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.Star
 import com.arsildo.merrpatenten.shared.core.designsystem.semanticColors
 import merrpatenten.shared_core.design_system.generated.resources.*
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.stringResource
 
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 internal fun QuestionItem(
     modifier: Modifier = Modifier,
@@ -33,9 +37,12 @@ internal fun QuestionItem(
     falseChecked: Boolean,
     trueChecked: Boolean,
     questionTextSize: QuestionTextSize = QuestionTextSize.DEFAULT,
+    isBookmarked: Boolean = false,
+    onToggleBookmark: (() -> Unit)? = null,
     onFalseCheckedChange: (checked: Boolean) -> Unit,
     onTrueCheckedChange: (checked: Boolean) -> Unit,
 ) {
+    val hapticFeedback = LocalHapticFeedback.current
     Card(
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surfaceContainerLow,
@@ -56,8 +63,43 @@ internal fun QuestionItem(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
-                // Question Image
-                QuestionImage(image = image, onClick = onImageClick)
+                Box(modifier = Modifier.fillMaxWidth()) {
+                    // Question Image
+                    QuestionImage(
+                        image = image,
+                        onClick = onImageClick,
+                        modifier = Modifier.align(Alignment.Center),
+                    )
+
+                    if (onToggleBookmark != null) {
+                        FilledTonalIconToggleButton(
+                            checked = isBookmarked,
+                            onCheckedChange = {
+                                hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+                                onToggleBookmark()
+                            },
+                            shapes = IconButtonDefaults.toggleableShapes(),
+                            colors = IconButtonDefaults.filledTonalIconToggleButtonColors(
+                                containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
+                                contentColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                                checkedContainerColor = MaterialTheme.colorScheme.primaryContainer,
+                                checkedContentColor = MaterialTheme.colorScheme.primary,
+                            ),
+                            modifier = Modifier.align(Alignment.TopEnd),
+                        ) {
+                            Icon(
+                                imageVector = Star,
+                                contentDescription = stringResource(
+                                    if (isBookmarked) {
+                                        Res.string.bookmarks_toggle_remove
+                                    } else {
+                                        Res.string.bookmarks_toggle_add
+                                    },
+                                ),
+                            )
+                        }
+                    }
+                }
 
                 Spacer(modifier = Modifier.height(16.dp))
 
