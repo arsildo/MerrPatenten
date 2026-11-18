@@ -56,12 +56,8 @@ fun BookmarksPracticeRoute(
         onBackPress = onBackPress,
         onSubmitAnswer = viewModel::submitAnswer,
         onNextQuestion = {
-            if (uiState.currentIndex + 1 >= uiState.questions.size) {
-                viewModel.nextQuestion()
-                onPracticeFinished()
-            } else {
-                viewModel.nextQuestion()
-            }
+            if (uiState.currentIndex + 1 >= uiState.questions.size) onPracticeFinished()
+            viewModel.nextQuestion()
         },
         onImageDetailsClick = onImageDetailsClick,
     )
