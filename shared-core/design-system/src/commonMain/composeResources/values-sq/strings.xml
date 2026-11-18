@@ -170,4 +170,23 @@
     <string name="mistakes_practice_correct_streak">Saktë! %1$d/%2$d radhazi për t&apos;u hequr nga lista.</string>
     <string name="mistakes_practice_graduated">Shkëlqyer! Ju e përvetësuat këtë pyetje.</string>
     <string name="mistakes_practice_wrong">Gabim. Gabimi u regjistrua dhe ecuria u rivendos.</string>
+
+    <!-- Pyetjet e Ruajtura -->
+    <string name="bookmarks_title">Pyetjet e Ruajtura</string>
+    <string name="bookmarks_dashboard_title">Pyetjet e Ruajtura</string>
+    <string name="bookmarks_dashboard_desc">Rishiko dhe praktiko pyetjet që ke ruajtur</string>
+    <string name="bookmarks_badge_count">%1$d të ruajtura</string>
+    <string name="bookmarks_badge_count_singular">1 e ruajtur</string>
+    <string name="bookmarks_empty_title">Nuk ka pyetje të ruajtura</string>
+    <string name="bookmarks_empty_desc">Prek ikonën e yllit në çdo pyetje provimi për ta ruajtur këtu.</string>
+    <string name="bookmarks_start_practice">Praktiko të Ruajturat (%1$d)</string>
+    <string name="bookmarks_practice_title">Praktika e të Ruajturave</string>
+    <string name="bookmarks_clear_category">Pastro të ruajturat e kategorisë</string>
+    <string name="bookmarks_clear_category_desc">Të gjitha pyetjet e ruajtura për këtë kategori do të hiqen.</string>
+    <string name="bookmarks_toggle_add">Ruaj pyetjen</string>
+    <string name="bookmarks_toggle_remove">Hiq nga të ruajturat</string>
+    <string name="bookmarks_practice_complete_title">Praktika Përfundoi!</string>
+    <string name="bookmarks_practice_complete_desc">Ju praktikuat %1$d pyetje të ruajtura dhe u përgjigjët saktë në %2$d prej tyre.</string>
+    <string name="bookmarks_practice_correct">Saktë!</string>
+    <string name="bookmarks_practice_wrong">Gabim. Përgjigjja e saktë: %1$s.</string>
 </resources>

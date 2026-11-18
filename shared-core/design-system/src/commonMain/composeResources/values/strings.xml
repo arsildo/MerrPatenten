@@ -170,4 +170,23 @@
     <string name="mistakes_practice_correct_streak">Correct! %1$d/%2$d consecutive needed to graduate.</string>
     <string name="mistakes_practice_graduated">Awesome! You mastered this question.</string>
     <string name="mistakes_practice_wrong">Incorrect. Error recorded and streak reset.</string>
+
+    <!-- Bookmarked Questions -->
+    <string name="bookmarks_title">Saved Questions</string>
+    <string name="bookmarks_dashboard_title">Saved Questions</string>
+    <string name="bookmarks_dashboard_desc">Review and practice questions you bookmarked</string>
+    <string name="bookmarks_badge_count">%1$d saved</string>
+    <string name="bookmarks_badge_count_singular">1 saved</string>
+    <string name="bookmarks_empty_title">No Saved Questions</string>
+    <string name="bookmarks_empty_desc">Tap the star icon on any exam question to save it here for quick review.</string>
+    <string name="bookmarks_start_practice">Practice Saved (%1$d)</string>
+    <string name="bookmarks_practice_title">Saved Practice</string>
+    <string name="bookmarks_clear_category">Clear category bookmarks</string>
+    <string name="bookmarks_clear_category_desc">All saved questions for this category will be removed.</string>
+    <string name="bookmarks_toggle_add">Save question</string>
+    <string name="bookmarks_toggle_remove">Remove bookmark</string>
+    <string name="bookmarks_practice_complete_title">Practice Finished!</string>
+    <string name="bookmarks_practice_complete_desc">You practiced %1$d saved questions and answered %2$d correctly.</string>
+    <string name="bookmarks_practice_correct">Correct!</string>
+    <string name="bookmarks_practice_wrong">Incorrect. Correct answer: %1$s.</string>
 </resources>
