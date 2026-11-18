@@ -1,5 +1,6 @@
 package com.arsildo.merrpatenten.shared.core.data.di
 
+import com.arsildo.merrpatenten.shared.core.data.BookmarksRepository
 import com.arsildo.merrpatenten.shared.core.data.CatalogRepository
 import com.arsildo.merrpatenten.shared.core.data.ExamResultsRepository
 import com.arsildo.merrpatenten.shared.core.data.MistakesRepository
@@ -17,4 +18,5 @@ val dataModule = module {
     single<PreferencesRepository>()
     single<CatalogRepository>()
     single<MistakesRepository>()
+    single<BookmarksRepository>()
 }
