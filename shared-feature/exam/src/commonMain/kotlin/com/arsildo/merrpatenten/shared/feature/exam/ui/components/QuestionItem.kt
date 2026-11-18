@@ -42,7 +42,6 @@ internal fun QuestionItem(
     onFalseCheckedChange: (checked: Boolean) -> Unit,
     onTrueCheckedChange: (checked: Boolean) -> Unit,
 ) {
-    val hapticFeedback = LocalHapticFeedback.current
     Card(
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surfaceContainerLow,
@@ -72,32 +71,11 @@ internal fun QuestionItem(
                     )
 
                     if (onToggleBookmark != null) {
-                        FilledTonalIconToggleButton(
-                            checked = isBookmarked,
-                            onCheckedChange = {
-                                hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                                onToggleBookmark()
-                            },
-                            shapes = IconButtonDefaults.toggleableShapes(),
-                            colors = IconButtonDefaults.filledTonalIconToggleButtonColors(
-                                containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
-                                contentColor = MaterialTheme.colorScheme.onSurfaceVariant,
-                                checkedContainerColor = MaterialTheme.colorScheme.primaryContainer,
-                                checkedContentColor = MaterialTheme.colorScheme.primary,
-                            ),
+                        BookmarkToggleButton(
+                            isBookmarked = isBookmarked,
+                            onToggle = onToggleBookmark,
                             modifier = Modifier.align(Alignment.TopEnd),
-                        ) {
-                            Icon(
-                                imageVector = Star,
-                                contentDescription = stringResource(
-                                    if (isBookmarked) {
-                                        Res.string.bookmarks_toggle_remove
-                                    } else {
-                                        Res.string.bookmarks_toggle_add
-                                    },
-                                ),
-                            )
-                        }
+                        )
                     }
                 }
 
@@ -160,6 +138,34 @@ internal fun QuestionItem(
                 }
             }
         }
+    }
+}
+
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
+@Composable
+internal fun BookmarkToggleButton(isBookmarked: Boolean, onToggle: () -> Unit, modifier: Modifier = Modifier) {
+    val hapticFeedback = LocalHapticFeedback.current
+    FilledTonalIconToggleButton(
+        checked = isBookmarked,
+        onCheckedChange = {
+            hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+            onToggle()
+        },
+        shapes = IconButtonDefaults.toggleableShapes(),
+        colors = IconButtonDefaults.filledTonalIconToggleButtonColors(
+            containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
+            contentColor = MaterialTheme.colorScheme.onSurfaceVariant,
+            checkedContainerColor = MaterialTheme.colorScheme.primaryContainer,
+            checkedContentColor = MaterialTheme.colorScheme.primary,
+        ),
+        modifier = modifier,
+    ) {
+        Icon(
+            imageVector = Star,
+            contentDescription = stringResource(
+                if (isBookmarked) Res.string.bookmarks_toggle_remove else Res.string.bookmarks_toggle_add,
+            ),
+        )
     }
 }
 

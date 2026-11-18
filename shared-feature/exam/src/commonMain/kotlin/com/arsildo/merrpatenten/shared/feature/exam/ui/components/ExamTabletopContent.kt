@@ -23,12 +23,9 @@ import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleCheck
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleX
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.LogOut
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.RotateCcw
-import com.arsildo.merrpatenten.shared.core.designsystem.icons.Star
 import com.arsildo.merrpatenten.shared.core.designsystem.semanticColors
 import com.arsildo.merrpatenten.shared.feature.exam.ExamUiState
 import merrpatenten.shared_core.design_system.generated.resources.Res
-import merrpatenten.shared_core.design_system.generated.resources.bookmarks_toggle_add
-import merrpatenten.shared_core.design_system.generated.resources.bookmarks_toggle_remove
 import merrpatenten.shared_core.design_system.generated.resources.false_checkbox
 import merrpatenten.shared_core.design_system.generated.resources.true_checkbox
 import org.jetbrains.compose.resources.stringResource
@@ -114,29 +111,11 @@ internal fun ExamTabletopContent(
                                         .heightIn(max = 180.dp)
                                         .align(Alignment.Center),
                                 )
-                                FilledTonalIconToggleButton(
-                                    checked = isBookmarked,
-                                    onCheckedChange = { onToggleBookmark(question.id) },
-                                    shapes = IconButtonDefaults.toggleableShapes(),
-                                    colors = IconButtonDefaults.filledTonalIconToggleButtonColors(
-                                        containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
-                                        contentColor = MaterialTheme.colorScheme.onSurfaceVariant,
-                                        checkedContainerColor = MaterialTheme.colorScheme.primaryContainer,
-                                        checkedContentColor = MaterialTheme.colorScheme.primary,
-                                    ),
+                                BookmarkToggleButton(
+                                    isBookmarked = isBookmarked,
+                                    onToggle = { onToggleBookmark(question.id) },
                                     modifier = Modifier.align(Alignment.TopEnd),
-                                ) {
-                                    Icon(
-                                        imageVector = Star,
-                                        contentDescription = stringResource(
-                                            if (isBookmarked) {
-                                                Res.string.bookmarks_toggle_remove
-                                            } else {
-                                                Res.string.bookmarks_toggle_add
-                                            },
-                                        ),
-                                    )
-                                }
+                                )
                             }
 
                             Spacer(modifier = Modifier.height(12.dp))
