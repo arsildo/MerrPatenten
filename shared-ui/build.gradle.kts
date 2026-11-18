@@ -53,6 +53,7 @@ kotlin {
             implementation(projects.sharedFeature.preferences)
             implementation(projects.sharedFeature.catalog)
             implementation(projects.sharedFeature.mistakes)
+            implementation(projects.sharedFeature.bookmarks)
 
             implementation(libs.compose.runtime)
             implementation(libs.compose.foundation)
