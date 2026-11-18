@@ -60,6 +60,12 @@ kotlin {
 
             implementation(libs.kotlinx.coroutinesCore)
         }
+
+        commonTest.dependencies {
+            implementation(projects.sharedCore.database)
+            implementation(kotlin("test"))
+            implementation(libs.kotlinx.coroutinesTest)
+        }
     }
 }
 
