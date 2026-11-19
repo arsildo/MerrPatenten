@@ -44,10 +44,13 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
 import com.arsildo.merrpatenten.shared.core.designsystem.adaptive.rememberAppAdaptiveInfo
+import com.arsildo.merrpatenten.shared.core.designsystem.components.EmptyStateTone
+import com.arsildo.merrpatenten.shared.core.designsystem.components.ExpressiveEmptyState
 import com.arsildo.merrpatenten.shared.core.designsystem.getImageResource
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.ArrowLeft
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleCheck
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleX
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.SearchX
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.Split
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.ZoomIn
 import com.arsildo.merrpatenten.shared.core.model.Question
@@ -125,19 +128,15 @@ internal fun SignDetailScreen(
         },
     ) { contentPadding ->
         if (sign == null) {
-            Box(
+            ExpressiveEmptyState(
+                icon = SearchX,
+                title = stringResource(Res.string.catalog_empty_results),
+                tone = EmptyStateTone.Search,
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(contentPadding)
                     .consumeWindowInsets(contentPadding),
-                contentAlignment = Alignment.Center,
-            ) {
-                Text(
-                    text = stringResource(Res.string.catalog_empty_results),
-                    style = MaterialTheme.typography.bodyLarge,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
-            }
+            )
         } else {
             SignDetailBody(
                 sign = sign,

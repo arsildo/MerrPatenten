@@ -28,6 +28,8 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.arsildo.merrpatenten.shared.core.designsystem.adaptive.rememberWindowAdaptiveInfo
 import com.arsildo.merrpatenten.shared.core.designsystem.components.CategoryTabs
+import com.arsildo.merrpatenten.shared.core.designsystem.components.EmptyStateTone
+import com.arsildo.merrpatenten.shared.core.designsystem.components.ExpressiveEmptyState
 import com.arsildo.merrpatenten.shared.core.designsystem.getImageResource
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleCheck
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleX
@@ -408,36 +410,13 @@ private fun MistakeQuestionCard(
 
 @Composable
 private fun MistakesEmptyView(isFiltered: Boolean, modifier: Modifier = Modifier) {
-    Box(
-        modifier = modifier.padding(32.dp),
-        contentAlignment = Alignment.Center,
-    ) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(16.dp),
-        ) {
-            Icon(
-                imageVector = if (isFiltered) SearchX else CircleCheck,
-                contentDescription = null,
-                tint = MaterialTheme.colorScheme.primary,
-                modifier = Modifier.size(48.dp),
-            )
-            Text(
-                text = if (isFiltered) {
-                    stringResource(Res.string.catalog_empty_results)
-                } else {
-                    stringResource(Res.string.mistakes_empty_title)
-                },
-                style = MaterialTheme.typography.titleLarge,
-                fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colorScheme.onBackground,
-            )
-            Text(
-                text = if (isFiltered) "" else stringResource(Res.string.mistakes_empty_desc),
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                modifier = Modifier.padding(horizontal = 16.dp),
-            )
-        }
-    }
+    ExpressiveEmptyState(
+        icon = if (isFiltered) SearchX else CircleCheck,
+        title = stringResource(
+            if (isFiltered) Res.string.catalog_empty_results else Res.string.mistakes_empty_title,
+        ),
+        description = if (isFiltered) null else stringResource(Res.string.mistakes_empty_desc),
+        tone = if (isFiltered) EmptyStateTone.Search else EmptyStateTone.Celebratory,
+        modifier = modifier,
+    )
 }

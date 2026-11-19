@@ -24,6 +24,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.arsildo.merrpatenten.shared.core.designsystem.components.CategoryTabs
+import com.arsildo.merrpatenten.shared.core.designsystem.components.EmptyStateTone
+import com.arsildo.merrpatenten.shared.core.designsystem.components.ExpressiveEmptyState
 import com.arsildo.merrpatenten.shared.core.designsystem.formatQuestion
 import com.arsildo.merrpatenten.shared.core.designsystem.getImageResource
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.ArrowLeft
@@ -398,47 +400,13 @@ private fun BookmarkedQuestionCard(
 
 @Composable
 private fun BookmarksEmptyView(isFiltered: Boolean, modifier: Modifier = Modifier) {
-    Box(
-        modifier = modifier.padding(32.dp),
-        contentAlignment = Alignment.Center,
-    ) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(12.dp),
-        ) {
-            Surface(
-                shape = RoundedCornerShape(24.dp),
-                color = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.6f),
-                modifier = Modifier.size(64.dp),
-            ) {
-                Box(contentAlignment = Alignment.Center) {
-                    Icon(
-                        imageVector = if (isFiltered) SearchX else Star,
-                        contentDescription = null,
-                        tint = MaterialTheme.colorScheme.onPrimaryContainer,
-                        modifier = Modifier.size(32.dp),
-                    )
-                }
-            }
-
-            Text(
-                text = stringResource(
-                    if (isFiltered) Res.string.bookmarks_empty_results else Res.string.bookmarks_empty_title,
-                ),
-                style = MaterialTheme.typography.titleMedium,
-                fontWeight = FontWeight.Bold,
-                textAlign = TextAlign.Center,
-            )
-
-            if (!isFiltered) {
-                Text(
-                    text = stringResource(Res.string.bookmarks_empty_desc),
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier.widthIn(max = 320.dp),
-                )
-            }
-        }
-    }
+    ExpressiveEmptyState(
+        icon = if (isFiltered) SearchX else Star,
+        title = stringResource(
+            if (isFiltered) Res.string.bookmarks_empty_results else Res.string.bookmarks_empty_title,
+        ),
+        description = if (isFiltered) null else stringResource(Res.string.bookmarks_empty_desc),
+        tone = if (isFiltered) EmptyStateTone.Search else EmptyStateTone.Default,
+        modifier = modifier,
+    )
 }

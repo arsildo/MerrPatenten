@@ -1,14 +1,13 @@
 package com.arsildo.merrpatenten.shared.feature.catalog.navigation
 
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation3.runtime.EntryProviderScope
 import androidx.navigation3.runtime.NavBackStack
 import androidx.navigation3.runtime.NavKey
+import com.arsildo.merrpatenten.shared.core.designsystem.components.EmptyStateTone
+import com.arsildo.merrpatenten.shared.core.designsystem.components.ExpressiveEmptyState
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.BookOpen
 import com.arsildo.merrpatenten.shared.feature.catalog.ui.CatalogRoute
 import com.arsildo.merrpatenten.shared.feature.catalog.ui.SignDetailRoute
 import kotlinx.serialization.Serializable
@@ -30,16 +29,12 @@ fun EntryProviderScope<NavKey>.catalogEntry(
     entry<Catalog>(
         metadata = ListDetailSceneStrategy.listPane(
             detailPlaceholder = {
-                Box(
+                ExpressiveEmptyState(
+                    icon = BookOpen,
+                    title = stringResource(Res.string.catalog_empty_results),
+                    tone = EmptyStateTone.Default,
                     modifier = Modifier.fillMaxSize(),
-                    contentAlignment = Alignment.Center,
-                ) {
-                    Text(
-                        text = stringResource(Res.string.catalog_empty_results),
-                        style = MaterialTheme.typography.bodyLarge,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    )
-                }
+                )
             },
         ),
     ) {

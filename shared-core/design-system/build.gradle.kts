@@ -48,6 +48,7 @@ kotlin {
             api(libs.compose.material3.adaptive.layout)
 
             implementation(libs.androidx.annotation)
+            implementation(libs.androidx.graphics.shapes)
             api(libs.kotlinx.datetime)
         }
         androidMain.dependencies {
