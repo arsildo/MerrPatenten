@@ -26,6 +26,8 @@ import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.arsildo.merrpatenten.shared.core.designsystem.components.EmptyStateTone
+import com.arsildo.merrpatenten.shared.core.designsystem.components.ExpressiveEmptyState
 import com.arsildo.merrpatenten.shared.core.designsystem.formatQuestion
 import com.arsildo.merrpatenten.shared.core.designsystem.getImageResource
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.ArrowLeft
@@ -115,39 +117,22 @@ fun BookmarksPracticeScreen(
                     .consumeWindowInsets(contentPadding),
                 contentAlignment = Alignment.Center,
             ) {
-                CircularProgressIndicator()
+                LoadingIndicator()
             }
         } else if (uiState.questions.isEmpty()) {
-            Box(
+            ExpressiveEmptyState(
+                icon = Star,
+                title = stringResource(Res.string.bookmarks_empty_title),
+                tone = EmptyStateTone.Default,
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(contentPadding)
-                    .consumeWindowInsets(contentPadding)
-                    .padding(24.dp),
-                contentAlignment = Alignment.Center,
-            ) {
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.spacedBy(16.dp),
-                ) {
-                    Icon(
-                        imageVector = Star,
-                        contentDescription = null,
-                        tint = MaterialTheme.colorScheme.primary,
-                        modifier = Modifier.size(48.dp),
-                    )
-                    Text(
-                        text = stringResource(Res.string.bookmarks_empty_title),
-                        style = MaterialTheme.typography.titleLarge,
-                        fontWeight = FontWeight.Bold,
-                    )
+                    .consumeWindowInsets(contentPadding),
+                action = {
                     Button(
                         onClick = onBackPress,
-                        shapes = ButtonShapes(
-                            shape = MaterialTheme.shapes.large,
-                            pressedShape = MaterialTheme.shapes.small,
-                        ),
-                        contentPadding = PaddingValues(horizontal = 24.dp, vertical = 14.dp),
+                        shapes = ButtonDefaults.shapes(),
+                        contentPadding = PaddingValues(horizontal = 32.dp, vertical = 16.dp),
                     ) {
                         Text(
                             text = stringResource(Res.string.back),
@@ -155,8 +140,8 @@ fun BookmarksPracticeScreen(
                             fontWeight = FontWeight.SemiBold,
                         )
                     }
-                }
-            }
+                },
+            )
         } else {
             val currentItem = uiState.currentQuestion
             if (currentItem != null) {

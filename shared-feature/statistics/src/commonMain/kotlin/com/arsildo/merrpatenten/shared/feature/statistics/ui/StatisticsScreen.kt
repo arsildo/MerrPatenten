@@ -29,8 +29,9 @@ import com.arsildo.merrpatenten.shared.core.data.ReadinessScore
 import com.arsildo.merrpatenten.shared.core.designsystem.ERRORS_ALLOWED
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
 import com.arsildo.merrpatenten.shared.core.designsystem.adaptive.rememberWindowAdaptiveInfo
+import com.arsildo.merrpatenten.shared.core.designsystem.components.EmptyStateTone
+import com.arsildo.merrpatenten.shared.core.designsystem.components.ExpressiveEmptyState
 import com.arsildo.merrpatenten.shared.core.designsystem.components.SectionHeader
-import com.arsildo.merrpatenten.shared.core.designsystem.icons.ArrowLeftRight
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.BadgeCheck
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleCheck
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleQuestionMark
@@ -127,20 +128,19 @@ internal fun StatisticsScreen(
                 .fillMaxSize(),
         ) {
             when {
-                !uiState.saveResults -> ResultStoringDisabled(
-                    text = stringResource(Res.string.results_storing_disabled),
+                !uiState.saveResults -> ExpressiveEmptyState(
                     icon = CloudExclamationPoint,
-                    changePreference = {
+                    title = stringResource(Res.string.results_storing_disabled),
+                    tone = EmptyStateTone.Notice,
+                    modifier = Modifier.fillMaxSize(),
+                    action = {
                         Button(
                             onClick = {
                                 hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
                                 onChangePreferenceClick()
                             },
-                            shapes = ButtonShapes(
-                                shape = MaterialTheme.shapes.large,
-                                pressedShape = MaterialTheme.shapes.small,
-                            ),
-                            contentPadding = PaddingValues(horizontal = 28.dp, vertical = 12.dp),
+                            shapes = ButtonDefaults.shapes(),
+                            contentPadding = PaddingValues(horizontal = 32.dp, vertical = 16.dp),
                         ) {
                             Text(
                                 text = stringResource(Res.string.results_change),
@@ -281,9 +281,11 @@ internal fun StatisticsScreen(
                             }
                         }
                     } else {
-                        ResultStoringDisabled(
-                            text = stringResource(Res.string.results_empty),
-                            icon = ArrowLeftRight,
+                        ExpressiveEmptyState(
+                            icon = GraphStar,
+                            title = stringResource(Res.string.results_empty),
+                            tone = EmptyStateTone.Default,
+                            modifier = Modifier.fillMaxSize(),
                         )
                     }
                 }

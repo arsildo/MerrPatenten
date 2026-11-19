@@ -31,6 +31,8 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.arsildo.merrpatenten.shared.core.designsystem.adaptive.rememberWindowAdaptiveInfo
+import com.arsildo.merrpatenten.shared.core.designsystem.components.EmptyStateTone
+import com.arsildo.merrpatenten.shared.core.designsystem.components.ExpressiveEmptyState
 import com.arsildo.merrpatenten.shared.core.designsystem.getImageResource
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.ArrowLeft
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.ArrowRight
@@ -72,7 +74,7 @@ fun MistakesPracticeRoute(
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun MistakesPracticeScreen(
     uiState: MistakesPracticeUiState,
@@ -133,37 +135,27 @@ fun MistakesPracticeScreen(
                     .consumeWindowInsets(contentPadding),
                 contentAlignment = Alignment.Center,
             ) {
-                CircularProgressIndicator()
+                LoadingIndicator()
             }
         } else if (uiState.questions.isEmpty()) {
-            Box(
+            ExpressiveEmptyState(
+                icon = PartyPopper,
+                title = stringResource(Res.string.mistakes_empty_title),
+                tone = EmptyStateTone.Celebratory,
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(contentPadding)
-                    .consumeWindowInsets(contentPadding)
-                    .padding(24.dp),
-                contentAlignment = Alignment.Center,
-            ) {
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.spacedBy(16.dp),
-                ) {
-                    Icon(
-                        imageVector = PartyPopper,
-                        contentDescription = null,
-                        tint = MaterialTheme.colorScheme.primary,
-                        modifier = Modifier.size(48.dp),
-                    )
-                    Text(
-                        text = stringResource(Res.string.mistakes_empty_title),
-                        style = MaterialTheme.typography.titleLarge,
-                        fontWeight = FontWeight.Bold,
-                    )
-                    Button(onClick = onBackPress) {
+                    .consumeWindowInsets(contentPadding),
+                action = {
+                    Button(
+                        onClick = onBackPress,
+                        shapes = ButtonDefaults.shapes(),
+                        contentPadding = PaddingValues(horizontal = 32.dp, vertical = 16.dp),
+                    ) {
                         Text(stringResource(Res.string.back))
                     }
-                }
-            }
+                },
+            )
         } else {
             val currentItem = uiState.currentQuestion
             if (currentItem != null) {
