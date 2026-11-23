@@ -130,7 +130,9 @@ class ListDetailSceneStrategy<T : Any>(
         }
 
         private object ListPaneKey : NavMetadataKey<Boolean>
+
         private object DetailPaneKey : NavMetadataKey<Boolean>
+
         private object DetailPlaceholderKey : NavMetadataKey<@Composable () -> Unit>
     }
 }

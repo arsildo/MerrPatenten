@@ -102,6 +102,7 @@ class BottomSheetSceneStrategy<T : Any> : SceneStrategy<T> {
         }
 
         private object BottomSheetKey : NavMetadataKey<ModalBottomSheetProperties>
+
         private object SkipPartiallyExpandedKey : NavMetadataKey<Boolean>
     }
 }

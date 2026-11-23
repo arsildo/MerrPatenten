@@ -40,6 +40,7 @@ private class FakeQuestionnaireDAO : QuestionnaireDAO {
 
 private class FakeBookmarksDAO : BookmarksDAO {
     private val records = MutableStateFlow<Map<String, BookmarkedQuestionEntity>>(emptyMap())
+
     private fun key(id: Int, cat: String) = "${id}_$cat"
 
     override fun getBookmarksByCategory(category: String): Flow<List<BookmarkedQuestionEntity>> =

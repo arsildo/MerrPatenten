@@ -19,8 +19,11 @@ internal interface ApplicationLocaleManagerUseCase {
 
 expect object ApplicationLocaleManager : ApplicationLocaleManagerUseCase {
     override fun setDefaultLocale()
+
     override fun getLocale(): String
+
     override fun setLocale(locale: ApplicationLocale)
+
     override fun restartApp()
 }
 

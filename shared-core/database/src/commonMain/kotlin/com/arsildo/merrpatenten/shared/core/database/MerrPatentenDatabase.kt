@@ -13,8 +13,11 @@ import androidx.room.RoomDatabaseConstructor
 @ConstructedBy(MerrPatentenDatabaseConstructor::class)
 abstract class MerrPatentenDatabase : RoomDatabase() {
     abstract fun questionnaireDAO(): QuestionnaireDAO
+
     abstract fun examResultsDAO(): ExamResultsDAO
+
     abstract fun mistakesDAO(): MistakesDAO
+
     abstract fun bookmarksDAO(): BookmarksDAO
 }
 
