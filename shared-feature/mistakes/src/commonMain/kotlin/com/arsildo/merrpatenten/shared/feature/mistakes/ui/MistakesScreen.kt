@@ -1,10 +1,6 @@
 package com.arsildo.merrpatenten.shared.feature.mistakes.ui
 
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.core.Spring
-import androidx.compose.animation.core.VisibilityThreshold
-import androidx.compose.animation.core.animateDpAsState
-import androidx.compose.animation.core.spring
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.clickable
@@ -22,10 +18,11 @@ import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.arsildo.merrpatenten.shared.core.designsystem.adaptive.rememberStartToolbarClearance
 import com.arsildo.merrpatenten.shared.core.designsystem.adaptive.rememberWindowAdaptiveInfo
+import com.arsildo.merrpatenten.shared.core.designsystem.adaptive.startPadding
 import com.arsildo.merrpatenten.shared.core.designsystem.components.CategoryTabs
 import com.arsildo.merrpatenten.shared.core.designsystem.components.EmptyStateTone
 import com.arsildo.merrpatenten.shared.core.designsystem.components.ExpressiveEmptyState
@@ -81,20 +78,13 @@ fun MistakesScreen(
     val adaptiveInfo = rememberWindowAdaptiveInfo()
     val navBarBottomPadding = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
     val floatingToolbarClearance = if (adaptiveInfo.isCompact) 88.dp else 0.dp
-    val startToolbarClearance by animateDpAsState(
-        targetValue = if (!adaptiveInfo.isCompact) 88.dp else 0.dp,
-        animationSpec = spring(
-            stiffness = Spring.StiffnessMediumLow,
-            visibilityThreshold = Dp.VisibilityThreshold,
-        ),
-        label = "StartToolbarClearance",
-    )
+    val startToolbarClearance = rememberStartToolbarClearance(adaptiveInfo.isCompact)
 
     val windowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal + WindowInsetsSides.Top)
 
     Scaffold(
         modifier = modifier
-            .padding(start = startToolbarClearance),
+            .startPadding { startToolbarClearance.value },
         topBar = {
             TopAppBar(
                 windowInsets = windowInsets,

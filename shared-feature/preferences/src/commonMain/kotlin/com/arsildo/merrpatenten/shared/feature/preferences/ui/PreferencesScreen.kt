@@ -1,9 +1,5 @@
 package com.arsildo.merrpatenten.shared.feature.preferences.ui
 
-import androidx.compose.animation.core.Spring
-import androidx.compose.animation.core.VisibilityThreshold
-import androidx.compose.animation.core.animateDpAsState
-import androidx.compose.animation.core.spring
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -16,11 +12,12 @@ import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.PreviewScreenSizes
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.arsildo.merrpatenten.shared.core.designsystem.*
+import com.arsildo.merrpatenten.shared.core.designsystem.adaptive.rememberStartToolbarClearance
 import com.arsildo.merrpatenten.shared.core.designsystem.adaptive.rememberWindowAdaptiveInfo
+import com.arsildo.merrpatenten.shared.core.designsystem.adaptive.startPadding
 import com.arsildo.merrpatenten.shared.core.designsystem.components.PreferenceCard
 import com.arsildo.merrpatenten.shared.core.designsystem.components.SectionHeader
 import com.arsildo.merrpatenten.shared.core.designsystem.components.TextSizePreferenceCard
@@ -64,14 +61,7 @@ internal fun PreferencesScreen(
     val adaptiveInfo = rememberWindowAdaptiveInfo()
     val isDualPane = adaptiveInfo.isDualPane
     val floatingToolbarClearance = if (adaptiveInfo.isCompact) 88.dp else 0.dp
-    val startToolbarClearance by animateDpAsState(
-        targetValue = if (!adaptiveInfo.isCompact) 88.dp else 0.dp,
-        animationSpec = spring(
-            stiffness = Spring.StiffnessMediumLow,
-            visibilityThreshold = Dp.VisibilityThreshold,
-        ),
-        label = "StartToolbarClearance",
-    )
+    val startToolbarClearance = rememberStartToolbarClearance(adaptiveInfo.isCompact)
 
     val windowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal + WindowInsetsSides.Top)
 
@@ -132,7 +122,7 @@ internal fun PreferencesScreen(
             },
             contentColor = MaterialTheme.colorScheme.onBackground,
             contentWindowInsets = windowInsets,
-            modifier = modifier.padding(start = startToolbarClearance),
+            modifier = modifier.startPadding { startToolbarClearance.value },
         ) { contentPadding ->
             when (isDualPane) {
                 true -> {

@@ -3,10 +3,6 @@ package com.arsildo.merrpatenten.shared.feature.mistakes.ui
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateColorAsState
-import androidx.compose.animation.core.Spring
-import androidx.compose.animation.core.VisibilityThreshold
-import androidx.compose.animation.core.animateDpAsState
-import androidx.compose.animation.core.spring
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.togetherWith
@@ -26,10 +22,11 @@ import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.arsildo.merrpatenten.shared.core.designsystem.adaptive.rememberStartToolbarClearance
 import com.arsildo.merrpatenten.shared.core.designsystem.adaptive.rememberWindowAdaptiveInfo
+import com.arsildo.merrpatenten.shared.core.designsystem.adaptive.startPadding
 import com.arsildo.merrpatenten.shared.core.designsystem.components.EmptyStateTone
 import com.arsildo.merrpatenten.shared.core.designsystem.components.ExpressiveEmptyState
 import com.arsildo.merrpatenten.shared.core.designsystem.components.ResourceImage
@@ -84,20 +81,13 @@ fun MistakesPracticeScreen(
 ) {
     val hapticFeedback = LocalHapticFeedback.current
     val adaptiveInfo = rememberWindowAdaptiveInfo()
-    val startToolbarClearance by animateDpAsState(
-        targetValue = if (!adaptiveInfo.isCompact) 88.dp else 0.dp,
-        animationSpec = spring(
-            stiffness = Spring.StiffnessMediumLow,
-            visibilityThreshold = Dp.VisibilityThreshold,
-        ),
-        label = "StartToolbarClearance",
-    )
+    val startToolbarClearance = rememberStartToolbarClearance(adaptiveInfo.isCompact)
     val bottomToolbarClearance = if (adaptiveInfo.isCompact) 104.dp else 24.dp
     val windowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal + WindowInsetsSides.Top)
 
     Scaffold(
         modifier = modifier
-            .padding(start = startToolbarClearance),
+            .startPadding { startToolbarClearance.value },
         contentWindowInsets = windowInsets,
         topBar = {
             TopAppBar(
