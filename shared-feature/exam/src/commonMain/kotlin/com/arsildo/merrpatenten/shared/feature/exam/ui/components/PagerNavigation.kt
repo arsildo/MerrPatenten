@@ -41,15 +41,10 @@ internal fun PagerNavigation(modifier: Modifier = Modifier, onPreviousPageClick:
             modifier = Modifier.weight(1f),
             contentPadding = PaddingValues(16.dp),
         ) {
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                Icon(
-                    imageVector = ArrowLeft,
-                    contentDescription = stringResource(Res.string.previous_page),
-                )
-            }
+            Icon(
+                imageVector = ArrowLeft,
+                contentDescription = stringResource(Res.string.previous_page),
+            )
         }
 
         ElevatedButton(
@@ -68,15 +63,10 @@ internal fun PagerNavigation(modifier: Modifier = Modifier, onPreviousPageClick:
             modifier = Modifier.weight(1f),
             contentPadding = PaddingValues(16.dp),
         ) {
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                Icon(
-                    imageVector = ArrowRight,
-                    contentDescription = stringResource(Res.string.next_page),
-                )
-            }
+            Icon(
+                imageVector = ArrowRight,
+                contentDescription = stringResource(Res.string.next_page),
+            )
         }
     }
 }

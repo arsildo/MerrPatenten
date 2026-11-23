@@ -369,21 +369,16 @@ private fun BookmarkedQuestionCard(
             }
 
             if (item.question.image > 0) {
-                Box(
+                ResourceImage(
+                    imageId = item.question.image,
+                    contentDescription = null,
+                    contentScale = ContentScale.Fit,
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(130.dp)
                         .clip(RoundedCornerShape(12.dp))
                         .clickable(onClick = onImageClick),
-                    contentAlignment = Alignment.Center,
-                ) {
-                    ResourceImage(
-                        imageId = item.question.image,
-                        contentDescription = null,
-                        contentScale = ContentScale.Fit,
-                        modifier = Modifier.fillMaxSize(),
-                    )
-                }
+                )
             }
 
             Text(

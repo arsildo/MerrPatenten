@@ -102,20 +102,16 @@ fun ReadinessCard(
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier.weight(1f),
                 ) {
-                    Box(
+                    Icon(
+                        imageVector = icon,
+                        contentDescription = null,
+                        tint = onBadgeColor,
                         modifier = Modifier
                             .size(42.dp)
-                            .clip(CircleShape)
-                            .background(badgeColor),
-                        contentAlignment = Alignment.Center,
-                    ) {
-                        Icon(
-                            imageVector = icon,
-                            contentDescription = null,
-                            tint = onBadgeColor,
-                            modifier = Modifier.size(24.dp),
-                        )
-                    }
+                            .background(badgeColor, CircleShape)
+                            .wrapContentSize(Alignment.Center)
+                            .size(24.dp),
+                    )
                     Column {
                         Text(
                             text = stringResource(Res.string.readiness_title),
@@ -132,20 +128,16 @@ fun ReadinessCard(
                     }
                 }
 
-                Box(
+                Icon(
+                    imageVector = ArrowRight,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.onSurface,
                     modifier = Modifier
                         .size(34.dp)
-                        .clip(CircleShape)
-                        .background(MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f)),
-                    contentAlignment = Alignment.Center,
-                ) {
-                    Icon(
-                        imageVector = ArrowRight,
-                        contentDescription = null,
-                        tint = MaterialTheme.colorScheme.onSurface,
-                        modifier = Modifier.size(16.dp),
-                    )
-                }
+                        .background(MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f), CircleShape)
+                        .wrapContentSize(Alignment.Center)
+                        .size(16.dp),
+                )
             }
 
             // Progress & Percentage Row

@@ -220,6 +220,7 @@ internal fun StatisticsScreen(
                                         itemsIndexed(
                                             items = results,
                                             key = { _, item -> item.id },
+                                            contentType = { _, _ -> "exam_result" },
                                         ) { index, result ->
                                             ResultItem(
                                                 result = result,
@@ -227,7 +228,10 @@ internal fun StatisticsScreen(
                                                 count = results.size,
                                             )
                                         }
-                                        item {
+                                        item(
+                                            key = "bottom_spacer",
+                                            contentType = "spacer",
+                                        ) {
                                             Spacer(modifier = Modifier.height(32.dp))
                                         }
                                     }
@@ -247,7 +251,11 @@ internal fun StatisticsScreen(
                                 verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap),
                                 modifier = Modifier.fillMaxSize(),
                             ) {
-                                item(span = { GridItemSpan(maxLineSpan) }) {
+                                item(
+                                    key = "analytics_overview",
+                                    span = { GridItemSpan(maxLineSpan) },
+                                    contentType = "analytics_overview",
+                                ) {
                                     AnalyticsOverview(
                                         readiness = readiness,
                                         readinessColor = first,
@@ -260,7 +268,11 @@ internal fun StatisticsScreen(
                                     )
                                 }
 
-                                item(span = { GridItemSpan(maxLineSpan) }) {
+                                item(
+                                    key = "exam_history_header",
+                                    span = { GridItemSpan(maxLineSpan) },
+                                    contentType = "section_header",
+                                ) {
                                     SectionHeader(
                                         title = stringResource(Res.string.exam_history),
                                         modifier = Modifier.padding(top = 4.dp, bottom = 4.dp),

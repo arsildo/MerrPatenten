@@ -198,21 +198,16 @@ fun BookmarksPracticeScreen(
                             verticalArrangement = Arrangement.spacedBy(16.dp),
                         ) {
                             if (currentItem.question.image > 0) {
-                                Box(
+                                ResourceImage(
+                                    imageId = currentItem.question.image,
+                                    contentDescription = null,
+                                    contentScale = ContentScale.Fit,
                                     modifier = Modifier
                                         .fillMaxWidth()
                                         .height(200.dp)
                                         .clip(RoundedCornerShape(16.dp))
                                         .clickable { onImageDetailsClick(currentItem.question.image) },
-                                    contentAlignment = Alignment.Center,
-                                ) {
-                                    ResourceImage(
-                                        imageId = currentItem.question.image,
-                                        contentDescription = null,
-                                        contentScale = ContentScale.Fit,
-                                        modifier = Modifier.fillMaxSize(),
-                                    )
-                                }
+                                )
                             }
 
                             Text(

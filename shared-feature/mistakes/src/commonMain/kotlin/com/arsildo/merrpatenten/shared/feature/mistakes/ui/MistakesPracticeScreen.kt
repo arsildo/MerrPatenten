@@ -242,21 +242,16 @@ fun MistakesPracticeScreen(
 
                             // Sign Image (if present)
                             if (currentItem.question.image > 0) {
-                                Box(
+                                ResourceImage(
+                                    imageId = currentItem.question.image,
+                                    contentDescription = null,
+                                    contentScale = ContentScale.Fit,
                                     modifier = Modifier
                                         .fillMaxWidth()
                                         .height(180.dp)
                                         .clip(RoundedCornerShape(16.dp))
                                         .clickable { onImageDetailsClick(currentItem.question.image) },
-                                    contentAlignment = Alignment.Center,
-                                ) {
-                                    ResourceImage(
-                                        imageId = currentItem.question.image,
-                                        contentDescription = null,
-                                        contentScale = ContentScale.Fit,
-                                        modifier = Modifier.fillMaxSize(),
-                                    )
-                                }
+                                )
                             }
 
                             // Question Text

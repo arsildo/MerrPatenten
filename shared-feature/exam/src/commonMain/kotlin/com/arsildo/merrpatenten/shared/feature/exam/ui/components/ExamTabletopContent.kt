@@ -89,6 +89,7 @@ internal fun ExamTabletopContent(
 
                 HorizontalPager(
                     state = pagerState,
+                    key = { index -> uiState.questions.getOrNull(index)?.id ?: index },
                     modifier = Modifier.fillMaxSize(),
                 ) { pageIndex ->
                     val question = uiState.questions.getOrNull(pageIndex)

@@ -53,7 +53,11 @@ internal fun ExamQuestionMap(
         modifier = modifier.fillMaxSize(),
     ) {
         // Status or Overview Header
-        item(span = { GridItemSpan(maxLineSpan) }) {
+        item(
+            key = "overview_header",
+            span = { GridItemSpan(maxLineSpan) },
+            contentType = if (uiState.isCompleted) "completed_header" else "progress_header",
+        ) {
             if (uiState.isCompleted) {
                 Card(
                     shape = MaterialTheme.shapes.large,
@@ -139,7 +143,11 @@ internal fun ExamQuestionMap(
         }
 
         // Question Grid Items
-        items(count = uiState.questionCount) { page ->
+        items(
+            count = uiState.questionCount,
+            key = { page -> page },
+            contentType = { "question_cell" },
+        ) { page ->
             val hasResponse = page < uiState.responseList.size && uiState.responseList[page].isNotEmpty()
             val isCorrect = page < uiState.mistakePositions.size && uiState.mistakePositions[page] == 0
             val isCurrent = currentPage != null && currentPage == page
@@ -185,7 +193,11 @@ internal fun ExamQuestionMap(
 
         // Action Buttons if available and completed
         if (uiState.isCompleted && (onRestartExam != null || onExitExam != null)) {
-            item(span = { GridItemSpan(maxLineSpan) }) {
+            item(
+                key = "exam_actions",
+                span = { GridItemSpan(maxLineSpan) },
+                contentType = "exam_actions",
+            ) {
                 Column(
                     modifier = Modifier.fillMaxWidth().padding(top = 16.dp),
                     verticalArrangement = Arrangement.spacedBy(10.dp),

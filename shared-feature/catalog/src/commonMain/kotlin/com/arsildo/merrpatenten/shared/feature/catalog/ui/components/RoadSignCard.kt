@@ -68,21 +68,20 @@ fun RoadSignCard(sign: RoadSign, onClick: () -> Unit, modifier: Modifier = Modif
                 )
 
                 if (sign.code.isNotEmpty()) {
-                    Box(
+                    Text(
+                        text = sign.code,
+                        style = MaterialTheme.typography.labelSmall,
+                        fontWeight = FontWeight.Bold,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
                         modifier = Modifier
                             .align(Alignment.TopStart)
                             .padding(6.dp)
-                            .clip(MaterialTheme.shapes.extraSmall)
-                            .background(MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.9f))
+                            .background(
+                                color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.9f),
+                                shape = MaterialTheme.shapes.extraSmall,
+                            )
                             .padding(horizontal = 6.dp, vertical = 2.dp),
-                    ) {
-                        Text(
-                            text = sign.code,
-                            style = MaterialTheme.typography.labelSmall,
-                            fontWeight = FontWeight.Bold,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        )
-                    }
+                    )
                 }
             }
 

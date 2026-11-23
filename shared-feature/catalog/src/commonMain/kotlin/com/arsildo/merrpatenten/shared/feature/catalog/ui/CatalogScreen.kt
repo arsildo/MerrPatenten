@@ -195,7 +195,11 @@ private fun CatalogListPane(
             horizontalArrangement = Arrangement.spacedBy(8.dp),
             modifier = Modifier.padding(vertical = 8.dp),
         ) {
-            items(categories) { [category, stringRes] ->
+            items(
+                items = categories,
+                key = { it.first },
+                contentType = { "category_chip" },
+            ) { [category, stringRes] ->
                 val selected = uiState.selectedCategory == category
                 FilterChip(
                     selected = selected,
@@ -236,7 +240,11 @@ private fun CatalogListPane(
                 verticalArrangement = Arrangement.spacedBy(12.dp),
                 modifier = Modifier.fillMaxSize(),
             ) {
-                items(uiState.items, key = { it.id }) { sign ->
+                items(
+                    items = uiState.items,
+                    key = { it.id },
+                    contentType = { "road_sign" },
+                ) { sign ->
                     RoadSignCard(
                         sign = sign,
                         selected = sign.id == selectedSignId,

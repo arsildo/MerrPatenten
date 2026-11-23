@@ -24,6 +24,7 @@ internal fun LazyGridScope.resultList(results: List<ExamResult>) {
         items = results,
         key = { _, item -> item.id },
         span = { _, _ -> GridItemSpan(maxLineSpan) },
+        contentType = { _, _ -> "exam_result" },
     ) { index, result ->
         ResultItem(
             result = result,

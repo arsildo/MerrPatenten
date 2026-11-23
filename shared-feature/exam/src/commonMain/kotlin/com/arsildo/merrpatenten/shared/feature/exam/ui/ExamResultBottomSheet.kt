@@ -111,7 +111,11 @@ internal fun ExamResultBottomSheet(
             modifier = Modifier.fillMaxWidth(),
         ) {
             if (uiState.isCompleted) {
-                item(span = { GridItemSpan(maxLineSpan) }) {
+                item(
+                    key = "result_header",
+                    span = { GridItemSpan(maxLineSpan) },
+                    contentType = "result_header",
+                ) {
                     Row(
                         modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp),
                         horizontalArrangement = Arrangement.SpaceBetween,
@@ -165,7 +169,11 @@ internal fun ExamResultBottomSheet(
                     }
                 }
             }
-            items(count = uiState.questionCount) { page ->
+            items(
+                count = uiState.questionCount,
+                key = { page -> page },
+                contentType = { "question_cell" },
+            ) { page ->
                 val hasResponse = page < uiState.responseList.size && uiState.responseList[page].isNotEmpty()
                 val isCorrect = page < uiState.mistakePositions.size && uiState.mistakePositions[page] == 0
 
@@ -198,7 +206,9 @@ internal fun ExamResultBottomSheet(
                 )
             }
             item(
+                key = "status_legend",
                 span = { GridItemSpan(maxLineSpan) },
+                contentType = "status_legend",
             ) {
                 Row(
                     modifier = Modifier
@@ -243,7 +253,9 @@ internal fun ExamResultBottomSheet(
             }
             if (uiState.isCompleted) {
                 item(
+                    key = "exam_actions",
                     span = { GridItemSpan(maxLineSpan) },
+                    contentType = "exam_actions",
                 ) {
                     Column(
                         modifier = Modifier.fillMaxWidth(),
