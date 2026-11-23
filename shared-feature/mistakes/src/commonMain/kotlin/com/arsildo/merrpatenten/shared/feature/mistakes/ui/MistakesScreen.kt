@@ -7,7 +7,6 @@ import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -30,7 +29,7 @@ import com.arsildo.merrpatenten.shared.core.designsystem.adaptive.rememberWindow
 import com.arsildo.merrpatenten.shared.core.designsystem.components.CategoryTabs
 import com.arsildo.merrpatenten.shared.core.designsystem.components.EmptyStateTone
 import com.arsildo.merrpatenten.shared.core.designsystem.components.ExpressiveEmptyState
-import com.arsildo.merrpatenten.shared.core.designsystem.getImageResource
+import com.arsildo.merrpatenten.shared.core.designsystem.components.ResourceImage
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleCheck
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleX
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.Play
@@ -43,7 +42,6 @@ import com.arsildo.merrpatenten.shared.core.model.MistakeQuestion
 import com.arsildo.merrpatenten.shared.feature.mistakes.MistakesUiState
 import com.arsildo.merrpatenten.shared.feature.mistakes.MistakesViewModel
 import merrpatenten.shared_core.design_system.generated.resources.*
-import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
@@ -345,7 +343,6 @@ private fun MistakeQuestionCard(
 
             // Image Thumbnail (if present)
             if (item.question.image > 0) {
-                val imageRes = getImageResource(item.question.image)
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -354,8 +351,8 @@ private fun MistakeQuestionCard(
                         .clickable(onClick = onImageClick),
                     contentAlignment = Alignment.Center,
                 ) {
-                    Image(
-                        painter = painterResource(imageRes),
+                    ResourceImage(
+                        imageId = item.question.image,
                         contentDescription = null,
                         contentScale = ContentScale.Fit,
                         modifier = Modifier.fillMaxSize(),

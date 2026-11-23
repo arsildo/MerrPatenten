@@ -11,7 +11,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
 import com.arsildo.merrpatenten.shared.core.designsystem.QuestionTextSize
-import com.arsildo.merrpatenten.shared.core.designsystem.getImageResource
 import com.arsildo.merrpatenten.shared.core.model.Question
 
 @Composable
@@ -42,7 +41,7 @@ internal fun ExamPager(
             QuestionItem(
                 isCompleted = isCompleted,
                 correct = page < responses.size && responses[page] == 0,
-                image = getImageResource(id = question.image),
+                imageId = question.image,
                 onImageClick = { onImageClick(question.image) },
                 question = question.question,
                 falseChecked = page < falseCheckedPages.size && falseCheckedPages[page],

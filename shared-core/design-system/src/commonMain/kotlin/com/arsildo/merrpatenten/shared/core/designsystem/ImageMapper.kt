@@ -517,3 +517,19 @@ fun getImageResource(id: Int): DrawableResource = when (id) {
     960 -> Res.drawable.img_960
     else -> Res.drawable.img_info
 }
+
+private val jpgImageIds = setOf(
+    87, 88, 89, 160, 166, 168, 274, 306, 644, 645, 670, 696, 701, 911, 915,
+)
+
+private val pngImageIds = setOf(207)
+
+fun getImageUri(id: Int): String? {
+    if (getImageResource(id) == Res.drawable.img_info) return null
+    val ext = when (id) {
+        in jpgImageIds -> "jpg"
+        in pngImageIds -> "png"
+        else -> "webp"
+    }
+    return Res.getUri("drawable/img_$id.$ext")
+}

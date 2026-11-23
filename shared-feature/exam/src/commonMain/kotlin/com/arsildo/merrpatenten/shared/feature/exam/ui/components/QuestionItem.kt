@@ -16,13 +16,11 @@ import androidx.compose.ui.unit.dp
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
 import com.arsildo.merrpatenten.shared.core.designsystem.QuestionTextSize
 import com.arsildo.merrpatenten.shared.core.designsystem.formatQuestion
-import com.arsildo.merrpatenten.shared.core.designsystem.getImageResource
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleCheck
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleX
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.Star
 import com.arsildo.merrpatenten.shared.core.designsystem.semanticColors
 import merrpatenten.shared_core.design_system.generated.resources.*
-import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.stringResource
 
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
@@ -31,7 +29,7 @@ internal fun QuestionItem(
     modifier: Modifier = Modifier,
     isCompleted: Boolean,
     correct: Boolean,
-    image: DrawableResource,
+    imageId: Int,
     onImageClick: () -> Unit,
     question: String,
     falseChecked: Boolean,
@@ -65,7 +63,7 @@ internal fun QuestionItem(
                 Box(modifier = Modifier.fillMaxWidth()) {
                     // Question Image
                     QuestionImage(
-                        image = image,
+                        imageId = imageId,
                         onClick = onImageClick,
                         modifier = Modifier.align(Alignment.Center),
                     )
@@ -176,7 +174,7 @@ private fun QuestionItemInProgressPreview() {
         QuestionItem(
             isCompleted = false,
             correct = false,
-            image = getImageResource(1),
+            imageId = 1,
             onImageClick = {},
             question = "Sinjali i paraqitur në figurë tregon një kthesë të rrezikshme majtas.",
             falseChecked = false,
@@ -195,7 +193,7 @@ private fun QuestionItemCompletedCorrectPreview() {
         QuestionItem(
             isCompleted = true,
             correct = true,
-            image = getImageResource(1),
+            imageId = 1,
             onImageClick = {},
             question = "Sinjali i paraqitur në figurë tregon një kthesë të rrezikshme majtas.",
             falseChecked = false,
@@ -214,7 +212,7 @@ private fun QuestionItemCompletedWrongPreview() {
         QuestionItem(
             isCompleted = true,
             correct = false,
-            image = getImageResource(1),
+            imageId = 1,
             onImageClick = {},
             question = "Sinjali i paraqitur në figurë tregon një kthesë të rrezikshme majtas.",
             falseChecked = true,
@@ -233,7 +231,7 @@ private fun QuestionItemDarkPreview() {
         QuestionItem(
             isCompleted = false,
             correct = false,
-            image = getImageResource(1),
+            imageId = 1,
             onImageClick = {},
             question = "Sinjali i paraqitur në figurë tregon një kthesë të rrezikshme majtas.",
             falseChecked = false,

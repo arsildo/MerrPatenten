@@ -50,6 +50,9 @@ kotlin {
             implementation(libs.androidx.annotation)
             implementation(libs.androidx.graphics.shapes)
             api(libs.kotlinx.datetime)
+
+            implementation(project.dependencies.platform(libs.coil.bom))
+            implementation(libs.coil.compose)
         }
         androidMain.dependencies {
             implementation(libs.androidx.appcompat)

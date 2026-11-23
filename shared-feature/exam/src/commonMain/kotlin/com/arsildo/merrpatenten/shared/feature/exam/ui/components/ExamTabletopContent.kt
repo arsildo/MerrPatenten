@@ -17,7 +17,6 @@ import com.arsildo.merrpatenten.shared.core.designsystem.components.EndExamButto
 import com.arsildo.merrpatenten.shared.core.designsystem.components.ExitExamButton
 import com.arsildo.merrpatenten.shared.core.designsystem.components.RestartExamButton
 import com.arsildo.merrpatenten.shared.core.designsystem.formatQuestion
-import com.arsildo.merrpatenten.shared.core.designsystem.getImageResource
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.CheckCheck
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleCheck
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleX
@@ -105,7 +104,7 @@ internal fun ExamTabletopContent(
                         ) {
                             Box(modifier = Modifier.fillMaxWidth()) {
                                 QuestionImage(
-                                    image = getImageResource(question.image),
+                                    imageId = question.image,
                                     onClick = { onImageDetailsClick(question.image) },
                                     modifier = Modifier
                                         .heightIn(max = 180.dp)

@@ -1,6 +1,5 @@
 package com.arsildo.merrpatenten.shared.feature.imagedetails.ui
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.focusable
 import androidx.compose.foundation.gestures.detectTransformGestures
 import androidx.compose.foundation.layout.Arrangement
@@ -40,10 +39,9 @@ import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
 import com.arsildo.merrpatenten.shared.core.designsystem.adaptive.DevicePosture
 import com.arsildo.merrpatenten.shared.core.designsystem.adaptive.LocalFoldPosture
 import com.arsildo.merrpatenten.shared.core.designsystem.adaptive.rememberWindowAdaptiveInfo
-import com.arsildo.merrpatenten.shared.core.designsystem.getImageResource
+import com.arsildo.merrpatenten.shared.core.designsystem.components.ResourceImage
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.ArrowLeft
 import merrpatenten.shared_core.design_system.generated.resources.*
-import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
 internal data class ImageDetailsUiState(val imageId: Int = 0)
@@ -100,8 +98,8 @@ internal fun ZoomableExamImage(uiState: ImageDetailsUiState, onDismiss: () -> Un
                     .fillMaxWidth(),
                 contentAlignment = Alignment.Center,
             ) {
-                Image(
-                    painter = painterResource(getImageResource(uiState.imageId)),
+                ResourceImage(
+                    imageId = uiState.imageId,
                     contentDescription = null,
                     modifier = Modifier
                         .padding(16.dp)
@@ -180,8 +178,8 @@ internal fun ZoomableExamImage(uiState: ImageDetailsUiState, onDismiss: () -> Un
                     .aspectRatio(1f),
                 contentAlignment = Alignment.Center,
             ) {
-                Image(
-                    painter = painterResource(getImageResource(uiState.imageId)),
+                ResourceImage(
+                    imageId = uiState.imageId,
                     contentDescription = null,
                     modifier = Modifier
                         .padding(16.dp)

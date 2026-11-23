@@ -3,7 +3,6 @@ package com.arsildo.merrpatenten.shared.feature.bookmarks.ui
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -26,8 +25,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.arsildo.merrpatenten.shared.core.designsystem.components.CategoryTabs
 import com.arsildo.merrpatenten.shared.core.designsystem.components.EmptyStateTone
 import com.arsildo.merrpatenten.shared.core.designsystem.components.ExpressiveEmptyState
+import com.arsildo.merrpatenten.shared.core.designsystem.components.ResourceImage
 import com.arsildo.merrpatenten.shared.core.designsystem.formatQuestion
-import com.arsildo.merrpatenten.shared.core.designsystem.getImageResource
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.ArrowLeft
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleCheck
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleX
@@ -43,7 +42,6 @@ import com.arsildo.merrpatenten.shared.core.model.BookmarkedQuestion
 import com.arsildo.merrpatenten.shared.feature.bookmarks.BookmarksUiState
 import com.arsildo.merrpatenten.shared.feature.bookmarks.BookmarksViewModel
 import merrpatenten.shared_core.design_system.generated.resources.*
-import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
@@ -371,7 +369,6 @@ private fun BookmarkedQuestionCard(
             }
 
             if (item.question.image > 0) {
-                val imageRes = getImageResource(item.question.image)
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -380,8 +377,8 @@ private fun BookmarkedQuestionCard(
                         .clickable(onClick = onImageClick),
                     contentAlignment = Alignment.Center,
                 ) {
-                    Image(
-                        painter = painterResource(imageRes),
+                    ResourceImage(
+                        imageId = item.question.image,
                         contentDescription = null,
                         contentScale = ContentScale.Fit,
                         modifier = Modifier.fillMaxSize(),

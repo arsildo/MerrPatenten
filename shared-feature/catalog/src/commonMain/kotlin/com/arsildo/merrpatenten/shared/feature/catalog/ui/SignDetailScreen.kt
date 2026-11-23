@@ -1,6 +1,5 @@
 package com.arsildo.merrpatenten.shared.feature.catalog.ui
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -46,7 +45,7 @@ import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
 import com.arsildo.merrpatenten.shared.core.designsystem.adaptive.rememberAppAdaptiveInfo
 import com.arsildo.merrpatenten.shared.core.designsystem.components.EmptyStateTone
 import com.arsildo.merrpatenten.shared.core.designsystem.components.ExpressiveEmptyState
-import com.arsildo.merrpatenten.shared.core.designsystem.getImageResource
+import com.arsildo.merrpatenten.shared.core.designsystem.components.ResourceImage
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.ArrowLeft
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleCheck
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleX
@@ -59,7 +58,6 @@ import com.arsildo.merrpatenten.shared.core.model.SignCategory
 import com.arsildo.merrpatenten.shared.feature.catalog.SignDetailUiState
 import com.arsildo.merrpatenten.shared.feature.catalog.SignDetailViewModel
 import merrpatenten.shared_core.design_system.generated.resources.*
-import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 import org.koin.core.parameter.parametersOf
@@ -188,8 +186,8 @@ internal fun SignDetailBody(
                         .aspectRatio(1.35f),
                     contentAlignment = Alignment.Center,
                 ) {
-                    Image(
-                        painter = painterResource(getImageResource(sign.imageResNumber)),
+                    ResourceImage(
+                        imageId = sign.imageResNumber,
                         contentDescription = sign.title,
                         modifier = Modifier
                             .fillMaxWidth(0.85f)

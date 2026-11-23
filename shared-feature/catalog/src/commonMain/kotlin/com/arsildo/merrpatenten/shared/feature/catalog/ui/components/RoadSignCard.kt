@@ -1,6 +1,5 @@
 package com.arsildo.merrpatenten.shared.feature.catalog.ui.components
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -22,11 +21,10 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.arsildo.merrpatenten.shared.core.designsystem.getImageResource
+import com.arsildo.merrpatenten.shared.core.designsystem.components.ResourceImage
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.Split
 import com.arsildo.merrpatenten.shared.core.model.RoadSign
 import com.arsildo.merrpatenten.shared.core.model.SignCategory
-import org.jetbrains.compose.resources.painterResource
 
 @Composable
 fun RoadSignCard(sign: RoadSign, onClick: () -> Unit, modifier: Modifier = Modifier, selected: Boolean = false) {
@@ -61,8 +59,8 @@ fun RoadSignCard(sign: RoadSign, onClick: () -> Unit, modifier: Modifier = Modif
                     .background(MaterialTheme.colorScheme.surfaceContainerHighest),
                 contentAlignment = Alignment.Center,
             ) {
-                Image(
-                    painter = painterResource(getImageResource(sign.imageResNumber)),
+                ResourceImage(
+                    imageId = sign.imageResNumber,
                     contentDescription = sign.title,
                     modifier = Modifier
                         .fillMaxWidth(0.85f)

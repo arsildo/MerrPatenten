@@ -1,6 +1,5 @@
 package com.arsildo.merrpatenten.shared.feature.exam.ui.components
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -24,15 +23,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.arsildo.merrpatenten.shared.core.designsystem.MerrPatentenTheme
-import com.arsildo.merrpatenten.shared.core.designsystem.getImageResource
+import com.arsildo.merrpatenten.shared.core.designsystem.components.ResourceImage
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.ZoomIn
 import merrpatenten.shared_core.design_system.generated.resources.*
-import org.jetbrains.compose.resources.DrawableResource
-import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-internal fun QuestionImage(image: DrawableResource, onClick: () -> Unit, modifier: Modifier = Modifier) {
+internal fun QuestionImage(imageId: Int, onClick: () -> Unit, modifier: Modifier = Modifier) {
     val hapticFeedback = LocalHapticFeedback.current
     Box(
         modifier = modifier
@@ -43,8 +40,8 @@ internal fun QuestionImage(image: DrawableResource, onClick: () -> Unit, modifie
             },
         contentAlignment = Alignment.BottomEnd,
     ) {
-        Image(
-            painter = painterResource(image),
+        ResourceImage(
+            imageId = imageId,
             contentDescription = null,
             modifier = Modifier
                 .widthIn(max = 360.dp)
@@ -85,7 +82,7 @@ internal fun QuestionImage(image: DrawableResource, onClick: () -> Unit, modifie
 private fun QuestionImagePreview() {
     MerrPatentenTheme {
         QuestionImage(
-            image = getImageResource(1),
+            imageId = 1,
             onClick = {},
             modifier = Modifier.padding(16.dp),
         )
@@ -97,7 +94,7 @@ private fun QuestionImagePreview() {
 private fun QuestionImageDarkPreview() {
     MerrPatentenTheme(darkTheme = true) {
         QuestionImage(
-            image = getImageResource(1),
+            imageId = 1,
             onClick = {},
             modifier = Modifier.padding(16.dp),
         )

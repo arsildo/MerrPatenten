@@ -11,7 +11,6 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -33,7 +32,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.arsildo.merrpatenten.shared.core.designsystem.adaptive.rememberWindowAdaptiveInfo
 import com.arsildo.merrpatenten.shared.core.designsystem.components.EmptyStateTone
 import com.arsildo.merrpatenten.shared.core.designsystem.components.ExpressiveEmptyState
-import com.arsildo.merrpatenten.shared.core.designsystem.getImageResource
+import com.arsildo.merrpatenten.shared.core.designsystem.components.ResourceImage
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.ArrowLeft
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.ArrowRight
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleCheck
@@ -43,7 +42,6 @@ import com.arsildo.merrpatenten.shared.core.designsystem.semanticColors
 import com.arsildo.merrpatenten.shared.feature.mistakes.MistakesPracticeUiState
 import com.arsildo.merrpatenten.shared.feature.mistakes.MistakesPracticeViewModel
 import merrpatenten.shared_core.design_system.generated.resources.*
-import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 import org.koin.core.parameter.parametersOf
@@ -254,7 +252,6 @@ fun MistakesPracticeScreen(
 
                             // Sign Image (if present)
                             if (currentItem.question.image > 0) {
-                                val imageRes = getImageResource(currentItem.question.image)
                                 Box(
                                     modifier = Modifier
                                         .fillMaxWidth()
@@ -263,8 +260,8 @@ fun MistakesPracticeScreen(
                                         .clickable { onImageDetailsClick(currentItem.question.image) },
                                     contentAlignment = Alignment.Center,
                                 ) {
-                                    Image(
-                                        painter = painterResource(imageRes),
+                                    ResourceImage(
+                                        imageId = currentItem.question.image,
                                         contentDescription = null,
                                         contentScale = ContentScale.Fit,
                                         modifier = Modifier.fillMaxSize(),
