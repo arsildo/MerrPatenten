@@ -12,6 +12,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -19,7 +20,6 @@ import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.arsildo.merrpatenten.shared.core.designsystem.components.CategoryTabs
@@ -27,16 +27,7 @@ import com.arsildo.merrpatenten.shared.core.designsystem.components.EmptyStateTo
 import com.arsildo.merrpatenten.shared.core.designsystem.components.ExpressiveEmptyState
 import com.arsildo.merrpatenten.shared.core.designsystem.components.ResourceImage
 import com.arsildo.merrpatenten.shared.core.designsystem.formatQuestion
-import com.arsildo.merrpatenten.shared.core.designsystem.icons.ArrowLeft
-import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleCheck
-import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleX
-import com.arsildo.merrpatenten.shared.core.designsystem.icons.Play
-import com.arsildo.merrpatenten.shared.core.designsystem.icons.Search
-import com.arsildo.merrpatenten.shared.core.designsystem.icons.SearchX
-import com.arsildo.merrpatenten.shared.core.designsystem.icons.Star
-import com.arsildo.merrpatenten.shared.core.designsystem.icons.StarX
-import com.arsildo.merrpatenten.shared.core.designsystem.icons.Trash
-import com.arsildo.merrpatenten.shared.core.designsystem.icons.X
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.*
 import com.arsildo.merrpatenten.shared.core.designsystem.semanticColors
 import com.arsildo.merrpatenten.shared.core.model.BookmarkedQuestion
 import com.arsildo.merrpatenten.shared.feature.bookmarks.BookmarksUiState
@@ -46,12 +37,12 @@ import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
-fun BookmarksRoute(
+internal fun BookmarksRoute(
+    viewModel: BookmarksViewModel = koinViewModel(),
     onBackPress: () -> Unit,
     onStartPractice: (category: String) -> Unit,
     onImageDetailsClick: (index: Int) -> Unit,
     onClearCategoryClick: () -> Unit,
-    viewModel: BookmarksViewModel = koinViewModel(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
@@ -67,9 +58,9 @@ fun BookmarksRoute(
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
 @Composable
-fun BookmarksScreen(
+private fun BookmarksScreen(
+    modifier: Modifier = Modifier,
     uiState: BookmarksUiState,
     onBackPress: () -> Unit,
     onStartPractice: () -> Unit,
@@ -78,7 +69,6 @@ fun BookmarksScreen(
     onSearchQueryChange: (query: String) -> Unit,
     onRemoveBookmark: (questionId: Int, category: String) -> Unit,
     onClearCategoryClick: () -> Unit,
-    modifier: Modifier = Modifier,
 ) {
     val hapticFeedback = LocalHapticFeedback.current
     val navBarBottomPadding = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
@@ -279,13 +269,12 @@ fun BookmarksScreen(
     }
 }
 
-@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 private fun BookmarkedQuestionCard(
+    modifier: Modifier = Modifier,
     item: BookmarkedQuestion,
     onImageClick: () -> Unit,
     onRemoveClick: () -> Unit,
-    modifier: Modifier = Modifier,
 ) {
     Card(
         shape = MaterialTheme.shapes.large,
@@ -381,8 +370,11 @@ private fun BookmarkedQuestionCard(
                 )
             }
 
+            val formattedQuestion = remember(item.question.question) {
+                formatQuestion(item.question.question)
+            }
             Text(
-                text = formatQuestion(item.question.question),
+                text = formattedQuestion,
                 style = MaterialTheme.typography.bodyLarge,
                 color = MaterialTheme.colorScheme.onSurface,
             )
@@ -391,7 +383,7 @@ private fun BookmarkedQuestionCard(
 }
 
 @Composable
-private fun BookmarksEmptyView(isFiltered: Boolean, modifier: Modifier = Modifier) {
+private fun BookmarksEmptyView(modifier: Modifier = Modifier, isFiltered: Boolean) {
     ExpressiveEmptyState(
         icon = if (isFiltered) SearchX else Star,
         title = stringResource(

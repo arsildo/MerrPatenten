@@ -8,6 +8,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
@@ -120,8 +121,11 @@ internal fun ExamTabletopContent(
 
                             Spacer(modifier = Modifier.height(12.dp))
 
+                            val formattedQuestion = remember(question.question) {
+                                formatQuestion(question.question)
+                            }
                             Text(
-                                text = formatQuestion(question.question),
+                                text = formattedQuestion,
                                 style = uiState.questionTextSize.textStyle,
                                 fontWeight = FontWeight.Medium,
                                 textAlign = TextAlign.Center,

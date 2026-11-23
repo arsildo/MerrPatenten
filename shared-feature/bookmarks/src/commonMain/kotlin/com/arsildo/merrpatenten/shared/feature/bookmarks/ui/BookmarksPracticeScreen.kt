@@ -1,11 +1,6 @@
 package com.arsildo.merrpatenten.shared.feature.bookmarks.ui
 
-import androidx.compose.animation.AnimatedContent
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.animateColorAsState
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
-import androidx.compose.animation.togetherWith
+import androidx.compose.animation.*
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -15,6 +10,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -29,11 +25,7 @@ import com.arsildo.merrpatenten.shared.core.designsystem.components.EmptyStateTo
 import com.arsildo.merrpatenten.shared.core.designsystem.components.ExpressiveEmptyState
 import com.arsildo.merrpatenten.shared.core.designsystem.components.ResourceImage
 import com.arsildo.merrpatenten.shared.core.designsystem.formatQuestion
-import com.arsildo.merrpatenten.shared.core.designsystem.icons.ArrowLeft
-import com.arsildo.merrpatenten.shared.core.designsystem.icons.ArrowRight
-import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleCheck
-import com.arsildo.merrpatenten.shared.core.designsystem.icons.CircleX
-import com.arsildo.merrpatenten.shared.core.designsystem.icons.Star
+import com.arsildo.merrpatenten.shared.core.designsystem.icons.*
 import com.arsildo.merrpatenten.shared.core.designsystem.semanticColors
 import com.arsildo.merrpatenten.shared.feature.bookmarks.BookmarksPracticeUiState
 import com.arsildo.merrpatenten.shared.feature.bookmarks.BookmarksPracticeViewModel
@@ -43,7 +35,7 @@ import org.koin.compose.viewmodel.koinViewModel
 import org.koin.core.parameter.parametersOf
 
 @Composable
-fun BookmarksPracticeRoute(
+internal fun BookmarksPracticeRoute(
     category: String,
     onBackPress: () -> Unit,
     onPracticeFinished: () -> Unit,
@@ -64,9 +56,9 @@ fun BookmarksPracticeRoute(
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
-fun BookmarksPracticeScreen(
+private fun BookmarksPracticeScreen(
     uiState: BookmarksPracticeUiState,
     onBackPress: () -> Unit,
     onSubmitAnswer: (answer: String) -> Unit,
@@ -210,8 +202,11 @@ fun BookmarksPracticeScreen(
                                 )
                             }
 
+                            val formattedQuestion = remember(currentItem.question.question) {
+                                formatQuestion(currentItem.question.question)
+                            }
                             Text(
-                                text = formatQuestion(currentItem.question.question),
+                                text = formattedQuestion,
                                 style = MaterialTheme.typography.titleMedium,
                                 fontWeight = FontWeight.SemiBold,
                                 color = MaterialTheme.colorScheme.onSurface,
@@ -350,7 +345,6 @@ fun BookmarksPracticeScreen(
     }
 }
 
-@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 private fun PracticeAnswerButton(
     label: String,
