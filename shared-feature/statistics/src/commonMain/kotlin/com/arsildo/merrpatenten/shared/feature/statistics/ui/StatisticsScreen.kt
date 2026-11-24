@@ -142,12 +142,17 @@ internal fun StatisticsScreen(
                 )
 
                 else -> {
-                    val results = uiState.results.sortedByDescending { it.id }
+                    val results = remember(uiState.results) {
+                        uiState.results.sortedByDescending { it.id }
+                    }
                     if (results.isNotEmpty()) {
-                        val passedCount = results.count { it.errors <= ERRORS_ALLOWED }
-                        val passRate = ((passedCount.toDouble() / results.size) * 100).roundToInt()
-                        val totalErrors = results.sumOf { it.errors }
-                        val avgErrors = ((totalErrors.toDouble() / results.size) * 10).roundToInt() / 10.0
+                        val (passRate, avgErrors) = remember(results) {
+                            val passedCount = results.count { it.errors <= ERRORS_ALLOWED }
+                            val rate = ((passedCount.toDouble() / results.size) * 100).roundToInt()
+                            val totalErrors = results.sumOf { it.errors }
+                            val avg = ((totalErrors.toDouble() / results.size) * 10).roundToInt() / 10.0
+                            rate to avg
+                        }
 
                         val readiness = uiState.readinessScore
                         val (first, second, third, fourth) = when (readiness.level) {

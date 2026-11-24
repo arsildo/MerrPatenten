@@ -1,6 +1,5 @@
 package com.arsildo.merrpatenten.shared.feature.statistics.ui.components
 
-import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -10,15 +9,16 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawWithCache
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
@@ -43,6 +43,21 @@ internal fun PerformanceGraph(results: List<ExamResult>, modifier: Modifier = Mo
     val successColor = MaterialTheme.semanticColors.success
     val errorColor = MaterialTheme.colorScheme.error
     val passingZoneColor = MaterialTheme.semanticColors.successContainer.copy(alpha = 0.35f)
+    val points = remember(results) {
+        results.map { result ->
+            val timeStr = result.time
+            val minutes = if (timeStr.length >= 2) {
+                "${timeStr[0]}${timeStr[1]}".toIntOrNull() ?: 0
+            } else {
+                0
+            }
+            GraphPoint(
+                xCoord = minutes.coerceIn(0, 40),
+                yCoord = result.errors.coerceIn(0, 40),
+                isPassed = result.errors <= ERRORS_ALLOWED,
+            )
+        }
+    }
 
     Surface(
         shape = MaterialTheme.shapes.extraLarge,
@@ -100,64 +115,71 @@ internal fun PerformanceGraph(results: List<ExamResult>, modifier: Modifier = Mo
                 Column(
                     modifier = Modifier.weight(1f),
                 ) {
-                    Canvas(
+                    Spacer(
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(graphHeight)
                             .clip(MaterialTheme.shapes.large)
-                            .background(MaterialTheme.colorScheme.surfaceContainerHigh),
-                    ) {
-                        // Passing Zone background highlight (Errors 0 to 4 is at the bottom 10% of height)
-                        val passZoneHeight = size.height / 40f * ERRORS_ALLOWED.toFloat()
-                        drawRect(
-                            color = passingZoneColor,
-                            topLeft = Offset(0f, size.height - passZoneHeight),
-                            size = Size(size.width, passZoneHeight),
-                        )
+                            .background(MaterialTheme.colorScheme.surfaceContainerHigh)
+                            .drawWithCache {
+                                val passZoneHeight = size.height / 40f * ERRORS_ALLOWED.toFloat()
+                                val passZoneTopLeft = Offset(0f, size.height - passZoneHeight)
+                                val passZoneSize = Size(size.width, passZoneHeight)
+                                val gridStrokeWidth = 1.dp.toPx()
+                                val haloRadius = 10.dp.toPx()
+                                val dotRadius = 6.dp.toPx()
+                                val correctHaloColor = correctColor.copy(alpha = 0.25f)
+                                val errorHaloColor = errorColor.copy(alpha = 0.25f)
+                                val gridLines = List(3) { index ->
+                                    val y = size.height - (size.height / 4f * (index + 1))
+                                    Offset(0f, y) to Offset(size.width, y)
+                                }
+                                val dots = points.map { point ->
+                                    val xPos = (size.width / 40f) * point.xCoord.toFloat()
+                                    val yPos = size.height - ((size.height / 40f) * point.yCoord.toFloat())
+                                    CachedDot(
+                                        center = Offset(xPos, yPos),
+                                        color = if (point.isPassed) correctColor else errorColor,
+                                        haloColor = if (point.isPassed) correctHaloColor else errorHaloColor,
+                                    )
+                                }
 
-                        // Grid lines
-                        for (i in 1..3) {
-                            val y = size.height - (size.height / 4f * i)
-                            drawLine(
-                                color = axisColor,
-                                start = Offset(0f, y),
-                                end = Offset(size.width, y),
-                                strokeWidth = 1.dp.toPx(),
-                            )
-                        }
+                                onDrawBehind {
+                                    // Passing Zone background highlight (Errors 0 to 4 is at the bottom 10% of height)
+                                    drawRect(
+                                        color = passingZoneColor,
+                                        topLeft = passZoneTopLeft,
+                                        size = passZoneSize,
+                                    )
 
-                        // Data points
-                        for (i in results.indices) {
-                            val timeStr = results[i].time
-                            val minutes = if (timeStr.length >= 2) {
-                                "${timeStr[0]}${timeStr[1]}".toIntOrNull() ?: 0
-                            } else {
-                                0
-                            }
+                                    // Grid lines
+                                    gridLines.forEach { (start, end) ->
+                                        drawLine(
+                                            color = axisColor,
+                                            start = start,
+                                            end = end,
+                                            strokeWidth = gridStrokeWidth,
+                                        )
+                                    }
 
-                            val xCoord = minutes.coerceIn(0, 40)
-                            val yCoord = results[i].errors.coerceIn(0, 40)
-
-                            val xPos = (size.width / 40f) * xCoord.toFloat()
-                            val yPos = size.height - ((size.height / 40f) * yCoord.toFloat())
-
-                            val isPassed = results[i].errors <= ERRORS_ALLOWED
-                            val dotColor = if (isPassed) correctColor else errorColor
-
-                            // Draw subtle outer halo
-                            drawCircle(
-                                color = dotColor.copy(alpha = 0.25f),
-                                radius = 10.dp.toPx(),
-                                center = Offset(xPos, yPos),
-                            )
-                            // Draw main point
-                            drawCircle(
-                                color = dotColor,
-                                radius = 6.dp.toPx(),
-                                center = Offset(xPos, yPos),
-                            )
-                        }
-                    }
+                                    // Data points
+                                    dots.forEach { dot ->
+                                        // Draw subtle outer halo
+                                        drawCircle(
+                                            color = dot.haloColor,
+                                            radius = haloRadius,
+                                            center = dot.center,
+                                        )
+                                        // Draw main point
+                                        drawCircle(
+                                            color = dot.color,
+                                            radius = dotRadius,
+                                            center = dot.center,
+                                        )
+                                    }
+                                }
+                            },
+                    )
 
                     Spacer(modifier = Modifier.height(6.dp))
 
@@ -213,7 +235,9 @@ internal fun AverageMistakes(previousExamResults: List<ExamResult>) {
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.Center,
     ) {
-        val average = calculateAverage(previousExamResults)
+        val average = remember(previousExamResults) {
+            calculateAverage(previousExamResults)
+        }
         val prefix = stringResource(Res.string.performance_average_prefix)
         val middle = stringResource(Res.string.performance_average_middle)
         val suffix = stringResource(Res.string.performance_average_suffix)
@@ -238,6 +262,10 @@ internal fun AverageMistakes(previousExamResults: List<ExamResult>) {
         )
     }
 }
+
+private data class GraphPoint(val xCoord: Int, val yCoord: Int, val isPassed: Boolean)
+
+private data class CachedDot(val center: Offset, val color: Color, val haloColor: Color)
 
 private fun calculateAverage(data: List<ExamResult>): Double {
     if (data.isEmpty()) return 0.0
