@@ -17,8 +17,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.hapticfeedback.HapticFeedbackType
-import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -30,14 +28,10 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 internal fun QuestionImage(imageId: Int, onClick: () -> Unit, modifier: Modifier = Modifier) {
-    val hapticFeedback = LocalHapticFeedback.current
     Box(
         modifier = modifier
             .fillMaxWidth()
-            .clickable {
-                hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                onClick()
-            },
+            .clickable(onClick = onClick),
         contentAlignment = Alignment.BottomEnd,
     ) {
         ResourceImage(

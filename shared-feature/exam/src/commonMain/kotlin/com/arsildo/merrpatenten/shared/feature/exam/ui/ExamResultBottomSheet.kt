@@ -14,7 +14,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.input.key.*
+import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -73,6 +75,7 @@ internal fun ExamResultBottomSheet(
     onDismiss: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    val hapticFeedback = LocalHapticFeedback.current
     val hasPassed = uiState.isPassed
     val heroContent = if (hasPassed) MaterialTheme.semanticColors.onSuccessContainer else MaterialTheme.colorScheme.onErrorContainer
     val heroIcon = if (hasPassed) CircleCheck else CircleX
@@ -202,7 +205,10 @@ internal fun ExamResultBottomSheet(
                     contentColor = content,
                     shape = if (hasResponse) MaterialShapes.Cookie6Sided.toShape() else MaterialShapes.Slanted.toShape(),
                     contentDescription = stringResource(Res.string.question_status_format, questionTitle, statusText),
-                    onClick = { onQuestionClicked(page) },
+                    onClick = {
+                        hapticFeedback.performHapticFeedback(HapticFeedbackType.SegmentTick)
+                        onQuestionClicked(page)
+                    },
                 )
             }
             item(

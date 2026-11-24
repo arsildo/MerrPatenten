@@ -10,6 +10,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -36,6 +38,7 @@ internal fun ExamQuestionMap(
     onRestartExam: (() -> Unit)? = null,
     minItemSize: Dp = 48.dp,
 ) {
+    val hapticFeedback = LocalHapticFeedback.current
     val hasPassed = uiState.errors <= ERRORS_ALLOWED
     val heroContent = if (hasPassed) MaterialTheme.semanticColors.onSuccessContainer else MaterialTheme.colorScheme.onErrorContainer
     val heroIcon = if (hasPassed) CircleCheck else CircleX
@@ -124,19 +127,7 @@ internal fun ExamQuestionMap(
                                 color = MaterialTheme.colorScheme.primary,
                             )
                         }
-                        if (uiState.timer.isNotEmpty()) {
-                            Badge(
-                                containerColor = MaterialTheme.colorScheme.primaryContainer,
-                                contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
-                            ) {
-                                Text(
-                                    text = uiState.timer,
-                                    style = MaterialTheme.typography.labelMedium,
-                                    fontWeight = FontWeight.Bold,
-                                    modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp),
-                                )
-                            }
-                        }
+                        QuestionMapTimerBadge(timer = { uiState.timer })
                     }
                 }
             }
@@ -186,7 +177,10 @@ internal fun ExamQuestionMap(
                 contentColor = content,
                 shape = shape,
                 contentDescription = stringResource(Res.string.question_number_format, page + 1),
-                onClick = { onQuestionClicked(page) },
+                onClick = {
+                    hapticFeedback.performHapticFeedback(HapticFeedbackType.SegmentTick)
+                    onQuestionClicked(page)
+                },
                 modifier = activeBorder,
             )
         }
@@ -218,6 +212,24 @@ internal fun ExamQuestionMap(
                     }
                 }
             }
+        }
+    }
+}
+
+@Composable
+private fun QuestionMapTimerBadge(timer: () -> String) {
+    val timerText = timer()
+    if (timerText.isNotEmpty()) {
+        Badge(
+            containerColor = MaterialTheme.colorScheme.primaryContainer,
+            contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+        ) {
+            Text(
+                text = timerText,
+                style = MaterialTheme.typography.labelMedium,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp),
+            )
         }
     }
 }

@@ -24,8 +24,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.hapticfeedback.HapticFeedbackType
-import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -47,7 +45,6 @@ internal fun ExpressiveOptionCard(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val hapticFeedback = LocalHapticFeedback.current
     val containerColor by animateColorAsState(
         targetValue = if (isChecked) {
             selectedContainerColor
@@ -73,10 +70,7 @@ internal fun ExpressiveOptionCard(
     }
 
     Button(
-        onClick = {
-            hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
-            onClick()
-        },
+        onClick = onClick,
         enabled = enabled,
         shapes = ButtonShapes(
             shape = MaterialTheme.shapes.large,

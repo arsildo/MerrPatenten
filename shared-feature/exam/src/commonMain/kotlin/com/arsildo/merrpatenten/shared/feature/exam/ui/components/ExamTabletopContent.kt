@@ -35,7 +35,7 @@ import org.jetbrains.compose.resources.stringResource
 internal fun ExamTabletopContent(
     uiState: ExamUiState,
     pagerState: PagerState,
-    animatedProgress: Float,
+    progressProvider: () -> Float,
     endExamVisible: Boolean,
     onShowEndExam: () -> Unit,
     onOpenMap: () -> Unit,
@@ -80,7 +80,7 @@ internal fun ExamTabletopContent(
                 )
 
                 LinearProgressIndicator(
-                    progress = { animatedProgress },
+                    progress = progressProvider,
                     color = MaterialTheme.semanticColors.successContainer,
                     drawStopIndicator = {},
                     modifier = Modifier

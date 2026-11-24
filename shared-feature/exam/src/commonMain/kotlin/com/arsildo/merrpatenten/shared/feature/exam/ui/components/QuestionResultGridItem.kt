@@ -10,8 +10,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.hapticfeedback.HapticFeedbackType
-import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
@@ -29,12 +27,8 @@ internal fun QuestionResultGridItem(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val hapticFeedback = LocalHapticFeedback.current
     Surface(
-        onClick = {
-            hapticFeedback.performHapticFeedback(HapticFeedbackType.SegmentTick)
-            onClick()
-        },
+        onClick = onClick,
         shape = shape,
         color = containerColor,
         contentColor = contentColor,

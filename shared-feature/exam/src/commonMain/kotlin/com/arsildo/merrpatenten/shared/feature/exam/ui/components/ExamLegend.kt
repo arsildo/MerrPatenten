@@ -12,7 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontWeight
@@ -82,41 +82,9 @@ internal fun ExamLegend(
         }
 
         // Timer Badge
-        val timerText = timer()
-        val isLowTime =
-            timerText.startsWith("0") && (timerText.startsWith("00:") || timerText.startsWith("01:") || timerText.startsWith("02:"))
-        Surface(
-            shape = CircleShape,
-            color = if (isLowTime) {
-                MaterialTheme.colorScheme.errorContainer
-            } else {
-                MaterialTheme.colorScheme.tertiaryContainer
-            },
-            contentColor = if (isLowTime) {
-                MaterialTheme.colorScheme.onErrorContainer
-            } else {
-                MaterialTheme.colorScheme.onTertiaryContainer
-            },
-        ) {
-            Row(
-                modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp),
-                horizontalArrangement = Arrangement.spacedBy(4.dp),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                Icon(
-                    imageVector = Timer,
-                    contentDescription = null,
-                    modifier = Modifier.size(16.dp),
-                )
-                Text(
-                    text = timerText,
-                    style = MaterialTheme.typography.labelLarge,
-                    fontWeight = FontWeight.Bold,
-                )
-            }
-        }
+        ExamTimerBadge(timer = timer)
 
-        val rotationState by animateFloatAsState(
+        val rotationState = animateFloatAsState(
             targetValue = if (endExamVisible) 180f else 0f,
             label = "EndExamRotation",
             animationSpec = tween(durationMillis = 350),
@@ -144,7 +112,45 @@ internal fun ExamLegend(
                 contentDescription = stringResource(Res.string.toggle_end_exam),
                 modifier = Modifier
                     .size(22.dp)
-                    .rotate(rotationState),
+                    .graphicsLayer { rotationZ = rotationState.value },
+            )
+        }
+    }
+}
+
+@Composable
+private fun ExamTimerBadge(timer: () -> String, modifier: Modifier = Modifier) {
+    val timerText = timer()
+    val isLowTime =
+        timerText.startsWith("0") && (timerText.startsWith("00:") || timerText.startsWith("01:") || timerText.startsWith("02:"))
+    Surface(
+        shape = CircleShape,
+        color = if (isLowTime) {
+            MaterialTheme.colorScheme.errorContainer
+        } else {
+            MaterialTheme.colorScheme.tertiaryContainer
+        },
+        contentColor = if (isLowTime) {
+            MaterialTheme.colorScheme.onErrorContainer
+        } else {
+            MaterialTheme.colorScheme.onTertiaryContainer
+        },
+        modifier = modifier,
+    ) {
+        Row(
+            modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp),
+            horizontalArrangement = Arrangement.spacedBy(4.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Icon(
+                imageVector = Timer,
+                contentDescription = null,
+                modifier = Modifier.size(16.dp),
+            )
+            Text(
+                text = timerText,
+                style = MaterialTheme.typography.labelLarge,
+                fontWeight = FontWeight.Bold,
             )
         }
     }

@@ -113,7 +113,7 @@ internal fun ExamScreen(
         uiState.responseList.count { it.isNotBlank() }
     }
     val progress = (completedCount.toFloat() / questionCount.toFloat()).coerceIn(0f, 1f)
-    val animatedProgress by animateFloatAsState(
+    val animatedProgress = animateFloatAsState(
         targetValue = progress,
         animationSpec = spring(
             dampingRatio = Spring.DampingRatioNoBouncy,
@@ -121,6 +121,31 @@ internal fun ExamScreen(
         ),
         label = "ExamCompletionProgress",
     )
+
+    val onImageClickWithHaptic: (Int) -> Unit = remember(onImageDetailsClick, hapticFeedback) {
+        { id ->
+            hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+            onImageDetailsClick(id)
+        }
+    }
+    val onToggleBookmarkWithHaptic: (Int) -> Unit = remember(onToggleBookmark, hapticFeedback) {
+        { id ->
+            hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+            onToggleBookmark(id)
+        }
+    }
+    val onCheckFalseWithHaptic: (Int) -> Unit = remember(onCheckFalseAtPage, hapticFeedback) {
+        { page ->
+            hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
+            onCheckFalseAtPage(page)
+        }
+    }
+    val onCheckTrueWithHaptic: (Int) -> Unit = remember(onCheckTrueAtPage, hapticFeedback) {
+        { page ->
+            hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
+            onCheckTrueAtPage(page)
+        }
+    }
 
     LaunchedEffect(Unit) {
         focusRequester.requestFocus()
@@ -318,14 +343,14 @@ internal fun ExamScreen(
                     ExamTabletopContent(
                         uiState = uiState,
                         pagerState = pagerState,
-                        animatedProgress = animatedProgress,
+                        progressProvider = { animatedProgress.value },
                         endExamVisible = endExamVisible,
                         onShowEndExam = { endExamVisible = !endExamVisible },
                         onOpenMap = onOpenMap,
-                        onImageDetailsClick = onImageDetailsClick,
-                        onToggleBookmark = onToggleBookmark,
-                        onCheckFalseAtPage = onCheckFalseAtPage,
-                        onCheckTrueAtPage = onCheckTrueAtPage,
+                        onImageDetailsClick = onImageClickWithHaptic,
+                        onToggleBookmark = onToggleBookmarkWithHaptic,
+                        onCheckFalseAtPage = onCheckFalseWithHaptic,
+                        onCheckTrueAtPage = onCheckTrueWithHaptic,
                         onCompleteExam = {
                             if (completedCount != questionCount) {
                                 hapticFeedback.performHapticFeedback(HapticFeedbackType.GestureThresholdActivate)
@@ -357,14 +382,14 @@ internal fun ExamScreen(
                     ExamDualPaneContent(
                         uiState = uiState,
                         pagerState = pagerState,
-                        animatedProgress = animatedProgress,
+                        progressProvider = { animatedProgress.value },
                         endExamVisible = endExamVisible,
                         onShowEndExam = { endExamVisible = !endExamVisible },
                         onOpenMap = onOpenMap,
-                        onImageDetailsClick = onImageDetailsClick,
-                        onToggleBookmark = onToggleBookmark,
-                        onCheckFalseAtPage = onCheckFalseAtPage,
-                        onCheckTrueAtPage = onCheckTrueAtPage,
+                        onImageDetailsClick = onImageClickWithHaptic,
+                        onToggleBookmark = onToggleBookmarkWithHaptic,
+                        onCheckFalseAtPage = onCheckFalseWithHaptic,
+                        onCheckTrueAtPage = onCheckTrueWithHaptic,
                         onCompleteExam = {
                             if (completedCount != questionCount) {
                                 hapticFeedback.performHapticFeedback(HapticFeedbackType.GestureThresholdActivate)
@@ -417,7 +442,7 @@ internal fun ExamScreen(
                             )
 
                             LinearProgressIndicator(
-                                progress = { animatedProgress },
+                                progress = { animatedProgress.value },
                                 color = MaterialTheme.semanticColors.successContainer,
                                 drawStopIndicator = {},
                                 modifier = Modifier
@@ -431,18 +456,20 @@ internal fun ExamScreen(
                             pagerState = pagerState,
                             falseCheckedPages = uiState.falseCheckedPositions,
                             trueCheckedPages = uiState.trueCheckedPositions,
-                            onImageClick = onImageDetailsClick,
-                            onCheckFalseAtPage = onCheckFalseAtPage,
-                            onCheckTrueAtPage = onCheckTrueAtPage,
+                            onImageClick = onImageClickWithHaptic,
+                            onCheckFalseAtPage = onCheckFalseWithHaptic,
+                            onCheckTrueAtPage = onCheckTrueWithHaptic,
                             isCompleted = uiState.isCompleted,
                             responses = uiState.mistakePositions,
                             questionTextSize = uiState.questionTextSize,
                             bookmarkedQuestionIds = uiState.bookmarkedQuestionIds,
-                            onToggleBookmark = onToggleBookmark,
+                            onToggleBookmark = onToggleBookmarkWithHaptic,
                         )
 
-                        LaunchedEffect(pagerState.settledPage) {
-                            endExamVisible = pagerState.settledPage == pagerState.pageCount - 1
+                        LaunchedEffect(pagerState) {
+                            snapshotFlow { pagerState.settledPage }.collect { settledPage ->
+                                endExamVisible = settledPage == pagerState.pageCount - 1
+                            }
                         }
                     }
                 }

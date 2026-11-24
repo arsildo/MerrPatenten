@@ -8,8 +8,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.hapticfeedback.HapticFeedbackType
-import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -144,13 +142,9 @@ internal fun QuestionItem(
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 internal fun BookmarkToggleButton(isBookmarked: Boolean, onToggle: () -> Unit, modifier: Modifier = Modifier) {
-    val hapticFeedback = LocalHapticFeedback.current
     FilledTonalIconToggleButton(
         checked = isBookmarked,
-        onCheckedChange = {
-            hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-            onToggle()
-        },
+        onCheckedChange = { onToggle() },
         shapes = IconButtonDefaults.toggleableShapes(),
         colors = IconButtonDefaults.filledTonalIconToggleButtonColors(
             containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
