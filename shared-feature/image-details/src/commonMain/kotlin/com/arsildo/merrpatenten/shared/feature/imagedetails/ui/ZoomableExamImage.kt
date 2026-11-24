@@ -104,11 +104,11 @@ internal fun ZoomableExamImage(uiState: ImageDetailsUiState, onDismiss: () -> Un
                     modifier = Modifier
                         .padding(16.dp)
                         .aspectRatio(ratio = 1f)
-                        .graphicsLayer(
-                            scaleX = scale,
-                            scaleY = scale,
-                            rotationZ = rotation,
-                        )
+                        .graphicsLayer {
+                            scaleX = scale
+                            scaleY = scale
+                            rotationZ = rotation
+                        }
                         .pointerInput(Unit) {
                             detectTransformGestures { _, _, zoom, rotationChange ->
                                 scale = (scale * zoom).coerceIn(0.5f, 5f)
@@ -184,11 +184,11 @@ internal fun ZoomableExamImage(uiState: ImageDetailsUiState, onDismiss: () -> Un
                     modifier = Modifier
                         .padding(16.dp)
                         .fillMaxSize()
-                        .graphicsLayer(
-                            scaleX = scale,
-                            scaleY = scale,
-                            rotationZ = rotation,
-                        )
+                        .graphicsLayer {
+                            scaleX = scale
+                            scaleY = scale
+                            rotationZ = rotation
+                        }
                         .pointerInput(Unit) {
                             detectTransformGestures { _, _, zoom, rotationChange ->
                                 scale = (scale * zoom).coerceIn(0.5f, 5f)
