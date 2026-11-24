@@ -231,7 +231,7 @@ fun MistakesScreen(
                 ) {
                     items(
                         items = uiState.mistakes,
-                        key = { "${it.question.id}_${it.question.category}" },
+                        key = { it.question.id },
                         contentType = { "mistake" },
                     ) { item ->
                         MistakeQuestionCard(
