@@ -1,11 +1,11 @@
 package com.arsildo.merrpatenten.shared.feature.catalog.ui
 
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -180,26 +180,14 @@ private fun CatalogListPane(
         modifier = modifier.fillMaxHeight(),
     ) {
         // Category Filter Chips
-        val categories = listOf(
-            SignCategory.ALL to Res.string.catalog_category_all,
-            SignCategory.WARNING to Res.string.catalog_category_warning,
-            SignCategory.PROHIBITORY to Res.string.catalog_category_prohibitory,
-            SignCategory.INFORMATIVE to Res.string.catalog_category_informative,
-            SignCategory.ROAD_MARKINGS to Res.string.catalog_category_markings,
-            SignCategory.POLICE_SIGNALS to Res.string.catalog_category_police,
-            SignCategory.INTERSECTIONS to Res.string.catalog_category_intersections,
-        )
-
-        LazyRow(
-            contentPadding = PaddingValues(horizontal = 16.dp),
+        Row(
             horizontalArrangement = Arrangement.spacedBy(8.dp),
-            modifier = Modifier.padding(vertical = 8.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .horizontalScroll(rememberScrollState())
+                .padding(horizontal = 16.dp, vertical = 8.dp),
         ) {
-            items(
-                items = categories,
-                key = { it.first },
-                contentType = { "category_chip" },
-            ) { [category, stringRes] ->
+            catalogCategories.forEach { [category, stringRes] ->
                 val selected = uiState.selectedCategory == category
                 FilterChip(
                     selected = selected,
@@ -256,6 +244,16 @@ private fun CatalogListPane(
         }
     }
 }
+
+private val catalogCategories = listOf(
+    SignCategory.ALL to Res.string.catalog_category_all,
+    SignCategory.WARNING to Res.string.catalog_category_warning,
+    SignCategory.PROHIBITORY to Res.string.catalog_category_prohibitory,
+    SignCategory.INFORMATIVE to Res.string.catalog_category_informative,
+    SignCategory.ROAD_MARKINGS to Res.string.catalog_category_markings,
+    SignCategory.POLICE_SIGNALS to Res.string.catalog_category_police,
+    SignCategory.INTERSECTIONS to Res.string.catalog_category_intersections,
+)
 
 @Preview
 @Composable
