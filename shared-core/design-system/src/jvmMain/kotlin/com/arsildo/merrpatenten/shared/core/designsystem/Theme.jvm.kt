@@ -7,3 +7,6 @@ actual val supportsDynamicColor: Boolean = false
 
 @Composable
 actual fun getColorScheme(darkTheme: Boolean, dynamicColor: Boolean): ColorScheme = if (darkTheme) DarkColorScheme else LightColorScheme
+
+@Composable
+internal actual fun SystemBarAppearanceEffect(darkTheme: Boolean) = Unit

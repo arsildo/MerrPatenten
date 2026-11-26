@@ -105,9 +105,14 @@ expect val supportsDynamicColor: Boolean
 expect fun getColorScheme(darkTheme: Boolean, dynamicColor: Boolean): ColorScheme
 
 @Composable
+internal expect fun SystemBarAppearanceEffect(darkTheme: Boolean)
+
+@Composable
 fun MerrPatentenTheme(darkTheme: Boolean = isSystemInDarkTheme(), dynamicColor: Boolean = true, content: @Composable () -> Unit) {
     val colorScheme = getColorScheme(darkTheme = darkTheme, dynamicColor = dynamicColor)
     val semanticColors = if (darkTheme) DarkSemanticColors else LightSemanticColors
+
+    SystemBarAppearanceEffect(darkTheme = darkTheme)
 
     CompositionLocalProvider(LocalSemanticColors provides semanticColors) {
         MaterialExpressiveTheme(
