@@ -3,8 +3,8 @@
 
     <style name="Theme.App.Starting" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/offBlack</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground_night</item>
-        <item name="windowSplashScreenAnimationDuration">1000</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/avd_splash_ignition</item>
+        <item name="windowSplashScreenAnimationDuration">650</item>
         <item name="postSplashScreenTheme">@style/Theme.MerrPatenten</item>
     </style>
 

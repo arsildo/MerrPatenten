@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Background gauge track -->
+    <path
+        android:pathData="M37.03,70.97 A24,24 0 1,1 70.97,70.97"
+        android:strokeColor="@color/splash_track"
+        android:strokeWidth="3.5"
+        android:strokeLineCap="round" />
+
+    <!-- Subtle inner dial ticks -->
+    <path
+        android:pathData="M40.92,67.08 L39.50,68.50 M36.91,46.92 L35.06,46.16 M54,35.5 L54,33.5 M71.09,46.92 L72.94,46.16 M67.08,67.08 L68.50,68.50"
+        android:strokeColor="@color/splash_track"
+        android:strokeWidth="1.8"
+        android:strokeLineCap="round" />
+
+    <!-- Animated active sweep arc -->
+    <path
+        android:name="arc"
+        android:pathData="M37.03,70.97 A24,24 0 1,1 70.97,70.97"
+        android:strokeColor="@color/splash_primary"
+        android:strokeWidth="3.5"
+        android:strokeLineCap="round"
+        android:trimPathEnd="0" />
+
+    <!-- Animated tachometer needle -->
+    <group
+        android:name="needle"
+        android:pivotX="54"
+        android:pivotY="54"
+        android:rotation="-135">
+        <path
+            android:pathData="M54,54 L54,38.5"
+            android:strokeColor="@color/splash_needle"
+            android:strokeWidth="2.5"
+            android:strokeLineCap="round" />
+    </group>
+
+    <!-- Center hub dot -->
+    <path
+        android:pathData="M54,51 A3,3 0 1,1 53.99,51 Z"
+        android:fillColor="@color/splash_primary" />
+
+</vector>

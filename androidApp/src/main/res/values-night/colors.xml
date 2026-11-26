@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="splash_primary">#FFD0BCFF</color>
+    <color name="splash_needle">#FFCCC2DC</color>
+    <color name="splash_track">#FF36343A</color>
+</resources>
