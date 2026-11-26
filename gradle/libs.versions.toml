@@ -1,15 +1,15 @@
 [versions]
-agp = "9.5.2"
-kotlin = "2.5.0-RC"
-compose-multiplatform = "1.13.10-alpha01+dev5228"
-compose-material3-adaptive = "1.4.0-alpha02+dev5228"
+agp = "9.5.3"
+kotlin = "2.5.0-RC2"
+compose-multiplatform = "1.13.10-alpha01+dev5266"
+compose-material3-adaptive = "1.4.0-alpha02+dev5266"
 ksp = "2.3.14"
 ktlint = "2.0.0-ALPHA-5"
 
 ## Android
-androidx-activity = "1.13.0"
+androidx-activity = "1.14.0-alpha03"
 androidx-appcompat = "1.8.0"
-androidx-core = "1.19.1"
+androidx-core = "1.20.0-alpha01"
 androidx-core-splashscreen = "1.2.0"
 androidx-datastore = "1.3.0"
 androidx-graphics-shapes = "1.1.0"
@@ -18,7 +18,7 @@ androidx-sqlite = "2.8.0-alpha04"
 
 # JetBrains Lifecycle & Navigation 3
 androidx-lifecycle = "2.11.0"
-androidx-navigation3 = "1.2.10-alpha01+dev5228"
+androidx-navigation3 = "1.2.10-alpha01+dev5266"
 androidx-savedstate = "1.4.0"
 kotlinx-coroutines = "1.11.0"
 kotlinx-serialization = "1.13.0"
