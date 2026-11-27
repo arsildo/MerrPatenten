@@ -1,19 +1,14 @@
 package com.arsildo.merrpatenten.shared.feature.exam.ui
 
-import androidx.compose.foundation.focusable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.FocusRequester
-import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.input.key.*
 import androidx.compose.ui.platform.LocalHapticFeedback
@@ -43,6 +38,7 @@ import org.koin.core.parameter.parametersOf
 
 @Composable
 internal fun ExamResultBottomSheetRoute(
+    modifier: Modifier = Modifier,
     category: String,
     type: ExamType,
     viewModel: ExamViewModel = koinViewModel(parameters = { parametersOf(category, type) }),
@@ -54,6 +50,7 @@ internal fun ExamResultBottomSheetRoute(
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     ExamResultBottomSheet(
+        modifier = modifier,
         uiState = uiState,
         onQuestionClicked = { page ->
             viewModel.navigateToPage(page)
@@ -68,12 +65,12 @@ internal fun ExamResultBottomSheetRoute(
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 internal fun ExamResultBottomSheet(
+    modifier: Modifier = Modifier,
     uiState: ExamUiState,
     onQuestionClicked: (page: Int) -> Unit,
     onExitExam: () -> Unit,
     onRestartExam: () -> Unit,
     onDismiss: () -> Unit,
-    modifier: Modifier = Modifier,
 ) {
     val hapticFeedback = LocalHapticFeedback.current
     val hasPassed = uiState.isPassed
@@ -81,17 +78,9 @@ internal fun ExamResultBottomSheet(
     val heroIcon = if (hasPassed) CircleCheck else CircleX
     val heroIconColor = if (hasPassed) MaterialTheme.semanticColors.success else MaterialTheme.colorScheme.error
 
-    val focusRequester = remember { FocusRequester() }
-
-    LaunchedEffect(Unit) {
-        focusRequester.requestFocus()
-    }
-
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .focusRequester(focusRequester)
-            .focusable()
             .onPreviewKeyEvent { event ->
                 if (event.type != KeyEventType.KeyDown) return@onPreviewKeyEvent false
                 when (event.key) {
@@ -125,7 +114,7 @@ internal fun ExamResultBottomSheet(
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
                         Row(
-                            horizontalArrangement = Arrangement.spacedBy(12.dp),
+                            horizontalArrangement = Arrangement.spacedBy(16.dp),
                             verticalAlignment = Alignment.CenterVertically,
                         ) {
                             Icon(
@@ -286,8 +275,8 @@ internal fun ExamResultBottomSheet(
 
 @Preview
 @Composable
-private fun ExamResultBottomSheetInProgressPreview() {
-    MerrPatentenTheme {
+private fun ExamResultBottomSheetInProgressPreview() = MerrPatentenTheme {
+    Surface {
         ExamResultBottomSheet(
             uiState = ExamUiState(
                 isCompleted = false,
@@ -304,8 +293,8 @@ private fun ExamResultBottomSheetInProgressPreview() {
 
 @Preview
 @Composable
-private fun ExamResultBottomSheetPassedPreview() {
-    MerrPatentenTheme {
+private fun ExamResultBottomSheetPassedPreview() = MerrPatentenTheme {
+    Surface {
         ExamResultBottomSheet(
             uiState = ExamUiState(
                 isCompleted = true,
@@ -323,8 +312,8 @@ private fun ExamResultBottomSheetPassedPreview() {
 
 @Preview
 @Composable
-private fun ExamResultBottomSheetFailedPreview() {
-    MerrPatentenTheme {
+private fun ExamResultBottomSheetFailedPreview() = MerrPatentenTheme {
+    Surface {
         ExamResultBottomSheet(
             uiState = ExamUiState(
                 isCompleted = true,
@@ -342,8 +331,8 @@ private fun ExamResultBottomSheetFailedPreview() {
 
 @Preview
 @Composable
-private fun ExamResultBottomSheetDarkPreview() {
-    MerrPatentenTheme(darkTheme = true) {
+private fun ExamResultBottomSheetDarkPreview() = MerrPatentenTheme(darkTheme = true) {
+    Surface {
         ExamResultBottomSheet(
             uiState = ExamUiState(
                 isCompleted = true,

@@ -1,7 +1,6 @@
 package com.arsildo.merrpatenten.shared.feature.exam.navigation
 
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.lifecycle.compose.dropUnlessResumed
 import androidx.navigation3.runtime.EntryProviderScope
 import androidx.navigation3.runtime.NavBackStack
 import androidx.navigation3.runtime.NavKey
@@ -71,7 +70,7 @@ fun EntryProviderScope<NavKey>.examEntry(
                 backStack.removeLastOrNull()
                 onRestartExam(sheetKey.category, sheetKey.type)
             },
-            onDismiss = dropUnlessResumed(block = backStack::removeLastOrNull),
+            onDismiss = { backStack.removeLastOrNull() },
         )
     }
 
@@ -98,7 +97,7 @@ fun EntryProviderScope<NavKey>.examEntry(
                 backStack.removeLastOrNull()
                 onExitExam()
             },
-            onDismiss = dropUnlessResumed(block = backStack::removeLastOrNull),
+            onDismiss = { backStack.removeLastOrNull() },
         )
     }
 }

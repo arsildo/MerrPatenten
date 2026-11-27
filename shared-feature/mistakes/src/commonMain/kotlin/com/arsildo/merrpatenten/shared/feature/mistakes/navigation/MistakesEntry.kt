@@ -38,7 +38,7 @@ fun EntryProviderScope<NavKey>.mistakesEntry(
         MistakesRoute(
             onStartPractice = { category -> backStack.add(MistakesPractice(category)) },
             onImageDetailsClick = onImageDetailsClick,
-            onClearCategoryClick = { backStack.add(ClearMistakesBottomSheet) },
+            onClearCategoryClick = dropUnlessResumed { backStack.add(ClearMistakesBottomSheet) },
         )
     }
 
@@ -50,7 +50,7 @@ fun EntryProviderScope<NavKey>.mistakesEntry(
     ) {
         ClearMistakesBottomSheetRoute(
             onConfirm = { backStack.removeLastOrNull() },
-            onDismiss = dropUnlessResumed(block = backStack::removeLastOrNull),
+            onDismiss = { backStack.removeLastOrNull() },
         )
     }
 
@@ -60,7 +60,7 @@ fun EntryProviderScope<NavKey>.mistakesEntry(
         MistakesPracticeRoute(
             category = key.category,
             onBackPress = onBackPress,
-            onPracticeFinished = { backStack.add(MistakesPracticeResultBottomSheet(key.category)) },
+            onPracticeFinished = dropUnlessResumed { backStack.add(MistakesPracticeResultBottomSheet(key.category)) },
             onImageDetailsClick = onImageDetailsClick,
         )
     }
@@ -79,7 +79,7 @@ fun EntryProviderScope<NavKey>.mistakesEntry(
                 backStack.removeLastOrNull()
                 onBackPress()
             },
-            onDismiss = dropUnlessResumed {
+            onDismiss = {
                 backStack.removeLastOrNull()
                 onBackPress()
             },

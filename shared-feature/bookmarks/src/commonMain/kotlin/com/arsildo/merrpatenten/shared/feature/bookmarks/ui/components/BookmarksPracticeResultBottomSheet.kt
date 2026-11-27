@@ -1,15 +1,17 @@
 package com.arsildo.merrpatenten.shared.feature.bookmarks.ui.components
 
-import androidx.compose.foundation.focusable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonShapes
 import androidx.compose.material3.Icon
@@ -17,13 +19,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.FocusRequester
-import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.input.key.Key
 import androidx.compose.ui.input.key.KeyEventType
@@ -50,43 +48,37 @@ import org.koin.core.parameter.parametersOf
 
 @Composable
 internal fun BookmarksPracticeResultBottomSheetRoute(
+    modifier: Modifier = Modifier,
     category: String,
     viewModel: BookmarksPracticeViewModel = koinViewModel(parameters = { parametersOf(category) }),
     onConfirm: () -> Unit,
     onDismiss: () -> Unit,
-    modifier: Modifier = Modifier,
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     BookmarksPracticeResultBottomSheet(
+        modifier = modifier,
         totalAnsweredCount = uiState.totalAnsweredCount,
         correctCount = uiState.correctCount,
         onConfirm = onConfirm,
         onDismiss = onDismiss,
-        modifier = modifier,
     )
 }
 
 @Composable
 internal fun BookmarksPracticeResultBottomSheet(
+    modifier: Modifier = Modifier,
     totalAnsweredCount: Int,
     correctCount: Int,
     onConfirm: () -> Unit,
     onDismiss: () -> Unit,
-    modifier: Modifier = Modifier,
 ) {
     val hapticFeedback = LocalHapticFeedback.current
-    val focusRequester = remember { FocusRequester() }
-
-    LaunchedEffect(Unit) {
-        focusRequester.requestFocus()
-    }
 
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .focusRequester(focusRequester)
-            .focusable()
+            .verticalScroll(rememberScrollState())
             .onPreviewKeyEvent { event ->
                 if (event.type != KeyEventType.KeyDown) return@onPreviewKeyEvent false
                 when (event.key) {
@@ -98,23 +90,21 @@ internal fun BookmarksPracticeResultBottomSheet(
                     else -> false
                 }
             }
-            .navigationBarsPadding()
-            .padding(horizontal = 24.dp)
-            .padding(bottom = 24.dp),
+            .padding(horizontal = 16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         Surface(
             shape = CircleShape,
             color = MaterialTheme.semanticColors.successContainer,
-            modifier = Modifier.size(56.dp),
+            modifier = Modifier.size(64.dp),
         ) {
             Box(contentAlignment = Alignment.Center) {
                 Icon(
                     imageVector = Trophy,
                     contentDescription = null,
                     tint = MaterialTheme.semanticColors.onSuccessContainer,
-                    modifier = Modifier.size(28.dp),
+                    modifier = Modifier.size(32.dp),
                 )
             }
         }
@@ -152,7 +142,7 @@ internal fun BookmarksPracticeResultBottomSheet(
                 pressedShape = MaterialTheme.shapes.small,
             ),
             modifier = Modifier.fillMaxWidth(),
-            contentPadding = PaddingValues(14.dp),
+            contentPadding = PaddingValues(16.dp),
         ) {
             Text(
                 text = stringResource(Res.string.results_confirm),
@@ -160,20 +150,37 @@ internal fun BookmarksPracticeResultBottomSheet(
                 fontWeight = FontWeight.SemiBold,
             )
         }
+
+        Spacer(
+            modifier = Modifier
+                .size(16.dp)
+                .navigationBarsPadding(),
+        )
     }
 }
 
 @Preview
 @Composable
-private fun BookmarksPracticeResultBottomSheetPreview() {
-    MerrPatentenTheme {
-        Surface {
-            BookmarksPracticeResultBottomSheet(
-                totalAnsweredCount = 10,
-                correctCount = 9,
-                onConfirm = {},
-                onDismiss = {},
-            )
-        }
+private fun BookmarksPracticeResultBottomSheetPreview() = MerrPatentenTheme {
+    Surface {
+        BookmarksPracticeResultBottomSheet(
+            totalAnsweredCount = 10,
+            correctCount = 9,
+            onConfirm = {},
+            onDismiss = {},
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun BookmarksPracticeResultBottomSheetDarkPreview() = MerrPatentenTheme(darkTheme = true) {
+    Surface {
+        BookmarksPracticeResultBottomSheet(
+            totalAnsweredCount = 10,
+            correctCount = 9,
+            onConfirm = {},
+            onDismiss = {},
+        )
     }
 }

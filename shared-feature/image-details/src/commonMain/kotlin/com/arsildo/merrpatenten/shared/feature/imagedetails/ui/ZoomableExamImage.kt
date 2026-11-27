@@ -1,32 +1,33 @@
 package com.arsildo.merrpatenten.shared.feature.imagedetails.ui
 
-import androidx.compose.foundation.focusable
 import androidx.compose.foundation.gestures.detectTransformGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.FocusRequester
-import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.input.key.*
@@ -47,22 +48,18 @@ import org.jetbrains.compose.resources.stringResource
 internal data class ImageDetailsUiState(val imageId: Int = 0)
 
 @Composable
-internal fun ZoomableExamImageRoute(imageId: Int, onDismiss: () -> Unit) {
+internal fun ZoomableExamImageRoute(modifier: Modifier = Modifier, imageId: Int, onDismiss: () -> Unit) {
     val uiState = remember(imageId) { ImageDetailsUiState(imageId = imageId) }
     ZoomableExamImage(
+        modifier = modifier,
         uiState = uiState,
         onDismiss = onDismiss,
     )
 }
 
 @Composable
-internal fun ZoomableExamImage(uiState: ImageDetailsUiState, onDismiss: () -> Unit, modifier: Modifier = Modifier) {
+internal fun ZoomableExamImage(modifier: Modifier = Modifier, uiState: ImageDetailsUiState, onDismiss: () -> Unit) {
     val hapticFeedback = LocalHapticFeedback.current
-    val focusRequester = remember { FocusRequester() }
-
-    LaunchedEffect(Unit) {
-        focusRequester.requestFocus()
-    }
 
     val handleDismiss = {
         hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
@@ -77,8 +74,6 @@ internal fun ZoomableExamImage(uiState: ImageDetailsUiState, onDismiss: () -> Un
         Column(
             modifier = modifier
                 .fillMaxSize()
-                .focusRequester(focusRequester)
-                .focusable()
                 .onPreviewKeyEvent { event ->
                     if (event.type != KeyEventType.KeyDown) return@onPreviewKeyEvent false
                     when (event.key) {
@@ -126,7 +121,7 @@ internal fun ZoomableExamImage(uiState: ImageDetailsUiState, onDismiss: () -> Un
                     .weight(1f)
                     .fillMaxWidth()
                     .navigationBarsPadding()
-                    .padding(horizontal = 20.dp),
+                    .padding(horizontal = 16.dp),
                 contentAlignment = Alignment.Center,
             ) {
                 ExtendedFloatingActionButton(
@@ -153,8 +148,7 @@ internal fun ZoomableExamImage(uiState: ImageDetailsUiState, onDismiss: () -> Un
         Column(
             modifier = modifier
                 .fillMaxWidth()
-                .focusRequester(focusRequester)
-                .focusable()
+                .verticalScroll(rememberScrollState())
                 .onPreviewKeyEvent { event ->
                     if (event.type != KeyEventType.KeyDown) return@onPreviewKeyEvent false
                     when (event.key) {
@@ -166,11 +160,9 @@ internal fun ZoomableExamImage(uiState: ImageDetailsUiState, onDismiss: () -> Un
                         else -> false
                     }
                 }
-                .navigationBarsPadding()
-                .padding(horizontal = 20.dp)
-                .padding(bottom = 24.dp),
+                .padding(horizontal = 16.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(20.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
             Box(
                 modifier = Modifier
@@ -215,37 +207,43 @@ internal fun ZoomableExamImage(uiState: ImageDetailsUiState, onDismiss: () -> Un
                 contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
                 modifier = Modifier.fillMaxWidth(),
             )
+
+            Spacer(
+                modifier = Modifier
+                    .size(16.dp)
+                    .navigationBarsPadding(),
+            )
         }
     }
 }
 
 @Preview
 @Composable
-private fun ZoomableExamImagePreview() {
+private fun ZoomableExamImagePreview() = MerrPatentenTheme {
+    Surface {
+        ZoomableExamImage(
+            uiState = ImageDetailsUiState(imageId = 1),
+            onDismiss = {},
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun ZoomableExamImageDarkPreview() = MerrPatentenTheme(darkTheme = true) {
+    Surface {
+        ZoomableExamImage(
+            uiState = ImageDetailsUiState(imageId = 1),
+            onDismiss = {},
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun ZoomableExamImageTabletopPreview() = CompositionLocalProvider(LocalFoldPosture provides DevicePosture.TABLETOP) {
     MerrPatentenTheme {
-        ZoomableExamImage(
-            uiState = ImageDetailsUiState(imageId = 1),
-            onDismiss = {},
-        )
-    }
-}
-
-@Preview
-@Composable
-private fun ZoomableExamImageDarkPreview() {
-    MerrPatentenTheme(darkTheme = true) {
-        ZoomableExamImage(
-            uiState = ImageDetailsUiState(imageId = 1),
-            onDismiss = {},
-        )
-    }
-}
-
-@Preview
-@Composable
-private fun ZoomableExamImageTabletopPreview() {
-    CompositionLocalProvider(LocalFoldPosture provides DevicePosture.TABLETOP) {
-        MerrPatentenTheme {
+        Surface {
             ZoomableExamImage(
                 uiState = ImageDetailsUiState(imageId = 1),
                 onDismiss = {},

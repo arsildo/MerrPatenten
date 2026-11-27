@@ -16,7 +16,7 @@ kotlin {
         namespace = "com.arsildo.merrpatenten.shared.feature.bookmarks"
         compileSdk {
             version = release(37) {
-                minorApiLevel = 1
+                minorApiLevel = 2
             }
         }
         minSdk = 31

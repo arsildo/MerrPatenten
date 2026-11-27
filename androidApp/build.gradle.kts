@@ -11,7 +11,7 @@ android {
     namespace = "com.arsildo.merrpatenten"
 
     compileSdk = 37
-    compileSdkMinor = 1
+    compileSdkMinor = 2
     defaultConfig {
         applicationId = "com.arsildo.merrpatenten"
         minSdk = 31

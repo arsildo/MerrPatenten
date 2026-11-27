@@ -50,8 +50,8 @@ fun EntryProviderScope<NavKey>.bookmarksEntry(
         ) + BottomSheetSceneStrategy.bottomSheet(skipPartiallyExpanded = true),
     ) {
         ClearBookmarksBottomSheetRoute(
-            onConfirm = dropUnlessResumed(block = backStack::removeLastOrNull),
-            onDismiss = dropUnlessResumed(block = backStack::removeLastOrNull),
+            onConfirm = { backStack.removeLastOrNull() },
+            onDismiss = { backStack.removeLastOrNull() },
         )
     }
 
@@ -76,11 +76,11 @@ fun EntryProviderScope<NavKey>.bookmarksEntry(
     ) { key ->
         BookmarksPracticeResultBottomSheetRoute(
             category = key.category,
-            onConfirm = dropUnlessResumed {
+            onConfirm = {
                 backStack.removeLastOrNull()
                 onBackPress()
             },
-            onDismiss = dropUnlessResumed {
+            onDismiss = {
                 backStack.removeLastOrNull()
                 onBackPress()
             },

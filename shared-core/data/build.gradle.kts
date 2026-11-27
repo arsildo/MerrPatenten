@@ -13,7 +13,7 @@ kotlin {
         namespace = "com.arsildo.merrpatenten.shared.core.data"
         compileSdk {
             version = release(37) {
-                minorApiLevel = 1
+                minorApiLevel = 2
             }
         }
         minSdk = 31

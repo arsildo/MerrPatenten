@@ -25,7 +25,7 @@ fun EntryProviderScope<NavKey>.statisticsEntry(backStack: NavBackStack<NavKey>, 
     ) {
         StatisticsRoute(
             onChangePreferenceClick = onChangePreferenceClick,
-            onDeleteResultsClick = { backStack.add(DeleteResultsBottomSheet) },
+            onDeleteResultsClick = dropUnlessResumed { backStack.add(DeleteResultsBottomSheet) },
         )
     }
 
@@ -37,7 +37,7 @@ fun EntryProviderScope<NavKey>.statisticsEntry(backStack: NavBackStack<NavKey>, 
     ) {
         DeleteResultsBottomSheetRoute(
             onConfirm = { backStack.removeLastOrNull() },
-            onDismiss = dropUnlessResumed(block = backStack::removeLastOrNull),
+            onDismiss = { backStack.removeLastOrNull() },
         )
     }
 }

@@ -1,6 +1,7 @@
 package com.arsildo.merrpatenten.shared.feature.preferences.navigation
 
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.lifecycle.compose.dropUnlessResumed
 import androidx.navigation3.runtime.EntryProviderScope
 import androidx.navigation3.runtime.NavBackStack
 import androidx.navigation3.runtime.NavKey
@@ -19,7 +20,7 @@ object LanguageSelection : NavKey
 fun EntryProviderScope<NavKey>.preferencesEntry(backStack: NavBackStack<NavKey>) {
     entry<Preferences> {
         PreferencesRoute(
-            onLanguageClick = { backStack.add(LanguageSelection) },
+            onLanguageClick = dropUnlessResumed { backStack.add(LanguageSelection) },
         )
     }
 

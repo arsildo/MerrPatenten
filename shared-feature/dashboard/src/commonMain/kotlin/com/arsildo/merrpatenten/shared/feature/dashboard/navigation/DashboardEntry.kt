@@ -36,7 +36,7 @@ fun EntryProviderScope<NavKey>.dashboardEntry(
             onCatalogClick = onCatalogClick,
             onMistakesClick = onMistakesClick,
             onBookmarksClick = onBookmarksClick,
-            onDisclaimerClick = { backStack.add(Disclaimer) },
+            onDisclaimerClick = dropUnlessResumed { backStack.add(Disclaimer) },
         )
     }
 
@@ -44,7 +44,7 @@ fun EntryProviderScope<NavKey>.dashboardEntry(
         metadata = BottomSheetSceneStrategy.bottomSheet(skipPartiallyExpanded = true),
     ) {
         DisclaimerBottomSheet(
-            onDismiss = dropUnlessResumed(block = backStack::removeLastOrNull),
+            onDismiss = { backStack.removeLastOrNull() },
         )
     }
 }

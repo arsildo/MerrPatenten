@@ -1,4 +1,3 @@
-import KotlinRuntime
 import SharedUi
 import SwiftUI
 import UIKit

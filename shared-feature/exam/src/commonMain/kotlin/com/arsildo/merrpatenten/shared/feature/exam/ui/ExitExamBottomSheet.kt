@@ -1,36 +1,15 @@
 package com.arsildo.merrpatenten.shared.feature.exam.ui
 
-import androidx.compose.foundation.focusable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.navigationBarsPadding
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.ButtonShapes
-import androidx.compose.material3.FilledTonalButton
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.FocusRequester
-import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
-import androidx.compose.ui.input.key.Key
-import androidx.compose.ui.input.key.KeyEventType
-import androidx.compose.ui.input.key.key
-import androidx.compose.ui.input.key.onPreviewKeyEvent
-import androidx.compose.ui.input.key.type
+import androidx.compose.ui.input.key.*
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -47,6 +26,7 @@ import org.koin.core.parameter.parametersOf
 
 @Composable
 internal fun ExitExamBottomSheetRoute(
+    modifier: Modifier = Modifier,
     category: String,
     type: ExamType,
     viewModel: ExamViewModel = koinViewModel(parameters = { parametersOf(category, type) }),
@@ -54,7 +34,6 @@ internal fun ExitExamBottomSheetRoute(
     onFinishAnyway: () -> Unit,
     onExitExam: () -> Unit,
     onDismiss: () -> Unit,
-    modifier: Modifier = Modifier,
 ) {
     ExitExamBottomSheet(
         onReviewUnanswered = onReviewUnanswered,
@@ -70,24 +49,18 @@ internal fun ExitExamBottomSheetRoute(
 
 @Composable
 internal fun ExitExamBottomSheet(
+    modifier: Modifier = Modifier,
     onReviewUnanswered: () -> Unit,
     onFinishAnyway: () -> Unit,
     onExitExam: () -> Unit,
     onDismiss: () -> Unit,
-    modifier: Modifier = Modifier,
 ) {
     val hapticFeedback = LocalHapticFeedback.current
-    val focusRequester = remember { FocusRequester() }
-
-    LaunchedEffect(Unit) {
-        focusRequester.requestFocus()
-    }
 
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .focusRequester(focusRequester)
-            .focusable()
+            .verticalScroll(rememberScrollState())
             .onPreviewKeyEvent { event ->
                 if (event.type != KeyEventType.KeyDown) return@onPreviewKeyEvent false
                 when (event.key) {
@@ -99,23 +72,21 @@ internal fun ExitExamBottomSheet(
                     else -> false
                 }
             }
-            .navigationBarsPadding()
-            .padding(horizontal = 24.dp)
-            .padding(bottom = 24.dp),
+            .padding(horizontal = 16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         Surface(
             shape = CircleShape,
             color = MaterialTheme.colorScheme.errorContainer,
-            modifier = Modifier.size(56.dp),
+            modifier = Modifier.size(64.dp),
         ) {
             Box(contentAlignment = Alignment.Center) {
                 Icon(
                     imageVector = CheckCheck,
                     contentDescription = null,
                     tint = MaterialTheme.colorScheme.onErrorContainer,
-                    modifier = Modifier.size(28.dp),
+                    modifier = Modifier.size(32.dp),
                 )
             }
         }
@@ -140,7 +111,7 @@ internal fun ExitExamBottomSheet(
 
         Column(
             modifier = Modifier.fillMaxWidth(),
-            verticalArrangement = Arrangement.spacedBy(10.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             Button(
                 onClick = {
@@ -152,7 +123,7 @@ internal fun ExitExamBottomSheet(
                     pressedShape = MaterialTheme.shapes.small,
                 ),
                 modifier = Modifier.fillMaxWidth(),
-                contentPadding = PaddingValues(14.dp),
+                contentPadding = PaddingValues(16.dp),
             ) {
                 Text(
                     text = stringResource(Res.string.review_unanswered),
@@ -170,7 +141,7 @@ internal fun ExitExamBottomSheet(
                     pressedShape = MaterialTheme.shapes.small,
                 ),
                 modifier = Modifier.fillMaxWidth(),
-                contentPadding = PaddingValues(14.dp),
+                contentPadding = PaddingValues(16.dp),
             ) {
                 Text(
                     text = stringResource(Res.string.finish_anyway),
@@ -188,7 +159,7 @@ internal fun ExitExamBottomSheet(
                     pressedShape = MaterialTheme.shapes.small,
                 ),
                 modifier = Modifier.fillMaxWidth(),
-                contentPadding = PaddingValues(14.dp),
+                contentPadding = PaddingValues(16.dp),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = MaterialTheme.colorScheme.error,
                     contentColor = MaterialTheme.colorScheme.onError,
@@ -201,13 +172,19 @@ internal fun ExitExamBottomSheet(
                 )
             }
         }
+
+        Spacer(
+            modifier = Modifier
+                .size(16.dp)
+                .navigationBarsPadding(),
+        )
     }
 }
 
 @Preview
 @Composable
-private fun ExitExamBottomSheetPreview() {
-    MerrPatentenTheme {
+private fun ExitExamBottomSheetPreview() = MerrPatentenTheme {
+    Surface {
         ExitExamBottomSheet(
             onReviewUnanswered = {},
             onFinishAnyway = {},
@@ -219,8 +196,8 @@ private fun ExitExamBottomSheetPreview() {
 
 @Preview
 @Composable
-private fun ExitExamBottomSheetDarkPreview() {
-    MerrPatentenTheme(darkTheme = true) {
+private fun ExitExamBottomSheetDarkPreview() = MerrPatentenTheme(darkTheme = true) {
+    Surface {
         ExitExamBottomSheet(
             onReviewUnanswered = {},
             onFinishAnyway = {},

@@ -160,10 +160,10 @@ internal fun DashboardScreen(
                     .padding(contentPadding)
                     .consumeWindowInsets(contentPadding)
                     .verticalScroll(rememberScrollState())
-                    .padding(horizontal = 20.dp)
-                    .padding(top = 24.dp, bottom = 104.dp)
+                    .padding(horizontal = 16.dp)
+                    .padding(top = 32.dp, bottom = 128.dp)
                     .navigationBarsPadding(),
-                verticalArrangement = Arrangement.spacedBy(20.dp),
+                verticalArrangement = Arrangement.spacedBy(16.dp),
             ) {
                 ExamSection(onStartExamClick = onStartExamClick)
                 LearningSection(

@@ -187,7 +187,7 @@ private fun CatalogListPane(
                 .horizontalScroll(rememberScrollState())
                 .padding(horizontal = 16.dp, vertical = 8.dp),
         ) {
-            catalogCategories.forEach { [category, stringRes] ->
+            catalogCategories.forEach { (category, stringRes) ->
                 val selected = uiState.selectedCategory == category
                 FilterChip(
                     selected = selected,

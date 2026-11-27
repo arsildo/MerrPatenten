@@ -2,11 +2,14 @@ package com.arsildo.merrpatenten.shared.feature.preferences.ui.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.selection.selectableGroup
-import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ListItemDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.RadioButton
@@ -21,7 +24,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.arsildo.merrpatenten.shared.core.designsystem.ApplicationLocale
@@ -42,9 +44,8 @@ internal fun LanguageSelectionBottomSheet(modifier: Modifier = Modifier) {
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .navigationBarsPadding()
-            .padding(horizontal = 16.dp)
-            .padding(bottom = 16.dp),
+            .verticalScroll(rememberScrollState())
+            .padding(horizontal = 16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         Text(
@@ -93,6 +94,12 @@ internal fun LanguageSelectionBottomSheet(modifier: Modifier = Modifier) {
                 )
             }
         }
+
+        Spacer(
+            modifier = Modifier
+                .size(16.dp)
+                .navigationBarsPadding(),
+        )
     }
 }
 

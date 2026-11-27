@@ -1,8 +1,8 @@
 [versions]
 agp = "9.5.3"
 kotlin = "2.5.0-RC2"
-compose-multiplatform = "1.13.10-alpha01+dev5266"
-compose-material3-adaptive = "1.4.0-alpha02+dev5266"
+compose-multiplatform = "1.14.0-alpha01+dev5273"
+compose-material3-adaptive = "1.4.0-alpha02+dev5273"
 ksp = "2.3.14"
 ktlint = "2.0.0-ALPHA-5"
 
@@ -18,7 +18,7 @@ androidx-sqlite = "2.8.0-alpha04"
 
 # JetBrains Lifecycle & Navigation 3
 androidx-lifecycle = "2.11.0"
-androidx-navigation3 = "1.2.10-alpha01+dev5266"
+androidx-navigation3 = "1.2.10-alpha01+dev5273"
 androidx-savedstate = "1.4.0"
 kotlinx-coroutines = "1.11.0"
 kotlinx-serialization = "1.13.0"
