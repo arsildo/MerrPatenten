@@ -217,6 +217,8 @@ fun MistakesScreen(
                     modifier = Modifier.fillMaxSize(),
                 )
             } else {
+                val deleteItemContentDescription = stringResource(Res.string.mistakes_delete_item)
+                val correctAnswerPrefix = stringResource(Res.string.correct_answer_feedback)
                 LazyVerticalGrid(
                     columns = GridCells.Adaptive(minSize = 340.dp),
                     contentPadding = PaddingValues(
@@ -236,6 +238,8 @@ fun MistakesScreen(
                     ) { item ->
                         MistakeQuestionCard(
                             item = item,
+                            deleteItemContentDescription = deleteItemContentDescription,
+                            correctAnswerPrefix = correctAnswerPrefix,
                             onImageClick = { onImageDetailsClick(item.question.image) },
                             onDeleteClick = {
                                 hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
@@ -252,6 +256,8 @@ fun MistakesScreen(
 @Composable
 private fun MistakeQuestionCard(
     item: MistakeQuestion,
+    deleteItemContentDescription: String,
+    correctAnswerPrefix: String,
     onImageClick: () -> Unit,
     onDeleteClick: () -> Unit,
     modifier: Modifier = Modifier,
@@ -326,7 +332,7 @@ private fun MistakeQuestionCard(
                 ) {
                     Icon(
                         imageVector = X,
-                        contentDescription = stringResource(Res.string.mistakes_delete_item),
+                        contentDescription = deleteItemContentDescription,
                         tint = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
                 }
@@ -376,7 +382,7 @@ private fun MistakeQuestionCard(
                         modifier = Modifier.size(18.dp),
                     )
                     Text(
-                        text = stringResource(Res.string.correct_answer_feedback) + ": ${item.question.answer}",
+                        text = "$correctAnswerPrefix: ${item.question.answer}",
                         style = MaterialTheme.typography.labelLarge,
                         fontWeight = FontWeight.Bold,
                         color = if (isTrue) {

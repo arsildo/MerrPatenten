@@ -338,26 +338,24 @@ fun MistakesPracticeScreen(
                                         },
                                         modifier = Modifier.size(28.dp),
                                     )
-                                    Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
-                                        Text(
-                                            text = if (uiState.isAnswerCorrect) {
-                                                if (uiState.hasGraduated) {
-                                                    stringResource(Res.string.mistakes_practice_graduated)
-                                                } else {
-                                                    stringResource(Res.string.mistakes_practice_correct_streak, 1, 2)
-                                                }
+                                    Text(
+                                        text = if (uiState.isAnswerCorrect) {
+                                            if (uiState.hasGraduated) {
+                                                stringResource(Res.string.mistakes_practice_graduated)
                                             } else {
-                                                stringResource(Res.string.mistakes_practice_wrong)
-                                            },
-                                            style = MaterialTheme.typography.bodyMedium,
-                                            fontWeight = FontWeight.Bold,
-                                            color = if (uiState.isAnswerCorrect) {
-                                                MaterialTheme.semanticColors.onSuccessContainer
-                                            } else {
-                                                MaterialTheme.colorScheme.onErrorContainer
-                                            },
-                                        )
-                                    }
+                                                stringResource(Res.string.mistakes_practice_correct_streak, 1, 2)
+                                            }
+                                        } else {
+                                            stringResource(Res.string.mistakes_practice_wrong)
+                                        },
+                                        style = MaterialTheme.typography.bodyMedium,
+                                        fontWeight = FontWeight.Bold,
+                                        color = if (uiState.isAnswerCorrect) {
+                                            MaterialTheme.semanticColors.onSuccessContainer
+                                        } else {
+                                            MaterialTheme.colorScheme.onErrorContainer
+                                        },
+                                    )
                                 }
                             }
 
