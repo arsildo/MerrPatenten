@@ -36,7 +36,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.center
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Matrix
@@ -58,9 +57,6 @@ import com.arsildo.merrpatenten.shared.core.designsystem.icons.CloudExclamationP
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.SearchX
 import com.arsildo.merrpatenten.shared.core.designsystem.icons.Star
 import com.arsildo.merrpatenten.shared.core.designsystem.semanticColors
-import kotlin.math.PI
-import kotlin.math.cos
-import kotlin.math.sin
 import kotlin.time.Duration.Companion.milliseconds
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -266,7 +262,6 @@ private fun MorphingShapeBadge(
     val scaleMatrix = remember { Matrix() }
 
     val haloColor = containerColor.copy(alpha = 0.28f)
-    val accentDotColor = contentColor.copy(alpha = 0.35f)
     val interactionSource = remember { MutableInteractionSource() }
 
     Box(
@@ -302,21 +297,6 @@ private fun MorphingShapeBadge(
                 haloPath.translate(size.center - haloPath.getBounds().center)
                 rotate(degrees = -ambientRotation * 0.5f, pivot = size.center) {
                     drawPath(path = haloPath, color = haloColor)
-                }
-
-                // Subtle orbiting accent dots
-                val orbitRadius = size.minDimension * 0.45f
-                val baseAngleRad = (ambientRotation * 1.4f) * (PI / 180.0)
-                val dotRadii = floatArrayOf(4.5.dp.toPx(), 3.dp.toPx(), 3.5.dp.toPx())
-                for (i in dotRadii.indices) {
-                    val angle = baseAngleRad + i * (2.0 * PI / dotRadii.size)
-                    val cx = size.center.x + orbitRadius * cos(angle).toFloat()
-                    val cy = size.center.y + orbitRadius * sin(angle).toFloat()
-                    drawCircle(
-                        color = accentDotColor,
-                        radius = dotRadii[i],
-                        center = Offset(cx, cy),
-                    )
                 }
 
                 // Main morphing MaterialShapes polygon
