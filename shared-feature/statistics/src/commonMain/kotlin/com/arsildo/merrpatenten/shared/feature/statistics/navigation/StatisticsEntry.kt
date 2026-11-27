@@ -36,7 +36,7 @@ fun EntryProviderScope<NavKey>.statisticsEntry(backStack: NavBackStack<NavKey>, 
         ) + BottomSheetSceneStrategy.bottomSheet(skipPartiallyExpanded = true),
     ) {
         DeleteResultsBottomSheetRoute(
-            onConfirm = { backStack.removeLastOrNull() },
+            onConfirmClick = { backStack.removeLastOrNull() },
             onDismiss = { backStack.removeLastOrNull() },
         )
     }

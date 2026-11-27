@@ -49,21 +49,21 @@ import org.koin.compose.viewmodel.koinViewModel
 internal fun DeleteResultsBottomSheetRoute(
     modifier: Modifier = Modifier,
     viewModel: StatisticsViewModel = koinViewModel(),
-    onConfirm: () -> Unit,
+    onConfirmClick: () -> Unit,
     onDismiss: () -> Unit,
 ) {
     DeleteResultsBottomSheet(
         modifier = modifier,
-        onConfirm = {
+        onConfirmClick = {
             viewModel.deleteAllResults()
-            onConfirm()
+            onConfirmClick()
         },
         onDismiss = onDismiss,
     )
 }
 
 @Composable
-internal fun DeleteResultsBottomSheet(modifier: Modifier = Modifier, onConfirm: () -> Unit, onDismiss: () -> Unit) {
+internal fun DeleteResultsBottomSheet(modifier: Modifier = Modifier, onConfirmClick: () -> Unit, onDismiss: () -> Unit) {
     val hapticFeedback = LocalHapticFeedback.current
 
     Column(
@@ -122,7 +122,7 @@ internal fun DeleteResultsBottomSheet(modifier: Modifier = Modifier, onConfirm: 
             Button(
                 onClick = {
                     hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
-                    onConfirm()
+                    onConfirmClick()
                 },
                 shapes = ButtonShapes(
                     shape = MaterialTheme.shapes.medium,
@@ -174,7 +174,7 @@ internal fun DeleteResultsBottomSheet(modifier: Modifier = Modifier, onConfirm: 
 private fun DeleteResultsBottomSheetPreview() = MerrPatentenTheme {
     Surface {
         DeleteResultsBottomSheet(
-            onConfirm = {},
+            onConfirmClick = {},
             onDismiss = {},
         )
     }
@@ -185,7 +185,7 @@ private fun DeleteResultsBottomSheetPreview() = MerrPatentenTheme {
 private fun DeleteResultsBottomSheetDarkPreview() = MerrPatentenTheme(darkTheme = true) {
     Surface {
         DeleteResultsBottomSheet(
-            onConfirm = {},
+            onConfirmClick = {},
             onDismiss = {},
         )
     }
