@@ -1,7 +1,7 @@
 # MerrPatenten 🚗 🇦🇱
 
 <p align="center">
-  <img src="shared-core/design-system/src/commonMain/composeResources/drawable/img_903.png" alt="MerrPatenten Logo" width="120" />
+  <img src="androidApp/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" alt="MerrPatenten Logo" width="120" />
 </p>
 
 <p align="center">
