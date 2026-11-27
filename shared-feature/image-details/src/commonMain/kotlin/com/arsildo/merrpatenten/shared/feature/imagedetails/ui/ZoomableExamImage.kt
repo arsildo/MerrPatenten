@@ -45,20 +45,17 @@ import com.arsildo.merrpatenten.shared.core.designsystem.icons.ArrowLeft
 import merrpatenten.shared_core.design_system.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
 
-internal data class ImageDetailsUiState(val imageId: Int = 0)
-
 @Composable
 internal fun ZoomableExamImageRoute(modifier: Modifier = Modifier, imageId: Int, onDismiss: () -> Unit) {
-    val uiState = remember(imageId) { ImageDetailsUiState(imageId = imageId) }
     ZoomableExamImage(
         modifier = modifier,
-        uiState = uiState,
+        imageId = imageId,
         onDismiss = onDismiss,
     )
 }
 
 @Composable
-internal fun ZoomableExamImage(modifier: Modifier = Modifier, uiState: ImageDetailsUiState, onDismiss: () -> Unit) {
+internal fun ZoomableExamImage(modifier: Modifier = Modifier, imageId: Int, onDismiss: () -> Unit) {
     val hapticFeedback = LocalHapticFeedback.current
 
     val handleDismiss = {
@@ -94,7 +91,7 @@ internal fun ZoomableExamImage(modifier: Modifier = Modifier, uiState: ImageDeta
                 contentAlignment = Alignment.Center,
             ) {
                 ResourceImage(
-                    imageId = uiState.imageId,
+                    imageId = imageId,
                     contentDescription = null,
                     modifier = Modifier
                         .padding(16.dp)
@@ -164,31 +161,25 @@ internal fun ZoomableExamImage(modifier: Modifier = Modifier, uiState: ImageDeta
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
-            Box(
+            ResourceImage(
+                imageId = imageId,
+                contentDescription = null,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .aspectRatio(1f),
-                contentAlignment = Alignment.Center,
-            ) {
-                ResourceImage(
-                    imageId = uiState.imageId,
-                    contentDescription = null,
-                    modifier = Modifier
-                        .padding(16.dp)
-                        .fillMaxSize()
-                        .graphicsLayer {
-                            scaleX = scale
-                            scaleY = scale
-                            rotationZ = rotation
+                    .aspectRatio(1f)
+                    .padding(16.dp)
+                    .graphicsLayer {
+                        scaleX = scale
+                        scaleY = scale
+                        rotationZ = rotation
+                    }
+                    .pointerInput(Unit) {
+                        detectTransformGestures { _, _, zoom, rotationChange ->
+                            scale = (scale * zoom).coerceIn(0.5f, 5f)
+                            rotation += rotationChange
                         }
-                        .pointerInput(Unit) {
-                            detectTransformGestures { _, _, zoom, rotationChange ->
-                                scale = (scale * zoom).coerceIn(0.5f, 5f)
-                                rotation += rotationChange
-                            }
-                        },
-                )
-            }
+                    },
+            )
             ExtendedFloatingActionButton(
                 onClick = handleDismiss,
                 text = {
@@ -222,7 +213,7 @@ internal fun ZoomableExamImage(modifier: Modifier = Modifier, uiState: ImageDeta
 private fun ZoomableExamImagePreview() = MerrPatentenTheme {
     Surface {
         ZoomableExamImage(
-            uiState = ImageDetailsUiState(imageId = 1),
+            imageId = 1,
             onDismiss = {},
         )
     }
@@ -233,7 +224,7 @@ private fun ZoomableExamImagePreview() = MerrPatentenTheme {
 private fun ZoomableExamImageDarkPreview() = MerrPatentenTheme(darkTheme = true) {
     Surface {
         ZoomableExamImage(
-            uiState = ImageDetailsUiState(imageId = 1),
+            imageId = 1,
             onDismiss = {},
         )
     }
@@ -245,7 +236,7 @@ private fun ZoomableExamImageTabletopPreview() = CompositionLocalProvider(LocalF
     MerrPatentenTheme {
         Surface {
             ZoomableExamImage(
-                uiState = ImageDetailsUiState(imageId = 1),
+                imageId = 1,
                 onDismiss = {},
             )
         }

@@ -40,34 +40,29 @@ fun ReadinessCard(
 ) {
     val hapticFeedback = LocalHapticFeedback.current
 
-    val (badgeColor, onBadgeColor, levelText, icon) = when (readinessScore.level) {
-        ReadinessLevel.READY -> Quadruple(
-            MaterialTheme.semanticColors.successContainer,
-            MaterialTheme.semanticColors.onSuccessContainer,
-            stringResource(Res.string.readiness_status_ready),
-            BadgeCheck,
-        )
-
-        ReadinessLevel.IN_PROGRESS -> Quadruple(
-            MaterialTheme.colorScheme.tertiaryContainer,
-            MaterialTheme.colorScheme.onTertiaryContainer,
-            stringResource(Res.string.readiness_status_in_progress),
-            TrendingUp,
-        )
-
-        ReadinessLevel.NEEDS_PRACTICE -> Quadruple(
-            MaterialTheme.colorScheme.errorContainer,
-            MaterialTheme.colorScheme.onErrorContainer,
-            stringResource(Res.string.readiness_status_needs_practice),
-            TriangleExclamationPoint,
-        )
-
-        ReadinessLevel.NOT_ENOUGH_DATA -> Quadruple(
-            MaterialTheme.colorScheme.surfaceContainerHighest,
-            MaterialTheme.colorScheme.onSurfaceVariant,
-            stringResource(Res.string.readiness_status_not_enough_data),
-            GraphStar,
-        )
+    val badgeColor = when (readinessScore.level) {
+        ReadinessLevel.READY -> MaterialTheme.semanticColors.successContainer
+        ReadinessLevel.IN_PROGRESS -> MaterialTheme.colorScheme.tertiaryContainer
+        ReadinessLevel.NEEDS_PRACTICE -> MaterialTheme.colorScheme.errorContainer
+        ReadinessLevel.NOT_ENOUGH_DATA -> MaterialTheme.colorScheme.surfaceContainerHighest
+    }
+    val onBadgeColor = when (readinessScore.level) {
+        ReadinessLevel.READY -> MaterialTheme.semanticColors.onSuccessContainer
+        ReadinessLevel.IN_PROGRESS -> MaterialTheme.colorScheme.onTertiaryContainer
+        ReadinessLevel.NEEDS_PRACTICE -> MaterialTheme.colorScheme.onErrorContainer
+        ReadinessLevel.NOT_ENOUGH_DATA -> MaterialTheme.colorScheme.onSurfaceVariant
+    }
+    val levelText = when (readinessScore.level) {
+        ReadinessLevel.READY -> stringResource(Res.string.readiness_status_ready)
+        ReadinessLevel.IN_PROGRESS -> stringResource(Res.string.readiness_status_in_progress)
+        ReadinessLevel.NEEDS_PRACTICE -> stringResource(Res.string.readiness_status_needs_practice)
+        ReadinessLevel.NOT_ENOUGH_DATA -> stringResource(Res.string.readiness_status_not_enough_data)
+    }
+    val icon = when (readinessScore.level) {
+        ReadinessLevel.READY -> BadgeCheck
+        ReadinessLevel.IN_PROGRESS -> TrendingUp
+        ReadinessLevel.NEEDS_PRACTICE -> TriangleExclamationPoint
+        ReadinessLevel.NOT_ENOUGH_DATA -> GraphStar
     }
 
     val animatedProgress by animateFloatAsState(
@@ -186,8 +181,6 @@ fun ReadinessCard(
         }
     }
 }
-
-private data class Quadruple<A, B, C, D>(val first: A, val second: B, val third: C, val fourth: D)
 
 @Preview
 @Composable

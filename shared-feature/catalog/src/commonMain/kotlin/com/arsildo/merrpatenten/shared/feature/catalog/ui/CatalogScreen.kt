@@ -149,7 +149,10 @@ private fun CatalogScreen(
         CatalogListPane(
             uiState = uiState,
             selectedSignId = selectedSignId,
-            onCategorySelected = onCategorySelected,
+            onCategorySelected = { category ->
+                hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+                onCategorySelected(category)
+            },
             onSignClick = { id ->
                 hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
                 onSignClick(id)
@@ -175,7 +178,6 @@ private fun CatalogListPane(
     contentPadding: PaddingValues,
     modifier: Modifier = Modifier,
 ) {
-    val hapticFeedback = LocalHapticFeedback.current
     Column(
         modifier = modifier.fillMaxHeight(),
     ) {
@@ -191,10 +193,7 @@ private fun CatalogListPane(
                 val selected = uiState.selectedCategory == category
                 FilterChip(
                     selected = selected,
-                    onClick = {
-                        hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                        onCategorySelected(category)
-                    },
+                    onClick = { onCategorySelected(category) },
                     label = {
                         Text(
                             text = stringResource(stringRes),
