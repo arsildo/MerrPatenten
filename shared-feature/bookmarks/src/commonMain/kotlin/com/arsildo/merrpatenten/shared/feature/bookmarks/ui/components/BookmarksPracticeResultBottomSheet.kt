@@ -52,7 +52,7 @@ internal fun BookmarksPracticeResultBottomSheetRoute(
     modifier: Modifier = Modifier,
     category: String,
     viewModel: BookmarksPracticeViewModel = koinViewModel(parameters = { parametersOf(category) }),
-    onConfirm: () -> Unit,
+    onConfirmClick: () -> Unit,
     onDismiss: () -> Unit,
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
@@ -61,7 +61,7 @@ internal fun BookmarksPracticeResultBottomSheetRoute(
         modifier = modifier,
         totalAnsweredCount = uiState.totalAnsweredCount,
         correctCount = uiState.correctCount,
-        onConfirm = onConfirm,
+        onConfirmClick = onConfirmClick,
         onDismiss = onDismiss,
     )
 }
@@ -71,7 +71,7 @@ internal fun BookmarksPracticeResultBottomSheet(
     modifier: Modifier = Modifier,
     totalAnsweredCount: Int,
     correctCount: Int,
-    onConfirm: () -> Unit,
+    onConfirmClick: () -> Unit,
     onDismiss: () -> Unit,
 ) {
     val hapticFeedback = LocalHapticFeedback.current
@@ -132,7 +132,7 @@ internal fun BookmarksPracticeResultBottomSheet(
         Button(
             onClick = {
                 hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                onConfirm()
+                onConfirmClick()
             },
             shapes = ButtonShapes(
                 shape = MaterialTheme.shapes.medium,
@@ -163,7 +163,7 @@ private fun BookmarksPracticeResultBottomSheetPreview() = MerrPatentenTheme {
         BookmarksPracticeResultBottomSheet(
             totalAnsweredCount = 10,
             correctCount = 9,
-            onConfirm = {},
+            onConfirmClick = {},
             onDismiss = {},
         )
     }
@@ -176,7 +176,7 @@ private fun BookmarksPracticeResultBottomSheetDarkPreview() = MerrPatentenTheme(
         BookmarksPracticeResultBottomSheet(
             totalAnsweredCount = 10,
             correctCount = 9,
-            onConfirm = {},
+            onConfirmClick = {},
             onDismiss = {},
         )
     }

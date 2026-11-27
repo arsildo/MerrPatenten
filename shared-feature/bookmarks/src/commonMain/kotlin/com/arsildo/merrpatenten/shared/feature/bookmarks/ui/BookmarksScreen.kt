@@ -40,7 +40,7 @@ import org.koin.compose.viewmodel.koinViewModel
 internal fun BookmarksRoute(
     viewModel: BookmarksViewModel = koinViewModel(),
     onBackPress: () -> Unit,
-    onStartPractice: (category: String) -> Unit,
+    onStartPracticeClick: (category: String) -> Unit,
     onImageDetailsClick: (index: Int) -> Unit,
     onClearCategoryClick: () -> Unit,
 ) {
@@ -49,11 +49,11 @@ internal fun BookmarksRoute(
     BookmarksScreen(
         uiState = uiState,
         onBackPress = onBackPress,
-        onStartPractice = { onStartPractice(uiState.selectedCategory) },
+        onStartPracticeClick = { onStartPracticeClick(uiState.selectedCategory) },
         onImageDetailsClick = onImageDetailsClick,
         onSelectCategory = viewModel::onSelectCategory,
         onSearchQueryChange = viewModel::onSearchQueryChange,
-        onRemoveBookmark = viewModel::removeBookmark,
+        onRemoveBookmarkClick = viewModel::removeBookmark,
         onClearCategoryClick = onClearCategoryClick,
     )
 }
@@ -63,11 +63,11 @@ private fun BookmarksScreen(
     modifier: Modifier = Modifier,
     uiState: BookmarksUiState,
     onBackPress: () -> Unit,
-    onStartPractice: () -> Unit,
+    onStartPracticeClick: () -> Unit,
     onImageDetailsClick: (index: Int) -> Unit,
     onSelectCategory: (category: String) -> Unit,
     onSearchQueryChange: (query: String) -> Unit,
-    onRemoveBookmark: (questionId: Int, category: String) -> Unit,
+    onRemoveBookmarkClick: (questionId: Int, category: String) -> Unit,
     onClearCategoryClick: () -> Unit,
 ) {
     val hapticFeedback = LocalHapticFeedback.current
@@ -131,7 +131,7 @@ private fun BookmarksScreen(
                 Button(
                     onClick = {
                         hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
-                        onStartPractice()
+                        onStartPracticeClick()
                     },
                     shapes = ButtonShapes(
                         shape = MaterialTheme.shapes.large,
@@ -260,7 +260,7 @@ private fun BookmarksScreen(
                             onImageClick = { onImageDetailsClick(item.question.image) },
                             onRemoveClick = {
                                 hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                                onRemoveBookmark(item.question.id, item.question.category)
+                                onRemoveBookmarkClick(item.question.id, item.question.category)
                             },
                             modifier = Modifier.animateItem(),
                         )

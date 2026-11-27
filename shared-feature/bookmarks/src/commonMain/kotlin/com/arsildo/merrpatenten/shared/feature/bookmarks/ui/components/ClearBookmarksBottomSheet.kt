@@ -50,21 +50,21 @@ import org.koin.compose.viewmodel.koinViewModel
 internal fun ClearBookmarksBottomSheetRoute(
     modifier: Modifier = Modifier,
     viewModel: BookmarksViewModel = koinViewModel(),
-    onConfirm: () -> Unit,
+    onConfirmClick: () -> Unit,
     onDismiss: () -> Unit,
 ) {
     ClearBookmarksBottomSheet(
         modifier = modifier,
-        onConfirm = {
+        onConfirmClick = {
             viewModel.clearCategoryBookmarks()
-            onConfirm()
+            onConfirmClick()
         },
         onDismiss = onDismiss,
     )
 }
 
 @Composable
-internal fun ClearBookmarksBottomSheet(modifier: Modifier = Modifier, onConfirm: () -> Unit, onDismiss: () -> Unit) {
+internal fun ClearBookmarksBottomSheet(modifier: Modifier = Modifier, onConfirmClick: () -> Unit, onDismiss: () -> Unit) {
     val hapticFeedback = LocalHapticFeedback.current
 
     Column(
@@ -123,7 +123,7 @@ internal fun ClearBookmarksBottomSheet(modifier: Modifier = Modifier, onConfirm:
             Button(
                 onClick = {
                     hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
-                    onConfirm()
+                    onConfirmClick()
                 },
                 shapes = ButtonShapes(
                     shape = MaterialTheme.shapes.medium,
@@ -175,7 +175,7 @@ internal fun ClearBookmarksBottomSheet(modifier: Modifier = Modifier, onConfirm:
 private fun ClearBookmarksBottomSheetPreview() = MerrPatentenTheme {
     Surface {
         ClearBookmarksBottomSheet(
-            onConfirm = {},
+            onConfirmClick = {},
             onDismiss = {},
         )
     }
@@ -186,7 +186,7 @@ private fun ClearBookmarksBottomSheetPreview() = MerrPatentenTheme {
 private fun ClearBookmarksBottomSheetDarkPreview() = MerrPatentenTheme(darkTheme = true) {
     Surface {
         ClearBookmarksBottomSheet(
-            onConfirm = {},
+            onConfirmClick = {},
             onDismiss = {},
         )
     }

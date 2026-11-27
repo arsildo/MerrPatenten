@@ -47,8 +47,8 @@ internal fun BookmarksPracticeRoute(
     BookmarksPracticeScreen(
         uiState = uiState,
         onBackPress = onBackPress,
-        onSubmitAnswer = viewModel::submitAnswer,
-        onNextQuestion = {
+        onSubmitAnswerClick = viewModel::submitAnswer,
+        onNextQuestionClick = {
             if (uiState.currentIndex + 1 >= uiState.questions.size) onPracticeFinished()
             viewModel.nextQuestion()
         },
@@ -61,8 +61,8 @@ internal fun BookmarksPracticeRoute(
 private fun BookmarksPracticeScreen(
     uiState: BookmarksPracticeUiState,
     onBackPress: () -> Unit,
-    onSubmitAnswer: (answer: String) -> Unit,
-    onNextQuestion: () -> Unit,
+    onSubmitAnswerClick: (answer: String) -> Unit,
+    onNextQuestionClick: () -> Unit,
     onImageDetailsClick: (index: Int) -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -226,7 +226,7 @@ private fun BookmarksPracticeScreen(
                             isRevealed = uiState.isAnswerRevealed,
                             onClick = {
                                 hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                                onSubmitAnswer("Gabim")
+                                onSubmitAnswerClick("Gabim")
                             },
                             modifier = Modifier.weight(1f),
                         )
@@ -239,7 +239,7 @@ private fun BookmarksPracticeScreen(
                             isRevealed = uiState.isAnswerRevealed,
                             onClick = {
                                 hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                                onSubmitAnswer("Saktë")
+                                onSubmitAnswerClick("Saktë")
                             },
                             modifier = Modifier.weight(1f),
                         )
@@ -296,7 +296,7 @@ private fun BookmarksPracticeScreen(
                             Button(
                                 onClick = {
                                     hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
-                                    onNextQuestion()
+                                    onNextQuestionClick()
                                 },
                                 shapes = ButtonShapes(
                                     shape = MaterialTheme.shapes.large,
