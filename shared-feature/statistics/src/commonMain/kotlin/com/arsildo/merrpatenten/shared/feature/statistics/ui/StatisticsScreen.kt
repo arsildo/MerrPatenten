@@ -1,11 +1,8 @@
 package com.arsildo.merrpatenten.shared.feature.statistics.ui
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.GridItemSpan
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
@@ -185,6 +182,12 @@ internal fun StatisticsScreen(
                             )
                         }
 
+                        val errorSingular = stringResource(Res.string.error_singular)
+                        val errorsPlural = stringResource(Res.string.errors_plural)
+                        val passedLabel = stringResource(Res.string.performance_passed)
+                        val failedLabel = stringResource(Res.string.performance_failed)
+                        val minutesAbbreviation = stringResource(Res.string.minutes_abbreviation)
+
                         if (adaptiveInfo.isDualPane) {
                             Row(
                                 modifier = Modifier
@@ -222,17 +225,14 @@ internal fun StatisticsScreen(
                                         modifier = Modifier.fillMaxSize(),
                                         verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap),
                                     ) {
-                                        itemsIndexed(
-                                            items = results,
-                                            key = { _, item -> item.id },
-                                            contentType = { _, _ -> "exam_result" },
-                                        ) { index, result ->
-                                            ResultItem(
-                                                result = result,
-                                                index = index,
-                                                count = results.size,
-                                            )
-                                        }
+                                        resultList(
+                                            results = results,
+                                            errorSingular = errorSingular,
+                                            errorsPlural = errorsPlural,
+                                            passedLabel = passedLabel,
+                                            failedLabel = failedLabel,
+                                            minutesAbbreviation = minutesAbbreviation,
+                                        )
                                         item(
                                             key = "bottom_spacer",
                                             contentType = "spacer",
@@ -244,21 +244,18 @@ internal fun StatisticsScreen(
                             }
                         } else {
                             val navBarBottom = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
-                            LazyVerticalGrid(
-                                columns = GridCells.Adaptive(minSize = 160.dp),
+                            LazyColumn(
                                 contentPadding = PaddingValues(
                                     start = 16.dp,
                                     top = 0.dp,
                                     end = 16.dp,
                                     bottom = 104.dp + navBarBottom,
                                 ),
-                                horizontalArrangement = Arrangement.spacedBy(16.dp),
                                 verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap),
                                 modifier = Modifier.fillMaxSize(),
                             ) {
                                 item(
                                     key = "analytics_overview",
-                                    span = { GridItemSpan(maxLineSpan) },
                                     contentType = "analytics_overview",
                                 ) {
                                     AnalyticsOverview(
@@ -275,7 +272,6 @@ internal fun StatisticsScreen(
 
                                 item(
                                     key = "exam_history_header",
-                                    span = { GridItemSpan(maxLineSpan) },
                                     contentType = "section_header",
                                 ) {
                                     SectionHeader(
@@ -284,7 +280,14 @@ internal fun StatisticsScreen(
                                     )
                                 }
 
-                                resultList(results = results)
+                                resultList(
+                                    results = results,
+                                    errorSingular = errorSingular,
+                                    errorsPlural = errorsPlural,
+                                    passedLabel = passedLabel,
+                                    failedLabel = failedLabel,
+                                    minutesAbbreviation = minutesAbbreviation,
+                                )
                             }
                         }
                     } else {
@@ -330,20 +333,16 @@ private fun AnalyticsOverview(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(14.dp),
             ) {
-                Surface(
-                    shape = CircleShape,
-                    color = readinessColor,
-                    modifier = Modifier.size(46.dp),
-                ) {
-                    Box(contentAlignment = Alignment.Center) {
-                        Icon(
-                            imageVector = readinessIcon,
-                            contentDescription = null,
-                            tint = onReadinessColor,
-                            modifier = Modifier.size(24.dp),
-                        )
-                    }
-                }
+                Icon(
+                    imageVector = readinessIcon,
+                    contentDescription = null,
+                    tint = onReadinessColor,
+                    modifier = Modifier
+                        .size(46.dp)
+                        .background(readinessColor, CircleShape)
+                        .wrapContentSize(Alignment.Center)
+                        .size(24.dp),
+                )
                 Column(
                     modifier = Modifier.weight(1f),
                     verticalArrangement = Arrangement.spacedBy(2.dp),

@@ -130,9 +130,8 @@ internal fun PerformanceGraph(results: List<ExamResult>, modifier: Modifier = Mo
                                 val dotRadius = 6.dp.toPx()
                                 val correctHaloColor = correctColor.copy(alpha = 0.25f)
                                 val errorHaloColor = errorColor.copy(alpha = 0.25f)
-                                val gridLines = List(3) { index ->
-                                    val y = size.height - (size.height / 4f * (index + 1))
-                                    Offset(0f, y) to Offset(size.width, y)
+                                val gridLineYs = FloatArray(3) { index ->
+                                    size.height - (size.height / 4f * (index + 1))
                                 }
                                 val dots = points.map { point ->
                                     val xPos = (size.width / 40f) * point.xCoord.toFloat()
@@ -153,17 +152,19 @@ internal fun PerformanceGraph(results: List<ExamResult>, modifier: Modifier = Mo
                                     )
 
                                     // Grid lines
-                                    gridLines.forEach { (start, end) ->
+                                    for (i in gridLineYs.indices) {
+                                        val y = gridLineYs[i]
                                         drawLine(
                                             color = axisColor,
-                                            start = start,
-                                            end = end,
+                                            start = Offset(0f, y),
+                                            end = Offset(size.width, y),
                                             strokeWidth = gridStrokeWidth,
                                         )
                                     }
 
                                     // Data points
-                                    dots.forEach { dot ->
+                                    for (i in dots.indices) {
+                                        val dot = dots[i]
                                         // Draw subtle outer halo
                                         drawCircle(
                                             color = dot.haloColor,
@@ -206,11 +207,11 @@ private fun LegendItem(color: Color, label: String) {
         horizontalArrangement = Arrangement.spacedBy(4.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Surface(
-            shape = CircleShape,
-            color = color,
-            modifier = Modifier.size(8.dp),
-        ) {}
+        Spacer(
+            modifier = Modifier
+                .size(8.dp)
+                .background(color, CircleShape),
+        )
         Text(
             text = label,
             style = MaterialTheme.typography.labelSmall,

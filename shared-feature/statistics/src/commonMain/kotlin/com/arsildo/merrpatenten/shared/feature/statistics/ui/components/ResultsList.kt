@@ -1,9 +1,9 @@
 package com.arsildo.merrpatenten.shared.feature.statistics.ui.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.grid.GridItemSpan
-import androidx.compose.foundation.lazy.grid.LazyGridScope
-import androidx.compose.foundation.lazy.grid.itemsIndexed
+import androidx.compose.foundation.lazy.LazyListScope
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -19,28 +19,49 @@ import com.arsildo.merrpatenten.shared.core.model.ExamResult
 import merrpatenten.shared_core.design_system.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
 
-internal fun LazyGridScope.resultList(results: List<ExamResult>) {
+internal fun LazyListScope.resultList(
+    results: List<ExamResult>,
+    errorSingular: String,
+    errorsPlural: String,
+    passedLabel: String,
+    failedLabel: String,
+    minutesAbbreviation: String,
+) {
     itemsIndexed(
         items = results,
         key = { _, item -> item.id },
-        span = { _, _ -> GridItemSpan(maxLineSpan) },
         contentType = { _, _ -> "exam_result" },
     ) { index, result ->
         ResultItem(
             result = result,
             index = index,
             count = results.size,
+            errorSingular = errorSingular,
+            errorsPlural = errorsPlural,
+            passedLabel = passedLabel,
+            failedLabel = failedLabel,
+            minutesAbbreviation = minutesAbbreviation,
         )
     }
 }
 
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
-internal fun ResultItem(result: ExamResult, index: Int, count: Int, modifier: Modifier = Modifier) {
+internal fun ResultItem(
+    result: ExamResult,
+    index: Int,
+    count: Int,
+    modifier: Modifier = Modifier,
+    errorSingular: String = stringResource(Res.string.error_singular),
+    errorsPlural: String = stringResource(Res.string.errors_plural),
+    passedLabel: String = stringResource(Res.string.performance_passed),
+    failedLabel: String = stringResource(Res.string.performance_failed),
+    minutesAbbreviation: String = stringResource(Res.string.minutes_abbreviation),
+) {
     val errors = result.errors
     val isPassed = errors <= ERRORS_ALLOWED
-    val errorLabel = stringResource(if (errors == 1) Res.string.error_singular else Res.string.errors_plural)
-    val statusText = stringResource(if (isPassed) Res.string.performance_passed else Res.string.performance_failed)
+    val errorLabel = if (errors == 1) errorSingular else errorsPlural
+    val statusText = if (isPassed) passedLabel else failedLabel
     val statusContainerColor = if (isPassed) MaterialTheme.semanticColors.successContainer else MaterialTheme.colorScheme.errorContainer
     val statusContentColor = if (isPassed) MaterialTheme.semanticColors.onSuccessContainer else MaterialTheme.colorScheme.onErrorContainer
 
@@ -71,25 +92,22 @@ internal fun ResultItem(result: ExamResult, index: Int, count: Int, modifier: Mo
                     tint = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
                 Text(
-                    text = "${result.time} ${stringResource(Res.string.minutes_abbreviation)}",
+                    text = "${result.time} $minutesAbbreviation",
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
             }
         },
         trailingContent = {
-            Surface(
-                shape = MaterialTheme.shapes.small,
-                color = statusContainerColor,
-            ) {
-                Text(
-                    text = statusText,
-                    style = MaterialTheme.typography.labelSmall,
-                    fontWeight = FontWeight.Bold,
-                    color = statusContentColor,
-                    modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
-                )
-            }
+            Text(
+                text = statusText,
+                style = MaterialTheme.typography.labelSmall,
+                fontWeight = FontWeight.Bold,
+                color = statusContentColor,
+                modifier = Modifier
+                    .background(statusContainerColor, MaterialTheme.shapes.small)
+                    .padding(horizontal = 8.dp, vertical = 4.dp),
+            )
         },
         modifier = modifier.fillMaxWidth(),
     )
