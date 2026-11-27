@@ -236,6 +236,7 @@ private fun BookmarksScreen(
                     modifier = Modifier.fillMaxSize(),
                 )
             } else if (uiState.bookmarks.isNotEmpty()) {
+                val removeBookmarkContentDescription = stringResource(Res.string.bookmarks_toggle_remove)
                 LazyVerticalGrid(
                     columns = GridCells.Adaptive(minSize = 340.dp),
                     contentPadding = PaddingValues(
@@ -255,6 +256,7 @@ private fun BookmarksScreen(
                     ) { item ->
                         BookmarkedQuestionCard(
                             item = item,
+                            removeBookmarkContentDescription = removeBookmarkContentDescription,
                             onImageClick = { onImageDetailsClick(item.question.image) },
                             onRemoveClick = {
                                 hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
@@ -273,6 +275,7 @@ private fun BookmarksScreen(
 private fun BookmarkedQuestionCard(
     modifier: Modifier = Modifier,
     item: BookmarkedQuestion,
+    removeBookmarkContentDescription: String,
     onImageClick: () -> Unit,
     onRemoveClick: () -> Unit,
 ) {
@@ -351,7 +354,7 @@ private fun BookmarkedQuestionCard(
                 ) {
                     Icon(
                         imageVector = StarX,
-                        contentDescription = stringResource(Res.string.bookmarks_toggle_remove),
+                        contentDescription = removeBookmarkContentDescription,
                         modifier = Modifier.size(18.dp),
                     )
                 }
