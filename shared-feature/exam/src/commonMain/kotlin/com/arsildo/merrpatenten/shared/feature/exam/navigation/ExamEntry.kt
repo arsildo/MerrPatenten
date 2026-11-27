@@ -31,8 +31,8 @@ data class ExitExamBottomSheet(val category: String = "B", val type: ExamType = 
 fun EntryProviderScope<NavKey>.examEntry(
     backStack: NavBackStack<NavKey>,
     onImageDetailsClick: (index: Int) -> Unit,
-    onExitExam: () -> Unit,
-    onRestartExam: (category: String, type: ExamType) -> Unit,
+    onExitExamClick: () -> Unit,
+    onRestartExamClick: (category: String, type: ExamType) -> Unit,
 ) {
     entry<Exam>(
         clazzContentKey = { key -> key.toContentKey() },
@@ -41,10 +41,10 @@ fun EntryProviderScope<NavKey>.examEntry(
             category = examKey.category,
             type = examKey.type,
             onImageDetailsClick = onImageDetailsClick,
-            onOpenMap = { backStack.add(ExamResultBottomSheet(category = examKey.category, type = examKey.type)) },
-            onOpenExitExam = { backStack.add(ExitExamBottomSheet(category = examKey.category, type = examKey.type)) },
-            onExitExam = onExitExam,
-            onRestartExam = { onRestartExam(examKey.category, examKey.type) },
+            onOpenMapClick = { backStack.add(ExamResultBottomSheet(category = examKey.category, type = examKey.type)) },
+            onOpenExitExamClick = { backStack.add(ExitExamBottomSheet(category = examKey.category, type = examKey.type)) },
+            onExitExamClick = onExitExamClick,
+            onRestartExamClick = { onRestartExamClick(examKey.category, examKey.type) },
         )
     }
 
@@ -59,16 +59,16 @@ fun EntryProviderScope<NavKey>.examEntry(
         ExamResultBottomSheetRoute(
             category = sheetKey.category,
             type = sheetKey.type,
-            onQuestionClicked = {
+            onQuestionClick = {
                 backStack.removeLastOrNull()
             },
-            onExitExam = {
+            onExitExamClick = {
                 backStack.removeLastOrNull()
-                onExitExam()
+                onExitExamClick()
             },
-            onRestartExam = {
+            onRestartExamClick = {
                 backStack.removeLastOrNull()
-                onRestartExam(sheetKey.category, sheetKey.type)
+                onRestartExamClick(sheetKey.category, sheetKey.type)
             },
             onDismiss = { backStack.removeLastOrNull() },
         )
@@ -85,17 +85,17 @@ fun EntryProviderScope<NavKey>.examEntry(
         ExitExamBottomSheetRoute(
             category = sheetKey.category,
             type = sheetKey.type,
-            onReviewUnanswered = {
+            onReviewUnansweredClick = {
                 backStack.removeLastOrNull()
                 backStack.add(ExamResultBottomSheet(category = sheetKey.category, type = sheetKey.type))
             },
-            onFinishAnyway = {
+            onFinishAnywayClick = {
                 backStack.removeLastOrNull()
                 backStack.add(ExamResultBottomSheet(category = sheetKey.category, type = sheetKey.type))
             },
-            onExitExam = {
+            onExitExamClick = {
                 backStack.removeLastOrNull()
-                onExitExam()
+                onExitExamClick()
             },
             onDismiss = { backStack.removeLastOrNull() },
         )

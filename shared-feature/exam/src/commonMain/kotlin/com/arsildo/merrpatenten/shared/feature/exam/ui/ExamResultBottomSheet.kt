@@ -42,9 +42,9 @@ internal fun ExamResultBottomSheetRoute(
     category: String,
     type: ExamType,
     viewModel: ExamViewModel = koinViewModel(parameters = { parametersOf(category, type) }),
-    onQuestionClicked: (page: Int) -> Unit,
-    onExitExam: () -> Unit,
-    onRestartExam: () -> Unit,
+    onQuestionClick: (page: Int) -> Unit,
+    onExitExamClick: () -> Unit,
+    onRestartExamClick: () -> Unit,
     onDismiss: () -> Unit,
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
@@ -52,12 +52,12 @@ internal fun ExamResultBottomSheetRoute(
     ExamResultBottomSheet(
         modifier = modifier,
         uiState = uiState,
-        onQuestionClicked = { page ->
+        onQuestionClick = { page ->
             viewModel.navigateToPage(page)
-            onQuestionClicked(page)
+            onQuestionClick(page)
         },
-        onExitExam = onExitExam,
-        onRestartExam = onRestartExam,
+        onExitExamClick = onExitExamClick,
+        onRestartExamClick = onRestartExamClick,
         onDismiss = onDismiss,
     )
 }
@@ -67,9 +67,9 @@ internal fun ExamResultBottomSheetRoute(
 internal fun ExamResultBottomSheet(
     modifier: Modifier = Modifier,
     uiState: ExamUiState,
-    onQuestionClicked: (page: Int) -> Unit,
-    onExitExam: () -> Unit,
-    onRestartExam: () -> Unit,
+    onQuestionClick: (page: Int) -> Unit,
+    onExitExamClick: () -> Unit,
+    onRestartExamClick: () -> Unit,
     onDismiss: () -> Unit,
 ) {
     val hapticFeedback = LocalHapticFeedback.current
@@ -200,7 +200,7 @@ internal fun ExamResultBottomSheet(
                     contentDescription = stringResource(Res.string.question_status_format, questionTitle, statusText),
                     onClick = {
                         hapticFeedback.performHapticFeedback(HapticFeedbackType.SegmentTick)
-                        onQuestionClicked(page)
+                        onQuestionClick(page)
                     },
                 )
             }
@@ -262,12 +262,12 @@ internal fun ExamResultBottomSheet(
                     ) {
                         RestartExamButton(
                             icon = RotateCcw,
-                            onClick = onRestartExam,
+                            onClick = onRestartExamClick,
                             modifier = Modifier.fillMaxWidth(),
                         )
                         ExitExamButton(
                             icon = LogOut,
-                            onClick = onExitExam,
+                            onClick = onExitExamClick,
                             modifier = Modifier.fillMaxWidth(),
                         )
                     }
@@ -287,9 +287,9 @@ private fun ExamResultBottomSheetInProgressPreview() = MerrPatentenTheme {
                 responseList = List(QUESTIONS_IN_EXAM) { if (it < 10) "Saktë" else "" },
                 mistakePositions = List(QUESTIONS_IN_EXAM) { 1 },
             ),
-            onQuestionClicked = {},
-            onExitExam = {},
-            onRestartExam = {},
+            onQuestionClick = {},
+            onExitExamClick = {},
+            onRestartExamClick = {},
             onDismiss = {},
         )
     }
@@ -306,9 +306,9 @@ private fun ExamResultBottomSheetPassedPreview() = MerrPatentenTheme {
                 responseList = List(QUESTIONS_IN_EXAM) { "Saktë" },
                 mistakePositions = List(QUESTIONS_IN_EXAM) { if (it < 2) 1 else 0 },
             ),
-            onQuestionClicked = {},
-            onExitExam = {},
-            onRestartExam = {},
+            onQuestionClick = {},
+            onExitExamClick = {},
+            onRestartExamClick = {},
             onDismiss = {},
         )
     }
@@ -325,9 +325,9 @@ private fun ExamResultBottomSheetFailedPreview() = MerrPatentenTheme {
                 responseList = List(QUESTIONS_IN_EXAM) { "Saktë" },
                 mistakePositions = List(QUESTIONS_IN_EXAM) { if (it < 8) 1 else 0 },
             ),
-            onQuestionClicked = {},
-            onExitExam = {},
-            onRestartExam = {},
+            onQuestionClick = {},
+            onExitExamClick = {},
+            onRestartExamClick = {},
             onDismiss = {},
         )
     }
@@ -344,9 +344,9 @@ private fun ExamResultBottomSheetDarkPreview() = MerrPatentenTheme(darkTheme = t
                 responseList = List(QUESTIONS_IN_EXAM) { "Saktë" },
                 mistakePositions = List(QUESTIONS_IN_EXAM) { if (it < 2) 1 else 0 },
             ),
-            onQuestionClicked = {},
-            onExitExam = {},
-            onRestartExam = {},
+            onQuestionClick = {},
+            onExitExamClick = {},
+            onRestartExamClick = {},
             onDismiss = {},
         )
     }

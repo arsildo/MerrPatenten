@@ -134,8 +134,8 @@ fun MerrPatentenApp() {
                 examEntry(
                     backStack = dashboardSubStack,
                     onImageDetailsClick = { imageId -> navigator.navigate(ZoomableImage(imageId)) },
-                    onExitExam = { navigator.popToRoot(Dashboard) },
-                    onRestartExam = { category, type ->
+                    onExitExamClick = { navigator.popToRoot(Dashboard) },
+                    onRestartExamClick = { category, type ->
                         navigator.navigate(Exam(category = category, type = type), popCurrent = true)
                     },
                 )

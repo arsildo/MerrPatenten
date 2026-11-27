@@ -52,10 +52,10 @@ internal fun ExamRoute(
     type: ExamType,
     viewModel: ExamViewModel = koinViewModel(parameters = { parametersOf(category, type) }),
     onImageDetailsClick: (index: Int) -> Unit,
-    onOpenMap: () -> Unit,
-    onOpenExitExam: () -> Unit,
-    onExitExam: () -> Unit,
-    onRestartExam: () -> Unit,
+    onOpenMapClick: () -> Unit,
+    onOpenExitExamClick: () -> Unit,
+    onExitExamClick: () -> Unit,
+    onRestartExamClick: () -> Unit,
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val timerState = viewModel.timer.collectAsStateWithLifecycle()
@@ -67,24 +67,24 @@ internal fun ExamRoute(
         targetPage = targetPage,
         onPageNavigated = viewModel::onPageNavigated,
         onImageDetailsClick = onImageDetailsClick,
-        onOpenMap = onOpenMap,
-        onOpenExitExam = onOpenExitExam,
-        onExitExam = onExitExam,
-        onRestartExam = onRestartExam,
+        onOpenMapClick = onOpenMapClick,
+        onOpenExitExamClick = onOpenExitExamClick,
+        onExitExamClick = onExitExamClick,
+        onRestartExamClick = onRestartExamClick,
         onCheckTrueAtPage = viewModel::checkTrueAtPosition,
         onCheckFalseAtPage = viewModel::checkFalseAtPosition,
         onToggleBookmark = viewModel::toggleBookmark,
-        onCompleteExam = viewModel::completeExam,
+        onCompleteExamClick = viewModel::completeExam,
     )
 
     val adaptiveInfo = rememberWindowAdaptiveInfo()
     val currentIsCompact by rememberUpdatedState(adaptiveInfo.isCompact)
-    val currentOnOpenMap by rememberUpdatedState(onOpenMap)
+    val currentOnOpenMapClick by rememberUpdatedState(onOpenMapClick)
 
     if (uiState.isCompleted) {
         SideEffect(uiState.isCompleted) {
             if (currentIsCompact) {
-                currentOnOpenMap()
+                currentOnOpenMapClick()
             }
         }
     }
@@ -99,14 +99,14 @@ internal fun ExamScreen(
     targetPage: Int? = null,
     onPageNavigated: () -> Unit = {},
     onImageDetailsClick: (index: Int) -> Unit,
-    onOpenMap: () -> Unit,
-    onOpenExitExam: () -> Unit,
-    onExitExam: () -> Unit,
-    onRestartExam: () -> Unit,
+    onOpenMapClick: () -> Unit,
+    onOpenExitExamClick: () -> Unit,
+    onExitExamClick: () -> Unit,
+    onRestartExamClick: () -> Unit,
     onCheckTrueAtPage: (page: Int) -> Unit,
     onCheckFalseAtPage: (page: Int) -> Unit,
     onToggleBookmark: (questionId: Int) -> Unit = {},
-    onCompleteExam: () -> Unit,
+    onCompleteExamClick: () -> Unit,
 ) {
     val hapticFeedback = LocalHapticFeedback.current
     val coroutineScope = rememberCoroutineScope()
@@ -216,7 +216,7 @@ internal fun ExamScreen(
 
                     Key.Spacebar, Key.M -> {
                         hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                        onOpenMap()
+                        onOpenMapClick()
                         true
                     }
 
@@ -236,13 +236,13 @@ internal fun ExamScreen(
                             val completedCount = uiState.responseList.count { it.isNotBlank() }
                             if (completedCount != questionCount) {
                                 hapticFeedback.performHapticFeedback(HapticFeedbackType.GestureThresholdActivate)
-                                onOpenExitExam()
+                                onOpenExitExamClick()
                             } else {
-                                onCompleteExam()
+                                onCompleteExamClick()
                             }
                             true
                         } else if (endExamVisible) {
-                            onRestartExam()
+                            onRestartExamClick()
                             true
                         } else {
                             false
@@ -302,11 +302,11 @@ internal fun ExamScreen(
                                     RestartExamButton(
                                         icon = RotateCcw,
                                         modifier = Modifier.fillMaxWidth(),
-                                        onClick = onRestartExam,
+                                        onClick = onRestartExamClick,
                                     )
                                     ExitExamButton(
                                         icon = LogOut,
-                                        onClick = onExitExam,
+                                        onClick = onExitExamClick,
                                         modifier = Modifier.fillMaxWidth(),
                                     )
                                 }
@@ -317,9 +317,9 @@ internal fun ExamScreen(
                                     onClick = {
                                         if (completedCount != questionCount) {
                                             hapticFeedback.performHapticFeedback(HapticFeedbackType.GestureThresholdActivate)
-                                            onOpenExitExam()
+                                            onOpenExitExamClick()
                                         } else {
-                                            onCompleteExam()
+                                            onCompleteExamClick()
                                         }
                                     },
                                 )
@@ -353,22 +353,22 @@ internal fun ExamScreen(
                         pagerState = pagerState,
                         progressProvider = { animatedProgress.value },
                         endExamVisible = endExamVisible,
-                        onShowEndExam = { endExamVisible = !endExamVisible },
-                        onOpenMap = onOpenMap,
+                        onShowEndExamClick = { endExamVisible = !endExamVisible },
+                        onOpenMapClick = onOpenMapClick,
                         onImageDetailsClick = onImageClickWithHaptic,
                         onToggleBookmark = onToggleBookmarkWithHaptic,
                         onCheckFalseAtPage = onCheckFalseWithHaptic,
                         onCheckTrueAtPage = onCheckTrueWithHaptic,
-                        onCompleteExam = {
+                        onCompleteExamClick = {
                             if (completedCount != questionCount) {
                                 hapticFeedback.performHapticFeedback(HapticFeedbackType.GestureThresholdActivate)
-                                onOpenExitExam()
+                                onOpenExitExamClick()
                             } else {
-                                onCompleteExam()
+                                onCompleteExamClick()
                             }
                         },
-                        onRestartExam = onRestartExam,
-                        onExitExam = onExitExam,
+                        onRestartExamClick = onRestartExamClick,
+                        onExitExamClick = onExitExamClick,
                         onPreviousPageClick = {
                             if (pagerState.canScrollBackward) {
                                 coroutineScope.launch {
@@ -393,22 +393,22 @@ internal fun ExamScreen(
                         pagerState = pagerState,
                         progressProvider = { animatedProgress.value },
                         endExamVisible = endExamVisible,
-                        onShowEndExam = { endExamVisible = !endExamVisible },
-                        onOpenMap = onOpenMap,
+                        onShowEndExamClick = { endExamVisible = !endExamVisible },
+                        onOpenMapClick = onOpenMapClick,
                         onImageDetailsClick = onImageClickWithHaptic,
                         onToggleBookmark = onToggleBookmarkWithHaptic,
                         onCheckFalseAtPage = onCheckFalseWithHaptic,
                         onCheckTrueAtPage = onCheckTrueWithHaptic,
-                        onCompleteExam = {
+                        onCompleteExamClick = {
                             if (completedCount != questionCount) {
                                 hapticFeedback.performHapticFeedback(HapticFeedbackType.GestureThresholdActivate)
-                                onOpenExitExam()
+                                onOpenExitExamClick()
                             } else {
-                                onCompleteExam()
+                                onCompleteExamClick()
                             }
                         },
-                        onRestartExam = onRestartExam,
-                        onExitExam = onExitExam,
+                        onRestartExamClick = onRestartExamClick,
+                        onExitExamClick = onExitExamClick,
                         onPageSelected = { page ->
                             coroutineScope.launch {
                                 pagerState.animateScrollToPage(page)
@@ -446,8 +446,8 @@ internal fun ExamScreen(
                                 pagerState = pagerState,
                                 timer = timerProvider,
                                 endExamVisible = endExamVisible,
-                                onMapClick = onOpenMap,
-                                onShowEndExamButton = { endExamVisible = !endExamVisible },
+                                onMapClick = onOpenMapClick,
+                                onShowEndExamClick = { endExamVisible = !endExamVisible },
                             )
 
                             LinearProgressIndicator(
@@ -508,13 +508,13 @@ private fun ExamScreenPreview() {
             ),
             timerProvider = { "39:42" },
             onImageDetailsClick = {},
-            onOpenMap = {},
-            onOpenExitExam = {},
-            onExitExam = {},
-            onRestartExam = {},
+            onOpenMapClick = {},
+            onOpenExitExamClick = {},
+            onExitExamClick = {},
+            onRestartExamClick = {},
             onCheckTrueAtPage = {},
             onCheckFalseAtPage = {},
-            onCompleteExam = {},
+            onCompleteExamClick = {},
         )
     }
 }
@@ -526,13 +526,13 @@ private fun ExamScreenLoadingPreview() {
         ExamScreen(
             uiState = ExamUiState(questions = emptyList()),
             onImageDetailsClick = {},
-            onOpenMap = {},
-            onOpenExitExam = {},
-            onExitExam = {},
-            onRestartExam = {},
+            onOpenMapClick = {},
+            onOpenExitExamClick = {},
+            onExitExamClick = {},
+            onRestartExamClick = {},
             onCheckTrueAtPage = {},
             onCheckFalseAtPage = {},
-            onCompleteExam = {},
+            onCompleteExamClick = {},
         )
     }
 }
@@ -558,13 +558,13 @@ private fun ExamScreenDarkPreview() {
             ),
             timerProvider = { "39:42" },
             onImageDetailsClick = {},
-            onOpenMap = {},
-            onOpenExitExam = {},
-            onExitExam = {},
-            onRestartExam = {},
+            onOpenMapClick = {},
+            onOpenExitExamClick = {},
+            onExitExamClick = {},
+            onRestartExamClick = {},
             onCheckTrueAtPage = {},
             onCheckFalseAtPage = {},
-            onCompleteExam = {},
+            onCompleteExamClick = {},
         )
     }
 }
@@ -591,13 +591,13 @@ private fun ExamScreenCompletedPreview() {
             ),
             timerProvider = { "24:10" },
             onImageDetailsClick = {},
-            onOpenMap = {},
-            onOpenExitExam = {},
-            onExitExam = {},
-            onRestartExam = {},
+            onOpenMapClick = {},
+            onOpenExitExamClick = {},
+            onExitExamClick = {},
+            onRestartExamClick = {},
             onCheckTrueAtPage = {},
             onCheckFalseAtPage = {},
-            onCompleteExam = {},
+            onCompleteExamClick = {},
         )
     }
 }
@@ -624,13 +624,13 @@ private fun ExamScreenTabletopPreview() {
                 ),
                 timerProvider = { "39:42" },
                 onImageDetailsClick = {},
-                onOpenMap = {},
-                onOpenExitExam = {},
-                onExitExam = {},
-                onRestartExam = {},
+                onOpenMapClick = {},
+                onOpenExitExamClick = {},
+                onExitExamClick = {},
+                onRestartExamClick = {},
                 onCheckTrueAtPage = {},
                 onCheckFalseAtPage = {},
-                onCompleteExam = {},
+                onCompleteExamClick = {},
             )
         }
     }
@@ -658,13 +658,13 @@ private fun ExamScreenBookPreview() {
                 ),
                 timerProvider = { "39:42" },
                 onImageDetailsClick = {},
-                onOpenMap = {},
-                onOpenExitExam = {},
-                onExitExam = {},
-                onRestartExam = {},
+                onOpenMapClick = {},
+                onOpenExitExamClick = {},
+                onExitExamClick = {},
+                onRestartExamClick = {},
                 onCheckTrueAtPage = {},
                 onCheckFalseAtPage = {},
-                onCompleteExam = {},
+                onCompleteExamClick = {},
             )
         }
     }

@@ -31,15 +31,15 @@ internal fun ExamDualPaneContent(
     pagerState: PagerState,
     progressProvider: () -> Float,
     endExamVisible: Boolean,
-    onShowEndExam: () -> Unit,
-    onOpenMap: () -> Unit,
+    onShowEndExamClick: () -> Unit,
+    onOpenMapClick: () -> Unit,
     onImageDetailsClick: (index: Int) -> Unit,
     onToggleBookmark: (questionId: Int) -> Unit,
     onCheckFalseAtPage: (page: Int) -> Unit,
     onCheckTrueAtPage: (page: Int) -> Unit,
-    onCompleteExam: () -> Unit,
-    onRestartExam: () -> Unit,
-    onExitExam: () -> Unit,
+    onCompleteExamClick: () -> Unit,
+    onRestartExamClick: () -> Unit,
+    onExitExamClick: () -> Unit,
     onPageSelected: (page: Int) -> Unit,
     onPreviousPageClick: () -> Unit,
     onNextPageClick: () -> Unit,
@@ -75,8 +75,8 @@ internal fun ExamDualPaneContent(
                         pagerState = pagerState,
                         timer = timerProvider,
                         endExamVisible = endExamVisible,
-                        onMapClick = onOpenMap,
-                        onShowEndExamButton = onShowEndExam,
+                        onMapClick = onOpenMapClick,
+                        onShowEndExamClick = onShowEndExamClick,
                         showMapButton = false,
                     )
 
@@ -132,19 +132,19 @@ internal fun ExamDualPaneContent(
                                 RestartExamButton(
                                     icon = RotateCcw,
                                     modifier = Modifier.weight(1f),
-                                    onClick = onRestartExam,
+                                    onClick = onRestartExamClick,
                                 )
                                 ExitExamButton(
                                     icon = LogOut,
                                     modifier = Modifier.weight(1f),
-                                    onClick = onExitExam,
+                                    onClick = onExitExamClick,
                                 )
                             }
                         } else {
                             EndExamButton(
                                 icon = CheckCheck,
                                 modifier = Modifier.fillMaxWidth(),
-                                onClick = onCompleteExam,
+                                onClick = onCompleteExamClick,
                             )
                         }
                     }
@@ -173,9 +173,9 @@ internal fun ExamDualPaneContent(
                     uiState = uiState,
                     timerProvider = timerProvider,
                     currentPageProvider = { pagerState.currentPage },
-                    onQuestionClicked = onPageSelected,
-                    onRestartExam = null,
-                    onExitExam = null,
+                    onQuestionClick = onPageSelected,
+                    onRestartExamClick = null,
+                    onExitExamClick = null,
                     modifier = Modifier.fillMaxSize(),
                 )
             }

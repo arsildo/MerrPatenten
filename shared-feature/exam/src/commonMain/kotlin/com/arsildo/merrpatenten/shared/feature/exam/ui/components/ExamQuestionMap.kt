@@ -36,9 +36,9 @@ internal fun ExamQuestionMap(
     uiState: ExamUiState,
     timerProvider: () -> String = { "" },
     currentPageProvider: (() -> Int)? = null,
-    onQuestionClicked: (page: Int) -> Unit,
-    onExitExam: (() -> Unit)? = null,
-    onRestartExam: (() -> Unit)? = null,
+    onQuestionClick: (page: Int) -> Unit,
+    onExitExamClick: (() -> Unit)? = null,
+    onRestartExamClick: (() -> Unit)? = null,
     minItemSize: Dp = 48.dp,
 ) {
     val hapticFeedback = LocalHapticFeedback.current
@@ -184,14 +184,14 @@ internal fun ExamQuestionMap(
                 contentDescription = stringResource(Res.string.question_number_format, page + 1),
                 onClick = {
                     hapticFeedback.performHapticFeedback(HapticFeedbackType.SegmentTick)
-                    onQuestionClicked(page)
+                    onQuestionClick(page)
                 },
                 modifier = activeBorder,
             )
         }
 
         // Action Buttons if available and completed
-        if (uiState.isCompleted && (onRestartExam != null || onExitExam != null)) {
+        if (uiState.isCompleted && (onRestartExamClick != null || onExitExamClick != null)) {
             item(
                 key = "exam_actions",
                 span = { GridItemSpan(maxLineSpan) },
@@ -201,17 +201,17 @@ internal fun ExamQuestionMap(
                     modifier = Modifier.fillMaxWidth().padding(top = 16.dp),
                     verticalArrangement = Arrangement.spacedBy(10.dp),
                 ) {
-                    if (onRestartExam != null) {
+                    if (onRestartExamClick != null) {
                         RestartExamButton(
                             icon = RotateCcw,
                             modifier = Modifier.fillMaxWidth(),
-                            onClick = onRestartExam,
+                            onClick = onRestartExamClick,
                         )
                     }
-                    if (onExitExam != null) {
+                    if (onExitExamClick != null) {
                         ExitExamButton(
                             icon = LogOut,
-                            onClick = onExitExam,
+                            onClick = onExitExamClick,
                             modifier = Modifier.fillMaxWidth(),
                         )
                     }

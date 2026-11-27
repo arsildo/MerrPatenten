@@ -31,18 +31,18 @@ internal fun ExitExamBottomSheetRoute(
     category: String,
     type: ExamType,
     viewModel: ExamViewModel = koinViewModel(parameters = { parametersOf(category, type) }),
-    onReviewUnanswered: () -> Unit,
-    onFinishAnyway: () -> Unit,
-    onExitExam: () -> Unit,
+    onReviewUnansweredClick: () -> Unit,
+    onFinishAnywayClick: () -> Unit,
+    onExitExamClick: () -> Unit,
     onDismiss: () -> Unit,
 ) {
     ExitExamBottomSheet(
-        onReviewUnanswered = onReviewUnanswered,
-        onFinishAnyway = {
+        onReviewUnansweredClick = onReviewUnansweredClick,
+        onFinishAnywayClick = {
             viewModel.completeExam()
-            onFinishAnyway()
+            onFinishAnywayClick()
         },
-        onExitExam = onExitExam,
+        onExitExamClick = onExitExamClick,
         onDismiss = onDismiss,
         modifier = modifier,
     )
@@ -51,9 +51,9 @@ internal fun ExitExamBottomSheetRoute(
 @Composable
 internal fun ExitExamBottomSheet(
     modifier: Modifier = Modifier,
-    onReviewUnanswered: () -> Unit,
-    onFinishAnyway: () -> Unit,
-    onExitExam: () -> Unit,
+    onReviewUnansweredClick: () -> Unit,
+    onFinishAnywayClick: () -> Unit,
+    onExitExamClick: () -> Unit,
     onDismiss: () -> Unit,
 ) {
     val hapticFeedback = LocalHapticFeedback.current
@@ -113,7 +113,7 @@ internal fun ExitExamBottomSheet(
             Button(
                 onClick = {
                     hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                    onReviewUnanswered()
+                    onReviewUnansweredClick()
                 },
                 shapes = ButtonShapes(
                     shape = MaterialTheme.shapes.medium,
@@ -131,7 +131,7 @@ internal fun ExitExamBottomSheet(
             FilledTonalButton(
                 onClick = {
                     hapticFeedback.performHapticFeedback(HapticFeedbackType.GestureThresholdActivate)
-                    onFinishAnyway()
+                    onFinishAnywayClick()
                 },
                 shapes = ButtonShapes(
                     shape = MaterialTheme.shapes.medium,
@@ -149,7 +149,7 @@ internal fun ExitExamBottomSheet(
             Button(
                 onClick = {
                     hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
-                    onExitExam()
+                    onExitExamClick()
                 },
                 shapes = ButtonShapes(
                     shape = MaterialTheme.shapes.medium,
@@ -183,9 +183,9 @@ internal fun ExitExamBottomSheet(
 private fun ExitExamBottomSheetPreview() = MerrPatentenTheme {
     Surface {
         ExitExamBottomSheet(
-            onReviewUnanswered = {},
-            onFinishAnyway = {},
-            onExitExam = {},
+            onReviewUnansweredClick = {},
+            onFinishAnywayClick = {},
+            onExitExamClick = {},
             onDismiss = {},
         )
     }
@@ -196,9 +196,9 @@ private fun ExitExamBottomSheetPreview() = MerrPatentenTheme {
 private fun ExitExamBottomSheetDarkPreview() = MerrPatentenTheme(darkTheme = true) {
     Surface {
         ExitExamBottomSheet(
-            onReviewUnanswered = {},
-            onFinishAnyway = {},
-            onExitExam = {},
+            onReviewUnansweredClick = {},
+            onFinishAnywayClick = {},
+            onExitExamClick = {},
             onDismiss = {},
         )
     }

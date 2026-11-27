@@ -34,7 +34,7 @@ internal fun ExamLegend(
     timer: () -> String,
     endExamVisible: Boolean,
     onMapClick: () -> Unit,
-    onShowEndExamButton: () -> Unit,
+    onShowEndExamClick: () -> Unit,
     modifier: Modifier = Modifier,
     showMapButton: Boolean = true,
 ) {
@@ -87,7 +87,7 @@ internal fun ExamLegend(
         FilledTonalIconButton(
             onClick = {
                 hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                onShowEndExamButton()
+                onShowEndExamClick()
             },
             colors = IconButtonDefaults.filledTonalIconButtonColors(
                 containerColor = actionColor.copy(alpha = 0.12f),
@@ -171,7 +171,7 @@ private fun ExamLegendPreview() {
             timer = { "39:42" },
             endExamVisible = false,
             onMapClick = {},
-            onShowEndExamButton = {},
+            onShowEndExamClick = {},
         )
     }
 }
@@ -185,7 +185,7 @@ private fun ExamLegendLowTimePreview() {
             timer = { "01:15" },
             endExamVisible = true,
             onMapClick = {},
-            onShowEndExamButton = {},
+            onShowEndExamClick = {},
         )
     }
 }
@@ -199,7 +199,7 @@ private fun ExamLegendDarkPreview() {
             timer = { "25:30" },
             endExamVisible = false,
             onMapClick = {},
-            onShowEndExamButton = {},
+            onShowEndExamClick = {},
         )
     }
 }
