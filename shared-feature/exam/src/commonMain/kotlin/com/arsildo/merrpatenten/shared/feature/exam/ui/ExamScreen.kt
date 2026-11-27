@@ -58,10 +58,12 @@ internal fun ExamRoute(
     onRestartExam: () -> Unit,
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val timerState = viewModel.timer.collectAsStateWithLifecycle()
     val targetPage by viewModel.targetPage.collectAsStateWithLifecycle()
 
     ExamScreen(
         uiState = uiState,
+        timerProvider = { timerState.value },
         targetPage = targetPage,
         onPageNavigated = viewModel::onPageNavigated,
         onImageDetailsClick = onImageDetailsClick,
@@ -76,10 +78,14 @@ internal fun ExamRoute(
     )
 
     val adaptiveInfo = rememberWindowAdaptiveInfo()
+    val currentIsCompact by rememberUpdatedState(adaptiveInfo.isCompact)
+    val currentOnOpenMap by rememberUpdatedState(onOpenMap)
 
-    LaunchedEffect(uiState.isCompleted) {
-        if (uiState.isCompleted && adaptiveInfo.isCompact) {
-            onOpenMap()
+    if (uiState.isCompleted) {
+        SideEffect(uiState.isCompleted) {
+            if (currentIsCompact) {
+                currentOnOpenMap()
+            }
         }
     }
 }
@@ -89,6 +95,7 @@ internal fun ExamRoute(
 internal fun ExamScreen(
     modifier: Modifier = Modifier,
     uiState: ExamUiState,
+    timerProvider: () -> String = { "" },
     targetPage: Int? = null,
     onPageNavigated: () -> Unit = {},
     onImageDetailsClick: (index: Int) -> Unit,
@@ -342,6 +349,7 @@ internal fun ExamScreen(
                 adaptiveInfo.isTabletop -> {
                     ExamTabletopContent(
                         uiState = uiState,
+                        timerProvider = timerProvider,
                         pagerState = pagerState,
                         progressProvider = { animatedProgress.value },
                         endExamVisible = endExamVisible,
@@ -381,6 +389,7 @@ internal fun ExamScreen(
                 adaptiveInfo.isDualPane -> {
                     ExamDualPaneContent(
                         uiState = uiState,
+                        timerProvider = timerProvider,
                         pagerState = pagerState,
                         progressProvider = { animatedProgress.value },
                         endExamVisible = endExamVisible,
@@ -435,7 +444,7 @@ internal fun ExamScreen(
                         ) {
                             ExamLegend(
                                 pagerState = pagerState,
-                                timer = { uiState.timer },
+                                timer = timerProvider,
                                 endExamVisible = endExamVisible,
                                 onMapClick = onOpenMap,
                                 onShowEndExamButton = { endExamVisible = !endExamVisible },
@@ -496,8 +505,8 @@ private fun ExamScreenPreview() {
                 falseCheckedPositions = List(QUESTIONS_IN_EXAM) { false },
                 responseList = List(QUESTIONS_IN_EXAM) { "" },
                 mistakePositions = List(QUESTIONS_IN_EXAM) { 1 },
-                timer = "39:42",
             ),
+            timerProvider = { "39:42" },
             onImageDetailsClick = {},
             onOpenMap = {},
             onOpenExitExam = {},
@@ -546,8 +555,8 @@ private fun ExamScreenDarkPreview() {
                 falseCheckedPositions = List(QUESTIONS_IN_EXAM) { false },
                 responseList = List(QUESTIONS_IN_EXAM) { "" },
                 mistakePositions = List(QUESTIONS_IN_EXAM) { 1 },
-                timer = "39:42",
             ),
+            timerProvider = { "39:42" },
             onImageDetailsClick = {},
             onOpenMap = {},
             onOpenExitExam = {},
@@ -579,8 +588,8 @@ private fun ExamScreenCompletedPreview() {
                 responseList = List(QUESTIONS_IN_EXAM) { "Saktë" },
                 mistakePositions = List(QUESTIONS_IN_EXAM) { 0 },
                 isCompleted = true,
-                timer = "24:10",
             ),
+            timerProvider = { "24:10" },
             onImageDetailsClick = {},
             onOpenMap = {},
             onOpenExitExam = {},
@@ -612,8 +621,8 @@ private fun ExamScreenTabletopPreview() {
                     falseCheckedPositions = List(QUESTIONS_IN_EXAM) { false },
                     responseList = List(QUESTIONS_IN_EXAM) { "" },
                     mistakePositions = List(QUESTIONS_IN_EXAM) { 1 },
-                    timer = "39:42",
                 ),
+                timerProvider = { "39:42" },
                 onImageDetailsClick = {},
                 onOpenMap = {},
                 onOpenExitExam = {},
@@ -646,8 +655,8 @@ private fun ExamScreenBookPreview() {
                     falseCheckedPositions = List(QUESTIONS_IN_EXAM) { false },
                     responseList = List(QUESTIONS_IN_EXAM) { "" },
                     mistakePositions = List(QUESTIONS_IN_EXAM) { 1 },
-                    timer = "39:42",
                 ),
+                timerProvider = { "39:42" },
                 onImageDetailsClick = {},
                 onOpenMap = {},
                 onOpenExitExam = {},

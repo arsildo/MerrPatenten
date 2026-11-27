@@ -47,18 +47,7 @@ internal fun ExamLegend(
         verticalAlignment = Alignment.CenterVertically,
     ) {
         // Question Counter Pill
-        Surface(
-            shape = CircleShape,
-            color = MaterialTheme.colorScheme.primaryContainer,
-            contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
-        ) {
-            Text(
-                text = "${pagerState.currentPage + 1}/${pagerState.pageCount}",
-                style = MaterialTheme.typography.labelLarge,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp),
-            )
-        }
+        QuestionCounterPill(pagerState = pagerState)
 
         // Map / Grid Action
         if (showMapButton) {
@@ -115,6 +104,23 @@ internal fun ExamLegend(
                     .graphicsLayer { rotationZ = rotationState.value },
             )
         }
+    }
+}
+
+@Composable
+private fun QuestionCounterPill(pagerState: PagerState, modifier: Modifier = Modifier) {
+    Surface(
+        shape = CircleShape,
+        color = MaterialTheme.colorScheme.primaryContainer,
+        contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+        modifier = modifier,
+    ) {
+        Text(
+            text = "${pagerState.currentPage + 1}/${pagerState.pageCount}",
+            style = MaterialTheme.typography.labelLarge,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp),
+        )
     }
 }
 

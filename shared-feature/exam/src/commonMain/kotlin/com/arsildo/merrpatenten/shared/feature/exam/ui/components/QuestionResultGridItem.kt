@@ -1,7 +1,7 @@
 package com.arsildo.merrpatenten.shared.feature.exam.ui.components
 
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -36,14 +36,13 @@ internal fun QuestionResultGridItem(
             .aspectRatio(1f)
             .semantics { this.contentDescription = contentDescription },
     ) {
-        Box(contentAlignment = Alignment.Center) {
-            Text(
-                text = "${title + 1}",
-                color = contentColor,
-                style = MaterialTheme.typography.titleMedium,
-                fontWeight = FontWeight.Bold,
-            )
-        }
+        Text(
+            text = "${title + 1}",
+            color = contentColor,
+            style = MaterialTheme.typography.titleMedium,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.wrapContentSize(Alignment.Center),
+        )
     }
 }
 

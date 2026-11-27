@@ -34,6 +34,7 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 internal fun ExamTabletopContent(
     uiState: ExamUiState,
+    timerProvider: () -> String,
     pagerState: PagerState,
     progressProvider: () -> Float,
     endExamVisible: Boolean,
@@ -50,11 +51,6 @@ internal fun ExamTabletopContent(
     onNextPageClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val page = pagerState.currentPage
-    val falseChecked = page < uiState.falseCheckedPositions.size && uiState.falseCheckedPositions[page]
-    val trueChecked = page < uiState.trueCheckedPositions.size && uiState.trueCheckedPositions[page]
-    val isCorrect = page < uiState.mistakePositions.size && uiState.mistakePositions[page] == 0
-
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -73,7 +69,7 @@ internal fun ExamTabletopContent(
             ) {
                 ExamLegend(
                     pagerState = pagerState,
-                    timer = { uiState.timer },
+                    timer = timerProvider,
                     endExamVisible = endExamVisible,
                     onMapClick = onOpenMap,
                     onShowEndExamButton = onShowEndExam,
@@ -154,46 +150,15 @@ internal fun ExamTabletopContent(
                 verticalArrangement = Arrangement.SpaceBetween,
             ) {
                 // True / False Response Cards
-                Column(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalArrangement = Arrangement.spacedBy(10.dp),
-                ) {
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.spacedBy(12.dp),
-                        verticalAlignment = Alignment.CenterVertically,
-                    ) {
-                        ExpressiveOptionCard(
-                            title = stringResource(Res.string.false_checkbox),
-                            iconSelected = CircleX,
-                            iconUnselected = CircleX,
-                            isChecked = falseChecked,
-                            enabled = !uiState.isCompleted,
-                            selectedContainerColor = MaterialTheme.colorScheme.errorContainer,
-                            selectedContentColor = MaterialTheme.colorScheme.onErrorContainer,
-                            selectedBorderColor = MaterialTheme.colorScheme.error,
-                            onClick = { onCheckFalseAtPage(page) },
-                            modifier = Modifier.weight(1f),
-                        )
-
-                        ExpressiveOptionCard(
-                            title = stringResource(Res.string.true_checkbox),
-                            iconSelected = CircleCheck,
-                            iconUnselected = CircleCheck,
-                            isChecked = trueChecked,
-                            enabled = !uiState.isCompleted,
-                            selectedContainerColor = MaterialTheme.semanticColors.successContainer,
-                            selectedContentColor = MaterialTheme.semanticColors.onSuccessContainer,
-                            selectedBorderColor = MaterialTheme.semanticColors.success,
-                            onClick = { onCheckTrueAtPage(page) },
-                            modifier = Modifier.weight(1f),
-                        )
-                    }
-
-                    if (uiState.isCompleted) {
-                        AnswerFeedbackIndicator(correctAnswer = isCorrect)
-                    }
-                }
+                TabletopResponseControls(
+                    pagerState = pagerState,
+                    falseCheckedPositions = uiState.falseCheckedPositions,
+                    trueCheckedPositions = uiState.trueCheckedPositions,
+                    mistakePositions = uiState.mistakePositions,
+                    isCompleted = uiState.isCompleted,
+                    onCheckFalseAtPage = onCheckFalseAtPage,
+                    onCheckTrueAtPage = onCheckTrueAtPage,
+                )
 
                 // Controls: Previous / Next & Action Buttons
                 Column(
@@ -234,6 +199,64 @@ internal fun ExamTabletopContent(
                     }
                 }
             }
+        }
+    }
+}
+
+@Composable
+private fun TabletopResponseControls(
+    pagerState: PagerState,
+    falseCheckedPositions: List<Boolean>,
+    trueCheckedPositions: List<Boolean>,
+    mistakePositions: List<Int>,
+    isCompleted: Boolean,
+    onCheckFalseAtPage: (page: Int) -> Unit,
+    onCheckTrueAtPage: (page: Int) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val page = pagerState.currentPage
+    val falseChecked = page < falseCheckedPositions.size && falseCheckedPositions[page]
+    val trueChecked = page < trueCheckedPositions.size && trueCheckedPositions[page]
+    val isCorrect = page < mistakePositions.size && mistakePositions[page] == 0
+
+    Column(
+        modifier = modifier.fillMaxWidth(),
+        verticalArrangement = Arrangement.spacedBy(10.dp),
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            ExpressiveOptionCard(
+                title = stringResource(Res.string.false_checkbox),
+                iconSelected = CircleX,
+                iconUnselected = CircleX,
+                isChecked = falseChecked,
+                enabled = !isCompleted,
+                selectedContainerColor = MaterialTheme.colorScheme.errorContainer,
+                selectedContentColor = MaterialTheme.colorScheme.onErrorContainer,
+                selectedBorderColor = MaterialTheme.colorScheme.error,
+                onClick = { onCheckFalseAtPage(page) },
+                modifier = Modifier.weight(1f),
+            )
+
+            ExpressiveOptionCard(
+                title = stringResource(Res.string.true_checkbox),
+                iconSelected = CircleCheck,
+                iconUnselected = CircleCheck,
+                isChecked = trueChecked,
+                enabled = !isCompleted,
+                selectedContainerColor = MaterialTheme.semanticColors.successContainer,
+                selectedContentColor = MaterialTheme.semanticColors.onSuccessContainer,
+                selectedBorderColor = MaterialTheme.semanticColors.success,
+                onClick = { onCheckTrueAtPage(page) },
+                modifier = Modifier.weight(1f),
+            )
+        }
+
+        if (isCompleted) {
+            AnswerFeedbackIndicator(correctAnswer = isCorrect)
         }
     }
 }

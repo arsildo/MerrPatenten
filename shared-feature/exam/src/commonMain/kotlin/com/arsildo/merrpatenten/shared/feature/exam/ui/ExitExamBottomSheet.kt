@@ -1,5 +1,6 @@
 package com.arsildo.merrpatenten.shared.feature.exam.ui
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
@@ -76,20 +77,16 @@ internal fun ExitExamBottomSheet(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
-        Surface(
-            shape = CircleShape,
-            color = MaterialTheme.colorScheme.errorContainer,
-            modifier = Modifier.size(64.dp),
-        ) {
-            Box(contentAlignment = Alignment.Center) {
-                Icon(
-                    imageVector = CheckCheck,
-                    contentDescription = null,
-                    tint = MaterialTheme.colorScheme.onErrorContainer,
-                    modifier = Modifier.size(32.dp),
-                )
-            }
-        }
+        Icon(
+            imageVector = CheckCheck,
+            contentDescription = null,
+            tint = MaterialTheme.colorScheme.onErrorContainer,
+            modifier = Modifier
+                .size(64.dp)
+                .background(MaterialTheme.colorScheme.errorContainer, CircleShape)
+                .wrapContentSize(Alignment.Center)
+                .size(32.dp),
+        )
 
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,

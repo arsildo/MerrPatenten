@@ -7,6 +7,8 @@ import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -32,7 +34,8 @@ import org.jetbrains.compose.resources.stringResource
 internal fun ExamQuestionMap(
     modifier: Modifier = Modifier,
     uiState: ExamUiState,
-    currentPage: Int? = null,
+    timerProvider: () -> String = { "" },
+    currentPageProvider: (() -> Int)? = null,
     onQuestionClicked: (page: Int) -> Unit,
     onExitExam: (() -> Unit)? = null,
     onRestartExam: (() -> Unit)? = null,
@@ -127,7 +130,7 @@ internal fun ExamQuestionMap(
                                 color = MaterialTheme.colorScheme.primary,
                             )
                         }
-                        QuestionMapTimerBadge(timer = { uiState.timer })
+                        QuestionMapTimerBadge(timer = timerProvider)
                     }
                 }
             }
@@ -141,7 +144,9 @@ internal fun ExamQuestionMap(
         ) { page ->
             val hasResponse = page < uiState.responseList.size && uiState.responseList[page].isNotEmpty()
             val isCorrect = page < uiState.mistakePositions.size && uiState.mistakePositions[page] == 0
-            val isCurrent = currentPage != null && currentPage == page
+            val isCurrent by remember(currentPageProvider, page) {
+                derivedStateOf { currentPageProvider != null && currentPageProvider() == page }
+            }
 
             val container = if (uiState.isCompleted) {
                 if (isCorrect) MaterialTheme.semanticColors.successContainer else MaterialTheme.colorScheme.errorContainer

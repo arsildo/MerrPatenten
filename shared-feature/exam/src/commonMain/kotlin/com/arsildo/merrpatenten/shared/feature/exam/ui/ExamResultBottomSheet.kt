@@ -77,6 +77,10 @@ internal fun ExamResultBottomSheet(
     val heroContent = if (hasPassed) MaterialTheme.semanticColors.onSuccessContainer else MaterialTheme.colorScheme.onErrorContainer
     val heroIcon = if (hasPassed) CircleCheck else CircleX
     val heroIconColor = if (hasPassed) MaterialTheme.semanticColors.success else MaterialTheme.colorScheme.error
+    val trueLabel = stringResource(Res.string.true_checkbox)
+    val falseLabel = stringResource(Res.string.false_checkbox)
+    val answeredShape = MaterialShapes.Cookie6Sided.toShape()
+    val unansweredShape = MaterialShapes.Slanted.toShape()
 
     Column(
         modifier = modifier
@@ -185,14 +189,14 @@ internal fun ExamResultBottomSheet(
                     MaterialTheme.colorScheme.onSurfaceVariant
                 }
 
-                val statusText = stringResource(if (isCorrect) Res.string.true_checkbox else Res.string.false_checkbox)
+                val statusText = if (isCorrect) trueLabel else falseLabel
                 val questionTitle = stringResource(Res.string.question_number_format, page + 1)
 
                 QuestionResultGridItem(
                     title = page,
                     containerColor = container,
                     contentColor = content,
-                    shape = if (hasResponse) MaterialShapes.Cookie6Sided.toShape() else MaterialShapes.Slanted.toShape(),
+                    shape = if (hasResponse) answeredShape else unansweredShape,
                     contentDescription = stringResource(Res.string.question_status_format, questionTitle, statusText),
                     onClick = {
                         hapticFeedback.performHapticFeedback(HapticFeedbackType.SegmentTick)
@@ -221,12 +225,12 @@ internal fun ExamResultBottomSheet(
                     } else {
                         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                             ResultStatusIndicator(
-                                title = stringResource(Res.string.false_checkbox),
+                                title = falseLabel,
                                 containerColor = MaterialTheme.colorScheme.errorContainer,
                                 contentColor = MaterialTheme.colorScheme.onErrorContainer,
                             )
                             ResultStatusIndicator(
-                                title = stringResource(Res.string.true_checkbox),
+                                title = trueLabel,
                                 containerColor = MaterialTheme.semanticColors.successContainer,
                                 contentColor = MaterialTheme.semanticColors.onSuccessContainer,
                             )

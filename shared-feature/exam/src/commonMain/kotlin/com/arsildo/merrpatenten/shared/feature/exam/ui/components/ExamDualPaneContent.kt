@@ -27,6 +27,7 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 internal fun ExamDualPaneContent(
     uiState: ExamUiState,
+    timerProvider: () -> String,
     pagerState: PagerState,
     progressProvider: () -> Float,
     endExamVisible: Boolean,
@@ -72,7 +73,7 @@ internal fun ExamDualPaneContent(
                 Column(modifier = Modifier.fillMaxWidth()) {
                     ExamLegend(
                         pagerState = pagerState,
-                        timer = { uiState.timer },
+                        timer = timerProvider,
                         endExamVisible = endExamVisible,
                         onMapClick = onOpenMap,
                         onShowEndExamButton = onShowEndExam,
@@ -90,26 +91,23 @@ internal fun ExamDualPaneContent(
                 }
 
                 // Question Pager Content
-                Box(
+                ExamPager(
+                    questions = uiState.questions,
+                    pagerState = pagerState,
+                    falseCheckedPages = uiState.falseCheckedPositions,
+                    trueCheckedPages = uiState.trueCheckedPositions,
+                    onImageClick = onImageDetailsClick,
+                    onCheckFalseAtPage = onCheckFalseAtPage,
+                    onCheckTrueAtPage = onCheckTrueAtPage,
+                    isCompleted = uiState.isCompleted,
+                    responses = uiState.mistakePositions,
+                    questionTextSize = uiState.questionTextSize,
+                    bookmarkedQuestionIds = uiState.bookmarkedQuestionIds,
+                    onToggleBookmark = onToggleBookmark,
                     modifier = Modifier
                         .weight(1f)
                         .fillMaxWidth(),
-                ) {
-                    ExamPager(
-                        questions = uiState.questions,
-                        pagerState = pagerState,
-                        falseCheckedPages = uiState.falseCheckedPositions,
-                        trueCheckedPages = uiState.trueCheckedPositions,
-                        onImageClick = onImageDetailsClick,
-                        onCheckFalseAtPage = onCheckFalseAtPage,
-                        onCheckTrueAtPage = onCheckTrueAtPage,
-                        isCompleted = uiState.isCompleted,
-                        responses = uiState.mistakePositions,
-                        questionTextSize = uiState.questionTextSize,
-                        bookmarkedQuestionIds = uiState.bookmarkedQuestionIds,
-                        onToggleBookmark = onToggleBookmark,
-                    )
-                }
+                )
 
                 // Bottom Controls for Question Navigation & Exam Termination
                 Column(
@@ -173,7 +171,8 @@ internal fun ExamDualPaneContent(
 
                 ExamQuestionMap(
                     uiState = uiState,
-                    currentPage = pagerState.currentPage,
+                    timerProvider = timerProvider,
+                    currentPageProvider = { pagerState.currentPage },
                     onQuestionClicked = onPageSelected,
                     onRestartExam = null,
                     onExitExam = null,

@@ -60,7 +60,6 @@ internal data class ExamUiState(
     val questions: List<Question> = emptyList(),
     val immersiveMode: Boolean = false,
     val questionTextSize: QuestionTextSize = QuestionTextSize.DEFAULT,
-    val timer: String = ExamType.STANDARD.initialTimer,
     val trueCheckedPositions: List<Boolean> = emptyList(),
     val falseCheckedPositions: List<Boolean> = emptyList(),
     val responseList: List<String> = emptyList(),
@@ -83,6 +82,9 @@ internal class ExamViewModel(
 
     private var timerJob: Job? = null
 
+    private val _timer = MutableStateFlow(examType.initialTimer)
+    val timer: StateFlow<String> = _timer.asStateFlow()
+
     private val _targetPage = MutableStateFlow<Int?>(null)
     val targetPage: StateFlow<Int?> = _targetPage.asStateFlow()
 
@@ -98,7 +100,6 @@ internal class ExamViewModel(
         ExamUiState(
             category = category,
             examType = examType,
-            timer = examType.initialTimer,
             trueCheckedPositions = List(examType.questionCount) { false },
             falseCheckedPositions = List(examType.questionCount) { false },
             responseList = List(examType.questionCount) { "" },
@@ -149,11 +150,11 @@ internal class ExamViewModel(
                     falseCheckedPositions = List(questionCount) { false },
                     responseList = List(questionCount) { "" },
                     mistakePositions = List(questionCount) { 1 },
-                    timer = examType.initialTimer,
                     isCompleted = false,
                     errors = 0,
                 )
             }
+            _timer.value = examType.initialTimer
             startCountdown()
         } catch (e: Exception) {
             println("Error in startExam($category): ${e.message}")
@@ -170,12 +171,12 @@ internal class ExamViewModel(
                     return@launch
                 }
                 val formatted = formatTimer(remainingMillis)
-                _internalUiState.update { it.copy(timer = formatted) }
+                _timer.value = formatted
                 delay(1000L.milliseconds)
                 remainingMillis -= 1000L
             }
             if (!_internalUiState.value.isCompleted) {
-                _internalUiState.update { it.copy(timer = formatTimer(0)) }
+                _timer.value = formatTimer(0)
                 concludeExam()
             }
         }
@@ -203,7 +204,7 @@ internal class ExamViewModel(
             )
         }
 
-        saveExamResult(errors = errors, timeSpent = currentState.timer, mistakePositions = mistakePositions)
+        saveExamResult(errors = errors, timeSpent = _timer.value, mistakePositions = mistakePositions)
     }
 
     fun checkTrueAtPosition(position: Int) {
