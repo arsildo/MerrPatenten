@@ -36,7 +36,7 @@ fun EntryProviderScope<NavKey>.mistakesEntry(
         clazzContentKey = { key -> key.toContentKey() },
     ) {
         MistakesRoute(
-            onStartPractice = { category -> backStack.add(MistakesPractice(category)) },
+            onStartPracticeClick = { category -> backStack.add(MistakesPractice(category)) },
             onImageDetailsClick = onImageDetailsClick,
             onClearCategoryClick = dropUnlessResumed { backStack.add(ClearMistakesBottomSheet) },
         )
@@ -49,7 +49,7 @@ fun EntryProviderScope<NavKey>.mistakesEntry(
         ) + BottomSheetSceneStrategy.bottomSheet(skipPartiallyExpanded = true),
     ) {
         ClearMistakesBottomSheetRoute(
-            onConfirm = { backStack.removeLastOrNull() },
+            onConfirmClick = { backStack.removeLastOrNull() },
             onDismiss = { backStack.removeLastOrNull() },
         )
     }
@@ -75,7 +75,7 @@ fun EntryProviderScope<NavKey>.mistakesEntry(
     ) { key ->
         MistakesPracticeResultBottomSheetRoute(
             category = key.category,
-            onConfirm = {
+            onConfirmClick = {
                 backStack.removeLastOrNull()
                 onBackPress()
             },

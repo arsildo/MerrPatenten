@@ -52,7 +52,7 @@ internal fun MistakesPracticeResultBottomSheetRoute(
     modifier: Modifier = Modifier,
     category: String,
     viewModel: MistakesPracticeViewModel = koinViewModel(parameters = { parametersOf(category) }),
-    onConfirm: () -> Unit,
+    onConfirmClick: () -> Unit,
     onDismiss: () -> Unit,
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
@@ -61,7 +61,7 @@ internal fun MistakesPracticeResultBottomSheetRoute(
         modifier = modifier,
         totalAnsweredCount = uiState.totalAnsweredCount,
         masteredQuestionsCount = uiState.masteredQuestionsCount,
-        onConfirm = onConfirm,
+        onConfirmClick = onConfirmClick,
         onDismiss = onDismiss,
     )
 }
@@ -71,7 +71,7 @@ internal fun MistakesPracticeResultBottomSheet(
     modifier: Modifier = Modifier,
     totalAnsweredCount: Int,
     masteredQuestionsCount: Int,
-    onConfirm: () -> Unit,
+    onConfirmClick: () -> Unit,
     onDismiss: () -> Unit,
 ) {
     val hapticFeedback = LocalHapticFeedback.current
@@ -132,7 +132,7 @@ internal fun MistakesPracticeResultBottomSheet(
         Button(
             onClick = {
                 hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                onConfirm()
+                onConfirmClick()
             },
             shapes = ButtonShapes(
                 shape = MaterialTheme.shapes.medium,
@@ -163,7 +163,7 @@ private fun MistakesPracticeResultBottomSheetPreview() = MerrPatentenTheme {
         MistakesPracticeResultBottomSheet(
             totalAnsweredCount = 12,
             masteredQuestionsCount = 8,
-            onConfirm = {},
+            onConfirmClick = {},
             onDismiss = {},
         )
     }
@@ -176,7 +176,7 @@ private fun MistakesPracticeResultBottomSheetDarkPreview() = MerrPatentenTheme(d
         MistakesPracticeResultBottomSheet(
             totalAnsweredCount = 12,
             masteredQuestionsCount = 8,
-            onConfirm = {},
+            onConfirmClick = {},
             onDismiss = {},
         )
     }

@@ -44,7 +44,7 @@ import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun MistakesRoute(
-    onStartPractice: (category: String) -> Unit,
+    onStartPracticeClick: (category: String) -> Unit,
     onImageDetailsClick: (index: Int) -> Unit,
     onClearCategoryClick: () -> Unit,
     viewModel: MistakesViewModel = koinViewModel(),
@@ -53,11 +53,11 @@ fun MistakesRoute(
 
     MistakesScreen(
         uiState = uiState,
-        onStartPractice = { onStartPractice(uiState.selectedCategory) },
+        onStartPracticeClick = { onStartPracticeClick(uiState.selectedCategory) },
         onImageDetailsClick = onImageDetailsClick,
         onSelectCategory = viewModel::onSelectCategory,
         onSearchQueryChange = viewModel::onSearchQueryChange,
-        onDeleteMistake = viewModel::deleteMistake,
+        onDeleteMistakeClick = viewModel::deleteMistake,
         onClearCategoryClick = onClearCategoryClick,
     )
 }
@@ -66,11 +66,11 @@ fun MistakesRoute(
 @Composable
 fun MistakesScreen(
     uiState: MistakesUiState,
-    onStartPractice: () -> Unit,
+    onStartPracticeClick: () -> Unit,
     onImageDetailsClick: (index: Int) -> Unit,
     onSelectCategory: (category: String) -> Unit,
     onSearchQueryChange: (query: String) -> Unit,
-    onDeleteMistake: (questionId: Int, category: String) -> Unit,
+    onDeleteMistakeClick: (questionId: Int, category: String) -> Unit,
     onClearCategoryClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -122,7 +122,7 @@ fun MistakesScreen(
                 ExtendedFloatingActionButton(
                     onClick = {
                         hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
-                        onStartPractice()
+                        onStartPracticeClick()
                     },
                     icon = {
                         Icon(
@@ -243,7 +243,7 @@ fun MistakesScreen(
                             onImageClick = { onImageDetailsClick(item.question.image) },
                             onDeleteClick = {
                                 hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                                onDeleteMistake(item.question.id, item.question.category)
+                                onDeleteMistakeClick(item.question.id, item.question.category)
                             },
                         )
                     }

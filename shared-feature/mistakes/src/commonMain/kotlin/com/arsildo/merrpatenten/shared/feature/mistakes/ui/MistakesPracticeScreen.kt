@@ -56,8 +56,8 @@ fun MistakesPracticeRoute(
     MistakesPracticeScreen(
         uiState = uiState,
         onBackPress = onBackPress,
-        onSubmitAnswer = viewModel::submitAnswer,
-        onNextQuestion = {
+        onSubmitAnswerClick = viewModel::submitAnswer,
+        onNextQuestionClick = {
             if (uiState.currentIndex + 1 >= uiState.questions.size) {
                 viewModel.nextQuestion()
                 onPracticeFinished()
@@ -74,8 +74,8 @@ fun MistakesPracticeRoute(
 fun MistakesPracticeScreen(
     uiState: MistakesPracticeUiState,
     onBackPress: () -> Unit,
-    onSubmitAnswer: (answer: String) -> Unit,
-    onNextQuestion: () -> Unit,
+    onSubmitAnswerClick: (answer: String) -> Unit,
+    onNextQuestionClick: () -> Unit,
     onImageDetailsClick: (index: Int) -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -281,7 +281,7 @@ fun MistakesPracticeScreen(
                             selectedContentColor = MaterialTheme.colorScheme.onErrorContainer,
                             selectedBorderColor = MaterialTheme.colorScheme.error,
                             onClick = {
-                                onSubmitAnswer("Gabim")
+                                onSubmitAnswerClick("Gabim")
                             },
                             modifier = Modifier.weight(1f),
                         )
@@ -297,7 +297,7 @@ fun MistakesPracticeScreen(
                             selectedContentColor = MaterialTheme.semanticColors.onSuccessContainer,
                             selectedBorderColor = MaterialTheme.semanticColors.success,
                             onClick = {
-                                onSubmitAnswer("Saktë")
+                                onSubmitAnswerClick("Saktë")
                             },
                             modifier = Modifier.weight(1f),
                         )
@@ -362,7 +362,7 @@ fun MistakesPracticeScreen(
                             Button(
                                 onClick = {
                                     hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                                    onNextQuestion()
+                                    onNextQuestionClick()
                                 },
                                 modifier = Modifier
                                     .fillMaxWidth()
